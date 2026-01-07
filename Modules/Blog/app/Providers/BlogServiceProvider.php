@@ -4,6 +4,8 @@ namespace Modules\Blog\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Blog\Contracts\PostRepositoryInterface;
+use Modules\Blog\Repositories\PostRepository;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -36,6 +38,16 @@ class BlogServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+
+        $this->registerRepositories();
+    }
+
+    /**
+     * Register repository bindings.
+     */
+    protected function registerRepositories(): void
+    {
+        $this->app->bind(PostRepositoryInterface::class, PostRepository::class);
     }
 
     /**
