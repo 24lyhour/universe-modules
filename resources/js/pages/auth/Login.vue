@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import formImage from "@/../assets/img/form_image.jpg"
+import formImage from "/public/img/3.jpg"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -90,9 +90,8 @@ const props = defineProps<{
                               </Field>
                          </FieldGroup>
                     </form>
-                    <div class="bg-muted relative hidden md:block">
-                         <img :src="formImage" alt="Image"
-                              class="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale">
+                    <div class=" relative hidden md:block">
+                         <img :src="formImage" alt="Image" class="absolute  h-full w-full object-cover ">
                     </div>
                </CardContent>
           </Card>
