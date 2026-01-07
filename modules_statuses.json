@@ -1,5 +1,6 @@
 {
     "Blog": true,
     "Hotel": true,
-    "Porfolio": true
+    "Porfolio": true,
+    "Menu": true
 }
