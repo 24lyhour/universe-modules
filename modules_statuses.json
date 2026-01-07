@@ -2,5 +2,6 @@
     "Blog": true,
     "Hotel": true,
     "Porfolio": true,
-    "Menu": true
+    "Menu": true,
+    "Customer": true
 }
