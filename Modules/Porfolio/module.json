@@ -1,0 +1,11 @@
+{
+    "name": "Porfolio",
+    "alias": "porfolio",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Porfolio\\Providers\\PorfolioServiceProvider"
+    ],
+    "files": []
+}
