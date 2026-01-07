@@ -4,6 +4,8 @@ namespace Modules\Hotel\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Hotel\Contracts\HotelRepositoryInterface;
+use Modules\Hotel\Repositories\HotelRepository;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -36,6 +38,16 @@ class HotelServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+
+        $this->registerRepositories();
+    }
+
+    /**
+     * Register repository bindings.
+     */
+    protected function registerRepositories(): void
+    {
+        $this->app->bind(HotelRepositoryInterface::class, HotelRepository::class);
     }
 
     /**
