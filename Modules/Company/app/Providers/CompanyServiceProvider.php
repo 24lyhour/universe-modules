@@ -4,6 +4,8 @@ namespace Modules\Company\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Company\Contracts\CompanyRepositoryInterface;
+use Modules\Company\Repositories\CompanyRepository;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -36,6 +38,16 @@ class CompanyServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+
+        $this->registerRepositories();
+    }
+
+    /**
+     * Register repository bindings.
+     */
+    protected function registerRepositories(): void
+    {
+        $this->app->bind(CompanyRepositoryInterface::class, CompanyRepository::class);
     }
 
     /**
