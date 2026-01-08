@@ -3,5 +3,6 @@
     "Hotel": true,
     "Porfolio": true,
     "Menu": true,
-    "Customer": true
+    "Customer": true,
+    "Company": true
 }
