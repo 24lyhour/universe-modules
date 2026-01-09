@@ -4,5 +4,6 @@
     "Porfolio": true,
     "Menu": true,
     "Customer": true,
-    "Company": true
+    "Company": true,
+    "Payment": true
 }
