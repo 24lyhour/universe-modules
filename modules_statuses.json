@@ -8,5 +8,6 @@
     "Payment": true,
     "Movice": true,
     "Order": true,
-    "Report": true
+    "Report": true,
+    "Booking": true
 }
