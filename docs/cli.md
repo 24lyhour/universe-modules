@@ -125,10 +125,33 @@ php artisan module:disable Customer
 php artisan module:delete ModuleName
 ```
 
-### Create a New Module
+### Create a New Module (Recommended)
+
+Use the custom script to create a module with its own git repository:
 
 ```bash
-# Create a new module with default structure
+# Create a new module with auto git repository (RECOMMENDED)
+./scripts/create-module.sh ModuleName
+
+# Or use composer
+composer module:create ModuleName
+
+# Examples:
+./scripts/create-module.sh Branch
+./scripts/create-module.sh Invoice
+./scripts/create-module.sh Notification
+```
+
+This script automatically:
+1. Creates the module using `php artisan module:make`
+2. Generates model with migration, factory, and seeder
+3. Initializes a git repository in the module
+4. Commits all files
+
+### Create a New Module (Basic - No Git)
+
+```bash
+# Create a new module with default structure (no separate git repo)
 php artisan module:make ModuleName
 
 # Example: Create a Branch module

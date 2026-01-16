@@ -157,7 +157,32 @@ git ls-files "Modules/*/database/migrations/*.php"
 
 ## Creating New Modules
 
-When creating a new module, follow these steps to ensure proper tracking:
+### Automatic Method (Recommended)
+
+Use the custom script to create a module with its own git repository automatically:
+
+```bash
+# Using the script directly
+./scripts/create-module.sh ModuleName
+
+# Or using composer
+composer module:create ModuleName
+
+# Examples:
+./scripts/create-module.sh Branch
+./scripts/create-module.sh Invoice
+```
+
+This script automatically:
+1. Creates the module using `php artisan module:make`
+2. Generates model with migration, factory, and seeder
+3. Initializes a git repository in the module folder
+4. Commits all initial files
+5. The module will appear in VSCode Source Control after reload
+
+### Manual Method
+
+If you prefer to create modules manually:
 
 ### Step 1: Generate the Module
 
