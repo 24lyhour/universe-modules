@@ -35,7 +35,19 @@
         // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
         "baseUrl": ".",
         "paths": {
-            "@/*": ["resources/js/*"]
+            "@/*": ["resources/js/*"],
+            "@modules/*": ["Modules/*"],
+            "@blog/*": ["Modules/Blog/resources/js/*"],
+            "@booking/*": ["Modules/Booking/resources/js/*"],
+            "@company/*": ["Modules/Company/resources/js/*"],
+            "@customer/*": ["Modules/Customer/resources/js/*"],
+            "@hotel/*": ["Modules/Hotel/resources/js/*"],
+            "@menu/*": ["Modules/Menu/resources/js/*"],
+            "@movice/*": ["Modules/Movice/resources/js/*"],
+            "@order/*": ["Modules/Order/resources/js/*"],
+            "@payment/*": ["Modules/Payment/resources/js/*"],
+            "@porfolio/*": ["Modules/Porfolio/resources/js/*"],
+            "@report/*": ["Modules/Report/resources/js/*"]
         },
         // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
         // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
@@ -122,6 +134,8 @@
         "resources/js/**/*.ts",
         "resources/js/**/*.d.ts",
         "resources/js/**/*.tsx",
-        "resources/js/**/*.vue"
+        "resources/js/**/*.vue",
+        "Modules/*/resources/js/**/*.ts",
+        "Modules/*/resources/js/**/*.vue"
     ]
 }

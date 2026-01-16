@@ -27,7 +27,19 @@
         "movices",
         "Porfolio",
         "porfolio",
-        "porfolios"
+        "porfolios",
+        "phpunit",
+        "phpstan",
+        "laravel",
+        "symfony",
+        "guzzlehttp",
+        "inertia"
+    ],
+    "cSpell.ignorePaths": [
+        "composer.lock",
+        "package-lock.json",
+        "node_modules",
+        "vendor"
     ],
     "css.customData": [
         ".vscode/tailwind.css.json"

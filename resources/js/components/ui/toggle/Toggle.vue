@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 import type { ToggleVariants } from '.'
-import { ToggleRoot } from 'reka-ui'
+import { Toggle as ToggleRoot } from 'reka-ui'
 import { cn } from '@/lib/utils'
 import { toggleVariants } from '.'
 

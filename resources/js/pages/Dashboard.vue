@@ -21,6 +21,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { ThemeToggle } from "@/components/ui/theme"
 import { Toggle } from "@/components/ui/toggle"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Bold, Italic, Underline, AlignLeft, AlignCenter, AlignRight } from "lucide-vue-next"
@@ -34,8 +35,8 @@ const alignment = ref("left")
   <SidebarProvider>
     <AppSidebar />
     <SidebarInset>
-      <header class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
-        <div class="flex items-center gap-2 px-4">
+      <header class="flex h-16 shrink-0 items-center justify-between gap-2 border-b px-4 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+        <div class="flex items-center gap-2">
           <SidebarTrigger class="-ml-1" />
           <Separator
             orientation="vertical"
@@ -55,8 +56,11 @@ const alignment = ref("left")
             </BreadcrumbList>
           </Breadcrumb>
         </div>
+        <div class="flex items-center gap-2">
+          <ThemeToggle />
+        </div>
       </header>
-      <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <div class="flex flex-1 flex-col gap-4 p-4 pt-4">
         <!-- Toggle Actions Demo -->
         <div class="rounded-xl border bg-card p-6">
           <h3 class="mb-4 text-lg font-semibold">Toggle Actions</h3>
@@ -115,7 +119,7 @@ const alignment = ref("left")
           <div class="bg-muted/50 aspect-video rounded-xl" />
           <div class="bg-muted/50 aspect-video rounded-xl" />
         </div>
-        <div class="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+        <div class="bg-muted/50 min-h-screen flex-1 rounded-xl md:min-h-min" />
       </div>
     </SidebarInset>
   </SidebarProvider>
