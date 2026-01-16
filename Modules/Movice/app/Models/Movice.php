@@ -4,7 +4,8 @@ namespace Modules\Movice\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Movice\Database\Factories\MoviceFactory;
+use Modules\Customer\Models\Customer;
+use Modules\Movice\Database\Factories\MoviceFactoryFactory;
 
 class Movice extends Model
 {
@@ -46,8 +47,8 @@ class Movice extends Model
         return $this->belongsTo(Customer::class);
     }
 
-    protected static function newFactory(): MoviceFactory
+    protected static function newFactory(): MoviceFactoryFactory
     {
-        return MoviceFactory::new();
+        return MoviceFactoryFactory::new();
     }
 }

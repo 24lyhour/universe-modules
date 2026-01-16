@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('description');
-            $table->string('custom_id')->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('customer_id')->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('image');
             $table->string('video');
             $table->string('price');
@@ -31,9 +31,6 @@ return new class extends Migration
             $table->string('comments');
             $table->string('shares');
             $table->string('downloads');
-            $table->string('watch_time');
-            $table->string('watch_count');
-            $table->string('watch_date');
             $table->string('watch_time');
             $table->string('watch_count');
             $table->string('watch_date');
