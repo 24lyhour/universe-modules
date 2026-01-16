@@ -14,7 +14,10 @@ class Movice extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
+        'movice_id',
         'title',
+        'movice_code',
+        'move_type',
         'customer_id',
         'description',
         'release_date',
