@@ -6,5 +6,6 @@
     "Customer": true,
     "Company": true,
     "Payment": true,
-    "Movice": true
+    "Movice": true,
+    "Order": true
 }
