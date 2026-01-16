@@ -11,7 +11,19 @@ This document provides a comprehensive guide to all CLI commands available in th
 - [Cache & Optimization](#cache--optimization)
 - [Telescope (Debugging)](#telescope-debugging)
 - [Queue Commands](#queue-commands)
+- [Scheduled Tasks](#scheduled-tasks)
 - [Common Workflows](#common-workflows)
+- [Modules Reference](#modules-reference)
+  - [Blog Module](#blog-module)
+  - [Company Module](#company-module)
+  - [Customer Module](#customer-module)
+  - [Hotel Module](#hotel-module)
+  - [Menu Module](#menu-module)
+  - [Payment Module](#payment-module)
+  - [Porfolio Module](#porfolio-module)
+  - [Movice Module](#movice-module)
+- [Git Workflow for Modules](#git-workflow-for-modules)
+- [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -538,25 +550,425 @@ php artisan make:job ProcessPayment
 
 ---
 
-## Existing Modules
+## Modules Reference
 
-| Module | Path | Description |
-|--------|------|-------------|
-| Blog | `Modules/Blog/` | Blog posts management |
-| Company | `Modules/Company/` | Company management |
-| Customer | `Modules/Customer/` | Customer management |
-| Hotel | `Modules/Hotel/` | Hotel management |
-| Menu | `Modules/Menu/` | Menu management |
-| Payment | `Modules/Payment/` | Payment processing |
-| Porfolio | `Modules/Porfolio/` | Portfolio management |
-| Movice | `Modules/Movice/` | Movie management |
+This section provides detailed documentation for all modules in the Universe application.
 
-### Module Routes
+### Overview
+
+| Module | Path | Architecture | Status |
+|--------|------|--------------|--------|
+| Blog | `Modules/Blog/` | Repository + Service | Full Implementation |
+| Company | `Modules/Company/` | Repository + Service | Full Implementation |
+| Customer | `Modules/Customer/` | Basic CRUD | Scaffold |
+| Hotel | `Modules/Hotel/` | Repository + Service | Full Implementation |
+| Menu | `Modules/Menu/` | Basic CRUD | Scaffold |
+| Payment | `Modules/Payment/` | Basic CRUD | Scaffold |
+| Porfolio | `Modules/Porfolio/` | Repository + Service | Full Implementation |
+| Movice | `Modules/Movice/` | Basic CRUD | In Progress |
+
+---
+
+### Blog Module
+
+Manages blog posts with full repository pattern implementation.
+
+**Structure:**
+```
+Modules/Blog/
+├── app/
+│   ├── Contracts/
+│   │   └── PostRepositoryInterface.php
+│   ├── Http/Controllers/
+│   │   └── BlogController.php
+│   ├── Models/
+│   │   └── Post.php
+│   ├── Providers/
+│   │   └── BlogServiceProvider.php
+│   ├── Repositories/
+│   │   └── PostRepository.php
+│   └── Services/
+│       └── PostService.php
+├── database/migrations/
+├── routes/
+│   ├── api.php
+│   └── web.php
+└── resources/views/
+```
+
+**CLI Commands:**
+```bash
+# Enable/Disable
+php artisan module:enable Blog
+php artisan module:disable Blog
+
+# Run migrations
+php artisan module:migrate Blog
+
+# Seed data
+php artisan module:seed Blog
+```
+
+**Routes:**
+- Web: `/blogs` (Prefix: `blogs`)
+- API: `/api/v1/blogs`
+
+**Service Methods:**
+- `getAllPosts()` - Get all posts
+- `getPaginatedPosts($perPage)` - Get paginated posts
+- `getPostById($id)` - Get post by ID
+- `getPostBySlug($slug)` - Get post by slug
+- `createPost($data)` - Create a new post
+- `updatePost($id, $data)` - Update a post
+- `deletePost($id)` - Delete a post
+- `getPublishedPosts($perPage)` - Get published posts
+- `getDraftPosts($perPage)` - Get draft posts
+
+---
+
+### Company Module
+
+Manages company information with repository pattern.
+
+**Structure:**
+```
+Modules/Company/
+├── app/
+│   ├── Contracts/
+│   │   └── CompanyRepositoryInterface.php
+│   ├── Http/Controllers/
+│   │   └── CompanyController.php
+│   ├── Models/
+│   │   └── Company.php
+│   ├── Providers/
+│   │   └── CompanyServiceProvider.php
+│   ├── Repositories/
+│   │   └── CompanyRepository.php
+│   └── Services/
+│       └── CompanyService.php
+├── database/migrations/
+├── routes/
+│   ├── api.php
+│   └── web.php
+└── resources/views/
+```
+
+**CLI Commands:**
+```bash
+# Enable/Disable
+php artisan module:enable Company
+php artisan module:disable Company
+
+# Run migrations
+php artisan module:migrate Company
+
+# Seed data
+php artisan module:seed Company
+```
+
+**Routes:**
+- Web: `/companies` (Prefix: `companies`)
+- API: `/api/v1/companies`
+
+---
+
+### Customer Module
+
+Basic customer management module (scaffold).
+
+**Structure:**
+```
+Modules/Customer/
+├── app/
+│   ├── Http/Controllers/
+│   │   └── CustomerController.php
+│   ├── Models/
+│   └── Providers/
+│       └── CustomerServiceProvider.php
+├── database/migrations/
+├── routes/
+│   ├── api.php
+│   └── web.php
+└── resources/views/
+```
+
+**CLI Commands:**
+```bash
+# Enable/Disable
+php artisan module:enable Customer
+php artisan module:disable Customer
+
+# Run migrations
+php artisan module:migrate Customer
+
+# Generate additional components
+php artisan module:make-model Customer Customer -mf
+php artisan module:make-service CustomerService Customer
+php artisan module:make-repository CustomerRepository Customer
+```
+
+**Routes:**
+- Web: `/customers` (Prefix: `customers`)
+- API: `/api/v1/customers`
+
+---
+
+### Hotel Module
+
+Manages hotel information with full repository pattern and dependency injection.
+
+**Structure:**
+```
+Modules/Hotel/
+├── app/
+│   ├── Contracts/
+│   │   └── HotelRepositoryInterface.php
+│   ├── Http/Controllers/
+│   │   └── HotelController.php
+│   ├── Models/
+│   │   └── Hotel.php
+│   ├── Providers/
+│   │   └── HotelServiceProvider.php
+│   ├── Repositories/
+│   │   └── HotelRepository.php
+│   └── Services/
+│       └── HotelService.php
+├── database/migrations/
+├── routes/
+│   ├── api.php
+│   └── web.php
+└── resources/views/
+```
+
+**CLI Commands:**
+```bash
+# Enable/Disable
+php artisan module:enable Hotel
+php artisan module:disable Hotel
+
+# Run migrations
+php artisan module:migrate Hotel
+
+# Seed data
+php artisan module:seed Hotel
+```
+
+**Routes:**
+- Web: `/hotels` (Prefix: `hotels`)
+- API: `/api/v1/hotels`
+
+**Service Methods:**
+- `getAllHotels()` - Get all hotels
+- `getPaginatedHotels($perPage)` - Get paginated hotels
+- `getHotelById($id)` - Get hotel by ID
+- `getHotelBySlug($slug)` - Get hotel by slug
+- `createHotel($data)` - Create a new hotel
+- `updateHotel($id, $data)` - Update a hotel
+- `deleteHotel($id)` - Delete a hotel
+- `getActiveHotels($perPage)` - Get active hotels
+- `getHotelsByCity($city, $perPage)` - Get hotels by city
+- `getHotelsByStarRating($rating, $perPage)` - Get hotels by rating
+- `searchHotels($query, $perPage)` - Search hotels
+
+---
+
+### Menu Module
+
+Basic menu management module (scaffold) with scheduled command.
+
+**Structure:**
+```
+Modules/Menu/
+├── app/
+│   ├── Http/Controllers/
+│   │   └── MenuController.php
+│   ├── Models/
+│   └── Providers/
+│       └── MenuServiceProvider.php
+├── database/migrations/
+├── routes/
+│   ├── api.php
+│   └── web.php
+└── resources/views/
+```
+
+**CLI Commands:**
+```bash
+# Enable/Disable
+php artisan module:enable Menu
+php artisan module:disable Menu
+
+# Run migrations
+php artisan module:migrate Menu
+
+# Generate additional components
+php artisan module:make-model Menu Menu -mf
+php artisan module:make-service MenuService Menu
+php artisan module:make-repository MenuRepository Menu
+```
+
+**Routes:**
+- Web: `/menus` (Prefix: `menus`)
+- API: `/api/v1/menus`
+
+**Note:** This module has a scheduled command configured (`inspire:hourly`).
+
+---
+
+### Payment Module
+
+Basic payment processing module (scaffold).
+
+**Structure:**
+```
+Modules/Payment/
+├── app/
+│   ├── Http/Controllers/
+│   │   └── PaymentController.php
+│   ├── Models/
+│   └── Providers/
+│       └── PaymentServiceProvider.php
+├── database/migrations/
+├── routes/
+│   ├── api.php
+│   └── web.php
+└── resources/views/
+```
+
+**CLI Commands:**
+```bash
+# Enable/Disable
+php artisan module:enable Payment
+php artisan module:disable Payment
+
+# Run migrations
+php artisan module:migrate Payment
+
+# Generate additional components
+php artisan module:make-model Payment Payment -mf
+php artisan module:make-service PaymentService Payment
+php artisan module:make-repository PaymentRepository Payment
+```
+
+**Routes:**
+- Web: `/payments` (Prefix: `payments`)
+- API: `/api/v1/payments`
+
+---
+
+### Porfolio Module
+
+Manages portfolio projects with categories support.
+
+**Structure:**
+```
+Modules/Porfolio/
+├── app/
+│   ├── Contracts/
+│   │   └── PortfolioRepositoryInterface.php
+│   ├── Http/Controllers/
+│   │   └── PorfolioController.php
+│   ├── Models/
+│   │   └── Portfolio.php
+│   ├── Providers/
+│   │   └── PorfolioServiceProvider.php
+│   ├── Repositories/
+│   │   └── PortfolioRepository.php
+│   └── Services/
+│       └── PortfolioService.php
+├── database/migrations/
+├── routes/
+│   ├── api.php
+│   └── web.php
+└── resources/views/
+```
+
+**CLI Commands:**
+```bash
+# Enable/Disable
+php artisan module:enable Porfolio
+php artisan module:disable Porfolio
+
+# Run migrations
+php artisan module:migrate Porfolio
+
+# Seed data
+php artisan module:seed Porfolio
+```
+
+**Routes:**
+- Web: `/porfolios` (Prefix: `porfolios`)
+- API: `/api/v1/porfolios`
+
+**Service Methods:**
+- `getAllPortfolios()` - Get all portfolios
+- `getPaginatedPortfolios($perPage)` - Get paginated portfolios
+- `getPortfolioById($id)` - Get portfolio by ID
+- `getPortfolioBySlug($slug)` - Get portfolio by slug
+- `createPortfolio($data)` - Create a new portfolio
+- `updatePortfolio($id, $data)` - Update a portfolio
+- `deletePortfolio($id)` - Delete a portfolio
+- `getPublishedPortfolios($perPage)` - Get published portfolios
+- `getPortfoliosByCategory($category, $perPage)` - Get by category
+- `getCategories()` - Get all categories
+
+---
+
+### Movice Module
+
+Movie management module (in development).
+
+**Structure:**
+```
+Modules/Movice/
+├── app/
+│   ├── Http/Controllers/
+│   │   └── MoviceController.php
+│   ├── Models/
+│   │   └── Movice.php
+│   ├── Providers/
+│   │   └── MoviceServiceProvider.php
+├── database/
+│   ├── factories/
+│   │   └── MoviceFactory.php
+│   ├── migrations/
+│   │   └── create_movices_table.php
+│   └── seeders/
+│       └── MoviceSeeder.php
+├── routes/
+│   ├── api.php
+│   └── web.php
+└── resources/views/
+```
+
+**CLI Commands:**
+```bash
+# Enable/Disable
+php artisan module:enable Movice
+php artisan module:disable Movice
+
+# Run migrations
+php artisan module:migrate Movice
+
+# Seed data
+php artisan module:seed Movice
+```
+
+**Routes:**
+- Web: `/movices` (Prefix: `movices`)
+- API: `/api/v1/movices`
+
+---
+
+### Module Routes Summary
 
 Each module exposes:
 
 - **Web Routes**: `/{module-name}` (e.g., `/customers`, `/blogs`)
 - **API Routes**: `/api/v1/{module-name}` (e.g., `/api/v1/customers`)
+
+All web routes require `auth` and `verified` middleware.
+All API routes require `auth:sanctum` middleware.
 
 ---
 
