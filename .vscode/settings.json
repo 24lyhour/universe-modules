@@ -1,0 +1,37 @@
+{
+    "git.openRepositoryInParentFolders": "always",
+    "git.repositoryScanMaxDepth": 3,
+    "git.autoRepositoryDetection": true,
+    "git.detectSubmodules": true,
+    "git.detectSubmodulesLimit": 20,
+    "files.exclude": {
+        "**/node_modules": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/.git": true
+    },
+    "intelephense.environment.includePaths": [
+        "vendor",
+        "Modules"
+    ],
+    "intelephense.files.associations": [
+        "*.php"
+    ],
+    "intelephense.files.exclude": [
+        "**/node_modules/**"
+    ],
+    "cSpell.words": [
+        "Movice",
+        "movice",
+        "movices",
+        "Porfolio",
+        "porfolio",
+        "porfolios"
+    ],
+    "css.customData": [
+        ".vscode/tailwind.css.json"
+    ],
+    "css.validate": false,
+    "scss.validate": false
+}
