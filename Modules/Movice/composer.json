@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/movice",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Movice\\": "app/",
+            "Modules\\Movice\\Database\\Factories\\": "database/factories/",
+            "Modules\\Movice\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Movice\\Tests\\": "tests/"
+        }
+    }
+}
