@@ -25,3 +25,6 @@ git push -u origin main
 cd Modules/Porfolio
 git remote add origin https://github.com/YOUR_USERNAME/porfolio-module.git
 git push -u origin main
+
+git remote add origin https://github.com/24lyhour/universe-modules-Movice.git
+git push -u origin master
