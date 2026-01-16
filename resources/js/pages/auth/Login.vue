@@ -12,17 +12,30 @@ import {
      FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps<{
      class?: HTMLAttributes["class"]
 }>()
+
+const form = useForm({
+    email: '',
+    password: '',
+    remember: false,
+});
+
+const submit = () => {
+    form.post('/login', {
+        onFinish: () => form.reset('password'),
+    });
+};
 </script>
 
 <template>
      <div :class="cn('flex flex-col gap-6', props.class)">
           <Card class="overflow-hidden p-0">
                <CardContent class="grid p-0 md:grid-cols-2">
-                    <form class="p-6 md:p-8">
+                    <form @submit.prevent="submit" class="p-6 md:p-8">
                          <FieldGroup>
                               <div class="flex flex-col items-center gap-2 text-center">
                                    <h1 class="text-2xl font-bold">
@@ -36,7 +49,8 @@ const props = defineProps<{
                                    <FieldLabel for="email">
                                         Email
                                    </FieldLabel>
-                                   <Input id="email" type="email" placeholder="m@example.com" required />
+                                   <Input id="email" type="email" placeholder="m@example.com" required v-model="form.email" />
+                                   <div v-if="form.errors.email" class="text-sm text-red-500">{{ form.errors.email }}</div>
                               </Field>
                               <Field name="password">
                                    <div class="flex items-center">
@@ -47,10 +61,11 @@ const props = defineProps<{
                                              Forgot your password?
                                         </a>
                                    </div>
-                                   <Input id="password" type="password" required />
+                                   <Input id="password" type="password" required v-model="form.password" />
+                                   <div v-if="form.errors.password" class="text-sm text-red-500">{{ form.errors.password }}</div>
                               </Field>
                               <Field name="submit">
-                                   <Button type="submit">
+                                   <Button type="submit" :disabled="form.processing">
                                         Login
                                    </Button>
                               </Field>
