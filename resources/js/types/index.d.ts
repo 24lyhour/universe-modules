@@ -17,6 +17,18 @@ export interface NavItem {
     isActive?: boolean;
 }
 
+export interface NavSubItem {
+    title: string;
+    href: NonNullable<InertiaLinkProps['href']>;
+}
+
+export interface NavModuleItem {
+    title: string;
+    icon?: LucideIcon;
+    isActive?: boolean;
+    items: NavSubItem[];
+}
+
 export type AppPageProps<
     T extends Record<string, unknown> = Record<string, unknown>,
 > = T & {
