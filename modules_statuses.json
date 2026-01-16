@@ -7,5 +7,6 @@
     "Company": true,
     "Payment": true,
     "Movice": true,
-    "Order": true
+    "Order": true,
+    "Report": true
 }
