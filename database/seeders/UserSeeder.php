@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
     {
         // Check if user exists to avoid duplicates if run multiple times
         if (! User::where('email', 'kouchlyhour@gmail.com')->exists()) {
-            User::factory()->create([
+            User::factory()->withoutTwoFactor()->create([
                 'name' => 'kouchlyhour',
                 'email' => 'kouchlyhour@gmail.com',
                 'password' => '12345678',
