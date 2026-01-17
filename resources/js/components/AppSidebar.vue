@@ -28,6 +28,7 @@ import { type NavItem, type NavModuleItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
 import {
     BookOpen,
+    Briefcase,
     Building2,
     CalendarDays,
     CreditCard,
@@ -37,7 +38,6 @@ import {
     LayoutGrid,
     ListOrdered,
     MonitorPlay,
-    ScrollText,
     UtensilsCrossed,
     Users,
 } from 'lucide-vue-next';
@@ -126,7 +126,7 @@ const moduleNavItems: NavModuleItem[] = [
     },
     {
         title: 'Portfolio',
-        icon: ScrollText,
+        icon: Briefcase,
         items: [
             { title: 'All Portfolios', href: porfolio.index() },
             { title: 'Create Portfolio', href: porfolio.create() },
@@ -173,6 +173,7 @@ const footerNavItems: NavItem[] = [
         <SidebarContent>
             <NavMain :items="mainNavItems" />
             <NavModules :items="moduleNavItems" label="Modules" />
+
         </SidebarContent>
 
         <SidebarFooter>

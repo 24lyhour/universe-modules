@@ -29,6 +29,29 @@ export interface NavModuleItem {
     items: NavSubItem[];
 }
 
+export interface MenuSubItem {
+    title: string;
+    url: string;
+    order: number;
+    permissions: string | null;
+    route: string | null;
+}
+
+export interface MenuItem {
+    id: string;
+    title: string;
+    url: string;
+    icon: string;
+    order: number;
+    permissions: string | null;
+    route: string | null;
+    items: MenuSubItem[];
+}
+
+export interface Menus {
+    primary: MenuItem[];
+}
+
 export type AppPageProps<
     T extends Record<string, unknown> = Record<string, unknown>,
 > = T & {
@@ -36,6 +59,7 @@ export type AppPageProps<
     quote: { message: string; author: string };
     auth: Auth;
     sidebarOpen: boolean;
+    menus: Menus;
 };
 
 export interface User {

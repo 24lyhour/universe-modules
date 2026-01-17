@@ -9,5 +9,6 @@
     "Movice": true,
     "Order": true,
     "Report": true,
-    "Booking": true
+    "Booking": true,
+    "School": true
 }

@@ -11,7 +11,21 @@ createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     resolve: (name) => {
         const pages = import.meta.glob<DefineComponent>('/resources/js/pages/**/*.vue', { eager: true });
-        let page = pages[`/resources/js/pages/${name}.vue`];
+        const modulePages = import.meta.glob<DefineComponent>('/Modules/*/resources/js/pages/**/*.vue', { eager: true });
+
+        // Check if it's a module page (format: modulename::path/to/Page)
+        if (name.includes('::')) {
+            const [moduleName, pagePath] = name.split('::');
+            const moduleKey = `/Modules/${moduleName.charAt(0).toUpperCase() + moduleName.slice(1)}/resources/js/pages/${pagePath}.vue`;
+            const page = modulePages[moduleKey];
+            if (typeof page === 'undefined') {
+                throw new Error(`Module page not found: ${moduleKey}`);
+            }
+            return page;
+        }
+
+        // Regular pages
+        const page = pages[`/resources/js/pages/${name}.vue`];
         if (typeof page === 'undefined') {
             throw new Error(`Page not found: /resources/js/pages/${name}.vue`);
         }
