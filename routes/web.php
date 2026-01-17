@@ -4,11 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
-Route::get('/', function () {
-    return Inertia::render('index', [
-        'canRegister' => Features::enabled(Features::registration()),
-    ]);
-})->name('home');
+// The homepage is handled by the Porfolio module's KioskController
+// for the public-facing portfolio website
 
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
