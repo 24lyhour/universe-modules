@@ -50,7 +50,8 @@ class MenuService
         string $url,
         int $order = 0,
         ?string $permissions = null,
-        ?string $route = null
+        ?string $route = null,
+        ?string $icon = null
     ): void {
         if (! isset(static::$menus[$menu][$parentId])) {
             return;
@@ -62,6 +63,7 @@ class MenuService
             'order' => $order,
             'permissions' => $permissions,
             'route' => $route,
+            'icon' => $icon,
         ];
     }
 

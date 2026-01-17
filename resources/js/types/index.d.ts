@@ -35,6 +35,7 @@ export interface MenuSubItem {
     order: number;
     permissions: string | null;
     route: string | null;
+    icon: string | null;
 }
 
 export interface MenuItem {
@@ -50,6 +51,7 @@ export interface MenuItem {
 
 export interface Menus {
     primary: MenuItem[];
+    footer: MenuItem[];
 }
 
 export type AppPageProps<

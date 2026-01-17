@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NavFooter from '@/components/NavFooter.vue';
+import NavDynamicModules from '@/components/NavDynamicModules.vue';
 import NavMain from '@/components/NavMain.vue';
 import NavModules from '@/components/NavModules.vue';
 import NavUser from '@/components/NavUser.vue';
@@ -22,18 +22,14 @@ import * as menu from '@/routes/menu';
 import * as movice from '@/routes/movice';
 import * as order from '@/routes/order';
 import * as payment from '@/routes/payment';
-import * as porfolio from '@/routes/porfolio';
 import * as report from '@/routes/report';
-import { type NavItem, type NavModuleItem } from '@/types';
-import { Link } from '@inertiajs/vue3';
+import { type AppPageProps, type NavItem, type NavModuleItem } from '@/types';
+import { Link, usePage } from '@inertiajs/vue3';
 import {
-    BookOpen,
-    Briefcase,
     Building2,
     CalendarDays,
     CreditCard,
     FileText,
-    Folder,
     Hotel,
     LayoutGrid,
     ListOrdered,
@@ -41,7 +37,10 @@ import {
     UtensilsCrossed,
     Users,
 } from 'lucide-vue-next';
+import { computed } from 'vue';
 import AppLogo from './AppLogo.vue';
+
+const page = usePage<AppPageProps>();
 
 const mainNavItems: NavItem[] = [
     {
@@ -51,7 +50,8 @@ const mainNavItems: NavItem[] = [
     },
 ];
 
-const moduleNavItems: NavModuleItem[] = [
+// Static module items (modules that don't use MenuService yet)
+const staticModuleItems: NavModuleItem[] = [
     {
         title: 'Blog',
         icon: FileText,
@@ -125,13 +125,6 @@ const moduleNavItems: NavModuleItem[] = [
         ],
     },
     {
-        title: 'Portfolio',
-        icon: Briefcase,
-        items: [
-            { title: 'All Portfolios', href: porfolio.index() },
-        ],
-    },
-    {
         title: 'Report',
         icon: FileText,
         items: [
@@ -141,18 +134,9 @@ const moduleNavItems: NavModuleItem[] = [
     },
 ];
 
-// const footerNavItems: NavItem[] = [
-//     {
-//         title: 'Github Repo',
-//         href: 'https://github.com/laravel/vue-starter-kit',
-//         icon: Folder,
-//     },
-//     {
-//         title: 'Documentation',
-//         href: 'https://laravel.com/docs/starter-kits#vue',
-//         icon: BookOpen,
-//     },
-// ];
+// Get dynamic menu items from backend via MenuService
+const dynamicModuleItems = computed(() => page.props.menus?.primary || []);
+const footerNavItems = computed(() => page.props.menus?.footer || []);
 </script>
 
 <template>
@@ -170,13 +154,15 @@ const moduleNavItems: NavModuleItem[] = [
         </SidebarHeader>
 
         <SidebarContent>
-            <NavMain :items="mainNavItems" />
-            <NavModules :items="moduleNavItems" label="Modules" />
-
+            <NavMain :items="mainNavItems" label="Dashboard" />
+            <!-- Static modules (hardcoded) -->
+            <NavModules :items="staticModuleItems" label="Modules" />
+            <!-- Dynamic modules from MenuService (Portfolio, etc.) -->
+            <NavDynamicModules v-if="dynamicModuleItems.length > 0" :items="dynamicModuleItems" />
         </SidebarContent>
 
         <SidebarFooter>
-            <!-- <NavFooter :items="footerNavItems" /> -->
+            <NavDynamicModules v-if="footerNavItems.length > 0" :items="footerNavItems" label="Settings" />
             <NavUser />
         </SidebarFooter>
     </Sidebar>

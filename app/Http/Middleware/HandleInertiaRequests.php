@@ -51,6 +51,9 @@ class HandleInertiaRequests extends Middleware
                 'primary' => $request->user()
                     ? MenuService::getMenuForUser('primary', $request->user())
                     : [],
+                'footer' => $request->user()
+                    ? MenuService::getMenuForUser('footer', $request->user())
+                    : [],
             ],
         ];
     }
