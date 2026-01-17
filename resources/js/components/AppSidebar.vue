@@ -129,7 +129,6 @@ const moduleNavItems: NavModuleItem[] = [
         icon: Briefcase,
         items: [
             { title: 'All Portfolios', href: porfolio.index() },
-            { title: 'Create Portfolio', href: porfolio.create() },
         ],
     },
     {
