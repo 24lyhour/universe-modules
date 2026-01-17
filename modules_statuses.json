@@ -10,5 +10,6 @@
     "Order": true,
     "Report": true,
     "Booking": true,
-    "School": true
+    "School": true,
+    "Product": true
 }
