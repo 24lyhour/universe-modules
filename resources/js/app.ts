@@ -5,7 +5,6 @@ import { modal } from 'momentum-modal';
 import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
 import { initializeTheme } from './composables/useAppearance';
-import { initializeToastNotifications } from './plugins/toast';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -81,6 +80,3 @@ createInertiaApp({
 
 // This will set light / dark mode on page load...
 initializeTheme();
-
-// Initialize global toast notifications for flash messages
-initializeToastNotifications();
