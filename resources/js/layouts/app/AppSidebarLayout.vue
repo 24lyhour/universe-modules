@@ -6,31 +6,8 @@ import AppSidebarHeader from '@/components/AppSidebarHeader.vue';
 import { Toaster } from '@/components/ui/sonner';
 import { Modal } from 'momentum-modal';
 import type { BreadcrumbItemType } from '@/types';
-import { usePage } from '@inertiajs/vue3';
-import { toast } from 'vue-sonner';
-import { watch } from 'vue';
 
-// Watch for flash messages from the server
-const page = usePage();
-
-watch(
-    () => page.props.flash,
-    (flash: { success?: string; error?: string; warning?: string; info?: string } | undefined) => {
-        if (flash?.success) {
-            toast.success(flash.success);
-        }
-        if (flash?.error) {
-            toast.error(flash.error);
-        }
-        if (flash?.warning) {
-            toast.warning(flash.warning);
-        }
-        if (flash?.info) {
-            toast.info(flash.info);
-        }
-    },
-    { immediate: true }
-);
+// Toast notifications are handled globally in plugins/toast.ts
 
 interface Props {
     breadcrumbs?: BreadcrumbItemType[];
