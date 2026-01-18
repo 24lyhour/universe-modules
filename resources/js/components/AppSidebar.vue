@@ -36,9 +36,12 @@ import {
     MonitorPlay,
     UtensilsCrossed,
     Users,
+    Package
 } from 'lucide-vue-next';
 import { computed } from 'vue';
 import AppLogo from './AppLogo.vue';
+import product from '@/routes/product';
+import Product from '@/actions/Modules/Product';
 
 const page = usePage<AppPageProps>();
 
@@ -90,6 +93,14 @@ const staticModuleItems: NavModuleItem[] = [
         items: [
             { title: 'All Hotels', href: hotel.index() },
             { title: 'Create Hotel', href: hotel.create() },
+        ],
+    },
+    {
+        title: 'Product',
+        icon: Package,
+        items: [
+            { title: 'All Product', href: product.index() },
+            { title: 'Create Product', href: product.create() },
         ],
     },
     {

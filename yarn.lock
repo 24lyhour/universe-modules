@@ -3349,6 +3349,11 @@ vue-input-otp@^0.3.2:
     "@vueuse/core" "^12.8.2"
     reka-ui "^2.6.1"
 
+vue-sonner@^2.0.9:
+  version "2.0.9"
+  resolved "https://registry.npmjs.org/vue-sonner/-/vue-sonner-2.0.9.tgz"
+  integrity sha512-i6BokNlNDL93fpzNxN/LZSn6D6MzlO+i3qXt6iVZne3x1k7R46d5HlFB4P8tYydhgqOrRbIZEsnRd3kG7qGXyw==
+
 "vue-tsc@^2.1.0 || 3", vue-tsc@^2.2.4:
   version "2.2.12"
   resolved "https://registry.npmjs.org/vue-tsc/-/vue-tsc-2.2.12.tgz"
