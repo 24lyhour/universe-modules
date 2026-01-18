@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             User::factory()->withoutTwoFactor()->create([
                 'name' => 'kouchlyhour',
                 'email' => 'kouchlyhour@gmail.com',
-                'avatar' => '/images/users/kouchlyhour.jpg',
+                'avatar' => '/images/users/kouchlyhour.svg',
                 'password' => '12345678',
                 'role' => 'admin',
             ]);
