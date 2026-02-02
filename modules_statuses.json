@@ -11,5 +11,6 @@
     "Report": true,
     "Booking": true,
     "School": true,
-    "Product": true
+    "Product": true,
+    "Outlet": true
 }
