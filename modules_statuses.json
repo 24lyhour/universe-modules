@@ -12,5 +12,6 @@
     "Booking": true,
     "School": true,
     "Product": true,
-    "Outlet": true
+    "Outlet": true,
+    "Wallets": true
 }
