@@ -14,14 +14,14 @@ This document provides a comprehensive guide to all CLI commands available in th
 - [Scheduled Tasks](#scheduled-tasks)
 - [Common Workflows](#common-workflows)
 - [Modules Reference](#modules-reference)
-  - [Blog Module](#blog-module)
-  - [Company Module](#company-module)
-  - [Customer Module](#customer-module)
-  - [Hotel Module](#hotel-module)
-  - [Menu Module](#menu-module)
-  - [Payment Module](#payment-module)
-  - [Porfolio Module](#porfolio-module)
-  - [Movice Module](#movice-module)
+    - [Blog Module](#blog-module)
+    - [Company Module](#company-module)
+    - [Customer Module](#customer-module)
+    - [Hotel Module](#hotel-module)
+    - [Menu Module](#menu-module)
+    - [Payment Module](#payment-module)
+    - [Porfolio Module](#porfolio-module)
+    - [Movice Module](#movice-module)
 - [Git Workflow for Modules](#git-workflow-for-modules)
 - [Troubleshooting](#troubleshooting)
 
@@ -143,6 +143,7 @@ composer module:create ModuleName
 ```
 
 This script automatically:
+
 1. Creates the module using `php artisan module:make`
 2. Generates model with migration, factory, and seeder
 3. Initializes a git repository in the module
@@ -579,16 +580,16 @@ This section provides detailed documentation for all modules in the Universe app
 
 ### Overview
 
-| Module | Path | Architecture | Status |
-|--------|------|--------------|--------|
-| Blog | `Modules/Blog/` | Repository + Service | Full Implementation |
-| Company | `Modules/Company/` | Repository + Service | Full Implementation |
-| Customer | `Modules/Customer/` | Basic CRUD | Scaffold |
-| Hotel | `Modules/Hotel/` | Repository + Service | Full Implementation |
-| Menu | `Modules/Menu/` | Basic CRUD | Scaffold |
-| Payment | `Modules/Payment/` | Basic CRUD | Scaffold |
+| Module   | Path                | Architecture         | Status              |
+| -------- | ------------------- | -------------------- | ------------------- |
+| Blog     | `Modules/Blog/`     | Repository + Service | Full Implementation |
+| Company  | `Modules/Company/`  | Repository + Service | Full Implementation |
+| Customer | `Modules/Customer/` | Basic CRUD           | Scaffold            |
+| Hotel    | `Modules/Hotel/`    | Repository + Service | Full Implementation |
+| Menu     | `Modules/Menu/`     | Basic CRUD           | Scaffold            |
+| Payment  | `Modules/Payment/`  | Basic CRUD           | Scaffold            |
 | Porfolio | `Modules/Porfolio/` | Repository + Service | Full Implementation |
-| Movice | `Modules/Movice/` | Basic CRUD | In Progress |
+| Movice   | `Modules/Movice/`   | Basic CRUD           | In Progress         |
 
 ---
 
@@ -597,6 +598,7 @@ This section provides detailed documentation for all modules in the Universe app
 Manages blog posts with full repository pattern implementation.
 
 **Structure:**
+
 ```
 Modules/Blog/
 ├── app/
@@ -620,6 +622,7 @@ Modules/Blog/
 ```
 
 **CLI Commands:**
+
 ```bash
 # Enable/Disable
 php artisan module:enable Blog
@@ -633,10 +636,12 @@ php artisan module:seed Blog
 ```
 
 **Routes:**
+
 - Web: `/blogs` (Prefix: `blogs`)
 - API: `/api/v1/blogs`
 
 **Service Methods:**
+
 - `getAllPosts()` - Get all posts
 - `getPaginatedPosts($perPage)` - Get paginated posts
 - `getPostById($id)` - Get post by ID
@@ -654,6 +659,7 @@ php artisan module:seed Blog
 Manages company information with repository pattern.
 
 **Structure:**
+
 ```
 Modules/Company/
 ├── app/
@@ -677,6 +683,7 @@ Modules/Company/
 ```
 
 **CLI Commands:**
+
 ```bash
 # Enable/Disable
 php artisan module:enable Company
@@ -690,6 +697,7 @@ php artisan module:seed Company
 ```
 
 **Routes:**
+
 - Web: `/companies` (Prefix: `companies`)
 - API: `/api/v1/companies`
 
@@ -700,6 +708,7 @@ php artisan module:seed Company
 Basic customer management module (scaffold).
 
 **Structure:**
+
 ```
 Modules/Customer/
 ├── app/
@@ -716,6 +725,7 @@ Modules/Customer/
 ```
 
 **CLI Commands:**
+
 ```bash
 # Enable/Disable
 php artisan module:enable Customer
@@ -731,6 +741,7 @@ php artisan module:make-repository CustomerRepository Customer
 ```
 
 **Routes:**
+
 - Web: `/customers` (Prefix: `customers`)
 - API: `/api/v1/customers`
 
@@ -741,6 +752,7 @@ php artisan module:make-repository CustomerRepository Customer
 Manages hotel information with full repository pattern and dependency injection.
 
 **Structure:**
+
 ```
 Modules/Hotel/
 ├── app/
@@ -764,6 +776,7 @@ Modules/Hotel/
 ```
 
 **CLI Commands:**
+
 ```bash
 # Enable/Disable
 php artisan module:enable Hotel
@@ -777,10 +790,12 @@ php artisan module:seed Hotel
 ```
 
 **Routes:**
+
 - Web: `/hotels` (Prefix: `hotels`)
 - API: `/api/v1/hotels`
 
 **Service Methods:**
+
 - `getAllHotels()` - Get all hotels
 - `getPaginatedHotels($perPage)` - Get paginated hotels
 - `getHotelById($id)` - Get hotel by ID
@@ -800,6 +815,7 @@ php artisan module:seed Hotel
 Basic menu management module (scaffold) with scheduled command.
 
 **Structure:**
+
 ```
 Modules/Menu/
 ├── app/
@@ -816,6 +832,7 @@ Modules/Menu/
 ```
 
 **CLI Commands:**
+
 ```bash
 # Enable/Disable
 php artisan module:enable Menu
@@ -831,6 +848,7 @@ php artisan module:make-repository MenuRepository Menu
 ```
 
 **Routes:**
+
 - Web: `/menus` (Prefix: `menus`)
 - API: `/api/v1/menus`
 
@@ -843,6 +861,7 @@ php artisan module:make-repository MenuRepository Menu
 Basic payment processing module (scaffold).
 
 **Structure:**
+
 ```
 Modules/Payment/
 ├── app/
@@ -859,6 +878,7 @@ Modules/Payment/
 ```
 
 **CLI Commands:**
+
 ```bash
 # Enable/Disable
 php artisan module:enable Payment
@@ -874,6 +894,7 @@ php artisan module:make-repository PaymentRepository Payment
 ```
 
 **Routes:**
+
 - Web: `/payments` (Prefix: `payments`)
 - API: `/api/v1/payments`
 
@@ -884,6 +905,7 @@ php artisan module:make-repository PaymentRepository Payment
 Manages portfolio projects with categories support.
 
 **Structure:**
+
 ```
 Modules/Porfolio/
 ├── app/
@@ -907,6 +929,7 @@ Modules/Porfolio/
 ```
 
 **CLI Commands:**
+
 ```bash
 # Enable/Disable
 php artisan module:enable Porfolio
@@ -920,10 +943,12 @@ php artisan module:seed Porfolio
 ```
 
 **Routes:**
+
 - Web: `/porfolios` (Prefix: `porfolios`)
 - API: `/api/v1/porfolios`
 
 **Service Methods:**
+
 - `getAllPortfolios()` - Get all portfolios
 - `getPaginatedPortfolios($perPage)` - Get paginated portfolios
 - `getPortfolioById($id)` - Get portfolio by ID
@@ -942,6 +967,7 @@ php artisan module:seed Porfolio
 Movie management module (in development).
 
 **Structure:**
+
 ```
 Modules/Movice/
 ├── app/
@@ -965,6 +991,7 @@ Modules/Movice/
 ```
 
 **CLI Commands:**
+
 ```bash
 # Enable/Disable
 php artisan module:enable Movice
@@ -978,6 +1005,7 @@ php artisan module:seed Movice
 ```
 
 **Routes:**
+
 - Web: `/movices` (Prefix: `movices`)
 - API: `/api/v1/movices`
 
@@ -1081,3 +1109,38 @@ chmod -R 775 storage bootstrap/cache
 # Clear compiled files
 php artisan clear-compiled
 ```
+
+Flags:
+
+Flag Description
+-m Create migration
+-f Create factory
+-s Create seeder
+-c Create controller
+Or individually:
+
+# Model + Migration
+
+php artisan module:make-model Category Menu -m
+
+# Model + Migration + Factory
+
+php artisan module:make-model Category Menu -mf
+
+# Model + Migration + Factory + Seeder
+
+php artisan module:make-model Category Menu -mfs
+
+# All (Model + Migration + Factory + Seeder + Controller)
+
+php artisan module:make-model Category Menu -mfsc
+Want me to run it for you?
+
+php artisan module:make-model Category Menu -mfsc
+This will create:
+
+Modules/Menu/app/Models/Category.php
+Modules/Menu/database/migrations/\*\_create_categories_table.php
+Modules/Menu/database/factories/CategoryFactory.php
+Modules/Menu/database/seeders/CategorySeeder.php
+Modules/Menu/app/Http/Controllers/CategoryController.php

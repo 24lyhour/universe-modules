@@ -1,22 +1,23 @@
 <?php
 
-namespace Modules\Product\Providers;
+namespace Modules\Media\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Product\Console\Commands\ProductCommand;
-use Modules\Product\Console\Commands\ProductCreateCommand;
+use Modules\Media\Console\Commands\MediaCleanCommand;
+use Modules\Media\Console\Commands\MediaListCommand;
+use Modules\Media\Console\Commands\MediaStatsCommand;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
-class ProductServiceProvider extends ServiceProvider
+class MediaServiceProvider extends ServiceProvider
 {
     use PathNamespace;
 
-    protected string $name = 'Product';
+    protected string $name = 'Media';
 
-    protected string $nameLower = 'product';
+    protected string $nameLower = 'media';
 
     /**
      * Boot the application events.
@@ -46,8 +47,9 @@ class ProductServiceProvider extends ServiceProvider
     protected function registerCommands(): void
     {
         $this->commands([
-            ProductCommand::class,
-            ProductCreateCommand::class,
+            MediaListCommand::class,
+            MediaStatsCommand::class,
+            MediaCleanCommand::class,
         ]);
     }
 
