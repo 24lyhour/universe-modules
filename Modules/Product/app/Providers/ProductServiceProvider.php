@@ -2,6 +2,7 @@
 
 namespace Modules\Product\Providers;
 
+use App\Services\MenuService;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Modules\Product\Console\Commands\ProductCommand;
@@ -28,7 +29,39 @@ class ProductServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+        $this->registerMenus();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+    }
+
+    /**
+     * Register module menus.
+     */
+    protected function registerMenus(): void
+    {
+        $this->app->booted(function () {
+            // Add Product menu to primary sidebar
+            MenuService::addMenuItem(
+                'primary',
+                'product',
+                __('Products'),
+                '/dashboard/products',
+                'LayoutGrid',
+                20,
+                null,
+                'product.products.*'
+            );
+
+            MenuService::addSubmenuItem(
+                'primary',
+                'product',
+                __('All Products'),
+                '/dashboard/products',
+                10,
+                null,
+                'product.products.index',
+                'LayoutGrid'
+            );
+        });
     }
 
     /**
