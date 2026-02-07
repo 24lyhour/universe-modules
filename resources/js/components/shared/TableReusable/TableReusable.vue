@@ -3,6 +3,13 @@ import { computed } from 'vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
+import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
@@ -47,6 +54,7 @@ interface Props {
     emptyMessage?: string;
     loading?: boolean;
     rowKey?: keyof T | ((item: T) => string | number);
+    perPageOptions?: number[];
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -55,13 +63,21 @@ const props = withDefaults(defineProps<Props>(), {
     emptyMessage: 'No data found.',
     loading: false,
     rowKey: 'id',
+    perPageOptions: () => [10, 20, 50, 100],
 });
 
 const emit = defineEmits<{
     search: [query: string];
     pageChange: [page: number];
+    perPageChange: [perPage: number];
     rowClick: [item: T];
 }>();
+
+const handlePerPageChange = (value: string | number | boolean | bigint | Record<string, unknown> | null | undefined) => {
+    if (value !== undefined && value !== null) {
+        emit('perPageChange', Number(value));
+    }
+};
 
 const searchQuery = defineModel<string>('searchQuery', { default: '' });
 
@@ -258,8 +274,30 @@ const handleRowClick = (item: T) => {
             v-if="pagination && pagination.total > 0"
             class="flex items-center justify-between text-sm text-muted-foreground"
         >
-            <div>
-                Showing {{ paginationInfo?.start }} to {{ paginationInfo?.end }} of {{ paginationInfo?.total }} results
+            <div class="flex items-center gap-4">
+                <span>
+                    Showing {{ paginationInfo?.start }} to {{ paginationInfo?.end }} of {{ paginationInfo?.total }} results
+                </span>
+                <div class="flex items-center gap-2">
+                    <span>Per page:</span>
+                    <Select
+                        :model-value="String(pagination.per_page)"
+                        @update:model-value="handlePerPageChange"
+                    >
+                        <SelectTrigger class="h-8 w-[70px]">
+                            <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem
+                                v-for="option in perPageOptions"
+                                :key="option"
+                                :value="String(option)"
+                            >
+                                {{ option }}
+                            </SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
             </div>
             <div class="flex items-center gap-2">
                 <Button
