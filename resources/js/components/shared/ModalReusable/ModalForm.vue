@@ -10,7 +10,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-type ModalMode = 'create' | 'edit';
+type ModalMode = 'create' | 'edit' | 'delete' | 'confirm';
 type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 type ModalSide = 'top' | 'right' | 'bottom' | 'left';
 
@@ -23,6 +23,7 @@ interface Props {
     submitText?: string;
     cancelText?: string;
     loading?: boolean;
+    disabled?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -31,6 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
     side: 'right',
     cancelText: 'Cancel',
     loading: false,
+    disabled: false,
 });
 
 const open = defineModel<boolean>('open', { default: false });
@@ -90,7 +92,7 @@ const handleCancel = () => {
                             >
                                 {{ cancelText }}
                             </Button>
-                            <Button type="submit" class="flex-1" :disabled="loading">
+                            <Button type="submit" class="flex-1" :disabled="loading || disabled">
                                 <svg
                                     v-if="loading"
                                     class="mr-2 h-4 w-4 animate-spin"

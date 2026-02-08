@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ModalForm } from '@/components/shared';
-import ProductForm from './components/ProductForm.vue';
+import ProductForm from '../../components/ProductForm.vue';
 import { useForm } from '@inertiajs/vue3';
 import { useModal } from 'momentum-modal';
 import { computed } from 'vue';
@@ -25,6 +25,7 @@ const form = useForm<ProductFormData>({
     name: props.product.name,
     description: props.product.description || '',
     sku: props.product.sku || '',
+    product_type: props.product.product_type,
     price: props.product.price,
     purchase_price: props.product.purchase_price,
     sale_price: props.product.sale_price,

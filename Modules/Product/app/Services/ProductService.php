@@ -190,8 +190,6 @@ class ProductService
      */
     protected function processImages(array $images): array
     {
-        // If images are already URLs, return them
-        // In a real implementation, you would upload files and return URLs
         return array_filter($images);
     }
 

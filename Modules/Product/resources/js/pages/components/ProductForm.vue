@@ -12,8 +12,9 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
+import { ImageUpload } from '@/components/shared';
 import type { InertiaForm } from '@inertiajs/vue3';
-import type { ProductFormData, Outlet, ProductType } from '../../../../types';
+import type { ProductFormData, Outlet, ProductType } from '../../types';
 
 // Product type options
 const productTypeOptions: { value: ProductType; label: string }[] = [
@@ -157,6 +158,24 @@ const outletIdString = computed({
                     </p>
                 </div>
             </div>
+        </div>
+
+        <!-- Product Images Section -->
+        <div class="space-y-4">
+            <div>
+                <h3 class="text-sm font-medium">Product Images</h3>
+                <p class="text-sm text-muted-foreground">Upload product images (first image will be the main image)</p>
+            </div>
+            <Separator />
+
+            <ImageUpload
+                v-model="model.images"
+                label=""
+                :multiple="true"
+                :max-files="10"
+                :max-size="5"
+                :error="model.errors.images"
+            />
         </div>
 
         <!-- Pricing Section -->

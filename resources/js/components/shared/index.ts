@@ -8,3 +8,6 @@ export { ModalReusable, ModalForm, ModalConfirm, ModalView } from './ModalReusab
 // Stats
 export { StatsCard } from './StatsCard';
 export type { StatsCardProps } from './StatsCard';
+
+// Image Upload
+export { ImageUpload } from './ImageUpload';
