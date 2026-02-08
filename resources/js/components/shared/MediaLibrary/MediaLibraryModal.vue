@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch } from 'vue';
 import {
     Dialog,
     DialogContent,
@@ -176,6 +176,10 @@ const uploadFiles = async (files: File[]) => {
                         selectedItems.value = [...selectedItems.value, data.data];
                     }
                 }
+            } else {
+                const errorData = await response.json().catch(() => ({}));
+                uploadError.value = errorData.message || `Upload failed (${response.status})`;
+                console.error('Upload failed:', errorData);
             }
 
             uploadProgress.value = ((i + 1) / files.length) * 100;
@@ -184,7 +188,7 @@ const uploadFiles = async (files: File[]) => {
         activeTab.value = 'library';
     } catch (error) {
         console.error('Error uploading file:', error);
-        uploadError.value = 'Failed to upload file';
+        uploadError.value = error instanceof Error ? error.message : 'Failed to upload file';
     } finally {
         uploadingFiles.value = [];
         uploadProgress.value = 0;
@@ -230,8 +234,11 @@ const formatBytes = (bytes: number): string => {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 };
 
-onMounted(() => {
-    fetchMedia();
+// Fetch media when modal opens
+watch(open, (isOpen) => {
+    if (isOpen) {
+        fetchMedia();
+    }
 });
 </script>
 

@@ -65,22 +65,22 @@ const handleCancel = () => {
 
 <template>
     <Sheet v-model:open="open">
-        <SheetContent :side="side" :class="['flex flex-col p-0', sizeClasses[size]]">
-            <SheetHeader class="border-b px-6 py-4">
+        <SheetContent :side="side" :class="['flex h-full flex-col p-0', sizeClasses[size]]">
+            <SheetHeader class="shrink-0 border-b px-6 py-4">
                 <SheetTitle>{{ title }}</SheetTitle>
                 <SheetDescription v-if="description">
                     {{ description }}
                 </SheetDescription>
             </SheetHeader>
 
-            <form class="flex flex-1 flex-col overflow-hidden" @submit.prevent="handleSubmit">
-                <ScrollArea class="flex-1 px-6 py-4">
-                    <div class="space-y-4 pr-4">
+            <form class="flex min-h-0 flex-1 flex-col" @submit.prevent="handleSubmit">
+                <ScrollArea class="min-h-0 flex-1">
+                    <div class="space-y-4 px-6 py-4">
                         <slot />
                     </div>
                 </ScrollArea>
 
-                <SheetFooter class="border-t px-6 py-4">
+                <SheetFooter class="shrink-0 border-t bg-background px-6 py-4">
                     <slot name="footer">
                         <div class="flex w-full gap-2">
                             <Button
