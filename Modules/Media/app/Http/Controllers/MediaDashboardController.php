@@ -8,14 +8,14 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class MediaController extends Controller
+class MediaDashboardController extends Controller
 {
     public function __construct(
         private MediaService $mediaService
     ) {}
 
     /**
-     * Display a listing of the resource.
+     * Get all media for the library.
      */
     public function index(Request $request): JsonResponse
     {
@@ -78,18 +78,16 @@ class MediaController extends Controller
         $file = $request->file('file');
         $collection = $request->input('collection', 'default');
 
-        // Create a temporary model to attach media
-        // In a real application, you might want to use a dedicated MediaFile model
-        $tempMedia = \App\Models\User::find(auth()->id());
+        $user = auth()->user();
 
-        if (!$tempMedia) {
+        if (!$user) {
             return response()->json([
-                'message' => 'User not found',
-            ], 404);
+                'message' => 'Unauthenticated',
+            ], 401);
         }
 
         try {
-            $media = $tempMedia->addMedia($file)
+            $media = $user->addMedia($file)
                 ->toMediaCollection($collection);
 
             return response()->json([
@@ -118,40 +116,7 @@ class MediaController extends Controller
     }
 
     /**
-     * Show the specified resource.
-     */
-    public function show(int $id): JsonResponse
-    {
-        $media = $this->mediaService->find($id);
-
-        if (!$media) {
-            return response()->json([
-                'message' => 'Media not found',
-            ], 404);
-        }
-
-        return response()->json([
-            'data' => [
-                'id' => $media->id,
-                'uuid' => $media->uuid,
-                'name' => $media->name,
-                'file_name' => $media->file_name,
-                'url' => $media->getUrl(),
-                'thumb_url' => $media->hasGeneratedConversion('thumb')
-                    ? $media->getUrl('thumb')
-                    : $media->getUrl(),
-                'mime_type' => $media->mime_type,
-                'size' => $media->size,
-                'size_formatted' => $this->mediaService->formatBytes($media->size),
-                'collection_name' => $media->collection_name,
-                'custom_properties' => $media->custom_properties,
-                'created_at' => $media->created_at->toIso8601String(),
-            ],
-        ]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
+     * Delete a media file.
      */
     public function destroy(int $id): JsonResponse
     {

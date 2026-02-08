@@ -11,3 +11,7 @@ export type { StatsCardProps } from './StatsCard';
 
 // Image Upload
 export { ImageUpload } from './ImageUpload';
+
+// Media Library
+export { MediaLibraryModal } from './MediaLibrary';
+export type { MediaItem } from './MediaLibrary';

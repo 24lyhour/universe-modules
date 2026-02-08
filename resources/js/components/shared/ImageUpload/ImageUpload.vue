@@ -2,7 +2,8 @@
 import { ref, computed } from 'vue';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { ImagePlus, X, Upload } from 'lucide-vue-next';
+import { ImagePlus, X } from 'lucide-vue-next';
+import { MediaLibraryModal } from '../MediaLibrary';
 
 interface Props {
     label?: string;
@@ -23,82 +24,24 @@ const props = withDefaults(defineProps<Props>(), {
 
 const model = defineModel<string[]>({ default: () => [] });
 
-const fileInput = ref<HTMLInputElement | null>(null);
-const isDragging = ref(false);
-const uploadError = ref('');
+const showMediaLibrary = ref(false);
 
 const canAddMore = computed(() => {
     return props.multiple ? model.value.length < props.maxFiles : model.value.length < 1;
 });
 
-const openFileDialog = () => {
-    fileInput.value?.click();
+const openMediaLibrary = () => {
+    showMediaLibrary.value = true;
 };
 
-const handleFiles = (files: FileList | null) => {
-    if (!files) return;
-    uploadError.value = '';
+const handleMediaSelect = (urls: string[]) => {
+    const availableSlots = props.multiple
+        ? props.maxFiles - model.value.length
+        : model.value.length < 1 ? 1 : 0;
 
-    const validFiles: File[] = [];
-
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-
-        // Check file type
-        if (!file.type.startsWith('image/')) {
-            uploadError.value = 'Only image files are allowed';
-            continue;
-        }
-
-        // Check file size
-        if (file.size > props.maxSize * 1024 * 1024) {
-            uploadError.value = `File size must be less than ${props.maxSize}MB`;
-            continue;
-        }
-
-        // Check max files
-        if (!props.multiple && model.value.length >= 1) {
-            break;
-        }
-        if (props.multiple && model.value.length + validFiles.length >= props.maxFiles) {
-            uploadError.value = `Maximum ${props.maxFiles} files allowed`;
-            break;
-        }
-
-        validFiles.push(file);
-    }
-
-    // Convert files to base64 URLs
-    validFiles.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            if (e.target?.result) {
-                model.value = [...model.value, e.target.result as string];
-            }
-        };
-        reader.readAsDataURL(file);
-    });
-};
-
-const handleFileSelect = (event: Event) => {
-    const input = event.target as HTMLInputElement;
-    handleFiles(input.files);
-    // Reset input so same file can be selected again
-    input.value = '';
-};
-
-const handleDrop = (event: DragEvent) => {
-    isDragging.value = false;
-    handleFiles(event.dataTransfer?.files ?? null);
-};
-
-const handleDragOver = (event: DragEvent) => {
-    event.preventDefault();
-    isDragging.value = true;
-};
-
-const handleDragLeave = () => {
-    isDragging.value = false;
+    const urlsToAdd = urls.slice(0, availableSlots);
+    model.value = [...model.value, ...urlsToAdd];
+    showMediaLibrary.value = false;
 };
 
 const removeImage = (index: number) => {
@@ -113,33 +56,16 @@ const removeImage = (index: number) => {
         <!-- Upload Area -->
         <div
             v-if="canAddMore"
-            class="relative cursor-pointer rounded-lg border-2 border-dashed p-6 text-center transition-colors"
-            :class="[
-                isDragging
-                    ? 'border-primary bg-primary/5'
-                    : 'border-muted-foreground/25 hover:border-primary/50 hover:bg-muted/50'
-            ]"
-            @click="openFileDialog"
-            @drop.prevent="handleDrop"
-            @dragover="handleDragOver"
-            @dragleave="handleDragLeave"
+            class="relative cursor-pointer rounded-lg border-2 border-dashed p-6 text-center transition-colors border-muted-foreground/25 hover:border-primary/50 hover:bg-muted/50"
+            @click="openMediaLibrary"
         >
-            <input
-                ref="fileInput"
-                type="file"
-                :accept="accept"
-                :multiple="multiple"
-                class="hidden"
-                @change="handleFileSelect"
-            />
-
             <div class="flex flex-col items-center gap-2">
                 <div class="rounded-full bg-muted p-3">
-                    <Upload class="h-6 w-6 text-muted-foreground" />
+                    <ImagePlus class="h-6 w-6 text-muted-foreground" />
                 </div>
                 <div class="space-y-1">
                     <p class="text-sm font-medium">
-                        Drop images here or click to upload
+                        Click to select images from Media Library
                     </p>
                     <p class="text-xs text-muted-foreground">
                         {{ multiple ? `Up to ${maxFiles} images` : 'Single image' }}, max {{ maxSize }}MB each
@@ -149,8 +75,8 @@ const removeImage = (index: number) => {
         </div>
 
         <!-- Error Message -->
-        <p v-if="uploadError || error" class="text-sm text-destructive">
-            {{ uploadError || error }}
+        <p v-if="error" class="text-sm text-destructive">
+            {{ error }}
         </p>
 
         <!-- Image Preview Grid -->
@@ -186,10 +112,20 @@ const removeImage = (index: number) => {
             <div
                 v-if="canAddMore && model.length > 0"
                 class="flex aspect-square cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 transition-colors hover:border-primary/50 hover:bg-muted/50"
-                @click="openFileDialog"
+                @click="openMediaLibrary"
             >
                 <ImagePlus class="h-6 w-6 text-muted-foreground" />
             </div>
         </div>
+
+        <!-- Media Library Modal -->
+        <MediaLibraryModal
+            v-model:open="showMediaLibrary"
+            :multiple="multiple"
+            :max-select="multiple ? maxFiles - model.length : 1"
+            :accept="accept"
+            :max-size="maxSize"
+            @select="handleMediaSelect"
+        />
     </div>
 </template>
