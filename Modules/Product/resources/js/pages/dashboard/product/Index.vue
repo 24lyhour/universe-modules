@@ -24,6 +24,13 @@ import {
     CardTitle,
 } from '@/components/ui/card';
 import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
+import {
     TableReusable,
     ModalConfirm,
     StatsCard,
@@ -46,6 +53,7 @@ const props = defineProps<ProductIndexProps>();
 // Search and filters
 const searchQuery = ref(props.filters.search || '');
 const statusFilter = ref(props.filters.status || '');
+const outletFilter = ref(props.filters.outlet_id?.toString() || '');
 
 // Filtered data
 const filteredProducts = computed(() => {
@@ -144,6 +152,7 @@ const handlePageChange = (page: number) => {
         page,
         search: searchQuery.value,
         status: statusFilter.value,
+        outlet_id: outletFilter.value || undefined,
     }, { preserveState: true });
 };
 
@@ -152,6 +161,7 @@ const handlePerPageChange = (perPage: number) => {
         per_page: perPage,
         search: searchQuery.value,
         status: statusFilter.value,
+        outlet_id: outletFilter.value || undefined,
     }, { preserveState: true });
 };
 
@@ -160,6 +170,17 @@ const handleStatusFilter = (status: string) => {
     router.get('/dashboard/products', {
         search: searchQuery.value,
         status: status,
+        outlet_id: outletFilter.value || undefined,
+    }, { preserveState: true });
+};
+
+const handleOutletFilter = (outletId: string) => {
+    const actualId = outletId === 'all' ? '' : outletId;
+    outletFilter.value = actualId;
+    router.get('/dashboard/products', {
+        search: searchQuery.value,
+        status: statusFilter.value,
+        outlet_id: actualId || undefined,
     }, { preserveState: true });
 };
 
@@ -247,9 +268,27 @@ const formatCurrency = (value: number) => {
                     @page-change="handlePageChange"
                     @per-page-change="handlePerPageChange"
                 >
-                    <!-- Toolbar slot for status filters -->
+                    <!-- Toolbar slot for filters -->
                     <template #toolbar>
-                        <div class="flex gap-2">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <!-- Outlet Filter -->
+                            <Select :model-value="outletFilter || 'all'" @update:model-value="handleOutletFilter">
+                                <SelectTrigger class="w-[180px]">
+                                    <SelectValue placeholder="All Outlets" />
+                                </SelectTrigger>
+                                <SelectContent class="z-200">
+                                    <SelectItem value="all">All Outlets</SelectItem>
+                                    <SelectItem
+                                        v-for="outlet in props.outlets"
+                                        :key="outlet.id"
+                                        :value="outlet.id.toString()"
+                                    >
+                                        {{ outlet.name }}
+                                    </SelectItem>
+                                </SelectContent>
+                            </Select>
+
+                            <!-- Status Filters -->
                             <Button
                                 :variant="statusFilter === '' ? 'default' : 'outline'"
                                 size="sm"

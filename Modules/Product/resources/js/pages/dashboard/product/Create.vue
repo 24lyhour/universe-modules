@@ -1,17 +1,25 @@
 <script setup lang="ts">
-import { Head, useForm } from '@inertiajs/vue3';
-import { Button } from '@/components/ui/button';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
-import { Modal } from 'momentum-modal';
+import { ModalForm } from '@/components/shared';
 import ProductForm from './components/ProductForm.vue';
-import type { ProductFormData } from '../../../types';
+import { useForm } from '@inertiajs/vue3';
+import { useModal } from 'momentum-modal';
+import { computed } from 'vue';
+import type { ProductFormData, ProductCreateProps } from '../../../types';
+import product from '@/routes/product';
+
+const props = defineProps<ProductCreateProps>();
+
+const { show, close, redirect } = useModal();
+
+const isOpen = computed({
+    get: () => show.value,
+    set: (val: boolean) => {
+        if (!val) {
+            close();
+            redirect();
+        }
+    },
+});
 
 const form = useForm<ProductFormData>({
     name: '',
@@ -27,39 +35,36 @@ const form = useForm<ProductFormData>({
     pre_order: false,
     images: [],
     category_id: null,
+    outlet_id: null,
 });
 
 const handleSubmit = () => {
-    form.post('/dashboard/products', {
+    form.post(product.products.store.url(), {
         onSuccess: () => {
-            form.reset();
+            close();
+            redirect();
         },
     });
+};
+
+const handleCancel = () => {
+    close();
+    redirect();
 };
 </script>
 
 <template>
-    <Modal>
-        <Head title="Create Product" />
-
-        <Card class="w-full max-w-2xl">
-            <CardHeader>
-                <CardTitle>Create Product</CardTitle>
-                <CardDescription>Add a new product to your inventory</CardDescription>
-            </CardHeader>
-            <form @submit.prevent="handleSubmit">
-                <CardContent>
-                    <ProductForm v-model="form" mode="create" />
-                </CardContent>
-                <CardFooter class="flex justify-end gap-2">
-                    <Button type="button" variant="outline" @click="$emit('close')">
-                        Cancel
-                    </Button>
-                    <Button type="submit" :disabled="form.processing">
-                        {{ form.processing ? 'Creating...' : 'Create Product' }}
-                    </Button>
-                </CardFooter>
-            </form>
-        </Card>
-    </Modal>
+    <ModalForm
+        v-model:open="isOpen"
+        title="Create Product"
+        description="Add a new product to your inventory"
+        mode="create"
+        size="2xl"
+        submit-text="Create Product"
+        :loading="form.processing"
+        @submit="handleSubmit"
+        @cancel="handleCancel"
+    >
+        <ProductForm v-model="form" mode="create" :outlets="props.outlets" />
+    </ModalForm>
 </template>

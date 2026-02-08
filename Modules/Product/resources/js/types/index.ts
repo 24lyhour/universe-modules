@@ -1,5 +1,7 @@
 // Product Module Types
 
+export type ProductType = 'phone' | 'computer' | 'tablet' | 'accessory' | 'other';
+
 export interface Product {
     id: number;
     uuid: string;
@@ -7,6 +9,7 @@ export interface Product {
     slug: string;
     description: string | null;
     sku: string | null;
+    product_type: ProductType | null;
     price: number;
     purchase_price: number | null;
     sale_price: number | null;
@@ -23,6 +26,8 @@ export interface Product {
     images: string[];
     category_id: number | null;
     category: ProductCategory | null;
+    outlet_id: number | null;
+    outlet: Outlet | null;
     created_by: number | null;
     updated_by: number | null;
     created_at: string;
@@ -30,6 +35,11 @@ export interface Product {
 }
 
 export interface ProductCategory {
+    id: number;
+    name: string;
+}
+
+export interface Outlet {
     id: number;
     name: string;
 }
@@ -71,6 +81,8 @@ export interface ProductFilters {
     status?: string;
     search?: string;
     category_id?: number;
+    outlet_id?: number;
+    product_type?: string;
     is_featured?: boolean;
     in_stock?: boolean;
     low_stock?: boolean;
@@ -83,6 +95,7 @@ export interface ProductFormData {
     name: string;
     description: string;
     sku: string;
+    product_type: ProductType | null;
     price: number;
     purchase_price: number | null;
     sale_price: number | null;
@@ -93,6 +106,7 @@ export interface ProductFormData {
     pre_order: boolean;
     images: string[];
     category_id: number | null;
+    outlet_id: number | null;
 }
 
 // Page Props Types
@@ -100,6 +114,7 @@ export interface ProductIndexProps {
     products: PaginatedResponse<Product>;
     filters: ProductFilters;
     stats: ProductStats;
+    outlets?: Outlet[];
 }
 
 export interface ProductShowProps {
@@ -108,9 +123,11 @@ export interface ProductShowProps {
 
 export interface ProductCreateProps {
     categories?: ProductCategory[];
+    outlets?: Outlet[];
 }
 
 export interface ProductEditProps {
     product: Product;
     categories?: ProductCategory[];
+    outlets?: Outlet[];
 }

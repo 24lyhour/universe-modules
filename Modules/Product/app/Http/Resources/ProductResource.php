@@ -19,6 +19,7 @@ class ProductResource extends JsonResource
             'slug' => $this->slug,
             'description' => $this->description,
             'sku' => $this->sku,
+            'product_type' => $this->product_type,
             'price' => (float) $this->price,
             'purchase_price' => $this->purchase_price ? (float) $this->purchase_price : null,
             'sale_price' => $this->sale_price ? (float) $this->sale_price : null,
@@ -38,6 +39,13 @@ class ProductResource extends JsonResource
                 return [
                     'id' => $this->category->id,
                     'name' => $this->category->name,
+                ];
+            }),
+            'outlet_id' => $this->outlet_id,
+            'outlet' => $this->whenLoaded('outlet', function () {
+                return [
+                    'id' => $this->outlet->id,
+                    'name' => $this->outlet->name,
                 ];
             }),
             'created_by' => $this->created_by,

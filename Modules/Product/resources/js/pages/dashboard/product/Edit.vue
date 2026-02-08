@@ -1,19 +1,25 @@
 <script setup lang="ts">
-import { Head, useForm } from '@inertiajs/vue3';
-import { Button } from '@/components/ui/button';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
-import { Modal } from 'momentum-modal';
+import { ModalForm } from '@/components/shared';
 import ProductForm from './components/ProductForm.vue';
+import { useForm } from '@inertiajs/vue3';
+import { useModal } from 'momentum-modal';
+import { computed } from 'vue';
 import type { ProductFormData, ProductEditProps } from '../../../types';
+import product from '@/routes/product';
 
 const props = defineProps<ProductEditProps>();
+
+const { show, close, redirect } = useModal();
+
+const isOpen = computed({
+    get: () => show.value,
+    set: (val: boolean) => {
+        if (!val) {
+            close();
+            redirect();
+        }
+    },
+});
 
 const form = useForm<ProductFormData>({
     name: props.product.name,
@@ -29,35 +35,36 @@ const form = useForm<ProductFormData>({
     pre_order: props.product.pre_order,
     images: props.product.images || [],
     category_id: props.product.category_id,
+    outlet_id: props.product.outlet_id,
 });
 
 const handleSubmit = () => {
-    form.put(`/dashboard/products/${props.product.id}`);
+    form.put(product.products.update.url({ product: props.product.id }), {
+        onSuccess: () => {
+            close();
+            redirect();
+        },
+    });
+};
+
+const handleCancel = () => {
+    close();
+    redirect();
 };
 </script>
 
 <template>
-    <Modal>
-        <Head :title="`Edit ${product.name}`" />
-
-        <Card class="w-full max-w-2xl">
-            <CardHeader>
-                <CardTitle>Edit Product</CardTitle>
-                <CardDescription>Update product information</CardDescription>
-            </CardHeader>
-            <form @submit.prevent="handleSubmit">
-                <CardContent>
-                    <ProductForm v-model="form" mode="edit" />
-                </CardContent>
-                <CardFooter class="flex justify-end gap-2">
-                    <Button type="button" variant="outline" @click="$emit('close')">
-                        Cancel
-                    </Button>
-                    <Button type="submit" :disabled="form.processing">
-                        {{ form.processing ? 'Saving...' : 'Save Changes' }}
-                    </Button>
-                </CardFooter>
-            </form>
-        </Card>
-    </Modal>
+    <ModalForm
+        v-model:open="isOpen"
+        title="Edit Product"
+        description="Update product information"
+        mode="edit"
+        size="2xl"
+        submit-text="Save Changes"
+        :loading="form.processing"
+        @submit="handleSubmit"
+        @cancel="handleCancel"
+    >
+        <ProductForm v-model="form" mode="edit" :outlets="props.outlets" />
+    </ModalForm>
 </template>

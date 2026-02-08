@@ -29,6 +29,7 @@ class UpdateProductRequest extends FormRequest
                 'max:100',
                 Rule::unique('products', 'sku')->ignore($this->route('product')),
             ],
+            'product_type' => ['nullable', 'in:phone,computer,tablet,accessory,other'],
             'price' => ['sometimes', 'numeric', 'min:0'],
             'purchase_price' => ['nullable', 'numeric', 'min:0'],
             'sale_price' => ['nullable', 'numeric', 'min:0'],
@@ -40,6 +41,7 @@ class UpdateProductRequest extends FormRequest
             'images' => ['nullable', 'array'],
             'images.*' => ['string', 'url'],
             'category_id' => ['nullable', 'integer', 'exists:categories,id'],
+            'outlet_id' => ['nullable', 'integer', 'exists:outlets,id'],
         ];
     }
 

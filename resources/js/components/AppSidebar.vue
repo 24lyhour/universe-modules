@@ -16,7 +16,7 @@ import { dashboard } from '@/routes';
 import * as blog from '@/routes/blog';
 import * as booking from '@/routes/booking';
 import * as company from '@/routes/company';
-import * as customer from '@/routes/customer';
+import customer from '@/routes/customer';
 import * as hotel from '@/routes/hotel';
 // import * as menu from '@/routes/menu'; // TODO: Menu routes not generated
 import * as movice from '@/routes/movice';
@@ -45,7 +45,7 @@ const page = usePage<AppPageProps>();
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
-        href: dashboard(),
+        href: dashboard.url(),
         icon: LayoutGrid,
     },
 ];
@@ -56,73 +56,72 @@ const staticModuleItems: NavModuleItem[] = [
         title: 'Blog',
         icon: FileText,
         items: [
-            { title: 'All Blogs', href: blog.index() },
-            { title: 'Create Blog', href: blog.create() },
+            { title: 'All Blogs', href: blog.index.url() },
+            { title: 'Create Blog', href: blog.create.url() },
         ],
     },
     {
         title: 'Booking',
         icon: CalendarDays,
         items: [
-            { title: 'All Bookings', href: booking.index() },
-            { title: 'Create Booking', href: booking.create() },
+            { title: 'All Bookings', href: booking.index.url() },
+            { title: 'Create Booking', href: booking.create.url() },
         ],
     },
     {
         title: 'Company',
         icon: Building2,
         items: [
-            { title: 'All Companies', href: company.index() },
-            { title: 'Create Company', href: company.create() },
+            { title: 'All Companies', href: company.index.url() },
+            { title: 'Create Company', href: company.create.url() },
         ],
     },
     {
         title: 'Customer',
         icon: Users,
         items: [
-            { title: 'All Customers', href: customer.index() },
-            { title: 'Create Customer', href: customer.create() },
+            { title: 'All Customers', href: customer.customers.index.url() },
+            { title: 'Create Customer', href: customer.customers.create.url() },
         ],
     },
     {
         title: 'Hotel',
         icon: Hotel,
         items: [
-            { title: 'All Hotels', href: hotel.index() },
-            { title: 'Create Hotel', href: hotel.create() },
+            { title: 'All Hotels', href: hotel.index.url() },
+            { title: 'Create Hotel', href: hotel.create.url() },
         ],
     },
-  
     {
         title: 'Movie',
         icon: MonitorPlay,
         items: [
-            { title: 'All Movies', href: movice.index() },
-            { title: 'Create Movie', href: movice.create() },
+            { title: 'All Movies', href: movice.index.url() },
+            { title: 'Create Movie', href: movice.create.url() },
         ],
     },
     {
         title: 'Order',
         icon: ListOrdered,
         items: [
-            { title: 'All Orders', href: order.index() },
-            { title: 'Create Order', href: order.create() },
+            { title: 'All Orders', href: order.index.url() },
+            { title: 'Create Order', href: order.create.url() },
         ],
     },
     {
         title: 'Payment',
         icon: CreditCard,
         items: [
-            { title: 'All Payments', href: payment.index() },
-            { title: 'Create Payment', href: payment.create() },
+            { title: 'All Payments', href: payment.index.url() },
+            { title: 'Create Payment', href: payment.create.url() },
         ],
     },
     {
         title: 'Report',
         icon: FileText,
         items: [
-            { title: 'All Reports', href: report.index() },
-            { title: 'Create Report', href: report.create() },
+            { title: 'All Reports', href: report.index.url() },
+            { title: 'Create Report', href: report.create.url() },
         ],
     },
 ];
@@ -138,7 +137,7 @@ const footerNavItems = computed(() => page.props.menus?.footer || []);
             <SidebarMenu>
                 <SidebarMenuItem>
                     <SidebarMenuButton size="lg" as-child>
-                        <Link :href="dashboard()">
+                        <Link :href="dashboard.url()">
                             <AppLogo />
                         </Link>
                     </SidebarMenuButton>

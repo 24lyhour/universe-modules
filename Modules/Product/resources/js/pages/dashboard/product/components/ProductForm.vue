@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -12,17 +13,36 @@ import {
 } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import type { InertiaForm } from '@inertiajs/vue3';
-import type { ProductFormData } from '../../../../types';
+import type { ProductFormData, Outlet, ProductType } from '../../../../types';
+
+// Product type options
+const productTypeOptions: { value: ProductType; label: string }[] = [
+    { value: 'phone', label: 'Phone' },
+    { value: 'computer', label: 'Computer' },
+    { value: 'tablet', label: 'Tablet' },
+    { value: 'accessory', label: 'Accessory' },
+    { value: 'other', label: 'Other' },
+];
 
 interface Props {
     mode?: 'create' | 'edit';
+    outlets?: Outlet[];
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     mode: 'create',
+    outlets: () => [],
 });
 
 const model = defineModel<InertiaForm<ProductFormData>>({ required: true });
+
+// Convert outlet_id to string for Select component
+const outletIdString = computed({
+    get: () => model.value.outlet_id?.toString() ?? '',
+    set: (val: string) => {
+        model.value.outlet_id = val ? Number(val) : null;
+    },
+});
 </script>
 
 <template>
@@ -52,6 +72,48 @@ const model = defineModel<InertiaForm<ProductFormData>>({ required: true });
                 </div>
 
                 <div class="space-y-2">
+                    <Label for="product_type">Product Type</Label>
+                    <Select v-model="model.product_type">
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select product type" />
+                        </SelectTrigger>
+                        <SelectContent class="z-200">
+                            <SelectItem
+                                v-for="option in productTypeOptions"
+                                :key="option.value"
+                                :value="option.value"
+                            >
+                                {{ option.label }}
+                            </SelectItem>
+                        </SelectContent>
+                    </Select>
+                    <p v-if="model.errors.product_type" class="text-sm text-destructive">
+                        {{ model.errors.product_type }}
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <Label for="outlet_id">Outlet</Label>
+                    <Select v-model="outletIdString">
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select outlet" />
+                        </SelectTrigger>
+                        <SelectContent class="z-200">
+                            <SelectItem
+                                v-for="outlet in props.outlets"
+                                :key="outlet.id"
+                                :value="outlet.id.toString()"
+                            >
+                                {{ outlet.name }}
+                            </SelectItem>
+                        </SelectContent>
+                    </Select>
+                    <p v-if="model.errors.outlet_id" class="text-sm text-destructive">
+                        {{ model.errors.outlet_id }}
+                    </p>
+                </div>
+
+                <div class="space-y-2">
                     <Label for="sku">SKU</Label>
                     <Input
                         id="sku"
@@ -70,7 +132,7 @@ const model = defineModel<InertiaForm<ProductFormData>>({ required: true });
                         <SelectTrigger>
                             <SelectValue placeholder="Select status" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent class="z-200">
                             <SelectItem value="draft">Draft</SelectItem>
                             <SelectItem value="active">Active</SelectItem>
                             <SelectItem value="inactive">Inactive</SelectItem>
@@ -125,11 +187,12 @@ const model = defineModel<InertiaForm<ProductFormData>>({ required: true });
                     <Label for="sale_price">Sale Price</Label>
                     <Input
                         id="sale_price"
-                        v-model.number="model.sale_price"
+                        :model-value="model.sale_price ?? undefined"
                         type="number"
                         step="0.01"
                         min="0"
                         placeholder="0.00"
+                        @update:model-value="model.sale_price = $event ? Number($event) : null"
                     />
                     <p v-if="model.errors.sale_price" class="text-sm text-destructive">
                         {{ model.errors.sale_price }}
@@ -140,11 +203,12 @@ const model = defineModel<InertiaForm<ProductFormData>>({ required: true });
                     <Label for="purchase_price">Purchase Price</Label>
                     <Input
                         id="purchase_price"
-                        v-model.number="model.purchase_price"
+                        :model-value="model.purchase_price ?? undefined"
                         type="number"
                         step="0.01"
                         min="0"
                         placeholder="0.00"
+                        @update:model-value="model.purchase_price = $event ? Number($event) : null"
                     />
                     <p v-if="model.errors.purchase_price" class="text-sm text-destructive">
                         {{ model.errors.purchase_price }}

@@ -21,9 +21,14 @@ class Product extends Model
         'uuid',
         'name',
         'slug',
+        'tenant_id',
+        'tenant_type',
+        'outlet_id',
+        'outlet_type',
         'description',
         'sku',
         'price',
+        'product_type',
         'purchase_price',
         'sale_price',
         'stock',
@@ -91,6 +96,14 @@ class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(\Modules\Category\Models\Category::class);
+    }
+
+    /**
+     * Relation to the outlet.
+     */
+    public function outlet(): BelongsTo
+    {
+        return $this->belongsTo(\Modules\Outlet\Models\Outlet::class);
     }
 
     /**

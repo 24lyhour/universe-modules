@@ -36,6 +36,16 @@ class ProductService
             $query->where('category_id', $filters['category_id']);
         }
 
+        // Outlet filter
+        if (!empty($filters['outlet_id'])) {
+            $query->where('outlet_id', $filters['outlet_id']);
+        }
+
+        // Product type filter
+        if (!empty($filters['product_type'])) {
+            $query->where('product_type', $filters['product_type']);
+        }
+
         // Featured filter
         if (isset($filters['is_featured'])) {
             $query->where('is_featured', $filters['is_featured']);

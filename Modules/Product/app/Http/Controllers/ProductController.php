@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use Modules\Outlet\Models\Outlet;
 use Modules\Product\Http\Requests\StoreProductRequest;
 use Modules\Product\Http\Requests\UpdateProductRequest;
 use Modules\Product\Http\Resources\ProductResource;
@@ -24,17 +25,20 @@ class ProductController extends Controller
      */
     public function index(Request $request): Response
     {
-        $filters = $request->only(['status', 'search', 'category_id', 'is_featured', 'in_stock', 'low_stock']);
+        $filters = $request->only(['status', 'search', 'category_id', 'outlet_id', 'product_type', 'is_featured', 'in_stock', 'low_stock']);
 
         $products = $this->productService->paginate(
             perPage: $request->integer('per_page', 10),
             filters: $filters
         );
 
+        $outlets = Outlet::select('id', 'name')->orderBy('name')->get();
+
         return Inertia::render('product::dashboard/product/Index', [
             'products' => ProductResource::collection($products)->response()->getData(true),
             'filters' => $filters,
             'stats' => $this->productService->getStats(),
+            'outlets' => $outlets,
         ]);
     }
 
@@ -43,8 +47,11 @@ class ProductController extends Controller
      */
     public function create(): Modal
     {
-        return Inertia::modal('product::dashboard/product/Create')
-            ->baseRoute('product.products.index');
+        $outlets = Outlet::select('id', 'name')->orderBy('name')->get();
+
+        return Inertia::modal('product::dashboard/product/Create', [
+            'outlets' => $outlets,
+        ])->baseRoute('product.products.index');
     }
 
     /**
@@ -75,8 +82,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product): Modal
     {
+        $outlets = Outlet::select('id', 'name')->orderBy('name')->get();
+
         return Inertia::modal('product::dashboard/product/Edit', [
-            'product' => new ProductResource($product),
+            'product' => (new ProductResource($product))->resolve(),
+            'outlets' => $outlets,
         ])->baseRoute('product.products.index');
     }
 
