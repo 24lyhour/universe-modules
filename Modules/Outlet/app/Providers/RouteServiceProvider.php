@@ -26,6 +26,8 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
         $this->mapWebRoutes();
+        $this->mapDashboardRoutes();
+        $this->mapTenantCustomerApiRoutes();
     }
 
     /**
@@ -46,5 +48,23 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes(): void
     {
         Route::middleware('api')->prefix('api')->name('api.')->group(module_path($this->name, '/routes/api.php'));
+    }
+
+    protected function mapDashboardRoutes(): void
+    {
+        Route::middleware('web')->group(module_path($this->name, '/routes/dashboard.php'));
+    }
+
+    /**
+     * Define the "tenant customer api" routes for the application.
+     *
+     * These routes are for customer-facing API endpoints.
+     */
+    protected function mapTenantCustomerApiRoutes(): void
+    {
+        Route::middleware('api')
+            ->prefix('api')
+            ->name('api.')
+            ->group(module_path($this->name, '/routes/Tenants/customer/api.php'));
     }
 }

@@ -18,6 +18,7 @@ import * as booking from '@/routes/booking';
 import * as company from '@/routes/company';
 import customer from '@/routes/customer';
 import * as hotel from '@/routes/hotel';
+import outlet from '@/routes/outlet';
 // import * as menu from '@/routes/menu'; // TODO: Menu routes not generated
 import * as movice from '@/routes/movice';
 import * as order from '@/routes/order';
@@ -34,6 +35,7 @@ import {
     LayoutGrid,
     ListOrdered,
     MonitorPlay,
+    Store,
     UtensilsCrossed,
     Users,
 } from 'lucide-vue-next';
@@ -90,6 +92,14 @@ const staticModuleItems: NavModuleItem[] = [
         items: [
             { title: 'All Hotels', href: hotel.index.url() },
             { title: 'Create Hotel', href: hotel.create.url() },
+        ],
+    },
+    {
+        title: 'Outlet',
+        icon: Store,
+        items: [
+            { title: 'All Outlets', href: outlet.outlets.index.url() },
+            { title: 'Create Outlet', href: outlet.outlets.create.url() },
         ],
     },
     {

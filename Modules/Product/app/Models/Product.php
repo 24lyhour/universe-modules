@@ -32,6 +32,10 @@ class Product extends Model
         'purchase_price',
         'sale_price',
         'stock',
+        'upsale_id',
+        'down_sale_id',
+        'varitations_id',
+        'add_ons_id',
         'low_stock_threshold',
         'status',
         'is_featured',
@@ -92,11 +96,12 @@ class Product extends Model
 
     /**
      * Relation to the category.
+     * Note: Uncomment when Category module is created.
      */
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(\Modules\Category\Models\Category::class);
-    }
+    // public function category(): BelongsTo
+    // {
+    //     return $this->belongsTo(\Modules\Category\Models\Category::class);
+    // }
 
     /**
      * Relation to the outlet.

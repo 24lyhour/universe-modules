@@ -17,10 +17,13 @@ class Outlet extends Model
         'uuid',
         'tenant_type',
         'tenant_id',
+        'company_id',
         'name',
         'address',
         'phone',
+        'outlet_type',
         'outlet_id',
+        'image_url',
         'menu_id',
         'product_id',
         'email',
@@ -35,7 +38,8 @@ class Outlet extends Model
         'schedule_start_date',
         'schedule_end_date',
         'schedule_status',
-
+        'created_by',
+        'updated_by',
     ];
 
 
@@ -58,5 +62,13 @@ class Outlet extends Model
     public function menu()
     {
         return $this->hasMany(Menu::class);
+    }
+
+    /**
+     * RELATION TO THE COMPANY
+     */
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 }
