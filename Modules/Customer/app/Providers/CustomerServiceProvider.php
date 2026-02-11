@@ -2,6 +2,7 @@
 
 namespace Modules\Customer\Providers;
 
+use App\Services\MenuService;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Modules\Customer\Console\Commands\CustomerCreateCommand;
@@ -30,6 +31,28 @@ class CustomerServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+        $this->registerMenuItems();
+    }
+
+    /**
+     * Register menu items for the Customer module.
+     */
+    protected function registerMenuItems(): void
+    {
+        $this->app->booted(function () {
+            MenuService::addMenuItem(
+                menu: 'primary',
+                id: 'customer',
+                title: __('Customer'),
+                url: route('customer.customers.index'),
+                icon: 'Users',
+                order: 40,
+                permissions: null,
+                route: 'customer.*'
+            );
+
+            MenuService::addSubmenuItem('primary', 'customer', __('Customers'), route('customer.customers.index'), 10, null, 'customer.customers.*', 'Users');
+        });
     }
 
     /**
