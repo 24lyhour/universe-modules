@@ -20,6 +20,7 @@ export interface NavItem {
 export interface NavSubItem {
     title: string;
     href: NonNullable<InertiaLinkProps['href']>;
+    icon?: LucideIcon;
 }
 
 export interface NavModuleItem {

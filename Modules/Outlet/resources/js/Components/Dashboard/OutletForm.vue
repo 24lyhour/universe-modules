@@ -10,6 +10,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+import { Switch } from '@/components/ui/switch';
 import { Separator } from '@/components/ui/separator';
 import { ImageUpload } from '@/components/shared';
 import type { InertiaForm } from '@inertiajs/vue3';
@@ -32,6 +33,14 @@ const logoImages = computed({
     get: () => model.value.logo ? [model.value.logo] : [],
     set: (value: string[]) => {
         model.value.logo = value.length > 0 ? value[0] : '';
+    },
+});
+
+// Convert status string to boolean for Switch component
+const isActive = computed({
+    get: () => model.value.status === 'active',
+    set: (value: boolean) => {
+        model.value.status = value ? 'active' : 'inactive';
     },
 });
 </script>
@@ -124,15 +133,12 @@ const logoImages = computed({
 
                 <div class="space-y-2">
                     <Label for="status">Status <span class="text-destructive">*</span></Label>
-                    <Select v-model="model.status">
-                        <SelectTrigger>
-                            <SelectValue placeholder="Select status" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="active">Active</SelectItem>
-                            <SelectItem value="inactive">Inactive</SelectItem>
-                        </SelectContent>
-                    </Select>
+                    <div class="flex items-center space-x-2 pt-2">
+                        <Switch id="status" v-model:checked="isActive" />
+                        <Label for="status" class="font-normal">
+                            {{ isActive ? 'Active' : 'Inactive' }}
+                        </Label>
+                    </div>
                     <p v-if="model.errors.status" class="text-sm text-destructive">
                         {{ model.errors.status }}
                     </p>

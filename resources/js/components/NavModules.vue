@@ -68,6 +68,7 @@ const isModuleActive = (item: NavModuleItem): boolean => {
                                     :is-active="urlIsActive(subItem.href, page.url)"
                                 >
                                     <Link :href="subItem.href">
+                                        <component :is="subItem.icon" v-if="subItem.icon" class="size-4" />
                                         <span>{{ subItem.title }}</span>
                                     </Link>
                                 </SidebarMenuSubButton>

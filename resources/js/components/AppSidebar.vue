@@ -33,9 +33,12 @@ import {
     FileText,
     Hotel,
     LayoutGrid,
+    List,
     ListOrdered,
     MonitorPlay,
+    Plus,
     Store,
+    Tags,
     UtensilsCrossed,
     Users,
 } from 'lucide-vue-next';
@@ -58,80 +61,80 @@ const staticModuleItems: NavModuleItem[] = [
         title: 'Blog',
         icon: FileText,
         items: [
-            { title: 'All Blogs', href: blog.index.url() },
-            { title: 'Create Blog', href: blog.create.url() },
+            { title: 'All Blogs', href: blog.index.url(), icon: List },
+            { title: 'Create Blog', href: blog.create.url(), icon: Plus },
         ],
     },
     {
         title: 'Booking',
         icon: CalendarDays,
         items: [
-            { title: 'All Bookings', href: booking.index.url() },
-            { title: 'Create Booking', href: booking.create.url() },
+            { title: 'All Bookings', href: booking.index.url(), icon: List },
+            { title: 'Create Booking', href: booking.create.url(), icon: Plus },
         ],
     },
     {
         title: 'Company',
         icon: Building2,
         items: [
-            { title: 'All Companies', href: company.index.url() },
-            { title: 'Create Company', href: company.create.url() },
+            { title: 'All Companies', href: company.index.url(), icon: List },
+            { title: 'Create Company', href: company.create.url(), icon: Plus },
         ],
     },
     {
         title: 'Customer',
         icon: Users,
         items: [
-            { title: 'All Customers', href: customer.customers.index.url() },
-            { title: 'Create Customer', href: customer.customers.create.url() },
+            { title: 'All Customers', href: customer.customers.index.url(), icon: List },
+            { title: 'Create Customer', href: customer.customers.create.url(), icon: Plus },
         ],
     },
     {
         title: 'Hotel',
         icon: Hotel,
         items: [
-            { title: 'All Hotels', href: hotel.index.url() },
-            { title: 'Create Hotel', href: hotel.create.url() },
+            { title: 'All Hotels', href: hotel.index.url(), icon: List },
+            { title: 'Create Hotel', href: hotel.create.url(), icon: Plus },
         ],
     },
     {
         title: 'Outlet',
         icon: Store,
         items: [
-            { title: ' Outlets', href: outlet.outlets.index.url() },
-            { title: 'Outlet Types', href: '/dashboard/outlet-types' },
+            { title: 'Outlets', href: outlet.outlets.index.url(), icon: List },
+            { title: 'Outlet Types', href: '/dashboard/outlet-types', icon: Tags },
         ],
     },
     {
         title: 'Movie',
         icon: MonitorPlay,
         items: [
-            { title: 'All Movies', href: movice.index.url() },
-            { title: 'Create Movie', href: movice.create.url() },
+            { title: 'All Movies', href: movice.index.url(), icon: List },
+            { title: 'Create Movie', href: movice.create.url(), icon: Plus },
         ],
     },
     {
         title: 'Order',
         icon: ListOrdered,
         items: [
-            { title: 'All Orders', href: order.index.url() },
-            { title: 'Create Order', href: order.create.url() },
+            { title: 'All Orders', href: order.index.url(), icon: List },
+            { title: 'Create Order', href: order.create.url(), icon: Plus },
         ],
     },
     {
         title: 'Payment',
         icon: CreditCard,
         items: [
-            { title: 'All Payments', href: payment.index.url() },
-            { title: 'Create Payment', href: payment.create.url() },
+            { title: 'All Payments', href: payment.index.url(), icon: List },
+            { title: 'Create Payment', href: payment.create.url(), icon: Plus },
         ],
     },
     {
         title: 'Report',
         icon: FileText,
         items: [
-            { title: 'All Reports', href: report.index.url() },
-            { title: 'Create Report', href: report.create.url() },
+            { title: 'All Reports', href: report.index.url(), icon: List },
+            { title: 'Create Report', href: report.create.url(), icon: Plus },
         ],
     },
 ];
