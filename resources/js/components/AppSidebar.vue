@@ -16,9 +16,7 @@ import { dashboard } from '@/routes';
 import * as blog from '@/routes/blog';
 import * as booking from '@/routes/booking';
 import * as company from '@/routes/company';
-import customer from '@/routes/customer';
 import * as hotel from '@/routes/hotel';
-import outlet from '@/routes/outlet';
 // import * as menu from '@/routes/menu'; // TODO: Menu routes not generated
 import * as movice from '@/routes/movice';
 import * as order from '@/routes/order';
@@ -37,10 +35,7 @@ import {
     ListOrdered,
     MonitorPlay,
     Plus,
-    Store,
-    Tags,
     UtensilsCrossed,
-    Users,
 } from 'lucide-vue-next';
 import { computed } from 'vue';
 import AppLogo from './AppLogo.vue';
@@ -82,27 +77,11 @@ const staticModuleItems: NavModuleItem[] = [
         ],
     },
     {
-        title: 'Customer',
-        icon: Users,
-        items: [
-            { title: 'All Customers', href: customer.customers.index.url(), icon: List },
-            { title: 'Create Customer', href: customer.customers.create.url(), icon: Plus },
-        ],
-    },
-    {
         title: 'Hotel',
         icon: Hotel,
         items: [
             { title: 'All Hotels', href: hotel.index.url(), icon: List },
             { title: 'Create Hotel', href: hotel.create.url(), icon: Plus },
-        ],
-    },
-    {
-        title: 'Outlet',
-        icon: Store,
-        items: [
-            { title: 'Outlets', href: outlet.outlets.index.url(), icon: List },
-            { title: 'Outlet Types', href: '/dashboard/outlet-types', icon: Tags },
         ],
     },
     {

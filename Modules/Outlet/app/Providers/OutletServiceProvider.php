@@ -2,6 +2,7 @@
 
 namespace Modules\Outlet\Providers;
 
+use App\Services\MenuService;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +30,29 @@ class OutletServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+        $this->registerMenuItems();
+    }
+
+    /**
+     * Register menu items for the Outlet module.
+     */
+    protected function registerMenuItems(): void
+    {
+        $this->app->booted(function () {
+            MenuService::addMenuItem(
+                menu: 'primary',
+                id: 'outlet',
+                title: __('Outlet'),
+                url: route('outlet.outlets.index'),
+                icon: 'Building2',
+                order: 50,
+                permissions: null,
+                route: 'outlet.*'
+            );
+
+            MenuService::addSubmenuItem('primary', 'outlet', __('Outlets'), route('outlet.outlets.index'), 10, null, 'outlet.outlets.*', 'Building2');
+            MenuService::addSubmenuItem('primary', 'outlet', __('Outlet Types'), route('outlet.outlet-types.index'), 20, null, 'outlet.outlet-types.*', 'LayoutGrid');
+        });
     }
 
     /**
