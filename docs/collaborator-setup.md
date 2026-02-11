@@ -340,3 +340,13 @@ php artisan module:list
 Pull updates:
 
 git pull && git submodule update --remote
+
+Regarding your git push error - the remote repository has changes that you don't have locally. You need to pull first:
+
+git pull origin master --rebase
+Then push again. If there are conflicts, resolve them first.
+
+For checking branches, you can use:
+
+git branch -a # List all branches
+git status # Check current branch status
