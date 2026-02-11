@@ -1,0 +1,48 @@
+[submodule "Modules/Blog"]
+	path = Modules/Blog
+	url = https://github.com/24lyhour/universe-modules-Blog.git
+[submodule "Modules/Booking"]
+	path = Modules/Booking
+	url = https://github.com/24lyhour/universe-modules-Booking.git
+[submodule "Modules/Company"]
+	path = Modules/Company
+	url = https://github.com/24lyhour/universe-modules-Company.git
+[submodule "Modules/Customer"]
+	path = Modules/Customer
+	url = https://github.com/24lyhour/universe-modules-Customer.git
+[submodule "Modules/Hotel"]
+	path = Modules/Hotel
+	url = https://github.com/24lyhour/universe-modules-Hotel.git
+[submodule "Modules/Media"]
+	path = Modules/Media
+	url = https://github.com/24lyhour/universe-modules-Media.git
+[submodule "Modules/Menu"]
+	path = Modules/Menu
+	url = https://github.com/24lyhour/universe-modules-Menu.git
+[submodule "Modules/Movice"]
+	path = Modules/Movice
+	url = https://github.com/24lyhour/universe-modules-Movice.git
+[submodule "Modules/Order"]
+	path = Modules/Order
+	url = https://github.com/24lyhour/universe-modules-Order.git
+[submodule "Modules/Outlet"]
+	path = Modules/Outlet
+	url = https://github.com/24lyhour/universe-modules-Outlet.git
+[submodule "Modules/Payment"]
+	path = Modules/Payment
+	url = https://github.com/24lyhour/universe-modules-Payment.git
+[submodule "Modules/Porfolio"]
+	path = Modules/Porfolio
+	url = https://github.com/24lyhour/universe-modules-Porfolio.git
+[submodule "Modules/Product"]
+	path = Modules/Product
+	url = https://github.com/24lyhour/universe-modules-Product.git
+[submodule "Modules/Report"]
+	path = Modules/Report
+	url = https://github.com/24lyhour/universe-modules-Report.git
+[submodule "Modules/School"]
+	path = Modules/School
+	url = https://github.com/24lyhour/universe-modules-School.git
+[submodule "Modules/Wallets"]
+	path = Modules/Wallets
+	url = https://github.com/24lyhour/universe-modules-Wallets.git
