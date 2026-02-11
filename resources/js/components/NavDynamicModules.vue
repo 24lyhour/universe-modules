@@ -25,6 +25,7 @@ import {
     CreditCard,
     FileText,
     Hotel,
+    Layers,
     LayoutGrid,
     ListOrdered,
     Mail,
@@ -53,6 +54,7 @@ const iconMap: Record<string, LucideIcon> = {
     CreditCard,
     FileText,
     Hotel,
+    Layers,
     LayoutGrid,
     ListOrdered,
     Mail,
@@ -74,7 +76,6 @@ const getIcon = (iconName: string | null | undefined): LucideIcon | null => {
 const isRouteActive = (route: string | null): boolean => {
     if (!route) return false;
     const currentUrl = page.url;
-    // Simple route matching - check if current URL contains route pattern
     const routePattern = route.replace('.*', '').replace('.', '/');
     return currentUrl.includes(routePattern);
 };
