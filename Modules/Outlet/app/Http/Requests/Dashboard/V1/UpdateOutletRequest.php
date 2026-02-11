@@ -21,7 +21,7 @@ class UpdateOutletRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'outlet_type' => ['nullable', 'string', 'in:restaurant,cafe,store,warehouse,office,other'],
+            'outlet_type' => ['required', 'exists:type_outlets,id'],
             'address' => ['nullable', 'string', 'max:500'],
             'phone' => ['nullable', 'string', 'max:50'],
             'email' => ['nullable', 'email', 'max:255'],
