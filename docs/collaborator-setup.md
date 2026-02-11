@@ -350,3 +350,9 @@ For checking branches, you can use:
 
 git branch -a # List all branches
 git status # Check current branch status
+
+# 1. Create separate repo for Menu module
+
+# 2. Remove from parent: git rm -r --cached Modules/Menu
+
+# 3. Add as submodule: git submodule add <repo-url> Modules/Menu
