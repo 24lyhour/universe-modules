@@ -284,4 +284,59 @@ php artisan migrate
 
 php artisan serve
 npm run dev
-That's it! The --recurse-submodules flag automatically clones all 16 module repositories.
+That's it! The `--recurse-submodules` flag automatically clones all 16 module repositories.
+
+---
+
+## Clone Single Module Only
+
+If you only need one specific module:
+
+```bash
+# 1. Clone main repo (without submodules)
+git clone https://github.com/24lyhour/universe-modules.git
+cd universe-modules
+
+# 2. Initialize only the module you need
+git submodule update --init Modules/Customer
+
+# 3. Regenerate autoload
+composer dump-autoload
+
+# 4. Enable the module
+php artisan module:enable Customer
+
+# 5. Run migrations
+php artisan migrate
+
+# 6. Verify module is enabled
+php artisan module:list
+```
+
+---
+
+## Git Commands Reference
+
+| Command                                     | Description                  |
+| ------------------------------------------- | ---------------------------- |
+| `git init`                                  | Create new repository        |
+| `git add .`                                 | Stage all changes            |
+| `git commit -m "message"`                   | Commit changes               |
+| `git push origin main`                      | Push to remote               |
+| `git pull origin main`                      | Pull latest changes          |
+| `git submodule update --init`               | Initialize all submodules    |
+| `git submodule update --init Modules/Name`  | Initialize specific module   |
+| `git pull && git submodule update --remote` | Pull all + update submodules |
+
+Clone single module:
+
+git clone https://github.com/24lyhour/universe-modules.git
+cd universe-modules
+git submodule update --init Modules/Customer # specific module
+composer dump-autoload
+php artisan module:enable Customer
+php artisan migrate
+php artisan module:list
+Pull updates:
+
+git pull && git submodule update --remote
