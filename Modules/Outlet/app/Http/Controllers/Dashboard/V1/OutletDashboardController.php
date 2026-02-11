@@ -15,6 +15,7 @@ use Modules\Outlet\Http\Requests\Dashboard\V1\StoreOutletRequest;
 use Modules\Outlet\Http\Requests\Dashboard\V1\UpdateOutletRequest;
 use Modules\Outlet\Http\Resources\OutletResource;
 use Modules\Outlet\Models\Outlet;
+use Modules\Outlet\Models\TypeOutlet;
 use Modules\Outlet\Services\OutletService;
 
 class OutletDashboardController extends Controller
@@ -46,8 +47,9 @@ class OutletDashboardController extends Controller
      */
     public function create(): Modal
     {
-        return Inertia::modal('outlet::dashboard/outlet/Create')
-            ->baseRoute('outlet.outlets.index');
+        return Inertia::modal('outlet::dashboard/outlet/Create', [
+            'typeOutlets' => $this->getTypeOutlets(),
+        ])->baseRoute('outlet.outlets.index');
     }
 
     /**
@@ -79,7 +81,23 @@ class OutletDashboardController extends Controller
     {
         return Inertia::modal('outlet::dashboard/outlet/Edit', [
             'outlet' => (new OutletResource($outlet))->resolve(),
+            'typeOutlets' => $this->getTypeOutlets(),
         ])->baseRoute('outlet.outlets.index');
+    }
+
+    /**
+     * Get active type outlets for select dropdown.
+     */
+    private function getTypeOutlets(): array
+    {
+        return TypeOutlet::where('is_active', true)
+            ->orderBy('name_type')
+            ->get()
+            ->map(fn ($type) => [
+                'id' => $type->id,
+                'name' => $type->name_type,
+            ])
+            ->toArray();
     }
 
     /**

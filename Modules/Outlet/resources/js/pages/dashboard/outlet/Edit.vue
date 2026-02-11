@@ -22,7 +22,7 @@ const isOpen = computed({
 
 const form = useForm<OutletFormData>({
     name: props.outlet.name,
-    outlet_type: props.outlet.outlet_type,
+    outlet_type: props.outlet.outlet_type || '',
     address: props.outlet.address || '',
     phone: props.outlet.phone || '',
     email: props.outlet.email || '',
@@ -67,6 +67,6 @@ const handleCancel = () => {
         @submit="handleSubmit"
         @cancel="handleCancel"
     >
-        <OutletForm v-model="form" mode="edit" />
+        <OutletForm v-model="form" mode="edit" :type-outlets="props.typeOutlets" />
     </ModalForm>
 </template>

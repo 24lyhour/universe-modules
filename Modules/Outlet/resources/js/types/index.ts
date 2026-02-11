@@ -1,12 +1,15 @@
 // Outlet Module Types
 
-export type OutletType = 'restaurant' | 'cafe' | 'store' | 'warehouse' | 'office' | 'other';
+export interface TypeOutletOption {
+    id: number;
+    name: string;
+}
 
 export interface Outlet {
     id: number;
     uuid: string;
     name: string;
-    outlet_type: OutletType | null;
+    outlet_type: string | null;
     address: string | null;
     phone: string | null;
     email: string | null;
@@ -53,7 +56,7 @@ export interface OutletFilters {
 
 export interface OutletFormData {
     name: string;
-    outlet_type: OutletType | null;
+    outlet_type: string;
     address: string;
     phone: string;
     email: string;
@@ -81,6 +84,52 @@ export interface OutletShowProps {
     outlet: Outlet;
 }
 
+export interface OutletCreateProps {
+    typeOutlets: TypeOutletOption[];
+}
+
 export interface OutletEditProps {
     outlet: Outlet;
+    typeOutlets: TypeOutletOption[];
+}
+
+// TypeOutlet Types
+export interface TypeOutlet {
+    id: number;
+    name: string;
+    description: string | null;
+    status: 'active' | 'inactive';
+    created_at: string;
+    updated_at: string;
+}
+
+export interface TypeOutletStats {
+    total: number;
+    active: number;
+    inactive: number;
+}
+
+export interface TypeOutletFilters {
+    status?: string;
+    search?: string;
+}
+
+export interface TypeOutletFormData {
+    name: string;
+    description: string;
+    status: 'active' | 'inactive';
+}
+
+export interface TypeOutletIndexProps {
+    typeOutlets: PaginatedResponse<TypeOutlet>;
+    filters: TypeOutletFilters;
+    stats: TypeOutletStats;
+}
+
+export interface TypeOutletShowProps {
+    typeOutlet: TypeOutlet;
+}
+
+export interface TypeOutletEditProps {
+    typeOutlet: TypeOutlet;
 }

@@ -98,8 +98,8 @@ const staticModuleItems: NavModuleItem[] = [
         title: 'Outlet',
         icon: Store,
         items: [
-            { title: 'All Outlets', href: outlet.outlets.index.url() },
-            { title: 'Create Outlet', href: outlet.outlets.create.url() },
+            { title: ' Outlets', href: outlet.outlets.index.url() },
+            { title: 'Outlet Types', href: '/dashboard/outlet-types' },
         ],
     },
     {

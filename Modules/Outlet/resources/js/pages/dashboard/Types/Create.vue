@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ModalForm } from '@/components/shared';
-import OutletForm from '../../../Components/Dashboard/OutletForm.vue';
+import TypeOutletForm from '../../../Components/Dashboard/TypeOutletForm.vue';
 import { useForm } from '@inertiajs/vue3';
 import { useModal } from 'momentum-modal';
 import { computed } from 'vue';
-import type { OutletFormData, OutletCreateProps } from '../../../types';
-
-const props = defineProps<OutletCreateProps>();
+import type { TypeOutletFormData } from '../../../types';
 
 const { show, close, redirect } = useModal();
 
@@ -20,28 +18,14 @@ const isOpen = computed({
     },
 });
 
-const form = useForm<OutletFormData>({
+const form = useForm<TypeOutletFormData>({
     name: '',
-    outlet_type: '',
-    address: '',
-    phone: '',
-    email: '',
-    logo: '',
-    image_url: '',
-    google_map_url: '',
-    url_deeplink: '',
+    description: '',
     status: 'active',
-    schedule_mode: '',
-    schedule_days: '',
-    schedule_start_time: '',
-    schedule_end_time: '',
-    schedule_start_date: '',
-    schedule_end_date: '',
-    schedule_status: '',
 });
 
 const handleSubmit = () => {
-    form.post('/dashboard/outlets', {
+    form.post('/dashboard/outlet-types', {
         onSuccess: () => {
             close();
             redirect();
@@ -58,15 +42,15 @@ const handleCancel = () => {
 <template>
     <ModalForm
         v-model:open="isOpen"
-        title="Create Outlet"
-        description="Add a new outlet to your business"
+        title="Create Outlet Type"
+        description="Add a new outlet type"
         mode="create"
-        size="xl"
-        submit-text="Create Outlet"
+        size="md"
+        submit-text="Create Type"
         :loading="form.processing"
         @submit="handleSubmit"
         @cancel="handleCancel"
     >
-        <OutletForm v-model="form" mode="create" :type-outlets="props.typeOutlets" />
+        <TypeOutletForm v-model="form" mode="create" />
     </ModalForm>
 </template>

@@ -13,23 +13,16 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { ImageUpload } from '@/components/shared';
 import type { InertiaForm } from '@inertiajs/vue3';
-import type { OutletFormData, OutletType } from '../../types';
-
-const outletTypeOptions: { value: OutletType; label: string }[] = [
-    { value: 'restaurant', label: 'Restaurant' },
-    { value: 'cafe', label: 'Cafe' },
-    { value: 'store', label: 'Store' },
-    { value: 'warehouse', label: 'Warehouse' },
-    { value: 'office', label: 'Office' },
-    { value: 'other', label: 'Other' },
-];
+import type { OutletFormData, TypeOutletOption } from '../../types';
 
 interface Props {
     mode?: 'create' | 'edit';
+    typeOutlets?: TypeOutletOption[];
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     mode: 'create',
+    typeOutlets: () => [],
 });
 
 const model = defineModel<InertiaForm<OutletFormData>>({ required: true });
@@ -70,18 +63,18 @@ const logoImages = computed({
                 </div>
 
                 <div class="space-y-2">
-                    <Label for="outlet_type">Outlet Type</Label>
+                    <Label for="outlet_type">Outlet Type <span class="text-destructive">*</span></Label>
                     <Select v-model="model.outlet_type">
                         <SelectTrigger>
                             <SelectValue placeholder="Select outlet type" />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectItem
-                                v-for="option in outletTypeOptions"
-                                :key="option.value"
-                                :value="option.value"
+                                v-for="type in props.typeOutlets"
+                                :key="type.id"
+                                :value="type.id.toString()"
                             >
-                                {{ option.label }}
+                                {{ type.name }}
                             </SelectItem>
                         </SelectContent>
                     </Select>
