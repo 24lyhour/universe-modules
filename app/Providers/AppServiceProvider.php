@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\MenuService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +16,38 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->registerDashboardMenuItems();
+    }
+
+    /**
+     * Register dashboard menu items in the sidebar.
+     */
+    protected function registerDashboardMenuItems(): void
+    {
+        $this->app->booted(function () {
+            // Register Dashboard Settings in footer navigation
+            MenuService::addMenuItem(
+                menu: 'footer',
+                id: 'dashboard-settings',
+                title: __('Settings'),
+                url: '/dashboard/settings',
+                icon: 'Settings',
+                order: 50,
+                permissions: null,
+                route: 'dashboard.settings'
+            );
+
+            MenuService::addSubmenuItem(
+                'footer',
+                'dashboard-settings',
+                __('Dashboard Widgets'),
+                '/dashboard/settings',
+                10,
+                null,
+                'dashboard.settings',
+                'LayoutGrid'
+            );
+        });
     }
 
     /**

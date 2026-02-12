@@ -46,4 +46,14 @@ export default defineConfig({
             ...moduleAliases,
         },
     },
+    server: {
+        fs: {
+            // Allow serving files from Modules directory (git submodules)
+            allow: ['.', 'Modules'],
+        },
+        watch: {
+            // Watch files in Modules directory for HMR
+            ignored: ['!**/Modules/**'],
+        },
+    },
 });
