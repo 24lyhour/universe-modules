@@ -6,8 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { LayoutGrid, CheckCircle, XCircle, Grid2X2, List, BarChart3, PieChart, AreaChart, LineChart, Users, UtensilsCrossed, Store, Package } from 'lucide-vue-next';
-import { ref, computed } from 'vue';
+import { LayoutGrid, CheckCircle, XCircle, Grid2X2, List, BarChart3, PieChart, AreaChart, LineChart, Users, UtensilsCrossed, Store, Package, GripVertical } from 'lucide-vue-next';
+import { ref, watch } from 'vue';
+import { VueDraggable } from 'vue-draggable-plus';
 import type { BreadcrumbItem } from '@/types';
 
 interface Widget {
@@ -91,17 +92,57 @@ const moduleIcons: Record<string, any> = {
     Product: Package,
 };
 
-// Group widgets by module
-const groupedWidgets = computed(() => {
+// Group widgets by module - use ref for drag-and-drop
+const groupedWidgets = ref<Record<string, Widget[]>>({});
+
+// Initialize grouped widgets from props
+const initializeGroupedWidgets = () => {
     const groups: Record<string, Widget[]> = {};
     props.widgetItems.forEach(widget => {
         if (!groups[widget.module]) {
             groups[widget.module] = [];
         }
-        groups[widget.module].push(widget);
+        groups[widget.module].push({ ...widget });
     });
-    return groups;
-});
+    // Sort by sort_order within each group
+    Object.keys(groups).forEach(module => {
+        groups[module].sort((a, b) => a.sort_order - b.sort_order);
+    });
+    groupedWidgets.value = groups;
+};
+
+// Initialize on mount
+initializeGroupedWidgets();
+
+// Watch for prop changes (e.g., after status filter)
+watch(() => props.widgetItems, () => {
+    initializeGroupedWidgets();
+}, { deep: true });
+
+// Handle drag end - update sort order
+const handleDragEnd = (module: string) => {
+    const widgets = groupedWidgets.value[module];
+    if (!widgets) return;
+
+    // Update sort_order based on new positions
+    const updatedWidgets = widgets.map((widget, index) => ({
+        id: widget.id,
+        sort_order: index + 1,
+    }));
+
+    // Update local state
+    widgets.forEach((widget, index) => {
+        widget.sort_order = index + 1;
+    });
+
+    // Send to backend
+    router.post('/dashboard/settings/widgets/order', {
+        widgets: updatedWidgets,
+    }, {
+        preserveScroll: true,
+        preserveState: true,
+    });
+};
 
 // Check if ANY widget in a module is active (matches Dashboard tab visibility logic)
 const isModuleActive = (module: string) => {
@@ -248,25 +289,34 @@ const handleModuleToggle = (module: string, status: boolean) => {
                         </div>
                     </div>
 
-                    <!-- Module Widgets -->
-                    <div
+                    <!-- Module Widgets - Draggable -->
+                    <VueDraggable
+                        v-model="groupedWidgets[module as string]"
                         :class="[
                             viewMode === 'grid'
                                 ? 'grid gap-4 md:grid-cols-2 lg:grid-cols-3'
                                 : 'flex flex-col gap-3'
                         ]"
+                        handle=".drag-handle"
+                        ghost-class="opacity-50"
+                        :animation="200"
+                        @end="() => handleDragEnd(module as string)"
                     >
                         <Card
-                            v-for="widget in widgets"
+                            v-for="widget in groupedWidgets[module as string]"
                             :key="widget.id"
-                            class="relative"
+                            class="relative group"
                         >
+                            <!-- Drag Handle -->
+                            <div class="drag-handle absolute left-2 top-1/2 -translate-y-1/2 cursor-grab opacity-0 group-hover:opacity-100 transition-opacity active:cursor-grabbing">
+                                <GripVertical class="h-5 w-5 text-muted-foreground" />
+                            </div>
                             <div class="absolute right-3 top-3">
                                 <Badge variant="secondary" class="text-xs">
                                     {{ widget.sort_order }}
                                 </Badge>
                             </div>
-                            <CardHeader class="pb-3">
+                            <CardHeader class="pb-3 pl-10">
                                 <div class="flex items-center gap-2">
                                     <component
                                         :is="chartTypeIcons[widget.chart_type || 'stats']"
@@ -284,7 +334,7 @@ const handleModuleToggle = (module: string, status: boolean) => {
                                     </Badge>
                                 </div>
                             </CardHeader>
-                            <CardContent>
+                            <CardContent class="pl-10">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-2">
                                         <span
@@ -304,7 +354,7 @@ const handleModuleToggle = (module: string, status: boolean) => {
                                 </div>
                             </CardContent>
                         </Card>
-                    </div>
+                    </VueDraggable>
                 </div>
             </div>
 

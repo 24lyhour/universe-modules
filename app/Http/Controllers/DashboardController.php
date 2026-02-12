@@ -25,18 +25,21 @@ class DashboardController extends Controller
         $dateRange = $request->input('date_range', '30d');
         $tab = $request->input('tab', 'customer');
 
-        // Get all dashboard widgets with their status
+        // Get all dashboard widgets with their status, ordered by sort_order
         $allWidgets = Widget::dashboard()
-            ->select('id', 'name', 'module', 'chart_type', 'status')
+            ->select('id', 'name', 'module', 'chart_type', 'status', 'sort_order')
+            ->orderBy('sort_order')
             ->get();
 
-        // Get modules that have AT LEAST ONE active widget
+        // Get modules that have AT LEAST ONE active widget, ordered by min sort_order
         // If ANY widget in a module is active, show that module's tab
         $activeModules = $allWidgets
             ->where('status', true)
-            ->pluck('module')
+            ->groupBy('module')
+            ->map(fn($widgets) => $widgets->min('sort_order'))
+            ->sortBy(fn($sortOrder) => $sortOrder)
+            ->keys()
             ->map(fn($m) => strtolower($m))
-            ->unique()
             ->values()
             ->toArray();
 

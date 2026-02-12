@@ -22,9 +22,12 @@ class ModuleAccess
         'menu',
         'movice',
         'order',
+        'outlet',
         'payment',
         'porfolio',
+        'product',
         'report',
+        'wallets',
     ];
 
     /**

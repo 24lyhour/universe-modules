@@ -10,6 +10,9 @@ import { ChartContainer } from '@/components/ui/chart';
 import { CustomerWidget } from '@customer/Components/Widgets';
 import { ProductWidget } from '@product/Components/Widgets';
 import { MenuWIdget } from '@menu/Components/Widgets';
+import { OutletWidget } from '@outlet/Components/Widgets';
+import { OrderWidget } from '@order/Components/Widgets';
+import { WalletWidget } from '@wallets/Components/Widgets';
 import {
     VisXYContainer,
     VisStackedBar,
@@ -17,13 +20,18 @@ import {
 } from '@unovis/vue';
 import {
     Users,
-    Store,
     Package,
     Settings,
+    ShoppingCart,
+    Wallet,
+    UtensilsCrossed,
+    Store,
 } from 'lucide-vue-next';
 import type { BreadcrumbItem } from '@/types';
 import type { CustomerWidgetData } from '@customer/types';
-import type { ProductMetrics, SalesDataPoint } from '@product/Components/Widgets';
+import type { ProductMetrics, SalesDataPoint, CategoryDistribution } from '@product/Components/Widgets';
+import type { OrderMetrics } from '@order/Components/Widgets';
+import type { WalletMetrics } from '@wallets/Components/Widgets';
 import { useChartColors } from '@/composables/useChartColors';
 
 interface CustomerStats {
@@ -47,6 +55,27 @@ interface OutletStats {
     inactive: number;
 }
 
+interface OrderStats {
+    total: number;
+    completed: number;
+    pending: number;
+    cancelled: number;
+    total_revenue: number;
+    average_order_value: number;
+    growth_percent: number;
+}
+
+interface WalletStats {
+    total_wallets: number;
+    active_wallets: number;
+    inactive_wallets: number;
+    total_balance: number;
+    average_balance: number;
+    locked_amount: number;
+    available_amount: number;
+    growth_percent: number;
+}
+
 interface WidgetStatuses {
     [key: string]: boolean;
 }
@@ -56,6 +85,8 @@ interface Props {
         customer?: CustomerStats;
         menu?: MenuStats;
         outlet?: OutletStats;
+        order?: OrderStats;
+        wallets?: WalletStats;
         product?: {
             total: number;
             active: number;
@@ -65,7 +96,9 @@ interface Props {
         };
     };
     customerWidget?: CustomerWidgetData | null;
-    productWidget?: { metrics: ProductMetrics; salesData: SalesDataPoint[] } | null;
+    productWidget?: { metrics: ProductMetrics; salesData: SalesDataPoint[]; categoryDistribution: CategoryDistribution[] } | null;
+    orderWidget?: { metrics: OrderMetrics } | null;
+    walletWidget?: { metrics: WalletMetrics } | null;
     dateRange: string;
     tab?: string;
     activeWidgets: string[];
@@ -76,6 +109,16 @@ const props = defineProps<Props>();
 
 // Helper to check if a module tab is active (ANY widget for that module is active)
 const isWidgetActive = (module: string) => props.activeWidgets.includes(module);
+
+// Tab configuration for dynamic rendering - follows activeWidgets order
+const tabConfig: Record<string, { icon: any; label: string }> = {
+    customer: { icon: Users, label: 'Customer' },
+    menu: { icon: UtensilsCrossed, label: 'Menu' },
+    outlet: { icon: Store, label: 'Outlet' },
+    product: { icon: Package, label: 'Product' },
+    order: { icon: ShoppingCart, label: 'Order' },
+    wallets: { icon: Wallet, label: 'Wallet' },
+};
 
 // Individual widget status helpers for granular control
 const isCustomerStatsActive = computed(() => props.widgetStatuses?.['customer_stats'] ?? true);
@@ -103,20 +146,6 @@ watch(activeTab, (newTab) => {
     url.searchParams.set('tab', newTab);
     window.history.replaceState({}, '', url.toString());
 });
-
-// Outlet Stats Bar Chart Data
-const outletBarData = computed(() => {
-    if (!props.widgets.outlet) return [];
-    return [
-        { label: 'Total', value: props.widgets.outlet.total },
-        { label: 'Active', value: props.widgets.outlet.active },
-        { label: 'Inactive', value: props.widgets.outlet.inactive },
-    ];
-});
-
-const outletChartConfig = computed(() => ({
-    value: { label: 'Count', color: chartColors.value.chart2 },
-}));
 
 // Customer widget handlers
 const handleDateRangeChange = (dateRange: string) => {
@@ -164,22 +193,15 @@ const handleRefresh = () => {
             </div>
 
             <Tabs v-model="activeTab" class="space-y-6">
+                <!-- Tabs are rendered dynamically based on activeWidgets order from backend -->
                 <TabsList>
-                    <TabsTrigger v-if="isWidgetActive('customer')" value="customer">
-                        <Users class="mr-2 h-4 w-4" />
-                        Customer
-                    </TabsTrigger>
-                    <TabsTrigger v-if="isWidgetActive('menu')" value="menu">
-                        <UtensilsCrossed class="mr-2 h-4 w-4" />
-                        Menu
-                    </TabsTrigger>
-                    <TabsTrigger v-if="isWidgetActive('outlet')" value="outlet">
-                        <Store class="mr-2 h-4 w-4" />
-                        Outlet
-                    </TabsTrigger>
-                    <TabsTrigger v-if="isWidgetActive('product')" value="product">
-                        <Package class="mr-2 h-4 w-4" />
-                        Product
+                    <TabsTrigger
+                        v-for="module in activeWidgets"
+                        :key="module"
+                        :value="module"
+                    >
+                        <component :is="tabConfig[module]?.icon" class="mr-2 h-4 w-4" />
+                        {{ tabConfig[module]?.label || module }}
                     </TabsTrigger>
                 </TabsList>
 
@@ -212,51 +234,13 @@ const handleRefresh = () => {
 
                 <!-- Outlet Tab -->
                 <TabsContent v-if="isWidgetActive('outlet') && props.widgets.outlet" value="outlet" class="space-y-6">
-                    <div class="grid gap-4 md:grid-cols-3">
-                        <StatsCard
-                            title="Total Outlets"
-                            :value="props.widgets.outlet.total"
-                            :icon="Store"
-                        />
-                        <StatsCard
-                            title="Active"
-                            :value="props.widgets.outlet.active"
-                            :icon="CheckCircle"
-                            icon-color="text-green-500"
-                        />
-                        <StatsCard
-                            title="Inactive"
-                            :value="props.widgets.outlet.inactive"
-                            :icon="XCircle"
-                            icon-color="text-yellow-500"
-                        />
-                    </div>
-
-                    <!-- Outlet Bar Chart -->
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Outlet Statistics</CardTitle>
-                            <CardDescription>Overview of outlet data</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <ChartContainer :config="outletChartConfig" class="h-[300px]">
-                                <VisXYContainer :data="outletBarData">
-                                    <VisStackedBar
-                                        :x="(_: any, i: number) => i"
-                                        :y="(d: any) => d.value"
-                                        :color="chartColors.chart2"
-                                        :barPadding="0.3"
-                                        :roundedCorners="4"
-                                    />
-                                    <VisAxis
-                                        type="x"
-                                        :tickFormat="(i: number) => outletBarData[i]?.label || ''"
-                                    />
-                                    <VisAxis type="y" />
-                                </VisXYContainer>
-                            </ChartContainer>
-                        </CardContent>
-                    </Card>
+                    <OutletWidget
+                        :metrics="props.widgets.outlet"
+                        :date-range="dateRange"
+                        :loading="loading"
+                        @date-range-change="handleDateRangeChange"
+                        @refresh="handleRefresh"
+                    />
                 </TabsContent>
 
                 <!-- Product Tab -->
@@ -270,6 +254,28 @@ const handleRefresh = () => {
                         :show-stats="true"
                         :show-sales="true"
                         :show-category="true"
+                        @date-range-change="handleDateRangeChange"
+                        @refresh="handleRefresh"
+                    />
+                </TabsContent>
+
+                <!-- Order Tab -->
+                <TabsContent v-if="isWidgetActive('order') && props.widgets.order" value="order" class="space-y-6">
+                    <OrderWidget
+                        :metrics="props.widgets.order"
+                        :date-range="dateRange"
+                        :loading="loading"
+                        @date-range-change="handleDateRangeChange"
+                        @refresh="handleRefresh"
+                    />
+                </TabsContent>
+
+                <!-- Wallet Tab -->
+                <TabsContent v-if="isWidgetActive('wallets') && props.widgets.wallets" value="wallets" class="space-y-6">
+                    <WalletWidget
+                        :metrics="props.widgets.wallets"
+                        :date-range="dateRange"
+                        :loading="loading"
                         @date-range-change="handleDateRangeChange"
                         @refresh="handleRefresh"
                     />

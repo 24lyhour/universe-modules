@@ -45,9 +45,12 @@
             "@menu/*": ["Modules/Menu/resources/js/*"],
             "@movice/*": ["Modules/Movice/resources/js/*"],
             "@order/*": ["Modules/Order/resources/js/*"],
+            "@outlet/*": ["Modules/Outlet/resources/js/*"],
             "@payment/*": ["Modules/Payment/resources/js/*"],
             "@porfolio/*": ["Modules/Porfolio/resources/js/*"],
-            "@report/*": ["Modules/Report/resources/js/*"]
+            "@product/*": ["Modules/Product/resources/js/*"],
+            "@report/*": ["Modules/Report/resources/js/*"],
+            "@wallets/*": ["Modules/Wallets/resources/js/*"]
         },
         // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
         // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
