@@ -11,4 +11,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard/settings', [WidgetController::class, 'index'])->name('dashboard.settings');
     Route::patch('dashboard/settings/widgets/{widget}', [WidgetController::class, 'update'])->name('dashboard.widgets.update');
     Route::post('dashboard/settings/widgets/order', [WidgetController::class, 'updateOrder'])->name('dashboard.widgets.order');
+    Route::post('dashboard/settings/widgets/toggle-module', [WidgetController::class, 'toggleModule'])->name('dashboard.widgets.toggle-module');
 });

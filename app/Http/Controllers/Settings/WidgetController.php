@@ -63,4 +63,18 @@ class WidgetController extends Controller
 
         return back()->with('success', 'Widget order updated successfully.');
     }
+
+    public function toggleModule(Request $request)
+    {
+        $validated = $request->validate([
+            'module' => 'required|string',
+            'status' => 'required|boolean',
+        ]);
+
+        Widget::dashboard()
+            ->where('module', $validated['module'])
+            ->update(['status' => $validated['status']]);
+
+        return back()->with('success', 'Module widgets updated successfully.');
+    }
 }

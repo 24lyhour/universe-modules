@@ -8,6 +8,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { ChartContainer } from '@/components/ui/chart';
 import { CustomerWidget } from '@customer/Components/Widgets';
+import { ProductWidget } from '@product/Components/Widgets';
+import { MenuWIdget } from '@menu/Components/Widgets';
 import {
     VisXYContainer,
     VisStackedBar,
@@ -15,16 +17,13 @@ import {
 } from '@unovis/vue';
 import {
     Users,
-    UtensilsCrossed,
     Store,
-    CheckCircle,
-    XCircle,
-    Layers,
-    FolderTree,
+    Package,
     Settings,
 } from 'lucide-vue-next';
 import type { BreadcrumbItem } from '@/types';
 import type { CustomerWidgetData } from '@customer/types';
+import type { ProductMetrics, SalesDataPoint } from '@product/Components/Widgets';
 import { useChartColors } from '@/composables/useChartColors';
 
 interface CustomerStats {
@@ -48,18 +47,40 @@ interface OutletStats {
     inactive: number;
 }
 
+interface WidgetStatuses {
+    [key: string]: boolean;
+}
+
 interface Props {
     widgets: {
-        customer: CustomerStats;
-        menu: MenuStats;
-        outlet: OutletStats;
+        customer?: CustomerStats;
+        menu?: MenuStats;
+        outlet?: OutletStats;
+        product?: {
+            total: number;
+            active: number;
+            out_of_stock: number;
+            low_stock: number;
+            discontinued: number;
+        };
     };
-    customerWidget: CustomerWidgetData;
+    customerWidget?: CustomerWidgetData | null;
+    productWidget?: { metrics: ProductMetrics; salesData: SalesDataPoint[] } | null;
     dateRange: string;
     tab?: string;
+    activeWidgets: string[];
+    widgetStatuses: WidgetStatuses;
 }
 
 const props = defineProps<Props>();
+
+// Helper to check if a module tab is active (ANY widget for that module is active)
+const isWidgetActive = (module: string) => props.activeWidgets.includes(module);
+
+// Individual widget status helpers for granular control
+const isCustomerStatsActive = computed(() => props.widgetStatuses?.['customer_stats'] ?? true);
+const isCustomerGrowthActive = computed(() => props.widgetStatuses?.['customer_area'] ?? true);
+const isCustomerStatusActive = computed(() => props.widgetStatuses?.['customer_donut'] ?? true);
 
 const { chartColors } = useChartColors();
 
@@ -67,8 +88,13 @@ const breadcrumbs: BreadcrumbItem[] = [
     { title: 'Dashboard', href: '/dashboard' },
 ];
 
-const validTabs = ['customer', 'menu', 'outlet'];
-const activeTab = ref(validTabs.includes(props.tab || '') ? props.tab! : 'customer');
+// Only show tabs for active widgets
+const validTabs = computed(() => props.activeWidgets);
+const activeTab = ref(
+    props.activeWidgets.includes(props.tab || '')
+        ? props.tab!
+        : props.activeWidgets[0] || 'customer'
+);
 const loading = ref(false);
 
 // Sync tab changes with URL
@@ -78,25 +104,15 @@ watch(activeTab, (newTab) => {
     window.history.replaceState({}, '', url.toString());
 });
 
-// Menu Stats Bar Chart Data
-const menuBarData = computed(() => [
-    { label: 'Total', value: props.widgets.menu.total_menus },
-    { label: 'Active', value: props.widgets.menu.active_menus },
-    { label: 'Inactive', value: props.widgets.menu.inactive_menus },
-    { label: 'Categories', value: props.widgets.menu.total_categories },
-    { label: 'Types', value: props.widgets.menu.total_types },
-]);
-
-const menuChartConfig = computed(() => ({
-    value: { label: 'Count', color: chartColors.value.chart1 },
-}));
-
 // Outlet Stats Bar Chart Data
-const outletBarData = computed(() => [
-    { label: 'Total', value: props.widgets.outlet.total },
-    { label: 'Active', value: props.widgets.outlet.active },
-    { label: 'Inactive', value: props.widgets.outlet.inactive },
-]);
+const outletBarData = computed(() => {
+    if (!props.widgets.outlet) return [];
+    return [
+        { label: 'Total', value: props.widgets.outlet.total },
+        { label: 'Active', value: props.widgets.outlet.active },
+        { label: 'Inactive', value: props.widgets.outlet.inactive },
+    ];
+});
 
 const outletChartConfig = computed(() => ({
     value: { label: 'Count', color: chartColors.value.chart2 },
@@ -149,26 +165,44 @@ const handleRefresh = () => {
 
             <Tabs v-model="activeTab" class="space-y-6">
                 <TabsList>
-                    <TabsTrigger value="customer">
+                    <TabsTrigger v-if="isWidgetActive('customer')" value="customer">
                         <Users class="mr-2 h-4 w-4" />
                         Customer
                     </TabsTrigger>
-                    <TabsTrigger value="menu">
+                    <TabsTrigger v-if="isWidgetActive('menu')" value="menu">
                         <UtensilsCrossed class="mr-2 h-4 w-4" />
                         Menu
                     </TabsTrigger>
-                    <TabsTrigger value="outlet">
+                    <TabsTrigger v-if="isWidgetActive('outlet')" value="outlet">
                         <Store class="mr-2 h-4 w-4" />
                         Outlet
+                    </TabsTrigger>
+                    <TabsTrigger v-if="isWidgetActive('product')" value="product">
+                        <Package class="mr-2 h-4 w-4" />
+                        Product
                     </TabsTrigger>
                 </TabsList>
 
                 <!-- Customer Tab -->
-                <TabsContent value="customer" class="space-y-6">
+                <TabsContent v-if="isWidgetActive('customer') && customerWidget" value="customer" class="space-y-6">
                     <CustomerWidget
                         :metrics="customerWidget.metrics"
                         :growth-data="customerWidget.growthData"
                         :status-distribution="customerWidget.statusDistribution"
+                        :date-range="dateRange"
+                        :loading="loading"
+                        :show-stats="isCustomerStatsActive"
+                        :show-growth="isCustomerGrowthActive"
+                        :show-status="isCustomerStatusActive"
+                        @date-range-change="handleDateRangeChange"
+                        @refresh="handleRefresh"
+                    />
+                </TabsContent>
+
+                <!-- Menu Tab -->
+                <TabsContent v-if="isWidgetActive('menu') && props.widgets.menu" value="menu" class="space-y-6">
+                    <MenuWIdget
+                        :metrics="props.widgets.menu"
                         :date-range="dateRange"
                         :loading="loading"
                         @date-range-change="handleDateRangeChange"
@@ -176,67 +210,8 @@ const handleRefresh = () => {
                     />
                 </TabsContent>
 
-                <!-- Menu Tab -->
-                <TabsContent value="menu" class="space-y-6">
-                    <div class="grid gap-4 md:grid-cols-5">
-                        <StatsCard
-                            title="Total Menus"
-                            :value="props.widgets.menu.total_menus"
-                            :icon="UtensilsCrossed"
-                        />
-                        <StatsCard
-                            title="Active Menus"
-                            :value="props.widgets.menu.active_menus"
-                            :icon="CheckCircle"
-                            icon-color="text-green-500"
-                        />
-                        <StatsCard
-                            title="Inactive Menus"
-                            :value="props.widgets.menu.inactive_menus"
-                            :icon="XCircle"
-                            icon-color="text-yellow-500"
-                        />
-                        <StatsCard
-                            title="Categories"
-                            :value="props.widgets.menu.total_categories"
-                            :icon="FolderTree"
-                        />
-                        <StatsCard
-                            title="Menu Types"
-                            :value="props.widgets.menu.total_types"
-                            :icon="Layers"
-                        />
-                    </div>
-
-                    <!-- Menu Bar Chart -->
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Menu Statistics</CardTitle>
-                            <CardDescription>Overview of menu data</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <ChartContainer :config="menuChartConfig" class="h-[300px]">
-                                <VisXYContainer :data="menuBarData">
-                                    <VisStackedBar
-                                        :x="(_: any, i: number) => i"
-                                        :y="(d: any) => d.value"
-                                        :color="chartColors.chart1"
-                                        :barPadding="0.3"
-                                        :roundedCorners="4"
-                                    />
-                                    <VisAxis
-                                        type="x"
-                                        :tickFormat="(i: number) => menuBarData[i]?.label || ''"
-                                    />
-                                    <VisAxis type="y" />
-                                </VisXYContainer>
-                            </ChartContainer>
-                        </CardContent>
-                    </Card>
-                </TabsContent>
-
                 <!-- Outlet Tab -->
-                <TabsContent value="outlet" class="space-y-6">
+                <TabsContent v-if="isWidgetActive('outlet') && props.widgets.outlet" value="outlet" class="space-y-6">
                     <div class="grid gap-4 md:grid-cols-3">
                         <StatsCard
                             title="Total Outlets"
@@ -283,6 +258,32 @@ const handleRefresh = () => {
                         </CardContent>
                     </Card>
                 </TabsContent>
+
+                <!-- Product Tab -->
+                <TabsContent v-if="isWidgetActive('product') && productWidget" value="product" class="space-y-6">
+                    <ProductWidget
+                        :metrics="productWidget.metrics"
+                        :sales-data="productWidget.salesData"
+                        :category-distribution="productWidget.categoryDistribution"
+                        :date-range="dateRange"
+                        :loading="loading"
+                        :show-stats="true"
+                        :show-sales="true"
+                        :show-category="true"
+                        @date-range-change="handleDateRangeChange"
+                        @refresh="handleRefresh"
+                    />
+                </TabsContent>
+
+                <!-- Empty State when no widgets are active -->
+                <div v-if="activeWidgets.length === 0" class="flex flex-col items-center justify-center py-12 text-center">
+                    <Settings class="mb-4 h-12 w-12 text-muted-foreground" />
+                    <h3 class="text-lg font-semibold">No widgets enabled</h3>
+                    <p class="text-muted-foreground mb-4">Enable widgets in settings to see your dashboard</p>
+                    <Button as-child>
+                        <Link href="/dashboard/settings">Go to Settings</Link>
+                    </Button>
+                </div>
             </Tabs>
         </div>
     </AppLayout>

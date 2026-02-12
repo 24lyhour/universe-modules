@@ -6,8 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { LayoutGrid, CheckCircle, XCircle, Grid2X2, List, BarChart3, PieChart, AreaChart, LineChart } from 'lucide-vue-next';
-import { ref } from 'vue';
+import { LayoutGrid, CheckCircle, XCircle, Grid2X2, List, BarChart3, PieChart, AreaChart, LineChart, Users, UtensilsCrossed, Store, Package } from 'lucide-vue-next';
+import { ref, computed } from 'vue';
 import type { BreadcrumbItem } from '@/types';
 
 interface Widget {
@@ -59,10 +59,17 @@ const breadcrumbItems: BreadcrumbItem[] = [
 const viewMode = ref<'grid' | 'list'>('grid');
 
 const handleStatusChange = (widget: Widget, status: boolean) => {
+    console.log('Updating widget:', widget.id, 'to status:', status);
     router.patch(`/dashboard/settings/widgets/${widget.id}`, {
         status,
     }, {
         preserveScroll: true,
+        onSuccess: () => {
+            console.log('Widget updated successfully');
+        },
+        onError: (errors) => {
+            console.error('Error updating widget:', errors);
+        },
     });
 };
 
@@ -75,6 +82,55 @@ const handleTabChange = (value: string) => {
 };
 
 const currentTab = props.currentStatus || 'all';
+
+// Module icons mapping
+const moduleIcons: Record<string, any> = {
+    Customer: Users,
+    Menu: UtensilsCrossed,
+    Outlet: Store,
+    Product: Package,
+};
+
+// Group widgets by module
+const groupedWidgets = computed(() => {
+    const groups: Record<string, Widget[]> = {};
+    props.widgetItems.forEach(widget => {
+        if (!groups[widget.module]) {
+            groups[widget.module] = [];
+        }
+        groups[widget.module].push(widget);
+    });
+    return groups;
+});
+
+// Check if ANY widget in a module is active (matches Dashboard tab visibility logic)
+const isModuleActive = (module: string) => {
+    const widgets = groupedWidgets.value[module] || [];
+    return widgets.some(w => w.status);
+};
+
+// Check if ALL widgets in a module are active
+const isModuleFullyActive = (module: string) => {
+    const widgets = groupedWidgets.value[module] || [];
+    return widgets.length > 0 && widgets.every(w => w.status);
+};
+
+// Toggle all widgets in a module
+const handleModuleToggle = (module: string, status: boolean) => {
+    console.log('Toggling module:', module, 'to status:', status);
+    router.post('/dashboard/settings/widgets/toggle-module', {
+        module,
+        status,
+    }, {
+        preserveScroll: true,
+        onSuccess: () => {
+            console.log('Module toggled successfully');
+        },
+        onError: (errors) => {
+            console.error('Error toggling module:', errors);
+        },
+    });
+};
 </script>
 
 <template>
@@ -149,63 +205,107 @@ const currentTab = props.currentStatus || 'all';
                 </div>
             </div>
 
-            <!-- Widget Cards -->
-            <div
-                :class="[
-                    viewMode === 'grid'
-                        ? 'grid gap-4 md:grid-cols-2 lg:grid-cols-3'
-                        : 'flex flex-col gap-3'
-                ]"
-            >
-                <Card
-                    v-for="widget in props.widgetItems"
-                    :key="widget.id"
-                    class="relative"
+            <!-- Grouped Widget Cards by Module -->
+            <div class="space-y-8">
+                <div
+                    v-for="(widgets, module) in groupedWidgets"
+                    :key="module"
+                    class="space-y-4"
                 >
-                    <div class="absolute right-3 top-3">
-                        <Badge variant="secondary" class="text-xs">
-                            {{ widget.sort_order }}
-                        </Badge>
-                    </div>
-                    <CardHeader class="pb-3">
-                        <div class="flex items-center gap-2">
+                    <!-- Module Header with Toggle All -->
+                    <div class="flex items-center justify-between rounded-lg bg-muted/50 p-4">
+                        <div class="flex items-center gap-3">
                             <component
-                                :is="chartTypeIcons[widget.chart_type || 'stats']"
-                                class="h-5 w-5 text-muted-foreground"
+                                :is="moduleIcons[module] || LayoutGrid"
+                                class="h-6 w-6"
                             />
-                            <CardTitle class="text-base">{{ widget.name }}</CardTitle>
+                            <div>
+                                <h2 class="text-lg font-semibold">{{ module }}</h2>
+                                <p class="text-sm text-muted-foreground">
+                                    {{ widgets.filter(w => w.status).length }}/{{ widgets.length }} widgets active
+                                </p>
+                            </div>
                         </div>
-                        <p v-if="widget.description" class="text-sm text-muted-foreground mt-1">
-                            {{ widget.description }}
-                        </p>
-                        <div class="flex flex-wrap items-center gap-2 pt-2">
-                            <Badge variant="outline">{{ widget.module }}</Badge>
-                            <Badge variant="outline">{{ widget.type }}</Badge>
-                            <Badge v-if="widget.chart_type" variant="default">
-                                {{ chartTypeLabels[widget.chart_type] || widget.chart_type }}
-                            </Badge>
-                        </div>
-                    </CardHeader>
-                    <CardContent>
-                        <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
                             <div class="flex items-center gap-2">
                                 <span
                                     :class="[
-                                        'h-2 w-2 rounded-full',
-                                        widget.status ? 'bg-green-500' : 'bg-red-500'
+                                        'h-2.5 w-2.5 rounded-full',
+                                        isModuleActive(module) ? 'bg-green-500' : 'bg-red-500'
                                     ]"
                                 />
-                                <span class="text-sm text-muted-foreground">
-                                    {{ widget.status ? 'Active' : 'Inactive' }}
+                                <span class="text-sm font-medium">
+                                    {{ isModuleActive(module) ? 'Tab Visible' : 'Tab Hidden' }}
                                 </span>
                             </div>
-                            <Switch
-                                :checked="widget.status"
-                                @update:checked="(value) => handleStatusChange(widget, value)"
-                            />
+                            <div class="flex flex-col items-end gap-1">
+                                <Switch
+                                    :model-value="isModuleFullyActive(module)"
+                                    @update:model-value="(value: boolean) => handleModuleToggle(module, value)"
+                                />
+                                <span class="text-xs text-muted-foreground">Toggle All</span>
+                            </div>
                         </div>
-                    </CardContent>
-                </Card>
+                    </div>
+
+                    <!-- Module Widgets -->
+                    <div
+                        :class="[
+                            viewMode === 'grid'
+                                ? 'grid gap-4 md:grid-cols-2 lg:grid-cols-3'
+                                : 'flex flex-col gap-3'
+                        ]"
+                    >
+                        <Card
+                            v-for="widget in widgets"
+                            :key="widget.id"
+                            class="relative"
+                        >
+                            <div class="absolute right-3 top-3">
+                                <Badge variant="secondary" class="text-xs">
+                                    {{ widget.sort_order }}
+                                </Badge>
+                            </div>
+                            <CardHeader class="pb-3">
+                                <div class="flex items-center gap-2">
+                                    <component
+                                        :is="chartTypeIcons[widget.chart_type || 'stats']"
+                                        class="h-5 w-5 text-muted-foreground"
+                                    />
+                                    <CardTitle class="text-base">{{ widget.name }}</CardTitle>
+                                </div>
+                                <p v-if="widget.description" class="text-sm text-muted-foreground mt-1">
+                                    {{ widget.description }}
+                                </p>
+                                <div class="flex flex-wrap items-center gap-2 pt-2">
+                                    <Badge variant="outline">{{ widget.type }}</Badge>
+                                    <Badge v-if="widget.chart_type" variant="default">
+                                        {{ chartTypeLabels[widget.chart_type] || widget.chart_type }}
+                                    </Badge>
+                                </div>
+                            </CardHeader>
+                            <CardContent>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <span
+                                            :class="[
+                                                'h-2 w-2 rounded-full',
+                                                widget.status ? 'bg-green-500' : 'bg-red-500'
+                                            ]"
+                                        />
+                                        <span class="text-sm text-muted-foreground">
+                                            {{ widget.status ? 'Active' : 'Inactive' }}
+                                        </span>
+                                    </div>
+                                    <Switch
+                                        :model-value="widget.status"
+                                        @update:model-value="(value: boolean) => handleStatusChange(widget, value)"
+                                    />
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </div>
             </div>
 
             <p

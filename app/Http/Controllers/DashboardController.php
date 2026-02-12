@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Widget;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -11,6 +12,7 @@ use Modules\Menu\Models\Menu;
 use Modules\Menu\Models\MenuType;
 use Modules\Menu\Models\Category;
 use Modules\Outlet\Models\Outlet;
+use Modules\Product\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -23,15 +25,54 @@ class DashboardController extends Controller
         $dateRange = $request->input('date_range', '30d');
         $tab = $request->input('tab', 'customer');
 
+        // Get all dashboard widgets with their status
+        $allWidgets = Widget::dashboard()
+            ->select('id', 'name', 'module', 'chart_type', 'status')
+            ->get();
+
+        // Get modules that have AT LEAST ONE active widget
+        // If ANY widget in a module is active, show that module's tab
+        $activeModules = $allWidgets
+            ->where('status', true)
+            ->pluck('module')
+            ->map(fn($m) => strtolower($m))
+            ->unique()
+            ->values()
+            ->toArray();
+
+        // Get individual widget statuses by chart_type for granular control
+        $widgetStatuses = $allWidgets->mapWithKeys(function ($widget) {
+            $key = strtolower($widget->module) . '_' . $widget->chart_type;
+            return [$key => $widget->status];
+        })->toArray();
+
+        // Only load data for active modules
+        $widgets = [];
+        if (in_array('customer', $activeModules)) {
+            $widgets['customer'] = $this->getCustomerStats();
+        }
+        if (in_array('menu', $activeModules)) {
+            $widgets['menu'] = $this->getMenuStats();
+        }
+        if (in_array('outlet', $activeModules)) {
+            $widgets['outlet'] = $this->getOutletStats();
+        }
+        if (in_array('product', $activeModules)) {
+            $widgets['product'] = $this->getProductStats();
+        }
+
         return Inertia::render('Dashboard', [
-            'widgets' => [
-                'customer' => $this->getCustomerStats(),
-                'menu' => $this->getMenuStats(),
-                'outlet' => $this->getOutletStats(),
-            ],
-            'customerWidget' => $this->customerWidgetService->getWidgetData($dateRange),
+            'widgets' => $widgets,
+            'customerWidget' => in_array('customer', $activeModules)
+                ? $this->customerWidgetService->getWidgetData($dateRange)
+                : null,
+            'productWidget' => in_array('product', $activeModules)
+                ? $this->getProductWidgetData($dateRange)
+                : null,
             'dateRange' => $dateRange,
             'tab' => $tab,
+            'activeWidgets' => $activeModules,
+            'widgetStatuses' => $widgetStatuses,
         ]);
     }
 
@@ -83,6 +124,55 @@ class DashboardController extends Controller
                 ->take(5)
                 ->get(['id', 'name', 'address', 'status', 'created_at'])
                 ->toArray(),
+        ];
+    }
+
+    private function getProductStats(): array
+    {
+        return [
+            'total' => Product::count(),
+            'active' => Product::where('status', 'active')->count(),
+            'out_of_stock' => Product::where('stock', '<=', 0)->count(),
+            'low_stock' => Product::where('stock', '>', 0)->where('stock', '<=', 10)->count(),
+            'discontinued' => Product::where('status', 'discontinued')->count(),
+        ];
+    }
+
+    private function getProductWidgetData(string $dateRange): array
+    {
+        $products = Product::all();
+        $totalProducts = Product::count();
+        
+        // Generate mock sales data for chart
+        $salesData = [];
+        for ($i = 4; $i >= 0; $i--) {
+            $salesData[] = [
+                'label' => now()->subWeeks($i)->format('M d'),
+                'value' => rand(200, 500),
+                'revenue' => rand(9000, 25000),
+                'sold' => rand(200, 500),
+            ];
+        }
+
+        return [
+            'metrics' => [
+                'total' => $totalProducts,
+                'active' => Product::where('status', 'active')->count(),
+                'outOfStock' => Product::where('stock', '<=', 0)->count(),
+                'lowStock' => Product::where('stock', '>', 0)->where('stock', '<=', 10)->count(),
+                'discontinued' => Product::where('status', 'discontinued')->count(),
+                'totalRevenue' => $products->sum('price') ?? 0,
+                'averagePrice' => $products->avg('price') ?? 0,
+                'totalSold' => $products->sum('stock') ?? 0,
+                'growthPercent' => 12.5,
+                'previousPeriodTotal' => max($totalProducts - 10, 0),
+                'topPerformingCount' => Product::where('stock', '>', 50)->count(),
+                'inventoryValue' => $products->sum(function ($p) {
+                    return ($p->stock ?? 0) * ($p->price ?? 0);
+                }) ?? 0,
+            ],
+            'salesData' => $salesData,
+            'categoryDistribution' => [],
         ];
     }
 }
