@@ -7,6 +7,7 @@ use Modules\Customer\Database\Seeders\CustomerDatabaseSeeder;
 use Modules\Outlet\Database\Seeders\OutletDatabaseSeeder;
 use Modules\Menu\Database\Seeders\MenuDatabaseSeeder;
 use Modules\Wallets\Database\Seeders\WalletsDatabaseSeeder;
+use Modules\Product\Database\Seeders\ProductDatabaseSeeder;
 
 class ModuleSeeder extends Seeder
 {
@@ -29,6 +30,9 @@ class ModuleSeeder extends Seeder
 
             // Wallets module (depends on Customer)
             WalletsDatabaseSeeder::class,
+
+            // product module (depends on Outlet)
+            ProductDatabaseSeeder::class,
         ]);
     }
 }
