@@ -45,4 +45,4 @@
 	url = https://github.com/24lyhour/universe-modules-School.git
 [submodule "Modules/Wallets"]
 	path = Modules/Wallets
-	url = https://github.com/24lyhour/universe-modules-Wallets.git
+	url = https://github.com/24lyhour/universe-modules-Wallet.git
