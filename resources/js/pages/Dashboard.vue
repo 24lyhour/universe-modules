@@ -69,6 +69,7 @@ interface WalletStats {
     total: number;
     active: number;
     inactive: number;
+    suspended: number;
     totalBalance: number;
     totalLocked: number;
     averageBalance: number;

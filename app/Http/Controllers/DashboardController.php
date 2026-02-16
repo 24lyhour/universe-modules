@@ -14,6 +14,7 @@ use Modules\Menu\Models\Category;
 use Modules\Outlet\Models\Outlet;
 use Modules\Product\Models\Product;
 use Modules\Wallets\Models\Wallet;
+use Modules\Wallets\Models\Transaction;
 
 class DashboardController extends Controller
 {
@@ -189,14 +190,64 @@ class DashboardController extends Controller
         $totalBalance = Wallet::sum('balance');
         $totalLocked = Wallet::sum('locked_amount');
 
+        // Transaction stats
+        $totalTransactions = Transaction::count();
+        $completedTransactions = Transaction::completed()->count();
+        $pendingTransactions = Transaction::pending()->count();
+        $failedTransactions = Transaction::failed()->count();
+        $totalCredits = (float) Transaction::completed()->credits()->sum('amount');
+        $totalDebits = (float) Transaction::completed()->debits()->sum('amount');
+
+        // Generate transaction volume trend data (last 6 months)
+        $transactionTrend = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $monthStart = $date->copy()->startOfMonth();
+            $monthEnd = $date->copy()->endOfMonth();
+
+            $monthTransactions = Transaction::whereBetween('created_at', [$monthStart, $monthEnd]);
+            $transactionTrend[] = [
+                'label' => $date->format('M'),
+                'value' => $i,
+                'count' => $monthTransactions->count(),
+                'volume' => (float) $monthTransactions->sum('amount'),
+            ];
+        }
+
+        // Transaction type distribution
+        $typeDistribution = Transaction::selectRaw('type, count(*) as count, sum(amount) as total')
+            ->groupBy('type')
+            ->get()
+            ->map(fn($t) => [
+                'type' => $t->type->value ?? $t->type,
+                'label' => $t->type->label() ?? ucfirst($t->type),
+                'count' => (int) $t->count,
+                'total' => (float) $t->total,
+            ])
+            ->toArray();
+
         return [
+            // Wallet stats
             'total' => $totalWallets,
             'active' => Wallet::where('status', 'active')->count(),
             'inactive' => Wallet::where('status', 'inactive')->count(),
+            'suspended' => Wallet::where('status', 'suspended')->count(),
             'totalBalance' => (float) $totalBalance,
             'totalLocked' => (float) $totalLocked,
             'averageBalance' => $totalWallets > 0 ? (float) ($totalBalance / $totalWallets) : 0,
-            'growthPercent' => 8.5, // Mock growth for now
+            'growthPercent' => 8.5,
+            // Transaction stats
+            'transactions' => [
+                'total' => $totalTransactions,
+                'completed' => $completedTransactions,
+                'pending' => $pendingTransactions,
+                'failed' => $failedTransactions,
+                'totalCredits' => $totalCredits,
+                'totalDebits' => $totalDebits,
+                'netFlow' => $totalCredits - $totalDebits,
+            ],
+            'transactionTrend' => $transactionTrend,
+            'typeDistribution' => $typeDistribution,
         ];
     }
 }

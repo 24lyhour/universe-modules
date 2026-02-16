@@ -132,6 +132,43 @@ class WidgetSeeder extends Seeder
                 'sort_order' => 13,
                 'status' => true,
             ],
+            // Transaction widgets
+            [
+                'name' => 'Transaction Statistics',
+                'description' => 'Overview of transaction counts and volumes',
+                'module' => 'Wallets',
+                'type' => 'dashboard',
+                'chart_type' => 'stats',
+                'sort_order' => 14,
+                'status' => true,
+            ],
+            [
+                'name' => 'Transaction Volume Trend',
+                'description' => 'Transaction volume over time',
+                'module' => 'Wallets',
+                'type' => 'dashboard',
+                'chart_type' => 'area',
+                'sort_order' => 15,
+                'status' => true,
+            ],
+            [
+                'name' => 'Transaction Status Distribution',
+                'description' => 'Completed, Pending, Failed transactions',
+                'module' => 'Wallets',
+                'type' => 'dashboard',
+                'chart_type' => 'donut',
+                'sort_order' => 16,
+                'status' => true,
+            ],
+            [
+                'name' => 'Transaction Type Breakdown',
+                'description' => 'Deposits, Withdrawals, Transfers, Payments',
+                'module' => 'Wallets',
+                'type' => 'dashboard',
+                'chart_type' => 'bar',
+                'sort_order' => 17,
+                'status' => true,
+            ],
         ];
 
         foreach ($widgets as $widget) {
