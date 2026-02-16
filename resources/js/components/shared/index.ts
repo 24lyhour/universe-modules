@@ -15,3 +15,7 @@ export { ImageUpload } from './ImageUpload';
 // Media Library
 export { MediaLibraryModal } from './MediaLibrary';
 export type { MediaItem } from './MediaLibrary';
+
+// Searchable Select
+export { SearchableSelect } from './SearchableSelect';
+export type { SearchableSelectOption } from './SearchableSelect';
