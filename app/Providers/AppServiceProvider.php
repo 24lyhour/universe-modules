@@ -40,12 +40,23 @@ class AppServiceProvider extends ServiceProvider
             MenuService::addSubmenuItem(
                 'footer',
                 'dashboard-settings',
-                __('Dashboard Widgets'),
+                __('Dashboard'),
                 '/dashboard/settings',
                 10,
                 null,
                 'dashboard.settings',
                 'LayoutGrid'
+            );
+
+            MenuService::addSubmenuItem(
+                'footer',
+                'dashboard-settings',
+                __('Wallet Settings'),
+                '/dashboard/wallets/settings',
+                20,
+                null,
+                'wallets.settings',
+                'Wallet'
             );
         });
     }

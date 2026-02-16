@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { LayoutGrid, CheckCircle, XCircle, Grid2X2, List, BarChart3, PieChart, AreaChart, LineChart, Users, UtensilsCrossed, Store, Package, GripVertical } from 'lucide-vue-next';
+import { LayoutGrid, CheckCircle, XCircle, Grid2X2, List, BarChart3, PieChart, AreaChart, LineChart, Users, UtensilsCrossed, Store, Package, GripVertical, Wallet } from 'lucide-vue-next';
 import { ref, watch } from 'vue';
 import { VueDraggable } from 'vue-draggable-plus';
 import type { BreadcrumbItem } from '@/types';
@@ -60,17 +60,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
 const viewMode = ref<'grid' | 'list'>('grid');
 
 const handleStatusChange = (widget: Widget, status: boolean) => {
-    console.log('Updating widget:', widget.id, 'to status:', status);
     router.patch(`/dashboard/settings/widgets/${widget.id}`, {
         status,
     }, {
         preserveScroll: true,
-        onSuccess: () => {
-            console.log('Widget updated successfully');
-        },
-        onError: (errors) => {
-            console.error('Error updating widget:', errors);
-        },
     });
 };
 
@@ -90,6 +83,7 @@ const moduleIcons: Record<string, any> = {
     Menu: UtensilsCrossed,
     Outlet: Store,
     Product: Package,
+    Wallet: Wallet,
 };
 
 // Group widgets by module - use ref for drag-and-drop
@@ -158,18 +152,11 @@ const isModuleFullyActive = (module: string) => {
 
 // Toggle all widgets in a module
 const handleModuleToggle = (module: string, status: boolean) => {
-    console.log('Toggling module:', module, 'to status:', status);
     router.post('/dashboard/settings/widgets/toggle-module', {
         module,
         status,
     }, {
         preserveScroll: true,
-        onSuccess: () => {
-            console.log('Module toggled successfully');
-        },
-        onError: (errors) => {
-            console.error('Error toggling module:', errors);
-        },
     });
 };
 </script>
