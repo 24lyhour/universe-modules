@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Customer\Database\Seeders\CustomerDatabaseSeeder;
+use Modules\Outlet\Database\Seeders\OutletDatabaseSeeder;
+use Modules\Menu\Database\Seeders\MenuDatabaseSeeder;
+use Modules\Wallets\Database\Seeders\WalletsDatabaseSeeder;
 
 class ModuleSeeder extends Seeder
 {
@@ -15,16 +19,16 @@ class ModuleSeeder extends Seeder
     {
         $this->call([
             // Customer module (needed for Wallets)
-            \Modules\Customer\Database\Seeders\CustomerDatabaseSeeder::class,
+            CustomerDatabaseSeeder::class,
 
             // Outlet module (needed for Menu)
-            \Modules\Outlet\Database\Seeders\OutletDatabaseSeeder::class,
+            OutletDatabaseSeeder::class,
 
             // Menu module (depends on Outlet)
-            \Modules\Menu\Database\Seeders\MenuDatabaseSeeder::class,
+            MenuDatabaseSeeder::class,
 
             // Wallets module (depends on Customer)
-            \Modules\Wallets\Database\Seeders\WalletsDatabaseSeeder::class,
+            WalletsDatabaseSeeder::class,
         ]);
     }
 }
