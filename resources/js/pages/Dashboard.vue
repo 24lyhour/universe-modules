@@ -217,6 +217,7 @@ const handleRefresh = () => {
                         :metrics="customerWidget.metrics"
                         :growth-data="customerWidget.growthData"
                         :status-distribution="customerWidget.statusDistribution"
+                        :recent-customers="customerWidget.recentCustomers"
                         :date-range="dateRange"
                         :loading="loading"
                         :show-stats="isCustomerStatsActive"
