@@ -58,6 +58,17 @@ class AppServiceProvider extends ServiceProvider
                 'settings.wallet',
                 'Wallet'
             );
+
+            MenuService::addSubmenuItem(
+                'footer',
+                'dashboard-settings',
+                __('Login Settings'),
+                '/dashboard/settings/login',
+                30,
+                null,
+                'settings.login',
+                'LogIn'
+            );
         });
     }
 

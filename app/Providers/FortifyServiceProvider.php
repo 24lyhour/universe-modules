@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
+use App\Models\Setting;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -51,6 +52,7 @@ class FortifyServiceProvider extends ServiceProvider
             'canResetPassword' => Features::enabled(Features::resetPasswords()),
             'canRegister' => Features::enabled(Features::registration()),
             'status' => $request->session()->get('status'),
+            'loginSettings' => $this->getLoginSettings(),
         ]));
 
         Fortify::resetPasswordView(fn (Request $request) => Inertia::render('auth/ResetPassword', [
@@ -71,6 +73,28 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::twoFactorChallengeView(fn () => Inertia::render('auth/TwoFactorChallenge'));
 
         Fortify::confirmPasswordView(fn () => Inertia::render('auth/ConfirmPassword'));
+    }
+
+    /**
+     * Get login page settings.
+     */
+    private function getLoginSettings(): array
+    {
+        $defaults = [
+            'title' => 'Welcome back',
+            'subtitle' => 'Enter your credentials to access your account',
+            'image' => '/img/3.jpg',
+            'logo' => '',
+            'quote_text' => 'This platform has transformed how we manage our business operations. The intuitive interface and powerful features make it indispensable.',
+            'quote_author' => 'Alex Johnson',
+            'quote_company' => 'CEO at TechCorp',
+            'show_social_login' => true,
+            'show_remember_me' => true,
+        ];
+
+        $settings = Setting::getGroup('login');
+
+        return array_merge($defaults, $settings);
     }
 
     /**

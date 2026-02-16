@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Setting;
 use App\Services\MenuService;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
@@ -54,6 +55,10 @@ class HandleInertiaRequests extends Middleware
                 'footer' => $request->user()
                     ? MenuService::getMenuForUser('footer', $request->user())
                     : [],
+            ],
+            'appBranding' => [
+                'logo' => Setting::getValue('login', 'logo', ''),
+                'name' => config('app.name'),
             ],
             'flash' => [
                 'success' => fn () => $request->session()->get('success'),
