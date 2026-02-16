@@ -52,10 +52,10 @@ class AppServiceProvider extends ServiceProvider
                 'footer',
                 'dashboard-settings',
                 __('Wallet Settings'),
-                '/dashboard/wallets/settings',
+                '/dashboard/settings/wallet',
                 20,
                 null,
-                'wallets.settings',
+                'settings.wallet',
                 'Wallet'
             );
         });
