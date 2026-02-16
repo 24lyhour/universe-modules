@@ -15,6 +15,7 @@ import { toast } from 'vue-sonner';
 import type { BreadcrumbItem } from '@/types';
 
 interface LoginSettings {
+    app_name: string;
     title: string;
     subtitle: string;
     image: string;
@@ -40,6 +41,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
 // Form for text settings
 const form = useForm({
+    app_name: props.loginSettings.app_name,
     title: props.loginSettings.title,
     subtitle: props.loginSettings.subtitle,
     quote_text: props.loginSettings.quote_text,
@@ -71,6 +73,7 @@ watch(logoImages, (newVal, oldVal) => {
 
 const saveImageUrl = (imageUrl: string) => {
     router.post('/dashboard/settings/login', {
+        app_name: form.app_name || '',
         title: form.title,
         subtitle: form.subtitle,
         image_url: imageUrl,
@@ -92,6 +95,7 @@ const saveImageUrl = (imageUrl: string) => {
 
 const saveLogoUrl = (logoUrl: string) => {
     router.post('/dashboard/settings/login', {
+        app_name: form.app_name || '',
         title: form.title,
         subtitle: form.subtitle,
         logo_url: logoUrl,
@@ -134,6 +138,7 @@ const resetBackgroundImage = () => {
 
 const handleSave = () => {
     router.post('/dashboard/settings/login', {
+        app_name: form.app_name || '',
         title: form.title,
         subtitle: form.subtitle,
         quote_text: form.quote_text || '',
@@ -293,22 +298,46 @@ const previewLogin = () => {
                     </CardContent>
                 </Card>
 
-                <!-- Logo Upload -->
+                <!-- Branding -->
                 <Card>
                     <CardHeader>
-                        <CardTitle>Logo</CardTitle>
+                        <CardTitle>Branding</CardTitle>
                         <CardDescription>
-                            Upload a custom logo to display on the login page (recommended: transparent PNG)
+                            Customize your app name and logo
                         </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                        <ImageUpload
-                            v-model="logoImages"
-                            label=""
-                            :multiple="false"
-                            :max-files="1"
-                            :max-size="2"
-                        />
+                    <CardContent class="space-y-4">
+                        <div class="space-y-2">
+                            <Label for="app_name">App Name</Label>
+                            <Input
+                                id="app_name"
+                                v-model="form.app_name"
+                                placeholder="Universe"
+                                maxlength="50"
+                            />
+                            <p class="text-xs text-muted-foreground">
+                                Displayed in the sidebar and login page
+                            </p>
+                            <p v-if="form.errors.app_name" class="text-sm text-destructive">
+                                {{ form.errors.app_name }}
+                            </p>
+                        </div>
+
+                        <Separator />
+
+                        <div class="space-y-2">
+                            <Label>Logo</Label>
+                            <p class="text-xs text-muted-foreground mb-2">
+                                Upload a custom logo (recommended: transparent PNG)
+                            </p>
+                            <ImageUpload
+                                v-model="logoImages"
+                                label=""
+                                :multiple="false"
+                                :max-files="1"
+                                :max-size="2"
+                            />
+                        </div>
                     </CardContent>
                 </Card>
 

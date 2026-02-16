@@ -16,6 +16,7 @@ class LoginSettingsController extends Controller
      * Default login settings.
      */
     protected array $defaults = [
+        'app_name' => '',
         'title' => 'Welcome back',
         'subtitle' => 'Enter your credentials to access your account',
         'image' => '/img/3.jpg',
@@ -35,7 +36,9 @@ class LoginSettingsController extends Controller
         $loginSettings = Setting::getGroup('login');
 
         // Merge with defaults for any missing settings
-        $loginSettings = array_merge($this->defaults, $loginSettings);
+        $defaults = $this->defaults;
+        $defaults['app_name'] = config('app.name', 'Universe');
+        $loginSettings = array_merge($defaults, $loginSettings);
 
         return Inertia::render('settings/Login', [
             'loginSettings' => $loginSettings,
@@ -48,6 +51,7 @@ class LoginSettingsController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validate([
+            'app_name' => 'nullable|string|max:50',
             'title' => 'required|string|max:100',
             'subtitle' => 'required|string|max:200',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',

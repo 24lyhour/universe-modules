@@ -10,6 +10,7 @@ import { useForm, Head, Link } from '@inertiajs/vue3';
 import { Loader2 } from 'lucide-vue-next';
 
 interface LoginSettings {
+    app_name: string;
     title: string;
     subtitle: string;
     image: string;
@@ -51,13 +52,17 @@ const submit = () => {
                 <!-- Form Section -->
                 <div class="p-8 md:p-12">
                     <form @submit.prevent="submit" class="space-y-6">
-                        <!-- Logo -->
-                        <div v-if="loginSettings.logo" class="flex justify-center">
+                        <!-- Logo & App Name -->
+                        <div class="flex flex-col items-center gap-2">
                             <img
+                                v-if="loginSettings.logo"
                                 :src="loginSettings.logo"
-                                alt="Logo"
+                                :alt="loginSettings.app_name"
                                 class="h-12 w-auto object-contain"
                             />
+                            <span v-if="loginSettings.app_name && !loginSettings.logo" class="text-xl font-bold">
+                                {{ loginSettings.app_name }}
+                            </span>
                         </div>
 
                         <!-- Header -->

@@ -45,9 +45,10 @@ class SettingsSeeder extends Seeder
     protected function seedLoginSettings(): void
     {
         $settings = [
-            ['key' => 'title', 'value'    => 'Welcome back', 'type' => 'string'],
+            ['key' => 'app_name', 'value' => 'Kouchlyhour', 'type' => 'string'],
+            ['key' => 'title', 'value' => 'Welcome back', 'type' => 'string'],
             ['key' => 'subtitle', 'value' => 'Enter your credentials to access your account', 'type' => 'string'],
-            ['key' => 'image', 'value'    => '/img/3.jpg', 'type' => 'string'],
+            ['key' => 'image', 'value' => '/img/3.jpg', 'type' => 'string'],
             ['key' => 'logo', 'value' => '', 'type' => 'string'],
             ['key' => 'quote_text', 'value' => 'This platform has transformed how we manage our business operations. The intuitive interface and powerful features make it indispensable.', 'type' => 'string'],
             ['key' => 'quote_author', 'value' => 'Kouchlyhour', 'type' => 'string'],

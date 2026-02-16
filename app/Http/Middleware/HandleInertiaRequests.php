@@ -58,7 +58,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'appBranding' => [
                 'logo' => Setting::getValue('login', 'logo', ''),
-                'name' => config('app.name'),
+                'name' => Setting::getValue('login', 'app_name', '') ?: config('app.name'),
             ],
             'flash' => [
                 'success' => fn () => $request->session()->get('success'),

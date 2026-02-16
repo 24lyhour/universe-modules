@@ -81,6 +81,7 @@ class FortifyServiceProvider extends ServiceProvider
     private function getLoginSettings(): array
     {
         $defaults = [
+            'app_name' => config('app.name', 'Kouchlyhour'),
             'title' => 'Welcome back',
             'subtitle' => 'Enter your credentials to access your account',
             'image' => '/img/3.jpg',
@@ -93,8 +94,14 @@ class FortifyServiceProvider extends ServiceProvider
         ];
 
         $settings = Setting::getGroup('login');
+        $merged = array_merge($defaults, $settings);
 
-        return array_merge($defaults, $settings);
+        // Use config value if app_name is empty
+        if (empty($merged['app_name'])) {
+            $merged['app_name'] = config('app.name', 'Kouchlyhour');
+        }
+
+        return $merged;
     }
 
     /**
