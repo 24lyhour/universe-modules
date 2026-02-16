@@ -23,9 +23,20 @@ const resolvePageComponent = (name: string) => {
     // Check if it's a module page (format: modulename::path/to/Page)
     if (name.includes('::')) {
         const [moduleName, pagePath] = name.split('::');
-        const moduleKey = `/Modules/${moduleName.charAt(0).toUpperCase() + moduleName.slice(1)}/resources/js/pages/${pagePath}.vue`;
-        const page = eagerModulePages[moduleKey];
+        const formattedModuleName = moduleName.charAt(0).toUpperCase() + moduleName.slice(1);
+        
+        // Try absolute path key
+        const moduleKey = `/Modules/${formattedModuleName}/resources/js/pages/${pagePath}.vue`;
+        let page = eagerModulePages[moduleKey];
+        
+        // Fallback: try without leading slash if not found
         if (typeof page === 'undefined') {
+            const relativeModuleKey = moduleKey.substring(1);
+            page = eagerModulePages[relativeModuleKey];
+        }
+
+        if (typeof page === 'undefined') {
+            console.error('Available module keys:', Object.keys(eagerModulePages));
             throw new Error(`Module page not found: ${moduleKey}`);
         }
         return page;
@@ -46,9 +57,19 @@ const resolveModalComponent = (name: string) => {
     // Check if it's a module page (format: modulename::path/to/Page)
     if (name.includes('::')) {
         const [moduleName, pagePath] = name.split('::');
-        const moduleKey = `/Modules/${moduleName.charAt(0).toUpperCase() + moduleName.slice(1)}/resources/js/pages/${pagePath}.vue`;
-        const loader = lazyModulePages[moduleKey];
+        const formattedModuleName = moduleName.charAt(0).toUpperCase() + moduleName.slice(1);
+        
+        const moduleKey = `/Modules/${formattedModuleName}/resources/js/pages/${pagePath}.vue`;
+        let loader = lazyModulePages[moduleKey];
+        
+        // Fallback: try without leading slash
         if (typeof loader === 'undefined') {
+            const relativeModuleKey = moduleKey.substring(1);
+            loader = lazyModulePages[relativeModuleKey];
+        }
+
+        if (typeof loader === 'undefined') {
+            console.error('Available lazy module keys:', Object.keys(lazyModulePages));
             throw new Error(`Module page not found: ${moduleKey}`);
         }
         return loader();

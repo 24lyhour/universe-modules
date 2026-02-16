@@ -36,6 +36,7 @@ import {
     Settings,
     UtensilsCrossed,
     Users,
+    Wallet,
     Wrench,
     type LucideIcon,
 } from 'lucide-vue-next';
@@ -65,6 +66,7 @@ const iconMap: Record<string, LucideIcon> = {
     Settings,
     UtensilsCrossed,
     Users,
+    Wallet,
     Wrench,
 };
 
