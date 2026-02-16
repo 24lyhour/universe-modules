@@ -13,6 +13,7 @@ use Modules\Menu\Models\MenuType;
 use Modules\Menu\Models\Category;
 use Modules\Outlet\Models\Outlet;
 use Modules\Product\Models\Product;
+use Modules\Wallets\Models\Wallet;
 
 class DashboardController extends Controller
 {
@@ -62,6 +63,9 @@ class DashboardController extends Controller
         }
         if (in_array('product', $activeModules)) {
             $widgets['product'] = $this->getProductStats();
+        }
+        if (in_array('wallets', $activeModules)) {
+            $widgets['wallets'] = $this->getWalletStats();
         }
 
         return Inertia::render('Dashboard', [
@@ -176,6 +180,23 @@ class DashboardController extends Controller
             ],
             'salesData' => $salesData,
             'categoryDistribution' => [],
+        ];
+    }
+
+    private function getWalletStats(): array
+    {
+        $totalWallets = Wallet::count();
+        $totalBalance = Wallet::sum('balance');
+        $totalLocked = Wallet::sum('locked_amount');
+
+        return [
+            'total' => $totalWallets,
+            'active' => Wallet::where('status', 'active')->count(),
+            'inactive' => Wallet::where('status', 'inactive')->count(),
+            'totalBalance' => (float) $totalBalance,
+            'totalLocked' => (float) $totalLocked,
+            'averageBalance' => $totalWallets > 0 ? (float) ($totalBalance / $totalWallets) : 0,
+            'growthPercent' => 8.5, // Mock growth for now
         ];
     }
 }

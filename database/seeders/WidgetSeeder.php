@@ -75,6 +75,36 @@ class WidgetSeeder extends Seeder
                 'sort_order' => 7,
                 'status' => true,
             ],
+            // Product widgets
+            [
+                'name' => 'Product Statistics',
+                'description' => 'Overview of product counts and inventory',
+                'module' => 'Product',
+                'type' => 'dashboard',
+                'chart_type' => 'stats',
+                'sort_order' => 8,
+                'status' => true,
+            ],
+            // Order widgets
+            [
+                'name' => 'Order Statistics',
+                'description' => 'Overview of order counts and revenue',
+                'module' => 'Order',
+                'type' => 'dashboard',
+                'chart_type' => 'stats',
+                'sort_order' => 9,
+                'status' => true,
+            ],
+            // Wallet widgets
+            [
+                'name' => 'Wallet Statistics',
+                'description' => 'Overview of wallet balances and status',
+                'module' => 'Wallets',
+                'type' => 'dashboard',
+                'chart_type' => 'stats',
+                'sort_order' => 10,
+                'status' => true,
+            ],
         ];
 
         foreach ($widgets as $widget) {
