@@ -66,14 +66,13 @@ interface OrderStats {
 }
 
 interface WalletStats {
-    total_wallets: number;
-    active_wallets: number;
-    inactive_wallets: number;
-    total_balance: number;
-    average_balance: number;
-    locked_amount: number;
-    available_amount: number;
-    growth_percent: number;
+    total: number;
+    active: number;
+    inactive: number;
+    totalBalance: number;
+    totalLocked: number;
+    averageBalance: number;
+    growthPercent: number;
 }
 
 interface WidgetStatuses {
@@ -124,6 +123,12 @@ const tabConfig: Record<string, { icon: any; label: string }> = {
 const isCustomerStatsActive = computed(() => props.widgetStatuses?.['customer_stats'] ?? true);
 const isCustomerGrowthActive = computed(() => props.widgetStatuses?.['customer_area'] ?? true);
 const isCustomerStatusActive = computed(() => props.widgetStatuses?.['customer_donut'] ?? true);
+
+// Wallet widget status helpers
+const isWalletStatsActive = computed(() => props.widgetStatuses?.['wallets_stats'] ?? true);
+const isWalletAreaActive = computed(() => props.widgetStatuses?.['wallets_area'] ?? true);
+const isWalletDonutActive = computed(() => props.widgetStatuses?.['wallets_donut'] ?? true);
+const isWalletBarActive = computed(() => props.widgetStatuses?.['wallets_bar'] ?? true);
 
 const { chartColors } = useChartColors();
 
@@ -276,6 +281,10 @@ const handleRefresh = () => {
                         :metrics="props.widgets.wallets"
                         :date-range="dateRange"
                         :loading="loading"
+                        :show-stats="isWalletStatsActive"
+                        :show-area="isWalletAreaActive"
+                        :show-donut="isWalletDonutActive"
+                        :show-bar="isWalletBarActive"
                         @date-range-change="handleDateRangeChange"
                         @refresh="handleRefresh"
                     />

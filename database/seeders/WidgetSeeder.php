@@ -105,6 +105,33 @@ class WidgetSeeder extends Seeder
                 'sort_order' => 10,
                 'status' => true,
             ],
+            [
+                'name' => 'Wallet Balance Trend',
+                'description' => 'Balance growth over time',
+                'module' => 'Wallets',
+                'type' => 'dashboard',
+                'chart_type' => 'area',
+                'sort_order' => 11,
+                'status' => true,
+            ],
+            [
+                'name' => 'Wallet Status Distribution',
+                'description' => 'Active vs Inactive wallets',
+                'module' => 'Wallets',
+                'type' => 'dashboard',
+                'chart_type' => 'donut',
+                'sort_order' => 12,
+                'status' => true,
+            ],
+            [
+                'name' => 'Wallet Balance Distribution',
+                'description' => 'Available vs Locked balance',
+                'module' => 'Wallets',
+                'type' => 'dashboard',
+                'chart_type' => 'bar',
+                'sort_order' => 13,
+                'status' => true,
+            ],
         ];
 
         foreach ($widgets as $widget) {
