@@ -189,13 +189,14 @@ const submit = () => {
                 </div>
 
                 <!-- Image Section -->
-                <div class="relative hidden bg-muted md:block">
+                <div class="relative hidden bg-black md:block">
                     <img
+                        v-if="loginSettings.image"
                         :src="loginSettings.image"
                         alt="Login illustration"
-                        class="absolute inset-0 h-full w-full object-cover"
+                        class="absolute inset-0 h-full w-full object-contain"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <div class="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
                     <div v-if="loginSettings.quote_text" class="absolute bottom-0 left-0 right-0 p-8 text-white">
                         <blockquote class="space-y-2">
                             <p class="text-lg font-medium leading-relaxed">

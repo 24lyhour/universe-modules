@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Modules\Customer\Database\Seeders\CustomerDatabaseSeeder;
-use Modules\Outlet\Database\Seeders\OutletDatabaseSeeder;
 use Modules\Menu\Database\Seeders\MenuDatabaseSeeder;
+use Modules\Outlet\Database\Seeders\OutletDatabaseSeeder;
+use Modules\Product\Database\Seeders\ProductSeeder;
 use Modules\Wallets\Database\Seeders\WalletsDatabaseSeeder;
-use Modules\Product\Database\Seeders\ProductDatabaseSeeder;
 
 class ModuleSeeder extends Seeder
 {
@@ -22,7 +22,7 @@ class ModuleSeeder extends Seeder
             // Customer module (needed for Wallets)
             CustomerDatabaseSeeder::class,
 
-            // Outlet module (needed for Menu)
+            // Outlet module (needed for Menu and Product)
             OutletDatabaseSeeder::class,
 
             // Menu module (depends on Outlet)
@@ -31,8 +31,8 @@ class ModuleSeeder extends Seeder
             // Wallets module (depends on Customer)
             WalletsDatabaseSeeder::class,
 
-            // product module (depends on Outlet)
-            ProductDatabaseSeeder::class,
+            // Product module (depends on Outlet)  and the attributes of the product
+            ProductSeeder::class,
         ]);
     }
 }

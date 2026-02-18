@@ -129,8 +129,8 @@ const resetBackgroundImage = () => {
         router.delete('/dashboard/settings/login/image', {
             preserveScroll: true,
             onSuccess: () => {
-                backgroundImages.value = ['/img/3.jpg'];
-                toast.success('Image reset to default.');
+                backgroundImages.value = ['/img/dev.png'];
+                toast.success('Background reset to default.');
             },
         });
     }
@@ -280,7 +280,7 @@ const previewLogin = () => {
                                 <Input
                                     id="quote_author"
                                     v-model="form.quote_author"
-                                    placeholder="John Doe"
+                                    placeholder="Name user "
                                     maxlength="100"
                                 />
                             </div>
@@ -363,7 +363,7 @@ const previewLogin = () => {
                             type="button"
                             class="w-full"
                             @click="resetBackgroundImage"
-                            :disabled="props.loginSettings.image === '/img/3.jpg'"
+                            :disabled="props.loginSettings.image === '/img/dev.png'"
                         >
                             <Trash2 class="mr-2 h-4 w-4" />
                             Reset to Default

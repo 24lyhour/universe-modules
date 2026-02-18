@@ -19,11 +19,11 @@ class LoginSettingsController extends Controller
         'app_name' => '',
         'title' => 'Welcome back',
         'subtitle' => 'Enter your credentials to access your account',
-        'image' => '/img/3.jpg',
-        'logo' => '',
-        'quote_text' => 'This platform has transformed how we manage our business operations. The intuitive interface and powerful features make it indispensable.',
-        'quote_author' => 'Alex Johnson',
-        'quote_company' => 'CEO at TechCorp',
+        'image'    => '/img/dev.png',
+        'logo'     => '',
+        'quote_text' => 'Universe has streamlined our workflow and boosted productivity. The elegant design and powerful features make it a joy to use every day.',
+        'quote_author' => 'Kouchlyhour',
+        'quote_company' => 'Ly hour kouch Manager at Innovate Inc.',
         'show_social_login' => true,
         'show_remember_me' => true,
     ];
@@ -67,9 +67,9 @@ class LoginSettingsController extends Controller
 
         // Handle image - either file upload or URL from media library
         if ($request->hasFile('image')) {
-            // Delete old image if it exists and is not the default
+            // Delete old image if it exists and is stored in storage
             $oldImage = Setting::getValue('login', 'image');
-            if ($oldImage && $oldImage !== '/img/3.jpg' && Storage::disk('public')->exists(str_replace('/storage/', '', $oldImage))) {
+            if ($oldImage && str_starts_with($oldImage, '/storage/') && Storage::disk('public')->exists(str_replace('/storage/', '', $oldImage))) {
                 Storage::disk('public')->delete(str_replace('/storage/', '', $oldImage));
             }
 
@@ -115,23 +115,23 @@ class LoginSettingsController extends Controller
     }
 
     /**
-     * Remove the login background image.
+     * Remove the login background image (resets to default).
      */
     public function removeImage(): RedirectResponse
     {
         $currentImage = Setting::getValue('login', 'image');
 
-        if ($currentImage && $currentImage !== '/img/3.jpg') {
+        if ($currentImage && str_starts_with($currentImage, '/storage/')) {
             $path = str_replace('/storage/', '', $currentImage);
             if (Storage::disk('public')->exists($path)) {
                 Storage::disk('public')->delete($path);
             }
         }
 
-        // Reset to default
-        Setting::setValue('login', 'image', '/img/3.jpg', 'string');
+        // Reset to default image
+        Setting::setValue('login', 'image', '/img/dev.png', 'string');
 
-        return back()->with('success', 'Login image reset to default.');
+        return back()->with('success', 'Background reset to default.');
     }
 
     /**
