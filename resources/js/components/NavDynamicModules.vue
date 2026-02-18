@@ -41,6 +41,7 @@ import {
     Users,
     Wallet,
     Wrench,
+    PlusCircle,
     type LucideIcon,
 } from 'lucide-vue-next';
 
@@ -74,6 +75,7 @@ const iconMap: Record<string, LucideIcon> = {
     Users,
     Wallet,
     Wrench,
+    PlusCircle,
 };
 
 const getIcon = (iconName: string | null | undefined): LucideIcon | null => {
