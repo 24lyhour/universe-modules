@@ -82,10 +82,10 @@ class FortifyServiceProvider extends ServiceProvider
     {
         $defaults = [
             'app_name' => config('app.name', 'Kouchlyhour'),
-            'title' => 'Welcome back',
+            'title'    => 'Welcome back',
             'subtitle' => 'Enter your credentials to access your account',
-            'image' => '/img/dev.png',
-            'logo' => '',
+            'image'    => '/img/dev.png',
+            'logo'     => '',
             'quote_text' => 'Universe has streamlined our workflow and boosted productivity. The elegant design and powerful features make it a joy to use every day.',
             'quote_author' => 'Kouchlyhour',
             'quote_company' => 'Ly hour kouch Manager at Innovate Inc.',
@@ -96,7 +96,6 @@ class FortifyServiceProvider extends ServiceProvider
         $settings = Setting::getGroup('login');
         $merged = array_merge($defaults, $settings);
 
-        // Use config value if app_name is empty
         if (empty($merged['app_name'])) {
             $merged['app_name'] = config('app.name', 'Kouchlyhour');
         }
