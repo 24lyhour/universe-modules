@@ -17,7 +17,7 @@ const props = defineProps<ToasterProps>();
 const mergedToastOptions = computed(() => ({
     ...props.toastOptions,
     classes: {
-        toast: 'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg group-[.toaster]:rounded-lg',
+        toast: 'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg group-[.toaster]:rounded-lg !z-[99999]',
         title: 'group-[.toast]:text-foreground group-[.toast]:font-semibold',
         description: 'group-[.toast]:text-muted-foreground',
         actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',
@@ -40,7 +40,7 @@ const restProps = computed(() => {
 
 <template>
     <Sonner
-        class="toaster group"
+        class="toaster group !z-[99999]"
         :toast-options="mergedToastOptions"
         v-bind="restProps"
     >

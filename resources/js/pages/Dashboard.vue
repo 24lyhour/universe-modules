@@ -42,11 +42,34 @@ interface CustomerStats {
 }
 
 interface MenuStats {
+    // Menu stats
     total_menus: number;
     active_menus: number;
     inactive_menus: number;
-    total_categories: number;
     total_types: number;
+    // Category stats
+    total_categories: number;
+    active_categories: number;
+    inactive_categories: number;
+    categories_with_products: number;
+    categories_without_products: number;
+    // Product in categories stats
+    total_products_in_categories: number;
+    available_products: number;
+    unavailable_products: number;
+    // Top categories
+    top_categories: Array<{
+        id: number;
+        name: string;
+        status: boolean;
+        products_count: number;
+    }>;
+    // Growth trend
+    growth_trend: Array<{
+        label: string;
+        categories: number;
+        products: number;
+    }>;
 }
 
 interface OutletStats {
@@ -124,6 +147,12 @@ const tabConfig: Record<string, { icon: any; label: string }> = {
 const isCustomerStatsActive = computed(() => props.widgetStatuses?.['customer_stats'] ?? true);
 const isCustomerGrowthActive = computed(() => props.widgetStatuses?.['customer_area'] ?? true);
 const isCustomerStatusActive = computed(() => props.widgetStatuses?.['customer_donut'] ?? true);
+
+// Menu widget status helpers
+const isMenuStatsActive = computed(() => props.widgetStatuses?.['menu_stats'] ?? true);
+const isMenuDistributionActive = computed(() => props.widgetStatuses?.['menu_distribution'] ?? true);
+const isMenuBarActive = computed(() => props.widgetStatuses?.['menu_bar'] ?? true);
+const isMenuAreaActive = computed(() => props.widgetStatuses?.['menu_area'] ?? true);
 
 // Wallet widget status helpers
 const isWalletStatsActive = computed(() => props.widgetStatuses?.['wallets_stats'] ?? true);
@@ -234,6 +263,10 @@ const handleRefresh = () => {
                         :metrics="props.widgets.menu"
                         :date-range="dateRange"
                         :loading="loading"
+                        :show-stats="isMenuStatsActive"
+                        :show-distribution="isMenuDistributionActive"
+                        :show-bar="isMenuBarActive"
+                        :show-area="isMenuAreaActive"
                         @date-range-change="handleDateRangeChange"
                         @refresh="handleRefresh"
                     />

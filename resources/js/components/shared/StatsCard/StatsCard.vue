@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { computed, type Component } from 'vue';
+import { useAnimatedCounter } from '@/composables/useAnimatedCounter';
 
 export interface StatsCardProps {
     title: string;
@@ -9,22 +10,64 @@ export interface StatsCardProps {
     iconColor?: string;
     valueColor?: string;
     description?: string;
+    animate?: boolean;
+    animationDuration?: number;
+    animationDelay?: number;
     trend?: {
         value: number;
         isPositive: boolean;
     };
+    variant?: 'default' | 'success' | 'warning' | 'danger' | 'destructive' | 'info' | 'secondary';
 }
 
 const props = withDefaults(defineProps<StatsCardProps>(), {
     iconColor: 'text-muted-foreground',
     valueColor: '',
+    animate: true,
+    animationDuration: 1500,
+    animationDelay: 0,
+    variant: 'default',
 });
 
+// Use animated counter for numeric values
+const { displayValue } = useAnimatedCounter(
+    () => (typeof props.value === 'number' ? props.value : 0),
+    {
+        duration: props.animationDuration,
+        delay: props.animationDelay,
+    }
+);
+
 const formattedValue = computed(() => {
+    if (typeof props.value === 'number' && props.animate) {
+        return displayValue.value.toLocaleString();
+    }
     if (typeof props.value === 'number') {
         return props.value.toLocaleString();
     }
     return props.value;
+});
+
+// Variant-based icon colors
+const iconColorClass = computed(() => {
+    if (props.iconColor !== 'text-muted-foreground') {
+        return props.iconColor;
+    }
+    switch (props.variant) {
+        case 'success':
+            return 'text-green-500';
+        case 'warning':
+            return 'text-yellow-500';
+        case 'danger':
+        case 'destructive':
+            return 'text-red-500';
+        case 'info':
+            return 'text-blue-500';
+        case 'secondary':
+            return 'text-muted-foreground';
+        default:
+            return 'text-muted-foreground';
+    }
 });
 </script>
 
@@ -36,7 +79,7 @@ const formattedValue = computed(() => {
                 :is="icon"
                 v-if="icon"
                 class="h-4 w-4"
-                :class="iconColor"
+                :class="iconColorClass"
             />
         </CardHeader>
         <CardContent>

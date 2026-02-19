@@ -75,11 +75,12 @@ withDefaults(defineProps<Props>(), {
     <!-- Toast Notifications - Outside AppShell for proper viewport positioning -->
     <Toaster
         position="top-right"
-        :expand="false"
-        :rich-colors="false"
+        :expand="true"
+        :rich-colors="true"
         :close-button="true"
-        :duration="4000"
-        :visible-toasts="3"
+        :duration="5000"
+        :visible-toasts="5"
         :gap="12"
+        :offset="16"
     />
 </template>

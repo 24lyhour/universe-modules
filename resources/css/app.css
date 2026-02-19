@@ -180,6 +180,7 @@
     --toast-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-family: inherit;
     z-index: 99999 !important;
+    position: fixed !important;
 }
 
 [data-sonner-toast] {

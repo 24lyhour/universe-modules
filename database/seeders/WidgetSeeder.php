@@ -22,11 +22,20 @@ class WidgetSeeder extends Seeder
             ],
             [
                 'name' => 'Menu Statistics',
-                'description' => 'Overview of menu counts and status',
+                'description' => 'Overview of menu and category counts',
                 'module' => 'Menu',
                 'type' => 'dashboard',
                 'chart_type' => 'stats',
                 'sort_order' => 2,
+                'status' => true,
+            ],
+            [
+                'name' => 'Menu Category Distribution',
+                'description' => 'Categories with vs without products',
+                'module' => 'Menu',
+                'type' => 'dashboard',
+                'chart_type' => 'distribution',
+                'sort_order' => 3,
                 'status' => true,
             ],
             [
@@ -35,7 +44,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Outlet',
                 'type' => 'dashboard',
                 'chart_type' => 'stats',
-                'sort_order' => 3,
+                'sort_order' => 4,
                 'status' => true,
             ],
             // Chart widgets
@@ -45,16 +54,25 @@ class WidgetSeeder extends Seeder
                 'module' => 'Customer',
                 'type' => 'dashboard',
                 'chart_type' => 'area',
-                'sort_order' => 4,
+                'sort_order' => 5,
                 'status' => true,
             ],
             [
-                'name' => 'Menu by Category',
-                'description' => 'Distribution of menus by category',
+                'name' => 'Menu Top Categories',
+                'description' => 'Top categories by product count',
                 'module' => 'Menu',
                 'type' => 'dashboard',
                 'chart_type' => 'bar',
-                'sort_order' => 5,
+                'sort_order' => 6,
+                'status' => true,
+            ],
+            [
+                'name' => 'Menu Growth Trend',
+                'description' => 'Categories and products added over time',
+                'module' => 'Menu',
+                'type' => 'dashboard',
+                'chart_type' => 'area',
+                'sort_order' => 7,
                 'status' => true,
             ],
             [
@@ -63,7 +81,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Customer',
                 'type' => 'dashboard',
                 'chart_type' => 'donut',
-                'sort_order' => 6,
+                'sort_order' => 8,
                 'status' => true,
             ],
             [
@@ -72,7 +90,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Outlet',
                 'type' => 'dashboard',
                 'chart_type' => 'bar',
-                'sort_order' => 7,
+                'sort_order' => 9,
                 'status' => true,
             ],
             // Product widgets
@@ -82,7 +100,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Product',
                 'type' => 'dashboard',
                 'chart_type' => 'stats',
-                'sort_order' => 8,
+                'sort_order' => 10,
                 'status' => true,
             ],
             // Order widgets
@@ -92,7 +110,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Order',
                 'type' => 'dashboard',
                 'chart_type' => 'stats',
-                'sort_order' => 9,
+                'sort_order' => 11,
                 'status' => true,
             ],
             // Wallet widgets
@@ -102,7 +120,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Wallets',
                 'type' => 'dashboard',
                 'chart_type' => 'stats',
-                'sort_order' => 10,
+                'sort_order' => 12,
                 'status' => true,
             ],
             [
@@ -111,7 +129,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Wallets',
                 'type' => 'dashboard',
                 'chart_type' => 'area',
-                'sort_order' => 11,
+                'sort_order' => 13,
                 'status' => true,
             ],
             [
@@ -120,7 +138,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Wallets',
                 'type' => 'dashboard',
                 'chart_type' => 'donut',
-                'sort_order' => 12,
+                'sort_order' => 14,
                 'status' => true,
             ],
             [
@@ -129,7 +147,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Wallets',
                 'type' => 'dashboard',
                 'chart_type' => 'bar',
-                'sort_order' => 13,
+                'sort_order' => 15,
                 'status' => true,
             ],
             // Transaction widgets
@@ -139,7 +157,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Wallets',
                 'type' => 'dashboard',
                 'chart_type' => 'stats',
-                'sort_order' => 14,
+                'sort_order' => 16,
                 'status' => true,
             ],
             [
@@ -148,7 +166,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Wallets',
                 'type' => 'dashboard',
                 'chart_type' => 'area',
-                'sort_order' => 15,
+                'sort_order' => 17,
                 'status' => true,
             ],
             [
@@ -157,7 +175,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Wallets',
                 'type' => 'dashboard',
                 'chart_type' => 'donut',
-                'sort_order' => 16,
+                'sort_order' => 18,
                 'status' => true,
             ],
             [
@@ -166,7 +184,7 @@ class WidgetSeeder extends Seeder
                 'module' => 'Wallets',
                 'type' => 'dashboard',
                 'chart_type' => 'bar',
-                'sort_order' => 17,
+                'sort_order' => 19,
                 'status' => true,
             ],
         ];

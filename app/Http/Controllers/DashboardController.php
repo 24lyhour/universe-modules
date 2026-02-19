@@ -100,12 +100,78 @@ class DashboardController extends Controller
 
     private function getMenuStats(): array
     {
+        // Category stats
+        $totalCategories = Category::count();
+        $activeCategories = Category::where('status', true)->count();
+        $inactiveCategories = Category::where('status', false)->count();
+        $categoriesWithProducts = Category::has('products')->count();
+        $categoriesWithoutProducts = $totalCategories - $categoriesWithProducts;
+
+        // Product in categories stats (from pivot table)
+        $totalProductsInCategories = \DB::table('menu_category_products')->count();
+        $availableProductsInCategories = \DB::table('menu_category_products')
+            ->where('is_available', true)
+            ->count();
+        $unavailableProductsInCategories = $totalProductsInCategories - $availableProductsInCategories;
+
+        // Top categories by product count
+        $topCategories = Category::withCount('products')
+            ->orderByDesc('products_count')
+            ->take(5)
+            ->get(['id', 'name', 'status'])
+            ->map(fn($cat) => [
+                'id' => $cat->id,
+                'name' => $cat->name,
+                'status' => $cat->status,
+                'products_count' => $cat->products_count,
+            ])
+            ->toArray();
+
+        // Growth trend data (last 6 months)
+        $growthTrend = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $monthStart = $date->copy()->startOfMonth();
+            $monthEnd = $date->copy()->endOfMonth();
+
+            $categoriesCreated = Category::whereBetween('created_at', [$monthStart, $monthEnd])->count();
+            $productsAssigned = \DB::table('menu_category_products')
+                ->whereBetween('created_at', [$monthStart, $monthEnd])
+                ->count();
+
+            $growthTrend[] = [
+                'label' => $date->format('M'),
+                'categories' => $categoriesCreated,
+                'products' => $productsAssigned,
+            ];
+        }
+
         return [
+            // Menu stats
             'total_menus' => Menu::count(),
             'active_menus' => Menu::where('status', true)->count(),
             'inactive_menus' => Menu::where('status', false)->count(),
-            'total_categories' => Category::count(),
             'total_types' => MenuType::count(),
+
+            // Category stats
+            'total_categories' => $totalCategories,
+            'active_categories' => $activeCategories,
+            'inactive_categories' => $inactiveCategories,
+            'categories_with_products' => $categoriesWithProducts,
+            'categories_without_products' => $categoriesWithoutProducts,
+
+            // Products in categories stats
+            'total_products_in_categories' => $totalProductsInCategories,
+            'available_products' => $availableProductsInCategories,
+            'unavailable_products' => $unavailableProductsInCategories,
+
+            // Top categories
+            'top_categories' => $topCategories,
+
+            // Growth trend
+            'growth_trend' => $growthTrend,
+
+            // Recent menus
             'recent' => Menu::with(['outlet', 'menuType'])
                 ->latest()
                 ->take(5)
