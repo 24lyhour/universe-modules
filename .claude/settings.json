@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(pgrep:*)"
+      "Bash(pgrep:*)",
+      "Bash(git mv:*)"
     ]
   }
 }

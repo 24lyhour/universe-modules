@@ -69,6 +69,17 @@ class AppServiceProvider extends ServiceProvider
                 'settings.login',
                 'LogIn'
             );
+
+            MenuService::addSubmenuItem(
+                'footer',
+                'dashboard-settings',
+                __('Product Settings'),
+                '/dashboard/products/settings',
+                40,
+                null,
+                'dashboard.product.settings',
+                'Package'
+            );
         });
     }
 
