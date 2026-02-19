@@ -62,6 +62,17 @@ class AppServiceProvider extends ServiceProvider
             MenuService::addSubmenuItem(
                 'footer',
                 'dashboard-settings',
+                __('Product Settings'),
+                '/dashboard/products/settings',
+                25,
+                null,
+                'dashboard.product.settings',
+                'Package'
+            );
+
+            MenuService::addSubmenuItem(
+                'footer',
+                'dashboard-settings',
                 __('Login Settings'),
                 '/dashboard/settings/login',
                 30,

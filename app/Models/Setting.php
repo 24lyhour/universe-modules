@@ -37,6 +37,11 @@ class Setting extends Model
      */
     public static function setValue(string $group, string $key, mixed $value, string $type = 'string'): void
     {
+        // Handle boolean conversion properly (false becomes "0", not "")
+        if ($type === 'boolean') {
+            $value = $value ? '1' : '0';
+        }
+
         static::updateOrCreate(
             ['group' => $group, 'key' => $key],
             ['value' => (string) $value, 'type' => $type]

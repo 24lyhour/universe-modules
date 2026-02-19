@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { Head, router } from '@inertiajs/vue3';
+import { Head, Link, router } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { StatsCard } from '@/components/shared';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { LayoutGrid, CheckCircle, XCircle, Grid2X2, List, BarChart3, PieChart, AreaChart, LineChart, Users, UtensilsCrossed, Store, Package, GripVertical, Wallet } from 'lucide-vue-next';
+import { LayoutGrid, CheckCircle, XCircle, Grid2X2, List, BarChart3, PieChart, AreaChart, LineChart, Users, UtensilsCrossed, Store, Package, GripVertical, Wallet, ChevronRight, Settings } from 'lucide-vue-next';
 import { ref, watch } from 'vue';
 import { VueDraggable } from 'vue-draggable-plus';
 import type { BreadcrumbItem } from '@/types';
@@ -167,8 +167,59 @@ const handleModuleToggle = (module: string, status: boolean) => {
 
         <div class="flex h-full flex-1 flex-col gap-6 p-6">
             <div>
-                <h1 class="text-2xl font-bold tracking-tight">Dashboard Widgets</h1>
-                <p class="text-muted-foreground">Customize your dashboard experience by managing widgets</p>
+                <h1 class="text-2xl font-bold tracking-tight">Dashboard Settings</h1>
+                <p class="text-muted-foreground">Customize your dashboard and module settings</p>
+            </div>
+
+            <!-- Module Settings -->
+            <div class="space-y-4">
+                <h2 class="text-lg font-semibold flex items-center gap-2">
+                    <Settings class="h-5 w-5" />
+                    Module Settings
+                </h2>
+                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    <Link href="/dashboard/settings/wallet">
+                        <Card class="hover:bg-muted/50 transition-colors cursor-pointer group">
+                            <CardHeader class="pb-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                                            <Wallet class="h-5 w-5 text-primary" />
+                                        </div>
+                                        <div>
+                                            <CardTitle class="text-base">Wallet Settings</CardTitle>
+                                            <CardDescription class="text-sm">ID & number format</CardDescription>
+                                        </div>
+                                    </div>
+                                    <ChevronRight class="h-5 w-5 text-muted-foreground group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </CardHeader>
+                        </Card>
+                    </Link>
+                    <Link href="/dashboard/products/settings">
+                        <Card class="hover:bg-muted/50 transition-colors cursor-pointer group">
+                            <CardHeader class="pb-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                                            <Package class="h-5 w-5 text-primary" />
+                                        </div>
+                                        <div>
+                                            <CardTitle class="text-base">Product Settings</CardTitle>
+                                            <CardDescription class="text-sm">SKU & inventory options</CardDescription>
+                                        </div>
+                                    </div>
+                                    <ChevronRight class="h-5 w-5 text-muted-foreground group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </CardHeader>
+                        </Card>
+                    </Link>
+                </div>
+            </div>
+
+            <!-- Widgets Section -->
+            <div class="space-y-4">
+                <h2 class="text-lg font-semibold">Dashboard Widgets</h2>
             </div>
 
             <!-- Stats -->

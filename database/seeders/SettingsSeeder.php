@@ -14,6 +14,7 @@ class SettingsSeeder extends Seeder
     {
         $this->seedWalletSettings();
         $this->seedLoginSettings();
+        $this->seedProductSettings();
     }
 
     /**
@@ -60,6 +61,26 @@ class SettingsSeeder extends Seeder
         foreach ($settings as $setting) {
             Setting::firstOrCreate(
                 ['group' => 'login', 'key' => $setting['key']],
+                ['value' => $setting['value'], 'type' => $setting['type']]
+            );
+        }
+    }
+
+    /**
+     * Seed product settings.
+     */
+    protected function seedProductSettings(): void
+    {
+        $settings = [
+            ['key' => 'auto_generate_sku', 'value' => '1', 'type' => 'boolean'],
+            ['key' => 'sku_prefix', 'value' => '', 'type' => 'string'],
+            ['key' => 'sku_separator', 'value' => '-', 'type' => 'string'],
+            ['key' => 'low_stock_threshold', 'value' => '5', 'type' => 'integer'],
+        ];
+
+        foreach ($settings as $setting) {
+            Setting::firstOrCreate(
+                ['group' => 'product', 'key' => $setting['key']],
                 ['value' => $setting['value'], 'type' => $setting['type']]
             );
         }
