@@ -46,3 +46,6 @@
 [submodule "Modules/Wallets"]
 	path = Modules/Wallets
 	url = https://github.com/24lyhour/universe-modules-Wallet.git
+[submodule "Modules/Employee"]
+	path = Modules/Employee
+	url = https://github.com/24lyhour/universe-modules-Employee.git
