@@ -50,7 +50,9 @@
             "@porfolio/*": ["Modules/Porfolio/resources/js/*"],
             "@product/*": ["Modules/Product/resources/js/*"],
             "@report/*": ["Modules/Report/resources/js/*"],
-            "@wallets/*": ["Modules/Wallets/resources/js/*"]
+            "@wallets/*": ["Modules/Wallets/resources/js/*"],
+            "@employee/*": ["Modules/Employee/resources/js/*"],
+            "@school/*": ["Modules/School/resources/js/*"]
         },
         // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
         // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
