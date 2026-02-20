@@ -19,12 +19,14 @@ import { type MenuItem } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
 import {
     ArrowLeftRight,
+    BookOpen,
     Briefcase,
     Building2,
     CalendarDays,
     ChevronRight,
     CreditCard,
     FileText,
+    GraduationCap,
     Hotel,
     Layers,
     LayoutGrid,
@@ -43,6 +45,7 @@ import {
     Wallet,
     Wrench,
     PlusCircle,
+    School,
     type LucideIcon,
 } from 'lucide-vue-next';
 
@@ -55,11 +58,13 @@ const page = usePage();
 
 const iconMap: Record<string, LucideIcon> = {
     ArrowLeftRight,
+    BookOpen,
     Briefcase,
     Building2,
     CalendarDays,
     CreditCard,
     FileText,
+    GraduationCap,
     Hotel,
     Layers,
     LayoutGrid,
@@ -78,6 +83,7 @@ const iconMap: Record<string, LucideIcon> = {
     Wallet,
     Wrench,
     PlusCircle,
+    School,
 };
 
 const getIcon = (iconName: string | null | undefined): LucideIcon | null => {
