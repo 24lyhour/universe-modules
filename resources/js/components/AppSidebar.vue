@@ -28,7 +28,9 @@ const mainNavItems: NavItem[] = [
     },
 ];
 
-// Get dynamic menu items from backend via MenuService (filtered by user permissions)
+/**
+ * computed the permissions
+ */
 const dynamicModuleItems = computed(() => page.props.menus?.primary || []);
 const footerNavItems = computed(() => page.props.menus?.footer || []);
 </script>

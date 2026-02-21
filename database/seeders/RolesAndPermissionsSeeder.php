@@ -223,10 +223,12 @@ class RolesAndPermissionsSeeder extends Seeder
         $employeePermissions = [
             'dashboard.view',
             'attendances.view',
+            'attendances.view_any',
             'attendances.check_in',
             'attendances.check_out',
             'attendances.scan_qr',
             'employees.view',
+            'employees.view_any',
         ];
         $employee = Role::firstOrCreate(['name' => 'employee', 'guard_name' => 'web']);
         $employee->syncPermissions($employeePermissions);
