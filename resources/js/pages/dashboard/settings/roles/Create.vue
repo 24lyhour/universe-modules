@@ -197,6 +197,19 @@ const formatAction = (action: string) => {
         'delete': 'Delete',
         'restore': 'Restore',
         'force_delete': 'Force Delete',
+        'export_reports': 'Export Reports',
+        'view_analytics': 'View Analytics',
+        'manage': 'Manage',
+        'view_logs': 'View Logs',
+        // Dashboard widget permissions
+        'customer': 'Customer Widget',
+        'menu': 'Menu Widget',
+        'outlet': 'Outlet Widget',
+        'product': 'Product Widget',
+        'order': 'Order Widget',
+        'wallets': 'Wallets Widget',
+        'employee': 'Employee Widget',
+        'school': 'School Widget',
     };
     return actionMap[action] || formatName(action);
 };

@@ -18,11 +18,17 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
 
+        // Trust all proxies (required for ngrok/valet share)
+        $middleware->trustProxies(at: '*');
+
         $middleware->web(append: [
             HandleAppearance::class,
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
         ]);
+
+        // Configure redirect for unauthenticated users
+        $middleware->redirectGuestsTo('/login');
 
         // Register middleware aliases for modules
         $middleware->alias([
@@ -30,6 +36,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+            'auto.permission' => \App\Http\Middleware\AutoPermission::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

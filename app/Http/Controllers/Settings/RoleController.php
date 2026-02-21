@@ -89,7 +89,7 @@ class RoleController extends Controller
             $role->syncPermissions(Permission::whereIn('id', $validated['permissions'])->get());
         }
 
-        return redirect()->route('settings.roles.index')
+        return redirect()->route('roles.index')
             ->with('success', 'Role created successfully.');
     }
 
@@ -98,7 +98,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        return redirect()->route('settings.roles.edit', $role);
+        return redirect()->route('roles.edit', $role);
     }
 
     /**
@@ -123,7 +123,7 @@ class RoleController extends Controller
             $role->syncPermissions(Permission::whereIn('id', $validated['permissions'])->get());
         }
 
-        return redirect()->route('settings.roles.index')
+        return redirect()->route('roles.index')
             ->with('success', 'Role updated successfully.');
     }
 
@@ -134,13 +134,13 @@ class RoleController extends Controller
     {
         // Prevent deleting system roles
         if (in_array($role->name, ['super-admin', 'admin', 'manager', 'staff', 'employee', 'viewer'])) {
-            return redirect()->route('settings.roles.index')
+            return redirect()->route('roles.index')
                 ->with('error', 'Cannot delete system roles.');
         }
 
         $role->delete();
 
-        return redirect()->route('settings.roles.index')
+        return redirect()->route('roles.index')
             ->with('success', 'Role deleted successfully.');
     }
 
@@ -168,8 +168,8 @@ class RoleController extends Controller
             'Payment' => ['payments'],
             'Report' => ['reports'],
             'User Management' => ['users', 'roles', 'permissions'],
-            'Settings' => ['settings', 'configurations'],
-            'Dashboard' => ['analytics', 'reports'],
+            'Settings' => ['settings', 'configurations', 'login_settings'],
+            'Dashboard' => ['dashboard', 'analytics'],
         ];
 
         // Create reverse mapping: resource -> module

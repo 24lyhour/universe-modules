@@ -2,22 +2,16 @@
 import { ref, computed, watch } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
-import { StatsCard } from '@/components/shared';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ChartContainer } from '@/components/ui/chart';
 import { CustomerWidget } from '@customer/Components/Widgets';
 import { ProductWidget } from '@product/Components/Widgets';
 import { MenuWIdget } from '@menu/Components/Widgets';
 import { OutletWidget } from '@outlet/Components/Widgets';
 import { OrderWidget } from '@order/Components/Widgets';
 import { WalletWidget } from '@wallets/Components/Widgets';
-import {
-    VisXYContainer,
-    VisStackedBar,
-    VisAxis,
-} from '@unovis/vue';
+import { EmployeeWidget } from '@employee/Components/Widgets';
+import { SchoolWidget } from '@school/Components/Widgets';
 import {
     Users,
     Package,
@@ -26,6 +20,8 @@ import {
     Wallet,
     UtensilsCrossed,
     Store,
+    GraduationCap,
+    UserCheck,
 } from 'lucide-vue-next';
 import type { BreadcrumbItem } from '@/types';
 import type { CustomerWidgetData } from '@customer/types';
@@ -99,6 +95,53 @@ interface WalletStats {
     growthPercent: number;
 }
 
+interface EmployeeStats {
+    total: number;
+    active: number;
+    inactive: number;
+    totalTypes: number;
+}
+
+interface EmployeeWidgetData {
+    metrics: {
+        total: number;
+        active: number;
+        inactive: number;
+        totalTypes: number;
+        todayPresent: number;
+        todayAbsent: number;
+        attendanceRate: number;
+        growthPercent: number;
+    };
+    attendanceTrend: Array<{ label: string; date: string; present: number; absent: number }>;
+    growthTrend: Array<{ label: string; value: number }>;
+    recentEmployees: Array<{ id: number; name: string; email: string; type: string; status: string; created_at: string }>;
+}
+
+interface SchoolStats {
+    totalSchools: number;
+    activeSchools: number;
+    inactiveSchools: number;
+    totalDepartments: number;
+    totalPrograms: number;
+    totalClassrooms: number;
+}
+
+interface SchoolWidgetData {
+    metrics: {
+        totalSchools: number;
+        activeSchools: number;
+        inactiveSchools: number;
+        totalDepartments: number;
+        totalPrograms: number;
+        totalClassrooms: number;
+        growthPercent: number;
+    };
+    departmentsBySchool: Array<{ id: number; name: string; departments: number }>;
+    growthTrend: Array<{ label: string; schools: number; departments: number; classrooms: number }>;
+    recentSchools: Array<{ id: number; name: string; status: string; departments: number; programs: number; created_at: string }>;
+}
+
 interface WidgetStatuses {
     [key: string]: boolean;
 }
@@ -110,6 +153,8 @@ interface Props {
         outlet?: OutletStats;
         order?: OrderStats;
         wallets?: WalletStats;
+        employee?: EmployeeStats;
+        school?: SchoolStats;
         product?: {
             total: number;
             active: number;
@@ -122,6 +167,8 @@ interface Props {
     productWidget?: { metrics: ProductMetrics; salesData: SalesDataPoint[]; categoryDistribution: CategoryDistribution[] } | null;
     orderWidget?: { metrics: OrderMetrics } | null;
     walletWidget?: { metrics: WalletMetrics } | null;
+    employeeWidget?: EmployeeWidgetData | null;
+    schoolWidget?: SchoolWidgetData | null;
     dateRange: string;
     tab?: string;
     activeWidgets: string[];
@@ -141,6 +188,8 @@ const tabConfig: Record<string, { icon: any; label: string }> = {
     product: { icon: Package, label: 'Product' },
     order: { icon: ShoppingCart, label: 'Order' },
     wallets: { icon: Wallet, label: 'Wallet' },
+    employee: { icon: UserCheck, label: 'Employee' },
+    school: { icon: GraduationCap, label: 'School' },
 };
 
 // Individual widget status helpers for granular control
@@ -320,6 +369,34 @@ const handleRefresh = () => {
                         :show-area="isWalletAreaActive"
                         :show-donut="isWalletDonutActive"
                         :show-bar="isWalletBarActive"
+                        @date-range-change="handleDateRangeChange"
+                        @refresh="handleRefresh"
+                    />
+                </TabsContent>
+
+                <!-- Employee Tab -->
+                <TabsContent v-if="isWidgetActive('employee') && employeeWidget" value="employee" class="space-y-6">
+                    <EmployeeWidget
+                        :metrics="employeeWidget.metrics"
+                        :attendance-trend="employeeWidget.attendanceTrend"
+                        :growth-trend="employeeWidget.growthTrend"
+                        :recent-employees="employeeWidget.recentEmployees"
+                        :date-range="dateRange"
+                        :loading="loading"
+                        @date-range-change="handleDateRangeChange"
+                        @refresh="handleRefresh"
+                    />
+                </TabsContent>
+
+                <!-- School Tab -->
+                <TabsContent v-if="isWidgetActive('school') && schoolWidget" value="school" class="space-y-6">
+                    <SchoolWidget
+                        :metrics="schoolWidget.metrics"
+                        :departments-by-school="schoolWidget.departmentsBySchool"
+                        :growth-trend="schoolWidget.growthTrend"
+                        :recent-schools="schoolWidget.recentSchools"
+                        :date-range="dateRange"
+                        :loading="loading"
                         @date-range-change="handleDateRangeChange"
                         @refresh="handleRefresh"
                     />

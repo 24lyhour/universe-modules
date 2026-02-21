@@ -4,15 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Widget;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
 use Modules\Customer\Models\Customer;
 use Modules\Customer\Services\CustomerWidgetService;
+use Modules\Employee\Models\Employee;
+use Modules\Employee\Models\EmployeeType;
+use Modules\Employee\Models\Attendance;
 use Modules\Menu\Models\Menu;
 use Modules\Menu\Models\MenuType;
 use Modules\Menu\Models\Category;
 use Modules\Outlet\Models\Outlet;
 use Modules\Product\Models\Product;
+use Modules\School\Models\School;
+use Modules\School\Models\Department;
+use Modules\School\Models\Program;
+use Modules\School\Models\Classroom;
 use Modules\Wallets\Models\Wallet;
 use Modules\Wallets\Models\Transaction;
 
@@ -25,7 +33,8 @@ class DashboardController extends Controller
     public function index(Request $request): Response
     {
         $dateRange = $request->input('date_range', '30d');
-        $tab = $request->input('tab', 'customer');
+        $tab = $request->input('tab', null);
+        $user = Auth::user();
 
         // Get all dashboard widgets with their status, ordered by sort_order
         $allWidgets = Widget::dashboard()
@@ -33,11 +42,35 @@ class DashboardController extends Controller
             ->orderBy('sort_order')
             ->get();
 
-        // Get modules that have AT LEAST ONE active widget, ordered by min sort_order
-        // If ANY widget in a module is active, show that module's tab
+        // Define module to permission mapping for dashboard widgets
+        // Uses dashboard.{widget} permissions for centralized control in role editor
+        $modulePermissions = [
+            'customer' => 'dashboard.customer',
+            'menu' => 'dashboard.menu',
+            'outlet' => 'dashboard.outlet',
+            'product' => 'dashboard.product',
+            'order' => 'dashboard.order',
+            'wallets' => 'dashboard.wallets',
+            'employee' => 'dashboard.employee',
+            'school' => 'dashboard.school',
+        ];
+
+        // Get modules that have AT LEAST ONE active widget AND user has permission
         $activeModules = $allWidgets
             ->where('status', true)
             ->groupBy('module')
+            ->filter(function ($widgets, $module) use ($user, $modulePermissions) {
+                $moduleLower = strtolower($module);
+                $permission = $modulePermissions[$moduleLower] ?? null;
+
+                // If no permission defined, show widget (backward compatibility)
+                // If permission defined, check if user has it (super-admin has all)
+                if (!$permission) {
+                    return true;
+                }
+
+                return $user->hasRole('super-admin') || $user->can($permission);
+            })
             ->map(fn($widgets) => $widgets->min('sort_order'))
             ->sortBy(fn($sortOrder) => $sortOrder)
             ->keys()
@@ -51,8 +84,9 @@ class DashboardController extends Controller
             return [$key => $widget->status];
         })->toArray();
 
-        // Only load data for active modules
+        // Only load data for active modules that user has permission for
         $widgets = [];
+
         if (in_array('customer', $activeModules)) {
             $widgets['customer'] = $this->getCustomerStats();
         }
@@ -68,6 +102,17 @@ class DashboardController extends Controller
         if (in_array('wallets', $activeModules)) {
             $widgets['wallets'] = $this->getWalletStats();
         }
+        if (in_array('employee', $activeModules)) {
+            $widgets['employee'] = $this->getEmployeeStats();
+        }
+        if (in_array('school', $activeModules)) {
+            $widgets['school'] = $this->getSchoolStats();
+        }
+
+        // Set default tab to first available module
+        if (!$tab || !in_array($tab, $activeModules)) {
+            $tab = $activeModules[0] ?? 'customer';
+        }
 
         return Inertia::render('Dashboard', [
             'widgets' => $widgets,
@@ -76,6 +121,12 @@ class DashboardController extends Controller
                 : null,
             'productWidget' => in_array('product', $activeModules)
                 ? $this->getProductWidgetData($dateRange)
+                : null,
+            'employeeWidget' => in_array('employee', $activeModules)
+                ? $this->getEmployeeWidgetData($dateRange)
+                : null,
+            'schoolWidget' => in_array('school', $activeModules)
+                ? $this->getSchoolWidgetData($dateRange)
                 : null,
             'dateRange' => $dateRange,
             'tab' => $tab,
@@ -216,7 +267,7 @@ class DashboardController extends Controller
     {
         $products = Product::all();
         $totalProducts = Product::count();
-        
+
         // Generate mock sales data for chart
         $salesData = [];
         for ($i = 4; $i >= 0; $i--) {
@@ -314,6 +365,204 @@ class DashboardController extends Controller
             ],
             'transactionTrend' => $transactionTrend,
             'typeDistribution' => $typeDistribution,
+        ];
+    }
+
+    /**
+     * Get Employee module statistics
+     */
+    private function getEmployeeStats(): array
+    {
+        $totalEmployees = Employee::count();
+        $activeEmployees = Employee::where('status', 'active')->count();
+        $inactiveEmployees = Employee::where('status', 'inactive')->count();
+
+        // Employee types breakdown
+        $employeeTypes = EmployeeType::withCount('employees')
+            ->orderByDesc('employees_count')
+            ->take(5)
+            ->get(['id', 'name', 'status'])
+            ->map(fn($type) => [
+                'id' => $type->id,
+                'name' => $type->name,
+                'count' => $type->employees_count,
+            ])
+            ->toArray();
+
+        return [
+            'total' => $totalEmployees,
+            'active' => $activeEmployees,
+            'inactive' => $inactiveEmployees,
+            'totalTypes' => EmployeeType::count(),
+            'employeeTypes' => $employeeTypes,
+        ];
+    }
+
+    /**
+     * Get Employee widget data with detailed metrics
+     */
+    private function getEmployeeWidgetData(string $dateRange): array
+    {
+        $totalEmployees = Employee::count();
+        $activeEmployees = Employee::where('status', 'active')->count();
+        $inactiveEmployees = Employee::where('status', 'inactive')->count();
+
+        // Today's attendance
+        $todayAttendance = Attendance::whereDate('attendance_date', today())->count();
+        $todayPresent = Attendance::whereDate('attendance_date', today())
+            ->whereNotNull('check_in_time')
+            ->count();
+        $todayAbsent = $activeEmployees - $todayPresent;
+
+        // Attendance trend (last 7 days)
+        $attendanceTrend = [];
+        for ($i = 6; $i >= 0; $i--) {
+            $date = now()->subDays($i);
+            $present = Attendance::whereDate('attendance_date', $date)
+                ->whereNotNull('check_in_time')
+                ->count();
+
+            $attendanceTrend[] = [
+                'label' => $date->format('D'),
+                'date' => $date->format('Y-m-d'),
+                'present' => $present,
+                'absent' => max(0, $activeEmployees - $present),
+            ];
+        }
+
+        // Employee growth trend (last 6 months)
+        $growthTrend = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $monthStart = $date->copy()->startOfMonth();
+            $monthEnd = $date->copy()->endOfMonth();
+
+            $newEmployees = Employee::whereBetween('created_at', [$monthStart, $monthEnd])->count();
+
+            $growthTrend[] = [
+                'label' => $date->format('M'),
+                'value' => $newEmployees,
+            ];
+        }
+
+        // Recent employees
+        $recentEmployees = Employee::with('employeeType')
+            ->latest()
+            ->take(5)
+            ->get()
+            ->map(fn($emp) => [
+                'id' => $emp->id,
+                'name' => $emp->first_name . ' ' . $emp->last_name,
+                'email' => $emp->email,
+                'type' => $emp->employeeType?->name,
+                'status' => $emp->status,
+                'created_at' => $emp->created_at,
+            ])
+            ->toArray();
+
+        return [
+            'metrics' => [
+                'total' => $totalEmployees,
+                'active' => $activeEmployees,
+                'inactive' => $inactiveEmployees,
+                'totalTypes' => EmployeeType::count(),
+                'todayPresent' => $todayPresent,
+                'todayAbsent' => $todayAbsent,
+                'attendanceRate' => $activeEmployees > 0
+                    ? round(($todayPresent / $activeEmployees) * 100, 1)
+                    : 0,
+                'growthPercent' => 5.2,
+            ],
+            'attendanceTrend' => $attendanceTrend,
+            'growthTrend' => $growthTrend,
+            'recentEmployees' => $recentEmployees,
+        ];
+    }
+
+    /**
+     * Get School module statistics
+     */
+    private function getSchoolStats(): array
+    {
+        return [
+            'totalSchools' => School::count(),
+            'activeSchools' => School::where('status', 'active')->count(),
+            'inactiveSchools' => School::where('status', 'inactive')->count(),
+            'totalDepartments' => Department::count(),
+            'totalPrograms' => Program::count(),
+            'totalClassrooms' => Classroom::count(),
+        ];
+    }
+
+    /**
+     * Get School widget data with detailed metrics
+     */
+    private function getSchoolWidgetData(string $dateRange): array
+    {
+        $totalSchools = School::count();
+        $totalDepartments = Department::count();
+        $totalPrograms = Program::count();
+        $totalClassrooms = Classroom::count();
+
+        // Departments by school
+        $departmentsBySchool = School::withCount('departments')
+            ->orderByDesc('departments_count')
+            ->take(5)
+            ->get()
+            ->map(fn($school) => [
+                'id' => $school->id,
+                'name' => $school->name,
+                'departments' => $school->departments_count,
+            ])
+            ->toArray();
+
+        // Growth trend (last 6 months)
+        $growthTrend = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->subMonths($i);
+            $monthStart = $date->copy()->startOfMonth();
+            $monthEnd = $date->copy()->endOfMonth();
+
+            $newSchools = School::whereBetween('created_at', [$monthStart, $monthEnd])->count();
+            $newDepartments = Department::whereBetween('created_at', [$monthStart, $monthEnd])->count();
+            $newClassrooms = Classroom::whereBetween('created_at', [$monthStart, $monthEnd])->count();
+
+            $growthTrend[] = [
+                'label' => $date->format('M'),
+                'schools' => $newSchools,
+                'departments' => $newDepartments,
+                'classrooms' => $newClassrooms,
+            ];
+        }
+
+        // Recent schools
+        $recentSchools = School::withCount(['departments', 'programs'])
+            ->latest()
+            ->take(5)
+            ->get()
+            ->map(fn($school) => [
+                'id' => $school->id,
+                'name' => $school->name,
+                'status' => $school->status,
+                'departments' => $school->departments_count,
+                'programs' => $school->programs_count,
+                'created_at' => $school->created_at,
+            ])
+            ->toArray();
+
+        return [
+            'metrics' => [
+                'totalSchools' => $totalSchools,
+                'activeSchools' => School::where('status', 'active')->count(),
+                'inactiveSchools' => School::where('status', 'inactive')->count(),
+                'totalDepartments' => $totalDepartments,
+                'totalPrograms' => $totalPrograms,
+                'totalClassrooms' => $totalClassrooms,
+                'growthPercent' => 3.8,
+            ],
+            'departmentsBySchool' => $departmentsBySchool,
+            'growthTrend' => $growthTrend,
+            'recentSchools' => $recentSchools,
         ];
     }
 }
