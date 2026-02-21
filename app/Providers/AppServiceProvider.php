@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
                 url: '/dashboard/settings',
                 icon: 'Settings',
                 order: 50,
-                permissions: null,
+                permissions: 'settings.view_any',
                 route: 'dashboard.settings'
             );
 
@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
                 __('Dashboard'),
                 '/dashboard/settings',
                 10,
-                null,
+                'settings.view_any',
                 'dashboard.settings',
                 'LayoutGrid'
             );
@@ -54,7 +54,7 @@ class AppServiceProvider extends ServiceProvider
                 __('Wallet Settings'),
                 '/dashboard/settings/wallet',
                 20,
-                null,
+                'wallets.view_any',
                 'settings.wallet',
                 'Wallet'
             );
@@ -65,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
                 __('Login Settings'),
                 '/dashboard/settings/login',
                 30,
-                null,
+                'settings.manage',
                 'settings.login',
                 'LogIn'
             );
@@ -76,7 +76,7 @@ class AppServiceProvider extends ServiceProvider
                 __('Product Settings'),
                 '/dashboard/products/settings',
                 40,
-                null,
+                'products.view_any',
                 'dashboard.product.settings',
                 'Package'
             );

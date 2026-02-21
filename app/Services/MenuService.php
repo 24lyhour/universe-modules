@@ -144,8 +144,31 @@ class MenuService
     {
         $items = static::getMenu($menu);
 
-        // Filter main menu items
+        // First, filter submenu items within each main menu
+        foreach ($items as &$item) {
+            if (!empty($item['items'])) {
+                $item['items'] = array_values(array_filter($item['items'], function ($subItem) use ($user) {
+
+                    if (empty($subItem['permissions'])) {
+                        return true;
+                    }
+
+                    return $user->can($subItem['permissions']);
+                }));
+            }
+        }
+        unset($item);
+
+        /**
+         * filter the permission user
+         */
         $filteredItems = array_filter($items, function ($item) use ($user) {
+            if (!empty($item['items']) || isset($item['items'])) {
+                if (empty($item['items'])) {
+                    return false;
+                }
+            }
+
             // If no permissions required, show the item
             if (empty($item['permissions'])) {
                 return true;
@@ -154,21 +177,6 @@ class MenuService
             // Check if user has permission using Spatie Permission
             return $user->can($item['permissions']);
         });
-
-        // Filter submenu items within each main menu
-        foreach ($filteredItems as &$item) {
-            if (!empty($item['items'])) {
-                $item['items'] = array_values(array_filter($item['items'], function ($subItem) use ($user) {
-                    // If no permissions required, show the submenu item
-                    if (empty($subItem['permissions'])) {
-                        return true;
-                    }
-
-                    // Check if user has permission using Spatie Permission
-                    return $user->can($subItem['permissions']);
-                }));
-            }
-        }
 
         return array_values($filteredItems);
     }

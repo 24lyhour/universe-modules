@@ -63,8 +63,17 @@ class RolesAndPermissionsSeeder extends Seeder
                 'product_attribute_values', 'product_add_ons', 'product_upsells'
             ],
 
-            // Booking Module (if exists)
+            // Booking Module
             'booking' => ['bookings'],
+
+            // Order Module
+            'order' => ['orders'],
+
+            // Payment Module
+            'payment' => ['payments'],
+
+            // Report Module
+            'report' => ['reports'],
 
             // User Management
             'user' => ['users', 'roles', 'permissions'],
