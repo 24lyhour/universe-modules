@@ -25,16 +25,47 @@ class RoleController extends Controller
 
         $roles = $query->orderBy('name')->paginate(10)->withQueryString();
 
-        // Group permissions by module for the create/edit forms
-        $permissions = Permission::orderBy('name')->get();
-        $groupedPermissions = $this->groupPermissions($permissions);
-
-        return Inertia::render('dashboard/settings/Roles/Index', [
-            'roleItems' => $roles,
-            'groupedPermissions' => $groupedPermissions,
+        return Inertia::render('dashboard/settings/roles/Index', [
+            'roles' => $roles,
             'filters' => [
                 'search' => $request->search,
             ],
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new role.
+     */
+    public function create(): Response
+    {
+        $permissions = Permission::orderBy('name')->get();
+        $groupedPermissions = $this->groupPermissions($permissions);
+
+        return Inertia::render('dashboard/settings/roles/Create', [
+            'groupedPermissions' => $groupedPermissions,
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified role.
+     */
+    public function edit(Role $role): Response
+    {
+        $role->load('permissions');
+        $permissions = Permission::orderBy('name')->get();
+        $groupedPermissions = $this->groupPermissions($permissions);
+
+        return Inertia::render('dashboard/settings/roles/Edit', [
+            'role' => [
+                'id' => $role->id,
+                'name' => $role->name,
+                'guard_name' => $role->guard_name,
+                'permissions' => $role->permissions->map(fn ($p) => [
+                    'id' => $p->id,
+                    'name' => $p->name,
+                ]),
+            ],
+            'groupedPermissions' => $groupedPermissions,
         ]);
     }
 
@@ -63,15 +94,11 @@ class RoleController extends Controller
     }
 
     /**
-     * Display the specified role.
+     * Display the specified role (redirects to edit).
      */
-    public function show(Role $role): Response
+    public function show(Role $role)
     {
-        $role->load(['permissions', 'users']);
-
-        return Inertia::render('dashboard/settings/Roles/Show', [
-            'role' => $role,
-        ]);
+        return redirect()->route('settings.roles.edit', $role);
     }
 
     /**

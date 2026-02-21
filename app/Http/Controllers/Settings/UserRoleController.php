@@ -34,15 +34,39 @@ class UserRoleController extends Controller
 
         $users = $query->paginate(10)->withQueryString();
 
-        $roles = Role::orderBy('name')->get(['id', 'name']);
+        $roles = Role::withCount('permissions')->orderBy('name')->get(['id', 'name']);
 
-        return Inertia::render('dashboard/settings/Users/Index', [
-            'userItems' => $users,
-            'roleList' => $roles,
+        return Inertia::render('dashboard/settings/users/Index', [
+            'users' => $users,
+            'roles' => $roles,
             'filters' => [
                 'search' => $request->search,
                 'role' => $request->role,
             ],
+        ]);
+    }
+
+    /**
+     * Show the form for editing user roles.
+     */
+    public function edit(User $user): Response
+    {
+        $user->load('roles');
+        $roles = Role::withCount('permissions')->orderBy('name')->get(['id', 'name']);
+
+        return Inertia::render('dashboard/settings/users/Edit', [
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'avatar' => $user->getFirstMediaUrl('avatar') ?: null,
+                'created_at' => $user->created_at,
+                'roles' => $user->roles->map(fn ($r) => [
+                    'id' => $r->id,
+                    'name' => $r->name,
+                ]),
+            ],
+            'roles' => $roles,
         ]);
     }
 

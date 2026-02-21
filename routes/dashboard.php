@@ -26,13 +26,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::middleware('permission:roles.view_any')->group(function () {
         Route::get('dashboard/settings/roles', [RoleController::class, 'index'])->name('settings.roles.index');
     });
+    Route::middleware('permission:roles.create')->group(function () {
+        Route::get('dashboard/settings/roles/create', [RoleController::class, 'create'])->name('settings.roles.create');
+        Route::post('dashboard/settings/roles', [RoleController::class, 'store'])->name('settings.roles.store');
+    });
     Route::middleware('permission:roles.view')->group(function () {
         Route::get('dashboard/settings/roles/{role}', [RoleController::class, 'show'])->name('settings.roles.show');
     });
-    Route::middleware('permission:roles.create')->group(function () {
-        Route::post('dashboard/settings/roles', [RoleController::class, 'store'])->name('settings.roles.store');
-    });
     Route::middleware('permission:roles.update')->group(function () {
+        Route::get('dashboard/settings/roles/{role}/edit', [RoleController::class, 'edit'])->name('settings.roles.edit');
         Route::put('dashboard/settings/roles/{role}', [RoleController::class, 'update'])->name('settings.roles.update');
     });
     Route::middleware('permission:roles.delete')->group(function () {
@@ -44,7 +46,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('dashboard/settings/users', [UserRoleController::class, 'index'])->name('settings.users.index');
     });
     Route::middleware('permission:users.assign_roles')->group(function () {
-        Route::put('dashboard/settings/users/{user}/roles', [UserRoleController::class, 'update'])->name('settings.users.update');
+        Route::get('dashboard/settings/users/{user}/edit', [UserRoleController::class, 'edit'])->name('settings.users.edit');
+        Route::put('dashboard/settings/users/{user}', [UserRoleController::class, 'update'])->name('settings.users.update');
         Route::post('dashboard/settings/users/{user}/assign-role', [UserRoleController::class, 'assignRole'])->name('settings.users.assign-role');
         Route::post('dashboard/settings/users/{user}/remove-role', [UserRoleController::class, 'removeRole'])->name('settings.users.remove-role');
     });
