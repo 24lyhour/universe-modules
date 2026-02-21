@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // Core seeders
         $this->call([
+            RolesAndPermissionsSeeder::class, // Must run before UserSeeder
             UserSeeder::class,
             SettingsSeeder::class,
         ]);

@@ -13,14 +13,21 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Check if user exists to avoid duplicates if run multiple times
-        if (! User::where('email', 'kouchlyhour@gmail.com')->exists()) {
-            User::factory()->withoutTwoFactor()->create([
+        $user = User::where('email', 'kouchlyhour@gmail.com')->first();
+
+        if (!$user) {
+            $user = User::factory()->withoutTwoFactor()->create([
                 'name' => 'kouchlyhour',
                 'email' => 'kouchlyhour@gmail.com',
                 'avatar' => '/images/users/kouchlyhour.svg',
                 'password' => '12345678',
                 'role' => 'admin',
             ]);
+        }
+
+        // Assign super-admin role
+        if (!$user->hasRole('super-admin')) {
+            $user->assignRole('super-admin');
         }
     }
 }

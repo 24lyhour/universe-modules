@@ -3,6 +3,23 @@ import type { LucideIcon } from 'lucide-vue-next';
 
 export interface Auth {
     user: User;
+    roles: string[];
+    permissions: string[];
+}
+
+export interface Role {
+    id: number;
+    name: string;
+    guard_name: string;
+    permissions?: Permission[];
+    users_count?: number;
+    created_at?: string;
+}
+
+export interface Permission {
+    id: number;
+    name: string;
+    guard_name: string;
 }
 
 export interface BreadcrumbItem {

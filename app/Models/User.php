@@ -9,11 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, TwoFactorAuthenticatable, InteractsWithMedia;
+    use HasFactory, Notifiable, TwoFactorAuthenticatable, InteractsWithMedia, HasRoles;
 
     /**
      * The attributes that are mass assignable.

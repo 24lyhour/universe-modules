@@ -80,6 +80,28 @@ class AppServiceProvider extends ServiceProvider
                 'dashboard.product.settings',
                 'Package'
             );
+
+            MenuService::addSubmenuItem(
+                'footer',
+                'dashboard-settings',
+                __('Roles & Permissions'),
+                '/dashboard/settings?tab=roles',
+                50,
+                'roles.view_any',
+                'settings.roles.index',
+                'Shield'
+            );
+
+            MenuService::addSubmenuItem(
+                'footer',
+                'dashboard-settings',
+                __('User Management'),
+                '/dashboard/settings?tab=users',
+                60,
+                'users.view_any',
+                'settings.users.index',
+                'Users'
+            );
         });
     }
 
