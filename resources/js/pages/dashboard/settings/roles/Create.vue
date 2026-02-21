@@ -7,13 +7,37 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Shield, ArrowLeft, ChevronDown, ChevronRight } from 'lucide-vue-next';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import {
+    Shield,
+    ArrowLeft,
+    ChevronDown,
+    Users,
+    GraduationCap,
+    FileText,
+    Building2,
+    Hotel,
+    UserCircle,
+    MonitorPlay,
+    Store,
+    Briefcase,
+    UtensilsCrossed,
+    Wallet,
+    Package,
+    CalendarDays,
+    ShoppingCart,
+    CreditCard,
+    BarChart3,
+    Settings,
+    LayoutDashboard,
+    MoreHorizontal,
+} from 'lucide-vue-next';
 import { ref } from 'vue';
 import type { BreadcrumbItem } from '@/types';
-import type { Permission, GroupedPermissions } from '@/types/roles';
+import type { HierarchicalGroupedPermissions } from '@/types/roles';
 
 interface Props {
-    groupedPermissions: GroupedPermissions;
+    groupedPermissions: HierarchicalGroupedPermissions;
 }
 
 const props = defineProps<Props>();
@@ -25,9 +49,34 @@ const breadcrumbItems: BreadcrumbItem[] = [
     { title: 'Create', href: '/dashboard/settings/roles/create' },
 ];
 
+// Module icons mapping
+const moduleIcons: Record<string, any> = {
+    'Employee': Users,
+    'School': GraduationCap,
+    'Blog': FileText,
+    'Company': Building2,
+    'Hotel': Hotel,
+    'Customer': UserCircle,
+    'Movie': MonitorPlay,
+    'Outlet': Store,
+    'Portfolio': Briefcase,
+    'Menu': UtensilsCrossed,
+    'Wallets': Wallet,
+    'Product': Package,
+    'Booking': CalendarDays,
+    'Order': ShoppingCart,
+    'Payment': CreditCard,
+    'Report': BarChart3,
+    'User Management': Shield,
+    'Settings': Settings,
+    'Dashboard': LayoutDashboard,
+    'Other': MoreHorizontal,
+};
+
+// Track expanded state for modules
 const expandedModules = ref<Record<string, boolean>>({});
 
-// Initialize all modules as collapsed
+// Initialize all as collapsed
 Object.keys(props.groupedPermissions).forEach(module => {
     expandedModules.value[module] = false;
 });
@@ -36,10 +85,6 @@ const form = useForm({
     name: '',
     permissions: [] as number[],
 });
-
-const toggleModule = (module: string) => {
-    expandedModules.value[module] = !expandedModules.value[module];
-};
 
 const togglePermission = (permissionId: number) => {
     const index = form.permissions.indexOf(permissionId);
@@ -50,9 +95,28 @@ const togglePermission = (permissionId: number) => {
     }
 };
 
+// Get all permission IDs for a module
+const getModulePermissionIds = (module: string): number[] => {
+    const moduleData = props.groupedPermissions[module];
+    if (!moduleData) return [];
+
+    const ids: number[] = [];
+    Object.values(moduleData.resources).forEach(permissions => {
+        permissions.forEach(p => ids.push(p.id));
+    });
+    return ids;
+};
+
+// Get all permission IDs for a resource
+const getResourcePermissionIds = (module: string, resource: string): number[] => {
+    const moduleData = props.groupedPermissions[module];
+    if (!moduleData || !moduleData.resources[resource]) return [];
+    return moduleData.resources[resource].map(p => p.id);
+};
+
+// Toggle all permissions in a module
 const toggleModulePermissions = (module: string) => {
-    const modulePermissions = props.groupedPermissions[module] || [];
-    const modulePermissionIds = modulePermissions.map(p => p.id);
+    const modulePermissionIds = getModulePermissionIds(module);
     const allSelected = modulePermissionIds.every(id => form.permissions.includes(id));
 
     if (allSelected) {
@@ -66,19 +130,75 @@ const toggleModulePermissions = (module: string) => {
     }
 };
 
+// Toggle all permissions in a resource
+const toggleResourcePermissions = (module: string, resource: string) => {
+    const resourcePermissionIds = getResourcePermissionIds(module, resource);
+    const allSelected = resourcePermissionIds.every(id => form.permissions.includes(id));
+
+    if (allSelected) {
+        form.permissions = form.permissions.filter(id => !resourcePermissionIds.includes(id));
+    } else {
+        resourcePermissionIds.forEach(id => {
+            if (!form.permissions.includes(id)) {
+                form.permissions.push(id);
+            }
+        });
+    }
+};
+
+// Check if all permissions in a module are selected
 const isModuleFullySelected = (module: string) => {
-    const modulePermissions = props.groupedPermissions[module] || [];
-    return modulePermissions.every(p => form.permissions.includes(p.id));
+    const modulePermissionIds = getModulePermissionIds(module);
+    return modulePermissionIds.length > 0 && modulePermissionIds.every(id => form.permissions.includes(id));
 };
 
+// Check if some (but not all) permissions in a module are selected
 const isModulePartiallySelected = (module: string) => {
-    const modulePermissions = props.groupedPermissions[module] || [];
-    const selectedCount = modulePermissions.filter(p => form.permissions.includes(p.id)).length;
-    return selectedCount > 0 && selectedCount < modulePermissions.length;
+    const modulePermissionIds = getModulePermissionIds(module);
+    const selectedCount = modulePermissionIds.filter(id => form.permissions.includes(id)).length;
+    return selectedCount > 0 && selectedCount < modulePermissionIds.length;
 };
 
-const formatModuleName = (module: string) => {
-    return module.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+// Check if all permissions in a resource are selected
+const isResourceFullySelected = (module: string, resource: string) => {
+    const resourcePermissionIds = getResourcePermissionIds(module, resource);
+    return resourcePermissionIds.length > 0 && resourcePermissionIds.every(id => form.permissions.includes(id));
+};
+
+// Check if some (but not all) permissions in a resource are selected
+const isResourcePartiallySelected = (module: string, resource: string) => {
+    const resourcePermissionIds = getResourcePermissionIds(module, resource);
+    const selectedCount = resourcePermissionIds.filter(id => form.permissions.includes(id)).length;
+    return selectedCount > 0 && selectedCount < resourcePermissionIds.length;
+};
+
+// Get selected count for a module
+const getModuleSelectedCount = (module: string) => {
+    const modulePermissionIds = getModulePermissionIds(module);
+    return modulePermissionIds.filter(id => form.permissions.includes(id)).length;
+};
+
+// Get selected count for a resource
+const getResourceSelectedCount = (module: string, resource: string) => {
+    const resourcePermissionIds = getResourcePermissionIds(module, resource);
+    return resourcePermissionIds.filter(id => form.permissions.includes(id)).length;
+};
+
+const formatName = (name: string) => {
+    return name.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+};
+
+const formatAction = (action: string) => {
+    const actionMap: Record<string, string> = {
+        'view': 'View',
+        'view_any': 'View All',
+        'create': 'Create',
+        'update': 'Update',
+        'delete': 'Delete',
+        'restore': 'Restore',
+        'force_delete': 'Force Delete',
+    };
+    return actionMap[action] || formatName(action);
 };
 
 const handleSubmit = () => {
@@ -129,41 +249,99 @@ const handleSubmit = () => {
                         <CardDescription>Select the permissions for this role</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <div class="space-y-2">
-                            <div v-for="(permissions, module) in props.groupedPermissions" :key="module" class="border rounded-lg">
-                                <div
-                                    class="flex items-center justify-between cursor-pointer p-4 hover:bg-muted/50"
-                                    @click="toggleModule(module)"
-                                >
-                                    <div class="flex items-center gap-3">
-                                        <component :is="expandedModules[module] ? ChevronDown : ChevronRight" class="h-4 w-4" />
-                                        <Checkbox
-                                            :model-value="isModuleFullySelected(module)"
-                                            :indeterminate="isModulePartiallySelected(module)"
-                                            @click.stop
-                                            @update:model-value="toggleModulePermissions(module)"
-                                        />
-                                        <span class="font-medium">{{ formatModuleName(module) }}</span>
-                                    </div>
-                                    <Badge variant="outline">
-                                        {{ permissions.filter(p => form.permissions.includes(p.id)).length }}/{{ permissions.length }}
-                                    </Badge>
-                                </div>
-                                <div v-if="expandedModules[module]" class="px-4 pb-4 pt-2 border-t bg-muted/30">
-                                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                                        <div v-for="permission in permissions" :key="permission.id" class="flex items-center gap-2">
+                        <div class="space-y-4">
+                            <!-- Module Cards -->
+                            <Collapsible
+                                v-for="(moduleData, module) in props.groupedPermissions"
+                                :key="module"
+                                v-model:open="expandedModules[module]"
+                                class="rounded-lg border bg-card"
+                            >
+                                <!-- Module Header -->
+                                <CollapsibleTrigger class="w-full">
+                                    <div class="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors rounded-t-lg">
+                                        <div class="flex items-center gap-3">
+                                            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                                                <component :is="moduleIcons[module] || MoreHorizontal" class="h-5 w-5 text-primary" />
+                                            </div>
+                                            <div class="text-left">
+                                                <div class="font-semibold">{{ module }}</div>
+                                                <div class="text-xs text-muted-foreground">
+                                                    {{ Object.keys(moduleData.resources).length }} resources
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <Badge
+                                                :variant="isModuleFullySelected(module) ? 'default' : isModulePartiallySelected(module) ? 'secondary' : 'outline'"
+                                                class="font-mono"
+                                            >
+                                                {{ getModuleSelectedCount(module) }}/{{ moduleData.totalPermissions }}
+                                            </Badge>
                                             <Checkbox
-                                                :id="`perm-${permission.id}`"
-                                                :model-value="form.permissions.includes(permission.id)"
-                                                @update:model-value="togglePermission(permission.id)"
+                                                :model-value="isModuleFullySelected(module)"
+                                                :indeterminate="isModulePartiallySelected(module)"
+                                                @click.stop
+                                                @update:model-value="toggleModulePermissions(module)"
                                             />
-                                            <Label :for="`perm-${permission.id}`" class="text-sm font-normal cursor-pointer">
-                                                {{ permission.action }}
-                                            </Label>
+                                            <ChevronDown
+                                                class="h-4 w-4 transition-transform duration-200"
+                                                :class="{ 'rotate-180': expandedModules[module] }"
+                                            />
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </CollapsibleTrigger>
+
+                                <!-- Module Content - Resources -->
+                                <CollapsibleContent>
+                                    <div class="border-t px-4 pb-4 pt-2 space-y-3">
+                                        <div
+                                            v-for="(permissions, resource) in moduleData.resources"
+                                            :key="resource"
+                                            class="rounded-md border bg-muted/30 overflow-hidden"
+                                        >
+                                            <!-- Resource Header -->
+                                            <div class="flex items-center justify-between px-4 py-3 bg-muted/50">
+                                                <div class="flex items-center gap-3">
+                                                    <Checkbox
+                                                        :model-value="isResourceFullySelected(module, resource)"
+                                                        :indeterminate="isResourcePartiallySelected(module, resource)"
+                                                        @update:model-value="toggleResourcePermissions(module, resource)"
+                                                    />
+                                                    <span class="font-medium text-sm">{{ formatName(resource) }}</span>
+                                                </div>
+                                                <Badge variant="outline" class="text-xs">
+                                                    {{ getResourceSelectedCount(module, resource) }}/{{ permissions.length }}
+                                                </Badge>
+                                            </div>
+
+                                            <!-- Permissions Grid -->
+                                            <div class="px-4 py-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-2">
+                                                <label
+                                                    v-for="permission in permissions"
+                                                    :key="permission.id"
+                                                    :for="`perm-${permission.id}`"
+                                                    class="flex items-center gap-2 px-2 py-1.5 rounded-md cursor-pointer hover:bg-background transition-colors"
+                                                    :class="{
+                                                        'bg-primary/10 text-primary': form.permissions.includes(permission.id),
+                                                        'bg-background/50': !form.permissions.includes(permission.id)
+                                                    }"
+                                                >
+                                                    <Checkbox
+                                                        :id="`perm-${permission.id}`"
+                                                        :model-value="form.permissions.includes(permission.id)"
+                                                        @update:model-value="togglePermission(permission.id)"
+                                                        class="h-3.5 w-3.5"
+                                                    />
+                                                    <span class="text-xs font-medium">
+                                                        {{ formatAction(permission.action || '') }}
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </CollapsibleContent>
+                            </Collapsible>
                         </div>
                     </CardContent>
                 </Card>

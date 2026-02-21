@@ -145,28 +145,77 @@ class RoleController extends Controller
     }
 
     /**
-     * Group permissions by module for UI display.
+     * Group permissions by module then by resource for hierarchical UI display.
      */
     private function groupPermissions($permissions): array
     {
+        // Define module to resources mapping
+        $moduleResourceMap = [
+            'Employee' => ['employees', 'employee_types', 'attendances'],
+            'School' => ['schools', 'departments', 'classrooms', 'courses', 'programs', 'equipment'],
+            'Blog' => ['posts'],
+            'Company' => ['companies'],
+            'Hotel' => ['hotels'],
+            'Customer' => ['customers', 'customer_otps'],
+            'Movie' => ['movices'],
+            'Outlet' => ['outlets', 'outlet_types'],
+            'Portfolio' => ['portfolios', 'pages', 'sections', 'services', 'testimonials', 'headers', 'footers', 'site_settings', 'contact_messages'],
+            'Menu' => ['menus', 'menu_types', 'categories'],
+            'Wallets' => ['wallets', 'transactions'],
+            'Product' => ['products', 'product_variants', 'product_attributes', 'product_attribute_values', 'product_add_ons', 'product_upsells'],
+            'Booking' => ['bookings'],
+            'Order' => ['orders'],
+            'Payment' => ['payments'],
+            'Report' => ['reports'],
+            'User Management' => ['users', 'roles', 'permissions'],
+            'Settings' => ['settings', 'configurations'],
+            'Dashboard' => ['analytics', 'reports'],
+        ];
+
+        // Create reverse mapping: resource -> module
+        $resourceToModule = [];
+        foreach ($moduleResourceMap as $module => $resources) {
+            foreach ($resources as $resource) {
+                $resourceToModule[$resource] = $module;
+            }
+        }
+
+        // Group permissions by module then by resource
         $grouped = [];
 
         foreach ($permissions as $permission) {
             $parts = explode('.', $permission->name);
             $resource = $parts[0] ?? 'general';
+            $action = $parts[1] ?? $permission->name;
 
-            if (!isset($grouped[$resource])) {
-                $grouped[$resource] = [];
+            // Find the module for this resource
+            $module = $resourceToModule[$resource] ?? 'Other';
+
+            if (!isset($grouped[$module])) {
+                $grouped[$module] = [
+                    'resources' => [],
+                    'totalPermissions' => 0,
+                ];
             }
 
-            $grouped[$resource][] = [
+            if (!isset($grouped[$module]['resources'][$resource])) {
+                $grouped[$module]['resources'][$resource] = [];
+            }
+
+            $grouped[$module]['resources'][$resource][] = [
                 'id' => $permission->id,
                 'name' => $permission->name,
-                'action' => $parts[1] ?? $permission->name,
+                'action' => $action,
             ];
+
+            $grouped[$module]['totalPermissions']++;
         }
 
+        // Sort modules and resources within each module
         ksort($grouped);
+        foreach ($grouped as &$moduleData) {
+            ksort($moduleData['resources']);
+        }
 
         return $grouped;
     }

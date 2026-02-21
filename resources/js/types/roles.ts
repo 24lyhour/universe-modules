@@ -22,6 +22,18 @@ export interface GroupedPermissions {
     [module: string]: Permission[];
 }
 
+// New hierarchical structure for module -> resource -> permissions
+export interface ModulePermissions {
+    resources: {
+        [resource: string]: Permission[];
+    };
+    totalPermissions: number;
+}
+
+export interface HierarchicalGroupedPermissions {
+    [module: string]: ModulePermissions;
+}
+
 export interface RoleFormData {
     name: string;
     permissions: number[];
