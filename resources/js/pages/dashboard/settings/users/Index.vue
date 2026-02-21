@@ -21,7 +21,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import { Users, Search, Edit, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-vue-next';
+import { Users, Search, Edit, ArrowLeft, ChevronLeft, ChevronRight, Plus } from 'lucide-vue-next';
 import { ref, watch, computed } from 'vue';
 import type { BreadcrumbItem } from '@/types';
 import type { Role } from '@/types/roles';
@@ -116,13 +116,19 @@ const lastPage = computed(() => props.users.meta?.last_page ?? props.users.last_
                         <ArrowLeft class="h-4 w-4" />
                     </Link>
                 </Button>
-                <div>
+                <div class="flex-1">
                     <h1 class="text-2xl font-bold tracking-tight flex items-center gap-2">
                         <Users class="h-6 w-6" />
                         User Management
                     </h1>
                     <p class="text-muted-foreground">Manage user roles and permissions</p>
                 </div>
+                <Button as-child>
+                    <Link href="/dashboard/settings/users/create">
+                        <Plus class="mr-2 h-4 w-4" />
+                        Create User
+                    </Link>
+                </Button>
             </div>
 
             <Card>

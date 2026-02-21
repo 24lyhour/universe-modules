@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 use Inertia\Response;
 use Spatie\Permission\Models\Role;
@@ -47,6 +49,48 @@ class UserRoleController extends Controller
     }
 
     /**
+     * Show the form for creating a new user.
+     */
+    public function create(): Response
+    {
+        $roles = Role::withCount('permissions')->orderBy('name')->get(['id', 'name']);
+
+        return Inertia::render('dashboard/settings/users/Create', [
+            'roles' => $roles,
+        ]);
+    }
+
+    /**
+     * Store a newly created user.
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'nullable|string|max:20',
+            'password' => ['required', 'confirmed', Password::defaults()],
+            'roles' => 'array',
+            'roles.*' => 'exists:roles,id',
+        ]);
+
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? null,
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        if (!empty($validated['roles'])) {
+            $roles = Role::whereIn('id', $validated['roles'])->get();
+            $user->syncRoles($roles);
+        }
+
+        return redirect()->route('settings.users.index')
+            ->with('success', 'User created successfully.');
+    }
+
+    /**
      * Show the form for editing user roles.
      */
     public function edit(User $user): Response
@@ -71,20 +115,29 @@ class UserRoleController extends Controller
     }
 
     /**
-     * Update user roles.
+     * Update user roles and password.
      */
     public function update(Request $request, User $user)
     {
         $validated = $request->validate([
             'roles' => 'required|array',
             'roles.*' => 'exists:roles,id',
+            'password' => ['nullable', 'confirmed', Password::defaults()],
         ]);
 
+        // Update roles
         $roles = Role::whereIn('id', $validated['roles'])->get();
         $user->syncRoles($roles);
 
+        // Update password if provided
+        if (!empty($validated['password'])) {
+            $user->update([
+                'password' => Hash::make($validated['password']),
+            ]);
+        }
+
         return redirect()->route('settings.users.index')
-            ->with('success', 'User roles updated successfully.');
+            ->with('success', 'User updated successfully.');
     }
 
     /**

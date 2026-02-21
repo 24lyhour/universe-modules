@@ -41,9 +41,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('dashboard/settings/roles/{role}', [RoleController::class, 'destroy'])->name('settings.roles.destroy');
     });
 
-    // User Role Management (protected by permission middleware)
+    // User Management (protected by permission middleware)
     Route::middleware('permission:users.view_any')->group(function () {
         Route::get('dashboard/settings/users', [UserRoleController::class, 'index'])->name('settings.users.index');
+    });
+    Route::middleware('permission:users.create')->group(function () {
+        Route::get('dashboard/settings/users/create', [UserRoleController::class, 'create'])->name('settings.users.create');
+        Route::post('dashboard/settings/users', [UserRoleController::class, 'store'])->name('settings.users.store');
     });
     Route::middleware('permission:users.assign_roles')->group(function () {
         Route::get('dashboard/settings/users/{user}/edit', [UserRoleController::class, 'edit'])->name('settings.users.edit');

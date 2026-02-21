@@ -4,10 +4,12 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Users, ArrowLeft, Mail, Calendar } from 'lucide-vue-next';
+import { Users, ArrowLeft, Mail, Calendar, Eye, EyeOff, Lock } from 'lucide-vue-next';
+import { ref } from 'vue';
 import type { BreadcrumbItem } from '@/types';
 import type { Role } from '@/types/roles';
 import type { UserWithRoles } from '@/types/users';
@@ -26,8 +28,13 @@ const breadcrumbItems: BreadcrumbItem[] = [
     { title: 'Edit', href: `/dashboard/settings/users/${props.user.id}/edit` },
 ];
 
+const showPassword = ref(false);
+const showConfirmPassword = ref(false);
+
 const form = useForm({
     roles: props.user.roles?.map(r => r.id) || [],
+    password: '',
+    password_confirmation: '',
 });
 
 const getInitials = (name: string) => {
@@ -76,9 +83,9 @@ const formatDate = (date?: string) => {
                 <div>
                     <h1 class="text-2xl font-bold tracking-tight flex items-center gap-2">
                         <Users class="h-6 w-6" />
-                        Edit User Roles
+                        Edit User
                     </h1>
-                    <p class="text-muted-foreground">Manage roles for this user</p>
+                    <p class="text-muted-foreground">Manage roles and password for this user</p>
                 </div>
             </div>
 
@@ -123,50 +130,118 @@ const formatDate = (date?: string) => {
                         </CardContent>
                     </Card>
 
-                    <!-- Role Assignment -->
-                    <Card class="lg:col-span-2">
-                        <CardHeader>
-                            <CardTitle>Assign Roles</CardTitle>
-                            <CardDescription>Select the roles for this user</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
-                                <div
-                                    v-for="role in props.roles"
-                                    :key="role.id"
-                                    :class="[
-                                        'flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-colors',
-                                        form.roles.includes(role.id) ? 'bg-primary/5 border-primary' : 'hover:bg-muted/50'
-                                    ]"
-                                    @click="toggleRole(role.id)"
-                                >
-                                    <Checkbox
-                                        :id="`role-${role.id}`"
-                                        :model-value="form.roles.includes(role.id)"
-                                        @click.stop
-                                        @update:model-value="toggleRole(role.id)"
-                                    />
-                                    <div class="flex-1 min-w-0">
-                                        <Label :for="`role-${role.id}`" class="cursor-pointer font-medium capitalize">
-                                            {{ role.name.replace('-', ' ') }}
-                                        </Label>
-                                        <p v-if="role.permissions_count" class="text-xs text-muted-foreground">
-                                            {{ role.permissions_count }} permissions
-                                        </p>
+                    <div class="lg:col-span-2 space-y-6">
+                        <!-- Role Assignment -->
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Assign Roles</CardTitle>
+                                <CardDescription>Select the roles for this user</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+                                    <div
+                                        v-for="role in props.roles"
+                                        :key="role.id"
+                                        :class="[
+                                            'flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-colors',
+                                            form.roles.includes(role.id) ? 'bg-primary/5 border-primary' : 'hover:bg-muted/50'
+                                        ]"
+                                        @click="toggleRole(role.id)"
+                                    >
+                                        <Checkbox
+                                            :id="`role-${role.id}`"
+                                            :model-value="form.roles.includes(role.id)"
+                                            @click.stop
+                                            @update:model-value="toggleRole(role.id)"
+                                        />
+                                        <div class="flex-1 min-w-0">
+                                            <Label :for="`role-${role.id}`" class="cursor-pointer font-medium capitalize">
+                                                {{ role.name.replace('-', ' ') }}
+                                            </Label>
+                                            <p v-if="role.permissions_count" class="text-xs text-muted-foreground">
+                                                {{ role.permissions_count }} permissions
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <p v-if="form.errors.roles" class="text-sm text-destructive mt-4">
-                                {{ form.errors.roles }}
-                            </p>
-                        </CardContent>
-                    </Card>
+                                <p v-if="form.errors.roles" class="text-sm text-destructive mt-4">
+                                    {{ form.errors.roles }}
+                                </p>
+                            </CardContent>
+                        </Card>
+
+                        <!-- Change Password -->
+                        <Card>
+                            <CardHeader>
+                                <CardTitle class="flex items-center gap-2">
+                                    <Lock class="h-5 w-5" />
+                                    Change Password
+                                </CardTitle>
+                                <CardDescription>Leave blank to keep the current password</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div class="grid gap-4 sm:grid-cols-2">
+                                    <!-- New Password -->
+                                    <div class="space-y-2">
+                                        <Label for="password">New Password</Label>
+                                        <div class="relative">
+                                            <Input
+                                                id="password"
+                                                :type="showPassword ? 'text' : 'password'"
+                                                v-model="form.password"
+                                                placeholder="Enter new password"
+                                                autocomplete="new-password"
+                                                :class="{ 'border-destructive': form.errors.password }"
+                                            />
+                                            <Button
+                                                type="button"
+                                                variant="ghost"
+                                                size="icon"
+                                                class="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
+                                                @click="showPassword = !showPassword"
+                                            >
+                                                <Eye v-if="!showPassword" class="h-4 w-4 text-muted-foreground" />
+                                                <EyeOff v-else class="h-4 w-4 text-muted-foreground" />
+                                            </Button>
+                                        </div>
+                                        <p v-if="form.errors.password" class="text-sm text-destructive">
+                                            {{ form.errors.password }}
+                                        </p>
+                                    </div>
+
+                                    <!-- Confirm Password -->
+                                    <div class="space-y-2">
+                                        <Label for="password_confirmation">Confirm Password</Label>
+                                        <div class="relative">
+                                            <Input
+                                                id="password_confirmation"
+                                                :type="showConfirmPassword ? 'text' : 'password'"
+                                                v-model="form.password_confirmation"
+                                                placeholder="Confirm new password"
+                                                autocomplete="new-password"
+                                            />
+                                            <Button
+                                                type="button"
+                                                variant="ghost"
+                                                size="icon"
+                                                class="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
+                                                @click="showConfirmPassword = !showConfirmPassword"
+                                            >
+                                                <Eye v-if="!showConfirmPassword" class="h-4 w-4 text-muted-foreground" />
+                                                <EyeOff v-else class="h-4 w-4 text-muted-foreground" />
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
 
                 <!-- Actions -->
                 <div class="flex items-center gap-4">
                     <Button type="submit" :disabled="form.processing">
-                        Update Roles
+                        Update User
                     </Button>
                     <Button variant="outline" as-child>
                         <Link href="/dashboard/settings/users">Cancel</Link>
