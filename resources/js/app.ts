@@ -69,7 +69,6 @@ const resolveModalComponent = (name: string) => {
         }
 
         if (typeof loader === 'undefined') {
-            console.error('Available lazy module keys:', Object.keys(lazyModulePages));
             throw new Error(`Module page not found: ${moduleKey}`);
         }
         return loader();
