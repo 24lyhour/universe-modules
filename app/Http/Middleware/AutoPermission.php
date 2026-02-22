@@ -75,10 +75,10 @@ class AutoPermission
     }
 
     /**
-     * Special single-name routes that should map to specific permissions
+     * Special routes that map to specific permissions
      */
     protected array $specialRoutes = [
-        'dashboard' => 'dashboard.view_any',
+        'dashboard' => 'dashboard.view',
     ];
 
     /**

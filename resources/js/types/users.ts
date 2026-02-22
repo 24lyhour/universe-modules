@@ -1,4 +1,5 @@
 import type { Role } from './roles';
+import type { UserWithTenant, AvailableTenants } from './tenant';
 
 export interface User {
     id: number;
@@ -25,6 +26,7 @@ export interface UserFormData {
     roles: number[];
 }
 
+// Props
 export interface UsersIndexProps {
     users: {
         data: UserWithRoles[];
@@ -43,6 +45,8 @@ export interface UserCreateProps {
 }
 
 export interface UserEditProps {
-    user: UserWithRoles;
+    user: UserWithTenant;
     roles: Role[];
+    availableTenants: AvailableTenants;
+    isSuperAdmin?: boolean;
 }

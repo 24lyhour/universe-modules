@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -27,6 +29,8 @@ class User extends Authenticatable implements HasMedia
         'avatar',
         'password',
         'role',
+        'tenant_type',
+        'tenant_id',
     ];
 
     /**
@@ -67,5 +71,85 @@ class User extends Authenticatable implements HasMedia
                 'taylor@laravel.com',
             ]);
         });
+    }
+
+    /**
+     * Get the user's primary tenant (polymorphic).
+     */
+    public function tenant(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    /**
+     * Get all tenant access records for this user.
+     */
+    public function tenantAccess(): HasMany
+    {
+        return $this->hasMany(UserTenant::class);
+    }
+
+    /**
+     * Check if user belongs to a specific tenant.
+     */
+    public function belongsToTenant(string $tenantType, int $tenantId): bool
+    {
+        // Check primary tenant
+        if ($this->tenant_type === $tenantType && $this->tenant_id === $tenantId) {
+            return true;
+        }
+
+        // Check additional tenant access
+        return $this->tenantAccess()
+            ->where('tenant_type', $tenantType)
+            ->where('tenant_id', $tenantId)
+            ->exists();
+    }
+
+    /**
+     * Get the current tenant model.
+     */
+    public function currentTenant(): ?object
+    {
+        return $this->tenant;
+    }
+
+    /**
+     * Check if user has any tenant assigned.
+     */
+    public function hasTenant(): bool
+    {
+        return $this->tenant_id !== null && $this->tenant_type !== null;
+    }
+
+    /**
+     * Get all tenants the user has access to (including primary).
+     */
+    public function allTenants(): array
+    {
+        $tenants = [];
+
+        // Add primary tenant
+        if ($this->hasTenant()) {
+            $tenants[] = [
+                'type' => $this->tenant_type,
+                'id' => $this->tenant_id,
+                'is_primary' => true,
+                'model' => $this->tenant,
+            ];
+        }
+
+        // Add additional tenants
+        foreach ($this->tenantAccess as $access) {
+            $tenants[] = [
+                'type' => $access->tenant_type,
+                'id' => $access->tenant_id,
+                'is_primary' => $access->is_primary,
+                'role' => $access->role,
+                'model' => $access->tenant,
+            ];
+        }
+
+        return $tenants;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Widget;
+use App\Services\TenantService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -27,7 +28,8 @@ use Modules\Wallets\Models\Transaction;
 class DashboardController extends Controller
 {
     public function __construct(
-        protected CustomerWidgetService $customerWidgetService
+        protected CustomerWidgetService $customerWidgetService,
+        protected TenantService $tenantService
     ) {}
 
     public function index(Request $request): Response
@@ -373,11 +375,40 @@ class DashboardController extends Controller
      */
     private function getEmployeeStats(): array
     {
+        $user = Auth::user();
+        $isSuperAdmin = $user && $user->hasRole('super-admin');
+
+        // Super-admin bypasses tenant scope
+        if ($isSuperAdmin) {
+            $totalEmployees = Employee::allSchools()->count();
+            $activeEmployees = Employee::allSchools()->where('status', 'active')->count();
+            $inactiveEmployees = Employee::allSchools()->where('status', 'inactive')->count();
+            $employeeTypes = EmployeeType::allSchools()
+                ->withCount('employees')
+                ->orderByDesc('employees_count')
+                ->take(5)
+                ->get(['id', 'name', 'status'])
+                ->map(fn($type) => [
+                    'id' => $type->id,
+                    'name' => $type->name,
+                    'count' => $type->employees_count,
+                ])
+                ->toArray();
+
+            return [
+                'total' => $totalEmployees,
+                'active' => $activeEmployees,
+                'inactive' => $inactiveEmployees,
+                'totalTypes' => EmployeeType::allSchools()->count(),
+                'employeeTypes' => $employeeTypes,
+            ];
+        }
+
+        // Regular users - auto-filtered by tenant
         $totalEmployees = Employee::count();
         $activeEmployees = Employee::where('status', 'active')->count();
         $inactiveEmployees = Employee::where('status', 'inactive')->count();
 
-        // Employee types breakdown
         $employeeTypes = EmployeeType::withCount('employees')
             ->orderByDesc('employees_count')
             ->take(5)
@@ -403,22 +434,30 @@ class DashboardController extends Controller
      */
     private function getEmployeeWidgetData(string $dateRange): array
     {
-        $totalEmployees = Employee::count();
-        $activeEmployees = Employee::where('status', 'active')->count();
-        $inactiveEmployees = Employee::where('status', 'inactive')->count();
+        $user = Auth::user();
+        $isSuperAdmin = $user && $user->hasRole('super-admin');
+
+        // Use appropriate query based on role
+        $employeeQuery = $isSuperAdmin ? Employee::allSchools() : Employee::query();
+        $attendanceQuery = $isSuperAdmin ? Attendance::allSchools() : Attendance::query();
+
+        $totalEmployees = (clone $employeeQuery)->count();
+        $activeEmployees = (clone $employeeQuery)->where('status', 'active')->count();
+        $inactiveEmployees = (clone $employeeQuery)->where('status', 'inactive')->count();
 
         // Today's attendance
-        $todayAttendance = Attendance::whereDate('attendance_date', today())->count();
-        $todayPresent = Attendance::whereDate('attendance_date', today())
+        $todayPresent = (clone $attendanceQuery)
+            ->whereDate('attendance_date', today())
             ->whereNotNull('check_in_time')
             ->count();
-        $todayAbsent = $activeEmployees - $todayPresent;
+        $todayAbsent = max(0, $activeEmployees - $todayPresent);
 
         // Attendance trend (last 7 days)
         $attendanceTrend = [];
         for ($i = 6; $i >= 0; $i--) {
             $date = now()->subDays($i);
-            $present = Attendance::whereDate('attendance_date', $date)
+            $present = ($isSuperAdmin ? Attendance::allSchools() : Attendance::query())
+                ->whereDate('attendance_date', $date)
                 ->whereNotNull('check_in_time')
                 ->count();
 
@@ -437,7 +476,9 @@ class DashboardController extends Controller
             $monthStart = $date->copy()->startOfMonth();
             $monthEnd = $date->copy()->endOfMonth();
 
-            $newEmployees = Employee::whereBetween('created_at', [$monthStart, $monthEnd])->count();
+            $newEmployees = ($isSuperAdmin ? Employee::allSchools() : Employee::query())
+                ->whereBetween('created_at', [$monthStart, $monthEnd])
+                ->count();
 
             $growthTrend[] = [
                 'label' => $date->format('M'),
@@ -446,7 +487,8 @@ class DashboardController extends Controller
         }
 
         // Recent employees
-        $recentEmployees = Employee::with('employeeType')
+        $recentEmployees = ($isSuperAdmin ? Employee::allSchools() : Employee::query())
+            ->with('employeeType')
             ->latest()
             ->take(5)
             ->get()
@@ -465,7 +507,7 @@ class DashboardController extends Controller
                 'total' => $totalEmployees,
                 'active' => $activeEmployees,
                 'inactive' => $inactiveEmployees,
-                'totalTypes' => EmployeeType::count(),
+                'totalTypes' => $isSuperAdmin ? EmployeeType::allSchools()->count() : EmployeeType::count(),
                 'todayPresent' => $todayPresent,
                 'todayAbsent' => $todayAbsent,
                 'attendanceRate' => $activeEmployees > 0
@@ -481,80 +523,162 @@ class DashboardController extends Controller
 
     /**
      * Get School module statistics
+     * Filtered by tenant if user belongs to a school (unless super-admin)
      */
     private function getSchoolStats(): array
     {
+        $user = Auth::user();
+        $isSuperAdmin = $user && $user->hasRole('super-admin');
+
+        // Super-admin always sees all data
+        if ($isSuperAdmin) {
+            return [
+                'totalSchools' => School::allRecords()->count(),
+                'activeSchools' => School::allRecords()->where('status', true)->count(),
+                'inactiveSchools' => School::allRecords()->where('status', false)->count(),
+                'totalDepartments' => Department::allSchools()->count(),
+                'totalPrograms' => Program::allSchools()->count(),
+                'totalClassrooms' => Classroom::allSchools()->count(),
+            ];
+        }
+
+        // If user has a school tenant, only show their school data
+        if ($this->tenantService->hasTenant() && $this->tenantService->getShortTenantType() === 'School') {
+            $schoolId = $this->tenantService->getTenantId();
+            $school = School::allRecords()->find($schoolId);
+
+            return [
+                'totalSchools' => 1,
+                'activeSchools' => $school?->status ? 1 : 0,
+                'inactiveSchools' => $school?->status ? 0 : 1,
+                'totalDepartments' => Department::count(),
+                'totalPrograms' => Program::count(),
+                'totalClassrooms' => Classroom::count(),
+            ];
+        }
+
+        // Users without tenant see all
         return [
-            'totalSchools' => School::count(),
-            'activeSchools' => School::where('status', 'active')->count(),
-            'inactiveSchools' => School::where('status', 'inactive')->count(),
-            'totalDepartments' => Department::count(),
-            'totalPrograms' => Program::count(),
-            'totalClassrooms' => Classroom::count(),
+            'totalSchools' => School::allRecords()->count(),
+            'activeSchools' => School::allRecords()->where('status', true)->count(),
+            'inactiveSchools' => School::allRecords()->where('status', false)->count(),
+            'totalDepartments' => Department::allSchools()->count(),
+            'totalPrograms' => Program::allSchools()->count(),
+            'totalClassrooms' => Classroom::allSchools()->count(),
         ];
     }
 
     /**
      * Get School widget data with detailed metrics
+     * Filtered by tenant if user belongs to a school (unless super-admin)
      */
     private function getSchoolWidgetData(string $dateRange): array
     {
-        $totalSchools = School::count();
-        $totalDepartments = Department::count();
-        $totalPrograms = Program::count();
-        $totalClassrooms = Classroom::count();
+        $user = Auth::user();
+        $isSuperAdmin = $user && $user->hasRole('super-admin');
 
-        // Departments by school
-        $departmentsBySchool = School::withCount('departments')
-            ->orderByDesc('departments_count')
-            ->take(5)
-            ->get()
-            ->map(fn($school) => [
+        // Super-admin sees all, other users check tenant
+        $hasTenant = !$isSuperAdmin && $this->tenantService->hasTenant() && $this->tenantService->getShortTenantType() === 'School';
+        $schoolId = $hasTenant ? $this->tenantService->getTenantId() : null;
+
+        // Get counts - super-admin bypasses scope, others use auto-filter
+        $totalDepartments = $isSuperAdmin ? Department::allSchools()->count() : Department::count();
+        $totalPrograms = $isSuperAdmin ? Program::allSchools()->count() : Program::count();
+        $totalClassrooms = $isSuperAdmin ? Classroom::allSchools()->count() : Classroom::count();
+
+        if ($hasTenant) {
+            // User belongs to a specific school
+            $school = School::withCount(['departments', 'programs'])->find($schoolId);
+            $totalSchools = 1;
+
+            $departmentsBySchool = $school ? [[
                 'id' => $school->id,
                 'name' => $school->name,
                 'departments' => $school->departments_count,
-            ])
-            ->toArray();
+            ]] : [];
 
-        // Growth trend (last 6 months)
-        $growthTrend = [];
-        for ($i = 5; $i >= 0; $i--) {
-            $date = now()->subMonths($i);
-            $monthStart = $date->copy()->startOfMonth();
-            $monthEnd = $date->copy()->endOfMonth();
-
-            $newSchools = School::whereBetween('created_at', [$monthStart, $monthEnd])->count();
-            $newDepartments = Department::whereBetween('created_at', [$monthStart, $monthEnd])->count();
-            $newClassrooms = Classroom::whereBetween('created_at', [$monthStart, $monthEnd])->count();
-
-            $growthTrend[] = [
-                'label' => $date->format('M'),
-                'schools' => $newSchools,
-                'departments' => $newDepartments,
-                'classrooms' => $newClassrooms,
-            ];
-        }
-
-        // Recent schools
-        $recentSchools = School::withCount(['departments', 'programs'])
-            ->latest()
-            ->take(5)
-            ->get()
-            ->map(fn($school) => [
+            $recentSchools = $school ? [[
                 'id' => $school->id,
                 'name' => $school->name,
                 'status' => $school->status,
                 'departments' => $school->departments_count,
                 'programs' => $school->programs_count,
                 'created_at' => $school->created_at,
-            ])
-            ->toArray();
+            ]] : [];
+
+            // Growth trend for this school only
+            $growthTrend = [];
+            for ($i = 5; $i >= 0; $i--) {
+                $date = now()->subMonths($i);
+                $monthStart = $date->copy()->startOfMonth();
+                $monthEnd = $date->copy()->endOfMonth();
+
+                $newDepartments = Department::whereBetween('created_at', [$monthStart, $monthEnd])->count();
+                $newClassrooms = Classroom::whereBetween('created_at', [$monthStart, $monthEnd])->count();
+
+                $growthTrend[] = [
+                    'label' => $date->format('M'),
+                    'schools' => 0,
+                    'departments' => $newDepartments,
+                    'classrooms' => $newClassrooms,
+                ];
+            }
+        } else {
+            // Super-admin or no tenant - see all (bypass tenant scope)
+            $totalSchools = School::allRecords()->count();
+
+            $departmentsBySchool = School::allRecords()
+                ->withCount('departments')
+                ->orderByDesc('departments_count')
+                ->take(5)
+                ->get()
+                ->map(fn($school) => [
+                    'id' => $school->id,
+                    'name' => $school->name,
+                    'departments' => $school->departments_count,
+                ])
+                ->toArray();
+
+            $recentSchools = School::allRecords()
+                ->withCount(['departments', 'programs'])
+                ->latest()
+                ->take(5)
+                ->get()
+                ->map(fn($school) => [
+                    'id' => $school->id,
+                    'name' => $school->name,
+                    'status' => $school->status,
+                    'departments' => $school->departments_count,
+                    'programs' => $school->programs_count,
+                    'created_at' => $school->created_at,
+                ])
+                ->toArray();
+
+            // Growth trend for all schools
+            $growthTrend = [];
+            for ($i = 5; $i >= 0; $i--) {
+                $date = now()->subMonths($i);
+                $monthStart = $date->copy()->startOfMonth();
+                $monthEnd = $date->copy()->endOfMonth();
+
+                $newSchools = School::allRecords()->whereBetween('created_at', [$monthStart, $monthEnd])->count();
+                $newDepartments = Department::allSchools()->whereBetween('created_at', [$monthStart, $monthEnd])->count();
+                $newClassrooms = Classroom::allSchools()->whereBetween('created_at', [$monthStart, $monthEnd])->count();
+
+                $growthTrend[] = [
+                    'label' => $date->format('M'),
+                    'schools' => $newSchools,
+                    'departments' => $newDepartments,
+                    'classrooms' => $newClassrooms,
+                ];
+            }
+        }
 
         return [
             'metrics' => [
                 'totalSchools' => $totalSchools,
-                'activeSchools' => School::where('status', 'active')->count(),
-                'inactiveSchools' => School::where('status', 'inactive')->count(),
+                'activeSchools' => $hasTenant ? ($school->status ? 1 : 0) : School::allRecords()->where('status', true)->count(),
+                'inactiveSchools' => $hasTenant ? ($school->status ? 0 : 1) : School::allRecords()->where('status', false)->count(),
                 'totalDepartments' => $totalDepartments,
                 'totalPrograms' => $totalPrograms,
                 'totalClassrooms' => $totalClassrooms,

@@ -72,12 +72,20 @@ export interface Menus {
     footer: MenuItem[];
 }
 
+export interface Tenant {
+    has_tenant: boolean;
+    tenant_type: string | null;
+    tenant_id: number | null;
+    tenant_name: string | null;
+}
+
 export type AppPageProps<
     T extends Record<string, unknown> = Record<string, unknown>,
 > = T & {
     name: string;
     quote: { message: string; author: string };
     auth: Auth;
+    tenant: Tenant;
     sidebarOpen: boolean;
     menus: Menus;
 };
@@ -88,6 +96,8 @@ export interface User {
     email: string;
     avatar?: string;
     email_verified_at: string | null;
+    tenant_type?: string | null;
+    tenant_id?: number | null;
     created_at: string;
     updated_at: string;
 }

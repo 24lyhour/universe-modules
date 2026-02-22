@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\MenuService;
+use App\Services\TenantService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -110,9 +111,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Register TenantService as singleton
+        $this->app->singleton(TenantService::class);
+
         if ($this->app->environment('local') && class_exists(TelescopeServiceProvider::class)) {
             $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
             $this->app->register(TelescopeServiceProvider::class);
         }
-}
+    }
 }

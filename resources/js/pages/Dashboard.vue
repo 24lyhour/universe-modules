@@ -28,6 +28,8 @@ import type { CustomerWidgetData } from '@customer/types';
 import type { ProductMetrics, SalesDataPoint, CategoryDistribution } from '@product/Components/Widgets';
 import type { OrderMetrics } from '@order/Components/Widgets';
 import type { WalletMetrics } from '@wallets/Components/Widgets';
+import type { EmployeeMetrics, AttendanceTrendPoint, GrowthTrendPoint as EmployeeGrowthTrendPoint, RecentEmployee } from '@employee/Components/Widgets';
+import type { SchoolMetrics, DepartmentBySchool, GrowthTrendPoint as SchoolGrowthTrendPoint, RecentSchool } from '@school/Components/Widgets';
 import { useChartColors } from '@/composables/useChartColors';
 
 interface CustomerStats {
@@ -103,19 +105,10 @@ interface EmployeeStats {
 }
 
 interface EmployeeWidgetData {
-    metrics: {
-        total: number;
-        active: number;
-        inactive: number;
-        totalTypes: number;
-        todayPresent: number;
-        todayAbsent: number;
-        attendanceRate: number;
-        growthPercent: number;
-    };
-    attendanceTrend: Array<{ label: string; date: string; present: number; absent: number }>;
-    growthTrend: Array<{ label: string; value: number }>;
-    recentEmployees: Array<{ id: number; name: string; email: string; type: string; status: string; created_at: string }>;
+    metrics: EmployeeMetrics;
+    attendanceTrend: AttendanceTrendPoint[];
+    growthTrend: EmployeeGrowthTrendPoint[];
+    recentEmployees: RecentEmployee[];
 }
 
 interface SchoolStats {
@@ -128,18 +121,10 @@ interface SchoolStats {
 }
 
 interface SchoolWidgetData {
-    metrics: {
-        totalSchools: number;
-        activeSchools: number;
-        inactiveSchools: number;
-        totalDepartments: number;
-        totalPrograms: number;
-        totalClassrooms: number;
-        growthPercent: number;
-    };
-    departmentsBySchool: Array<{ id: number; name: string; departments: number }>;
-    growthTrend: Array<{ label: string; schools: number; departments: number; classrooms: number }>;
-    recentSchools: Array<{ id: number; name: string; status: string; departments: number; programs: number; created_at: string }>;
+    metrics: SchoolMetrics;
+    departmentsBySchool: DepartmentBySchool[];
+    growthTrend: SchoolGrowthTrendPoint[];
+    recentSchools: RecentSchool[];
 }
 
 interface WidgetStatuses {
