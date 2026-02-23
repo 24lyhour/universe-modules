@@ -47,6 +47,10 @@ RUN ls -la Modules/ && ls -la Modules/Customer/resources/js/Components/
 RUN mkdir -p bootstrap/cache storage/logs storage/framework/cache storage/framework/sessions storage/framework/views \
     && chmod -R 775 bootstrap/cache storage
 
+# Create .env file for build (will be overwritten by Railway env vars at runtime)
+RUN cp .env.example .env || echo "APP_KEY=" > .env
+RUN php artisan key:generate --force || true
+
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev --no-interaction --ignore-platform-req=ext-exif
 
