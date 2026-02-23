@@ -1,9 +1,9 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Extensions.exif", "git"]
+nixPkgs = ["php82", "php82Extensions.exif", "git", "bash"]
 
 [phases.install]
 cmds = [
-    "git submodule update --init --recursive",
+    "chmod +x scripts/clone-modules.sh && bash scripts/clone-modules.sh",
     "composer install --optimize-autoloader --no-scripts --no-interaction --ignore-platform-req=ext-exif",
     "yarn install --frozen-lockfile"
 ]
