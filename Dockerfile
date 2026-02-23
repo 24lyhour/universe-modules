@@ -57,10 +57,16 @@ RUN composer install --optimize-autoloader --no-dev --no-interaction --ignore-pl
 # Install Node dependencies
 RUN yarn install --frozen-lockfile
 
-# Debug: Check if route files exist before build
+# Cache bust - change this value to force rebuild
+ARG CACHE_BUST=7
+
+# Debug: Check if stub files exist before build
 RUN echo "=== Checking route files ===" && \
     ls -la resources/js/routes/ | head -10 && \
-    ls -la resources/js/routes/appearance* 2>/dev/null || echo "appearance files not found!"
+    echo "=== Checking action files ===" && \
+    ls -la resources/js/actions/App/Http/Controllers/Settings/ && \
+    echo "=== Checking wayfinder.ts ===" && \
+    cat resources/js/wayfinder.ts | head -5
 
 # Build assets (skip wayfinder plugin to avoid segfault)
 RUN SKIP_WAYFINDER=1 yarn build
