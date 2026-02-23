@@ -39,15 +39,13 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g yarn
 
-# Clone the repository with all submodules to a temp directory
-ARG GITHUB_REPO=https://github.com/24lyhour/universe-modules.git
-RUN git clone --recurse-submodules --shallow-submodules --depth 1 ${GITHUB_REPO} /tmp/app && \
-    rm -rf /tmp/app/.git && \
-    mkdir -p /var/www/html && \
-    mv /tmp/app/* /tmp/app/.[!.]* /var/www/html/ 2>/dev/null || true && \
-    rm -rf /tmp/app
+# Set working directory and clone repo with submodules
+WORKDIR /var/www
+RUN rm -rf html && \
+    git clone --recurse-submodules --shallow-submodules --depth 1 \
+    https://github.com/24lyhour/universe-modules.git html && \
+    rm -rf html/.git html/Modules/*/.git
 
-# Set working directory
 WORKDIR /var/www/html
 
 # Install PHP dependencies (no dev)
