@@ -35,9 +35,10 @@ export default defineConfig({
             refresh: true,
         }),
         tailwindcss(),
-        wayfinder({
+        // Skip wayfinder in CI/Docker builds (causes segfault)
+        ...(process.env.SKIP_WAYFINDER ? [] : [wayfinder({
             formVariants: true,
-        }),
+        })]),
         vue({
             template: {
                 transformAssetUrls: {

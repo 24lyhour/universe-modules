@@ -57,8 +57,8 @@ RUN composer install --optimize-autoloader --no-dev --no-interaction --ignore-pl
 # Install Node dependencies
 RUN yarn install --frozen-lockfile
 
-# Build assets
-RUN yarn build
+# Build assets (skip wayfinder plugin to avoid segfault)
+RUN SKIP_WAYFINDER=1 yarn build
 
 # Cache Laravel config
 RUN php artisan config:cache && \
