@@ -148,3 +148,7 @@ php artisan module:make-controller Api/V1/OutletTypeApiController Outlet
 
 php artisan module:make-request Dashboard/V1/StoreOutletTypeRequest Outlet
 php artisan module:make-request Dashboard/V1/UpdateOutletTypeRequest Outlet
+
+Generate APP_KEY locally
+
+php artisan key:generate --show
