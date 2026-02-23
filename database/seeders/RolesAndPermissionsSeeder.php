@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
@@ -118,6 +116,20 @@ class RolesAndPermissionsSeeder extends Seeder
             'dashboard.view_analytics',
             'dashboard.export_reports',
 
+            // Dashboard widget permissions (controls which widgets user can see)
+            'dashboard.customer',
+            'dashboard.menu',
+            'dashboard.outlet',
+            'dashboard.product',
+            'dashboard.order',
+            'dashboard.wallets',
+            'dashboard.employee',
+            'dashboard.school',
+            'dashboard.booking',
+            'dashboard.payment',
+            'dashboard.report',
+         
+
             // Settings
             'settings.manage',
             'settings.view_logs',
@@ -147,9 +159,6 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // Create roles and assign permissions
         $this->createRoles($permissions);
-
-        // Create default users
-        $this->createDefaultUsers();
 
         $this->command->info('Roles and permissions seeded successfully!');
         $this->command->info('Created ' . count($permissions) . ' permissions');
@@ -241,90 +250,5 @@ class RolesAndPermissionsSeeder extends Seeder
         $viewer->syncPermissions($viewerPermissions);
 
         $this->command->info('Created roles: super-admin, admin, manager, staff, employee, viewer');
-    }
-
-    /**
-     * Create default users with roles.
-     */
-    private function createDefaultUsers(): void
-    {
-        // Super Admin
-        $superAdmin = User::firstOrCreate(
-            ['email' => 'superadmin@universe.test'],
-            [
-                'name' => 'Super Admin',
-                'password' => Hash::make('password'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $superAdmin->assignRole('super-admin');
-
-        // Admin
-        $admin = User::firstOrCreate(
-            ['email' => 'admin@universe.test'],
-            [
-                'name' => 'Admin User',
-                'password' => Hash::make('password'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $admin->assignRole('admin');
-
-        // Manager
-        $manager = User::firstOrCreate(
-            ['email' => 'manager@universe.test'],
-            [
-                'name' => 'Manager User',
-                'password' => Hash::make('password'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $manager->assignRole('manager');
-
-        // Staff
-        $staffUser = User::firstOrCreate(
-            ['email' => 'staff@universe.test'],
-            [
-                'name' => 'Staff User',
-                'password' => Hash::make('password'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $staffUser->assignRole('staff');
-
-        // Employee
-        $employeeUser = User::firstOrCreate(
-            ['email' => 'employee@universe.test'],
-            [
-                'name' => 'Employee User',
-                'password' => Hash::make('password'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $employeeUser->assignRole('employee');
-
-        // Viewer
-        $viewer = User::firstOrCreate(
-            ['email' => 'viewer@universe.test'],
-            [
-                'name' => 'Viewer User',
-                'password' => Hash::make('password'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $viewer->assignRole('viewer');
-
-        $this->command->info('Created default users:');
-        $this->command->table(
-            ['Email', 'Role', 'Password'],
-            [
-                ['superadmin@universe.test', 'super-admin', 'password'],
-                ['admin@universe.test', 'admin', 'password'],
-                ['manager@universe.test', 'manager', 'password'],
-                ['staff@universe.test', 'staff', 'password'],
-                ['employee@universe.test', 'employee', 'password'],
-                ['viewer@universe.test', 'viewer', 'password'],
-            ]
-        );
     }
 }

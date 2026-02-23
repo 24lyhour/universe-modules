@@ -36,7 +36,6 @@ const resolvePageComponent = (name: string) => {
         }
 
         if (typeof page === 'undefined') {
-            console.error('Available module keys:', Object.keys(eagerModulePages));
             throw new Error(`Module page not found: ${moduleKey}`);
         }
         return page;

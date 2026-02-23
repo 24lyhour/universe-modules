@@ -8,7 +8,7 @@ import { Modal } from 'momentum-modal';
 import type { BreadcrumbItemType } from '@/types';
 import { router, usePage } from '@inertiajs/vue3';
 import { toast } from 'vue-sonner';
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted, watch } from 'vue';
 
 // Type for flash messages
 type FlashMessages = {
@@ -34,24 +34,12 @@ const showFlashMessages = (flash: FlashMessages | undefined) => {
     }
 };
 
-// Listen for Inertia navigation finish events
-let removeFinishListener: (() => void) | null = null;
+const page = usePage();
 
-onMounted(() => {
-    // Check for flash messages on initial mount
-    const page = usePage();
-    showFlashMessages(page.props.flash as FlashMessages | undefined);
-
-    // Listen for flash messages after navigation
-    removeFinishListener = router.on('finish', () => {
-        const page = usePage();
-        showFlashMessages(page.props.flash as FlashMessages | undefined);
-    });
-});
-
-onUnmounted(() => {
-    removeFinishListener?.();
-});
+// Watch for flash messages reactively
+watch(() => page.props.flash, (flash) => {
+    showFlashMessages(flash as FlashMessages | undefined);
+}, { deep: true, immediate: true });
 
 interface Props {
     breadcrumbs?: BreadcrumbItemType[];
