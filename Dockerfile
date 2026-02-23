@@ -25,11 +25,16 @@ RUN npm install -g yarn
 
 WORKDIR /app
 
-# Cache bust - change this value to force rebuild (MUST be before COPY)
-ARG CACHE_BUST=9
+# Force rebuild - this echo forces cache invalidation
+RUN echo "Build timestamp: 2026-02-23-16-25-v10"
 
-# Copy application files
+# Copy application files - MUST get fresh files
 COPY . .
+
+# Verify action files exist immediately after copy
+RUN echo "=== FILES AFTER COPY ===" && \
+    ls -la resources/js/actions/App/Http/Controllers/Settings/ 2>/dev/null || \
+    echo "ERROR: Action files NOT found after COPY!"
 
 # Accept GITHUB_TOKEN as build argument
 ARG GITHUB_TOKEN
