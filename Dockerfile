@@ -45,11 +45,26 @@ WORKDIR /var/www/html
 # Copy all files from build context
 COPY . .
 
-# Clone submodules (now public repos)
-RUN git init && \
-    git config --global --add safe.directory /var/www/html && \
-    git submodule init && \
-    git submodule update --recursive --depth 1
+# Clone all module repos directly (they are public)
+RUN rm -rf Modules/* && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Blog.git Modules/Blog && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Booking.git Modules/Booking && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Company.git Modules/Company && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Customer.git Modules/Customer && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Employee.git Modules/Employee && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Hotel.git Modules/Hotel && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Media.git Modules/Media && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Menu.git Modules/Menu && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Movice.git Modules/Movice && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Order.git Modules/Order && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Outlet.git Modules/Outlet && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Payment.git Modules/Payment && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Porfolio.git Modules/Porfolio && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Product.git Modules/Product && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Report.git Modules/Report && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-School.git Modules/School && \
+    git clone --depth 1 https://github.com/24lyhour/universe-modules-Wallet.git Modules/Wallets && \
+    rm -rf Modules/*/.git
 
 # Install PHP dependencies (no dev)
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts
