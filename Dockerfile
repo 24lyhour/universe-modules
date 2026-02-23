@@ -25,20 +25,23 @@ RUN npm install -g yarn
 
 WORKDIR /app
 
-# Cache bust arg - BEFORE COPY to invalidate cached layers
-# Change this value to force complete rebuild
-ARG CACHE_BUST=v6-delete-modules
-RUN echo "Cache bust: $CACHE_BUST - forcing fresh COPY"
-
-# Copy application files (Modules/ excluded by .dockerignore)
+# Copy application files
 COPY . .
 
-# Accept GITHUB_TOKEN as build argument for cloning private repos
+# Accept GITHUB_TOKEN as build argument
 ARG GITHUB_TOKEN
 ENV GITHUB_TOKEN=$GITHUB_TOKEN
 
-# FORCE delete Modules and clone fresh (workaround for Docker cache issues)
-RUN rm -rf Modules && chmod +x scripts/clone-modules.sh && bash scripts/clone-modules.sh
+# Initialize submodules OR clone modules manually
+RUN git config --global --add safe.directory /app && \
+    git submodule update --init --recursive --depth 1 || \
+    (echo "Submodule failed, using clone script" && \
+     rm -rf Modules && \
+     chmod +x scripts/clone-modules.sh && \
+     bash scripts/clone-modules.sh)
+
+# Verify modules exist
+RUN ls -la Modules/ && ls -la Modules/Customer/resources/js/Components/
 
 # Ensure Laravel directories exist and are writable
 RUN mkdir -p bootstrap/cache storage/logs storage/framework/cache storage/framework/sessions storage/framework/views \

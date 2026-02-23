@@ -1,9 +1,4 @@
-# Ignore git files
-.git
-.gitignore
-.gitmodules
-
-# Ignore Modules directory - will be cloned fresh by clone-modules.sh
+# Ignore Modules directory - will be cloned fresh
 Modules/
 
 # Ignore development files
