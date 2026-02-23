@@ -42,23 +42,18 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy composer files first for better caching
-COPY composer.json composer.lock ./
-COPY Modules/*/composer.json ./Modules/
+# Clone the repository with all submodules
+ARG GITHUB_REPO=https://github.com/24lyhour/universe-modules.git
+RUN git clone --recurse-submodules --shallow-submodules --depth 1 ${GITHUB_REPO} . && \
+    rm -rf .git
 
 # Install PHP dependencies (no dev)
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts
 
-# Copy package files
-COPY package.json yarn.lock ./
-
 # Install Node dependencies
 RUN yarn install --frozen-lockfile
 
-# Copy all project files
-COPY . .
-
-# Run composer scripts after copying all files
+# Run composer scripts
 RUN composer dump-autoload --optimize
 
 # Build frontend assets
