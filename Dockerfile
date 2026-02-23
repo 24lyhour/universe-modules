@@ -26,7 +26,7 @@ RUN npm install -g yarn
 WORKDIR /app
 
 # Cache bust - change this value to force rebuild (MUST be before COPY)
-ARG CACHE_BUST=8
+ARG CACHE_BUST=9
 
 # Copy application files
 COPY . .
