@@ -40,8 +40,6 @@ trait BelongsToSchool
                     $builder->whereIn('school_id', $schoolIds);
                 }
             } elseif ($tenantService->hasTenant()) {
-                // User has tenant(s) but NOT School type - they should see nothing
-                // This prevents Outlet users from seeing all School data
                 $builder->whereRaw('1 = 0');
             }
             // If user has no tenant at all (super-admin), no filter is applied
@@ -55,7 +53,6 @@ trait BelongsToSchool
             if ($tenantService->hasTenantType('School') && empty($model->school_id)) {
                 $schoolIds = $tenantService->getSchoolIds();
                 if (!empty($schoolIds)) {
-                    // Use primary tenant ID if available, otherwise first school
                     if ($tenantService->getShortTenantType() === 'School') {
                         $model->school_id = $tenantService->getTenantId();
                     } else {
