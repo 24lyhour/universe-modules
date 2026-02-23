@@ -83,7 +83,7 @@ COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose port
-EXPOSE 80
+EXPOSE 8080
 
 # Start with entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

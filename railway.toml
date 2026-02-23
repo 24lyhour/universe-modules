@@ -9,9 +9,6 @@ dockerfilePath = "Dockerfile"
 # Number of replicas
 numReplicas = 1
 
-# Start command (handled by entrypoint.sh)
-# startCommand = ""
-
 # Health check
 healthcheckPath = "/api/health"
 healthcheckTimeout = 300
@@ -22,6 +19,9 @@ restartPolicyMaxRetries = 3
 
 # Environment
 [env]
+# Port
+PORT = "8080"
+
 # App settings
 APP_ENV = "production"
 APP_DEBUG = "false"
