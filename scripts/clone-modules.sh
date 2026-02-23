@@ -50,7 +50,7 @@ for module in "${!MODULES[@]}"; do
     if [ ! -d "$MODULE_PATH" ] || [ -z "$(ls -A $MODULE_PATH 2>/dev/null)" ]; then
         echo "Cloning $module..."
         rm -rf "$MODULE_PATH"
-        git clone --depth 1 "$CLONE_URL" "$MODULE_PATH"
+        git clone --depth 1 -b main "$CLONE_URL" "$MODULE_PATH"
     else
         echo "$module already exists"
     fi
