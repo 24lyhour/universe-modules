@@ -39,14 +39,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g yarn
 
-# Set working directory and clone repo with submodules
-WORKDIR /var/www
-RUN rm -rf html && \
-    git clone --recurse-submodules --shallow-submodules --depth 1 \
-    https://github.com/24lyhour/universe-modules.git html && \
-    rm -rf html/.git html/Modules/*/.git
-
+# Set working directory
 WORKDIR /var/www/html
+
+# Copy all files from build context (Railway clones submodules with gitSubmodules=true)
+COPY . .
 
 # Install PHP dependencies (no dev)
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts
@@ -65,12 +62,12 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
 
-# Copy configs from cloned repo to system directories
-RUN cp docker/nginx.conf /etc/nginx/sites-available/default && \
-    cp docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf && \
-    cp docker/php.ini /usr/local/etc/php/conf.d/app.ini && \
-    cp docker/entrypoint.sh /usr/local/bin/entrypoint.sh && \
-    chmod +x /usr/local/bin/entrypoint.sh
+# Copy configs to system directories
+COPY docker/nginx.conf /etc/nginx/sites-available/default
+COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/php.ini /usr/local/etc/php/conf.d/app.ini
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose port
 EXPOSE 8080
