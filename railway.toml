@@ -1,0 +1,40 @@
+# Railway deployment configuration
+# Documentation: https://docs.railway.app/reference/config-as-code
+
+[build]
+# Use Dockerfile for building
+dockerfilePath = "Dockerfile"
+
+[deploy]
+# Number of replicas
+numReplicas = 1
+
+# Start command (handled by entrypoint.sh)
+# startCommand = ""
+
+# Health check
+healthcheckPath = "/api/health"
+healthcheckTimeout = 300
+
+# Restart policy
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+# Environment
+[env]
+# App settings
+APP_ENV = "production"
+APP_DEBUG = "false"
+LOG_CHANNEL = "stack"
+LOG_LEVEL = "error"
+
+# Session & Cache
+SESSION_DRIVER = "database"
+CACHE_STORE = "database"
+QUEUE_CONNECTION = "database"
+
+# Filesystem
+FILESYSTEM_DISK = "public"
+
+# Performance
+BCRYPT_ROUNDS = "12"
