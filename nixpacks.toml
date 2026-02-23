@@ -1,16 +1,20 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Extensions.exif", "git", "bash"]
+nixPkgs = ["php82", "php82Extensions.exif", "php82Extensions.pdo_mysql", "php82Extensions.mbstring", "php82Extensions.gd", "php82Extensions.zip", "php82Extensions.bcmath", "git", "bash", "nodejs", "yarn"]
 
 [phases.install]
 cmds = [
     "chmod +x scripts/clone-modules.sh && bash scripts/clone-modules.sh",
-    "composer install --optimize-autoloader --no-scripts --no-interaction --ignore-platform-req=ext-exif",
+    "mkdir -p bootstrap/cache storage/logs storage/framework/cache storage/framework/sessions storage/framework/views",
+    "chmod -R 775 bootstrap/cache storage",
+    "cp .env.example .env || echo 'APP_KEY=' > .env",
+    "composer install --optimize-autoloader --no-dev --no-interaction --ignore-platform-req=ext-exif",
+    "php artisan key:generate --force || true",
     "yarn install --frozen-lockfile"
 ]
 
 [phases.build]
 cmds = [
-    "yarn build",
+    "SKIP_WAYFINDER=1 yarn build",
     "php artisan config:cache",
     "php artisan route:cache",
     "php artisan view:cache"
