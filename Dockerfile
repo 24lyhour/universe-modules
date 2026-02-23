@@ -25,6 +25,9 @@ RUN npm install -g yarn
 
 WORKDIR /app
 
+# Cache bust - change this value to force rebuild (MUST be before COPY)
+ARG CACHE_BUST=8
+
 # Copy application files
 COPY . .
 
@@ -56,9 +59,6 @@ RUN composer install --optimize-autoloader --no-dev --no-interaction --ignore-pl
 
 # Install Node dependencies
 RUN yarn install --frozen-lockfile
-
-# Cache bust - change this value to force rebuild
-ARG CACHE_BUST=7
 
 # Debug: Check if stub files exist before build
 RUN echo "=== Checking route files ===" && \
