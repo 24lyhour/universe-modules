@@ -36,7 +36,8 @@ export default defineConfig({
         }),
         tailwindcss(),
         // Skip wayfinder in CI/Docker builds (causes segfault)
-        ...(process.env.SKIP_WAYFINDER ? [] : [wayfinder({
+        // Wayfinder disabled for production builds - only enable locally
+        ...(process.env.NODE_ENV === 'production' ? [] : [wayfinder({
             formVariants: true,
         })]),
         vue({
