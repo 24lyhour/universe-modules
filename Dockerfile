@@ -34,10 +34,10 @@ RUN pecl install redis && docker-php-ext-enable redis
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Install Node.js
+# Install Node.js and Yarn
 RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
     && apt-get install -y nodejs \
-    && npm install -g npm@latest
+    && npm install -g yarn
 
 # Set working directory
 WORKDIR /var/www/html
@@ -50,10 +50,10 @@ COPY Modules/*/composer.json ./Modules/
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts
 
 # Copy package files
-COPY package.json package-lock.json ./
+COPY package.json yarn.lock ./
 
 # Install Node dependencies
-RUN npm ci
+RUN yarn install --frozen-lockfile
 
 # Copy all project files
 COPY . .
@@ -62,7 +62,7 @@ COPY . .
 RUN composer dump-autoload --optimize
 
 # Build frontend assets
-RUN npm run build
+RUN yarn build
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
