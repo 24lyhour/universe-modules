@@ -42,8 +42,14 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy all files from build context (Railway clones submodules with gitSubmodules=true)
+# Copy all files from build context
 COPY . .
+
+# Clone submodules (now public repos)
+RUN git init && \
+    git config --global --add safe.directory /var/www/html && \
+    git submodule init && \
+    git submodule update --recursive --depth 1
 
 # Install PHP dependencies (no dev)
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts
