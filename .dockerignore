@@ -1,0 +1,31 @@
+# Ignore git files
+.git
+.gitignore
+.gitmodules
+
+# Ignore Modules directory - will be cloned fresh by clone-modules.sh
+Modules/
+
+# Ignore development files
+node_modules/
+vendor/
+.env
+.env.*
+!.env.example
+
+# Ignore IDE and OS files
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Ignore logs and cache
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+bootstrap/cache/
+
+# Ignore test files
+tests/
+phpunit.xml
