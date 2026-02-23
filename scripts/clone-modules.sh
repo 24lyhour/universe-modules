@@ -46,13 +46,14 @@ for module in "${!MODULES[@]}"; do
     MODULE_PATH="$MODULES_DIR/$module"
     CLONE_URL=$(get_clone_url "${MODULES[$module]}")
 
-    # Check if module directory exists and has content
-    if [ ! -d "$MODULE_PATH" ] || [ -z "$(ls -A $MODULE_PATH 2>/dev/null)" ]; then
+    # Check if module has actual content (not just .git file from submodule)
+    # A proper module should have module.json file
+    if [ ! -f "$MODULE_PATH/module.json" ]; then
         echo "Cloning $module..."
         rm -rf "$MODULE_PATH"
         git clone --depth 1 -b main "$CLONE_URL" "$MODULE_PATH"
     else
-        echo "$module already exists"
+        echo "$module already exists with content"
     fi
 done
 
