@@ -35,31 +35,49 @@ get_clone_url() {
     fi
 }
 
-echo "=== Checking and cloning modules ==="
+echo "=== Starting module clone script ==="
+echo "Current directory: $(pwd)"
+
+# Show what's in Modules BEFORE cloning
+echo "=== BEFORE: Contents of Modules directory ==="
+ls -la "$MODULES_DIR" 2>/dev/null || echo "Modules directory does not exist"
 
 # Create Modules directory if it doesn't exist (excluded by .dockerignore)
 mkdir -p "$MODULES_DIR"
 
 if [ -n "$GITHUB_TOKEN" ]; then
-    echo "Using GITHUB_TOKEN for private repo access"
+    echo "GITHUB_TOKEN is SET (length: ${#GITHUB_TOKEN})"
 else
-    echo "WARNING: No GITHUB_TOKEN set - private repos will fail"
+    echo "WARNING: GITHUB_TOKEN is NOT SET - private repos will fail"
 fi
 
 for module in "${!MODULES[@]}"; do
     MODULE_PATH="$MODULES_DIR/$module"
     CLONE_URL=$(get_clone_url "${MODULES[$module]}")
 
-    # Check if module has actual content (not just .git file from submodule)
-    # A proper module should have module.json file
+    echo "--- Processing $module ---"
+    echo "  Path: $MODULE_PATH"
+    echo "  module.json exists: $(test -f "$MODULE_PATH/module.json" && echo "YES" || echo "NO")"
+
+    # Always clone fresh - remove any existing directory
     if [ ! -f "$MODULE_PATH/module.json" ]; then
-        echo "Cloning $module..."
+        echo "  Action: CLONING (module.json not found)"
         rm -rf "$MODULE_PATH"
-        git clone --depth 1 -b main "$CLONE_URL" "$MODULE_PATH"
+        if git clone --depth 1 -b main "$CLONE_URL" "$MODULE_PATH" 2>&1; then
+            echo "  Result: SUCCESS"
+            echo "  Contents: $(ls -la "$MODULE_PATH" | head -5)"
+        else
+            echo "  Result: FAILED"
+        fi
     else
-        echo "$module already exists with content"
+        echo "  Action: SKIPPING (module.json exists)"
     fi
 done
 
-echo "=== Modules cloned successfully ==="
-ls -la $MODULES_DIR/
+echo "=== AFTER: Contents of Modules directory ==="
+ls -la "$MODULES_DIR"
+
+echo "=== Verifying Customer module ==="
+ls -la "$MODULES_DIR/Customer/resources/js/Components/" 2>/dev/null || echo "Customer Components not found!"
+
+echo "=== Module clone script complete ==="
