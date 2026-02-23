@@ -6,7 +6,7 @@
 /public/storage
 /storage/*.key
 /storage/pail
-/resources/js/actions
+# /resources/js/actions  # Commented out - need stub files for production
 # /resources/js/routes  # Commented out - need stub files for production
 /resources/js/wayfinder
 /vendor
