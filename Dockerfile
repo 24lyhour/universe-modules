@@ -25,18 +25,19 @@ RUN npm install -g yarn
 
 WORKDIR /app
 
-# Copy application files
+# Cache bust arg - BEFORE COPY to invalidate cached layers
+# Change this value to force complete rebuild
+ARG CACHE_BUST=v4
+RUN echo "Cache bust: $CACHE_BUST - forcing fresh COPY"
+
+# Copy application files (Modules/ excluded by .dockerignore)
 COPY . .
 
 # Accept GITHUB_TOKEN as build argument for cloning private repos
 ARG GITHUB_TOKEN
 ENV GITHUB_TOKEN=$GITHUB_TOKEN
 
-# Cache bust arg - change this value to force re-clone modules
-ARG CACHE_BUST=v3
-RUN echo "Cache bust: $CACHE_BUST"
-
-# Clone modules (for private repos workaround)
+# Clone modules (always cloned fresh since Modules/ is in .dockerignore)
 RUN chmod +x scripts/clone-modules.sh && bash scripts/clone-modules.sh
 
 # Ensure Laravel directories exist and are writable
