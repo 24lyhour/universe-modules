@@ -1,6 +1,7 @@
 [build]
 builder = "dockerfile"
-dockerfilePath = "Dockerfile"
+dockerfilePath = "Dockerfile.prod"
+watchPatterns = ["**/*"]
 
 [build.args]
 GITHUB_TOKEN = "${{GITHUB_TOKEN}}"
