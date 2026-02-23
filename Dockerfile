@@ -28,6 +28,10 @@ WORKDIR /app
 # Copy application files
 COPY . .
 
+# Accept GITHUB_TOKEN as build argument for cloning private repos
+ARG GITHUB_TOKEN
+ENV GITHUB_TOKEN=$GITHUB_TOKEN
+
 # Clone modules (for private repos workaround)
 RUN chmod +x scripts/clone-modules.sh && bash scripts/clone-modules.sh
 
