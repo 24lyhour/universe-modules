@@ -19,16 +19,17 @@ chmod -R 775 /var/www/html/bootstrap/cache
 echo "⏳ Waiting for database connection..."
 max_tries=30
 counter=0
-until php artisan db:monitor --max=1 > /dev/null 2>&1; do
+until php artisan tinker --execute="DB::connection()->getPdo();" > /dev/null 2>&1; do
     counter=$((counter + 1))
     if [ $counter -gt $max_tries ]; then
         echo "❌ Database connection failed after $max_tries attempts"
-        exit 1
+        echo "⚠️ Continuing anyway - app might work without DB initially"
+        break
     fi
     echo "Waiting for database... ($counter/$max_tries)"
     sleep 2
 done
-echo "✅ Database connected!"
+echo "✅ Database check complete!"
 
 # Run migrations
 echo "📦 Running migrations..."
