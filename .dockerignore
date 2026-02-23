@@ -19,13 +19,6 @@ vendor/
 *.swp
 .DS_Store
 
-# Ignore logs and cache
-storage/logs/
-storage/framework/cache/
-storage/framework/sessions/
-storage/framework/views/
-bootstrap/cache/
-
 # Ignore test files
 tests/
 phpunit.xml

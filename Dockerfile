@@ -39,6 +39,10 @@ RUN echo "Cache bust: $CACHE_BUST"
 # Clone modules (for private repos workaround)
 RUN chmod +x scripts/clone-modules.sh && bash scripts/clone-modules.sh
 
+# Ensure Laravel directories exist and are writable
+RUN mkdir -p bootstrap/cache storage/logs storage/framework/cache storage/framework/sessions storage/framework/views \
+    && chmod -R 775 bootstrap/cache storage
+
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev --no-interaction --ignore-platform-req=ext-exif
 
