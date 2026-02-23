@@ -9,11 +9,16 @@ mkdir -p /var/www/html/storage/framework/{cache,sessions,views}
 mkdir -p /var/www/html/bootstrap/cache
 mkdir -p /var/log/supervisor
 
-# Set permissions
+# Set permissions (more permissive for container)
 chown -R www-data:www-data /var/www/html/storage
 chown -R www-data:www-data /var/www/html/bootstrap/cache
-chmod -R 775 /var/www/html/storage
-chmod -R 775 /var/www/html/bootstrap/cache
+chmod -R 777 /var/www/html/storage
+chmod -R 777 /var/www/html/bootstrap/cache
+
+# Touch log file and set permissions
+touch /var/www/html/storage/logs/laravel.log
+chmod 666 /var/www/html/storage/logs/laravel.log
+chown www-data:www-data /var/www/html/storage/logs/laravel.log
 
 # Generate APP_KEY if not set
 if [ -z "$APP_KEY" ]; then
