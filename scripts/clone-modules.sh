@@ -2,6 +2,9 @@
 # Clone module submodules manually if they're empty
 # Uses GITHUB_TOKEN env var for private repo access
 
+set -x  # Enable verbose mode to show all commands
+exec 2>&1  # Redirect stderr to stdout for better logging
+
 MODULES_DIR="Modules"
 
 # Module repos

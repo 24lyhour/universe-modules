@@ -27,7 +27,7 @@ WORKDIR /app
 
 # Cache bust arg - BEFORE COPY to invalidate cached layers
 # Change this value to force complete rebuild
-ARG CACHE_BUST=v4
+ARG CACHE_BUST=v5-force-rebuild
 RUN echo "Cache bust: $CACHE_BUST - forcing fresh COPY"
 
 # Copy application files (Modules/ excluded by .dockerignore)
