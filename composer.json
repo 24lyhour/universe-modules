@@ -111,7 +111,8 @@
             "wikimedia/composer-merge-plugin": true
         },
         "platform": {
-            "php": "8.2.30"
+            "php": "8.2.30",
+            "ext-exif": "8.2.30"
         }
     },
     "minimum-stability": "stable",
