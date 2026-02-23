@@ -36,6 +36,10 @@ get_clone_url() {
 }
 
 echo "=== Checking and cloning modules ==="
+
+# Create Modules directory if it doesn't exist (excluded by .dockerignore)
+mkdir -p "$MODULES_DIR"
+
 if [ -n "$GITHUB_TOKEN" ]; then
     echo "Using GITHUB_TOKEN for private repo access"
 else
