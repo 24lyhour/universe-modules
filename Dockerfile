@@ -32,6 +32,10 @@ COPY . .
 ARG GITHUB_TOKEN
 ENV GITHUB_TOKEN=$GITHUB_TOKEN
 
+# Cache bust arg - change this value to force re-clone modules
+ARG CACHE_BUST=v2
+RUN echo "Cache bust: $CACHE_BUST"
+
 # Clone modules (for private repos workaround)
 RUN chmod +x scripts/clone-modules.sh && bash scripts/clone-modules.sh
 
