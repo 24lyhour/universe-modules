@@ -67,18 +67,12 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
 
-# Copy Nginx config
-COPY docker/nginx.conf /etc/nginx/sites-available/default
-
-# Copy Supervisor config
-COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-# Copy PHP config
-COPY docker/php.ini /usr/local/etc/php/conf.d/app.ini
-
-# Copy entrypoint script
-COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+# Copy configs from cloned repo to system directories
+RUN cp docker/nginx.conf /etc/nginx/sites-available/default && \
+    cp docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf && \
+    cp docker/php.ini /usr/local/etc/php/conf.d/app.ini && \
+    cp docker/entrypoint.sh /usr/local/bin/entrypoint.sh && \
+    chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose port
 EXPOSE 8080
