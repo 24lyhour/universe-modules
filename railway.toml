@@ -4,6 +4,8 @@
 [build]
 # Use Dockerfile for building
 dockerfilePath = "Dockerfile"
+# Clone git submodules (Modules directory)
+gitSubmodules = true
 
 [deploy]
 # Number of replicas
