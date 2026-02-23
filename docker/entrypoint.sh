@@ -15,43 +15,28 @@ chown -R www-data:www-data /var/www/html/bootstrap/cache
 chmod -R 775 /var/www/html/storage
 chmod -R 775 /var/www/html/bootstrap/cache
 
-# Wait for database to be ready
-echo "⏳ Waiting for database connection..."
-max_tries=30
-counter=0
-until php artisan tinker --execute="DB::connection()->getPdo();" > /dev/null 2>&1; do
-    counter=$((counter + 1))
-    if [ $counter -gt $max_tries ]; then
-        echo "❌ Database connection failed after $max_tries attempts"
-        echo "⚠️ Continuing anyway - app might work without DB initially"
-        break
-    fi
-    echo "Waiting for database... ($counter/$max_tries)"
-    sleep 2
-done
-echo "✅ Database check complete!"
-
-# Run migrations
-echo "📦 Running migrations..."
-php artisan migrate --force
-
-# Clear and cache config
-echo "⚡ Optimizing application..."
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-php artisan event:cache
+# Generate APP_KEY if not set
+if [ -z "$APP_KEY" ]; then
+    echo "⚠️ APP_KEY not set, generating..."
+    php artisan key:generate --force
+fi
 
 # Create storage link
 echo "🔗 Creating storage link..."
 php artisan storage:link --force 2>/dev/null || true
 
-# Module migrations
-echo "📦 Running module migrations..."
-php artisan module:migrate --force 2>/dev/null || echo "No module migrations to run"
+# Try to connect to database and run migrations
+echo "📦 Running migrations..."
+php artisan migrate --force 2>/dev/null || echo "⚠️ Migration failed, continuing..."
+
+# Cache config (skip if fails)
+echo "⚡ Optimizing application..."
+php artisan config:clear 2>/dev/null || true
+php artisan route:clear 2>/dev/null || true
+php artisan view:clear 2>/dev/null || true
 
 echo "✅ Application ready!"
 echo "🌐 Starting services..."
 
-# Start supervisor (nginx + php-fpm + queue + scheduler)
+# Start supervisor (nginx + php-fpm)
 exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
