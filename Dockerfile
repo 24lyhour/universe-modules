@@ -57,6 +57,11 @@ RUN composer install --optimize-autoloader --no-dev --no-interaction --ignore-pl
 # Install Node dependencies
 RUN yarn install --frozen-lockfile
 
+# Debug: Check if route files exist before build
+RUN echo "=== Checking route files ===" && \
+    ls -la resources/js/routes/ | head -10 && \
+    ls -la resources/js/routes/appearance* 2>/dev/null || echo "appearance files not found!"
+
 # Build assets (skip wayfinder plugin to avoid segfault)
 RUN SKIP_WAYFINDER=1 yarn build
 
