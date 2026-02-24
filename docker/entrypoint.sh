@@ -30,6 +30,11 @@ fi
 echo "🔗 Creating storage link..."
 php artisan storage:link --force 2>/dev/null || true
 
+# Clear any cached config first
+echo "🧹 Clearing cached config..."
+rm -f /var/www/html/bootstrap/cache/config.php 2>/dev/null || true
+php artisan config:clear 2>/dev/null || true
+
 # Wait for database to be ready
 echo "⏳ Waiting for database..."
 sleep 5
