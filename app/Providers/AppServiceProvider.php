@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\MenuService;
 use App\Services\TenantService;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Force HTTPS in production (Railway serves via HTTPS proxy)
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         $this->registerDashboardMenuItems();
     }
 

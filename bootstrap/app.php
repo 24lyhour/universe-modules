@@ -19,8 +19,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->encryptCookies(except: ['appearance', 'sidebar_state']);
 
-        // Trust all proxies (required for ngrok/valet share)
-        $middleware->trustProxies(at: '*');
+        // Trust all proxies and headers (required for Railway/HTTPS proxy)
+        $middleware->trustProxies(at: '*', headers: \Illuminate\Http\Request::HEADER_X_FORWARDED_ALL);
 
         $middleware->web(append: [
             HandleAppearance::class,
