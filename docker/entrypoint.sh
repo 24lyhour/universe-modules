@@ -30,15 +30,24 @@ fi
 echo "🔗 Creating storage link..."
 php artisan storage:link --force 2>/dev/null || true
 
-# Try to connect to database and run migrations
-echo "📦 Running migrations..."
-php artisan migrate --force 2>/dev/null || echo "⚠️ Migration failed, continuing..."
+# Wait for database to be ready
+echo "⏳ Waiting for database..."
+sleep 5
 
-# Cache config (skip if fails)
+# Run migrations
+echo "📦 Running migrations..."
+php artisan migrate --force || echo "⚠️ Migration failed"
+
+# Run seeders if tables are empty
+echo "🌱 Running seeders..."
+php artisan db:seed --force || echo "⚠️ Seeding failed"
+
+# Clear and cache config
 echo "⚡ Optimizing application..."
-php artisan config:clear 2>/dev/null || true
-php artisan route:clear 2>/dev/null || true
-php artisan view:clear 2>/dev/null || true
+php artisan config:clear || true
+php artisan route:clear || true
+php artisan view:clear || true
+php artisan cache:clear || true
 
 echo "✅ Application ready!"
 echo "🌐 Starting services..."
