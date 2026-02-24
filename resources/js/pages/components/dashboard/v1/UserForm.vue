@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { Eye, EyeOff, Building2, School, Store, Mail, Calendar, Upload, User, X } from 'lucide-vue-next';
+import { MediaLibraryModal } from '@/components/shared';
 import { ref, computed, onMounted } from 'vue';
 import { toast } from 'vue-sonner';
 import type { Role } from '@/types/roles';
@@ -51,7 +52,7 @@ const emit = defineEmits<{
 
 const showPassword = ref(false);
 const showConfirmPassword = ref(false);
-const avatarInput = ref<HTMLInputElement | null>(null);
+const showMediaLibrary = ref(false);
 const avatarPreview = ref<string | null>(props.user?.avatar || null);
 
 // Build initial selected tenants
@@ -96,7 +97,7 @@ const form = useForm({
     name: props.user?.name || '',
     email: props.user?.email || '',
     phone: props.user?.phone || '',
-    avatar: null as File | null,
+    avatar: props.user?.avatar || '',
     password: '',
     password_confirmation: '',
     roles: props.user?.roles?.map(r => r.id) || [] as number[],
@@ -203,25 +204,21 @@ const isFormValid = computed(() => {
 });
 
 // Avatar handling
-const handleAvatarSelect = (event: Event) => {
-    const target = event.target as HTMLInputElement;
-    const file = target.files?.[0];
-    if (file) {
-        form.avatar = file;
-        avatarPreview.value = URL.createObjectURL(file);
+const handleAvatarSelect = (urls: string[]) => {
+    if (urls.length > 0) {
+        form.avatar = urls[0];
+        avatarPreview.value = urls[0];
     }
+    showMediaLibrary.value = false;
 };
 
 const removeAvatar = () => {
-    form.avatar = null;
+    form.avatar = '';
     avatarPreview.value = null;
-    if (avatarInput.value) {
-        avatarInput.value.value = '';
-    }
 };
 
-const triggerAvatarUpload = () => {
-    avatarInput.value?.click();
+const openMediaLibrary = () => {
+    showMediaLibrary.value = true;
 };
 
 const formatDate = (date?: string) => {
@@ -269,15 +266,6 @@ const handleSubmit = () => {
                 <CardContent>
                     <!-- Avatar Upload Section -->
                     <div class="flex flex-col items-center text-center gap-4 mb-6">
-                        <!-- Hidden file input -->
-                        <input
-                            ref="avatarInput"
-                            type="file"
-                            accept="image/*"
-                            class="hidden"
-                            @change="handleAvatarSelect"
-                        />
-
                         <!-- Avatar preview/upload -->
                         <div class="relative group">
                             <div
@@ -304,7 +292,7 @@ const handleSubmit = () => {
                                     variant="ghost"
                                     size="icon"
                                     class="h-8 w-8 text-white hover:bg-white/20"
-                                    @click="triggerAvatarUpload"
+                                    @click="openMediaLibrary"
                                 >
                                     <Upload class="h-4 w-4" />
                                 </Button>
@@ -320,10 +308,19 @@ const handleSubmit = () => {
                                 </Button>
                             </div>
                         </div>
-                        <p class="text-xs text-muted-foreground">Click to upload avatar</p>
+                        <p class="text-xs text-muted-foreground">Click to select avatar</p>
                         <p v-if="form.errors.avatar" class="text-xs text-destructive">
                             {{ form.errors.avatar }}
                         </p>
+
+                        <!-- Media Library Modal -->
+                        <MediaLibraryModal
+                            v-model:open="showMediaLibrary"
+                            :multiple="false"
+                            :max-select="1"
+                            accept="image/*"
+                            @select="handleAvatarSelect"
+                        />
 
                         <!-- Edit mode: Show user info -->
                         <div v-if="mode === 'edit' && user" class="space-y-2">
