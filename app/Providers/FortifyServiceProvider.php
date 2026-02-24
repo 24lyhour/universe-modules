@@ -49,13 +49,36 @@ class FortifyServiceProvider extends ServiceProvider
     private function configureViews(): void
     {
         Fortify::loginView(function (Request $request) {
-            $settingsService = app(LoginSettingsService::class);
+            try {
+                $settingsService = app(LoginSettingsService::class);
+                $loginSettings = $settingsService->getSettings();
+            } catch (\Exception $e) {
+                report($e);
+                $loginSettings = [
+                    'app_name' => config('app.name', 'Universe'),
+                    'title' => 'Welcome back',
+                    'subtitle' => 'Enter your credentials to access your account',
+                    'image' => '/img/dev.png',
+                    'logo' => '',
+                    'quote_text' => '',
+                    'quote_author' => '',
+                    'quote_company' => '',
+                    'show_social_login' => false,
+                    'show_remember_me' => true,
+                ];
+            }
+
+            try {
+                $status = $request->session()->get('status');
+            } catch (\Exception $e) {
+                $status = null;
+            }
 
             return Inertia::render('auth/Login', [
                 'canResetPassword' => Features::enabled(Features::resetPasswords()),
                 'canRegister' => Features::enabled(Features::registration()),
-                'status' => $request->session()->get('status'),
-                'loginSettings' => $settingsService->getSettings(),
+                'status' => $status,
+                'loginSettings' => $loginSettings,
             ]);
         });
 
