@@ -22,7 +22,7 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from '@/components/ui/sidebar';
-import { usePage, router } from '@inertiajs/vue3';
+import { usePage } from '@inertiajs/vue3';
 import { ChevronsUpDown } from 'lucide-vue-next';
 import { logout } from '@/routes';
 import UserMenuContent from './UserMenuContent.vue';
@@ -33,8 +33,10 @@ const { isMobile, state } = useSidebar();
 
 const showLogoutDialog = ref(false);
 
+/**
+ * handle the logout request
+ */
 const handleLogoutRequest = () => {
-    // Small delay to let dropdown close first
     setTimeout(() => {
         showLogoutDialog.value = true;
     }, 100);
