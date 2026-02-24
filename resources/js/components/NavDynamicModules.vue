@@ -18,6 +18,7 @@ import {
 import { type MenuItem } from '@/types';
 import { Link, usePage } from '@inertiajs/vue3';
 import {
+    Activity,
     ArrowLeftRight,
     BookOpen,
     Briefcase,
@@ -61,6 +62,7 @@ defineProps<{
 const page = usePage();
 
 const iconMap: Record<string, LucideIcon> = {
+    Activity,
     ArrowLeftRight,
     BookOpen,
     Briefcase,

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
 import AppLogo from '@/components/AppLogo.vue';
 import AppLogoIcon from '@/components/AppLogoIcon.vue';
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
@@ -9,6 +10,16 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -31,11 +42,10 @@ import {
 import UserMenuContent from '@/components/UserMenuContent.vue';
 import { getInitials } from '@/composables/useInitials';
 import { toUrl, urlIsActive } from '@/lib/utils';
-import { dashboard } from '@/routes';
+import { dashboard, logout } from '@/routes';
 import type { BreadcrumbItem, NavItem } from '@/types';
-import { InertiaLinkProps, Link, usePage } from '@inertiajs/vue3';
+import { InertiaLinkProps, Link, usePage, router } from '@inertiajs/vue3';
 import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-vue-next';
-import { computed } from 'vue';
 
 interface Props {
     breadcrumbs?: BreadcrumbItem[];
@@ -80,6 +90,24 @@ const rightNavItems: NavItem[] = [
         icon: BookOpen,
     },
 ];
+
+const showLogoutDialog = ref(false);
+
+const handleLogoutRequest = () => {
+    // Small delay to let dropdown close first
+    setTimeout(() => {
+        showLogoutDialog.value = true;
+    }, 100);
+};
+
+const confirmLogout = () => {
+    showLogoutDialog.value = false;
+    router.post(logout.url(), {}, {
+        onFinish: () => {
+            router.flushAll();
+        },
+    });
+};
 </script>
 
 <template>
@@ -261,7 +289,7 @@ const rightNavItems: NavItem[] = [
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" class="w-56">
-                            <UserMenuContent :user="auth.user" />
+                            <UserMenuContent :user="auth.user" @logout="handleLogoutRequest" />
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
@@ -278,5 +306,23 @@ const rightNavItems: NavItem[] = [
                 <Breadcrumbs :breadcrumbs="breadcrumbs" />
             </div>
         </div>
+
+        <!-- Logout Confirmation Dialog -->
+        <AlertDialog :open="showLogoutDialog" @update:open="showLogoutDialog = $event">
+            <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle>Confirm Logout</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        Are you sure you want to log out? You will need to sign in again to access your account.
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction @click="confirmLogout">
+                        Log out
+                    </AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
     </div>
 </template>

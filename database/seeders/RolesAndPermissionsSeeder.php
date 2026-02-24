@@ -76,8 +76,8 @@ class RolesAndPermissionsSeeder extends Seeder
             // User Management
             'user' => ['users', 'roles', 'permissions'],
 
-            // Settings
-            'settings' => ['settings', 'configurations'],
+            // Settings (includes activity logs for professional organization)
+            'settings' => ['settings', 'configurations', 'activity_logs'],
 
             // Dashboard
             'dashboard' => ['analytics', 'reports'],
@@ -110,6 +110,8 @@ class RolesAndPermissionsSeeder extends Seeder
             'users.assign_roles',
             'users.manage_permissions',
             'users.impersonate',
+            'users.suspend',
+            'users.unsuspend',
 
             // Dashboard specific
             'dashboard.view',
@@ -133,6 +135,11 @@ class RolesAndPermissionsSeeder extends Seeder
             // Settings
             'settings.manage',
             'settings.view_logs',
+
+            // Activity Log specific
+            'activity_logs.export',
+            'activity_logs.clear',
+            'activity_logs.view_details',
 
             // API access
             'api.access',

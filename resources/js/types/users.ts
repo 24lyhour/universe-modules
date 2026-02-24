@@ -9,6 +9,8 @@ export interface User {
     avatar?: string;
     email_verified_at?: string;
     roles?: Role[];
+    suspended_at?: string | null;
+    suspended_reason?: string | null;
     created_at?: string;
     updated_at?: string;
 }

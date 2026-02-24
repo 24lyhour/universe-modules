@@ -109,6 +109,17 @@ class AppServiceProvider extends ServiceProvider
                 'settings.users.index',
                 'Users'
             );
+
+            MenuService::addSubmenuItem(
+                'footer',
+                'dashboard-settings',
+                __('Activity Log'),
+                '/dashboard/settings/activity-log',
+                70,
+                'activity_logs.view_any',
+                'settings.activity-log',
+                'Activity'
+            );
         });
     }
 
