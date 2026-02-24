@@ -201,6 +201,7 @@ class UserRoleController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'nullable|string|max:20',
+            'avatar' => 'nullable|string|max:500',
             'password' => ['required', 'confirmed', Password::defaults()],
             'roles' => 'array',
             'roles.*' => 'exists:roles,id',
@@ -242,6 +243,7 @@ class UserRoleController extends Controller
                 'name' => $validated['name'],
                 'email' => $validated['email'],
                 'phone' => $validated['phone'] ?? null,
+                'avatar' => $validated['avatar'] ?? null,
                 'password' => Hash::make($validated['password']),
                 'tenant_type' => $primaryTenantType,
                 'tenant_id' => $primaryTenantId,
@@ -344,7 +346,7 @@ class UserRoleController extends Controller
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
-                'avatar' => $user->getFirstMediaUrl('avatar') ?: null,
+                'avatar' => $user->avatar,
                 'created_at' => $user->created_at,
                 'tenant_type' => $user->tenant_type ? class_basename($user->tenant_type) : null,
                 'tenant_id' => $user->tenant_id,
@@ -375,6 +377,7 @@ class UserRoleController extends Controller
         $validated = $request->validate([
             'roles' => 'required|array',
             'roles.*' => 'exists:roles,id',
+            'avatar' => 'nullable|string|max:500',
             'password' => ['nullable', 'confirmed', Password::defaults()],
             'tenants' => 'nullable|array',
             'tenants.*.tenant_type' => 'required_with:tenants|string|in:School,Outlet,Company',
@@ -401,6 +404,13 @@ class UserRoleController extends Controller
             // Update roles
             $roles = Role::whereIn('id', $validated['roles'])->get();
             $user->syncRoles($roles);
+
+            // Update avatar
+            if (array_key_exists('avatar', $validated)) {
+                $user->update([
+                    'avatar' => $validated['avatar'],
+                ]);
+            }
 
             // Update password if provided
             if (!empty($validated['password'])) {

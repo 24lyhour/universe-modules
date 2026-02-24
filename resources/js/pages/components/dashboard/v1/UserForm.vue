@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
-import { Eye, EyeOff, Building2, School, Store, Mail, Calendar, Upload, User, X } from 'lucide-vue-next';
+import { Eye, EyeOff, Building2, School, Store, Mail, Calendar, Upload, User, X, Lock } from 'lucide-vue-next';
 import { MediaLibraryModal } from '@/components/shared';
 import { ref, computed, onMounted } from 'vue';
 import { toast } from 'vue-sonner';
@@ -54,6 +54,19 @@ const showPassword = ref(false);
 const showConfirmPassword = ref(false);
 const showMediaLibrary = ref(false);
 const avatarPreview = ref<string | null>(props.user?.avatar || null);
+
+// Protected super-admin user (cannot remove super-admin role)
+const PROTECTED_ADMIN_EMAIL = 'kouchlyhour@gmail.com';
+
+// Check if current user is the protected admin
+const isProtectedAdmin = computed(() => {
+    return props.mode === 'edit' && props.user?.email === PROTECTED_ADMIN_EMAIL;
+});
+
+// Check if a role is locked (super-admin for protected user)
+const isRoleLocked = (role: Role): boolean => {
+    return isProtectedAdmin.value && role.name === 'super-admin';
+};
 
 // Build initial selected tenants
 const getInitialSelectedTenants = (): string[] => {
@@ -136,6 +149,13 @@ onMounted(() => {
 });
 
 const toggleRole = (roleId: number) => {
+    // Find the role to check if it's locked
+    const role = props.roles.find(r => r.id === roleId);
+    if (role && isRoleLocked(role)) {
+        toast.error('Cannot remove super-admin role from this user');
+        return;
+    }
+
     const index = form.roles.indexOf(roleId);
     if (index > -1) {
         form.roles.splice(index, 1);
@@ -599,25 +619,29 @@ const handleSubmit = () => {
                                 v-for="role in roles"
                                 :key="role.id"
                                 :class="[
-                                    'flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-colors',
-                                    form.roles.includes(role.id) ? 'bg-primary/5 border-primary' : 'hover:bg-muted/50'
+                                    'flex items-center gap-3 p-4 border rounded-lg transition-colors',
+                                    isRoleLocked(role) ? 'bg-muted/30 border-muted cursor-not-allowed' : 'cursor-pointer',
+                                    form.roles.includes(role.id) && !isRoleLocked(role) ? 'bg-primary/5 border-primary' : '',
+                                    !form.roles.includes(role.id) && !isRoleLocked(role) ? 'hover:bg-muted/50' : ''
                                 ]"
                                 @click="toggleRole(role.id)"
                             >
                                 <Checkbox
                                     :id="`role-${role.id}`"
                                     :model-value="form.roles.includes(role.id)"
+                                    :disabled="isRoleLocked(role)"
                                     @click.stop
                                     @update:model-value="toggleRole(role.id)"
                                 />
                                 <div class="flex-1 min-w-0">
-                                    <Label :for="`role-${role.id}`" class="cursor-pointer font-medium capitalize">
+                                    <Label :for="`role-${role.id}`" :class="['font-medium capitalize', isRoleLocked(role) ? 'cursor-not-allowed text-muted-foreground' : 'cursor-pointer']">
                                         {{ role.name.replace('-', ' ') }}
                                     </Label>
                                     <p v-if="role.permissions_count" class="text-xs text-muted-foreground">
                                         {{ role.permissions_count }} permissions
                                     </p>
                                 </div>
+                                <Lock v-if="isRoleLocked(role)" class="h-4 w-4 text-muted-foreground shrink-0" />
                             </div>
                         </div>
                         <p v-if="form.errors.roles" class="text-sm text-destructive mt-4">

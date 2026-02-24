@@ -219,7 +219,7 @@ index.form = indexForm
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::edit
-* @see app/Http/Controllers/Settings/UserRoleController.php:275
+* @see app/Http/Controllers/Settings/UserRoleController.php:277
 * @route '/dashboard/settings/users/{user}/edit'
 */
 export const edit = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -234,7 +234,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::edit
-* @see app/Http/Controllers/Settings/UserRoleController.php:275
+* @see app/Http/Controllers/Settings/UserRoleController.php:277
 * @route '/dashboard/settings/users/{user}/edit'
 */
 edit.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -267,7 +267,7 @@ edit.url = (args: { user: number | { id: number } } | [user: number | { id: numb
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::edit
-* @see app/Http/Controllers/Settings/UserRoleController.php:275
+* @see app/Http/Controllers/Settings/UserRoleController.php:277
 * @route '/dashboard/settings/users/{user}/edit'
 */
 edit.get = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -277,7 +277,7 @@ edit.get = (args: { user: number | { id: number } } | [user: number | { id: numb
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::edit
-* @see app/Http/Controllers/Settings/UserRoleController.php:275
+* @see app/Http/Controllers/Settings/UserRoleController.php:277
 * @route '/dashboard/settings/users/{user}/edit'
 */
 edit.head = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -287,7 +287,7 @@ edit.head = (args: { user: number | { id: number } } | [user: number | { id: num
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::edit
-* @see app/Http/Controllers/Settings/UserRoleController.php:275
+* @see app/Http/Controllers/Settings/UserRoleController.php:277
 * @route '/dashboard/settings/users/{user}/edit'
 */
 const editForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -297,7 +297,7 @@ const editForm = (args: { user: number | { id: number } } | [user: number | { id
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::edit
-* @see app/Http/Controllers/Settings/UserRoleController.php:275
+* @see app/Http/Controllers/Settings/UserRoleController.php:277
 * @route '/dashboard/settings/users/{user}/edit'
 */
 editForm.get = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -307,7 +307,7 @@ editForm.get = (args: { user: number | { id: number } } | [user: number | { id: 
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::edit
-* @see app/Http/Controllers/Settings/UserRoleController.php:275
+* @see app/Http/Controllers/Settings/UserRoleController.php:277
 * @route '/dashboard/settings/users/{user}/edit'
 */
 editForm.head = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -324,7 +324,7 @@ edit.form = editForm
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::update
-* @see app/Http/Controllers/Settings/UserRoleController.php:370
+* @see app/Http/Controllers/Settings/UserRoleController.php:372
 * @route '/dashboard/settings/users/{user}'
 */
 export const update = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -339,7 +339,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::update
-* @see app/Http/Controllers/Settings/UserRoleController.php:370
+* @see app/Http/Controllers/Settings/UserRoleController.php:372
 * @route '/dashboard/settings/users/{user}'
 */
 update.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -372,7 +372,7 @@ update.url = (args: { user: number | { id: number } } | [user: number | { id: nu
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::update
-* @see app/Http/Controllers/Settings/UserRoleController.php:370
+* @see app/Http/Controllers/Settings/UserRoleController.php:372
 * @route '/dashboard/settings/users/{user}'
 */
 update.put = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -382,7 +382,7 @@ update.put = (args: { user: number | { id: number } } | [user: number | { id: nu
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::update
-* @see app/Http/Controllers/Settings/UserRoleController.php:370
+* @see app/Http/Controllers/Settings/UserRoleController.php:372
 * @route '/dashboard/settings/users/{user}'
 */
 const updateForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -397,7 +397,7 @@ const updateForm = (args: { user: number | { id: number } } | [user: number | { 
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::update
-* @see app/Http/Controllers/Settings/UserRoleController.php:370
+* @see app/Http/Controllers/Settings/UserRoleController.php:372
 * @route '/dashboard/settings/users/{user}'
 */
 updateForm.put = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -414,7 +414,7 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::assignRole
-* @see app/Http/Controllers/Settings/UserRoleController.php:452
+* @see app/Http/Controllers/Settings/UserRoleController.php:462
 * @route '/dashboard/settings/users/{user}/assign-role'
 */
 export const assignRole = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -429,7 +429,7 @@ assignRole.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::assignRole
-* @see app/Http/Controllers/Settings/UserRoleController.php:452
+* @see app/Http/Controllers/Settings/UserRoleController.php:462
 * @route '/dashboard/settings/users/{user}/assign-role'
 */
 assignRole.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -462,7 +462,7 @@ assignRole.url = (args: { user: number | { id: number } } | [user: number | { id
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::assignRole
-* @see app/Http/Controllers/Settings/UserRoleController.php:452
+* @see app/Http/Controllers/Settings/UserRoleController.php:462
 * @route '/dashboard/settings/users/{user}/assign-role'
 */
 assignRole.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -472,7 +472,7 @@ assignRole.post = (args: { user: number | { id: number } } | [user: number | { i
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::assignRole
-* @see app/Http/Controllers/Settings/UserRoleController.php:452
+* @see app/Http/Controllers/Settings/UserRoleController.php:462
 * @route '/dashboard/settings/users/{user}/assign-role'
 */
 const assignRoleForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -482,7 +482,7 @@ const assignRoleForm = (args: { user: number | { id: number } } | [user: number 
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::assignRole
-* @see app/Http/Controllers/Settings/UserRoleController.php:452
+* @see app/Http/Controllers/Settings/UserRoleController.php:462
 * @route '/dashboard/settings/users/{user}/assign-role'
 */
 assignRoleForm.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -494,7 +494,7 @@ assignRole.form = assignRoleForm
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::removeRole
-* @see app/Http/Controllers/Settings/UserRoleController.php:467
+* @see app/Http/Controllers/Settings/UserRoleController.php:477
 * @route '/dashboard/settings/users/{user}/remove-role'
 */
 export const removeRole = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -509,7 +509,7 @@ removeRole.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::removeRole
-* @see app/Http/Controllers/Settings/UserRoleController.php:467
+* @see app/Http/Controllers/Settings/UserRoleController.php:477
 * @route '/dashboard/settings/users/{user}/remove-role'
 */
 removeRole.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -542,7 +542,7 @@ removeRole.url = (args: { user: number | { id: number } } | [user: number | { id
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::removeRole
-* @see app/Http/Controllers/Settings/UserRoleController.php:467
+* @see app/Http/Controllers/Settings/UserRoleController.php:477
 * @route '/dashboard/settings/users/{user}/remove-role'
 */
 removeRole.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -552,7 +552,7 @@ removeRole.post = (args: { user: number | { id: number } } | [user: number | { i
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::removeRole
-* @see app/Http/Controllers/Settings/UserRoleController.php:467
+* @see app/Http/Controllers/Settings/UserRoleController.php:477
 * @route '/dashboard/settings/users/{user}/remove-role'
 */
 const removeRoleForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -562,7 +562,7 @@ const removeRoleForm = (args: { user: number | { id: number } } | [user: number 
 
 /**
 * @see \App\Http\Controllers\Settings\UserRoleController::removeRole
-* @see app/Http/Controllers/Settings/UserRoleController.php:467
+* @see app/Http/Controllers/Settings/UserRoleController.php:477
 * @route '/dashboard/settings/users/{user}/remove-role'
 */
 removeRoleForm.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
