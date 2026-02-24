@@ -41,7 +41,26 @@ class HandleInertiaRequests extends Middleware
     {
         [$message, $author] = str(Inspiring::quotes()->random())->explode('-');
 
-        $tenantService = app(TenantService::class);
+        // Safely get tenant data
+        try {
+            $tenantService = app(TenantService::class);
+            $tenantData = $tenantService->toArray();
+        } catch (\Exception $e) {
+            report($e);
+            $tenantData = ['has_tenant' => false, 'tenant_type' => null, 'tenant_id' => null, 'tenant_name' => null, 'all_tenant_ids' => []];
+        }
+
+        // Safely get user roles and permissions
+        $roles = [];
+        $permissions = [];
+        if ($request->user()) {
+            try {
+                $roles = $request->user()->getRoleNames() ?? [];
+                $permissions = $request->user()->getAllPermissions()->pluck('name') ?? [];
+            } catch (\Exception $e) {
+                report($e);
+            }
+        }
 
         return [
             ...parent::share($request),
@@ -49,10 +68,10 @@ class HandleInertiaRequests extends Middleware
             'quote' => ['message' => trim($message), 'author' => trim($author)],
             'auth' => [
                 'user' => $request->user(),
-                'roles' => $request->user()?->getRoleNames() ?? [],
-                'permissions' => $request->user()?->getAllPermissions()->pluck('name') ?? [],
+                'roles' => $roles,
+                'permissions' => $permissions,
             ],
-            'tenant' => $tenantService->toArray(),
+            'tenant' => $tenantData,
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
             'menus' => [
                 'primary' => $request->user()
@@ -67,11 +86,23 @@ class HandleInertiaRequests extends Middleware
                 'name' => Setting::getValue('login', 'app_name', '') ?: config('app.name'),
             ],
             'flash' => [
-                'success' => fn () => $request->session()->get('success'),
-                'error' => fn () => $request->session()->get('error'),
-                'warning' => fn () => $request->session()->get('warning'),
-                'info' => fn () => $request->session()->get('info'),
+                'success' => fn () => $this->safeSessionGet($request, 'success'),
+                'error' => fn () => $this->safeSessionGet($request, 'error'),
+                'warning' => fn () => $this->safeSessionGet($request, 'warning'),
+                'info' => fn () => $this->safeSessionGet($request, 'info'),
             ],
         ];
+    }
+
+    /**
+     * Safely get a value from the session.
+     */
+    private function safeSessionGet(Request $request, string $key): mixed
+    {
+        try {
+            return $request->session()->get($key);
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 }
