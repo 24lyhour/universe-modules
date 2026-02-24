@@ -112,6 +112,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'users.impersonate',
             'users.suspend',
             'users.unsuspend',
+            'users.force_logout',
 
             // Dashboard specific
             'dashboard.view',
@@ -230,6 +231,10 @@ class RolesAndPermissionsSeeder extends Seeder
             if ($permission === 'dashboard.view') {
                 return true;
             }
+            // Force logout - default for all users
+            if ($permission === 'users.force_logout') {
+                return true;
+            }
             return false;
         });
         $staff = Role::firstOrCreate(['name' => 'staff', 'guard_name' => 'web']);
@@ -245,13 +250,22 @@ class RolesAndPermissionsSeeder extends Seeder
             'attendances.scan_qr',
             'employees.view',
             'employees.view_any',
+            'users.force_logout', // Default for all users
         ];
         $employee = Role::firstOrCreate(['name' => 'employee', 'guard_name' => 'web']);
         $employee->syncPermissions($employeePermissions);
 
         // Guest/Viewer - read-only access
         $viewerPermissions = array_filter($allPermissions, function ($permission) {
-            return str_contains($permission, 'view');
+            // View permissions
+            if (str_contains($permission, 'view')) {
+                return true;
+            }
+            // Force logout - default for all users
+            if ($permission === 'users.force_logout') {
+                return true;
+            }
+            return false;
         });
         $viewer = Role::firstOrCreate(['name' => 'viewer', 'guard_name' => 'web']);
         $viewer->syncPermissions($viewerPermissions);
