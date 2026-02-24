@@ -19,17 +19,22 @@ class Setting extends Model
      */
     public static function getValue(string $group, string $key, mixed $default = null): mixed
     {
-        $cacheKey = "settings.{$group}.{$key}";
+        try {
+            $cacheKey = "settings.{$group}.{$key}";
 
-        return Cache::remember($cacheKey, 3600, function () use ($group, $key, $default) {
-            $setting = static::where('group', $group)->where('key', $key)->first();
+            return Cache::remember($cacheKey, 3600, function () use ($group, $key, $default) {
+                $setting = static::where('group', $group)->where('key', $key)->first();
 
-            if (! $setting) {
-                return $default;
-            }
+                if (! $setting) {
+                    return $default;
+                }
 
-            return static::castValue($setting->value, $setting->type);
-        });
+                return static::castValue($setting->value, $setting->type);
+            });
+        } catch (\Exception $e) {
+            report($e);
+            return $default;
+        }
     }
 
     /**
@@ -51,15 +56,20 @@ class Setting extends Model
      */
     public static function getGroup(string $group): array
     {
-        $cacheKey = "settings.{$group}";
+        try {
+            $cacheKey = "settings.{$group}";
 
-        return Cache::remember($cacheKey, 3600, function () use ($group) {
-            $settings = static::where('group', $group)->get();
+            return Cache::remember($cacheKey, 3600, function () use ($group) {
+                $settings = static::where('group', $group)->get();
 
-            return $settings->mapWithKeys(function ($setting) {
-                return [$setting->key => static::castValue($setting->value, $setting->type)];
-            })->toArray();
-        });
+                return $settings->mapWithKeys(function ($setting) {
+                    return [$setting->key => static::castValue($setting->value, $setting->type)];
+                })->toArray();
+            });
+        } catch (\Exception $e) {
+            report($e);
+            return [];
+        }
     }
 
     /**

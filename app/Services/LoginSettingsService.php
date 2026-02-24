@@ -38,7 +38,13 @@ class LoginSettingsService
      */
     public function getSettings(): array
     {
-        $settings = Setting::getGroup('login');
+        try {
+            $settings = Setting::getGroup('login');
+        } catch (\Exception $e) {
+            // If database/cache fails, return defaults to prevent 502
+            report($e);
+            $settings = [];
+        }
 
         return array_merge($this->getDefaults(), $settings);
     }

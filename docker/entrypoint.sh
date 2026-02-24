@@ -35,17 +35,36 @@ echo "🧹 Clearing cached config..."
 rm -f /var/www/html/bootstrap/cache/config.php 2>/dev/null || true
 php artisan config:clear 2>/dev/null || true
 
-# Wait for database to be ready
+# Wait for database to be ready with retry logic
 echo "⏳ Waiting for database..."
-sleep 5
+MAX_RETRIES=30
+RETRY_COUNT=0
+DB_READY=false
 
-# Run migrations
-echo "📦 Running migrations..."
-php artisan migrate --force || echo "⚠️ Migration failed"
+while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+    if php artisan tinker --execute="DB::connection()->getPdo();" 2>/dev/null; then
+        DB_READY=true
+        echo "✅ Database connected!"
+        break
+    fi
+    RETRY_COUNT=$((RETRY_COUNT + 1))
+    echo "Waiting for database... (attempt $RETRY_COUNT/$MAX_RETRIES)"
+    sleep 2
+done
 
-# Run seeders if tables are empty
-echo "🌱 Running seeders..."
-php artisan db:seed --force || echo "⚠️ Seeding failed"
+if [ "$DB_READY" = false ]; then
+    echo "⚠️ Database not available after $MAX_RETRIES attempts. Starting anyway..."
+fi
+
+# Run migrations (only if DB is ready)
+if [ "$DB_READY" = true ]; then
+    echo "📦 Running migrations..."
+    php artisan migrate --force || echo "⚠️ Migration failed (continuing anyway)"
+
+    # Run seeders if tables are empty
+    echo "🌱 Running seeders..."
+    php artisan db:seed --force 2>/dev/null || echo "⚠️ Seeding skipped"
+fi
 
 # Clear and cache config
 echo "⚡ Optimizing application..."
