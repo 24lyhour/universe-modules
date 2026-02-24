@@ -20,5 +20,19 @@ class DatabaseSeeder extends Seeder
             SettingsSeeder::class,
             WidgetSeeder::class,
         ]);
+
+        // Module seeders
+        $this->call([
+            \Modules\School\Database\Seeders\SchoolDatabaseSeeder::class,
+            \Modules\Blog\Database\Seeders\BlogDatabaseSeeder::class,
+            \Modules\Company\Database\Seeders\CompanyDatabaseSeeder::class,
+            \Modules\Customer\Database\Seeders\CustomerDatabaseSeeder::class,
+            \Modules\Employee\Database\Seeders\EmployeeDatabaseSeeder::class,
+            \Modules\Hotel\Database\Seeders\HotelDatabaseSeeder::class,
+            \Modules\Menu\Database\Seeders\MenuDatabaseSeeder::class,
+            \Modules\Outlet\Database\Seeders\OutletDatabaseSeeder::class,
+            \Modules\Product\Database\Seeders\ProductDatabaseSeeder::class,
+            \Modules\Porfolio\Database\Seeders\PorfolioDatabaseSeeder::class,
+        ]);
     }
 }
