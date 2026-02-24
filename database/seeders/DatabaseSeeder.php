@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             RolesAndPermissionsSeeder::class, // Must run before UserSeeder
             UserSeeder::class,
             SettingsSeeder::class,
+            WidgetSeeder::class,
         ]);
     }
 }
