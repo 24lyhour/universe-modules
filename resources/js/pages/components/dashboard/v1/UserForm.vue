@@ -6,8 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Eye, EyeOff, Building2, School, Store, Mail, Calendar } from 'lucide-vue-next';
+import { Eye, EyeOff, Building2, School, Store, Mail, Calendar, Upload, User, X } from 'lucide-vue-next';
 import { ref, computed, onMounted } from 'vue';
 import { toast } from 'vue-sonner';
 import type { Role } from '@/types/roles';
@@ -52,6 +51,8 @@ const emit = defineEmits<{
 
 const showPassword = ref(false);
 const showConfirmPassword = ref(false);
+const avatarInput = ref<HTMLInputElement | null>(null);
+const avatarPreview = ref<string | null>(props.user?.avatar || null);
 
 // Build initial selected tenants
 const getInitialSelectedTenants = (): string[] => {
@@ -95,6 +96,7 @@ const form = useForm({
     name: props.user?.name || '',
     email: props.user?.email || '',
     phone: props.user?.phone || '',
+    avatar: null as File | null,
     password: '',
     password_confirmation: '',
     roles: props.user?.roles?.map(r => r.id) || [] as number[],
@@ -200,13 +202,26 @@ const isFormValid = computed(() => {
     return true;
 });
 
-const getInitials = (name: string) => {
-    return name
-        .split(' ')
-        .map(n => n[0])
-        .join('')
-        .toUpperCase()
-        .slice(0, 2);
+// Avatar handling
+const handleAvatarSelect = (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    const file = target.files?.[0];
+    if (file) {
+        form.avatar = file;
+        avatarPreview.value = URL.createObjectURL(file);
+    }
+};
+
+const removeAvatar = () => {
+    form.avatar = null;
+    avatarPreview.value = null;
+    if (avatarInput.value) {
+        avatarInput.value.value = '';
+    }
+};
+
+const triggerAvatarUpload = () => {
+    avatarInput.value?.click();
 };
 
 const formatDate = (date?: string) => {
@@ -252,13 +267,66 @@ const handleSubmit = () => {
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <!-- Edit Mode: Show Avatar and Info -->
-                    <div v-if="mode === 'edit' && user" class="flex flex-col items-center text-center gap-4 mb-6">
-                        <Avatar class="h-24 w-24">
-                            <AvatarImage v-if="user.avatar" :src="user.avatar" />
-                            <AvatarFallback class="text-3xl">{{ getInitials(user.name) }}</AvatarFallback>
-                        </Avatar>
-                        <div class="space-y-2">
+                    <!-- Avatar Upload Section -->
+                    <div class="flex flex-col items-center text-center gap-4 mb-6">
+                        <!-- Hidden file input -->
+                        <input
+                            ref="avatarInput"
+                            type="file"
+                            accept="image/*"
+                            class="hidden"
+                            @change="handleAvatarSelect"
+                        />
+
+                        <!-- Avatar preview/upload -->
+                        <div class="relative group">
+                            <div
+                                v-if="avatarPreview"
+                                class="h-24 w-24 overflow-hidden rounded-full"
+                            >
+                                <img
+                                    :src="avatarPreview"
+                                    alt="Avatar preview"
+                                    class="h-full w-full object-cover"
+                                />
+                            </div>
+                            <div
+                                v-else
+                                class="flex h-24 w-24 items-center justify-center rounded-full bg-primary/10"
+                            >
+                                <User class="h-10 w-10 text-primary" />
+                            </div>
+
+                            <!-- Overlay buttons -->
+                            <div class="absolute inset-0 flex items-center justify-center gap-1 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <Button
+                                    type="button"
+                                    variant="ghost"
+                                    size="icon"
+                                    class="h-8 w-8 text-white hover:bg-white/20"
+                                    @click="triggerAvatarUpload"
+                                >
+                                    <Upload class="h-4 w-4" />
+                                </Button>
+                                <Button
+                                    v-if="avatarPreview"
+                                    type="button"
+                                    variant="ghost"
+                                    size="icon"
+                                    class="h-8 w-8 text-white hover:bg-white/20"
+                                    @click="removeAvatar"
+                                >
+                                    <X class="h-4 w-4" />
+                                </Button>
+                            </div>
+                        </div>
+                        <p class="text-xs text-muted-foreground">Click to upload avatar</p>
+                        <p v-if="form.errors.avatar" class="text-xs text-destructive">
+                            {{ form.errors.avatar }}
+                        </p>
+
+                        <!-- Edit mode: Show user info -->
+                        <div v-if="mode === 'edit' && user" class="space-y-2">
                             <h3 class="text-xl font-semibold">{{ user.name }}</h3>
                             <div class="flex items-center justify-center gap-2 text-muted-foreground">
                                 <Mail class="h-4 w-4" />
@@ -268,18 +336,18 @@ const handleSubmit = () => {
                                 <Calendar class="h-4 w-4" />
                                 <span>Joined {{ formatDate(user.created_at) }}</span>
                             </div>
-                        </div>
-                        <div class="flex flex-wrap justify-center gap-1">
-                            <Badge
-                                v-for="role in user.roles"
-                                :key="role.id"
-                                :variant="role.name === 'super-admin' ? 'default' : 'secondary'"
-                            >
-                                {{ role.name }}
-                            </Badge>
-                            <span v-if="!user.roles?.length" class="text-muted-foreground text-sm">
-                                No roles assigned
-                            </span>
+                            <div class="flex flex-wrap justify-center gap-1 pt-2">
+                                <Badge
+                                    v-for="role in user.roles"
+                                    :key="role.id"
+                                    :variant="role.name === 'super-admin' ? 'default' : 'secondary'"
+                                >
+                                    {{ role.name }}
+                                </Badge>
+                                <span v-if="!user.roles?.length" class="text-muted-foreground text-sm">
+                                    No roles assigned
+                                </span>
+                            </div>
                         </div>
                     </div>
 

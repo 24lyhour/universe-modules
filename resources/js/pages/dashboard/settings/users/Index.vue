@@ -5,7 +5,6 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
     Select,
     SelectContent,
@@ -15,7 +14,7 @@ import {
 } from '@/components/ui/select';
 import { TableReusable } from '@/components/shared';
 import type { TableColumn, TableAction } from '@/components/shared/TableReusable/TableReusable.vue';
-import { Users, ArrowLeft, Plus, Edit, Trash2, Ban, CheckCircle } from 'lucide-vue-next';
+import { Users, ArrowLeft, Plus, Edit, Trash2, Ban, CheckCircle, User } from 'lucide-vue-next';
 import type { BreadcrumbItem } from '@/types';
 import type { Role } from '@/types/roles';
 import type { UserWithRoles } from '@/types/users';
@@ -75,15 +74,6 @@ const pagination = computed(() => {
         total: props.users.total ?? props.users.data?.length ?? 0,
     };
 });
-
-const getInitials = (name: string) => {
-    return name
-        .split(' ')
-        .map(n => n[0])
-        .join('')
-        .toUpperCase()
-        .slice(0, 2);
-};
 
 // Table columns
 const columns: TableColumn<UserWithRoles>[] = [
@@ -261,10 +251,16 @@ const handleUnsuspended = () => {
                         <!-- Custom user cell -->
                         <template #cell-name="{ item }">
                             <div class="flex items-center gap-3">
-                                <Avatar class="h-8 w-8">
-                                    <AvatarImage v-if="item.avatar" :src="item.avatar" />
-                                    <AvatarFallback>{{ getInitials(item.name) }}</AvatarFallback>
-                                </Avatar>
+                                <div v-if="item.avatar" class="h-10 w-10 overflow-hidden rounded-full">
+                                    <img
+                                        :src="item.avatar"
+                                        :alt="item.name"
+                                        class="h-full w-full object-cover"
+                                    />
+                                </div>
+                                <div v-else class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                                    <User class="h-5 w-5 text-primary" />
+                                </div>
                                 <span class="font-medium">{{ item.name }}</span>
                             </div>
                         </template>
