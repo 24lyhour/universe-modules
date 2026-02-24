@@ -310,15 +310,6 @@ const handleSubmit = () => {
                             {{ form.errors.avatar }}
                         </p>
 
-                        <!-- Media Library Modal -->
-                        <MediaLibraryModal
-                            v-model:open="showMediaLibrary"
-                            :multiple="false"
-                            :max-select="1"
-                            accept="image/*"
-                            @select="handleAvatarSelect"
-                        />
-
                         <!-- Edit mode: Show user info -->
                         <div v-if="mode === 'edit' && user" class="space-y-2">
                             <h3 class="text-xl font-semibold">{{ user.name }}</h3>
@@ -670,4 +661,13 @@ const handleSubmit = () => {
             </slot>
         </div>
     </form>
+
+    <!-- Media Library Modal (outside form to prevent z-index issues) -->
+    <MediaLibraryModal
+        v-model:open="showMediaLibrary"
+        :multiple="false"
+        :max-select="1"
+        accept="image/*"
+        @select="handleAvatarSelect"
+    />
 </template>
