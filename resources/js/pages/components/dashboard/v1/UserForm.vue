@@ -266,8 +266,11 @@ const handleSubmit = () => {
                 <CardContent>
                     <!-- Avatar Upload Section -->
                     <div class="flex flex-col items-center text-center gap-4 mb-6">
-                        <!-- Avatar preview/upload -->
-                        <div class="relative group">
+                        <!-- Avatar preview/upload - entire area clickable -->
+                        <div
+                            class="relative group cursor-pointer"
+                            @click="openMediaLibrary"
+                        >
                             <div
                                 v-if="avatarPreview"
                                 class="h-24 w-24 overflow-hidden rounded-full"
@@ -285,28 +288,22 @@ const handleSubmit = () => {
                                 <User class="h-10 w-10 text-primary" />
                             </div>
 
-                            <!-- Overlay buttons -->
+                            <!-- Overlay -->
                             <div class="absolute inset-0 flex items-center justify-center gap-1 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <Button
-                                    type="button"
-                                    variant="ghost"
-                                    size="icon"
-                                    class="h-8 w-8 text-white hover:bg-white/20"
-                                    @click="openMediaLibrary"
-                                >
-                                    <Upload class="h-4 w-4" />
-                                </Button>
-                                <Button
-                                    v-if="avatarPreview"
-                                    type="button"
-                                    variant="ghost"
-                                    size="icon"
-                                    class="h-8 w-8 text-white hover:bg-white/20"
-                                    @click="removeAvatar"
-                                >
-                                    <X class="h-4 w-4" />
-                                </Button>
+                                <Upload class="h-6 w-6 text-white" />
                             </div>
+
+                            <!-- Remove button (separate, stops propagation) -->
+                            <Button
+                                v-if="avatarPreview"
+                                type="button"
+                                variant="destructive"
+                                size="icon"
+                                class="absolute -top-1 -right-1 h-6 w-6 rounded-full"
+                                @click.stop="removeAvatar"
+                            >
+                                <X class="h-3 w-3" />
+                            </Button>
                         </div>
                         <p class="text-xs text-muted-foreground">Click to select avatar</p>
                         <p v-if="form.errors.avatar" class="text-xs text-destructive">
