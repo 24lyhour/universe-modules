@@ -29,7 +29,6 @@ const loading = ref(false);
 
 const canSubmit = computed(() => confirmed.value === true);
 
-// Reset confirmed when modal opens/closes
 watch(open, (isOpen) => {
     if (!isOpen) {
         confirmed.value = false;
