@@ -12,18 +12,20 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Check if user exists to avoid duplicates if run multiple times
-        $user = User::where('email', 'kouchlyhour@gmail.com')->first();
-
-        if (!$user) {
-            $user = User::factory()->withoutTwoFactor()->create([
+        // Create or update the admin user (ensures password is always reset)
+        $user = User::updateOrCreate(
+            ['email' => 'kouchlyhour@gmail.com'],
+            [
                 'name' => 'kouchlyhour',
-                'email' => 'kouchlyhour@gmail.com',
                 'avatar' => '/images/users/kouchlyhour.svg',
                 'password' => '12345678',
                 'role' => 'admin',
-            ]);
-        }
+                'email_verified_at' => now(),
+                'two_factor_secret' => null,
+                'two_factor_recovery_codes' => null,
+                'two_factor_confirmed_at' => null,
+            ]
+        );
 
         // Assign super-admin role
         if (!$user->hasRole('super-admin')) {
