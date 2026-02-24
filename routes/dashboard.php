@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Settings\ActivityLogController;
 use App\Http\Controllers\Settings\LoginSettingsController;
 use App\Http\Controllers\Settings\RoleController;
 use App\Http\Controllers\Settings\UserRoleController;
@@ -50,4 +51,15 @@ Route::middleware(['auth', 'verified', 'auto.permission'])->group(function () {
     Route::put('dashboard/settings/users/{user}', [UserRoleController::class, 'update'])->name('users.update');
     Route::post('dashboard/settings/users/{user}/assign-role', [UserRoleController::class, 'assignRole'])->name('users.assign-role');
     Route::post('dashboard/settings/users/{user}/remove-role', [UserRoleController::class, 'removeRole'])->name('users.remove-role');
+
+    // Activity Log
+    Route::get('dashboard/settings/activity-log', [ActivityLogController::class, 'index'])->name('activity-log.index');
+    Route::get('dashboard/settings/activity-log/export', [ActivityLogController::class, 'export'])->name('activity-log.export');
+    Route::post('dashboard/settings/activity-log/clear', [ActivityLogController::class, 'clear'])->name('activity-log.clear');
+
+    // User Actions (from Activity Log)
+    Route::post('dashboard/settings/users/{user}/suspend', [ActivityLogController::class, 'suspendUser'])->name('users.suspend');
+    Route::post('dashboard/settings/users/{user}/unsuspend', [ActivityLogController::class, 'unsuspendUser'])->name('users.unsuspend');
+    Route::post('dashboard/settings/users/{user}/force-logout', [ActivityLogController::class, 'forceLogout'])->name('users.force-logout');
+    Route::delete('dashboard/settings/users/{user}', [ActivityLogController::class, 'deleteUser'])->name('users.delete');
 });

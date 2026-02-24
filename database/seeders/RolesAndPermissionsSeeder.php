@@ -76,8 +76,8 @@ class RolesAndPermissionsSeeder extends Seeder
             // User Management
             'user' => ['users', 'roles', 'permissions'],
 
-            // Settings
-            'settings' => ['settings', 'configurations'],
+            // Settings (includes activity logs for professional organization)
+            'settings' => ['settings', 'configurations', 'activity_logs'],
 
             // Dashboard
             'dashboard' => ['analytics', 'reports'],
@@ -110,6 +110,9 @@ class RolesAndPermissionsSeeder extends Seeder
             'users.assign_roles',
             'users.manage_permissions',
             'users.impersonate',
+            'users.suspend',
+            'users.unsuspend',
+            'users.force_logout',
 
             // Dashboard specific
             'dashboard.view',
@@ -133,6 +136,11 @@ class RolesAndPermissionsSeeder extends Seeder
             // Settings
             'settings.manage',
             'settings.view_logs',
+
+            // Activity Log specific
+            'activity_logs.export',
+            'activity_logs.clear',
+            'activity_logs.view_details',
 
             // API access
             'api.access',
@@ -223,6 +231,10 @@ class RolesAndPermissionsSeeder extends Seeder
             if ($permission === 'dashboard.view') {
                 return true;
             }
+            // Force logout - default for all users
+            if ($permission === 'users.force_logout') {
+                return true;
+            }
             return false;
         });
         $staff = Role::firstOrCreate(['name' => 'staff', 'guard_name' => 'web']);
@@ -238,13 +250,22 @@ class RolesAndPermissionsSeeder extends Seeder
             'attendances.scan_qr',
             'employees.view',
             'employees.view_any',
+            'users.force_logout', // Default for all users
         ];
         $employee = Role::firstOrCreate(['name' => 'employee', 'guard_name' => 'web']);
         $employee->syncPermissions($employeePermissions);
 
         // Guest/Viewer - read-only access
         $viewerPermissions = array_filter($allPermissions, function ($permission) {
-            return str_contains($permission, 'view');
+            // View permissions
+            if (str_contains($permission, 'view')) {
+                return true;
+            }
+            // Force logout - default for all users
+            if ($permission === 'users.force_logout') {
+                return true;
+            }
+            return false;
         });
         $viewer = Role::firstOrCreate(['name' => 'viewer', 'guard_name' => 'web']);
         $viewer->syncPermissions($viewerPermissions);

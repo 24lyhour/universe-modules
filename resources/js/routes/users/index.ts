@@ -572,6 +572,336 @@ removeRoleForm.post = (args: { user: number | { id: number } } | [user: number |
 
 removeRole.form = removeRoleForm
 
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::suspend
+* @see app/Http/Controllers/Settings/ActivityLogController.php:114
+* @route '/dashboard/settings/users/{user}/suspend'
+*/
+export const suspend = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: suspend.url(args, options),
+    method: 'post',
+})
+
+suspend.definition = {
+    methods: ["post"],
+    url: '/dashboard/settings/users/{user}/suspend',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::suspend
+* @see app/Http/Controllers/Settings/ActivityLogController.php:114
+* @route '/dashboard/settings/users/{user}/suspend'
+*/
+suspend.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { user: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { user: args.id }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            user: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        user: typeof args.user === 'object'
+        ? args.user.id
+        : args.user,
+    }
+
+    return suspend.definition.url
+            .replace('{user}', parsedArgs.user.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::suspend
+* @see app/Http/Controllers/Settings/ActivityLogController.php:114
+* @route '/dashboard/settings/users/{user}/suspend'
+*/
+suspend.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: suspend.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::suspend
+* @see app/Http/Controllers/Settings/ActivityLogController.php:114
+* @route '/dashboard/settings/users/{user}/suspend'
+*/
+const suspendForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: suspend.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::suspend
+* @see app/Http/Controllers/Settings/ActivityLogController.php:114
+* @route '/dashboard/settings/users/{user}/suspend'
+*/
+suspendForm.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: suspend.url(args, options),
+    method: 'post',
+})
+
+suspend.form = suspendForm
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::unsuspend
+* @see app/Http/Controllers/Settings/ActivityLogController.php:138
+* @route '/dashboard/settings/users/{user}/unsuspend'
+*/
+export const unsuspend = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: unsuspend.url(args, options),
+    method: 'post',
+})
+
+unsuspend.definition = {
+    methods: ["post"],
+    url: '/dashboard/settings/users/{user}/unsuspend',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::unsuspend
+* @see app/Http/Controllers/Settings/ActivityLogController.php:138
+* @route '/dashboard/settings/users/{user}/unsuspend'
+*/
+unsuspend.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { user: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { user: args.id }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            user: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        user: typeof args.user === 'object'
+        ? args.user.id
+        : args.user,
+    }
+
+    return unsuspend.definition.url
+            .replace('{user}', parsedArgs.user.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::unsuspend
+* @see app/Http/Controllers/Settings/ActivityLogController.php:138
+* @route '/dashboard/settings/users/{user}/unsuspend'
+*/
+unsuspend.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: unsuspend.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::unsuspend
+* @see app/Http/Controllers/Settings/ActivityLogController.php:138
+* @route '/dashboard/settings/users/{user}/unsuspend'
+*/
+const unsuspendForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: unsuspend.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::unsuspend
+* @see app/Http/Controllers/Settings/ActivityLogController.php:138
+* @route '/dashboard/settings/users/{user}/unsuspend'
+*/
+unsuspendForm.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: unsuspend.url(args, options),
+    method: 'post',
+})
+
+unsuspend.form = unsuspendForm
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::forceLogout
+* @see app/Http/Controllers/Settings/ActivityLogController.php:154
+* @route '/dashboard/settings/users/{user}/force-logout'
+*/
+export const forceLogout = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: forceLogout.url(args, options),
+    method: 'post',
+})
+
+forceLogout.definition = {
+    methods: ["post"],
+    url: '/dashboard/settings/users/{user}/force-logout',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::forceLogout
+* @see app/Http/Controllers/Settings/ActivityLogController.php:154
+* @route '/dashboard/settings/users/{user}/force-logout'
+*/
+forceLogout.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { user: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { user: args.id }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            user: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        user: typeof args.user === 'object'
+        ? args.user.id
+        : args.user,
+    }
+
+    return forceLogout.definition.url
+            .replace('{user}', parsedArgs.user.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::forceLogout
+* @see app/Http/Controllers/Settings/ActivityLogController.php:154
+* @route '/dashboard/settings/users/{user}/force-logout'
+*/
+forceLogout.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: forceLogout.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::forceLogout
+* @see app/Http/Controllers/Settings/ActivityLogController.php:154
+* @route '/dashboard/settings/users/{user}/force-logout'
+*/
+const forceLogoutForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceLogout.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::forceLogout
+* @see app/Http/Controllers/Settings/ActivityLogController.php:154
+* @route '/dashboard/settings/users/{user}/force-logout'
+*/
+forceLogoutForm.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceLogout.url(args, options),
+    method: 'post',
+})
+
+forceLogout.form = forceLogoutForm
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::deleteMethod
+* @see app/Http/Controllers/Settings/ActivityLogController.php:188
+* @route '/dashboard/settings/users/{user}'
+*/
+export const deleteMethod = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: deleteMethod.url(args, options),
+    method: 'delete',
+})
+
+deleteMethod.definition = {
+    methods: ["delete"],
+    url: '/dashboard/settings/users/{user}',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::deleteMethod
+* @see app/Http/Controllers/Settings/ActivityLogController.php:188
+* @route '/dashboard/settings/users/{user}'
+*/
+deleteMethod.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { user: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { user: args.id }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            user: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        user: typeof args.user === 'object'
+        ? args.user.id
+        : args.user,
+    }
+
+    return deleteMethod.definition.url
+            .replace('{user}', parsedArgs.user.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::deleteMethod
+* @see app/Http/Controllers/Settings/ActivityLogController.php:188
+* @route '/dashboard/settings/users/{user}'
+*/
+deleteMethod.delete = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: deleteMethod.url(args, options),
+    method: 'delete',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::deleteMethod
+* @see app/Http/Controllers/Settings/ActivityLogController.php:188
+* @route '/dashboard/settings/users/{user}'
+*/
+const deleteMethodForm = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deleteMethod.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::deleteMethod
+* @see app/Http/Controllers/Settings/ActivityLogController.php:188
+* @route '/dashboard/settings/users/{user}'
+*/
+deleteMethodForm.delete = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deleteMethod.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+deleteMethod.form = deleteMethodForm
+
 const users = {
     create: Object.assign(create, create),
     store: Object.assign(store, store),
@@ -580,6 +910,10 @@ const users = {
     update: Object.assign(update, update),
     assignRole: Object.assign(assignRole, assignRole),
     removeRole: Object.assign(removeRole, removeRole),
+    suspend: Object.assign(suspend, suspend),
+    unsuspend: Object.assign(unsuspend, unsuspend),
+    forceLogout: Object.assign(forceLogout, forceLogout),
+    delete: Object.assign(deleteMethod, deleteMethod),
 }
 
 export default users

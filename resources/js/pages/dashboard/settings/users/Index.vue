@@ -1,19 +1,11 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from '@/components/ui/table';
 import {
     Select,
     SelectContent,
@@ -21,11 +13,17 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import { Users, Search, Edit, ArrowLeft, ChevronLeft, ChevronRight, Plus } from 'lucide-vue-next';
-import { ref, watch, computed } from 'vue';
+import { TableReusable } from '@/components/shared';
+import type { TableColumn, TableAction } from '@/components/shared/TableReusable/TableReusable.vue';
+import { Users, ArrowLeft, Plus, Edit, Trash2, Ban, CheckCircle } from 'lucide-vue-next';
 import type { BreadcrumbItem } from '@/types';
 import type { Role } from '@/types/roles';
 import type { UserWithRoles } from '@/types/users';
+
+// Import modal components from the activity log  
+import Delete from '../activity-log/Delete.vue';
+import Suspend from '../activity-log/Suspend.vue';
+import Unsuspend from '../activity-log/Unsuspend.vue';
 
 interface Props {
     users: {
@@ -59,8 +57,24 @@ const breadcrumbItems: BreadcrumbItem[] = [
 const searchQuery = ref(props.filters?.search || '');
 const roleFilter = ref(props.filters?.role || 'all');
 
+// Modal states
+const showDeleteModal = ref(false);
+const showSuspendModal = ref(false);
+const showUnsuspendModal = ref(false);
+const selectedUser = ref<UserWithRoles | null>(null);
+
 // Handle both paginated response formats (with meta wrapper and without)
-const totalUsers = computed(() => props.users.meta?.total ?? props.users.total ?? props.users.data?.length ?? 0);
+const pagination = computed(() => {
+    if (props.users.meta) {
+        return props.users.meta;
+    }
+    return {
+        current_page: props.users.current_page ?? 1,
+        last_page: props.users.last_page ?? 1,
+        per_page: props.users.per_page ?? 10,
+        total: props.users.total ?? props.users.data?.length ?? 0,
+    };
+});
 
 const getInitials = (name: string) => {
     return name
@@ -71,38 +85,111 @@ const getInitials = (name: string) => {
         .slice(0, 2);
 };
 
-const fetchUsers = () => {
+// Table columns
+const columns: TableColumn<UserWithRoles>[] = [
+    {
+        key: 'name',
+        label: 'User',
+        width: '250px',
+    },
+    {
+        key: 'email',
+        label: 'Email',
+    },
+    {
+        key: 'roles',
+        label: 'Roles',
+    },
+    {
+        key: 'status',
+        label: 'Status',
+        width: '120px',
+    },
+];
+
+// Table actions
+const actions: TableAction<UserWithRoles>[] = [
+    {
+        label: 'Edit',
+        icon: Edit,
+        onClick: (user) => {
+            router.visit(`/dashboard/settings/users/${user.id}/edit`);
+        },
+    },
+    {
+        label: 'Suspend',
+        icon: Ban,
+        onClick: (user) => {
+            selectedUser.value = user;
+            showSuspendModal.value = true;
+        },
+        show: (user) => !user.suspended_at,
+        separator: true,
+    },
+    {
+        label: 'Unsuspend',
+        icon: CheckCircle,
+        onClick: (user) => {
+            selectedUser.value = user;
+            showUnsuspendModal.value = true;
+        },
+        show: (user) => !!user.suspended_at,
+        separator: true,
+    },
+    {
+        label: 'Delete',
+        icon: Trash2,
+        variant: 'destructive',
+        onClick: (user) => {
+            selectedUser.value = user;
+            showDeleteModal.value = true;
+        },
+        separator: true,
+    },
+];
+
+const fetchUsers = (params: Record<string, any> = {}) => {
     router.get('/dashboard/settings/users', {
-        search: searchQuery.value || undefined,
+        search: (params.search ?? searchQuery.value) || undefined,
         role: roleFilter.value !== 'all' ? roleFilter.value : undefined,
-        page: 1,
+        page: params.page ?? 1,
+        per_page: params.per_page ?? pagination.value.per_page,
     }, {
         preserveState: true,
         preserveScroll: true,
     });
 };
 
-watch([searchQuery, roleFilter], () => {
-    fetchUsers();
-}, { debounce: 300 } as any);
+const handleSearch = (query: string) => {
+    searchQuery.value = query;
+    fetchUsers({ search: query, page: 1 });
+};
+
+const handlePageChange = (page: number) => {
+    fetchUsers({ page });
+};
+
+const handlePerPageChange = (perPage: number) => {
+    fetchUsers({ per_page: perPage, page: 1 });
+};
 
 const handleRoleFilter = (value: string | number | boolean | bigint | Record<string, unknown> | null | undefined) => {
     roleFilter.value = String(value);
+    fetchUsers({ page: 1 });
 };
 
-const goToPage = (page: number) => {
-    router.get('/dashboard/settings/users', {
-        search: searchQuery.value || undefined,
-        role: roleFilter.value !== 'all' ? roleFilter.value : undefined,
-        page,
-    }, {
-        preserveState: true,
-        preserveScroll: true,
-    });
+// Modal handlers
+const handleDeleted = () => {
+    fetchUsers();
 };
 
-const currentPage = computed(() => props.users.meta?.current_page ?? props.users.current_page ?? 1);
-const lastPage = computed(() => props.users.meta?.last_page ?? props.users.last_page ?? 1);
+const handleSuspended = () => {
+    fetchUsers();
+};
+
+const handleUnsuspended = () => {
+    fetchUsers();
+};
 </script>
 
 <template>
@@ -137,115 +224,97 @@ const lastPage = computed(() => props.users.meta?.last_page ?? props.users.last_
                         <div>
                             <CardTitle>Users</CardTitle>
                             <CardDescription>
-                                {{ totalUsers }} users total
+                                {{ pagination.total }} users total
                             </CardDescription>
                         </div>
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <!-- Filters -->
-                    <div class="flex gap-4 mb-6">
-                        <div class="relative flex-1 max-w-sm">
-                            <Search class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                            <Input
-                                v-model="searchQuery"
-                                placeholder="Search users..."
-                                class="pl-9"
-                            />
-                        </div>
-                        <Select :model-value="roleFilter" @update:model-value="handleRoleFilter">
-                            <SelectTrigger class="w-[180px]">
-                                <SelectValue placeholder="Filter by role" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="all">All Roles</SelectItem>
-                                <SelectItem v-for="role in props.roles" :key="role.id" :value="role.name">
+                    <TableReusable
+                        :data="props.users.data"
+                        :columns="columns"
+                        :actions="actions"
+                        :pagination="pagination"
+                        :searchable="true"
+                        search-placeholder="Search users..."
+                        empty-message="No users found."
+                        v-model:search-query="searchQuery"
+                        @search="handleSearch"
+                        @page-change="handlePageChange"
+                        @per-page-change="handlePerPageChange"
+                    >
+                        <!-- Role filter in toolbar -->
+                        <template #toolbar>
+                            <Select :model-value="roleFilter" @update:model-value="handleRoleFilter">
+                                <SelectTrigger class="w-[180px]">
+                                    <SelectValue placeholder="Filter by role" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="all">All Roles</SelectItem>
+                                    <SelectItem v-for="role in props.roles" :key="role.id" :value="role.name">
+                                        {{ role.name }}
+                                    </SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </template>
+
+                        <!-- Custom user cell -->
+                        <template #cell-name="{ item }">
+                            <div class="flex items-center gap-3">
+                                <Avatar class="h-8 w-8">
+                                    <AvatarImage v-if="item.avatar" :src="item.avatar" />
+                                    <AvatarFallback>{{ getInitials(item.name) }}</AvatarFallback>
+                                </Avatar>
+                                <span class="font-medium">{{ item.name }}</span>
+                            </div>
+                        </template>
+
+                        <!-- Custom roles cell -->
+                        <template #cell-roles="{ item }">
+                            <div class="flex flex-wrap gap-1">
+                                <Badge
+                                    v-for="role in item.roles"
+                                    :key="role.id"
+                                    :variant="role.name === 'super-admin' ? 'default' : 'secondary'"
+                                >
                                     {{ role.name }}
-                                </SelectItem>
-                            </SelectContent>
-                        </Select>
-                    </div>
+                                </Badge>
+                                <span v-if="!item.roles?.length" class="text-muted-foreground text-sm">
+                                    No roles
+                                </span>
+                            </div>
+                        </template>
 
-                    <!-- Users Table -->
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>User</TableHead>
-                                <TableHead>Email</TableHead>
-                                <TableHead>Roles</TableHead>
-                                <TableHead class="text-right">Actions</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            <TableRow v-for="user in props.users.data" :key="user.id">
-                                <TableCell>
-                                    <div class="flex items-center gap-3">
-                                        <Avatar class="h-8 w-8">
-                                            <AvatarImage v-if="user.avatar" :src="user.avatar" />
-                                            <AvatarFallback>{{ getInitials(user.name) }}</AvatarFallback>
-                                        </Avatar>
-                                        <span class="font-medium">{{ user.name }}</span>
-                                    </div>
-                                </TableCell>
-                                <TableCell>{{ user.email }}</TableCell>
-                                <TableCell>
-                                    <div class="flex flex-wrap gap-1">
-                                        <Badge
-                                            v-for="role in user.roles"
-                                            :key="role.id"
-                                            :variant="role.name === 'super-admin' ? 'default' : 'secondary'"
-                                        >
-                                            {{ role.name }}
-                                        </Badge>
-                                        <span v-if="!user.roles?.length" class="text-muted-foreground text-sm">
-                                            No roles
-                                        </span>
-                                    </div>
-                                </TableCell>
-                                <TableCell class="text-right">
-                                    <Button variant="ghost" size="icon" as-child>
-                                        <Link :href="`/dashboard/settings/users/${user.id}/edit`">
-                                            <Edit class="h-4 w-4" />
-                                        </Link>
-                                    </Button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow v-if="props.users.data.length === 0">
-                                <TableCell colspan="4" class="text-center py-8 text-muted-foreground">
-                                    No users found
-                                </TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-
-                    <!-- Pagination -->
-                    <div v-if="lastPage > 1" class="flex items-center justify-between mt-4">
-                        <p class="text-sm text-muted-foreground">
-                            Page {{ currentPage }} of {{ lastPage }}
-                        </p>
-                        <div class="flex gap-2">
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                :disabled="currentPage === 1"
-                                @click="goToPage(currentPage - 1)"
-                            >
-                                <ChevronLeft class="h-4 w-4" />
-                                Previous
-                            </Button>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                :disabled="currentPage === lastPage"
-                                @click="goToPage(currentPage + 1)"
-                            >
-                                Next
-                                <ChevronRight class="h-4 w-4" />
-                            </Button>
-                        </div>
-                    </div>
+                        <!-- Custom status cell -->
+                        <template #cell-status="{ item }">
+                            <Badge :variant="item.suspended_at ? 'destructive' : 'default'">
+                                {{ item.suspended_at ? 'Suspended' : 'Active' }}
+                            </Badge>
+                        </template>
+                    </TableReusable>
                 </CardContent>
             </Card>
         </div>
+
+        <!-- Delete Modal -->
+        <Delete
+            v-model:open="showDeleteModal"
+            :user="selectedUser"
+            @deleted="handleDeleted"
+        />
+
+        <!-- Suspend Modal -->
+        <Suspend
+            v-model:open="showSuspendModal"
+            :user="selectedUser"
+            @suspended="handleSuspended"
+        />
+
+        <!-- Unsuspend Modal -->
+        <Unsuspend
+            v-model:open="showUnsuspendModal"
+            :user="selectedUser"
+            @unsuspended="handleUnsuspended"
+        />
     </AppLayout>
 </template>

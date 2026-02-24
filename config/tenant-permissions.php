@@ -28,7 +28,7 @@ return [
         'Payment' => ['payments'],
         'Report' => ['reports'],
         'User Management' => ['users', 'roles', 'permissions'],
-        'Settings' => ['settings', 'configurations', 'login_settings'],
+        'Settings' => ['settings', 'configurations', 'login_settings', 'activity_logs'],
         'Dashboard' => ['dashboard', 'dashboard_widgets', 'analytics'],
     ],
 

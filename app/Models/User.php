@@ -31,6 +31,9 @@ class User extends Authenticatable implements HasMedia
         'role',
         'tenant_type',
         'tenant_id',
+        'suspended_at',
+        'suspended_reason',
+        'suspended_by',
     ];
 
     /**
@@ -56,7 +59,48 @@ class User extends Authenticatable implements HasMedia
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
+            'suspended_at' => 'datetime',
         ];
+    }
+
+    /**
+     * Check if user is suspended.
+     */
+    public function isSuspended(): bool
+    {
+        return $this->suspended_at !== null;
+    }
+
+    /**
+     * Suspend the user.
+     */
+    public function suspend(?string $reason = null, ?int $suspendedBy = null): void
+    {
+        $this->update([
+            'suspended_at' => now(),
+            'suspended_reason' => $reason,
+            'suspended_by' => $suspendedBy,
+        ]);
+    }
+
+    /**
+     * Unsuspend the user.
+     */
+    public function unsuspend(): void
+    {
+        $this->update([
+            'suspended_at' => null,
+            'suspended_reason' => null,
+            'suspended_by' => null,
+        ]);
+    }
+
+    /**
+     * Get the user who suspended this user.
+     */
+    public function suspendedByUser(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class, 'suspended_by');
     }
 
     /**
