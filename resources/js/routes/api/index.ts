@@ -2,7 +2,6 @@ import blog from './blog'
 import booking from './booking'
 import company from './company'
 import customer from './customer'
-import employee from './employee'
 import hotel from './hotel'
 import media from './media'
 import movice from './movice'
@@ -20,7 +19,6 @@ const api = {
     booking: Object.assign(booking, booking),
     company: Object.assign(company, company),
     customer: Object.assign(customer, customer),
-    employee: Object.assign(employee, employee),
     hotel: Object.assign(hotel, hotel),
     media: Object.assign(media, media),
     movice: Object.assign(movice, movice),

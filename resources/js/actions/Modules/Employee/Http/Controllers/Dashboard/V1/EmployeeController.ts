@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::getDepartments
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:160
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:155
 * @route '/dashboard/employees/departments'
 */
 export const getDepartments = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ getDepartments.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::getDepartments
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:160
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:155
 * @route '/dashboard/employees/departments'
 */
 getDepartments.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ getDepartments.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::getDepartments
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:160
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:155
 * @route '/dashboard/employees/departments'
 */
 getDepartments.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ getDepartments.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::getDepartments
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:160
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:155
 * @route '/dashboard/employees/departments'
 */
 getDepartments.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,174 +44,8 @@ getDepartments.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => 
 })
 
 /**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::exportMethod
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:221
-* @route '/dashboard/employees/export'
-*/
-export const exportMethod = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: exportMethod.url(options),
-    method: 'get',
-})
-
-exportMethod.definition = {
-    methods: ["get","head"],
-    url: '/dashboard/employees/export',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::exportMethod
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:221
-* @route '/dashboard/employees/export'
-*/
-exportMethod.url = (options?: RouteQueryOptions) => {
-    return exportMethod.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::exportMethod
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:221
-* @route '/dashboard/employees/export'
-*/
-exportMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: exportMethod.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::exportMethod
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:221
-* @route '/dashboard/employees/export'
-*/
-exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: exportMethod.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::showImport
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:233
-* @route '/dashboard/employees/import'
-*/
-export const showImport = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: showImport.url(options),
-    method: 'get',
-})
-
-showImport.definition = {
-    methods: ["get","head"],
-    url: '/dashboard/employees/import',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::showImport
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:233
-* @route '/dashboard/employees/import'
-*/
-showImport.url = (options?: RouteQueryOptions) => {
-    return showImport.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::showImport
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:233
-* @route '/dashboard/employees/import'
-*/
-showImport.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: showImport.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::showImport
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:233
-* @route '/dashboard/employees/import'
-*/
-showImport.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: showImport.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::importMethod
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:241
-* @route '/dashboard/employees/import'
-*/
-export const importMethod = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: importMethod.url(options),
-    method: 'post',
-})
-
-importMethod.definition = {
-    methods: ["post"],
-    url: '/dashboard/employees/import',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::importMethod
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:241
-* @route '/dashboard/employees/import'
-*/
-importMethod.url = (options?: RouteQueryOptions) => {
-    return importMethod.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::importMethod
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:241
-* @route '/dashboard/employees/import'
-*/
-importMethod.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: importMethod.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::downloadTemplate
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:269
-* @route '/dashboard/employees/template'
-*/
-export const downloadTemplate = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: downloadTemplate.url(options),
-    method: 'get',
-})
-
-downloadTemplate.definition = {
-    methods: ["get","head"],
-    url: '/dashboard/employees/template',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::downloadTemplate
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:269
-* @route '/dashboard/employees/template'
-*/
-downloadTemplate.url = (options?: RouteQueryOptions) => {
-    return downloadTemplate.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::downloadTemplate
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:269
-* @route '/dashboard/employees/template'
-*/
-downloadTemplate.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: downloadTemplate.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::downloadTemplate
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:269
-* @route '/dashboard/employees/template'
-*/
-downloadTemplate.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: downloadTemplate.url(options),
-    method: 'head',
-})
-
-/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:63
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:58
 * @route '/dashboard/employees/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -226,7 +60,7 @@ create.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:63
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:58
 * @route '/dashboard/employees/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -235,7 +69,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:63
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:58
 * @route '/dashboard/employees/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -245,7 +79,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:63
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:58
 * @route '/dashboard/employees/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -255,7 +89,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:77
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:72
 * @route '/dashboard/employees'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -270,7 +104,7 @@ store.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:77
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:72
 * @route '/dashboard/employees'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -279,7 +113,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:77
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:72
 * @route '/dashboard/employees'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -289,7 +123,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:50
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:45
 * @route '/dashboard/employees'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -304,7 +138,7 @@ index.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:50
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:45
 * @route '/dashboard/employees'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -313,7 +147,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:50
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:45
 * @route '/dashboard/employees'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -323,7 +157,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:50
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:45
 * @route '/dashboard/employees'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -333,7 +167,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:89
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:84
 * @route '/dashboard/employees/{employee}'
 */
 export const show = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -348,7 +182,7 @@ show.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:89
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:84
 * @route '/dashboard/employees/{employee}'
 */
 show.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -381,7 +215,7 @@ show.url = (args: { employee: number | { id: number } } | [employee: number | { 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:89
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:84
 * @route '/dashboard/employees/{employee}'
 */
 show.get = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -391,7 +225,7 @@ show.get = (args: { employee: number | { id: number } } | [employee: number | { 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:89
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:84
 * @route '/dashboard/employees/{employee}'
 */
 show.head = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -401,7 +235,7 @@ show.head = (args: { employee: number | { id: number } } | [employee: number | {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:180
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:175
 * @route '/dashboard/employees/{employee}/qr-badge'
 */
 export const qrCode = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -416,7 +250,7 @@ qrCode.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:180
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:175
 * @route '/dashboard/employees/{employee}/qr-badge'
 */
 qrCode.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -449,7 +283,7 @@ qrCode.url = (args: { employee: number | { id: number } } | [employee: number | 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:180
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:175
 * @route '/dashboard/employees/{employee}/qr-badge'
 */
 qrCode.get = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -459,7 +293,7 @@ qrCode.get = (args: { employee: number | { id: number } } | [employee: number | 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:180
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:175
 * @route '/dashboard/employees/{employee}/qr-badge'
 */
 qrCode.head = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -469,7 +303,7 @@ qrCode.head = (args: { employee: number | { id: number } } | [employee: number |
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:99
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:94
 * @route '/dashboard/employees/{employee}/edit'
 */
 export const edit = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -484,7 +318,7 @@ edit.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:99
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:94
 * @route '/dashboard/employees/{employee}/edit'
 */
 edit.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -517,7 +351,7 @@ edit.url = (args: { employee: number | { id: number } } | [employee: number | { 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:99
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:94
 * @route '/dashboard/employees/{employee}/edit'
 */
 edit.get = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -527,7 +361,7 @@ edit.get = (args: { employee: number | { id: number } } | [employee: number | { 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:99
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:94
 * @route '/dashboard/employees/{employee}/edit'
 */
 edit.head = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -537,7 +371,7 @@ edit.head = (args: { employee: number | { id: number } } | [employee: number | {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:109
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:104
 * @route '/dashboard/employees/{employee}'
 */
 const update9d8b4d91480e0e0e4eff245473933023 = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -552,7 +386,7 @@ update9d8b4d91480e0e0e4eff245473933023.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:109
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:104
 * @route '/dashboard/employees/{employee}'
 */
 update9d8b4d91480e0e0e4eff245473933023.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -585,7 +419,7 @@ update9d8b4d91480e0e0e4eff245473933023.url = (args: { employee: number | { id: n
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:109
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:104
 * @route '/dashboard/employees/{employee}'
 */
 update9d8b4d91480e0e0e4eff245473933023.put = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -595,7 +429,7 @@ update9d8b4d91480e0e0e4eff245473933023.put = (args: { employee: number | { id: n
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:109
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:104
 * @route '/dashboard/employees/{employee}'
 */
 const update9d8b4d91480e0e0e4eff245473933023 = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -610,7 +444,7 @@ update9d8b4d91480e0e0e4eff245473933023.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:109
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:104
 * @route '/dashboard/employees/{employee}'
 */
 update9d8b4d91480e0e0e4eff245473933023.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -643,7 +477,7 @@ update9d8b4d91480e0e0e4eff245473933023.url = (args: { employee: number | { id: n
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:109
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:104
 * @route '/dashboard/employees/{employee}'
 */
 update9d8b4d91480e0e0e4eff245473933023.patch = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -658,7 +492,7 @@ export const update = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::toggleStatus
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:146
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:141
 * @route '/dashboard/employees/{employee}/toggle-status'
 */
 export const toggleStatus = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -673,7 +507,7 @@ toggleStatus.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::toggleStatus
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:146
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:141
 * @route '/dashboard/employees/{employee}/toggle-status'
 */
 toggleStatus.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -706,7 +540,7 @@ toggleStatus.url = (args: { employee: number | { id: number } } | [employee: num
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::toggleStatus
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:146
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:141
 * @route '/dashboard/employees/{employee}/toggle-status'
 */
 toggleStatus.put = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -716,7 +550,7 @@ toggleStatus.put = (args: { employee: number | { id: number } } | [employee: num
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::regenerateQrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:209
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:204
 * @route '/dashboard/employees/{employee}/regenerate-qr'
 */
 export const regenerateQrCode = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -731,7 +565,7 @@ regenerateQrCode.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::regenerateQrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:209
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:204
 * @route '/dashboard/employees/{employee}/regenerate-qr'
 */
 regenerateQrCode.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -764,7 +598,7 @@ regenerateQrCode.url = (args: { employee: number | { id: number } } | [employee:
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::regenerateQrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:209
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:204
 * @route '/dashboard/employees/{employee}/regenerate-qr'
 */
 regenerateQrCode.post = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -774,7 +608,7 @@ regenerateQrCode.post = (args: { employee: number | { id: number } } | [employee
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:121
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:116
 * @route '/dashboard/employees/{employee}/delete'
 */
 export const confirmDelete = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -789,7 +623,7 @@ confirmDelete.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:121
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:116
 * @route '/dashboard/employees/{employee}/delete'
 */
 confirmDelete.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -822,7 +656,7 @@ confirmDelete.url = (args: { employee: number | { id: number } } | [employee: nu
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:121
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:116
 * @route '/dashboard/employees/{employee}/delete'
 */
 confirmDelete.get = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -832,7 +666,7 @@ confirmDelete.get = (args: { employee: number | { id: number } } | [employee: nu
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:121
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:116
 * @route '/dashboard/employees/{employee}/delete'
 */
 confirmDelete.head = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -842,7 +676,7 @@ confirmDelete.head = (args: { employee: number | { id: number } } | [employee: n
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:134
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:129
 * @route '/dashboard/employees/{employee}'
 */
 export const destroy = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -857,7 +691,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:134
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:129
 * @route '/dashboard/employees/{employee}'
 */
 destroy.url = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -890,7 +724,7 @@ destroy.url = (args: { employee: number | { id: number } } | [employee: number |
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:134
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:129
 * @route '/dashboard/employees/{employee}'
 */
 destroy.delete = (args: { employee: number | { id: number } } | [employee: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -898,6 +732,6 @@ destroy.delete = (args: { employee: number | { id: number } } | [employee: numbe
     method: 'delete',
 })
 
-const EmployeeController = { getDepartments, exportMethod, showImport, importMethod, downloadTemplate, create, store, index, show, qrCode, edit, update, toggleStatus, regenerateQrCode, confirmDelete, destroy, export: exportMethod, import: importMethod }
+const EmployeeController = { getDepartments, create, store, index, show, qrCode, edit, update, toggleStatus, regenerateQrCode, confirmDelete, destroy }
 
 export default EmployeeController

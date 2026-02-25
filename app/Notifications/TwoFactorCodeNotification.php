@@ -32,13 +32,13 @@ class TwoFactorCodeNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('Your Login Verification Code')
-            ->greeting('Hello!')
-            ->line('Your two-factor authentication code is:')
-            ->line("**{$this->code}**")
-            ->line("This code will expire in {$this->expirationMinutes} minutes.")
-            ->line('If you did not request this code, please ignore this email and secure your account.')
-            ->salutation('Best regards,');
+            ->subject('Your Login Verification Code - ' . config('app.name'))
+            ->view('emails.two-factor-code', [
+                'code' => $this->code,
+                'expirationMinutes' => $this->expirationMinutes,
+                'userName' => $notifiable->name ?? 'User',
+                'appName' => config('app.name', 'Universe'),
+            ]);
     }
 
     /**

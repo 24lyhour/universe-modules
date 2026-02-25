@@ -166,7 +166,8 @@ onUnmounted(() => {
                         </Button>
                         <Form
                             v-else
-                            v-bind="enable.form()"
+                            method="post"
+                            :action="enable.url()"
                             @success="showSetupModal = true"
                             #default="{ processing }"
                         >
@@ -216,7 +217,7 @@ onUnmounted(() => {
 
                     <!-- Disable Button -->
                     <div class="pt-2">
-                        <Form v-bind="disable.form()" #default="{ processing }">
+                        <Form method="delete" :action="disable.url()" #default="{ processing }">
                             <Button
                                 variant="destructive"
                                 type="submit"

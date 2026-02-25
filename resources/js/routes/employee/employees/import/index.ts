@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
 /**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:241
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::store
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:45
 * @route '/dashboard/employees/import'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -15,8 +15,8 @@ store.definition = {
 } satisfies RouteDefinition<["post"]>
 
 /**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:241
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::store
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:45
 * @route '/dashboard/employees/import'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -24,8 +24,8 @@ store.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:241
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::store
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:45
 * @route '/dashboard/employees/import'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
