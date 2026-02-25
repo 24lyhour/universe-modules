@@ -1144,3 +1144,12 @@ Modules/Menu/database/migrations/\*\_create_categories_table.php
 Modules/Menu/database/factories/CategoryFactory.php
 Modules/Menu/database/seeders/CategorySeeder.php
 Modules/Menu/app/Http/Controllers/CategoryController.php
+
+### genrate the route and action files
+
+The resources/js/actions/ and resources/js/routes/ folders contain auto-generated Wayfinder files. They are generated from your Laravel routes and MUST be committed because Railway doesn't run php artisan wayfinder:generate.
+
+Your options:
+
+Commit all Wayfinder files (296 files) - Works now
+Add Wayfinder to Railway build - Add php artisan wayfinder:generate before yarn build in your Dockerfile
