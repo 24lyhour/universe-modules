@@ -138,7 +138,7 @@ upload.form = uploadForm
 
 /**
 * @see \App\Http\Controllers\Settings\AvatarController::destroy
-* @see app/Http/Controllers/Settings/AvatarController.php:126
+* @see app/Http/Controllers/Settings/AvatarController.php:152
 * @route '/dashboard/avatar'
 */
 export const destroy = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -153,7 +153,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\AvatarController::destroy
-* @see app/Http/Controllers/Settings/AvatarController.php:126
+* @see app/Http/Controllers/Settings/AvatarController.php:152
 * @route '/dashboard/avatar'
 */
 destroy.url = (options?: RouteQueryOptions) => {
@@ -162,7 +162,7 @@ destroy.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\AvatarController::destroy
-* @see app/Http/Controllers/Settings/AvatarController.php:126
+* @see app/Http/Controllers/Settings/AvatarController.php:152
 * @route '/dashboard/avatar'
 */
 destroy.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -172,7 +172,7 @@ destroy.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
 
 /**
 * @see \App\Http\Controllers\Settings\AvatarController::destroy
-* @see app/Http/Controllers/Settings/AvatarController.php:126
+* @see app/Http/Controllers/Settings/AvatarController.php:152
 * @route '/dashboard/avatar'
 */
 const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -187,7 +187,7 @@ const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> =
 
 /**
 * @see \App\Http\Controllers\Settings\AvatarController::destroy
-* @see app/Http/Controllers/Settings/AvatarController.php:126
+* @see app/Http/Controllers/Settings/AvatarController.php:152
 * @route '/dashboard/avatar'
 */
 destroyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

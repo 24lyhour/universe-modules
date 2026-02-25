@@ -53,6 +53,8 @@ class AutoPermission
         'settings.toggle',
         'dashboard.product.settings', // Product settings
         'dashboard.product.settings.update',
+        'media.index', // Media browsing for avatar/image selection
+        'media.upload', // Media upload for avatar/image
     ];
 
     /**

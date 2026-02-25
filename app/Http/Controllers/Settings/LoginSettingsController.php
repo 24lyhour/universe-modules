@@ -28,6 +28,7 @@ class LoginSettingsController extends Controller
     {
         return Inertia::render('settings/Login', [
             'loginSettings' => $this->settingsService->getSettings(),
+            'currentTenant' => $this->settingsService->getCurrentTenantInfo(),
         ]);
     }
 

@@ -75,14 +75,39 @@ class AvatarController extends Controller
         // Determine which user to attach media to
         // If super-admin is uploading for another user, attach to that user
         $targetUser = $currentUser;
+        $currentUserId = (int) $currentUser->id;
+
         if ($request->filled('user_id')) {
-            $user = User::find($request->user_id);
-            if ($user && ($currentUser->hasRole('super-admin') || $currentUser->id === $user->id)) {
-                $targetUser = $user;
+            $requestedUserId = (int) $request->user_id;
+
+            // If uploading for a different user, check permissions
+            if ($requestedUserId !== $currentUserId) {
+                // Only super-admin can upload avatars for other users
+                if (!$currentUser->hasRole('super-admin')) {
+                    return response()->json([
+                        'message' => 'You do not have permission to upload avatar for this user.',
+                    ], 403);
+                }
+
+                // Load the target user fresh from database
+                $targetUser = User::find($requestedUserId);
+                if (!$targetUser) {
+                    return response()->json([
+                        'message' => 'User not found.',
+                    ], 404);
+                }
             }
         }
 
         try {
+            // Log for debugging
+            \Log::info('Avatar upload', [
+                'current_user_id' => $currentUserId,
+                'target_user_id' => $targetUser->id,
+                'target_user_email' => $targetUser->email,
+                'requested_user_id' => $request->user_id ?? 'not provided',
+            ]);
+
             // Add media to TARGET user's collection (not current user)
             // This ensures the media is associated with the correct user
             $media = $targetUser->addMedia($file)
@@ -92,6 +117,7 @@ class AvatarController extends Controller
 
             // Update the target user's avatar field
             $targetUser->update(['avatar' => $url]);
+            \Log::info('Avatar updated for user', ['user_id' => $targetUser->id, 'avatar' => $url]);
 
             // Return in same format as MediaDashboardController for compatibility
             return response()->json([

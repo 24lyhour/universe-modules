@@ -81,10 +81,7 @@ class HandleInertiaRequests extends Middleware
                     ? MenuService::getMenuForUser('footer', $request->user())
                     : [],
             ],
-            'appBranding' => [
-                'logo' => Setting::getValue('login', 'logo', ''),
-                'name' => Setting::getValue('login', 'app_name', '') ?: config('app.name'),
-            ],
+            'appBranding' => $this->getAppBranding($tenantService),
             'flash' => [
                 'success' => fn () => $this->safeSessionGet($request, 'success'),
                 'error' => fn () => $this->safeSessionGet($request, 'error'),
@@ -103,6 +100,36 @@ class HandleInertiaRequests extends Middleware
             return $request->session()->get($key);
         } catch (\Exception $e) {
             return null;
+        }
+    }
+
+    /**
+     * Get app branding (tenant-scoped if user has tenant).
+     */
+    private function getAppBranding(TenantService $tenantService): array
+    {
+        try {
+            if ($tenantService->hasTenant()) {
+                $tenantType = $tenantService->getTenantType();
+                $tenantId = $tenantService->getTenantId();
+
+                return [
+                    'logo' => Setting::getTenantValue('login', 'logo', $tenantType, $tenantId, ''),
+                    'name' => Setting::getTenantValue('login', 'app_name', $tenantType, $tenantId, '') ?: 'Kouchlyhour',
+                ];
+            }
+
+            return [
+                'logo' => Setting::getValue('login', 'logo', ''),
+                'name' => Setting::getValue('login', 'app_name', '') ?: 'Kouchlyhour',
+            ];
+        } catch (\Exception $e) {
+            report($e);
+
+            return [
+                'logo' => '',
+                'name' => 'Kouchlyhour',
+            ];
         }
     }
 }

@@ -1147,7 +1147,9 @@ Modules/Menu/app/Http/Controllers/CategoryController.php
 
 ### genrate the route and action files
 
-The resources/js/actions/ and resources/js/routes/ folders contain auto-generated Wayfinder files. They are generated from your Laravel routes and MUST be committed because Railway doesn't run php artisan wayfinder:generate.
+The resources/js/actions/ and resources/js/routes/ folders contain auto-generated Wayfinder files. They are generated from your Laravel routes and MUST be committed because Railway doesn't run
+
+php artisan wayfinder:generate.
 
 Your options:
 

@@ -10,7 +10,7 @@ class LoginSettingsService
      * Default login settings.
      */
     protected array $defaults = [
-        'app_name' => '',
+        'app_name' => 'Kouchlyhour',
         'title' => 'Welcome back',
         'subtitle' => 'Enter your credentials to access your account',
         'image' => '/img/dev.png',
@@ -22,24 +22,34 @@ class LoginSettingsService
         'show_remember_me' => true,
     ];
 
+    public function __construct(
+        protected TenantService $tenantService
+    ) {}
+
     /**
      * Get default settings.
      */
     public function getDefaults(): array
     {
-        $defaults = $this->defaults;
-        $defaults['app_name'] = config('app.name', 'Kouchlyhour');
-
-        return $defaults;
+        return $this->defaults;
     }
 
     /**
      * Get all login settings merged with defaults.
+     * Uses tenant-specific settings if user has a tenant, falls back to global.
      */
     public function getSettings(): array
     {
         try {
-            $settings = Setting::getGroup('login');
+            if ($this->tenantService->hasTenant()) {
+                $settings = Setting::getTenantGroup(
+                    'login',
+                    $this->tenantService->getTenantType(),
+                    $this->tenantService->getTenantId()
+                );
+            } else {
+                $settings = Setting::getGroup('login');
+            }
         } catch (\Exception $e) {
             // If database/cache fails, return defaults to prevent 502
             report($e);
@@ -47,6 +57,46 @@ class LoginSettingsService
         }
 
         return array_merge($this->getDefaults(), $settings);
+    }
+
+    /**
+     * Get settings for a specific tenant.
+     */
+    public function getSettingsForTenant(?string $tenantType, ?int $tenantId): array
+    {
+        try {
+            $settings = Setting::getTenantGroup('login', $tenantType, $tenantId);
+        } catch (\Exception $e) {
+            report($e);
+            $settings = [];
+        }
+
+        return array_merge($this->getDefaults(), $settings);
+    }
+
+    /**
+     * Get current tenant info for display purposes.
+     */
+    public function getCurrentTenantInfo(): ?array
+    {
+        if (! $this->tenantService->hasTenant()) {
+            return null;
+        }
+
+        return [
+            'type' => $this->tenantService->getShortTenantType(),
+            'name' => $this->tenantService->getTenantName(),
+            'id' => $this->tenantService->getTenantId(),
+            'full_type' => $this->tenantService->getTenantType(),
+        ];
+    }
+
+    /**
+     * Check if current user has a tenant.
+     */
+    public function hasTenant(): bool
+    {
+        return $this->tenantService->hasTenant();
     }
 
     /**

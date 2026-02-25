@@ -9,7 +9,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { Separator } from '@/components/ui/separator';
 import { ImageUpload } from '@/components/shared';
-import { LogIn, Quote, Settings2, Save, Eye, Trash2 } from 'lucide-vue-next';
+import { LogIn, Quote, Settings2, Save, Eye, Trash2, Building2, Globe } from 'lucide-vue-next';
+import { Badge } from '@/components/ui/badge';
 import { ref, watch } from 'vue';
 import { toast } from 'vue-sonner';
 import type { BreadcrumbItem } from '@/types';
@@ -27,8 +28,16 @@ interface LoginSettings {
     show_remember_me: boolean;
 }
 
+interface TenantInfo {
+    type: string;
+    name: string;
+    id: number;
+    full_type: string;
+}
+
 interface Props {
     loginSettings: LoginSettings;
+    currentTenant: TenantInfo | null;
 }
 
 const props = defineProps<Props>();
@@ -177,10 +186,21 @@ const previewLogin = () => {
                         Customize your login page appearance
                     </p>
                 </div>
-                <Button variant="outline" @click="previewLogin">
-                    <Eye class="mr-2 h-4 w-4" />
-                    Preview Login
-                </Button>
+                <div class="flex items-center gap-3">
+                    <!-- Tenant Indicator -->
+                    <Badge v-if="props.currentTenant" variant="secondary" class="flex items-center gap-1.5 px-3 py-1">
+                        <Building2 class="h-3.5 w-3.5" />
+                        <span>{{ props.currentTenant.type }}: {{ props.currentTenant.name }}</span>
+                    </Badge>
+                    <Badge v-else variant="outline" class="flex items-center gap-1.5 px-3 py-1">
+                        <Globe class="h-3.5 w-3.5" />
+                        <span>Global Settings</span>
+                    </Badge>
+                    <Button variant="outline" @click="previewLogin">
+                        <Eye class="mr-2 h-4 w-4" />
+                        Preview Login
+                    </Button>
+                </div>
             </div>
 
             <div class="grid gap-6 lg:grid-cols-2">

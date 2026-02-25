@@ -31,9 +31,15 @@ class UserRoleController extends Controller
         // Filter by tenant - tenant users only see users in their tenant(s)
         $tenantService = app(TenantService::class);
         $currentUser = Auth::user();
+        $isSuperAdmin = $currentUser->hasRole('super-admin');
+        $isAdmin = $currentUser->hasRole('admin');
 
-        // Only filter if current user has tenant(s) and is not super-admin
-        if ($tenantService->hasTenant() && !$currentUser->hasRole('super-admin')) {
+        // Super-admin always sees ALL users
+        // Admin without tenant can see ALL users
+        // Others with tenant only see users in their tenant(s)
+        $canSeeAllUsers = $isSuperAdmin || ($isAdmin && !$tenantService->hasTenant());
+
+        if (!$canSeeAllUsers && $tenantService->hasTenant()) {
             $allTenantIds = $tenantService->getAllTenantIds();
 
             $query->where(function ($q) use ($allTenantIds) {
@@ -101,6 +107,9 @@ class UserRoleController extends Controller
         $tenantService = app(TenantService::class);
         $currentUser = Auth::user();
         $isSuperAdmin = $currentUser->hasRole('super-admin');
+        $isAdmin = $currentUser->hasRole('admin');
+        // Super-admin and admin (without tenant) can see all tenants
+        $canAccessAllTenants = $isSuperAdmin || ($isAdmin && !$tenantService->hasTenant());
 
         // Get roles - filter out super-admin for non-super-admin users
         $rolesQuery = Role::withCount('permissions')->orderBy('name');
@@ -109,7 +118,7 @@ class UserRoleController extends Controller
         }
         $roles = $rolesQuery->get(['id', 'name']);
 
-        // Get available tenants - filtered by current user's tenant access unless super-admin
+        // Get available tenants - filtered by current user's tenant access unless super-admin/admin
         $schoolQuery = School::allRecords()
             ->select('id', 'name', 'code', 'type')
             ->where('status', true)
@@ -120,8 +129,8 @@ class UserRoleController extends Controller
             ->where('status', 'active')
             ->orderBy('name');
 
-        // If not super-admin, filter to only show tenants the current user has access to
-        if (!$isSuperAdmin && $tenantService->hasTenant()) {
+        // Super-admin and admin (without tenant) can see all tenants
+        if (!$canAccessAllTenants && $tenantService->hasTenant()) {
             $schoolIds = $tenantService->getSchoolIds();
             $outletIds = $tenantService->getOutletIds();
 
@@ -281,6 +290,9 @@ class UserRoleController extends Controller
         $tenantService = app(TenantService::class);
         $currentUser = Auth::user();
         $isSuperAdmin = $currentUser->hasRole('super-admin');
+        $isAdmin = $currentUser->hasRole('admin');
+        // Super-admin and admin (without tenant) can see all tenants
+        $canAccessAllTenants = $isSuperAdmin || ($isAdmin && !$tenantService->hasTenant());
 
         // Get roles - filter out super-admin for non-super-admin users
         $rolesQuery = Role::withCount('permissions')->orderBy('name');
@@ -289,7 +301,7 @@ class UserRoleController extends Controller
         }
         $roles = $rolesQuery->get(['id', 'name']);
 
-        // Get available tenants - filtered by current user's tenant access unless super-admin
+        // Get available tenants - filtered by current user's tenant access unless super-admin/admin
         $schoolQuery = School::allRecords()
             ->select('id', 'name', 'code', 'type')
             ->where('status', true)
@@ -300,8 +312,8 @@ class UserRoleController extends Controller
             ->where('status', 'active')
             ->orderBy('name');
 
-        // If not super-admin, filter to only show tenants the current user has access to
-        if (!$isSuperAdmin && $tenantService->hasTenant()) {
+        // Super-admin and admin (without tenant) can see all tenants
+        if (!$canAccessAllTenants && $tenantService->hasTenant()) {
             $schoolIds = $tenantService->getSchoolIds();
             $outletIds = $tenantService->getOutletIds();
 
@@ -362,6 +374,7 @@ class UserRoleController extends Controller
                 'schools' => $schools,
                 'outlets' => $outlets,
             ],
+            'isSuperAdmin' => $isSuperAdmin,
         ]);
     }
 

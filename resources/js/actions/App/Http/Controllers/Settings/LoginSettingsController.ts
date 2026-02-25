@@ -82,7 +82,7 @@ index.form = indexForm
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::update
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:37
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:38
 * @route '/dashboard/settings/login'
 */
 export const update = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -97,7 +97,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::update
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:37
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:38
 * @route '/dashboard/settings/login'
 */
 update.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ update.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::update
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:37
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:38
 * @route '/dashboard/settings/login'
 */
 update.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -116,7 +116,7 @@ update.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::update
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:37
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:38
 * @route '/dashboard/settings/login'
 */
 const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -126,7 +126,7 @@ const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> =>
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::update
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:37
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:38
 * @route '/dashboard/settings/login'
 */
 updateForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -138,7 +138,7 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::removeImage
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:47
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:48
 * @route '/dashboard/settings/login/image'
 */
 export const removeImage = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -153,7 +153,7 @@ removeImage.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::removeImage
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:47
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:48
 * @route '/dashboard/settings/login/image'
 */
 removeImage.url = (options?: RouteQueryOptions) => {
@@ -162,7 +162,7 @@ removeImage.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::removeImage
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:47
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:48
 * @route '/dashboard/settings/login/image'
 */
 removeImage.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -172,7 +172,7 @@ removeImage.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> =>
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::removeImage
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:47
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:48
 * @route '/dashboard/settings/login/image'
 */
 const removeImageForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -187,7 +187,7 @@ const removeImageForm = (options?: RouteQueryOptions): RouteFormDefinition<'post
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::removeImage
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:47
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:48
 * @route '/dashboard/settings/login/image'
 */
 removeImageForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -204,7 +204,7 @@ removeImage.form = removeImageForm
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::removeLogo
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:57
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:58
 * @route '/dashboard/settings/login/logo'
 */
 export const removeLogo = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -219,7 +219,7 @@ removeLogo.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::removeLogo
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:57
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:58
 * @route '/dashboard/settings/login/logo'
 */
 removeLogo.url = (options?: RouteQueryOptions) => {
@@ -228,7 +228,7 @@ removeLogo.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::removeLogo
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:57
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:58
 * @route '/dashboard/settings/login/logo'
 */
 removeLogo.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -238,7 +238,7 @@ removeLogo.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::removeLogo
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:57
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:58
 * @route '/dashboard/settings/login/logo'
 */
 const removeLogoForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -253,7 +253,7 @@ const removeLogoForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'
 
 /**
 * @see \App\Http\Controllers\Settings\LoginSettingsController::removeLogo
-* @see app/Http/Controllers/Settings/LoginSettingsController.php:57
+* @see app/Http/Controllers/Settings/LoginSettingsController.php:58
 * @route '/dashboard/settings/login/logo'
 */
 removeLogoForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
