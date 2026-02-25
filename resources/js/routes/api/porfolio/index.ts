@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::index
 * @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:23
@@ -44,6 +44,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::index
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:23
+* @route '/api/v1/porfolios'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::index
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:23
+* @route '/api/v1/porfolios'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::index
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:23
+* @route '/api/v1/porfolios'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::store
 * @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:50
 * @route '/api/v1/porfolios'
@@ -76,6 +113,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::store
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:50
+* @route '/api/v1/porfolios'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::store
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:50
+* @route '/api/v1/porfolios'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::show
@@ -140,6 +199,43 @@ show.head = (args: { porfolio: string | number } | [porfolio: string | number ] 
 })
 
 /**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::show
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:62
+* @route '/api/v1/porfolios/{porfolio}'
+*/
+const showForm = (args: { porfolio: string | number } | [porfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::show
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:62
+* @route '/api/v1/porfolios/{porfolio}'
+*/
+showForm.get = (args: { porfolio: string | number } | [porfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::show
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:62
+* @route '/api/v1/porfolios/{porfolio}'
+*/
+showForm.head = (args: { porfolio: string | number } | [porfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::update
 * @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:98
 * @route '/api/v1/porfolios/{porfolio}'
@@ -202,6 +298,53 @@ update.patch = (args: { porfolio: string | number } | [porfolio: string | number
 })
 
 /**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::update
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:98
+* @route '/api/v1/porfolios/{porfolio}'
+*/
+const updateForm = (args: { porfolio: string | number } | [porfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::update
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:98
+* @route '/api/v1/porfolios/{porfolio}'
+*/
+updateForm.put = (args: { porfolio: string | number } | [porfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::update
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:98
+* @route '/api/v1/porfolios/{porfolio}'
+*/
+updateForm.patch = (args: { porfolio: string | number } | [porfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::destroy
 * @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:114
 * @route '/api/v1/porfolios/{porfolio}'
@@ -252,6 +395,38 @@ destroy.delete = (args: { porfolio: string | number } | [porfolio: string | numb
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::destroy
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:114
+* @route '/api/v1/porfolios/{porfolio}'
+*/
+const destroyForm = (args: { porfolio: string | number } | [porfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\PorfolioController::destroy
+* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:114
+* @route '/api/v1/porfolios/{porfolio}'
+*/
+destroyForm.delete = (args: { porfolio: string | number } | [porfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const porfolio = {
     index: Object.assign(index, index),

@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @route '/dashboard/transactions'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @route '/dashboard/transactions'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @route '/dashboard/transactions'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 const transactions = {
     index: Object.assign(index, index),

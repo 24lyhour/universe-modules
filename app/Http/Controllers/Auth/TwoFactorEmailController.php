@@ -4,16 +4,17 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\TwoFactorLockoutService;
 use App\Services\UserOtpService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 
 class TwoFactorEmailController extends Controller
 {
     public function __construct(
-        protected UserOtpService $otpService
+        protected UserOtpService $otpService,
+        protected TwoFactorLockoutService $lockoutService
     ) {}
 
     /**
@@ -28,6 +29,18 @@ class TwoFactorEmailController extends Controller
                 'success' => false,
                 'message' => 'No authentication session found.',
             ], 422);
+        }
+
+        // Check if IP is locked
+        if ($this->lockoutService->isLocked($request, $user)) {
+            $lockoutInfo = $this->lockoutService->getLockoutInfo($request, $user);
+
+            return response()->json([
+                'success' => false,
+                'message' => $lockoutInfo['message'],
+                'locked' => true,
+                'remaining_minutes' => $lockoutInfo['remaining_minutes'],
+            ], 429);
         }
 
         $result = $this->otpService->sendOtp($user);
@@ -53,11 +66,35 @@ class TwoFactorEmailController extends Controller
             ], 422);
         }
 
+        // Check if IP is locked
+        if ($this->lockoutService->isLocked($request, $user)) {
+            $lockoutInfo = $this->lockoutService->getLockoutInfo($request, $user);
+
+            return response()->json([
+                'success' => false,
+                'message' => $lockoutInfo['message'],
+                'locked' => true,
+                'remaining_minutes' => $lockoutInfo['remaining_minutes'],
+            ], 429);
+        }
+
         $result = $this->otpService->verifyOtp($user, $request->code);
 
         if (! $result['success']) {
-            return response()->json($result, 422);
+            // Record failed attempt for IP lockout
+            $lockoutResult = $this->lockoutService->recordFailedAttempt($request, $user);
+
+            return response()->json([
+                'success' => false,
+                'message' => $lockoutResult['message'],
+                'locked' => $lockoutResult['locked'],
+                'remaining_attempts' => $lockoutResult['remaining_attempts'] ?? 0,
+                'remaining_minutes' => $lockoutResult['remaining_minutes'] ?? null,
+            ], $lockoutResult['locked'] ? 429 : 422);
         }
+
+        // Clear lockout on success
+        $this->lockoutService->clearOnSuccess($request, $user);
 
         // Authentication successful - log the user in
         Auth::login($user, $request->session()->get('login.remember', false));

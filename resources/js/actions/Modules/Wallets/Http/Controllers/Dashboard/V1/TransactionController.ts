@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::all
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
@@ -42,6 +42,43 @@ all.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: all.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::all
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @route '/dashboard/transactions'
+*/
+const allForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: all.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::all
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @route '/dashboard/transactions'
+*/
+allForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: all.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::all
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @route '/dashboard/transactions'
+*/
+allForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: all.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+all.form = allForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
@@ -112,6 +149,43 @@ index.head = (args: { wallet: number | { id: number } } | [wallet: number | { id
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:137
+* @route '/dashboard/wallets/{wallet}/transactions'
+*/
+const indexForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:137
+* @route '/dashboard/wallets/{wallet}/transactions'
+*/
+indexForm.get = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:137
+* @route '/dashboard/wallets/{wallet}/transactions'
+*/
+indexForm.head = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::show
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:237
 * @route '/dashboard/wallets/{wallet}/transactions/{transaction}'
@@ -175,6 +249,43 @@ show.head = (args: { wallet: number | { id: number }, transaction: number | { id
     url: show.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::show
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:237
+* @route '/dashboard/wallets/{wallet}/transactions/{transaction}'
+*/
+const showForm = (args: { wallet: number | { id: number }, transaction: number | { id: number } } | [wallet: number | { id: number }, transaction: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::show
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:237
+* @route '/dashboard/wallets/{wallet}/transactions/{transaction}'
+*/
+showForm.get = (args: { wallet: number | { id: number }, transaction: number | { id: number } } | [wallet: number | { id: number }, transaction: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::show
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:237
+* @route '/dashboard/wallets/{wallet}/transactions/{transaction}'
+*/
+showForm.head = (args: { wallet: number | { id: number }, transaction: number | { id: number } } | [wallet: number | { id: number }, transaction: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createDeposit
@@ -245,6 +356,43 @@ createDeposit.head = (args: { wallet: number | { id: number } } | [wallet: numbe
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createDeposit
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:298
+* @route '/dashboard/wallets/{wallet}/transactions/deposit/create'
+*/
+const createDepositForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createDeposit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createDeposit
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:298
+* @route '/dashboard/wallets/{wallet}/transactions/deposit/create'
+*/
+createDepositForm.get = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createDeposit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createDeposit
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:298
+* @route '/dashboard/wallets/{wallet}/transactions/deposit/create'
+*/
+createDepositForm.head = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createDeposit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+createDeposit.form = createDepositForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::deposit
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:315
 * @route '/dashboard/wallets/{wallet}/transactions/deposit'
@@ -301,6 +449,28 @@ deposit.post = (args: { wallet: number | { id: number } } | [wallet: number | { 
     url: deposit.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::deposit
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:315
+* @route '/dashboard/wallets/{wallet}/transactions/deposit'
+*/
+const depositForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deposit.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::deposit
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:315
+* @route '/dashboard/wallets/{wallet}/transactions/deposit'
+*/
+depositForm.post = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deposit.url(args, options),
+    method: 'post',
+})
+
+deposit.form = depositForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createWithdraw
@@ -371,6 +541,43 @@ createWithdraw.head = (args: { wallet: number | { id: number } } | [wallet: numb
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createWithdraw
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:338
+* @route '/dashboard/wallets/{wallet}/transactions/withdraw/create'
+*/
+const createWithdrawForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createWithdraw.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createWithdraw
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:338
+* @route '/dashboard/wallets/{wallet}/transactions/withdraw/create'
+*/
+createWithdrawForm.get = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createWithdraw.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createWithdraw
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:338
+* @route '/dashboard/wallets/{wallet}/transactions/withdraw/create'
+*/
+createWithdrawForm.head = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createWithdraw.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+createWithdraw.form = createWithdrawForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::withdraw
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:356
 * @route '/dashboard/wallets/{wallet}/transactions/withdraw'
@@ -427,6 +634,28 @@ withdraw.post = (args: { wallet: number | { id: number } } | [wallet: number | {
     url: withdraw.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::withdraw
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:356
+* @route '/dashboard/wallets/{wallet}/transactions/withdraw'
+*/
+const withdrawForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: withdraw.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::withdraw
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:356
+* @route '/dashboard/wallets/{wallet}/transactions/withdraw'
+*/
+withdrawForm.post = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: withdraw.url(args, options),
+    method: 'post',
+})
+
+withdraw.form = withdrawForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createTransfer
@@ -497,6 +726,43 @@ createTransfer.head = (args: { wallet: number | { id: number } } | [wallet: numb
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createTransfer
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:378
+* @route '/dashboard/wallets/{wallet}/transactions/transfer/create'
+*/
+const createTransferForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createTransfer.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createTransfer
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:378
+* @route '/dashboard/wallets/{wallet}/transactions/transfer/create'
+*/
+createTransferForm.get = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createTransfer.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::createTransfer
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:378
+* @route '/dashboard/wallets/{wallet}/transactions/transfer/create'
+*/
+createTransferForm.head = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createTransfer.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+createTransfer.form = createTransferForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::transfer
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:408
 * @route '/dashboard/wallets/{wallet}/transactions/transfer'
@@ -555,6 +821,28 @@ transfer.post = (args: { wallet: number | { id: number } } | [wallet: number | {
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::transfer
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:408
+* @route '/dashboard/wallets/{wallet}/transactions/transfer'
+*/
+const transferForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: transfer.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::transfer
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:408
+* @route '/dashboard/wallets/{wallet}/transactions/transfer'
+*/
+transferForm.post = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: transfer.url(args, options),
+    method: 'post',
+})
+
+transfer.form = transferForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::reverse
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:432
 * @route '/dashboard/wallets/{wallet}/transactions/{transaction}/reverse'
@@ -610,6 +898,28 @@ reverse.post = (args: { wallet: number | { id: number }, transaction: number | {
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::reverse
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:432
+* @route '/dashboard/wallets/{wallet}/transactions/{transaction}/reverse'
+*/
+const reverseForm = (args: { wallet: number | { id: number }, transaction: number | { id: number } } | [wallet: number | { id: number }, transaction: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: reverse.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::reverse
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:432
+* @route '/dashboard/wallets/{wallet}/transactions/{transaction}/reverse'
+*/
+reverseForm.post = (args: { wallet: number | { id: number }, transaction: number | { id: number } } | [wallet: number | { id: number }, transaction: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: reverse.url(args, options),
+    method: 'post',
+})
+
+reverse.form = reverseForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::cancel
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:460
 * @route '/dashboard/wallets/{wallet}/transactions/{transaction}/cancel'
@@ -663,6 +973,28 @@ cancel.post = (args: { wallet: number | { id: number }, transaction: number | { 
     url: cancel.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::cancel
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:460
+* @route '/dashboard/wallets/{wallet}/transactions/{transaction}/cancel'
+*/
+const cancelForm = (args: { wallet: number | { id: number }, transaction: number | { id: number } } | [wallet: number | { id: number }, transaction: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: cancel.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::cancel
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:460
+* @route '/dashboard/wallets/{wallet}/transactions/{transaction}/cancel'
+*/
+cancelForm.post = (args: { wallet: number | { id: number }, transaction: number | { id: number } } | [wallet: number | { id: number }, transaction: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: cancel.url(args, options),
+    method: 'post',
+})
+
+cancel.form = cancelForm
 
 const TransactionController = { all, index, show, createDeposit, deposit, createWithdraw, withdraw, createTransfer, transfer, reverse, cancel }
 

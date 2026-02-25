@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::store
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:32
@@ -56,6 +56,38 @@ store.patch = (args: { customer: number | { id: number } } | [customer: number |
     url: store.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::store
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:32
+* @route '/dashboard/customers/{customer}/activate'
+*/
+const storeForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::store
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:32
+* @route '/dashboard/customers/{customer}/activate'
+*/
+storeForm.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+store.form = storeForm
 
 const activate = {
     store: Object.assign(store, store),

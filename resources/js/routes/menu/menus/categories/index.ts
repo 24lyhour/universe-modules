@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::manage
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:31
@@ -68,6 +68,43 @@ manage.head = (args: { menu: number | { id: number } } | [menu: number | { id: n
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::manage
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:31
+* @route '/dashboard/menus/{menu}/categories/manage'
+*/
+const manageForm = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: manage.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::manage
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:31
+* @route '/dashboard/menus/{menu}/categories/manage'
+*/
+manageForm.get = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: manage.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::manage
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:31
+* @route '/dashboard/menus/{menu}/categories/manage'
+*/
+manageForm.head = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: manage.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+manage.form = manageForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::reorder
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:42
 * @route '/dashboard/menus/{menu}/categories/reorder'
@@ -124,6 +161,28 @@ reorder.post = (args: { menu: number | { id: number } } | [menu: number | { id: 
     url: reorder.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::reorder
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:42
+* @route '/dashboard/menus/{menu}/categories/reorder'
+*/
+const reorderForm = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: reorder.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::reorder
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:42
+* @route '/dashboard/menus/{menu}/categories/reorder'
+*/
+reorderForm.post = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: reorder.url(args, options),
+    method: 'post',
+})
+
+reorder.form = reorderForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::assign
@@ -194,6 +253,43 @@ assign.head = (args: { menu: number | { id: number } } | [menu: number | { id: n
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::assign
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:52
+* @route '/dashboard/menus/{menu}/categories/assign'
+*/
+const assignForm = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: assign.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::assign
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:52
+* @route '/dashboard/menus/{menu}/categories/assign'
+*/
+assignForm.get = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: assign.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::assign
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:52
+* @route '/dashboard/menus/{menu}/categories/assign'
+*/
+assignForm.head = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: assign.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+assign.form = assignForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::sync
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:63
 * @route '/dashboard/menus/{menu}/categories/sync'
@@ -250,6 +346,28 @@ sync.post = (args: { menu: number | { id: number } } | [menu: number | { id: num
     url: sync.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::sync
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:63
+* @route '/dashboard/menus/{menu}/categories/sync'
+*/
+const syncForm = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: sync.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuCategoryController::sync
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuCategoryController.php:63
+* @route '/dashboard/menus/{menu}/categories/sync'
+*/
+syncForm.post = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: sync.url(args, options),
+    method: 'post',
+})
+
+sync.form = syncForm
 
 const categories = {
     manage: Object.assign(manage, manage),
