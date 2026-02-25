@@ -7,7 +7,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useForm, Head, Link } from '@inertiajs/vue3';
-import { Loader2 } from 'lucide-vue-next';
+import { Loader2, ShieldAlert, Clock } from 'lucide-vue-next';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 interface LoginSettings {
     app_name: string;
@@ -22,13 +23,24 @@ interface LoginSettings {
     show_remember_me: boolean;
 }
 
+interface LockoutInfo {
+    locked: boolean;
+    remaining_minutes: number;
+    message: string;
+}
+
 const props = defineProps<{
     class?: HTMLAttributes["class"]
     canResetPassword?: boolean
     canRegister?: boolean
     status?: string
     loginSettings: LoginSettings
+    lockout?: LockoutInfo | null
+    debugIp?: string
 }>()
+
+// Debug: Log props on mount
+console.log('Login props:', { lockout: props.lockout, debugIp: props.debugIp });
 
 const form = useForm({
     email: '',
@@ -36,11 +48,91 @@ const form = useForm({
     remember: false,
 });
 
+// Lockout state
+const isLocked = ref<boolean>(false);
+const lockoutMinutes = ref<number>(0);
+const lockoutSeconds = ref<number>(0);
+let lockoutInterval: ReturnType<typeof setInterval> | null = null;
+
+// Initialize from props immediately if locked
+if (props.lockout?.locked && props.lockout.remaining_minutes > 0) {
+    isLocked.value = true;
+    lockoutMinutes.value = props.lockout.remaining_minutes;
+    console.log('Lockout detected from props, starting countdown:', props.lockout.remaining_minutes);
+}
+
+// Start lockout countdown
+const startLockoutCountdown = (minutes: number) => {
+    isLocked.value = true;
+    lockoutMinutes.value = minutes;
+    lockoutSeconds.value = 0;
+
+    // Clear existing interval
+    if (lockoutInterval) {
+        clearInterval(lockoutInterval);
+    }
+
+    // Convert to total seconds for countdown
+    let totalSeconds = minutes * 60;
+
+    lockoutInterval = setInterval(() => {
+        totalSeconds--;
+
+        if (totalSeconds <= 0) {
+            isLocked.value = false;
+            lockoutMinutes.value = 0;
+            lockoutSeconds.value = 0;
+            if (lockoutInterval) {
+                clearInterval(lockoutInterval);
+            }
+        } else {
+            lockoutMinutes.value = Math.floor(totalSeconds / 60);
+            lockoutSeconds.value = totalSeconds % 60;
+        }
+    }, 1000);
+};
+
+// Formatted lockout time
+const formattedLockoutTime = computed(() => {
+    const mins = lockoutMinutes.value.toString().padStart(2, '0');
+    const secs = lockoutSeconds.value.toString().padStart(2, '0');
+    return `${mins}:${secs}`;
+});
+
 const submit = () => {
+    if (isLocked.value) return;
+
     form.post('/login', {
         onFinish: () => form.reset('password'),
+        onError: () => {
+            // Check if it's a lockout error from the form error
+            const emailError = form.errors.email;
+            if (emailError && emailError.toLowerCase().includes('locked')) {
+                // Extract minutes from error message
+                const match = emailError.match(/(\d+)\s*minutes?/i);
+                if (match) {
+                    startLockoutCountdown(parseInt(match[1]));
+                }
+            }
+        },
     });
 };
+
+// Initialize lockout countdown if already locked
+onMounted(() => {
+    console.log('onMounted - checking lockout:', props.lockout);
+    if (props.lockout?.locked && props.lockout.remaining_minutes > 0) {
+        console.log('Starting lockout countdown from onMounted');
+        startLockoutCountdown(props.lockout.remaining_minutes);
+    }
+});
+
+// Cleanup on unmount
+onUnmounted(() => {
+    if (lockoutInterval) {
+        clearInterval(lockoutInterval);
+    }
+});
 </script>
 
 <template>
@@ -51,7 +143,60 @@ const submit = () => {
             <CardContent class="grid p-0 md:grid-cols-2">
                 <!-- Form Section -->
                 <div class="p-8 md:p-12">
-                    <form @submit.prevent="submit" class="space-y-6">
+                    <!-- Lockout State -->
+                    <div v-if="isLocked" class="space-y-6">
+                        <!-- Logo & App Name -->
+                        <div class="flex flex-col items-center gap-2">
+                            <img
+                                v-if="loginSettings.logo"
+                                :src="loginSettings.logo"
+                                :alt="loginSettings.app_name"
+                                class="h-12 w-auto object-contain"
+                            />
+                            <span v-if="loginSettings.app_name && !loginSettings.logo" class="text-xl font-bold">
+                                {{ loginSettings.app_name }}
+                            </span>
+                        </div>
+
+                        <!-- Lockout Icon -->
+                        <div class="flex justify-center">
+                            <div class="flex h-20 w-20 items-center justify-center rounded-full bg-red-500/10">
+                                <ShieldAlert class="h-10 w-10 text-red-500" />
+                            </div>
+                        </div>
+
+                        <!-- Lockout Header -->
+                        <div class="space-y-2 text-center">
+                            <h1 class="text-2xl font-bold tracking-tight text-red-600 dark:text-red-400">
+                                Account Locked
+                            </h1>
+                            <p class="text-muted-foreground">
+                                Too many failed login attempts. Please wait before trying again.
+                            </p>
+                        </div>
+
+                        <!-- Countdown Timer -->
+                        <div class="p-6 rounded-2xl bg-red-500/5 border border-red-500/20">
+                            <div class="flex flex-col items-center gap-3">
+                                <Clock class="h-8 w-8 text-red-500" />
+                                <p class="text-sm text-muted-foreground">Time remaining</p>
+                                <p class="text-4xl font-mono font-bold text-red-600 dark:text-red-400">
+                                    {{ formattedLockoutTime }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Info Box -->
+                        <div class="p-4 rounded-xl bg-muted/50 border border-border/50">
+                            <p class="text-sm text-muted-foreground text-center">
+                                Your IP address has been temporarily locked for security reasons.
+                                This helps protect accounts from unauthorized access.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Normal Login Form -->
+                    <form v-else @submit.prevent="submit" class="space-y-6">
                         <!-- Logo & App Name -->
                         <div class="flex flex-col items-center gap-2">
                             <img

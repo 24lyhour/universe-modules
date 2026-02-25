@@ -34,6 +34,11 @@ class User extends Authenticatable implements HasMedia
         'suspended_at',
         'suspended_reason',
         'suspended_by',
+        'two_factor_method',
+        'two_factor_email_code',
+        'two_factor_email_expires_at',
+        'two_factor_email_attempts',
+        'two_factor_email_sent_at',
     ];
 
     /**
@@ -45,6 +50,7 @@ class User extends Authenticatable implements HasMedia
         'password',
         'two_factor_secret',
         'two_factor_recovery_codes',
+        'two_factor_email_code',
         'remember_token',
     ];
 
@@ -59,6 +65,8 @@ class User extends Authenticatable implements HasMedia
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
+            'two_factor_email_expires_at' => 'datetime',
+            'two_factor_email_sent_at' => 'datetime',
             'suspended_at' => 'datetime',
         ];
     }
@@ -195,5 +203,56 @@ class User extends Authenticatable implements HasMedia
         }
 
         return $tenants;
+    }
+
+    /**
+     * Check if user has two-factor authentication enabled.
+     */
+    public function hasTwoFactorEnabled(): bool
+    {
+        return $this->two_factor_confirmed_at !== null;
+    }
+
+    /**
+     * Check if user prefers email-based 2FA.
+     */
+    public function prefersTwoFactorEmail(): bool
+    {
+        return $this->two_factor_method === 'email';
+    }
+
+    /**
+     * Check if user prefers TOTP-based 2FA.
+     */
+    public function prefersTwoFactorTotp(): bool
+    {
+        return $this->two_factor_method === 'totp';
+    }
+
+    /**
+     * Enable two-factor authentication with specified method.
+     */
+    public function enableTwoFactor(string $method = 'email'): void
+    {
+        $this->update([
+            'two_factor_method' => $method,
+            'two_factor_confirmed_at' => now(),
+        ]);
+    }
+
+    /**
+     * Disable two-factor authentication.
+     */
+    public function disableTwoFactor(): void
+    {
+        $this->update([
+            'two_factor_method' => 'email',
+            'two_factor_confirmed_at' => null,
+            'two_factor_secret' => null,
+            'two_factor_recovery_codes' => null,
+            'two_factor_email_code' => null,
+            'two_factor_email_expires_at' => null,
+            'two_factor_email_attempts' => 0,
+        ]);
     }
 }

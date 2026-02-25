@@ -1,5 +1,6 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
-import loginDf2c2a from './login'
+import email from './email'
+import method from './method'
 /**
 * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::login
 * @see vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:41
@@ -11,9 +12,9 @@ export const login = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 login.definition = {
-    methods: ["get","head"],
+    methods: ["get","head","post"],
     url: '/two-factor-challenge',
-} satisfies RouteDefinition<["get","head"]>
+} satisfies RouteDefinition<["get","head","post"]>
 
 /**
 * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::login
@@ -77,6 +78,26 @@ loginForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         }
     }),
     method: 'get',
+})
+
+/**
+* @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::login
+* @see vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:56
+* @route '/two-factor-challenge'
+*/
+login.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: login.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::login
+* @see vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:56
+* @route '/two-factor-challenge'
+*/
+loginForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: login.url(options),
+    method: 'post',
 })
 
 login.form = loginForm
@@ -640,7 +661,7 @@ showForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 show.form = showForm
 
 const twoFactor = {
-    login: Object.assign(login, loginDf2c2a),
+    login: Object.assign(login, login),
     enable: Object.assign(enable, enable),
     confirm: Object.assign(confirm, confirm),
     disable: Object.assign(disable, disable),
@@ -648,7 +669,9 @@ const twoFactor = {
     secretKey: Object.assign(secretKey, secretKey),
     recoveryCodes: Object.assign(recoveryCodes, recoveryCodes),
     regenerateRecoveryCodes: Object.assign(regenerateRecoveryCodes, regenerateRecoveryCodes),
+    email: Object.assign(email, email),
     show: Object.assign(show, show),
+    method: Object.assign(method, method),
 }
 
 export default twoFactor

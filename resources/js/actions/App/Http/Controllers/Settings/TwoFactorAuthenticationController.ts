@@ -80,6 +80,72 @@ showForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 show.form = showForm
 
-const TwoFactorAuthenticationController = { show }
+/**
+* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::updateMethod
+* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:43
+* @route '/settings/two-factor/method'
+*/
+export const updateMethod = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: updateMethod.url(options),
+    method: 'put',
+})
+
+updateMethod.definition = {
+    methods: ["put"],
+    url: '/settings/two-factor/method',
+} satisfies RouteDefinition<["put"]>
+
+/**
+* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::updateMethod
+* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:43
+* @route '/settings/two-factor/method'
+*/
+updateMethod.url = (options?: RouteQueryOptions) => {
+    return updateMethod.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::updateMethod
+* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:43
+* @route '/settings/two-factor/method'
+*/
+updateMethod.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: updateMethod.url(options),
+    method: 'put',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::updateMethod
+* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:43
+* @route '/settings/two-factor/method'
+*/
+const updateMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updateMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::updateMethod
+* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:43
+* @route '/settings/two-factor/method'
+*/
+updateMethodForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updateMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updateMethod.form = updateMethodForm
+
+const TwoFactorAuthenticationController = { show, updateMethod }
 
 export default TwoFactorAuthenticationController

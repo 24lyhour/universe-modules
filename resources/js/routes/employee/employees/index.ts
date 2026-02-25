@@ -1,4 +1,5 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import importMethod7367d2 from './import'
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::departments
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeController.php:155
@@ -79,6 +80,249 @@ departmentsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 })
 
 departments.form = departmentsForm
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::exportMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:25
+* @route '/dashboard/employees/export'
+*/
+export const exportMethod = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: exportMethod.url(options),
+    method: 'get',
+})
+
+exportMethod.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/employees/export',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::exportMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:25
+* @route '/dashboard/employees/export'
+*/
+exportMethod.url = (options?: RouteQueryOptions) => {
+    return exportMethod.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::exportMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:25
+* @route '/dashboard/employees/export'
+*/
+exportMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::exportMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:25
+* @route '/dashboard/employees/export'
+*/
+exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: exportMethod.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::exportMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:25
+* @route '/dashboard/employees/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::exportMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:25
+* @route '/dashboard/employees/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::exportMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:25
+* @route '/dashboard/employees/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::importMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:37
+* @route '/dashboard/employees/import'
+*/
+export const importMethod = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: importMethod.url(options),
+    method: 'get',
+})
+
+importMethod.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/employees/import',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::importMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:37
+* @route '/dashboard/employees/import'
+*/
+importMethod.url = (options?: RouteQueryOptions) => {
+    return importMethod.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::importMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:37
+* @route '/dashboard/employees/import'
+*/
+importMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::importMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:37
+* @route '/dashboard/employees/import'
+*/
+importMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: importMethod.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::importMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:37
+* @route '/dashboard/employees/import'
+*/
+const importMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::importMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:37
+* @route '/dashboard/employees/import'
+*/
+importMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::importMethod
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:37
+* @route '/dashboard/employees/import'
+*/
+importMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+importMethod.form = importMethodForm
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::template
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:98
+* @route '/dashboard/employees/template'
+*/
+export const template = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: template.url(options),
+    method: 'get',
+})
+
+template.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/employees/template',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::template
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:98
+* @route '/dashboard/employees/template'
+*/
+template.url = (options?: RouteQueryOptions) => {
+    return template.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::template
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:98
+* @route '/dashboard/employees/template'
+*/
+template.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: template.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::template
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:98
+* @route '/dashboard/employees/template'
+*/
+template.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: template.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::template
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:98
+* @route '/dashboard/employees/template'
+*/
+const templateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::template
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:98
+* @route '/dashboard/employees/template'
+*/
+templateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeImportExportController::template
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeImportExportController.php:98
+* @route '/dashboard/employees/template'
+*/
+templateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+template.form = templateForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeController::create
@@ -1175,6 +1419,9 @@ qrCode.form = qrCodeForm
 
 const employees = {
     departments: Object.assign(departments, departments),
+    export: Object.assign(exportMethod, exportMethod),
+    import: Object.assign(importMethod, importMethod7367d2),
+    template: Object.assign(template, template),
     create: Object.assign(create, create),
     store: Object.assign(store, store),
     index: Object.assign(index, index),

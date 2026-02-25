@@ -120,6 +120,17 @@ class AppServiceProvider extends ServiceProvider
                 'settings.activity-log',
                 'Activity'
             );
+
+            MenuService::addSubmenuItem(
+                'footer',
+                'dashboard-settings',
+                __('Privacy & Security'),
+                '/settings/two-factor',
+                80,
+                null, // No permission required - all users can manage their own 2FA
+                'two-factor.show',
+                'Shield'
+            );
         });
     }
 
