@@ -43,6 +43,19 @@ class AutoPermission
     ];
 
     /**
+     * Routes that skip permission checks (accessible to all authenticated users)
+     */
+    protected array $skipRoutes = [
+        'dashboard', // Main dashboard is accessible to all authenticated users
+        'settings.index', // Settings dashboard
+        'settings.update',
+        'settings.order',
+        'settings.toggle',
+        'dashboard.product.settings', // Product settings
+        'dashboard.product.settings.update',
+    ];
+
+    /**
      * Handle an incoming request.
      */
     public function handle(Request $request, Closure $next, ?string $resource = null): Response
@@ -57,6 +70,11 @@ class AutoPermission
         $routeName = $request->route()->getName();
 
         if (!$routeName) {
+            return $next($request);
+        }
+
+        // Skip permission check for routes in skipRoutes
+        if (in_array($routeName, $this->skipRoutes)) {
             return $next($request);
         }
 
@@ -78,7 +96,11 @@ class AutoPermission
      * Special routes that map to specific permissions
      */
     protected array $specialRoutes = [
-        'dashboard' => 'dashboard.view',
+        // Login Settings - maps to settings.manage permission
+        'login-settings.index' => 'settings.manage',
+        'login-settings.update' => 'settings.manage',
+        'login-settings.remove-image' => 'settings.manage',
+        'login-settings.remove-logo' => 'settings.manage',
     ];
 
     /**

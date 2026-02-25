@@ -29,7 +29,7 @@ Route::middleware(['auth', 'verified', 'auto.permission'])->group(function () {
     Route::post('dashboard/settings/widgets/order', [WidgetController::class, 'updateOrder'])->name('settings.order');
     Route::post('dashboard/settings/widgets/toggle-module', [WidgetController::class, 'toggleModule'])->name('settings.toggle');
 
-    // Login Settings
+    // Login Settings - auto.permission maps to settings.manage via specialRoutes
     Route::get('dashboard/settings/login', [LoginSettingsController::class, 'index'])->name('login-settings.index');
     Route::post('dashboard/settings/login', [LoginSettingsController::class, 'update'])->name('login-settings.update');
     Route::delete('dashboard/settings/login/image', [LoginSettingsController::class, 'removeImage'])->name('login-settings.remove-image');

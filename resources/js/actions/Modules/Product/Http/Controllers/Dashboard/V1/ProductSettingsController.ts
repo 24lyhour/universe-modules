@@ -82,7 +82,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductSettingsController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:21
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:19
 * @route '/dashboard/products/settings'
 */
 export const update = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -97,7 +97,7 @@ update.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductSettingsController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:21
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:19
 * @route '/dashboard/products/settings'
 */
 update.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ update.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductSettingsController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:21
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:19
 * @route '/dashboard/products/settings'
 */
 update.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -116,7 +116,7 @@ update.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductSettingsController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:21
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:19
 * @route '/dashboard/products/settings'
 */
 const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -126,7 +126,7 @@ const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> =>
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductSettingsController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:21
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:19
 * @route '/dashboard/products/settings'
 */
 updateForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                 'name' => 'kouchlyhour',
                 'avatar' => '/images/users/kouchlyhour.svg',
                 'password' => '12345678',
-                'role' => 'admin',
+                'role' => 'super-admin',
                 'email_verified_at' => now(),
                 'two_factor_secret' => null,
                 'two_factor_recovery_codes' => null,

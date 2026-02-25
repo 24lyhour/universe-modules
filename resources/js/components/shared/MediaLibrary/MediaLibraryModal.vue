@@ -426,7 +426,7 @@ watch(open, (isOpen) => {
                                 </div>
 
                                 <!-- File Info on Hover -->
-                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/60 to-transparent p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <p class="text-xs text-white truncate">{{ item.name }}</p>
                                     <p class="text-[10px] text-white/70">{{ item.size_formatted || formatBytes(item.size) }}</p>
                                 </div>

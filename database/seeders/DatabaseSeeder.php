@@ -24,11 +24,11 @@ class DatabaseSeeder extends Seeder
         // Module seeders
         $this->call([
             \Modules\School\Database\Seeders\SchoolDatabaseSeeder::class,
-            \Modules\Blog\Database\Seeders\BlogDatabaseSeeder::class,
-            \Modules\Company\Database\Seeders\CompanyDatabaseSeeder::class,
+            // \Modules\Blog\Database\Seeders\BlogDatabaseSeeder::class,
+            // \Modules\Company\Database\Seeders\CompanyDatabaseSeeder::class,
             \Modules\Customer\Database\Seeders\CustomerDatabaseSeeder::class,
             \Modules\Employee\Database\Seeders\EmployeeDatabaseSeeder::class,
-            \Modules\Hotel\Database\Seeders\HotelDatabaseSeeder::class,
+            // \Modules\Hotel\Database\Seeders\HotelDatabaseSeeder::class,
             \Modules\Menu\Database\Seeders\MenuDatabaseSeeder::class,
             \Modules\Outlet\Database\Seeders\OutletDatabaseSeeder::class,
             \Modules\Product\Database\Seeders\ProductDatabaseSeeder::class,
