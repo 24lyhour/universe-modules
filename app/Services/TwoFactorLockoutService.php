@@ -11,18 +11,24 @@ class TwoFactorLockoutService
     /**
      * Maximum failed attempts before lockout.
      */
-    protected int $maxAttempts = 3;
+    protected int $maxAttempts;
 
     /**
      * Lockout duration in minutes.
      */
-    protected int $lockoutMinutes = 60;
+    protected int $lockoutMinutes;
 
     /**
      * Lockout type constants.
      */
     public const TYPE_LOGIN = 'login';
     public const TYPE_TWO_FACTOR = 'two_factor';
+
+    public function __construct()
+    {
+        $this->maxAttempts = (int) config('auth.lockout.max_attempts', 3);
+        $this->lockoutMinutes = (int) config('auth.lockout.lockout_minutes', 60);
+    }
 
     /**
      * Check if IP is locked for a user.
