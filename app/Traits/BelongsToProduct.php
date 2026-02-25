@@ -26,6 +26,12 @@ trait BelongsToProduct
         // Add global scope to filter through product's outlet(s)
         static::addGlobalScope('product_tenant', function (Builder $builder) {
             $tenantService = app(TenantService::class);
+            $user = auth()->user();
+
+            // Super-admins see all data regardless of tenant assignments
+            if ($user?->hasRole('super-admin')) {
+                return;
+            }
 
             // If user has Outlet tenant access, filter through product's outlet
             if ($tenantService->hasTenantType('Outlet')) {
@@ -47,7 +53,7 @@ trait BelongsToProduct
                 // This prevents School users from seeing all products
                 $builder->whereRaw('1 = 0');
             }
-            // If user has no tenant at all (super-admin), no filter is applied
+            // If user has no tenant at all, no filter is applied
         });
     }
 

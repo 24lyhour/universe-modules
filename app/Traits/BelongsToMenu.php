@@ -26,6 +26,12 @@ trait BelongsToMenu
         // Add global scope to filter through menu's outlet(s)
         static::addGlobalScope('menu_tenant', function (Builder $builder) {
             $tenantService = app(TenantService::class);
+            $user = auth()->user();
+
+            // Super-admins see all data regardless of tenant assignments
+            if ($user?->hasRole('super-admin')) {
+                return;
+            }
 
             // If user has Outlet tenant access, filter through menu's outlet
             if ($tenantService->hasTenantType('Outlet')) {
@@ -47,7 +53,7 @@ trait BelongsToMenu
                 // This prevents School users from seeing all menu items
                 $builder->whereRaw('1 = 0');
             }
-            // If user has no tenant at all (super-admin), no filter is applied
+            // If user has no tenant at all, no filter is applied
         });
     }
 

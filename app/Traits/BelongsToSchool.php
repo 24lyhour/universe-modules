@@ -27,6 +27,12 @@ trait BelongsToSchool
         // Add global scope to filter by school_id(s)
         static::addGlobalScope('school', function (Builder $builder) {
             $tenantService = app(TenantService::class);
+            $user = auth()->user();
+
+            // Super-admins see all data regardless of tenant assignments
+            if ($user?->hasRole('super-admin')) {
+                return;
+            }
 
             // If user has School tenant access, filter by their schools
             if ($tenantService->hasTenantType('School')) {
@@ -40,9 +46,11 @@ trait BelongsToSchool
                     $builder->whereIn('school_id', $schoolIds);
                 }
             } elseif ($tenantService->hasTenant()) {
+                // User has tenant(s) but NOT School type - they should see nothing
+                // This prevents Outlet users from seeing all School data
                 $builder->whereRaw('1 = 0');
             }
-            // If user has no tenant at all (super-admin), no filter is applied
+            // If user has no tenant at all, no filter is applied
         });
 
         // Auto-set school_id on creating (uses primary school)
