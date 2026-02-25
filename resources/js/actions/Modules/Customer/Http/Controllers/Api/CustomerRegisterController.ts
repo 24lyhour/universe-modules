@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::register
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:22
@@ -32,6 +32,28 @@ register.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: register.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::register
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:22
+* @route '/api/v1/auth/register'
+*/
+const registerForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: register.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::register
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:22
+* @route '/api/v1/auth/register'
+*/
+registerForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: register.url(options),
+    method: 'post',
+})
+
+register.form = registerForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::checkEmail
@@ -68,6 +90,28 @@ checkEmail.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::checkEmail
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:35
+* @route '/api/v1/auth/check-email'
+*/
+const checkEmailForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: checkEmail.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::checkEmail
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:35
+* @route '/api/v1/auth/check-email'
+*/
+checkEmailForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: checkEmail.url(options),
+    method: 'post',
+})
+
+checkEmail.form = checkEmailForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::checkPhone
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:45
 * @route '/api/v1/auth/check-phone'
@@ -100,6 +144,28 @@ checkPhone.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: checkPhone.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::checkPhone
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:45
+* @route '/api/v1/auth/check-phone'
+*/
+const checkPhoneForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: checkPhone.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::checkPhone
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:45
+* @route '/api/v1/auth/check-phone'
+*/
+checkPhoneForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: checkPhone.url(options),
+    method: 'post',
+})
+
+checkPhone.form = checkPhoneForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::sendOtp
@@ -136,6 +202,28 @@ sendOtp.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::sendOtp
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:55
+* @route '/api/v1/auth/otp/send'
+*/
+const sendOtpForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: sendOtp.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::sendOtp
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:55
+* @route '/api/v1/auth/otp/send'
+*/
+sendOtpForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: sendOtp.url(options),
+    method: 'post',
+})
+
+sendOtp.form = sendOtpForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::verifyOtp
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:70
 * @route '/api/v1/auth/otp/verify'
@@ -168,6 +256,28 @@ verifyOtp.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: verifyOtp.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::verifyOtp
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:70
+* @route '/api/v1/auth/otp/verify'
+*/
+const verifyOtpForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: verifyOtp.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerRegisterController::verifyOtp
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerRegisterController.php:70
+* @route '/api/v1/auth/otp/verify'
+*/
+verifyOtpForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: verifyOtp.url(options),
+    method: 'post',
+})
+
+verifyOtp.form = verifyOtpForm
 
 const CustomerRegisterController = { register, checkEmail, checkPhone, sendOtp, verifyOtp }
 

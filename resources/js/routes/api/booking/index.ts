@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Booking\Http\Controllers\BookingController::index
 * @see Modules/Booking/app/Http/Controllers/BookingController.php:13
@@ -44,6 +44,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Booking\Http\Controllers\BookingController::index
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:13
+* @route '/api/v1/bookings'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Booking\Http\Controllers\BookingController::index
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:13
+* @route '/api/v1/bookings'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Booking\Http\Controllers\BookingController::index
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:13
+* @route '/api/v1/bookings'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Booking\Http\Controllers\BookingController::store
 * @see Modules/Booking/app/Http/Controllers/BookingController.php:29
 * @route '/api/v1/bookings'
@@ -76,6 +113,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Booking\Http\Controllers\BookingController::store
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:29
+* @route '/api/v1/bookings'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Booking\Http\Controllers\BookingController::store
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:29
+* @route '/api/v1/bookings'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Booking\Http\Controllers\BookingController::show
@@ -140,6 +199,43 @@ show.head = (args: { booking: string | number } | [booking: string | number ] | 
 })
 
 /**
+* @see \Modules\Booking\Http\Controllers\BookingController::show
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:34
+* @route '/api/v1/bookings/{booking}'
+*/
+const showForm = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Booking\Http\Controllers\BookingController::show
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:34
+* @route '/api/v1/bookings/{booking}'
+*/
+showForm.get = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Booking\Http\Controllers\BookingController::show
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:34
+* @route '/api/v1/bookings/{booking}'
+*/
+showForm.head = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Booking\Http\Controllers\BookingController::update
 * @see Modules/Booking/app/Http/Controllers/BookingController.php:50
 * @route '/api/v1/bookings/{booking}'
@@ -202,6 +298,53 @@ update.patch = (args: { booking: string | number } | [booking: string | number ]
 })
 
 /**
+* @see \Modules\Booking\Http\Controllers\BookingController::update
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:50
+* @route '/api/v1/bookings/{booking}'
+*/
+const updateForm = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Booking\Http\Controllers\BookingController::update
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:50
+* @route '/api/v1/bookings/{booking}'
+*/
+updateForm.put = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Booking\Http\Controllers\BookingController::update
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:50
+* @route '/api/v1/bookings/{booking}'
+*/
+updateForm.patch = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Booking\Http\Controllers\BookingController::destroy
 * @see Modules/Booking/app/Http/Controllers/BookingController.php:55
 * @route '/api/v1/bookings/{booking}'
@@ -252,6 +395,38 @@ destroy.delete = (args: { booking: string | number } | [booking: string | number
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Booking\Http\Controllers\BookingController::destroy
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:55
+* @route '/api/v1/bookings/{booking}'
+*/
+const destroyForm = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Booking\Http\Controllers\BookingController::destroy
+* @see Modules/Booking/app/Http/Controllers/BookingController.php:55
+* @route '/api/v1/bookings/{booking}'
+*/
+destroyForm.delete = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const booking = {
     index: Object.assign(index, index),

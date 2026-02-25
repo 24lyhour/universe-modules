@@ -1,7 +1,88 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
+/**
+* @see \App\Http\Controllers\Settings\AvatarController::media
+* @see app/Http/Controllers/Settings/AvatarController.php:20
+* @route '/dashboard/avatar/media'
+*/
+export const media = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: media.url(options),
+    method: 'get',
+})
+
+media.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/avatar/media',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\Settings\AvatarController::media
+* @see app/Http/Controllers/Settings/AvatarController.php:20
+* @route '/dashboard/avatar/media'
+*/
+media.url = (options?: RouteQueryOptions) => {
+    return media.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\Settings\AvatarController::media
+* @see app/Http/Controllers/Settings/AvatarController.php:20
+* @route '/dashboard/avatar/media'
+*/
+media.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: media.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\AvatarController::media
+* @see app/Http/Controllers/Settings/AvatarController.php:20
+* @route '/dashboard/avatar/media'
+*/
+media.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: media.url(options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\AvatarController::media
+* @see app/Http/Controllers/Settings/AvatarController.php:20
+* @route '/dashboard/avatar/media'
+*/
+const mediaForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: media.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\AvatarController::media
+* @see app/Http/Controllers/Settings/AvatarController.php:20
+* @route '/dashboard/avatar/media'
+*/
+mediaForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: media.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\AvatarController::media
+* @see app/Http/Controllers/Settings/AvatarController.php:20
+* @route '/dashboard/avatar/media'
+*/
+mediaForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: media.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+media.form = mediaForm
+
 /**
 * @see \App\Http\Controllers\Settings\AvatarController::upload
-* @see app/Http/Controllers/Settings/AvatarController.php:18
+* @see app/Http/Controllers/Settings/AvatarController.php:65
 * @route '/dashboard/avatar/upload'
 */
 export const upload = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +97,7 @@ upload.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\AvatarController::upload
-* @see app/Http/Controllers/Settings/AvatarController.php:18
+* @see app/Http/Controllers/Settings/AvatarController.php:65
 * @route '/dashboard/avatar/upload'
 */
 upload.url = (options?: RouteQueryOptions) => {
@@ -25,7 +106,7 @@ upload.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\AvatarController::upload
-* @see app/Http/Controllers/Settings/AvatarController.php:18
+* @see app/Http/Controllers/Settings/AvatarController.php:65
 * @route '/dashboard/avatar/upload'
 */
 upload.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -34,8 +115,30 @@ upload.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
+* @see \App\Http\Controllers\Settings\AvatarController::upload
+* @see app/Http/Controllers/Settings/AvatarController.php:65
+* @route '/dashboard/avatar/upload'
+*/
+const uploadForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: upload.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\AvatarController::upload
+* @see app/Http/Controllers/Settings/AvatarController.php:65
+* @route '/dashboard/avatar/upload'
+*/
+uploadForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: upload.url(options),
+    method: 'post',
+})
+
+upload.form = uploadForm
+
+/**
 * @see \App\Http\Controllers\Settings\AvatarController::destroy
-* @see app/Http/Controllers/Settings/AvatarController.php:57
+* @see app/Http/Controllers/Settings/AvatarController.php:120
 * @route '/dashboard/avatar'
 */
 export const destroy = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -50,7 +153,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\AvatarController::destroy
-* @see app/Http/Controllers/Settings/AvatarController.php:57
+* @see app/Http/Controllers/Settings/AvatarController.php:120
 * @route '/dashboard/avatar'
 */
 destroy.url = (options?: RouteQueryOptions) => {
@@ -59,7 +162,7 @@ destroy.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\AvatarController::destroy
-* @see app/Http/Controllers/Settings/AvatarController.php:57
+* @see app/Http/Controllers/Settings/AvatarController.php:120
 * @route '/dashboard/avatar'
 */
 destroy.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -67,7 +170,40 @@ destroy.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     method: 'delete',
 })
 
+/**
+* @see \App\Http\Controllers\Settings\AvatarController::destroy
+* @see app/Http/Controllers/Settings/AvatarController.php:120
+* @route '/dashboard/avatar'
+*/
+const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\AvatarController::destroy
+* @see app/Http/Controllers/Settings/AvatarController.php:120
+* @route '/dashboard/avatar'
+*/
+destroyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
+
 const avatar = {
+    media: Object.assign(media, media),
     upload: Object.assign(upload, upload),
     destroy: Object.assign(destroy, destroy),
 }

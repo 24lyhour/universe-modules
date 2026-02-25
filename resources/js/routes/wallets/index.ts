@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 import transactions from './transactions'
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::index
@@ -45,6 +45,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::index
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:25
+* @route '/dashboard/wallets'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::index
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:25
+* @route '/dashboard/wallets'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::index
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:25
+* @route '/dashboard/wallets'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::create
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:76
 * @route '/dashboard/wallets/create'
@@ -89,6 +126,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::create
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:76
+* @route '/dashboard/wallets/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::create
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:76
+* @route '/dashboard/wallets/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::create
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:76
+* @route '/dashboard/wallets/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::store
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:91
 * @route '/dashboard/wallets'
@@ -121,6 +195,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::store
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:91
+* @route '/dashboard/wallets'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::store
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:91
+* @route '/dashboard/wallets'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::show
@@ -191,6 +287,43 @@ show.head = (args: { wallet: number | { id: number } } | [wallet: number | { id:
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::show
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:103
+* @route '/dashboard/wallets/{wallet}'
+*/
+const showForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::show
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:103
+* @route '/dashboard/wallets/{wallet}'
+*/
+showForm.get = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::show
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:103
+* @route '/dashboard/wallets/{wallet}'
+*/
+showForm.head = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::edit
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:113
 * @route '/dashboard/wallets/{wallet}/edit'
@@ -257,6 +390,43 @@ edit.head = (args: { wallet: number | { id: number } } | [wallet: number | { id:
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::edit
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:113
+* @route '/dashboard/wallets/{wallet}/edit'
+*/
+const editForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::edit
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:113
+* @route '/dashboard/wallets/{wallet}/edit'
+*/
+editForm.get = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::edit
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:113
+* @route '/dashboard/wallets/{wallet}/edit'
+*/
+editForm.head = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::update
@@ -327,6 +497,53 @@ update.patch = (args: { wallet: number | { id: number } } | [wallet: number | { 
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::update
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:129
+* @route '/dashboard/wallets/{wallet}'
+*/
+const updateForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::update
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:129
+* @route '/dashboard/wallets/{wallet}'
+*/
+updateForm.put = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::update
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:129
+* @route '/dashboard/wallets/{wallet}'
+*/
+updateForm.patch = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::destroy
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:151
 * @route '/dashboard/wallets/{wallet}'
@@ -383,6 +600,38 @@ destroy.delete = (args: { wallet: number | { id: number } } | [wallet: number | 
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::destroy
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:151
+* @route '/dashboard/wallets/{wallet}'
+*/
+const destroyForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::destroy
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:151
+* @route '/dashboard/wallets/{wallet}'
+*/
+destroyForm.delete = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::deleteMethod
@@ -453,6 +702,43 @@ deleteMethod.head = (args: { wallet: number | { id: number } } | [wallet: number
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::deleteMethod
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:141
+* @route '/dashboard/wallets/{wallet}/delete'
+*/
+const deleteMethodForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deleteMethod.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::deleteMethod
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:141
+* @route '/dashboard/wallets/{wallet}/delete'
+*/
+deleteMethodForm.get = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deleteMethod.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::deleteMethod
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:141
+* @route '/dashboard/wallets/{wallet}/delete'
+*/
+deleteMethodForm.head = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deleteMethod.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+deleteMethod.form = deleteMethodForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::activate
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:163
 * @route '/dashboard/wallets/{wallet}/activate'
@@ -509,6 +795,38 @@ activate.patch = (args: { wallet: number | { id: number } } | [wallet: number | 
     url: activate.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::activate
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:163
+* @route '/dashboard/wallets/{wallet}/activate'
+*/
+const activateForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: activate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::activate
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:163
+* @route '/dashboard/wallets/{wallet}/activate'
+*/
+activateForm.patch = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: activate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+activate.form = activateForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::deactivate
@@ -569,6 +887,38 @@ deactivate.patch = (args: { wallet: number | { id: number } } | [wallet: number 
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::deactivate
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:175
+* @route '/dashboard/wallets/{wallet}/deactivate'
+*/
+const deactivateForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deactivate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::deactivate
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:175
+* @route '/dashboard/wallets/{wallet}/deactivate'
+*/
+deactivateForm.patch = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deactivate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+deactivate.form = deactivateForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::suspend
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:187
 * @route '/dashboard/wallets/{wallet}/suspend'
@@ -625,6 +975,38 @@ suspend.patch = (args: { wallet: number | { id: number } } | [wallet: number | {
     url: suspend.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::suspend
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:187
+* @route '/dashboard/wallets/{wallet}/suspend'
+*/
+const suspendForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: suspend.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::suspend
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:187
+* @route '/dashboard/wallets/{wallet}/suspend'
+*/
+suspendForm.patch = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: suspend.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+suspend.form = suspendForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::unsuspend
@@ -685,6 +1067,38 @@ unsuspend.patch = (args: { wallet: number | { id: number } } | [wallet: number |
 })
 
 /**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::unsuspend
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:203
+* @route '/dashboard/wallets/{wallet}/unsuspend'
+*/
+const unsuspendForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: unsuspend.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::unsuspend
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:203
+* @route '/dashboard/wallets/{wallet}/unsuspend'
+*/
+unsuspendForm.patch = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: unsuspend.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+unsuspend.form = unsuspendForm
+
+/**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::changeStatus
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:215
 * @route '/dashboard/wallets/{wallet}/status'
@@ -741,6 +1155,38 @@ changeStatus.patch = (args: { wallet: number | { id: number } } | [wallet: numbe
     url: changeStatus.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::changeStatus
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:215
+* @route '/dashboard/wallets/{wallet}/status'
+*/
+const changeStatusForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: changeStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\WalletController::changeStatus
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/WalletController.php:215
+* @route '/dashboard/wallets/{wallet}/status'
+*/
+changeStatusForm.patch = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: changeStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+changeStatus.form = changeStatusForm
 
 const wallets = {
     index: Object.assign(index, index),

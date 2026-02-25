@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Porfolio\Http\Controllers\HeaderController::index
 * @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:15
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::index
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:15
+* @route '/dashboard/headers'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::index
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:15
+* @route '/dashboard/headers'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::index
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:15
+* @route '/dashboard/headers'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\HeaderController::create
@@ -88,6 +125,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::create
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:27
+* @route '/dashboard/headers/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::create
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:27
+* @route '/dashboard/headers/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::create
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:27
+* @route '/dashboard/headers/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Porfolio\Http\Controllers\HeaderController::store
 * @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:33
 * @route '/dashboard/headers'
@@ -120,6 +194,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::store
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:33
+* @route '/dashboard/headers'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::store
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:33
+* @route '/dashboard/headers'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\HeaderController::show
@@ -184,6 +280,43 @@ show.head = (args: { header: string | number } | [header: string | number ] | st
 })
 
 /**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::show
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:0
+* @route '/dashboard/headers/{header}'
+*/
+const showForm = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::show
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:0
+* @route '/dashboard/headers/{header}'
+*/
+showForm.get = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::show
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:0
+* @route '/dashboard/headers/{header}'
+*/
+showForm.head = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Porfolio\Http\Controllers\HeaderController::edit
 * @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:58
 * @route '/dashboard/headers/{header}/edit'
@@ -244,6 +377,43 @@ edit.head = (args: { header: string | number } | [header: string | number ] | st
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::edit
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:58
+* @route '/dashboard/headers/{header}/edit'
+*/
+const editForm = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::edit
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:58
+* @route '/dashboard/headers/{header}/edit'
+*/
+editForm.get = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::edit
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:58
+* @route '/dashboard/headers/{header}/edit'
+*/
+editForm.head = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\HeaderController::update
@@ -308,6 +478,53 @@ update.patch = (args: { header: string | number } | [header: string | number ] |
 })
 
 /**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::update
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:67
+* @route '/dashboard/headers/{header}'
+*/
+const updateForm = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::update
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:67
+* @route '/dashboard/headers/{header}'
+*/
+updateForm.put = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::update
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:67
+* @route '/dashboard/headers/{header}'
+*/
+updateForm.patch = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Porfolio\Http\Controllers\HeaderController::destroy
 * @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:94
 * @route '/dashboard/headers/{header}'
@@ -358,6 +575,38 @@ destroy.delete = (args: { header: string | number } | [header: string | number ]
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::destroy
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:94
+* @route '/dashboard/headers/{header}'
+*/
+const destroyForm = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\HeaderController::destroy
+* @see Modules/Porfolio/app/Http/Controllers/HeaderController.php:94
+* @route '/dashboard/headers/{header}'
+*/
+destroyForm.delete = (args: { header: string | number } | [header: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const headers = {
     index: Object.assign(index, index),

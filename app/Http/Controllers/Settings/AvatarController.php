@@ -8,47 +8,110 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class AvatarController extends Controller
 {
     /**
+     * List all media available for avatar selection.
+     * This endpoint doesn't require media.view_any permission - just auth.
+     * Avatars/profile images should be accessible to all authenticated users.
+     */
+    public function index(Request $request): JsonResponse
+    {
+        $query = Media::query()
+            ->where('mime_type', 'like', 'image/%')
+            ->orderBy('created_at', 'desc');
+
+        // Optional: filter by collection
+        if ($collection = $request->query('collection')) {
+            $query->where('collection_name', $collection);
+        }
+
+        $media = $query->get();
+
+        $data = $media->map(function (Media $item) {
+            return [
+                'id' => $item->id,
+                'uuid' => $item->uuid,
+                'name' => $item->name,
+                'file_name' => $item->file_name,
+                'url' => $item->getUrl(),
+                'thumb_url' => $item->hasGeneratedConversion('thumb')
+                    ? $item->getUrl('thumb')
+                    : $item->getUrl(),
+                'mime_type' => $item->mime_type,
+                'size' => $item->size,
+                'size_formatted' => $this->formatBytes($item->size),
+                'collection_name' => $item->collection_name,
+                'created_at' => $item->created_at->toIso8601String(),
+            ];
+        });
+
+        return response()->json([
+            'data' => $data,
+            'meta' => [
+                'total' => $data->count(),
+            ],
+        ]);
+    }
+
+    /**
      * Upload avatar for a user.
      * This endpoint doesn't require media permissions - just auth.
+     * Uses Spatie MediaLibrary so avatars are stored in the media library
+     * and can be browsed/selected by all users.
      */
     public function upload(Request $request): JsonResponse
     {
         $request->validate([
-            'file' => ['required', 'image', 'max:2048'], // 2MB max
+            'file' => ['required', 'image', 'max:5120'], // 5MB max to match MediaLibraryModal
             'user_id' => ['nullable', 'exists:users,id'],
         ]);
 
         $file = $request->file('file');
+        $currentUser = $request->user();
 
-        // Generate unique filename
-        $filename = 'avatars/' . Str::uuid() . '.' . $file->getClientOriginalExtension();
+        try {
+            // Add to current user's media collection (avatar collection)
+            $media = $currentUser->addMedia($file)
+                ->toMediaCollection('avatars');
 
-        // Store in public disk
-        $path = Storage::disk('public')->putFileAs('', $file, $filename);
+            $url = $media->getUrl();
 
-        // Get full URL
-        $url = Storage::disk('public')->url($path);
-
-        // If user_id provided and current user can edit, update the user's avatar
-        if ($request->filled('user_id')) {
-            $user = User::find($request->user_id);
-            if ($user) {
-                // Check if current user can edit this user (super-admin or editing self)
-                $currentUser = $request->user();
-                if ($currentUser->hasRole('super-admin') || $currentUser->id === $user->id) {
+            // If user_id provided and current user can edit, update that user's avatar
+            if ($request->filled('user_id')) {
+                $user = User::find($request->user_id);
+                if ($user && ($currentUser->hasRole('super-admin') || $currentUser->id === $user->id)) {
                     $user->update(['avatar' => $url]);
                 }
             }
-        }
 
-        return response()->json([
-            'url' => $url,
-            'message' => 'Avatar uploaded successfully',
-        ]);
+            // Return in same format as MediaDashboardController for compatibility
+            return response()->json([
+                'data' => [
+                    'id' => $media->id,
+                    'uuid' => $media->uuid,
+                    'name' => $media->name,
+                    'file_name' => $media->file_name,
+                    'url' => $url,
+                    'thumb_url' => $media->hasGeneratedConversion('thumb')
+                        ? $media->getUrl('thumb')
+                        : $url,
+                    'mime_type' => $media->mime_type,
+                    'size' => $media->size,
+                    'size_formatted' => $this->formatBytes($media->size),
+                    'collection_name' => $media->collection_name,
+                    'created_at' => $media->created_at->toIso8601String(),
+                ],
+                'url' => $url, // Also include at root for backwards compatibility
+                'message' => 'Avatar uploaded successfully',
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to upload avatar: ' . $e->getMessage(),
+            ], 500);
+        }
     }
 
     /**
@@ -81,5 +144,21 @@ class AvatarController extends Controller
         return response()->json([
             'message' => 'Avatar removed successfully',
         ]);
+    }
+
+    /**
+     * Format bytes to human readable format.
+     */
+    private function formatBytes(int $bytes, int $precision = 2): string
+    {
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+        $bytes = max($bytes, 0);
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+        $pow = min($pow, count($units) - 1);
+
+        $bytes /= pow(1024, $pow);
+
+        return round($bytes, $precision) . ' ' . $units[$pow];
     }
 }

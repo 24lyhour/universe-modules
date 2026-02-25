@@ -67,14 +67,16 @@ Route::middleware(['auth', 'verified', 'auto.permission'])->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Avatar Upload Routes (No media permission required)
+| Avatar Routes (No media permission required)
 |--------------------------------------------------------------------------
 |
-| These routes allow any authenticated user to upload avatars without
-| requiring media.* permissions. This is for user profile avatars.
+| These routes allow any authenticated user to upload avatars and browse
+| media library without requiring media.* permissions. This enables
+| user profile avatars while keeping the full media library permission-gated.
 |
 */
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('dashboard/avatar/media', [AvatarController::class, 'index'])->name('avatar.media');
     Route::post('dashboard/avatar/upload', [AvatarController::class, 'upload'])->name('avatar.upload');
     Route::delete('dashboard/avatar', [AvatarController::class, 'destroy'])->name('avatar.destroy');
 });

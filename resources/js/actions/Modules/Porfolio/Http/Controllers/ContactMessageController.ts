@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Porfolio\Http\Controllers\ContactMessageController::index
 * @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:15
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::index
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:15
+* @route '/dashboard/messages'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::index
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:15
+* @route '/dashboard/messages'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::index
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:15
+* @route '/dashboard/messages'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\ContactMessageController::show
@@ -106,6 +143,43 @@ show.head = (args: { id: string | number } | [id: string | number ] | string | n
 })
 
 /**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::show
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:32
+* @route '/dashboard/messages/{id}'
+*/
+const showForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::show
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:32
+* @route '/dashboard/messages/{id}'
+*/
+showForm.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::show
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:32
+* @route '/dashboard/messages/{id}'
+*/
+showForm.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Porfolio\Http\Controllers\ContactMessageController::destroy
 * @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:45
 * @route '/dashboard/messages/{id}'
@@ -156,6 +230,38 @@ destroy.delete = (args: { id: string | number } | [id: string | number ] | strin
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::destroy
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:45
+* @route '/dashboard/messages/{id}'
+*/
+const destroyForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::destroy
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:45
+* @route '/dashboard/messages/{id}'
+*/
+destroyForm.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\ContactMessageController::markAsRead
@@ -210,6 +316,28 @@ markAsRead.post = (args: { id: string | number } | [id: string | number ] | stri
 })
 
 /**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::markAsRead
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:54
+* @route '/dashboard/messages/{id}/read'
+*/
+const markAsReadForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: markAsRead.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::markAsRead
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:54
+* @route '/dashboard/messages/{id}/read'
+*/
+markAsReadForm.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: markAsRead.url(args, options),
+    method: 'post',
+})
+
+markAsRead.form = markAsReadForm
+
+/**
 * @see \Modules\Porfolio\Http\Controllers\ContactMessageController::markAsReplied
 * @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:63
 * @route '/dashboard/messages/{id}/replied'
@@ -260,6 +388,28 @@ markAsReplied.post = (args: { id: string | number } | [id: string | number ] | s
     url: markAsReplied.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::markAsReplied
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:63
+* @route '/dashboard/messages/{id}/replied'
+*/
+const markAsRepliedForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: markAsReplied.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\ContactMessageController::markAsReplied
+* @see Modules/Porfolio/app/Http/Controllers/ContactMessageController.php:63
+* @route '/dashboard/messages/{id}/replied'
+*/
+markAsRepliedForm.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: markAsReplied.url(args, options),
+    method: 'post',
+})
+
+markAsReplied.form = markAsRepliedForm
 
 const ContactMessageController = { index, show, destroy, markAsRead, markAsReplied }
 

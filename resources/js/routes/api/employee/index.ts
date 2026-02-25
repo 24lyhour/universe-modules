@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Employee\Http\Controllers\EmployeeController::index
 * @see [unknown]:0
@@ -44,6 +44,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::index
+* @see [unknown]:0
+* @route '/api/v1/employees'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::index
+* @see [unknown]:0
+* @route '/api/v1/employees'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::index
+* @see [unknown]:0
+* @route '/api/v1/employees'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\EmployeeController::store
 * @see [unknown]:0
 * @route '/api/v1/employees'
@@ -76,6 +113,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::store
+* @see [unknown]:0
+* @route '/api/v1/employees'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::store
+* @see [unknown]:0
+* @route '/api/v1/employees'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\EmployeeController::show
@@ -140,6 +199,43 @@ show.head = (args: { employee: string | number } | [employee: string | number ] 
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::show
+* @see [unknown]:0
+* @route '/api/v1/employees/{employee}'
+*/
+const showForm = (args: { employee: string | number } | [employee: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::show
+* @see [unknown]:0
+* @route '/api/v1/employees/{employee}'
+*/
+showForm.get = (args: { employee: string | number } | [employee: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::show
+* @see [unknown]:0
+* @route '/api/v1/employees/{employee}'
+*/
+showForm.head = (args: { employee: string | number } | [employee: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\EmployeeController::update
 * @see [unknown]:0
 * @route '/api/v1/employees/{employee}'
@@ -202,6 +298,53 @@ update.patch = (args: { employee: string | number } | [employee: string | number
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::update
+* @see [unknown]:0
+* @route '/api/v1/employees/{employee}'
+*/
+const updateForm = (args: { employee: string | number } | [employee: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::update
+* @see [unknown]:0
+* @route '/api/v1/employees/{employee}'
+*/
+updateForm.put = (args: { employee: string | number } | [employee: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::update
+* @see [unknown]:0
+* @route '/api/v1/employees/{employee}'
+*/
+updateForm.patch = (args: { employee: string | number } | [employee: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\EmployeeController::destroy
 * @see [unknown]:0
 * @route '/api/v1/employees/{employee}'
@@ -252,6 +395,38 @@ destroy.delete = (args: { employee: string | number } | [employee: string | numb
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::destroy
+* @see [unknown]:0
+* @route '/api/v1/employees/{employee}'
+*/
+const destroyForm = (args: { employee: string | number } | [employee: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\EmployeeController::destroy
+* @see [unknown]:0
+* @route '/api/v1/employees/{employee}'
+*/
+destroyForm.delete = (args: { employee: string | number } | [employee: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const employee = {
     index: Object.assign(index, index),

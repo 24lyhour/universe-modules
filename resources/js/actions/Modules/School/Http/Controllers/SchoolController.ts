@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\School\Http\Controllers\SchoolController::index
 * @see Modules/School/app/Http/Controllers/SchoolController.php:13
@@ -46,6 +46,42 @@ indexf105ca6ece80e5bf7d5c197953568e6e.head = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\School\Http\Controllers\SchoolController::index
 * @see Modules/School/app/Http/Controllers/SchoolController.php:13
+* @route '/api/v1/schools'
+*/
+const indexf105ca6ece80e5bf7d5c197953568e6eForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: indexf105ca6ece80e5bf7d5c197953568e6e.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::index
+* @see Modules/School/app/Http/Controllers/SchoolController.php:13
+* @route '/api/v1/schools'
+*/
+indexf105ca6ece80e5bf7d5c197953568e6eForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: indexf105ca6ece80e5bf7d5c197953568e6e.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::index
+* @see Modules/School/app/Http/Controllers/SchoolController.php:13
+* @route '/api/v1/schools'
+*/
+indexf105ca6ece80e5bf7d5c197953568e6eForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: indexf105ca6ece80e5bf7d5c197953568e6e.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+indexf105ca6ece80e5bf7d5c197953568e6e.form = indexf105ca6ece80e5bf7d5c197953568e6eForm
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::index
+* @see Modules/School/app/Http/Controllers/SchoolController.php:13
 * @route '/schools'
 */
 const index8dac6d9258c000a5f8adebbc9992b510 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -86,6 +122,43 @@ index8dac6d9258c000a5f8adebbc9992b510.head = (options?: RouteQueryOptions): Rout
     url: index8dac6d9258c000a5f8adebbc9992b510.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::index
+* @see Modules/School/app/Http/Controllers/SchoolController.php:13
+* @route '/schools'
+*/
+const index8dac6d9258c000a5f8adebbc9992b510Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index8dac6d9258c000a5f8adebbc9992b510.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::index
+* @see Modules/School/app/Http/Controllers/SchoolController.php:13
+* @route '/schools'
+*/
+index8dac6d9258c000a5f8adebbc9992b510Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index8dac6d9258c000a5f8adebbc9992b510.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::index
+* @see Modules/School/app/Http/Controllers/SchoolController.php:13
+* @route '/schools'
+*/
+index8dac6d9258c000a5f8adebbc9992b510Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index8dac6d9258c000a5f8adebbc9992b510.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index8dac6d9258c000a5f8adebbc9992b510.form = index8dac6d9258c000a5f8adebbc9992b510Form
 
 export const index = {
     '/api/v1/schools': indexf105ca6ece80e5bf7d5c197953568e6e,
@@ -129,6 +202,27 @@ storef105ca6ece80e5bf7d5c197953568e6e.post = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\School\Http\Controllers\SchoolController::store
 * @see Modules/School/app/Http/Controllers/SchoolController.php:29
+* @route '/api/v1/schools'
+*/
+const storef105ca6ece80e5bf7d5c197953568e6eForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: storef105ca6ece80e5bf7d5c197953568e6e.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::store
+* @see Modules/School/app/Http/Controllers/SchoolController.php:29
+* @route '/api/v1/schools'
+*/
+storef105ca6ece80e5bf7d5c197953568e6eForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: storef105ca6ece80e5bf7d5c197953568e6e.url(options),
+    method: 'post',
+})
+
+storef105ca6ece80e5bf7d5c197953568e6e.form = storef105ca6ece80e5bf7d5c197953568e6eForm
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::store
+* @see Modules/School/app/Http/Controllers/SchoolController.php:29
 * @route '/schools'
 */
 const store8dac6d9258c000a5f8adebbc9992b510 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -159,6 +253,28 @@ store8dac6d9258c000a5f8adebbc9992b510.post = (options?: RouteQueryOptions): Rout
     url: store8dac6d9258c000a5f8adebbc9992b510.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::store
+* @see Modules/School/app/Http/Controllers/SchoolController.php:29
+* @route '/schools'
+*/
+const store8dac6d9258c000a5f8adebbc9992b510Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store8dac6d9258c000a5f8adebbc9992b510.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::store
+* @see Modules/School/app/Http/Controllers/SchoolController.php:29
+* @route '/schools'
+*/
+store8dac6d9258c000a5f8adebbc9992b510Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store8dac6d9258c000a5f8adebbc9992b510.url(options),
+    method: 'post',
+})
+
+store8dac6d9258c000a5f8adebbc9992b510.form = store8dac6d9258c000a5f8adebbc9992b510Form
 
 export const store = {
     '/api/v1/schools': storef105ca6ece80e5bf7d5c197953568e6e,
@@ -230,6 +346,42 @@ showd78853dbb2ce3621ee3c4ade5dd3c3d7.head = (args: { school: string | number } |
 /**
 * @see \Modules\School\Http\Controllers\SchoolController::show
 * @see Modules/School/app/Http/Controllers/SchoolController.php:34
+* @route '/api/v1/schools/{school}'
+*/
+const showd78853dbb2ce3621ee3c4ade5dd3c3d7Form = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showd78853dbb2ce3621ee3c4ade5dd3c3d7.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::show
+* @see Modules/School/app/Http/Controllers/SchoolController.php:34
+* @route '/api/v1/schools/{school}'
+*/
+showd78853dbb2ce3621ee3c4ade5dd3c3d7Form.get = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showd78853dbb2ce3621ee3c4ade5dd3c3d7.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::show
+* @see Modules/School/app/Http/Controllers/SchoolController.php:34
+* @route '/api/v1/schools/{school}'
+*/
+showd78853dbb2ce3621ee3c4ade5dd3c3d7Form.head = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showd78853dbb2ce3621ee3c4ade5dd3c3d7.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+showd78853dbb2ce3621ee3c4ade5dd3c3d7.form = showd78853dbb2ce3621ee3c4ade5dd3c3d7Form
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::show
+* @see Modules/School/app/Http/Controllers/SchoolController.php:34
 * @route '/schools/{school}'
 */
 const showf0df42e6cfc3445af40541aaa030930a = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -288,6 +440,43 @@ showf0df42e6cfc3445af40541aaa030930a.head = (args: { school: string | number } |
     url: showf0df42e6cfc3445af40541aaa030930a.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::show
+* @see Modules/School/app/Http/Controllers/SchoolController.php:34
+* @route '/schools/{school}'
+*/
+const showf0df42e6cfc3445af40541aaa030930aForm = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showf0df42e6cfc3445af40541aaa030930a.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::show
+* @see Modules/School/app/Http/Controllers/SchoolController.php:34
+* @route '/schools/{school}'
+*/
+showf0df42e6cfc3445af40541aaa030930aForm.get = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showf0df42e6cfc3445af40541aaa030930a.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::show
+* @see Modules/School/app/Http/Controllers/SchoolController.php:34
+* @route '/schools/{school}'
+*/
+showf0df42e6cfc3445af40541aaa030930aForm.head = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showf0df42e6cfc3445af40541aaa030930a.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+showf0df42e6cfc3445af40541aaa030930a.form = showf0df42e6cfc3445af40541aaa030930aForm
 
 export const show = {
     '/api/v1/schools/{school}': showd78853dbb2ce3621ee3c4ade5dd3c3d7,
@@ -359,6 +548,52 @@ updated78853dbb2ce3621ee3c4ade5dd3c3d7.patch = (args: { school: string | number 
 /**
 * @see \Modules\School\Http\Controllers\SchoolController::update
 * @see Modules/School/app/Http/Controllers/SchoolController.php:50
+* @route '/api/v1/schools/{school}'
+*/
+const updated78853dbb2ce3621ee3c4ade5dd3c3d7Form = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updated78853dbb2ce3621ee3c4ade5dd3c3d7.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::update
+* @see Modules/School/app/Http/Controllers/SchoolController.php:50
+* @route '/api/v1/schools/{school}'
+*/
+updated78853dbb2ce3621ee3c4ade5dd3c3d7Form.put = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updated78853dbb2ce3621ee3c4ade5dd3c3d7.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::update
+* @see Modules/School/app/Http/Controllers/SchoolController.php:50
+* @route '/api/v1/schools/{school}'
+*/
+updated78853dbb2ce3621ee3c4ade5dd3c3d7Form.patch = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updated78853dbb2ce3621ee3c4ade5dd3c3d7.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updated78853dbb2ce3621ee3c4ade5dd3c3d7.form = updated78853dbb2ce3621ee3c4ade5dd3c3d7Form
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::update
+* @see Modules/School/app/Http/Controllers/SchoolController.php:50
 * @route '/schools/{school}'
 */
 const updatef0df42e6cfc3445af40541aaa030930a = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -417,6 +652,53 @@ updatef0df42e6cfc3445af40541aaa030930a.patch = (args: { school: string | number 
     url: updatef0df42e6cfc3445af40541aaa030930a.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::update
+* @see Modules/School/app/Http/Controllers/SchoolController.php:50
+* @route '/schools/{school}'
+*/
+const updatef0df42e6cfc3445af40541aaa030930aForm = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatef0df42e6cfc3445af40541aaa030930a.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::update
+* @see Modules/School/app/Http/Controllers/SchoolController.php:50
+* @route '/schools/{school}'
+*/
+updatef0df42e6cfc3445af40541aaa030930aForm.put = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatef0df42e6cfc3445af40541aaa030930a.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::update
+* @see Modules/School/app/Http/Controllers/SchoolController.php:50
+* @route '/schools/{school}'
+*/
+updatef0df42e6cfc3445af40541aaa030930aForm.patch = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatef0df42e6cfc3445af40541aaa030930a.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updatef0df42e6cfc3445af40541aaa030930a.form = updatef0df42e6cfc3445af40541aaa030930aForm
 
 export const update = {
     '/api/v1/schools/{school}': updated78853dbb2ce3621ee3c4ade5dd3c3d7,
@@ -478,6 +760,37 @@ destroyd78853dbb2ce3621ee3c4ade5dd3c3d7.delete = (args: { school: string | numbe
 /**
 * @see \Modules\School\Http\Controllers\SchoolController::destroy
 * @see Modules/School/app/Http/Controllers/SchoolController.php:55
+* @route '/api/v1/schools/{school}'
+*/
+const destroyd78853dbb2ce3621ee3c4ade5dd3c3d7Form = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroyd78853dbb2ce3621ee3c4ade5dd3c3d7.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::destroy
+* @see Modules/School/app/Http/Controllers/SchoolController.php:55
+* @route '/api/v1/schools/{school}'
+*/
+destroyd78853dbb2ce3621ee3c4ade5dd3c3d7Form.delete = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroyd78853dbb2ce3621ee3c4ade5dd3c3d7.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroyd78853dbb2ce3621ee3c4ade5dd3c3d7.form = destroyd78853dbb2ce3621ee3c4ade5dd3c3d7Form
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::destroy
+* @see Modules/School/app/Http/Controllers/SchoolController.php:55
 * @route '/schools/{school}'
 */
 const destroyf0df42e6cfc3445af40541aaa030930a = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -527,6 +840,38 @@ destroyf0df42e6cfc3445af40541aaa030930a.delete = (args: { school: string | numbe
     method: 'delete',
 })
 
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::destroy
+* @see Modules/School/app/Http/Controllers/SchoolController.php:55
+* @route '/schools/{school}'
+*/
+const destroyf0df42e6cfc3445af40541aaa030930aForm = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroyf0df42e6cfc3445af40541aaa030930a.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::destroy
+* @see Modules/School/app/Http/Controllers/SchoolController.php:55
+* @route '/schools/{school}'
+*/
+destroyf0df42e6cfc3445af40541aaa030930aForm.delete = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroyf0df42e6cfc3445af40541aaa030930a.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroyf0df42e6cfc3445af40541aaa030930a.form = destroyf0df42e6cfc3445af40541aaa030930aForm
+
 export const destroy = {
     '/api/v1/schools/{school}': destroyd78853dbb2ce3621ee3c4ade5dd3c3d7,
     '/schools/{school}': destroyf0df42e6cfc3445af40541aaa030930a,
@@ -575,6 +920,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: create.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::create
+* @see Modules/School/app/Http/Controllers/SchoolController.php:21
+* @route '/schools/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::create
+* @see Modules/School/app/Http/Controllers/SchoolController.php:21
+* @route '/schools/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::create
+* @see Modules/School/app/Http/Controllers/SchoolController.php:21
+* @route '/schools/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
 
 /**
 * @see \Modules\School\Http\Controllers\SchoolController::edit
@@ -637,6 +1019,43 @@ edit.head = (args: { school: string | number } | [school: string | number ] | st
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::edit
+* @see Modules/School/app/Http/Controllers/SchoolController.php:42
+* @route '/schools/{school}/edit'
+*/
+const editForm = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::edit
+* @see Modules/School/app/Http/Controllers/SchoolController.php:42
+* @route '/schools/{school}/edit'
+*/
+editForm.get = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\SchoolController::edit
+* @see Modules/School/app/Http/Controllers/SchoolController.php:42
+* @route '/schools/{school}/edit'
+*/
+editForm.head = (args: { school: string | number } | [school: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 const SchoolController = { index, store, show, update, destroy, create, edit }
 

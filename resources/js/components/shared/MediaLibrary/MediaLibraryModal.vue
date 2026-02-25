@@ -33,6 +33,11 @@ interface Props {
     maxSelect?: number;
     accept?: string;
     maxSize?: number;
+    /**
+     * Use avatar endpoint which doesn't require media.* permissions.
+     * Set to true for avatar selection dialogs.
+     */
+    useAvatarEndpoint?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -40,6 +45,7 @@ const props = withDefaults(defineProps<Props>(), {
     maxSelect: 10,
     accept: 'image/*',
     maxSize: 5,
+    useAvatarEndpoint: false,
 });
 
 const open = defineModel<boolean>('open', { default: false });
@@ -92,7 +98,12 @@ const toggleSelect = (item: MediaItem) => {
 const fetchMedia = async () => {
     isLoading.value = true;
     try {
-        const response = await fetch('/dashboard/media?type=image', {
+        // Use avatar endpoint if specified (no media.* permissions required)
+        const endpoint = props.useAvatarEndpoint
+            ? '/dashboard/avatar/media?type=image'
+            : '/dashboard/media?type=image';
+
+        const response = await fetch(endpoint, {
             headers: {
                 'Accept': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
@@ -150,14 +161,21 @@ const uploadFiles = async (files: File[]) => {
     uploadingFiles.value = files;
     uploadProgress.value = 0;
 
+    // Use avatar endpoint if specified (no media.* permissions required)
+    const uploadEndpoint = props.useAvatarEndpoint
+        ? '/dashboard/avatar/upload'
+        : '/dashboard/media/upload';
+
     try {
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const formData = new FormData();
             formData.append('file', file);
-            formData.append('collection', 'products');
+            if (!props.useAvatarEndpoint) {
+                formData.append('collection', 'products');
+            }
 
-            const response = await fetch('/dashboard/media/upload', {
+            const response = await fetch(uploadEndpoint, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

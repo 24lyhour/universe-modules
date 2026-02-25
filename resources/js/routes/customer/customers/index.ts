@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 import activate247610 from './activate'
 import deactivateEe368b from './deactivate'
 import suspend938f47 from './suspend'
@@ -47,6 +47,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\CustomerController::index
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:29
+* @route '/dashboard/customers'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::index
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:29
+* @route '/dashboard/customers'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::index
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:29
+* @route '/dashboard/customers'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\CustomerController::create
 * @see Modules/Customer/app/Http/Controllers/CustomerController.php:49
 * @route '/dashboard/customers/create'
@@ -91,6 +128,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\CustomerController::create
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:49
+* @route '/dashboard/customers/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::create
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:49
+* @route '/dashboard/customers/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::create
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:49
+* @route '/dashboard/customers/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\CustomerController::store
 * @see Modules/Customer/app/Http/Controllers/CustomerController.php:58
 * @route '/dashboard/customers'
@@ -123,6 +197,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::store
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:58
+* @route '/dashboard/customers'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::store
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:58
+* @route '/dashboard/customers'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerController::show
@@ -193,6 +289,43 @@ show.head = (args: { customer: number | { id: number } } | [customer: number | {
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\CustomerController::show
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:69
+* @route '/dashboard/customers/{customer}'
+*/
+const showForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::show
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:69
+* @route '/dashboard/customers/{customer}'
+*/
+showForm.get = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::show
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:69
+* @route '/dashboard/customers/{customer}'
+*/
+showForm.head = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\CustomerController::edit
 * @see Modules/Customer/app/Http/Controllers/CustomerController.php:92
 * @route '/dashboard/customers/{customer}/edit'
@@ -259,6 +392,43 @@ edit.head = (args: { customer: number | { id: number } } | [customer: number | {
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::edit
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:92
+* @route '/dashboard/customers/{customer}/edit'
+*/
+const editForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::edit
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:92
+* @route '/dashboard/customers/{customer}/edit'
+*/
+editForm.get = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::edit
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:92
+* @route '/dashboard/customers/{customer}/edit'
+*/
+editForm.head = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerController::update
@@ -329,6 +499,53 @@ update.patch = (args: { customer: number | { id: number } } | [customer: number 
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\CustomerController::update
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:102
+* @route '/dashboard/customers/{customer}'
+*/
+const updateForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::update
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:102
+* @route '/dashboard/customers/{customer}'
+*/
+updateForm.put = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::update
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:102
+* @route '/dashboard/customers/{customer}'
+*/
+updateForm.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\CustomerController::destroy
 * @see Modules/Customer/app/Http/Controllers/CustomerController.php:113
 * @route '/dashboard/customers/{customer}'
@@ -385,6 +602,38 @@ destroy.delete = (args: { customer: number | { id: number } } | [customer: numbe
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::destroy
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:113
+* @route '/dashboard/customers/{customer}'
+*/
+const destroyForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerController::destroy
+* @see Modules/Customer/app/Http/Controllers/CustomerController.php:113
+* @route '/dashboard/customers/{customer}'
+*/
+destroyForm.delete = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::activate
@@ -455,6 +704,43 @@ activate.head = (args: { customer: number | { id: number } } | [customer: number
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::activate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:22
+* @route '/dashboard/customers/{customer}/activate'
+*/
+const activateForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: activate.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::activate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:22
+* @route '/dashboard/customers/{customer}/activate'
+*/
+activateForm.get = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: activate.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::activate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:22
+* @route '/dashboard/customers/{customer}/activate'
+*/
+activateForm.head = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: activate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+activate.form = activateForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::deactivate
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
 * @route '/dashboard/customers/{customer}/deactivate'
@@ -521,6 +807,43 @@ deactivate.head = (args: { customer: number | { id: number } } | [customer: numb
     url: deactivate.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::deactivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
+* @route '/dashboard/customers/{customer}/deactivate'
+*/
+const deactivateForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deactivate.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::deactivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
+* @route '/dashboard/customers/{customer}/deactivate'
+*/
+deactivateForm.get = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deactivate.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::deactivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
+* @route '/dashboard/customers/{customer}/deactivate'
+*/
+deactivateForm.head = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deactivate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+deactivate.form = deactivateForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::suspend
@@ -591,6 +914,43 @@ suspend.head = (args: { customer: number | { id: number } } | [customer: number 
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::suspend
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:73
+* @route '/dashboard/customers/{customer}/suspend'
+*/
+const suspendForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: suspend.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::suspend
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:73
+* @route '/dashboard/customers/{customer}/suspend'
+*/
+suspendForm.get = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: suspend.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::suspend
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:73
+* @route '/dashboard/customers/{customer}/suspend'
+*/
+suspendForm.head = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: suspend.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+suspend.form = suspendForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\CustomerSecurityController::verifyEmail
 * @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:18
 * @route '/dashboard/customers/{customer}/verify-email'
@@ -647,6 +1007,38 @@ verifyEmail.patch = (args: { customer: number | { id: number } } | [customer: nu
     url: verifyEmail.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::verifyEmail
+* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:18
+* @route '/dashboard/customers/{customer}/verify-email'
+*/
+const verifyEmailForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: verifyEmail.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::verifyEmail
+* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:18
+* @route '/dashboard/customers/{customer}/verify-email'
+*/
+verifyEmailForm.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: verifyEmail.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+verifyEmail.form = verifyEmailForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerSecurityController::enable2fa
@@ -707,6 +1099,28 @@ enable2fa.post = (args: { customer: number | { id: number } } | [customer: numbe
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::enable2fa
+* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:28
+* @route '/dashboard/customers/{customer}/enable-2fa'
+*/
+const enable2faForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: enable2fa.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::enable2fa
+* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:28
+* @route '/dashboard/customers/{customer}/enable-2fa'
+*/
+enable2faForm.post = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: enable2fa.url(args, options),
+    method: 'post',
+})
+
+enable2fa.form = enable2faForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\CustomerSecurityController::disable2fa
 * @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:41
 * @route '/dashboard/customers/{customer}/disable-2fa'
@@ -763,6 +1177,38 @@ disable2fa.delete = (args: { customer: number | { id: number } } | [customer: nu
     url: disable2fa.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::disable2fa
+* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:41
+* @route '/dashboard/customers/{customer}/disable-2fa'
+*/
+const disable2faForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: disable2fa.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::disable2fa
+* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:41
+* @route '/dashboard/customers/{customer}/disable-2fa'
+*/
+disable2faForm.delete = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: disable2fa.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+disable2fa.form = disable2faForm
 
 const customers = {
     index: Object.assign(index, index),

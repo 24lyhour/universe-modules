@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::update
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:60
@@ -32,6 +32,28 @@ update.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: update.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::update
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:60
+* @route '/api/v1/auth/customer'
+*/
+const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::update
+* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:60
+* @route '/api/v1/auth/customer'
+*/
+updateForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(options),
+    method: 'post',
+})
+
+update.form = updateForm
 
 const customer = {
     update: Object.assign(update, update),
