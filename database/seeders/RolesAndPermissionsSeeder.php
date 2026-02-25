@@ -73,6 +73,9 @@ class RolesAndPermissionsSeeder extends Seeder
             // Report Module
             'report' => ['reports'],
 
+            // Media Module (for avatars, images, files)
+            'media' => ['media'],
+
             // User Management
             'user' => ['users', 'roles', 'permissions'],
 

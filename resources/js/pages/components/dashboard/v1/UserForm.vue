@@ -7,7 +7,6 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { Eye, EyeOff, Building2, School, Store, Mail, Calendar, Upload, User, X, Lock } from 'lucide-vue-next';
-import { MediaLibraryModal } from '@/components/shared';
 import { ref, computed, onMounted } from 'vue';
 import { toast } from 'vue-sonner';
 import type { Role } from '@/types/roles';
@@ -52,7 +51,6 @@ const emit = defineEmits<{
 
 const showPassword = ref(false);
 const showConfirmPassword = ref(false);
-const showMediaLibrary = ref(false);
 const avatarPreview = ref<string | null>(props.user?.avatar || null);
 
 // Protected super-admin user (cannot remove super-admin role)
@@ -224,21 +222,70 @@ const isFormValid = computed(() => {
 });
 
 // Avatar handling
-const handleAvatarSelect = (urls: string[]) => {
-    if (urls.length > 0) {
-        form.avatar = urls[0];
-        avatarPreview.value = urls[0];
-    }
-    showMediaLibrary.value = false;
-};
+const avatarInput = ref<HTMLInputElement | null>(null);
+const isUploading = ref(false);
 
 const removeAvatar = () => {
     form.avatar = '';
     avatarPreview.value = null;
 };
 
-const openMediaLibrary = () => {
-    showMediaLibrary.value = true;
+
+// Simple file upload for avatars (no media permission required)
+const openFileInput = () => {
+    avatarInput.value?.click();
+};
+
+const handleFileSelect = async (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    const file = target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+        toast.error('Please select an image file');
+        return;
+    }
+
+    // Validate file size (2MB max)
+    if (file.size > 2 * 1024 * 1024) {
+        toast.error('Image must be less than 2MB');
+        return;
+    }
+
+    isUploading.value = true;
+
+    try {
+        const formData = new FormData();
+        formData.append('file', file);
+        if (props.user?.id) {
+            formData.append('user_id', props.user.id.toString());
+        }
+
+        const response = await fetch('/dashboard/avatar/upload', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Upload failed');
+        }
+
+        const data = await response.json();
+        form.avatar = data.url;
+        avatarPreview.value = data.url;
+        toast.success('Avatar uploaded successfully');
+    } catch (error) {
+        toast.error('Failed to upload avatar');
+        console.error('Avatar upload error:', error);
+    } finally {
+        isUploading.value = false;
+        // Reset input
+        if (target) target.value = '';
+    }
 };
 
 const formatDate = (date?: string) => {
@@ -286,10 +333,20 @@ const handleSubmit = () => {
                 <CardContent>
                     <!-- Avatar Upload Section -->
                     <div class="flex flex-col items-center text-center gap-4 mb-6">
+                        <!-- Hidden file input -->
+                        <input
+                            ref="avatarInput"
+                            type="file"
+                            accept="image/*"
+                            class="hidden"
+                            @change="handleFileSelect"
+                        />
+
                         <!-- Avatar preview/upload - entire area clickable -->
                         <div
                             class="relative group cursor-pointer"
-                            @click="openMediaLibrary"
+                            :class="{ 'opacity-50 pointer-events-none': isUploading }"
+                            @click="openFileInput"
                         >
                             <div
                                 v-if="avatarPreview"
@@ -310,12 +367,16 @@ const handleSubmit = () => {
 
                             <!-- Overlay -->
                             <div class="absolute inset-0 flex items-center justify-center gap-1 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <Upload class="h-6 w-6 text-white" />
+                                <Upload v-if="!isUploading" class="h-6 w-6 text-white" />
+                                <svg v-else class="h-6 w-6 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
                             </div>
 
                             <!-- Remove button (separate, stops propagation) -->
                             <Button
-                                v-if="avatarPreview"
+                                v-if="avatarPreview && !isUploading"
                                 type="button"
                                 variant="destructive"
                                 size="icon"
@@ -325,7 +386,9 @@ const handleSubmit = () => {
                                 <X class="h-3 w-3" />
                             </Button>
                         </div>
-                        <p class="text-xs text-muted-foreground">Click to select avatar</p>
+                        <p class="text-xs text-muted-foreground">
+                            {{ isUploading ? 'Uploading...' : 'Click to upload avatar (max 2MB)' }}
+                        </p>
                         <p v-if="form.errors.avatar" class="text-xs text-destructive">
                             {{ form.errors.avatar }}
                         </p>
@@ -685,13 +748,4 @@ const handleSubmit = () => {
             </slot>
         </div>
     </form>
-
-    <!-- Media Library Modal (outside form to prevent z-index issues) -->
-    <MediaLibraryModal
-        v-model:open="showMediaLibrary"
-        :multiple="false"
-        :max-select="1"
-        accept="image/*"
-        @select="handleAvatarSelect"
-    />
 </template>

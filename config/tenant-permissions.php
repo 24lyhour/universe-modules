@@ -27,6 +27,7 @@ return [
         'Order' => ['orders'],
         'Payment' => ['payments'],
         'Report' => ['reports'],
+        'Media' => ['media'],
         'User Management' => ['users', 'roles', 'permissions'],
         'Settings' => ['settings', 'configurations', 'login_settings', 'activity_logs'],
         'Dashboard' => ['dashboard', 'dashboard_widgets', 'analytics'],
@@ -43,7 +44,7 @@ return [
     |
     */
     'tenant_modules' => [
-        'common' => ['Dashboard', 'User Management', 'Settings', 'Report'],
+        'common' => ['Dashboard', 'User Management', 'Settings', 'Report', 'Media'],
         'School' => ['School', 'Employee'],
         'Outlet' => ['Outlet', 'Menu', 'Product', 'Customer', 'Order', 'Payment', 'Wallets', 'Booking', 'Blog', 'Company', 'Hotel', 'Movie', 'Portfolio'],
     ],

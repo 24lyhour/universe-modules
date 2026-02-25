@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Settings\ActivityLogController;
+use App\Http\Controllers\Settings\AvatarController;
 use App\Http\Controllers\Settings\LoginSettingsController;
 use App\Http\Controllers\Settings\RoleController;
 use App\Http\Controllers\Settings\UserRoleController;
@@ -62,4 +63,18 @@ Route::middleware(['auth', 'verified', 'auto.permission'])->group(function () {
     Route::post('dashboard/settings/users/{user}/unsuspend', [ActivityLogController::class, 'unsuspendUser'])->name('users.unsuspend');
     Route::post('dashboard/settings/users/{user}/force-logout', [ActivityLogController::class, 'forceLogout'])->name('users.force-logout');
     Route::delete('dashboard/settings/users/{user}', [ActivityLogController::class, 'deleteUser'])->name('users.delete');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Avatar Upload Routes (No media permission required)
+|--------------------------------------------------------------------------
+|
+| These routes allow any authenticated user to upload avatars without
+| requiring media.* permissions. This is for user profile avatars.
+|
+*/
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::post('dashboard/avatar/upload', [AvatarController::class, 'upload'])->name('avatar.upload');
+    Route::delete('dashboard/avatar', [AvatarController::class, 'destroy'])->name('avatar.destroy');
 });
