@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('settings/two-factor', [TwoFactorAuthenticationController::class, 'show'])
         ->name('two-factor.show');
+    Route::put('settings/two-factor/method', [TwoFactorAuthenticationController::class, 'updateMethod'])
+        ->name('two-factor.method.update');
 
     Route::get('settings/widgets', [WidgetController::class, 'index'])->name('widgets.index');
     Route::patch('settings/widgets/{widget}', [WidgetController::class, 'update'])->name('widgets.update');

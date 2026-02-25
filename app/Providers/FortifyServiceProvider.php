@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
+use App\Http\Responses\LogoutResponse;
 use App\Models\User;
 use App\Services\LoginSettingsService;
+use App\Services\UserOtpService;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,10 +16,11 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
+use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\Contracts\LogoutResponse as LogoutResponseContract;
+use Laravel\Fortify\Contracts\TwoFactorLoginResponse;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
-use App\Http\Responses\LogoutResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -123,7 +126,21 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::registerView(fn () => Inertia::render('auth/Register'));
 
-        Fortify::twoFactorChallengeView(fn () => Inertia::render('auth/TwoFactorChallenge'));
+        Fortify::twoFactorChallengeView(function (Request $request) {
+            $user = User::find($request->session()->get('login.id'));
+            $method = $user?->two_factor_method ?? 'email';
+
+            // If email method, send OTP automatically
+            if ($user && $method === 'email') {
+                $otpService = app(UserOtpService::class);
+                $result = $otpService->sendOtp($user);
+            }
+
+            return Inertia::render('auth/TwoFactorChallenge', [
+                'twoFactorMethod' => $method,
+                'email' => $user ? $this->maskEmail($user->email) : null,
+            ]);
+        });
 
         Fortify::confirmPasswordView(fn () => Inertia::render('auth/ConfirmPassword'));
     }
@@ -142,5 +159,25 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(5)->by($throttleKey);
         });
+    }
+
+    /**
+     * Mask email for display.
+     */
+    private function maskEmail(string $email): string
+    {
+        $parts = explode('@', $email);
+        if (count($parts) !== 2) {
+            return $email;
+        }
+
+        $name = $parts[0];
+        $domain = $parts[1];
+
+        if (strlen($name) <= 2) {
+            return $name.'***@'.$domain;
+        }
+
+        return substr($name, 0, 2).str_repeat('*', min(strlen($name) - 2, 5)).'@'.$domain;
     }
 }

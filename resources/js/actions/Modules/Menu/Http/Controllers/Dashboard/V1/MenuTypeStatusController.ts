@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeStatusController::__invoke
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeStatusController.php:20
@@ -50,37 +50,5 @@ MenuTypeStatusController.put = (args: { menu_type: string | number } | [menu_typ
     url: MenuTypeStatusController.url(args, options),
     method: 'put',
 })
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeStatusController::__invoke
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeStatusController.php:20
-* @route '/dashboard/menu-types/{menu_type}/toggle-status'
-*/
-const MenuTypeStatusControllerForm = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: MenuTypeStatusController.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeStatusController::__invoke
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeStatusController.php:20
-* @route '/dashboard/menu-types/{menu_type}/toggle-status'
-*/
-MenuTypeStatusControllerForm.put = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: MenuTypeStatusController.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-MenuTypeStatusController.form = MenuTypeStatusControllerForm
 
 export default MenuTypeStatusController

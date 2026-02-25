@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerStatusApiController::activate
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerStatusApiController.php:20
@@ -56,38 +56,6 @@ activate.patch = (args: { customer: number | { id: number } } | [customer: numbe
     url: activate.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerStatusApiController::activate
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerStatusApiController.php:20
-* @route '/api/v1/customers/{customer}/activate'
-*/
-const activateForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: activate.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerStatusApiController::activate
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerStatusApiController.php:20
-* @route '/api/v1/customers/{customer}/activate'
-*/
-activateForm.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: activate.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-activate.form = activateForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerStatusApiController::deactivate
@@ -148,38 +116,6 @@ deactivate.patch = (args: { customer: number | { id: number } } | [customer: num
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerStatusApiController::deactivate
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerStatusApiController.php:33
-* @route '/api/v1/customers/{customer}/deactivate'
-*/
-const deactivateForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: deactivate.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerStatusApiController::deactivate
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerStatusApiController.php:33
-* @route '/api/v1/customers/{customer}/deactivate'
-*/
-deactivateForm.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: deactivate.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-deactivate.form = deactivateForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerStatusApiController::suspend
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerStatusApiController.php:46
 * @route '/api/v1/customers/{customer}/suspend'
@@ -236,38 +172,6 @@ suspend.patch = (args: { customer: number | { id: number } } | [customer: number
     url: suspend.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerStatusApiController::suspend
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerStatusApiController.php:46
-* @route '/api/v1/customers/{customer}/suspend'
-*/
-const suspendForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: suspend.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerStatusApiController::suspend
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerStatusApiController.php:46
-* @route '/api/v1/customers/{customer}/suspend'
-*/
-suspendForm.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: suspend.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-suspend.form = suspendForm
 
 const CustomerStatusApiController = { activate, deactivate, suspend }
 

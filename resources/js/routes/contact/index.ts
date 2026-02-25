@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../wayfinder'
 /**
 * @see \Modules\Porfolio\Http\Controllers\KioskController::submit
 * @see Modules/Porfolio/app/Http/Controllers/KioskController.php:166
@@ -32,28 +32,6 @@ submit.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: submit.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\KioskController::submit
-* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:166
-* @route '/contact'
-*/
-const submitForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: submit.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\KioskController::submit
-* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:166
-* @route '/contact'
-*/
-submitForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: submit.url(options),
-    method: 'post',
-})
-
-submit.form = submitForm
 
 const contact = {
     submit: Object.assign(submit, submit),

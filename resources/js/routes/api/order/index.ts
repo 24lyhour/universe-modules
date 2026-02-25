@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Order\Http\Controllers\OrderController::index
 * @see Modules/Order/app/Http/Controllers/OrderController.php:13
@@ -44,43 +44,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Order\Http\Controllers\OrderController::index
-* @see Modules/Order/app/Http/Controllers/OrderController.php:13
-* @route '/api/v1/orders'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\OrderController::index
-* @see Modules/Order/app/Http/Controllers/OrderController.php:13
-* @route '/api/v1/orders'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\OrderController::index
-* @see Modules/Order/app/Http/Controllers/OrderController.php:13
-* @route '/api/v1/orders'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \Modules\Order\Http\Controllers\OrderController::store
 * @see Modules/Order/app/Http/Controllers/OrderController.php:29
 * @route '/api/v1/orders'
@@ -113,28 +76,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\OrderController::store
-* @see Modules/Order/app/Http/Controllers/OrderController.php:29
-* @route '/api/v1/orders'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\OrderController::store
-* @see Modules/Order/app/Http/Controllers/OrderController.php:29
-* @route '/api/v1/orders'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Order\Http\Controllers\OrderController::show
@@ -199,43 +140,6 @@ show.head = (args: { order: string | number } | [order: string | number ] | stri
 })
 
 /**
-* @see \Modules\Order\Http\Controllers\OrderController::show
-* @see Modules/Order/app/Http/Controllers/OrderController.php:34
-* @route '/api/v1/orders/{order}'
-*/
-const showForm = (args: { order: string | number } | [order: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\OrderController::show
-* @see Modules/Order/app/Http/Controllers/OrderController.php:34
-* @route '/api/v1/orders/{order}'
-*/
-showForm.get = (args: { order: string | number } | [order: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\OrderController::show
-* @see Modules/Order/app/Http/Controllers/OrderController.php:34
-* @route '/api/v1/orders/{order}'
-*/
-showForm.head = (args: { order: string | number } | [order: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\Order\Http\Controllers\OrderController::update
 * @see Modules/Order/app/Http/Controllers/OrderController.php:50
 * @route '/api/v1/orders/{order}'
@@ -298,53 +202,6 @@ update.patch = (args: { order: string | number } | [order: string | number ] | s
 })
 
 /**
-* @see \Modules\Order\Http\Controllers\OrderController::update
-* @see Modules/Order/app/Http/Controllers/OrderController.php:50
-* @route '/api/v1/orders/{order}'
-*/
-const updateForm = (args: { order: string | number } | [order: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\OrderController::update
-* @see Modules/Order/app/Http/Controllers/OrderController.php:50
-* @route '/api/v1/orders/{order}'
-*/
-updateForm.put = (args: { order: string | number } | [order: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\OrderController::update
-* @see Modules/Order/app/Http/Controllers/OrderController.php:50
-* @route '/api/v1/orders/{order}'
-*/
-updateForm.patch = (args: { order: string | number } | [order: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Order\Http\Controllers\OrderController::destroy
 * @see Modules/Order/app/Http/Controllers/OrderController.php:55
 * @route '/api/v1/orders/{order}'
@@ -395,38 +252,6 @@ destroy.delete = (args: { order: string | number } | [order: string | number ] |
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\OrderController::destroy
-* @see Modules/Order/app/Http/Controllers/OrderController.php:55
-* @route '/api/v1/orders/{order}'
-*/
-const destroyForm = (args: { order: string | number } | [order: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\OrderController::destroy
-* @see Modules/Order/app/Http/Controllers/OrderController.php:55
-* @route '/api/v1/orders/{order}'
-*/
-destroyForm.delete = (args: { order: string | number } | [order: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const order = {
     index: Object.assign(index, index),

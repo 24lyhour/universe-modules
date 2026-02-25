@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
 * @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
@@ -44,42 +44,39 @@ show.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
-* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
-* @route '/settings/two-factor'
+* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::updateMethod
+* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:43
+* @route '/settings/two-factor/method'
 */
-const showForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(options),
-    method: 'get',
+export const updateMethod = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: updateMethod.url(options),
+    method: 'put',
 })
+
+updateMethod.definition = {
+    methods: ["put"],
+    url: '/settings/two-factor/method',
+} satisfies RouteDefinition<["put"]>
 
 /**
-* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
-* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
-* @route '/settings/two-factor'
+* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::updateMethod
+* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:43
+* @route '/settings/two-factor/method'
 */
-showForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(options),
-    method: 'get',
-})
+updateMethod.url = (options?: RouteQueryOptions) => {
+    return updateMethod.definition.url + queryParams(options)
+}
 
 /**
-* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
-* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:28
-* @route '/settings/two-factor'
+* @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::updateMethod
+* @see app/Http/Controllers/Settings/TwoFactorAuthenticationController.php:43
+* @route '/settings/two-factor/method'
 */
-showForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
+updateMethod.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: updateMethod.url(options),
+    method: 'put',
 })
 
-show.form = showForm
-
-const TwoFactorAuthenticationController = { show }
+const TwoFactorAuthenticationController = { show, updateMethod }
 
 export default TwoFactorAuthenticationController

@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuStatusController::__invoke
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
@@ -56,37 +56,5 @@ MenuStatusController.put = (args: { menu: number | { id: number } } | [menu: num
     url: MenuStatusController.url(args, options),
     method: 'put',
 })
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuStatusController::__invoke
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
-* @route '/dashboard/menus/{menu}/toggle-status'
-*/
-const MenuStatusControllerForm = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: MenuStatusController.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuStatusController::__invoke
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
-* @route '/dashboard/menus/{menu}/toggle-status'
-*/
-MenuStatusControllerForm.put = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: MenuStatusController.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-MenuStatusController.form = MenuStatusControllerForm
 
 export default MenuStatusController

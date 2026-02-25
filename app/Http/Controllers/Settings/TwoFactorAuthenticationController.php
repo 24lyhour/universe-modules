@@ -28,10 +28,39 @@ class TwoFactorAuthenticationController extends Controller implements HasMiddlew
     public function show(TwoFactorAuthenticationRequest $request): Response
     {
         $request->ensureStateIsValid();
+        $user = $request->user();
 
         return Inertia::render('settings/TwoFactor', [
-            'twoFactorEnabled' => $request->user()->hasEnabledTwoFactorAuthentication(),
+            'twoFactorEnabled' => $user->hasEnabledTwoFactorAuthentication(),
             'requiresConfirmation' => Features::optionEnabled(Features::twoFactorAuthentication(), 'confirm'),
+            'twoFactorMethod' => $user->two_factor_method ?? 'email',
         ]);
+    }
+
+    /**
+     * Update the user's two-factor authentication method.
+     */
+    public function updateMethod(TwoFactorAuthenticationRequest $request): \Illuminate\Http\RedirectResponse
+    {
+        $request->validate([
+            'method' => ['required', 'in:email,totp'],
+        ]);
+
+        $user = $request->user();
+        $method = $request->input('method');
+
+        // If switching to TOTP, they need to set it up first
+        if ($method === 'totp' && !$user->two_factor_secret) {
+            return back()->with('error', 'Please set up authenticator app first.');
+        }
+
+        $user->update(['two_factor_method' => $method]);
+
+        // If enabling 2FA with email method for the first time
+        if ($method === 'email' && !$user->hasTwoFactorEnabled()) {
+            $user->enableTwoFactor('email');
+        }
+
+        return back()->with('status', '2FA method updated successfully.');
     }
 }

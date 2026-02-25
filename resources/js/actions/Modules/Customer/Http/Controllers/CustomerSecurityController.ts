@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerSecurityController::verifyEmail
 * @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:18
@@ -56,38 +56,6 @@ verifyEmail.patch = (args: { customer: number | { id: number } } | [customer: nu
     url: verifyEmail.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::verifyEmail
-* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:18
-* @route '/dashboard/customers/{customer}/verify-email'
-*/
-const verifyEmailForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: verifyEmail.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::verifyEmail
-* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:18
-* @route '/dashboard/customers/{customer}/verify-email'
-*/
-verifyEmailForm.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: verifyEmail.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-verifyEmail.form = verifyEmailForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerSecurityController::enableTwoFactor
@@ -148,28 +116,6 @@ enableTwoFactor.post = (args: { customer: number | { id: number } } | [customer:
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::enableTwoFactor
-* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:28
-* @route '/dashboard/customers/{customer}/enable-2fa'
-*/
-const enableTwoFactorForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: enableTwoFactor.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::enableTwoFactor
-* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:28
-* @route '/dashboard/customers/{customer}/enable-2fa'
-*/
-enableTwoFactorForm.post = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: enableTwoFactor.url(args, options),
-    method: 'post',
-})
-
-enableTwoFactor.form = enableTwoFactorForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\CustomerSecurityController::disableTwoFactor
 * @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:41
 * @route '/dashboard/customers/{customer}/disable-2fa'
@@ -226,38 +172,6 @@ disableTwoFactor.delete = (args: { customer: number | { id: number } } | [custom
     url: disableTwoFactor.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::disableTwoFactor
-* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:41
-* @route '/dashboard/customers/{customer}/disable-2fa'
-*/
-const disableTwoFactorForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: disableTwoFactor.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerSecurityController::disableTwoFactor
-* @see Modules/Customer/app/Http/Controllers/CustomerSecurityController.php:41
-* @route '/dashboard/customers/{customer}/disable-2fa'
-*/
-disableTwoFactorForm.delete = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: disableTwoFactor.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-disableTwoFactor.form = disableTwoFactorForm
 
 const CustomerSecurityController = { verifyEmail, enableTwoFactor, disableTwoFactor }
 

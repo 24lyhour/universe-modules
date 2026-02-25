@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::create
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:55
@@ -44,43 +44,6 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:55
-* @route '/dashboard/schools/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:55
-* @route '/dashboard/schools/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:55
-* @route '/dashboard/schools/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::store
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:66
 * @route '/dashboard/schools'
@@ -113,28 +76,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:66
-* @route '/dashboard/schools'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:66
-* @route '/dashboard/schools'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::index
@@ -179,43 +120,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:42
-* @route '/dashboard/schools'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:42
-* @route '/dashboard/schools'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:42
-* @route '/dashboard/schools'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::show
@@ -286,43 +190,6 @@ show.head = (args: { school: number | { id: number } } | [school: number | { id:
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:78
-* @route '/dashboard/schools/{school}'
-*/
-const showForm = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:78
-* @route '/dashboard/schools/{school}'
-*/
-showForm.get = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:78
-* @route '/dashboard/schools/{school}'
-*/
-showForm.head = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::edit
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:88
 * @route '/dashboard/schools/{school}/edit'
@@ -391,43 +258,6 @@ edit.head = (args: { school: number | { id: number } } | [school: number | { id:
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:88
-* @route '/dashboard/schools/{school}/edit'
-*/
-const editForm = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:88
-* @route '/dashboard/schools/{school}/edit'
-*/
-editForm.get = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:88
-* @route '/dashboard/schools/{school}/edit'
-*/
-editForm.head = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::update
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:99
 * @route '/dashboard/schools/{school}'
@@ -490,37 +320,6 @@ update7bf1d760f81c98a634e8d13339ffa7d4.put = (args: { school: number | { id: num
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:99
 * @route '/dashboard/schools/{school}'
 */
-const update7bf1d760f81c98a634e8d13339ffa7d4Form = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update7bf1d760f81c98a634e8d13339ffa7d4.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:99
-* @route '/dashboard/schools/{school}'
-*/
-update7bf1d760f81c98a634e8d13339ffa7d4Form.put = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update7bf1d760f81c98a634e8d13339ffa7d4.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update7bf1d760f81c98a634e8d13339ffa7d4.form = update7bf1d760f81c98a634e8d13339ffa7d4Form
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:99
-* @route '/dashboard/schools/{school}'
-*/
 const update7bf1d760f81c98a634e8d13339ffa7d4 = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update7bf1d760f81c98a634e8d13339ffa7d4.url(args, options),
     method: 'patch',
@@ -573,38 +372,6 @@ update7bf1d760f81c98a634e8d13339ffa7d4.patch = (args: { school: number | { id: n
     url: update7bf1d760f81c98a634e8d13339ffa7d4.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:99
-* @route '/dashboard/schools/{school}'
-*/
-const update7bf1d760f81c98a634e8d13339ffa7d4Form = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update7bf1d760f81c98a634e8d13339ffa7d4.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:99
-* @route '/dashboard/schools/{school}'
-*/
-update7bf1d760f81c98a634e8d13339ffa7d4Form.patch = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update7bf1d760f81c98a634e8d13339ffa7d4.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update7bf1d760f81c98a634e8d13339ffa7d4.form = update7bf1d760f81c98a634e8d13339ffa7d4Form
 
 export const update = {
     '/dashboard/schools/{school}': update7bf1d760f81c98a634e8d13339ffa7d4,
@@ -668,38 +435,6 @@ toggleStatus.put = (args: { school: number | { id: number } } | [school: number 
     url: toggleStatus.url(args, options),
     method: 'put',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:135
-* @route '/dashboard/schools/{school}/toggle-status'
-*/
-const toggleStatusForm = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleStatus.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:135
-* @route '/dashboard/schools/{school}/toggle-status'
-*/
-toggleStatusForm.put = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleStatus.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::confirmDelete
@@ -770,43 +505,6 @@ confirmDelete.head = (args: { school: number | { id: number } } | [school: numbe
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:111
-* @route '/dashboard/schools/{school}/delete'
-*/
-const confirmDeleteForm = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirmDelete.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:111
-* @route '/dashboard/schools/{school}/delete'
-*/
-confirmDeleteForm.get = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirmDelete.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:111
-* @route '/dashboard/schools/{school}/delete'
-*/
-confirmDeleteForm.head = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirmDelete.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-confirmDelete.form = confirmDeleteForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::destroy
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:123
 * @route '/dashboard/schools/{school}'
@@ -863,38 +561,6 @@ destroy.delete = (args: { school: number | { id: number } } | [school: number | 
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:123
-* @route '/dashboard/schools/{school}'
-*/
-const destroyForm = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolController.php:123
-* @route '/dashboard/schools/{school}'
-*/
-destroyForm.delete = (args: { school: number | { id: number } } | [school: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const SchoolController = { create, store, index, show, edit, update, toggleStatus, confirmDelete, destroy }
 

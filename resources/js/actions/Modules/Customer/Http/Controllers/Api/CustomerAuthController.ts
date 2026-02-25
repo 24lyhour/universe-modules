@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::login
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:20
@@ -32,28 +32,6 @@ login.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: login.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::login
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:20
-* @route '/api/v1/auth/login'
-*/
-const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: login.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::login
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:20
-* @route '/api/v1/auth/login'
-*/
-loginForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: login.url(options),
-    method: 'post',
-})
-
-login.form = loginForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::logout
@@ -90,28 +68,6 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::logout
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:30
-* @route '/api/v1/auth/logout'
-*/
-const logoutForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logout.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::logout
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:30
-* @route '/api/v1/auth/logout'
-*/
-logoutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logout.url(options),
-    method: 'post',
-})
-
-logout.form = logoutForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::logoutAll
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:40
 * @route '/api/v1/auth/logout-all'
@@ -144,28 +100,6 @@ logoutAll.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: logoutAll.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::logoutAll
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:40
-* @route '/api/v1/auth/logout-all'
-*/
-const logoutAllForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logoutAll.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::logoutAll
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:40
-* @route '/api/v1/auth/logout-all'
-*/
-logoutAllForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logoutAll.url(options),
-    method: 'post',
-})
-
-logoutAll.form = logoutAllForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::me
@@ -212,43 +146,6 @@ me.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::me
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:50
-* @route '/api/v1/auth/customer'
-*/
-const meForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: me.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::me
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:50
-* @route '/api/v1/auth/customer'
-*/
-meForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: me.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::me
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:50
-* @route '/api/v1/auth/customer'
-*/
-meForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: me.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-me.form = meForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::update
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:60
 * @route '/api/v1/auth/customer'
@@ -281,28 +178,6 @@ update.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: update.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::update
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:60
-* @route '/api/v1/auth/customer'
-*/
-const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::update
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:60
-* @route '/api/v1/auth/customer'
-*/
-updateForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(options),
-    method: 'post',
-})
-
-update.form = updateForm
 
 const CustomerAuthController = { login, logout, logoutAll, me, update }
 

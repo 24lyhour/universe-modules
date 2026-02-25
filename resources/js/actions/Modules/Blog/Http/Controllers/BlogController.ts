@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Blog\Http\Controllers\BlogController::index
 * @see Modules/Blog/app/Http/Controllers/BlogController.php:22
@@ -46,42 +46,6 @@ index0959e8009a8132629d8287b526c5c921.head = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Blog\Http\Controllers\BlogController::index
 * @see Modules/Blog/app/Http/Controllers/BlogController.php:22
-* @route '/api/v1/blogs'
-*/
-const index0959e8009a8132629d8287b526c5c921Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index0959e8009a8132629d8287b526c5c921.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::index
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:22
-* @route '/api/v1/blogs'
-*/
-index0959e8009a8132629d8287b526c5c921Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index0959e8009a8132629d8287b526c5c921.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::index
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:22
-* @route '/api/v1/blogs'
-*/
-index0959e8009a8132629d8287b526c5c921Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index0959e8009a8132629d8287b526c5c921.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index0959e8009a8132629d8287b526c5c921.form = index0959e8009a8132629d8287b526c5c921Form
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::index
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:22
 * @route '/blogs'
 */
 const index44043d9858c53e27a123eb7dd8b7e975 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -122,43 +86,6 @@ index44043d9858c53e27a123eb7dd8b7e975.head = (options?: RouteQueryOptions): Rout
     url: index44043d9858c53e27a123eb7dd8b7e975.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::index
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:22
-* @route '/blogs'
-*/
-const index44043d9858c53e27a123eb7dd8b7e975Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index44043d9858c53e27a123eb7dd8b7e975.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::index
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:22
-* @route '/blogs'
-*/
-index44043d9858c53e27a123eb7dd8b7e975Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index44043d9858c53e27a123eb7dd8b7e975.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::index
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:22
-* @route '/blogs'
-*/
-index44043d9858c53e27a123eb7dd8b7e975Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index44043d9858c53e27a123eb7dd8b7e975.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index44043d9858c53e27a123eb7dd8b7e975.form = index44043d9858c53e27a123eb7dd8b7e975Form
 
 export const index = {
     '/api/v1/blogs': index0959e8009a8132629d8287b526c5c921,
@@ -202,27 +129,6 @@ store0959e8009a8132629d8287b526c5c921.post = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Blog\Http\Controllers\BlogController::store
 * @see Modules/Blog/app/Http/Controllers/BlogController.php:42
-* @route '/api/v1/blogs'
-*/
-const store0959e8009a8132629d8287b526c5c921Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store0959e8009a8132629d8287b526c5c921.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::store
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:42
-* @route '/api/v1/blogs'
-*/
-store0959e8009a8132629d8287b526c5c921Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store0959e8009a8132629d8287b526c5c921.url(options),
-    method: 'post',
-})
-
-store0959e8009a8132629d8287b526c5c921.form = store0959e8009a8132629d8287b526c5c921Form
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::store
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:42
 * @route '/blogs'
 */
 const store44043d9858c53e27a123eb7dd8b7e975 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -253,28 +159,6 @@ store44043d9858c53e27a123eb7dd8b7e975.post = (options?: RouteQueryOptions): Rout
     url: store44043d9858c53e27a123eb7dd8b7e975.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::store
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:42
-* @route '/blogs'
-*/
-const store44043d9858c53e27a123eb7dd8b7e975Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store44043d9858c53e27a123eb7dd8b7e975.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::store
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:42
-* @route '/blogs'
-*/
-store44043d9858c53e27a123eb7dd8b7e975Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store44043d9858c53e27a123eb7dd8b7e975.url(options),
-    method: 'post',
-})
-
-store44043d9858c53e27a123eb7dd8b7e975.form = store44043d9858c53e27a123eb7dd8b7e975Form
 
 export const store = {
     '/api/v1/blogs': store0959e8009a8132629d8287b526c5c921,
@@ -346,42 +230,6 @@ show89fef74645f4cab8360fd9e46d9914c4.head = (args: { blog: string | number } | [
 /**
 * @see \Modules\Blog\Http\Controllers\BlogController::show
 * @see Modules/Blog/app/Http/Controllers/BlogController.php:54
-* @route '/api/v1/blogs/{blog}'
-*/
-const show89fef74645f4cab8360fd9e46d9914c4Form = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show89fef74645f4cab8360fd9e46d9914c4.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::show
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:54
-* @route '/api/v1/blogs/{blog}'
-*/
-show89fef74645f4cab8360fd9e46d9914c4Form.get = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show89fef74645f4cab8360fd9e46d9914c4.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::show
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:54
-* @route '/api/v1/blogs/{blog}'
-*/
-show89fef74645f4cab8360fd9e46d9914c4Form.head = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show89fef74645f4cab8360fd9e46d9914c4.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show89fef74645f4cab8360fd9e46d9914c4.form = show89fef74645f4cab8360fd9e46d9914c4Form
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::show
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:54
 * @route '/blogs/{blog}'
 */
 const show75e06dd100db872ee0b8e2e2e2eaa951 = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -440,43 +288,6 @@ show75e06dd100db872ee0b8e2e2e2eaa951.head = (args: { blog: string | number } | [
     url: show75e06dd100db872ee0b8e2e2e2eaa951.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::show
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:54
-* @route '/blogs/{blog}'
-*/
-const show75e06dd100db872ee0b8e2e2e2eaa951Form = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show75e06dd100db872ee0b8e2e2e2eaa951.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::show
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:54
-* @route '/blogs/{blog}'
-*/
-show75e06dd100db872ee0b8e2e2e2eaa951Form.get = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show75e06dd100db872ee0b8e2e2e2eaa951.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::show
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:54
-* @route '/blogs/{blog}'
-*/
-show75e06dd100db872ee0b8e2e2e2eaa951Form.head = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show75e06dd100db872ee0b8e2e2e2eaa951.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show75e06dd100db872ee0b8e2e2e2eaa951.form = show75e06dd100db872ee0b8e2e2e2eaa951Form
 
 export const show = {
     '/api/v1/blogs/{blog}': show89fef74645f4cab8360fd9e46d9914c4,
@@ -548,52 +359,6 @@ update89fef74645f4cab8360fd9e46d9914c4.patch = (args: { blog: string | number } 
 /**
 * @see \Modules\Blog\Http\Controllers\BlogController::update
 * @see Modules/Blog/app/Http/Controllers/BlogController.php:86
-* @route '/api/v1/blogs/{blog}'
-*/
-const update89fef74645f4cab8360fd9e46d9914c4Form = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update89fef74645f4cab8360fd9e46d9914c4.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::update
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:86
-* @route '/api/v1/blogs/{blog}'
-*/
-update89fef74645f4cab8360fd9e46d9914c4Form.put = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update89fef74645f4cab8360fd9e46d9914c4.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::update
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:86
-* @route '/api/v1/blogs/{blog}'
-*/
-update89fef74645f4cab8360fd9e46d9914c4Form.patch = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update89fef74645f4cab8360fd9e46d9914c4.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update89fef74645f4cab8360fd9e46d9914c4.form = update89fef74645f4cab8360fd9e46d9914c4Form
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::update
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:86
 * @route '/blogs/{blog}'
 */
 const update75e06dd100db872ee0b8e2e2e2eaa951 = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -652,53 +417,6 @@ update75e06dd100db872ee0b8e2e2e2eaa951.patch = (args: { blog: string | number } 
     url: update75e06dd100db872ee0b8e2e2e2eaa951.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::update
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:86
-* @route '/blogs/{blog}'
-*/
-const update75e06dd100db872ee0b8e2e2e2eaa951Form = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update75e06dd100db872ee0b8e2e2e2eaa951.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::update
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:86
-* @route '/blogs/{blog}'
-*/
-update75e06dd100db872ee0b8e2e2e2eaa951Form.put = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update75e06dd100db872ee0b8e2e2e2eaa951.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::update
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:86
-* @route '/blogs/{blog}'
-*/
-update75e06dd100db872ee0b8e2e2e2eaa951Form.patch = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update75e06dd100db872ee0b8e2e2e2eaa951.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update75e06dd100db872ee0b8e2e2e2eaa951.form = update75e06dd100db872ee0b8e2e2e2eaa951Form
 
 export const update = {
     '/api/v1/blogs/{blog}': update89fef74645f4cab8360fd9e46d9914c4,
@@ -760,37 +478,6 @@ destroy89fef74645f4cab8360fd9e46d9914c4.delete = (args: { blog: string | number 
 /**
 * @see \Modules\Blog\Http\Controllers\BlogController::destroy
 * @see Modules/Blog/app/Http/Controllers/BlogController.php:102
-* @route '/api/v1/blogs/{blog}'
-*/
-const destroy89fef74645f4cab8360fd9e46d9914c4Form = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy89fef74645f4cab8360fd9e46d9914c4.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::destroy
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:102
-* @route '/api/v1/blogs/{blog}'
-*/
-destroy89fef74645f4cab8360fd9e46d9914c4Form.delete = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy89fef74645f4cab8360fd9e46d9914c4.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy89fef74645f4cab8360fd9e46d9914c4.form = destroy89fef74645f4cab8360fd9e46d9914c4Form
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::destroy
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:102
 * @route '/blogs/{blog}'
 */
 const destroy75e06dd100db872ee0b8e2e2e2eaa951 = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -840,38 +527,6 @@ destroy75e06dd100db872ee0b8e2e2e2eaa951.delete = (args: { blog: string | number 
     method: 'delete',
 })
 
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::destroy
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:102
-* @route '/blogs/{blog}'
-*/
-const destroy75e06dd100db872ee0b8e2e2e2eaa951Form = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy75e06dd100db872ee0b8e2e2e2eaa951.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::destroy
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:102
-* @route '/blogs/{blog}'
-*/
-destroy75e06dd100db872ee0b8e2e2e2eaa951Form.delete = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy75e06dd100db872ee0b8e2e2e2eaa951.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy75e06dd100db872ee0b8e2e2e2eaa951.form = destroy75e06dd100db872ee0b8e2e2e2eaa951Form
-
 export const destroy = {
     '/api/v1/blogs/{blog}': destroy89fef74645f4cab8360fd9e46d9914c4,
     '/blogs/{blog}': destroy75e06dd100db872ee0b8e2e2e2eaa951,
@@ -920,43 +575,6 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: create.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::create
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:34
-* @route '/blogs/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::create
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:34
-* @route '/blogs/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::create
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:34
-* @route '/blogs/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
 
 /**
 * @see \Modules\Blog\Http\Controllers\BlogController::edit
@@ -1019,43 +637,6 @@ edit.head = (args: { blog: string | number } | [blog: string | number ] | string
     url: edit.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::edit
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:70
-* @route '/blogs/{blog}/edit'
-*/
-const editForm = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::edit
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:70
-* @route '/blogs/{blog}/edit'
-*/
-editForm.get = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\BlogController::edit
-* @see Modules/Blog/app/Http/Controllers/BlogController.php:70
-* @route '/blogs/{blog}/edit'
-*/
-editForm.head = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
 
 const BlogController = { index, store, show, update, destroy, create, edit }
 
