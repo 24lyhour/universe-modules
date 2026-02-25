@@ -72,20 +72,26 @@ class AvatarController extends Controller
         $file = $request->file('file');
         $currentUser = $request->user();
 
+        // Determine which user to attach media to
+        // If super-admin is uploading for another user, attach to that user
+        $targetUser = $currentUser;
+        if ($request->filled('user_id')) {
+            $user = User::find($request->user_id);
+            if ($user && ($currentUser->hasRole('super-admin') || $currentUser->id === $user->id)) {
+                $targetUser = $user;
+            }
+        }
+
         try {
-            // Add to current user's media collection (avatar collection)
-            $media = $currentUser->addMedia($file)
+            // Add media to TARGET user's collection (not current user)
+            // This ensures the media is associated with the correct user
+            $media = $targetUser->addMedia($file)
                 ->toMediaCollection('avatars');
 
             $url = $media->getUrl();
 
-            // If user_id provided and current user can edit, update that user's avatar
-            if ($request->filled('user_id')) {
-                $user = User::find($request->user_id);
-                if ($user && ($currentUser->hasRole('super-admin') || $currentUser->id === $user->id)) {
-                    $user->update(['avatar' => $url]);
-                }
-            }
+            // Update the target user's avatar field
+            $targetUser->update(['avatar' => $url]);
 
             // Return in same format as MediaDashboardController for compatibility
             return response()->json([
