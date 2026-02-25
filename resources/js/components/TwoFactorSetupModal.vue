@@ -231,11 +231,12 @@ watch(
 
                 <template v-else>
                     <Form
+                        ref="formRef"
                         v-bind="confirm.form()"
                         reset-on-error
                         @finish="code = ''"
                         @success="isOpen = false"
-                        v-slot="{ errors, processing }"
+                        v-slot="{ errors: formErrors, processing }"
                     >
                         <input type="hidden" name="code" :value="code" />
                         <div
@@ -260,10 +261,7 @@ watch(
                                     </InputOTPGroup>
                                 </InputOTP>
                                 <InputError
-                                    :message="
-                                        errors?.confirmTwoFactorAuthentication
-                                            ?.code
-                                    "
+                                    :message="(formErrors as unknown as Record<string, Record<string, string>>)?.confirmTwoFactorAuthentication?.code"
                                 />
                             </div>
 

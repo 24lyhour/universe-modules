@@ -50,6 +50,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
             'auto.permission' => \App\Http\Middleware\AutoPermission::class,
             'tenant' => SetTenantContext::class,
+            'login.lockout' => \App\Http\Middleware\CheckLoginLockout::class,
+            '2fa.lockout' => \App\Http\Middleware\Check2FALockout::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -31,9 +31,9 @@ class TwoFactorEmailController extends Controller
             ], 422);
         }
 
-        // Check if IP is locked
-        if ($this->lockoutService->isLocked($request, $user)) {
-            $lockoutInfo = $this->lockoutService->getLockoutInfo($request, $user);
+        // Check if IP is locked for 2FA
+        if ($this->lockoutService->is2FALocked($request)) {
+            $lockoutInfo = $this->lockoutService->get2FALockoutInfo($request);
 
             return response()->json([
                 'success' => false,
@@ -66,9 +66,9 @@ class TwoFactorEmailController extends Controller
             ], 422);
         }
 
-        // Check if IP is locked
-        if ($this->lockoutService->isLocked($request, $user)) {
-            $lockoutInfo = $this->lockoutService->getLockoutInfo($request, $user);
+        // Check if IP is locked for 2FA
+        if ($this->lockoutService->is2FALocked($request)) {
+            $lockoutInfo = $this->lockoutService->get2FALockoutInfo($request);
 
             return response()->json([
                 'success' => false,
@@ -81,8 +81,8 @@ class TwoFactorEmailController extends Controller
         $result = $this->otpService->verifyOtp($user, $request->code);
 
         if (! $result['success']) {
-            // Record failed attempt for IP lockout
-            $lockoutResult = $this->lockoutService->recordFailedAttempt($request, $user);
+            // Record failed 2FA attempt for IP lockout
+            $lockoutResult = $this->lockoutService->record2FAFailedAttempt($request);
 
             return response()->json([
                 'success' => false,
@@ -93,8 +93,8 @@ class TwoFactorEmailController extends Controller
             ], $lockoutResult['locked'] ? 429 : 422);
         }
 
-        // Clear lockout on success
-        $this->lockoutService->clearOnSuccess($request, $user);
+        // Clear 2FA lockout on success
+        $this->lockoutService->clear2FALockout($request);
 
         // Authentication successful - log the user in
         Auth::login($user, $request->session()->get('login.remember', false));

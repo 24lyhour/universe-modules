@@ -9,6 +9,7 @@ class TwoFactorLockout extends Model
 {
     protected $fillable = [
         'ip_address',
+        'type',
         'user_id',
         'attempts',
         'locked_until',

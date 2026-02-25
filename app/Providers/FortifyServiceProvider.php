@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
+use App\Http\Responses\FailedTwoFactorLoginResponse;
 use App\Http\Responses\LogoutResponse;
 use App\Models\User;
 use App\Services\LoginSettingsService;
+use App\Services\TwoFactorLockoutService;
 use App\Services\UserOtpService;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -16,9 +18,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
-use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+use Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse as FailedTwoFactorLoginResponseContract;
 use Laravel\Fortify\Contracts\LogoutResponse as LogoutResponseContract;
-use Laravel\Fortify\Contracts\TwoFactorLoginResponse;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Fortify;
 
@@ -30,6 +31,7 @@ class FortifyServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(LogoutResponseContract::class, LogoutResponse::class);
+        $this->app->singleton(FailedTwoFactorLoginResponseContract::class, FailedTwoFactorLoginResponse::class);
     }
 
     /**
@@ -50,23 +52,54 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
         Fortify::createUsersUsing(CreateNewUser::class);
 
-        // Custom authentication to check if user is suspended
+        // Custom authentication with IP lockout
         Fortify::authenticateUsing(function (Request $request) {
+            $lockoutService = app(TwoFactorLockoutService::class);
+
+            // Debug: Always log the IP check
+            \Log::info('Login attempt from IP: ' . $request->ip() . ', is locked: ' . ($lockoutService->isLoginLocked($request) ? 'YES' : 'NO'));
+
+            // Check if IP is locked - BLOCK ALL login attempts
+            if ($lockoutService->isLoginLocked($request)) {
+                $lockoutInfo = $lockoutService->getLoginLockoutInfo($request);
+                \Log::info('Blocking login - IP is locked: ' . $request->ip());
+
+                throw ValidationException::withMessages([
+                    Fortify::username() => [$lockoutInfo['message']],
+                ]);
+            }
+
             $user = User::where('email', $request->email)->first();
 
-            if (!$user || !Hash::check($request->password, $user->password)) {
-                return null;
+            if (! $user || ! Hash::check($request->password, $user->password)) {
+                // Record failed attempt
+                $lockoutResult = $lockoutService->recordFailedLoginAttempt($request);
+
+                if ($lockoutResult['locked']) {
+                    throw ValidationException::withMessages([
+                        Fortify::username() => [$lockoutResult['message']],
+                    ]);
+                }
+
+                // Show remaining attempts in error message
+                $remainingAttempts = $lockoutResult['remaining_attempts'] ?? 0;
+                throw ValidationException::withMessages([
+                    Fortify::username() => ["Invalid credentials. {$remainingAttempts} attempt(s) remaining before lockout."],
+                ]);
             }
 
             // Check if user is suspended - block login
             if ($user->isSuspended()) {
                 throw ValidationException::withMessages([
                     Fortify::username() => [
-                        'Your account has been suspended. ' .
+                        'Your account has been suspended. '.
                         ($user->suspended_reason ? "Reason: {$user->suspended_reason}" : 'Please contact support.'),
                     ],
                 ]);
             }
+
+            // Clear lockout on successful authentication
+            $lockoutService->clearLoginLockout($request);
 
             return $user;
         });
@@ -78,6 +111,8 @@ class FortifyServiceProvider extends ServiceProvider
     private function configureViews(): void
     {
         Fortify::loginView(function (Request $request) {
+            $lockoutService = app(TwoFactorLockoutService::class);
+
             try {
                 $settingsService = app(LoginSettingsService::class);
                 $loginSettings = $settingsService->getSettings();
@@ -103,11 +138,21 @@ class FortifyServiceProvider extends ServiceProvider
                 $status = null;
             }
 
+            // Check login lockout status
+            $loginLockoutInfo = $lockoutService->getLoginLockoutInfo($request);
+
+            // Check 2FA lockout status - also block login if locked from 2FA
+            $twoFactorLockoutInfo = $lockoutService->get2FALockoutInfo($request);
+
+            // Use whichever lockout is active (prioritize 2FA lockout)
+            $lockoutInfo = $twoFactorLockoutInfo['locked'] ? $twoFactorLockoutInfo : $loginLockoutInfo;
+
             return Inertia::render('auth/Login', [
                 'canResetPassword' => Features::enabled(Features::resetPasswords()),
                 'canRegister' => Features::enabled(Features::registration()),
                 'status' => $status,
                 'loginSettings' => $loginSettings,
+                'lockout' => $lockoutInfo['locked'] ? $lockoutInfo : null,
             ]);
         });
 
@@ -129,6 +174,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::twoFactorChallengeView(function (Request $request) {
             $user = User::find($request->session()->get('login.id'));
             $method = $user?->two_factor_method ?? 'email';
+            $lockoutService = app(TwoFactorLockoutService::class);
 
             // If email method, send OTP automatically
             if ($user && $method === 'email') {
@@ -136,9 +182,13 @@ class FortifyServiceProvider extends ServiceProvider
                 $result = $otpService->sendOtp($user);
             }
 
+            // Check 2FA lockout status
+            $lockoutInfo = $lockoutService->get2FALockoutInfo($request);
+
             return Inertia::render('auth/TwoFactorChallenge', [
                 'twoFactorMethod' => $method,
                 'email' => $user ? $this->maskEmail($user->email) : null,
+                'lockout' => $lockoutInfo['locked'] ? $lockoutInfo : null,
             ]);
         });
 

@@ -5,7 +5,7 @@ import { Separator } from '@/components/ui/separator';
 import { toUrl, urlIsActive } from '@/lib/utils';
 import { edit as editAppearance } from '@/routes/appearance';
 import { edit as editProfile } from '@/routes/profile';
-import { show } from '@/routes/two-factor';
+import { show as showTwoFactor } from '@/routes/two-factor';
 import { edit as editPassword } from '@/routes/user-password';
 import { index as widgetsIndex } from '@/routes/widgets';
 import { type NavItem } from '@/types';
@@ -21,8 +21,8 @@ const sidebarNavItems: NavItem[] = [
         href: editPassword(),
     },
     {
-        title: 'Two-Factor Auth',
-        href: show(),
+        title: 'Two-Factor Authentication',
+        href: showTwoFactor(),
     },
     {
         title: 'Appearance',
@@ -40,7 +40,7 @@ const currentPath = typeof window !== undefined ? window.location.pathname : '';
 <template>
     <div class="px-4 py-6">
         <Heading
-            title="Settings"
+            title="Privacy & Security"
             description="Manage your profile and account settings"
         />
 
