@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import PasswordController from '@/actions/App/Http/Controllers/Settings/PasswordController';
 import InputError from '@/components/InputError.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
-import { edit } from '@/routes/user-password';
-import { Form, Head } from '@inertiajs/vue3';
+import { useForm, Head } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 import HeadingSmall from '@/components/HeadingSmall.vue';
 import { Button } from '@/components/ui/button';
@@ -15,9 +14,33 @@ import { type BreadcrumbItem } from '@/types';
 const breadcrumbItems: BreadcrumbItem[] = [
     {
         title: 'Password settings',
-        href: edit().url,
+        href: '/settings/password',
     },
 ];
+
+const form = useForm({
+    current_password: '',
+    password: '',
+    password_confirmation: '',
+});
+
+const recentlySuccessful = ref(false);
+
+const submit = () => {
+    form.put('/settings/password', {
+        preserveScroll: true,
+        onSuccess: () => {
+            form.reset();
+            recentlySuccessful.value = true;
+            setTimeout(() => {
+                recentlySuccessful.value = false;
+            }, 2000);
+        },
+        onError: () => {
+            form.reset('password', 'password_confirmation', 'current_password');
+        },
+    });
+};
 </script>
 
 <template>
@@ -31,44 +54,31 @@ const breadcrumbItems: BreadcrumbItem[] = [
                     description="Ensure your account is using a long, random password to stay secure"
                 />
 
-                <Form
-                    v-bind="PasswordController.update.form()"
-                    :options="{
-                        preserveScroll: true,
-                    }"
-                    reset-on-success
-                    :reset-on-error="[
-                        'password',
-                        'password_confirmation',
-                        'current_password',
-                    ]"
-                    class="space-y-6"
-                    v-slot="{ errors, processing, recentlySuccessful }"
-                >
+                <form @submit.prevent="submit" class="space-y-6">
                     <div class="grid gap-2">
                         <Label for="current_password">Current password</Label>
                         <Input
                             id="current_password"
-                            name="current_password"
+                            v-model="form.current_password"
                             type="password"
                             class="mt-1 block w-full"
                             autocomplete="current-password"
                             placeholder="Current password"
                         />
-                        <InputError :message="errors.current_password" />
+                        <InputError :message="form.errors.current_password" />
                     </div>
 
                     <div class="grid gap-2">
                         <Label for="password">New password</Label>
                         <Input
                             id="password"
-                            name="password"
+                            v-model="form.password"
                             type="password"
                             class="mt-1 block w-full"
                             autocomplete="new-password"
                             placeholder="New password"
                         />
-                        <InputError :message="errors.password" />
+                        <InputError :message="form.errors.password" />
                     </div>
 
                     <div class="grid gap-2">
@@ -77,18 +87,19 @@ const breadcrumbItems: BreadcrumbItem[] = [
                         >
                         <Input
                             id="password_confirmation"
-                            name="password_confirmation"
+                            v-model="form.password_confirmation"
                             type="password"
                             class="mt-1 block w-full"
                             autocomplete="new-password"
                             placeholder="Confirm password"
                         />
-                        <InputError :message="errors.password_confirmation" />
+                        <InputError :message="form.errors.password_confirmation" />
                     </div>
 
                     <div class="flex items-center gap-4">
                         <Button
-                            :disabled="processing"
+                            type="submit"
+                            :disabled="form.processing"
                             data-test="update-password-button"
                             >Save password</Button
                         >
@@ -107,7 +118,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
                             </p>
                         </Transition>
                     </div>
-                </Form>
+                </form>
             </div>
         </SettingsLayout>
     </AppLayout>

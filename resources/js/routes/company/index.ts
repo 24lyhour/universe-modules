@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::index
 * @see Modules/Company/app/Http/Controllers/CompanyController.php:22
@@ -42,43 +42,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::index
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:22
-* @route '/companies'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::index
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:22
-* @route '/companies'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::index
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:22
-* @route '/companies'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
 
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::create
@@ -125,43 +88,6 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Company\Http\Controllers\CompanyController::create
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:34
-* @route '/companies/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::create
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:34
-* @route '/companies/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::create
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:34
-* @route '/companies/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
-
-/**
 * @see \Modules\Company\Http\Controllers\CompanyController::store
 * @see Modules/Company/app/Http/Controllers/CompanyController.php:42
 * @route '/companies'
@@ -194,28 +120,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::store
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:42
-* @route '/companies'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::store
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:42
-* @route '/companies'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::show
@@ -280,43 +184,6 @@ show.head = (args: { company: string | number } | [company: string | number ] | 
 })
 
 /**
-* @see \Modules\Company\Http\Controllers\CompanyController::show
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:54
-* @route '/companies/{company}'
-*/
-const showForm = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::show
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:54
-* @route '/companies/{company}'
-*/
-showForm.get = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::show
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:54
-* @route '/companies/{company}'
-*/
-showForm.head = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\Company\Http\Controllers\CompanyController::edit
 * @see Modules/Company/app/Http/Controllers/CompanyController.php:70
 * @route '/companies/{company}/edit'
@@ -377,43 +244,6 @@ edit.head = (args: { company: string | number } | [company: string | number ] | 
     url: edit.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::edit
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:70
-* @route '/companies/{company}/edit'
-*/
-const editForm = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::edit
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:70
-* @route '/companies/{company}/edit'
-*/
-editForm.get = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::edit
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:70
-* @route '/companies/{company}/edit'
-*/
-editForm.head = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
 
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::update
@@ -478,53 +308,6 @@ update.patch = (args: { company: string | number } | [company: string | number ]
 })
 
 /**
-* @see \Modules\Company\Http\Controllers\CompanyController::update
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:86
-* @route '/companies/{company}'
-*/
-const updateForm = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::update
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:86
-* @route '/companies/{company}'
-*/
-updateForm.put = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::update
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:86
-* @route '/companies/{company}'
-*/
-updateForm.patch = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Company\Http\Controllers\CompanyController::destroy
 * @see Modules/Company/app/Http/Controllers/CompanyController.php:102
 * @route '/companies/{company}'
@@ -575,38 +358,6 @@ destroy.delete = (args: { company: string | number } | [company: string | number
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::destroy
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:102
-* @route '/companies/{company}'
-*/
-const destroyForm = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Company\Http\Controllers\CompanyController::destroy
-* @see Modules/Company/app/Http/Controllers/CompanyController.php:102
-* @route '/companies/{company}'
-*/
-destroyForm.delete = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const company = {
     index: Object.assign(index, index),
