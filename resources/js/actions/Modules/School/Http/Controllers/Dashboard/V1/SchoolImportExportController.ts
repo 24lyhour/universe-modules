@@ -356,7 +356,7 @@ downloadDepartmentsTemplate.form = downloadDepartmentsTemplateForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:79
 * @route '/dashboard/classrooms/export'
 */
 export const exportClassrooms = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -371,7 +371,7 @@ exportClassrooms.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:79
 * @route '/dashboard/classrooms/export'
 */
 exportClassrooms.url = (options?: RouteQueryOptions) => {
@@ -380,7 +380,7 @@ exportClassrooms.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:79
 * @route '/dashboard/classrooms/export'
 */
 exportClassrooms.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -390,7 +390,7 @@ exportClassrooms.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:79
 * @route '/dashboard/classrooms/export'
 */
 exportClassrooms.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -400,7 +400,7 @@ exportClassrooms.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:79
 * @route '/dashboard/classrooms/export'
 */
 const exportClassroomsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -410,7 +410,7 @@ const exportClassroomsForm = (options?: RouteQueryOptions): RouteFormDefinition<
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:79
 * @route '/dashboard/classrooms/export'
 */
 exportClassroomsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -420,7 +420,7 @@ exportClassroomsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'g
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:79
 * @route '/dashboard/classrooms/export'
 */
 exportClassroomsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -437,7 +437,7 @@ exportClassrooms.form = exportClassroomsForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:86
 * @route '/dashboard/classrooms/import'
 */
 export const showImportClassrooms = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -452,7 +452,7 @@ showImportClassrooms.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:86
 * @route '/dashboard/classrooms/import'
 */
 showImportClassrooms.url = (options?: RouteQueryOptions) => {
@@ -461,7 +461,7 @@ showImportClassrooms.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:86
 * @route '/dashboard/classrooms/import'
 */
 showImportClassrooms.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -471,7 +471,7 @@ showImportClassrooms.get = (options?: RouteQueryOptions): RouteDefinition<'get'>
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:86
 * @route '/dashboard/classrooms/import'
 */
 showImportClassrooms.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -481,7 +481,7 @@ showImportClassrooms.head = (options?: RouteQueryOptions): RouteDefinition<'head
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:86
 * @route '/dashboard/classrooms/import'
 */
 const showImportClassroomsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -491,7 +491,7 @@ const showImportClassroomsForm = (options?: RouteQueryOptions): RouteFormDefinit
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:86
 * @route '/dashboard/classrooms/import'
 */
 showImportClassroomsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -501,7 +501,7 @@ showImportClassroomsForm.get = (options?: RouteQueryOptions): RouteFormDefinitio
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:86
 * @route '/dashboard/classrooms/import'
 */
 showImportClassroomsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -518,7 +518,7 @@ showImportClassrooms.form = showImportClassroomsForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:96
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:98
 * @route '/dashboard/classrooms/import'
 */
 export const importClassrooms = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -533,7 +533,7 @@ importClassrooms.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:96
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:98
 * @route '/dashboard/classrooms/import'
 */
 importClassrooms.url = (options?: RouteQueryOptions) => {
@@ -542,7 +542,7 @@ importClassrooms.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:96
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:98
 * @route '/dashboard/classrooms/import'
 */
 importClassrooms.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -552,7 +552,7 @@ importClassrooms.post = (options?: RouteQueryOptions): RouteDefinition<'post'> =
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:96
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:98
 * @route '/dashboard/classrooms/import'
 */
 const importClassroomsForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -562,7 +562,7 @@ const importClassroomsForm = (options?: RouteQueryOptions): RouteFormDefinition<
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:96
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:98
 * @route '/dashboard/classrooms/import'
 */
 importClassroomsForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -574,7 +574,7 @@ importClassrooms.form = importClassroomsForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:91
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:93
 * @route '/dashboard/classrooms/import/preview'
 */
 export const previewClassrooms = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -589,7 +589,7 @@ previewClassrooms.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:91
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:93
 * @route '/dashboard/classrooms/import/preview'
 */
 previewClassrooms.url = (options?: RouteQueryOptions) => {
@@ -598,7 +598,7 @@ previewClassrooms.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:91
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:93
 * @route '/dashboard/classrooms/import/preview'
 */
 previewClassrooms.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -608,7 +608,7 @@ previewClassrooms.post = (options?: RouteQueryOptions): RouteDefinition<'post'> 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:91
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:93
 * @route '/dashboard/classrooms/import/preview'
 */
 const previewClassroomsForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -618,7 +618,7 @@ const previewClassroomsForm = (options?: RouteQueryOptions): RouteFormDefinition
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewClassrooms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:91
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:93
 * @route '/dashboard/classrooms/import/preview'
 */
 previewClassroomsForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -630,7 +630,7 @@ previewClassrooms.form = previewClassroomsForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadClassroomsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:103
 * @route '/dashboard/classrooms/template'
 */
 export const downloadClassroomsTemplate = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -645,7 +645,7 @@ downloadClassroomsTemplate.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadClassroomsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:103
 * @route '/dashboard/classrooms/template'
 */
 downloadClassroomsTemplate.url = (options?: RouteQueryOptions) => {
@@ -654,7 +654,7 @@ downloadClassroomsTemplate.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadClassroomsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:103
 * @route '/dashboard/classrooms/template'
 */
 downloadClassroomsTemplate.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -664,7 +664,7 @@ downloadClassroomsTemplate.get = (options?: RouteQueryOptions): RouteDefinition<
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadClassroomsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:103
 * @route '/dashboard/classrooms/template'
 */
 downloadClassroomsTemplate.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -674,7 +674,7 @@ downloadClassroomsTemplate.head = (options?: RouteQueryOptions): RouteDefinition
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadClassroomsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:103
 * @route '/dashboard/classrooms/template'
 */
 const downloadClassroomsTemplateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -684,7 +684,7 @@ const downloadClassroomsTemplateForm = (options?: RouteQueryOptions): RouteFormD
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadClassroomsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:103
 * @route '/dashboard/classrooms/template'
 */
 downloadClassroomsTemplateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -694,7 +694,7 @@ downloadClassroomsTemplateForm.get = (options?: RouteQueryOptions): RouteFormDef
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadClassroomsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:103
 * @route '/dashboard/classrooms/template'
 */
 downloadClassroomsTemplateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -711,7 +711,7 @@ downloadClassroomsTemplate.form = downloadClassroomsTemplateForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:117
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:119
 * @route '/dashboard/courses/export'
 */
 export const exportCourses = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -726,7 +726,7 @@ exportCourses.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:117
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:119
 * @route '/dashboard/courses/export'
 */
 exportCourses.url = (options?: RouteQueryOptions) => {
@@ -735,7 +735,7 @@ exportCourses.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:117
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:119
 * @route '/dashboard/courses/export'
 */
 exportCourses.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -745,7 +745,7 @@ exportCourses.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:117
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:119
 * @route '/dashboard/courses/export'
 */
 exportCourses.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -755,7 +755,7 @@ exportCourses.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:117
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:119
 * @route '/dashboard/courses/export'
 */
 const exportCoursesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -765,7 +765,7 @@ const exportCoursesForm = (options?: RouteQueryOptions): RouteFormDefinition<'ge
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:117
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:119
 * @route '/dashboard/courses/export'
 */
 exportCoursesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -775,7 +775,7 @@ exportCoursesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:117
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:119
 * @route '/dashboard/courses/export'
 */
 exportCoursesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -792,7 +792,7 @@ exportCourses.form = exportCoursesForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:124
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:126
 * @route '/dashboard/courses/import'
 */
 export const showImportCourses = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -807,7 +807,7 @@ showImportCourses.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:124
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:126
 * @route '/dashboard/courses/import'
 */
 showImportCourses.url = (options?: RouteQueryOptions) => {
@@ -816,7 +816,7 @@ showImportCourses.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:124
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:126
 * @route '/dashboard/courses/import'
 */
 showImportCourses.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -826,7 +826,7 @@ showImportCourses.get = (options?: RouteQueryOptions): RouteDefinition<'get'> =>
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:124
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:126
 * @route '/dashboard/courses/import'
 */
 showImportCourses.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -836,7 +836,7 @@ showImportCourses.head = (options?: RouteQueryOptions): RouteDefinition<'head'> 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:124
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:126
 * @route '/dashboard/courses/import'
 */
 const showImportCoursesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -846,7 +846,7 @@ const showImportCoursesForm = (options?: RouteQueryOptions): RouteFormDefinition
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:124
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:126
 * @route '/dashboard/courses/import'
 */
 showImportCoursesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -856,7 +856,7 @@ showImportCoursesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:124
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:126
 * @route '/dashboard/courses/import'
 */
 showImportCoursesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -873,7 +873,7 @@ showImportCourses.form = showImportCoursesForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:136
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:138
 * @route '/dashboard/courses/import'
 */
 export const importCourses = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -888,7 +888,7 @@ importCourses.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:136
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:138
 * @route '/dashboard/courses/import'
 */
 importCourses.url = (options?: RouteQueryOptions) => {
@@ -897,7 +897,7 @@ importCourses.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:136
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:138
 * @route '/dashboard/courses/import'
 */
 importCourses.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -907,7 +907,7 @@ importCourses.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:136
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:138
 * @route '/dashboard/courses/import'
 */
 const importCoursesForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -917,7 +917,7 @@ const importCoursesForm = (options?: RouteQueryOptions): RouteFormDefinition<'po
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:136
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:138
 * @route '/dashboard/courses/import'
 */
 importCoursesForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -929,7 +929,7 @@ importCourses.form = importCoursesForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:131
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:133
 * @route '/dashboard/courses/import/preview'
 */
 export const previewCourses = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -944,7 +944,7 @@ previewCourses.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:131
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:133
 * @route '/dashboard/courses/import/preview'
 */
 previewCourses.url = (options?: RouteQueryOptions) => {
@@ -953,7 +953,7 @@ previewCourses.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:131
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:133
 * @route '/dashboard/courses/import/preview'
 */
 previewCourses.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -963,7 +963,7 @@ previewCourses.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:131
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:133
 * @route '/dashboard/courses/import/preview'
 */
 const previewCoursesForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -973,7 +973,7 @@ const previewCoursesForm = (options?: RouteQueryOptions): RouteFormDefinition<'p
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewCourses
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:131
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:133
 * @route '/dashboard/courses/import/preview'
 */
 previewCoursesForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -985,7 +985,7 @@ previewCourses.form = previewCoursesForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadCoursesTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:141
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:143
 * @route '/dashboard/courses/template'
 */
 export const downloadCoursesTemplate = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1000,7 +1000,7 @@ downloadCoursesTemplate.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadCoursesTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:141
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:143
 * @route '/dashboard/courses/template'
 */
 downloadCoursesTemplate.url = (options?: RouteQueryOptions) => {
@@ -1009,7 +1009,7 @@ downloadCoursesTemplate.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadCoursesTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:141
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:143
 * @route '/dashboard/courses/template'
 */
 downloadCoursesTemplate.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1019,7 +1019,7 @@ downloadCoursesTemplate.get = (options?: RouteQueryOptions): RouteDefinition<'ge
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadCoursesTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:141
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:143
 * @route '/dashboard/courses/template'
 */
 downloadCoursesTemplate.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1029,7 +1029,7 @@ downloadCoursesTemplate.head = (options?: RouteQueryOptions): RouteDefinition<'h
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadCoursesTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:141
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:143
 * @route '/dashboard/courses/template'
 */
 const downloadCoursesTemplateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1039,7 +1039,7 @@ const downloadCoursesTemplateForm = (options?: RouteQueryOptions): RouteFormDefi
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadCoursesTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:141
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:143
 * @route '/dashboard/courses/template'
 */
 downloadCoursesTemplateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1049,7 +1049,7 @@ downloadCoursesTemplateForm.get = (options?: RouteQueryOptions): RouteFormDefini
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadCoursesTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:141
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:143
 * @route '/dashboard/courses/template'
 */
 downloadCoursesTemplateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1066,7 +1066,7 @@ downloadCoursesTemplate.form = downloadCoursesTemplateForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:158
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:161
 * @route '/dashboard/programs/export'
 */
 export const exportPrograms = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1081,7 +1081,7 @@ exportPrograms.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:158
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:161
 * @route '/dashboard/programs/export'
 */
 exportPrograms.url = (options?: RouteQueryOptions) => {
@@ -1090,7 +1090,7 @@ exportPrograms.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:158
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:161
 * @route '/dashboard/programs/export'
 */
 exportPrograms.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1100,7 +1100,7 @@ exportPrograms.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:158
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:161
 * @route '/dashboard/programs/export'
 */
 exportPrograms.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1110,7 +1110,7 @@ exportPrograms.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:158
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:161
 * @route '/dashboard/programs/export'
 */
 const exportProgramsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1120,7 +1120,7 @@ const exportProgramsForm = (options?: RouteQueryOptions): RouteFormDefinition<'g
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:158
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:161
 * @route '/dashboard/programs/export'
 */
 exportProgramsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1130,7 +1130,7 @@ exportProgramsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:158
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:161
 * @route '/dashboard/programs/export'
 */
 exportProgramsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1147,7 +1147,7 @@ exportPrograms.form = exportProgramsForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:165
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
 * @route '/dashboard/programs/import'
 */
 export const showImportPrograms = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1162,7 +1162,7 @@ showImportPrograms.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:165
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
 * @route '/dashboard/programs/import'
 */
 showImportPrograms.url = (options?: RouteQueryOptions) => {
@@ -1171,7 +1171,7 @@ showImportPrograms.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:165
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
 * @route '/dashboard/programs/import'
 */
 showImportPrograms.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1181,7 +1181,7 @@ showImportPrograms.get = (options?: RouteQueryOptions): RouteDefinition<'get'> =
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:165
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
 * @route '/dashboard/programs/import'
 */
 showImportPrograms.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1191,7 +1191,7 @@ showImportPrograms.head = (options?: RouteQueryOptions): RouteDefinition<'head'>
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:165
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
 * @route '/dashboard/programs/import'
 */
 const showImportProgramsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1201,7 +1201,7 @@ const showImportProgramsForm = (options?: RouteQueryOptions): RouteFormDefinitio
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:165
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
 * @route '/dashboard/programs/import'
 */
 showImportProgramsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1211,7 +1211,7 @@ showImportProgramsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:165
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
 * @route '/dashboard/programs/import'
 */
 showImportProgramsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1228,7 +1228,7 @@ showImportPrograms.form = showImportProgramsForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:177
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:180
 * @route '/dashboard/programs/import'
 */
 export const importPrograms = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -1243,7 +1243,7 @@ importPrograms.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:177
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:180
 * @route '/dashboard/programs/import'
 */
 importPrograms.url = (options?: RouteQueryOptions) => {
@@ -1252,7 +1252,7 @@ importPrograms.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:177
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:180
 * @route '/dashboard/programs/import'
 */
 importPrograms.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -1262,7 +1262,7 @@ importPrograms.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:177
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:180
 * @route '/dashboard/programs/import'
 */
 const importProgramsForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1272,7 +1272,7 @@ const importProgramsForm = (options?: RouteQueryOptions): RouteFormDefinition<'p
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:177
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:180
 * @route '/dashboard/programs/import'
 */
 importProgramsForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1284,7 +1284,7 @@ importPrograms.form = importProgramsForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:172
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:175
 * @route '/dashboard/programs/import/preview'
 */
 export const previewPrograms = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -1299,7 +1299,7 @@ previewPrograms.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:172
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:175
 * @route '/dashboard/programs/import/preview'
 */
 previewPrograms.url = (options?: RouteQueryOptions) => {
@@ -1308,7 +1308,7 @@ previewPrograms.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:172
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:175
 * @route '/dashboard/programs/import/preview'
 */
 previewPrograms.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -1318,7 +1318,7 @@ previewPrograms.post = (options?: RouteQueryOptions): RouteDefinition<'post'> =>
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:172
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:175
 * @route '/dashboard/programs/import/preview'
 */
 const previewProgramsForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1328,7 +1328,7 @@ const previewProgramsForm = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewPrograms
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:172
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:175
 * @route '/dashboard/programs/import/preview'
 */
 previewProgramsForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1340,7 +1340,7 @@ previewPrograms.form = previewProgramsForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadProgramsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:182
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:185
 * @route '/dashboard/programs/template'
 */
 export const downloadProgramsTemplate = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1355,7 +1355,7 @@ downloadProgramsTemplate.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadProgramsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:182
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:185
 * @route '/dashboard/programs/template'
 */
 downloadProgramsTemplate.url = (options?: RouteQueryOptions) => {
@@ -1364,7 +1364,7 @@ downloadProgramsTemplate.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadProgramsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:182
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:185
 * @route '/dashboard/programs/template'
 */
 downloadProgramsTemplate.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1374,7 +1374,7 @@ downloadProgramsTemplate.get = (options?: RouteQueryOptions): RouteDefinition<'g
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadProgramsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:182
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:185
 * @route '/dashboard/programs/template'
 */
 downloadProgramsTemplate.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1384,7 +1384,7 @@ downloadProgramsTemplate.head = (options?: RouteQueryOptions): RouteDefinition<'
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadProgramsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:182
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:185
 * @route '/dashboard/programs/template'
 */
 const downloadProgramsTemplateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1394,7 +1394,7 @@ const downloadProgramsTemplateForm = (options?: RouteQueryOptions): RouteFormDef
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadProgramsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:182
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:185
 * @route '/dashboard/programs/template'
 */
 downloadProgramsTemplateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1404,7 +1404,7 @@ downloadProgramsTemplateForm.get = (options?: RouteQueryOptions): RouteFormDefin
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadProgramsTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:182
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:185
 * @route '/dashboard/programs/template'
 */
 downloadProgramsTemplateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1421,7 +1421,7 @@ downloadProgramsTemplate.form = downloadProgramsTemplateForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:198
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:203
 * @route '/dashboard/equipment/export'
 */
 export const exportEquipment = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1436,7 +1436,7 @@ exportEquipment.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:198
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:203
 * @route '/dashboard/equipment/export'
 */
 exportEquipment.url = (options?: RouteQueryOptions) => {
@@ -1445,7 +1445,7 @@ exportEquipment.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:198
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:203
 * @route '/dashboard/equipment/export'
 */
 exportEquipment.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1455,7 +1455,7 @@ exportEquipment.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => (
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:198
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:203
 * @route '/dashboard/equipment/export'
 */
 exportEquipment.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1465,7 +1465,7 @@ exportEquipment.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =>
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:198
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:203
 * @route '/dashboard/equipment/export'
 */
 const exportEquipmentForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1475,7 +1475,7 @@ const exportEquipmentForm = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:198
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:203
 * @route '/dashboard/equipment/export'
 */
 exportEquipmentForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1485,7 +1485,7 @@ exportEquipmentForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'ge
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:198
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:203
 * @route '/dashboard/equipment/export'
 */
 exportEquipmentForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1502,7 +1502,7 @@ exportEquipment.form = exportEquipmentForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:210
 * @route '/dashboard/equipment/import'
 */
 export const showImportEquipment = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1517,7 +1517,7 @@ showImportEquipment.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:210
 * @route '/dashboard/equipment/import'
 */
 showImportEquipment.url = (options?: RouteQueryOptions) => {
@@ -1526,7 +1526,7 @@ showImportEquipment.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:210
 * @route '/dashboard/equipment/import'
 */
 showImportEquipment.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1536,7 +1536,7 @@ showImportEquipment.get = (options?: RouteQueryOptions): RouteDefinition<'get'> 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:210
 * @route '/dashboard/equipment/import'
 */
 showImportEquipment.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1546,7 +1546,7 @@ showImportEquipment.head = (options?: RouteQueryOptions): RouteDefinition<'head'
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:210
 * @route '/dashboard/equipment/import'
 */
 const showImportEquipmentForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1556,7 +1556,7 @@ const showImportEquipmentForm = (options?: RouteQueryOptions): RouteFormDefiniti
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:210
 * @route '/dashboard/equipment/import'
 */
 showImportEquipmentForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1566,7 +1566,7 @@ showImportEquipmentForm.get = (options?: RouteQueryOptions): RouteFormDefinition
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::showImportEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:210
 * @route '/dashboard/equipment/import'
 */
 showImportEquipmentForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1583,7 +1583,7 @@ showImportEquipment.form = showImportEquipmentForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:217
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
 * @route '/dashboard/equipment/import'
 */
 export const importEquipment = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -1598,7 +1598,7 @@ importEquipment.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:217
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
 * @route '/dashboard/equipment/import'
 */
 importEquipment.url = (options?: RouteQueryOptions) => {
@@ -1607,7 +1607,7 @@ importEquipment.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:217
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
 * @route '/dashboard/equipment/import'
 */
 importEquipment.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -1617,7 +1617,7 @@ importEquipment.post = (options?: RouteQueryOptions): RouteDefinition<'post'> =>
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:217
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
 * @route '/dashboard/equipment/import'
 */
 const importEquipmentForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1627,7 +1627,7 @@ const importEquipmentForm = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:217
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
 * @route '/dashboard/equipment/import'
 */
 importEquipmentForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1639,7 +1639,7 @@ importEquipment.form = importEquipmentForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:212
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:217
 * @route '/dashboard/equipment/import/preview'
 */
 export const previewEquipment = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -1654,7 +1654,7 @@ previewEquipment.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:212
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:217
 * @route '/dashboard/equipment/import/preview'
 */
 previewEquipment.url = (options?: RouteQueryOptions) => {
@@ -1663,7 +1663,7 @@ previewEquipment.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:212
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:217
 * @route '/dashboard/equipment/import/preview'
 */
 previewEquipment.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -1673,7 +1673,7 @@ previewEquipment.post = (options?: RouteQueryOptions): RouteDefinition<'post'> =
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:212
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:217
 * @route '/dashboard/equipment/import/preview'
 */
 const previewEquipmentForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1683,7 +1683,7 @@ const previewEquipmentForm = (options?: RouteQueryOptions): RouteFormDefinition<
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::previewEquipment
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:212
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:217
 * @route '/dashboard/equipment/import/preview'
 */
 previewEquipmentForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1695,7 +1695,7 @@ previewEquipment.form = previewEquipmentForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadEquipmentTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:227
 * @route '/dashboard/equipment/template'
 */
 export const downloadEquipmentTemplate = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1710,7 +1710,7 @@ downloadEquipmentTemplate.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadEquipmentTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:227
 * @route '/dashboard/equipment/template'
 */
 downloadEquipmentTemplate.url = (options?: RouteQueryOptions) => {
@@ -1719,7 +1719,7 @@ downloadEquipmentTemplate.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadEquipmentTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:227
 * @route '/dashboard/equipment/template'
 */
 downloadEquipmentTemplate.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1729,7 +1729,7 @@ downloadEquipmentTemplate.get = (options?: RouteQueryOptions): RouteDefinition<'
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadEquipmentTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:227
 * @route '/dashboard/equipment/template'
 */
 downloadEquipmentTemplate.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1739,7 +1739,7 @@ downloadEquipmentTemplate.head = (options?: RouteQueryOptions): RouteDefinition<
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadEquipmentTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:227
 * @route '/dashboard/equipment/template'
 */
 const downloadEquipmentTemplateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1749,7 +1749,7 @@ const downloadEquipmentTemplateForm = (options?: RouteQueryOptions): RouteFormDe
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadEquipmentTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:227
 * @route '/dashboard/equipment/template'
 */
 downloadEquipmentTemplateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1759,7 +1759,7 @@ downloadEquipmentTemplateForm.get = (options?: RouteQueryOptions): RouteFormDefi
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::downloadEquipmentTemplate
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:222
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:227
 * @route '/dashboard/equipment/template'
 */
 downloadEquipmentTemplateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

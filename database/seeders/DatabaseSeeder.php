@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\School\Database\Seeders\SchoolDatabaseSeeder;
+use Modules\Outlet\Database\Seeders\OutletDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,8 +25,8 @@ class DatabaseSeeder extends Seeder
 
         // Module seeders
         $this->call([
-            SchoolDatabaseSeeder::class,
-            OutletDatabaseSeeder::class,
+SchoolDatabaseSeeder::class,
+OutletDatabaseSeeder::class,
             // \Modules\Blog\Database\Seeders\BlogDatabaseSeeder::class,
             // \Modules\Company\Database\Seeders\CompanyDatabaseSeeder::class,
             // \Modules\Customer\Database\Seeders\CustomerDatabaseSeeder::class,

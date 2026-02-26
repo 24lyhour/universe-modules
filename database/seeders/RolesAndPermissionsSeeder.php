@@ -108,6 +108,16 @@ class RolesAndPermissionsSeeder extends Seeder
             'schools.manage_departments',
             'schools.manage_programs',
             'schools.view_statistics',
+            'departments.export',
+            'departments.import',
+            'classrooms.export',
+            'classrooms.import',
+            'courses.export',
+            'courses.import',
+            'programs.export',
+            'programs.import',
+            'equipment.export',
+            'equipment.import',
 
             // User specific
             'users.assign_roles',
