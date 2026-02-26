@@ -93,6 +93,16 @@ login.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
+* @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticatedSessionController::login
+* @see vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticatedSessionController.php:56
+* @route '/two-factor-challenge'
+*/
+loginForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: login.url(options),
+    method: 'post',
+})
+
+/**
 * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::enable
 * @see vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:21
 * @route '/user/two-factor-authentication'
@@ -650,6 +660,62 @@ showForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 show.form = showForm
 
+/**
+* @see \App\Http\Controllers\QrShareController::qrShare
+* @see app/Http/Controllers/QrShareController.php:15
+* @route '/settings/two-factor/qr-share'
+*/
+export const qrShare = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: qrShare.url(options),
+    method: 'post',
+})
+
+qrShare.definition = {
+    methods: ["post"],
+    url: '/settings/two-factor/qr-share',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\QrShareController::qrShare
+* @see app/Http/Controllers/QrShareController.php:15
+* @route '/settings/two-factor/qr-share'
+*/
+qrShare.url = (options?: RouteQueryOptions) => {
+    return qrShare.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\QrShareController::qrShare
+* @see app/Http/Controllers/QrShareController.php:15
+* @route '/settings/two-factor/qr-share'
+*/
+qrShare.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: qrShare.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\QrShareController::qrShare
+* @see app/Http/Controllers/QrShareController.php:15
+* @route '/settings/two-factor/qr-share'
+*/
+const qrShareForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: qrShare.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\QrShareController::qrShare
+* @see app/Http/Controllers/QrShareController.php:15
+* @route '/settings/two-factor/qr-share'
+*/
+qrShareForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: qrShare.url(options),
+    method: 'post',
+})
+
+qrShare.form = qrShareForm
+
 const twoFactor = {
     login: Object.assign(login, login),
     enable: Object.assign(enable, enable),
@@ -662,6 +728,7 @@ const twoFactor = {
     email: Object.assign(email, email),
     show: Object.assign(show, show),
     method: Object.assign(method, method),
+    qrShare: Object.assign(qrShare, qrShare),
 }
 
 export default twoFactor
