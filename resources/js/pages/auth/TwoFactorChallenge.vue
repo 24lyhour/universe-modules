@@ -253,15 +253,43 @@ const submitRecovery = () => {
     recoveryForm.post(route('two-factor.login'));
 };
 
-// Start with cooldown for email (code was already sent)
-onMounted(() => {
+// Auto-send email code on mount
+const initialSending = ref<boolean>(false);
+
+onMounted(async () => {
     // Initialize lockout from props if present
     if (props.lockout?.locked && props.lockout.remaining_minutes > 0) {
         startLockoutCountdown(props.lockout.remaining_minutes);
+        return;
     }
 
-    if (props.twoFactorMethod === 'email') {
-        startCooldown(60);
+    // Auto-send email code when page loads
+    if (props.twoFactorMethod === 'email' && !isLocked.value) {
+        initialSending.value = true;
+        try {
+            const response = await axios.post('/two-factor/email/send');
+            if (response.data.success) {
+                startCooldown(60);
+            } else {
+                errorMessage.value = response.data.message || 'Failed to send code';
+                if (response.data.retry_after) {
+                    startCooldown(response.data.retry_after);
+                }
+            }
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error) && error.response?.data) {
+                errorMessage.value = error.response.data.message;
+                if (error.response.data.locked && error.response.data.remaining_minutes) {
+                    startLockoutCountdown(error.response.data.remaining_minutes);
+                } else if (error.response.data.retry_after) {
+                    startCooldown(error.response.data.retry_after);
+                }
+            } else {
+                errorMessage.value = 'Failed to send verification code.';
+            }
+        } finally {
+            initialSending.value = false;
+        }
     }
 });
 
@@ -366,10 +394,18 @@ const maskedEmail = computed(() => {
                         </div>
 
                         <CardTitle class="text-2xl font-bold tracking-tight">
-                            {{ authConfigContent.title }}
+                            {{ initialSending ? 'Sending Code...' : authConfigContent.title }}
                         </CardTitle>
                         <CardDescription class="text-base mt-2 px-4">
-                            {{ authConfigContent.description }}
+                            <template v-if="initialSending">
+                                <span class="flex items-center justify-center gap-2">
+                                    <RefreshCw class="h-4 w-4 animate-spin" />
+                                    Please wait while we send the verification code to your email...
+                                </span>
+                            </template>
+                            <template v-else>
+                                {{ authConfigContent.description }}
+                            </template>
                         </CardDescription>
                     </CardHeader>
 
