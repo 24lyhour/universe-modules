@@ -9,7 +9,7 @@ import {
 import { edit } from '@/routes/profile';
 import type { User } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { LogOut, Settings } from 'lucide-vue-next';
+import { LogOut, Settings, User as UserIcon } from 'lucide-vue-next';
 
 interface Props {
     user: User;
@@ -28,12 +28,23 @@ const handleLogoutClick = () => {
 
 <template>
     <DropdownMenuLabel class="p-0 font-normal">
-        <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+        <Link
+            :href="edit()"
+            class="flex items-center gap-2 px-1 py-1.5 text-left text-sm rounded-sm hover:bg-accent transition-colors"
+        >
             <UserInfo :user="user" :show-email="true" />
-        </div>
+        </Link>
     </DropdownMenuLabel>
     <DropdownMenuSeparator />
     <DropdownMenuGroup>
+        <!-- Profile -->
+        <DropdownMenuItem :as-child="true">
+            <Link class="block w-full" :href="edit()" prefetch as="button">
+                <UserIcon class="mr-2 h-4 w-4" />
+                Profile
+            </Link>
+        </DropdownMenuItem>
+        <!-- Settings -->
         <DropdownMenuItem :as-child="true">
             <Link class="block w-full" :href="edit()" prefetch as="button">
                 <Settings class="mr-2 h-4 w-4" />
