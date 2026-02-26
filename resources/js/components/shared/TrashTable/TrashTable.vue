@@ -287,7 +287,7 @@ const paginationInfo = computed(() => {
         :title="modalTitle"
         :description="modalDescription"
         :confirm-text="actionType === 'restore' ? 'Restore' : 'Delete Permanently'"
-        :variant="actionType === 'restore' ? 'default' : 'destructive'"
+        :variant="actionType === 'restore' ? 'default' : 'danger'"
         :loading="isLoading"
         @confirm="confirmAction"
         @cancel="closeConfirmModal"
