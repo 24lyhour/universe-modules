@@ -24,15 +24,15 @@ class DatabaseSeeder extends Seeder
         // Module seeders
         $this->call([
             \Modules\School\Database\Seeders\SchoolDatabaseSeeder::class,
+            \Modules\Outlet\Database\Seeders\OutletDatabaseSeeder::class,
             // \Modules\Blog\Database\Seeders\BlogDatabaseSeeder::class,
             // \Modules\Company\Database\Seeders\CompanyDatabaseSeeder::class,
-            \Modules\Customer\Database\Seeders\CustomerDatabaseSeeder::class,
-            \Modules\Employee\Database\Seeders\EmployeeDatabaseSeeder::class,
+            // \Modules\Customer\Database\Seeders\CustomerDatabaseSeeder::class,
+            // \Modules\Employee\Database\Seeders\EmployeeDatabaseSeeder::class,
             // \Modules\Hotel\Database\Seeders\HotelDatabaseSeeder::class,
-            \Modules\Menu\Database\Seeders\MenuDatabaseSeeder::class,
-            \Modules\Outlet\Database\Seeders\OutletDatabaseSeeder::class,
-            \Modules\Product\Database\Seeders\ProductDatabaseSeeder::class,
-            \Modules\Porfolio\Database\Seeders\PorfolioDatabaseSeeder::class,
+            // \Modules\Menu\Database\Seeders\MenuDatabaseSeeder::class,
+            // \Modules\Product\Database\Seeders\ProductDatabaseSeeder::class,
+            // \Modules\Porfolio\Database\Seeders\PorfolioDatabaseSeeder::class,
         ]);
     }
 }
