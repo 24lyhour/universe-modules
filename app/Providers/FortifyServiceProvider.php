@@ -172,14 +172,25 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::registerView(fn () => Inertia::render('auth/Register'));
 
         Fortify::twoFactorChallengeView(function (Request $request) {
-            $user = User::find($request->session()->get('login.id'));
+            $loginId = $request->session()->get('login.id');
+            \Log::info('2FA Challenge View - login.id from session: ' . ($loginId ?? 'NULL'));
+
+            $user = User::find($loginId);
+            \Log::info('2FA Challenge View - User found: ' . ($user ? 'YES (ID: ' . $user->id . ')' : 'NO'));
+
             $method = $user?->two_factor_method ?? 'email';
+            \Log::info('2FA Challenge View - Method: ' . $method);
+
             $lockoutService = app(TwoFactorLockoutService::class);
 
             // If email method, send OTP automatically
             if ($user && $method === 'email') {
+                \Log::info('2FA Challenge View - Attempting to send OTP email');
                 $otpService = app(UserOtpService::class);
                 $result = $otpService->sendOtp($user);
+                \Log::info('2FA Challenge View - OTP send result: ' . json_encode($result));
+            } else {
+                \Log::info('2FA Challenge View - NOT sending email. User: ' . ($user ? 'exists' : 'null') . ', Method: ' . $method);
             }
 
             // Check 2FA lockout status
