@@ -1,4 +1,5 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import trash from './trash'
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::create
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:51
@@ -767,6 +768,7 @@ destroyForm.delete = (args: { employee_type: string | number } | [employee_type:
 destroy.form = destroyForm
 
 const employeeTypes = {
+    trash: Object.assign(trash, trash),
     create: Object.assign(create, create),
     store: Object.assign(store, store),
     index: Object.assign(index, index),

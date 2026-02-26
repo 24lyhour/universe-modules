@@ -19,3 +19,9 @@ export type { MediaItem } from './MediaLibrary';
 // Searchable Select
 export { SearchableSelect } from './SearchableSelect';
 export type { SearchableSelectOption } from './SearchableSelect';
+
+// Trash Table
+export { TrashTable } from './TrashTable';
+
+// Button Group
+export { ButtonGroup } from './ButtonGroup';
