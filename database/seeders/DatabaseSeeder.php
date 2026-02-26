@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Core seeders
+        // Core project seeders
         $this->call([
             RolesAndPermissionsSeeder::class, // Must run before UserSeeder
             UserSeeder::class,
@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
 
         // Module seeders
         $this->call([
-            \Modules\School\Database\Seeders\SchoolDatabaseSeeder::class,
-            \Modules\Outlet\Database\Seeders\OutletDatabaseSeeder::class,
+            SchoolDatabaseSeeder::class,
+            OutletDatabaseSeeder::class,
             // \Modules\Blog\Database\Seeders\BlogDatabaseSeeder::class,
             // \Modules\Company\Database\Seeders\CompanyDatabaseSeeder::class,
             // \Modules\Customer\Database\Seeders\CustomerDatabaseSeeder::class,
