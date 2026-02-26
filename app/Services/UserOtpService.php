@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\User;
 use App\Notifications\TwoFactorCodeNotification;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UserOtpService
 {
@@ -59,7 +60,20 @@ class UserOtpService
         ]);
 
         // Send email notification immediately (not queued)
-        $user->notifyNow(new TwoFactorCodeNotification($code, $this->expirationMinutes));
+        try {
+            Log::info('Sending 2FA email to: ' . $user->email);
+            $user->notifyNow(new TwoFactorCodeNotification($code, $this->expirationMinutes));
+            Log::info('2FA email sent successfully to: ' . $user->email);
+        } catch (\Exception $e) {
+            Log::error('Failed to send 2FA email: ' . $e->getMessage());
+            Log::error('Mail config: ' . json_encode(config('mail')));
+
+            return [
+                'success' => false,
+                'message' => 'Failed to send verification email. Please try again.',
+                'error' => $e->getMessage(),
+            ];
+        }
 
         return [
             'success' => true,
