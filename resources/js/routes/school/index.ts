@@ -1,10 +1,10 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 import departments from './departments'
 import classrooms from './classrooms'
-import schools from './schools'
-import programs from './programs'
 import courses from './courses'
+import programs from './programs'
 import equipment from './equipment'
+import schools from './schools'
 /**
 * @see \Modules\School\Http\Controllers\SchoolController::index
 * @see Modules/School/app/Http/Controllers/SchoolController.php:13
@@ -624,10 +624,10 @@ const school = {
     edit: Object.assign(edit, edit),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),
-    schools: Object.assign(schools, schools),
-    programs: Object.assign(programs, programs),
     courses: Object.assign(courses, courses),
+    programs: Object.assign(programs, programs),
     equipment: Object.assign(equipment, equipment),
+    schools: Object.assign(schools, schools),
 }
 
 export default school

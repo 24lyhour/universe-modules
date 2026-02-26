@@ -1,4 +1,5 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import importMethod7367d2 from './import'
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::qrCode
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:147
@@ -103,6 +104,249 @@ qrCodeForm.head = (args: { classroom: number | { id: number } } | [classroom: nu
 })
 
 qrCode.form = qrCodeForm
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @route '/dashboard/classrooms/export'
+*/
+export const exportMethod = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: exportMethod.url(options),
+    method: 'get',
+})
+
+exportMethod.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/classrooms/export',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @route '/dashboard/classrooms/export'
+*/
+exportMethod.url = (options?: RouteQueryOptions) => {
+    return exportMethod.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @route '/dashboard/classrooms/export'
+*/
+exportMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @route '/dashboard/classrooms/export'
+*/
+exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: exportMethod.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @route '/dashboard/classrooms/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @route '/dashboard/classrooms/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:77
+* @route '/dashboard/classrooms/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @route '/dashboard/classrooms/import'
+*/
+export const importMethod = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: importMethod.url(options),
+    method: 'get',
+})
+
+importMethod.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/classrooms/import',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @route '/dashboard/classrooms/import'
+*/
+importMethod.url = (options?: RouteQueryOptions) => {
+    return importMethod.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @route '/dashboard/classrooms/import'
+*/
+importMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @route '/dashboard/classrooms/import'
+*/
+importMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: importMethod.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @route '/dashboard/classrooms/import'
+*/
+const importMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @route '/dashboard/classrooms/import'
+*/
+importMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:84
+* @route '/dashboard/classrooms/import'
+*/
+importMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+importMethod.form = importMethodForm
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @route '/dashboard/classrooms/template'
+*/
+export const template = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: template.url(options),
+    method: 'get',
+})
+
+template.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/classrooms/template',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @route '/dashboard/classrooms/template'
+*/
+template.url = (options?: RouteQueryOptions) => {
+    return template.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @route '/dashboard/classrooms/template'
+*/
+template.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: template.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @route '/dashboard/classrooms/template'
+*/
+template.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: template.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @route '/dashboard/classrooms/template'
+*/
+const templateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @route '/dashboard/classrooms/template'
+*/
+templateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:101
+* @route '/dashboard/classrooms/template'
+*/
+templateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+template.form = templateForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::create
@@ -909,6 +1153,9 @@ destroy.form = destroyForm
 
 const classrooms = {
     qrCode: Object.assign(qrCode, qrCode),
+    export: Object.assign(exportMethod, exportMethod),
+    import: Object.assign(importMethod, importMethod7367d2),
+    template: Object.assign(template, template),
     create: Object.assign(create, create),
     store: Object.assign(store, store),
     index: Object.assign(index, index),
