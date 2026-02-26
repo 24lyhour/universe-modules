@@ -3,12 +3,11 @@ import AppContent from '@/components/AppContent.vue';
 import AppShell from '@/components/AppShell.vue';
 import AppSidebar from '@/components/AppSidebar.vue';
 import AppSidebarHeader from '@/components/AppSidebarHeader.vue';
-import { Toaster } from '@/components/ui/sonner';
+import { ToastContainer, toast } from '@/components/ui/toast';
 import { Modal } from 'momentum-modal';
 import type { BreadcrumbItemType } from '@/types';
-import { router, usePage } from '@inertiajs/vue3';
-import { toast } from 'vue-sonner';
-import { onMounted, onUnmounted, watch } from 'vue';
+import { usePage } from '@inertiajs/vue3';
+import { watch } from 'vue';
 
 // Type for flash messages
 type FlashMessages = {
@@ -60,15 +59,6 @@ withDefaults(defineProps<Props>(), {
         <!-- Inertia Modal Portal -->
         <Modal />
     </AppShell>
-    <!-- Toast Notifications - Outside AppShell for proper viewport positioning -->
-    <Toaster
-        position="top-right"
-        :expand="true"
-        :rich-colors="true"
-        :close-button="true"
-        :duration="5000"
-        :visible-toasts="5"
-        :gap="12"
-        :offset="16"
-    />
+    <!-- Custom Toast Container -->
+    <ToastContainer />
 </template>
