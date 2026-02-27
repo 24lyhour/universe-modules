@@ -31,19 +31,25 @@ class Turnstile implements ValidationRule
         }
 
         try {
+            $secret = config('services.turnstile.secret');
+
+            // Log the secret (first 10 chars only for security)
+            Log::info('Turnstile verification attempt', [
+                'secret_prefix' => substr($secret ?? '', 0, 15) . '...',
+                'token_prefix' => substr($value, 0, 20) . '...',
+            ]);
+
             $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
-                'secret' => config('services.turnstile.secret'),
+                'secret' => $secret,
                 'response' => $value,
-                // Note: remoteip removed - it can cause issues behind proxies like Railway
             ]);
 
             $result = $response->json();
 
+            // Log full response for debugging
             Log::info('Turnstile verification response', [
-                'success' => $result['success'] ?? false,
-                'error-codes' => $result['error-codes'] ?? [],
-                'hostname' => $result['hostname'] ?? null,
-                'ip' => request()->ip(),
+                'full_response' => $result,
+                'http_status' => $response->status(),
             ]);
 
             if (! ($result['success'] ?? false)) {
