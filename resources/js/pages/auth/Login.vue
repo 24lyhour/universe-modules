@@ -9,7 +9,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Turnstile } from "@/components/ui/turnstile"
 import { useForm, Head, Link } from '@inertiajs/vue3';
 import { Loader2, ShieldAlert, Clock } from 'lucide-vue-next';
-import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
+import { toast } from '@/composables/useToast';
 
 interface LoginSettings {
     app_name: string;
@@ -117,21 +118,29 @@ const formattedLockoutTime = computed(() => {
 const submit = () => {
     if (isLocked.value) return;
 
+    console.log('Submitting form with token:', form.cf_turnstile_response ? 'present' : 'EMPTY');
+
     form.post('/login', {
-        onFinish: () => {
+        onSuccess: () => {
+            // Show success toast
+            toast.success({
+                title: 'Welcome back!',
+                description: 'You have successfully logged in.',
+            });
+            // Reset password on success
             form.reset('password');
-            // Reset turnstile after submission
-            if (turnstileRef.value) {
-                turnstileRef.value.reset();
-                form.cf_turnstile_response = '';
-            }
         },
         onError: () => {
-            // Reset turnstile on error
+            // Reset password field
+            form.reset('password');
+
+            // Reset turnstile ONLY on error (not in onFinish to avoid double-reset)
             if (turnstileRef.value) {
+                console.log('Error occurred, resetting Turnstile for retry');
                 turnstileRef.value.reset();
-                form.cf_turnstile_response = '';
+                // Don't manually clear token - let v-model handle it via callback
             }
+
             // Check if it's a lockout error from the form error
             const emailError = form.errors.email;
             if (emailError && emailError.toLowerCase().includes('locked')) {
@@ -148,7 +157,7 @@ const submit = () => {
 // Handle Turnstile token expiry
 const handleTurnstileExpire = () => {
     console.log('Turnstile token expired, resetting widget');
-    form.cf_turnstile_response = '';
+    // Just reset the widget - it will clear and regenerate token via v-model callback
     if (turnstileRef.value) {
         turnstileRef.value.reset();
     }
@@ -162,15 +171,10 @@ onMounted(() => {
         startLockoutCountdown(props.lockout.remaining_minutes);
     }
 
-    // CRITICAL: Reset Turnstile on mount to handle SPA navigation
-    // This ensures a fresh token when navigating back to login after logout
-    nextTick(() => {
-        form.cf_turnstile_response = '';
-        if (turnstileRef.value) {
-            console.log('Resetting Turnstile on mount (SPA navigation fix)');
-            turnstileRef.value.reset();
-        }
-    });
+    // Clear any stale form state on mount (SPA navigation)
+    // The Turnstile component will generate a fresh token via its own onMounted
+    form.clearErrors();
+    console.log('Login page mounted, Turnstile will auto-generate fresh token');
 });
 
 // Cleanup on unmount
