@@ -42,9 +42,6 @@ const props = defineProps<{
     turnstileSiteKey?: string | null
 }>()
 
-// Debug: Log props on mount
-console.log('Login props:', { lockout: props.lockout, debugIp: props.debugIp, turnstileSiteKey: props.turnstileSiteKey });
-
 const form = useForm({
     email: '',
     password: '',
@@ -57,9 +54,7 @@ const turnstileRef = ref<InstanceType<typeof Turnstile> | null>(null);
 
 // Clear turnstile error when new token is received
 watch(() => form.cf_turnstile_response, (newToken) => {
-    console.log('Token changed:', newToken ? 'received' : 'cleared', 'hasError:', !!form.errors.cf_turnstile_response);
     if (newToken && form.errors.cf_turnstile_response) {
-        console.log('Clearing turnstile error');
         form.clearErrors('cf_turnstile_response');
     }
 });
@@ -74,7 +69,6 @@ let lockoutInterval: ReturnType<typeof setInterval> | null = null;
 if (props.lockout?.locked && props.lockout.remaining_minutes > 0) {
     isLocked.value = true;
     lockoutMinutes.value = props.lockout.remaining_minutes;
-    console.log('Lockout detected from props, starting countdown:', props.lockout.remaining_minutes);
 }
 
 // Start lockout countdown
@@ -118,17 +112,14 @@ const formattedLockoutTime = computed(() => {
 const submit = () => {
     if (isLocked.value) return;
 
-    // Log token details for debugging
-    const tokenPreview = form.cf_turnstile_response
-        ? `${form.cf_turnstile_response.substring(0, 20)}...`
-        : 'EMPTY';
-    console.log('Submitting form with token:', tokenPreview);
+    console.log('Submitting form with token:', form.cf_turnstile_response?.substring(0, 20) + '...');
 
     form.post('/login', {
         // Prevent any state preservation that could cause issues
         preserveState: false,
         preserveScroll: false,
         onSuccess: () => {
+            console.log('Login SUCCESS');
             // Show success toast
             toast.success({
                 title: 'Welcome back!',
@@ -137,15 +128,16 @@ const submit = () => {
             // Reset password on success
             form.reset('password');
         },
-        onError: () => {
+        onError: (errors) => {
+            console.log('Login FAILED - Errors:', errors);
+            console.log('Form errors object:', form.errors);
+
             // Reset password field
             form.reset('password');
 
             // Reset turnstile ONLY on error (not in onFinish to avoid double-reset)
             if (turnstileRef.value) {
-                console.log('Error occurred, resetting Turnstile for retry');
                 turnstileRef.value.reset();
-                // Don't manually clear token - let v-model handle it via callback
             }
 
             // Check if it's a lockout error from the form error
@@ -163,8 +155,6 @@ const submit = () => {
 
 // Handle Turnstile token expiry
 const handleTurnstileExpire = () => {
-    console.log('Turnstile token expired, resetting widget');
-    // Just reset the widget - it will clear and regenerate token via v-model callback
     if (turnstileRef.value) {
         turnstileRef.value.reset();
     }
@@ -172,16 +162,12 @@ const handleTurnstileExpire = () => {
 
 // Initialize lockout countdown if already locked
 onMounted(() => {
-    console.log('onMounted - checking lockout:', props.lockout);
     if (props.lockout?.locked && props.lockout.remaining_minutes > 0) {
-        console.log('Starting lockout countdown from onMounted');
         startLockoutCountdown(props.lockout.remaining_minutes);
     }
 
     // Clear any stale form state on mount (SPA navigation)
-    // The Turnstile component will generate a fresh token via its own onMounted
     form.clearErrors();
-    console.log('Login page mounted, Turnstile will auto-generate fresh token');
 });
 
 // Cleanup on unmount

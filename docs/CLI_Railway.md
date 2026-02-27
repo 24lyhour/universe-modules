@@ -39,3 +39,19 @@ Then select your project when prompted.
 Finally, run migrations:
 
 railway run php artisan migrate --force
+
+Click Variables tab
+Click + New Variable button
+Add each one:
+
+SESSION_DOMAIN = .uninversal-global.online
+SANCTUM_STATEFUL_DOMAINS = www.uninversal-global.online,uninversal-global.online
+SESSION_SECURE_COOKIE = true
+Or use CLI:
+
+railway variables set SESSION_DOMAIN=.uninversal-global.online
+railway variables set "SANCTUM_STATEFUL_DOMAINS=www.uninversal-global.online,uninversal-global.online"
+railway variables set SESSION_SECURE_COOKIE=true
+Railway will auto-redeploy after adding variables.
+
+Railway vars

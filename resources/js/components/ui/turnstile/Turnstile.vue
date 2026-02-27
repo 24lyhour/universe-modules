@@ -42,9 +42,6 @@ const loadTurnstileScript = (): Promise<void> => {
 };
 
 const renderWidget = () => {
-    console.log('renderWidget called, container:', !!turnstileContainer.value, 'turnstile:', !!window.turnstile);
-    console.log('Using sitekey:', props.siteKey);
-
     if (!turnstileContainer.value || !window.turnstile) return;
 
     // Remove existing widget if any
@@ -64,28 +61,23 @@ const renderWidget = () => {
             'response-field': false,          // Don't create hidden input (we use v-model)
             'response-field-name': 'cf_turnstile_response',
             callback: (token: string) => {
-                console.log('Turnstile verified, token received, length:', token.length);
                 emit('update:modelValue', token);
                 emit('verify', token);
             },
             'error-callback': () => {
-                console.error('Turnstile error callback triggered');
                 emit('update:modelValue', '');
                 emit('error');
             },
             'expired-callback': () => {
-                console.warn('Turnstile token expired, will auto-refresh');
                 emit('update:modelValue', '');
                 emit('expire');
             },
             'timeout-callback': () => {
-                console.warn('Turnstile challenge timed out');
                 emit('update:modelValue', '');
             },
         });
-        console.log('Turnstile widget rendered, widgetId:', widgetId.value);
     } catch (error) {
-        console.error('Turnstile render error:', error);
+        // Widget render failed silently
     }
 };
 
@@ -100,13 +92,11 @@ const reset = () => {
 defineExpose({ reset });
 
 onMounted(async () => {
-    console.log('Turnstile mounting with siteKey:', props.siteKey);
     try {
         await loadTurnstileScript();
-        console.log('Turnstile script loaded, rendering widget...');
         renderWidget();
     } catch (error) {
-        console.error('Turnstile error:', error);
+        // Script load failed silently
     }
 });
 
