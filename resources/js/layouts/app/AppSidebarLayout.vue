@@ -9,7 +9,6 @@ import type { BreadcrumbItemType } from '@/types';
 import { usePage } from '@inertiajs/vue3';
 import { watch } from 'vue';
 
-// Type for flash messages
 type FlashMessages = {
     success?: string | null;
     error?: string | null;
@@ -17,7 +16,11 @@ type FlashMessages = {
     info?: string | null;
 };
 
-// Show flash messages
+/**
+ * Show flash messages
+ * 
+ * @param flash 
+ */
 const showFlashMessages = (flash: FlashMessages | undefined) => {
     if (flash?.success) {
         toast.success(flash.success);
@@ -35,7 +38,11 @@ const showFlashMessages = (flash: FlashMessages | undefined) => {
 
 const page = usePage();
 
-// Watch for flash messages reactively
+/**
+ * Watch for flash messages reactively
+ * 
+ * @param flash 
+ */
 watch(() => page.props.flash, (flash) => {
     showFlashMessages(flash as FlashMessages | undefined);
 }, { deep: true, immediate: true });
@@ -59,6 +66,6 @@ withDefaults(defineProps<Props>(), {
         <!-- Inertia Modal Portal -->
         <Modal />
     </AppShell>
-    <!-- Custom Toast Container -->
-    <ToastContainer />
+    <!-- Custom Toast Container for flash messages -->
+    <ToastContainer position="top-left" />
 </template>
