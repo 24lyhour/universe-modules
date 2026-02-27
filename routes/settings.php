@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QrShareController;
 use App\Http\Controllers\Settings\PasswordController;
 use App\Http\Controllers\Settings\ProfileController;
 use App\Http\Controllers\Settings\TwoFactorAuthenticationController;
@@ -28,6 +29,8 @@ Route::middleware('auth')->group(function () {
         ->name('two-factor.show');
     Route::put('settings/two-factor/method', [TwoFactorAuthenticationController::class, 'updateMethod'])
         ->name('two-factor.method.update');
+    Route::post('settings/two-factor/qr-share', [QrShareController::class, 'upload'])
+        ->name('two-factor.qr-share');
 
     Route::get('settings/widgets', [WidgetController::class, 'index'])->name('widgets.index');
     Route::patch('settings/widgets/{widget}', [WidgetController::class, 'update'])->name('widgets.update');

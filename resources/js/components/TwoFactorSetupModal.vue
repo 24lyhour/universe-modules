@@ -19,8 +19,16 @@ import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth';
 import { confirm } from '@/routes/two-factor';
 import { Form } from '@inertiajs/vue3';
 import { useClipboard } from '@vueuse/core';
-import { Check, Copy, ScanLine } from 'lucide-vue-next';
+import { Check, Copy, Download, Mail, MessageCircle, ScanLine, Send, Share2 } from 'lucide-vue-next';
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 interface Props {
     requiresConfirmation: boolean;
@@ -106,6 +114,211 @@ watch(
         }
     },
 );
+
+// QR Code sharing functionality
+const qrContainerRef = useTemplateRef('qrContainerRef');
+
+const convertSvgToBlob = async (): Promise<Blob | null> => {
+    if (!qrCodeSvg.value) return null;
+
+    const svgElement = qrContainerRef.value?.querySelector('svg');
+    if (!svgElement) return null;
+
+    // Create canvas
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return null;
+
+    // Set canvas size
+    canvas.width = 512;
+    canvas.height = 512;
+
+    // Fill white background
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Convert SVG to image
+    const svgData = new XMLSerializer().serializeToString(svgElement);
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+            // Draw with padding
+            const padding = 40;
+            ctx.drawImage(
+                img,
+                padding,
+                padding,
+                canvas.width - padding * 2,
+                canvas.height - padding * 2
+            );
+            URL.revokeObjectURL(url);
+
+            canvas.toBlob((blob) => {
+                resolve(blob);
+            }, 'image/png');
+        };
+        img.onerror = () => {
+            URL.revokeObjectURL(url);
+            resolve(null);
+        };
+        img.src = url;
+    });
+};
+
+const downloadQrCode = async () => {
+    const blob = await convertSvgToBlob();
+    if (!blob) return;
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = '2fa-qr-code.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+};
+
+const shareQrCode = async () => {
+    const blob = await convertSvgToBlob();
+    if (!blob) return;
+
+    const file = new File([blob], '2fa-qr-code.png', { type: 'image/png' });
+
+    try {
+        await navigator.share({
+            title: 'Two-Factor Authentication QR Code',
+            text: 'Scan this QR code with your authenticator app',
+            files: [file],
+        });
+    } catch (error) {
+        // User cancelled or share failed
+        console.log('Share cancelled or failed');
+    }
+};
+
+const copyQrCodeToClipboard = async () => {
+    const blob = await convertSvgToBlob();
+    if (!blob) return;
+
+    try {
+        await navigator.clipboard.write([
+            new ClipboardItem({
+                'image/png': blob,
+            }),
+        ]);
+        // Show copied feedback
+        qrCopied.value = true;
+        setTimeout(() => {
+            qrCopied.value = false;
+        }, 2000);
+    } catch (error) {
+        console.log('Failed to copy QR code to clipboard');
+    }
+};
+
+const qrCopied = ref(false);
+const isUploading = ref(false);
+const sharedQrUrl = ref<string | null>(null);
+
+// Convert blob to base64
+const blobToBase64 = (blob: Blob): Promise<string> => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+    });
+};
+
+// Upload QR image and get shareable URL
+const uploadQrForSharing = async (): Promise<string | null> => {
+    if (sharedQrUrl.value) return sharedQrUrl.value;
+
+    const blob = await convertSvgToBlob();
+    if (!blob) return null;
+
+    try {
+        isUploading.value = true;
+        const base64 = await blobToBase64(blob);
+
+        const response = await fetch('/settings/two-factor/qr-share', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+            },
+            body: JSON.stringify({ image: base64 }),
+        });
+
+        const data = await response.json();
+
+        if (data.success && data.url) {
+            sharedQrUrl.value = data.url;
+            return data.url;
+        }
+        return null;
+    } catch (error) {
+        console.error('Failed to upload QR:', error);
+        return null;
+    } finally {
+        isUploading.value = false;
+    }
+};
+
+// Platform sharing functions
+const getShareText = (qrUrl?: string | null) => {
+    const appName = document.title.split(' - ')[0] || 'Universe';
+    let text = `🔐 My 2FA Setup Key for ${appName}:\n\n${manualSetupKey.value}`;
+    if (qrUrl) {
+        text += `\n\n📱 QR Code: ${qrUrl}`;
+    }
+    text += '\n\nScan the QR code or enter this key in your authenticator app.';
+    return text;
+};
+
+const shareToTelegram = async () => {
+    const url = await uploadQrForSharing();
+    const text = encodeURIComponent(getShareText(url));
+    if (url) {
+        // Telegram supports sharing URL with text
+        window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${text}`, '_blank');
+    } else {
+        window.open(`https://t.me/share/url?text=${text}`, '_blank');
+    }
+};
+
+const shareToWhatsApp = async () => {
+    const url = await uploadQrForSharing();
+    const text = encodeURIComponent(getShareText(url));
+    window.open(`https://wa.me/?text=${text}`, '_blank');
+};
+
+const shareToEmail = async () => {
+    const url = await uploadQrForSharing();
+    const subject = encodeURIComponent('My 2FA Setup Key');
+    const body = encodeURIComponent(getShareText(url));
+    window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+};
+
+const shareToFacebook = async () => {
+    const url = await uploadQrForSharing();
+    if (url) {
+        // Facebook shares the image URL directly
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+    } else {
+        const text = encodeURIComponent(getShareText());
+        window.open(`https://www.facebook.com/sharer/sharer.php?quote=${text}`, '_blank');
+    }
+};
+
+// Check if native sharing with files is supported
+const canShareFiles = computed(() => {
+    return typeof navigator.share === 'function' && navigator.canShare;
+});
 </script>
 
 <template>
@@ -154,7 +367,7 @@ watch(
                     <AlertError v-if="errors?.length" :errors="errors" />
                     <template v-else>
                         <div
-                            class="relative mx-auto flex max-w-md items-center overflow-hidden"
+                            class="relative mx-auto flex max-w-md flex-col items-center overflow-hidden"
                         >
                             <div
                                 class="relative mx-auto aspect-square w-64 overflow-hidden rounded-lg border border-border"
@@ -167,6 +380,7 @@ watch(
                                 </div>
                                 <div
                                     v-else
+                                    ref="qrContainerRef"
                                     class="relative z-10 overflow-hidden border p-5"
                                 >
                                     <div
@@ -174,6 +388,80 @@ watch(
                                         class="aspect-square w-full justify-center rounded-lg bg-white p-2 [&_svg]:size-full"
                                     />
                                 </div>
+                            </div>
+
+                            <!-- Share/Download Options -->
+                            <div
+                                v-if="qrCodeSvg"
+                                class="mt-3 flex items-center justify-center gap-2"
+                            >
+                                <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="sm"
+                                    @click="downloadQrCode"
+                                    class="gap-1.5"
+                                >
+                                    <Download class="size-4" />
+                                    Download
+                                </Button>
+
+                                <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="sm"
+                                    @click="copyQrCodeToClipboard"
+                                    class="gap-1.5"
+                                >
+                                    <Check v-if="qrCopied" class="size-4 text-green-500" />
+                                    <Copy v-else class="size-4" />
+                                    {{ qrCopied ? 'Copied!' : 'Copy' }}
+                                </Button>
+
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger as-child>
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            size="sm"
+                                            class="gap-1.5"
+                                            :disabled="isUploading"
+                                        >
+                                            <Spinner v-if="isUploading" class="size-4" />
+                                            <Share2 v-else class="size-4" />
+                                            {{ isUploading ? 'Uploading...' : 'Share' }}
+                                        </Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="end" class="w-48">
+                                        <!-- Share QR Image (Native Share) -->
+                                        <DropdownMenuItem v-if="canShareFiles" @click="shareQrCode" class="gap-2 cursor-pointer font-medium">
+                                            <Share2 class="size-4 text-primary" />
+                                            Share QR Image
+                                        </DropdownMenuItem>
+                                        <DropdownMenuSeparator v-if="canShareFiles" />
+
+                                        <!-- Share with QR Code URL -->
+                                        <DropdownMenuLabel class="text-xs text-muted-foreground">Share with QR Code</DropdownMenuLabel>
+                                        <DropdownMenuItem @click="shareToTelegram" class="gap-2 cursor-pointer" :disabled="isUploading">
+                                            <Send class="size-4 text-blue-500" />
+                                            Telegram
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem @click="shareToWhatsApp" class="gap-2 cursor-pointer" :disabled="isUploading">
+                                            <MessageCircle class="size-4 text-green-500" />
+                                            WhatsApp
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem @click="shareToFacebook" class="gap-2 cursor-pointer" :disabled="isUploading">
+                                            <svg class="size-4 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                            </svg>
+                                            Facebook
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem @click="shareToEmail" class="gap-2 cursor-pointer" :disabled="isUploading">
+                                            <Mail class="size-4 text-orange-500" />
+                                            Email
+                                        </DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
                             </div>
                         </div>
 
