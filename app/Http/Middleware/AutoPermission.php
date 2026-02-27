@@ -40,6 +40,11 @@ class AutoPermission
         'toggle-status' => 'update',
         'restore' => 'restore',
         'force-delete' => 'force_delete',
+        // Import/Export actions
+        'import' => 'import',
+        'export' => 'export',
+        'template' => 'import',
+        'preview' => 'import',
     ];
 
     /**
@@ -103,6 +108,39 @@ class AutoPermission
         'login-settings.update' => 'settings.manage',
         'login-settings.remove-image' => 'settings.manage',
         'login-settings.remove-logo' => 'settings.manage',
+
+        // School Module - Import/Export routes
+        'school.departments.import' => 'departments.import',
+        'school.departments.import.store' => 'departments.import',
+        'school.departments.import.preview' => 'departments.import',
+        'school.departments.export' => 'departments.export',
+        'school.classrooms.import' => 'classrooms.import',
+        'school.classrooms.import.store' => 'classrooms.import',
+        'school.classrooms.import.preview' => 'classrooms.import',
+        'school.classrooms.export' => 'classrooms.export',
+        'school.courses.import' => 'courses.import',
+        'school.courses.import.store' => 'courses.import',
+        'school.courses.import.preview' => 'courses.import',
+        'school.courses.export' => 'courses.export',
+        'school.programs.import' => 'programs.import',
+        'school.programs.import.store' => 'programs.import',
+        'school.programs.import.preview' => 'programs.import',
+        'school.programs.export' => 'programs.export',
+        'school.equipment.import' => 'equipment.import',
+        'school.equipment.import.store' => 'equipment.import',
+        'school.equipment.import.preview' => 'equipment.import',
+        'school.equipment.export' => 'equipment.export',
+
+        // Employee Module - Import/Export routes
+        'employee.employees.import' => 'employees.import',
+        'employee.employees.import.store' => 'employees.import',
+        'employee.employees.import.preview' => 'employees.import',
+        'employee.employees.import.failed' => 'employees.import',
+        'employee.employees.export' => 'employees.export',
+        'employee.attendances.import' => 'attendances.import',
+        'employee.attendances.import.store' => 'attendances.import',
+        'employee.attendances.import.preview' => 'attendances.import',
+        'employee.attendances.export' => 'attendances.export',
     ];
 
     /**
@@ -122,6 +160,20 @@ class AutoPermission
             // Single part route name - treat as resource with view_any permission
             $resource = str_replace('-', '_', $routeName);
             return "{$resource}.view_any";
+        }
+
+        // Handle compound import/export routes like: module.resource.import.store
+        // or module.resource.import.preview -> should resolve to resource.import
+        if (count($parts) >= 3) {
+            $lastPart = end($parts);
+            $secondLastPart = $parts[count($parts) - 2];
+
+            // Check if this is an import/export compound route
+            if (in_array($secondLastPart, ['import', 'export']) && in_array($lastPart, ['store', 'preview', 'failed', 'template'])) {
+                // Get the resource (third from end)
+                $resource = str_replace('-', '_', $parts[count($parts) - 3]);
+                return "{$resource}.{$secondLastPart}";
+            }
         }
 
         // Get the last two parts (resource.action)

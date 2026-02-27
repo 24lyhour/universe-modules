@@ -159,7 +159,12 @@ class UserOtpService
             return ['can_send' => true];
         }
 
-        $secondsSinceLastOtp = now()->diffInSeconds($user->two_factor_email_sent_at);
+        // If the sent_at is in the future (timezone issue), allow sending
+        if ($user->two_factor_email_sent_at->isFuture()) {
+            return ['can_send' => true];
+        }
+
+        $secondsSinceLastOtp = now()->diffInSeconds($user->two_factor_email_sent_at, true);
 
         if ($secondsSinceLastOtp < $this->cooldownSeconds) {
             return [

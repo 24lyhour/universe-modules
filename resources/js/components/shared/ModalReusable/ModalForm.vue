@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import {
     Sheet,
     SheetContent,
@@ -51,7 +52,17 @@ const sizeClasses = {
     '2xl': 'sm:max-w-[900px]',
 };
 
-const defaultSubmitText = props.mode === 'create' ? 'Create' : 'Save Changes';
+const defaultSubmitText = computed(() =>
+    props.mode === 'create'
+        ? 'Create'
+        : props.mode === 'delete'
+            ? 'Delete'
+            : 'Save Changes'
+);
+
+const submitVariant = computed(() =>
+    props.mode === 'delete' ? 'destructive' : 'default'
+);
 
 const handleSubmit = () => {
     emit('submit');
@@ -92,7 +103,7 @@ const handleCancel = () => {
                             >
                                 {{ cancelText }}
                             </Button>
-                            <Button type="submit" class="flex-1" :disabled="loading || disabled">
+                            <Button type="submit" class="flex-1" :variant="submitVariant" :disabled="loading || disabled">
                                 <svg
                                     v-if="loading"
                                     class="mr-2 h-4 w-4 animate-spin"

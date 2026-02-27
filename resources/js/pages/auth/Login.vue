@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Turnstile } from "@/components/ui/turnstile"
 import { useForm, Head, Link } from '@inertiajs/vue3';
 import { Loader2, ShieldAlert, Clock } from 'lucide-vue-next';
 import { ref, computed, onMounted, onUnmounted } from 'vue';
@@ -37,6 +38,7 @@ const props = defineProps<{
     loginSettings: LoginSettings
     lockout?: LockoutInfo | null
     debugIp?: string
+    turnstileSiteKey?: string | null
 }>()
 
 // Debug: Log props on mount
@@ -46,7 +48,11 @@ const form = useForm({
     email: '',
     password: '',
     remember: false,
+    cf_turnstile_response: '',
 });
+
+// Turnstile ref for reset
+const turnstileRef = ref<InstanceType<typeof Turnstile> | null>(null);
 
 // Lockout state
 const isLocked = ref<boolean>(false);
@@ -103,8 +109,20 @@ const submit = () => {
     if (isLocked.value) return;
 
     form.post('/login', {
-        onFinish: () => form.reset('password'),
+        onFinish: () => {
+            form.reset('password');
+            // Reset turnstile after submission
+            if (turnstileRef.value) {
+                turnstileRef.value.reset();
+                form.cf_turnstile_response = '';
+            }
+        },
         onError: () => {
+            // Reset turnstile on error
+            if (turnstileRef.value) {
+                turnstileRef.value.reset();
+                form.cf_turnstile_response = '';
+            }
             // Check if it's a lockout error from the form error
             const emailError = form.errors.email;
             if (emailError && emailError.toLowerCase().includes('locked')) {
@@ -274,6 +292,19 @@ onUnmounted(() => {
                             <Label for="remember" class="text-sm font-normal cursor-pointer">
                                 Remember me
                             </Label>
+                        </div>
+
+                        <!-- Turnstile CAPTCHA -->
+                        <div v-if="turnstileSiteKey" class="flex flex-col items-center space-y-2">
+                            <Turnstile
+                                ref="turnstileRef"
+                                :site-key="turnstileSiteKey"
+                                theme="auto"
+                                v-model="form.cf_turnstile_response"
+                            />
+                            <p v-if="form.errors.cf_turnstile_response" class="text-sm text-red-500">
+                                {{ form.errors.cf_turnstile_response }}
+                            </p>
                         </div>
 
                         <!-- Submit Button -->
