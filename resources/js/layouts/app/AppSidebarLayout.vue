@@ -67,5 +67,5 @@ withDefaults(defineProps<Props>(), {
         <Modal />
     </AppShell>
     <!-- Custom Toast Container for flash messages -->
-    <ToastContainer position="top-left" />
+    <ToastContainer position="top-center" />
 </template>
