@@ -56,7 +56,9 @@ const turnstileRef = ref<InstanceType<typeof Turnstile> | null>(null);
 
 // Clear turnstile error when new token is received
 watch(() => form.cf_turnstile_response, (newToken) => {
+    console.log('Token changed:', newToken ? 'received' : 'cleared', 'hasError:', !!form.errors.cf_turnstile_response);
     if (newToken && form.errors.cf_turnstile_response) {
+        console.log('Clearing turnstile error');
         form.clearErrors('cf_turnstile_response');
     }
 });

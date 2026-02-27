@@ -17,6 +17,7 @@ export interface Toast {
 }
 
 const toasts = ref<Toast[]>([]);
+const toastProgress = ref<Record<number, number>>({});
 let nextId = 1;
 
 // Default titles for each type
@@ -70,6 +71,10 @@ const removeToast = (id: number) => {
     }
 };
 
+const clearAllToasts = () => {
+    toasts.value = [];
+};
+
 export const useToast = () => {
     return {
         toasts: readonly(toasts),
@@ -84,6 +89,7 @@ export const useToast = () => {
         loading: (messageOrOptions: string | ToastOptions, duration?: number) =>
             addToast('loading', messageOrOptions, duration ?? 30000),
         remove: removeToast,
+        clearAll: clearAllToasts,
     };
 };
 
@@ -99,7 +105,8 @@ export const toast = {
         addToast('info', messageOrOptions, duration),
     loading: (messageOrOptions: string | ToastOptions, duration?: number) =>
         addToast('loading', messageOrOptions, duration ?? 30000),
+    clearAll: clearAllToasts,
 };
 
-// Export toasts ref for the component
-export { toasts };
+// Export refs for the component
+export { toasts, toastProgress };

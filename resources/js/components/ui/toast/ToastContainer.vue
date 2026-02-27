@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { toasts, useToast } from '../../../composables/useToast';
+import { toasts, toastProgress, useToast } from '../../../composables/useToast';
 import { CircleCheck, CircleX, CircleAlert, Info, Loader2 } from 'lucide-vue-next';
-import { ref, onUnmounted, computed } from 'vue';
+import { ref, onUnmounted, onMounted, computed, watch } from 'vue';
 
 export type ToastPosition = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 
@@ -65,28 +65,31 @@ const typeStyles = {
     },
 };
 
-const progress = ref<Record<number, number>>({});
 const intervals = ref<Record<number, ReturnType<typeof setInterval>>>({});
 const hoveredToast = ref<number | null>(null);
 
 /**
- * Start progress bar for toast
- * 
- * @param id 
- * @param duration 
+ * Start progress bar for toast (uses global toastProgress)
  */
 const startProgress = (id: number, duration: number) => {
-    progress.value[id] = 100;
+    // Initialize progress if not exists
+    if (toastProgress.value[id] === undefined) {
+        toastProgress.value[id] = 100;
+    }
+
+    // Don't start new interval if one already exists
+    if (intervals.value[id]) return;
+
     const step = 100 / (duration / 50);
 
     intervals.value[id] = setInterval(() => {
         if (hoveredToast.value === id) return;
 
-        progress.value[id] -= step;
-        if (progress.value[id] <= 0) {
+        toastProgress.value[id] -= step;
+        if (toastProgress.value[id] <= 0) {
             clearInterval(intervals.value[id]);
             delete intervals.value[id];
-            delete progress.value[id];
+            delete toastProgress.value[id];
         }
     }, 50);
 };
@@ -103,6 +106,24 @@ const onEnter = (el: Element) => {
         startProgress(id, toast.duration);
     }
 };
+
+// Initialize progress for existing toasts on mount
+onMounted(() => {
+    toasts.value.forEach((t) => {
+        if (!intervals.value[t.id]) {
+            startProgress(t.id, t.duration);
+        }
+    });
+});
+
+// Watch for new toasts and start progress
+watch(toasts, (newToasts) => {
+    newToasts.forEach((t) => {
+        if (!intervals.value[t.id]) {
+            startProgress(t.id, t.duration);
+        }
+    });
+}, { deep: true });
 
 onUnmounted(() => {
     Object.values(intervals.value).forEach(clearInterval);
@@ -193,7 +214,7 @@ onUnmounted(() => {
                                 typeStyles[t.type]?.corner || typeStyles.info.corner,
                             ]"
                             :style="{
-                                width: `${progress[t.id] ?? 100}%`,
+                                width: `${toastProgress[t.id] ?? 100}%`,
                                 transitionDuration: hoveredToast === t.id ? '0ms' : '50ms',
                                 transitionTimingFunction: 'linear',
                             }"
