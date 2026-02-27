@@ -1,6 +1,6 @@
 import { ref, readonly } from 'vue';
 
-export type ToastType = 'success' | 'error' | 'warning' | 'info';
+export type ToastType = 'success' | 'error' | 'warning' | 'info' | 'loading';
 
 export interface ToastOptions {
     title?: string;
@@ -25,6 +25,7 @@ const defaultTitles: Record<ToastType, string> = {
     error: 'Error',
     warning: 'Warning',
     info: 'Info',
+    loading: 'Loading',
 };
 
 const addToast = (type: ToastType, messageOrOptions: string | ToastOptions, duration = 5000) => {
@@ -80,6 +81,8 @@ export const useToast = () => {
             addToast('warning', messageOrOptions, duration),
         info: (messageOrOptions: string | ToastOptions, duration?: number) =>
             addToast('info', messageOrOptions, duration),
+        loading: (messageOrOptions: string | ToastOptions, duration?: number) =>
+            addToast('loading', messageOrOptions, duration ?? 30000),
         remove: removeToast,
     };
 };
@@ -94,6 +97,8 @@ export const toast = {
         addToast('warning', messageOrOptions, duration),
     info: (messageOrOptions: string | ToastOptions, duration?: number) =>
         addToast('info', messageOrOptions, duration),
+    loading: (messageOrOptions: string | ToastOptions, duration?: number) =>
+        addToast('loading', messageOrOptions, duration ?? 30000),
 };
 
 // Export toasts ref for the component

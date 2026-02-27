@@ -4,7 +4,6 @@ import AppShell from '@/components/AppShell.vue';
 import AppSidebar from '@/components/AppSidebar.vue';
 import AppSidebarHeader from '@/components/AppSidebarHeader.vue';
 import { ToastContainer, toast } from '@/components/ui/toast';
-import { Toaster } from '@/components/ui/sonner';
 import { Modal } from 'momentum-modal';
 import type { BreadcrumbItemType } from '@/types';
 import { usePage } from '@inertiajs/vue3';
@@ -68,5 +67,5 @@ withDefaults(defineProps<Props>(), {
         <Modal />
     </AppShell>
     <!-- Custom Toast Container for flash messages -->
-    <ToastContainer position="top-center" />
+    <ToastContainer position="top-left" />
 </template>
