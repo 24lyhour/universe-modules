@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Turnstile } from "@/components/ui/turnstile"
 import { useForm, Head, Link } from '@inertiajs/vue3';
 import { Loader2, ShieldAlert, Clock } from 'lucide-vue-next';
-import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue';
 
 interface LoginSettings {
     app_name: string;
@@ -53,6 +53,13 @@ const form = useForm({
 
 // Turnstile ref for reset
 const turnstileRef = ref<InstanceType<typeof Turnstile> | null>(null);
+
+// Clear turnstile error when new token is received
+watch(() => form.cf_turnstile_response, (newToken) => {
+    if (newToken && form.errors.cf_turnstile_response) {
+        form.clearErrors('cf_turnstile_response');
+    }
+});
 
 // Lockout state
 const isLocked = ref<boolean>(false);
