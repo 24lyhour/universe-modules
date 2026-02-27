@@ -34,7 +34,7 @@ class Turnstile implements ValidationRule
             $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
                 'secret' => config('services.turnstile.secret'),
                 'response' => $value,
-                'remoteip' => request()->ip(),
+                // Note: remoteip removed - it can cause issues behind proxies like Railway
             ]);
 
             $result = $response->json();
