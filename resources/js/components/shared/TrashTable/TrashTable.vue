@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import {
     Table,
@@ -34,12 +35,16 @@ interface Props {
     showType?: boolean;
     emptyMessage?: string;
     emptyTrashRoute?: string;
+    selectable?: boolean;
+    selectKey?: keyof TrashItem;
 }
 
 const props = withDefaults(defineProps<Props>(), {
     searchable: true,
     showType: true,
     emptyMessage: 'No deleted items found.',
+    selectable: false,
+    selectKey: 'uuid',
 });
 
 const emit = defineEmits<{
@@ -48,9 +53,72 @@ const emit = defineEmits<{
     emptied: [];
     pageChange: [page: number];
     search: [query: string];
+    selectionChange: [selectedKeys: (string | number)[]];
 }>();
 
+const selected = defineModel<(string | number)[]>('selected', { default: [] });
+
+// Clear selection when items change
+watch(() => props.items, (newItems, oldItems) => {
+    if (JSON.stringify(newItems) !== JSON.stringify(oldItems)) {
+        selected.value = [];
+        emit('selectionChange', []);
+    }
+}, { deep: false });
+
 const searchQuery = ref('');
+
+// Selection logic
+const getSelectKey = (item: TrashItem): string | number => {
+    return item[props.selectKey] as string | number;
+};
+
+const isAllSelected = computed(() => {
+    return filteredItems.value.length > 0 && selected.value.length === filteredItems.value.length;
+});
+
+const isPartiallySelected = computed(() => {
+    return selected.value.length > 0 && selected.value.length < filteredItems.value.length;
+});
+
+const toggleSelectAll = (checked: boolean | 'indeterminate') => {
+    if (checked === true) {
+        const newSelection = filteredItems.value.map((item) => getSelectKey(item));
+        selected.value = newSelection;
+        emit('selectionChange', newSelection);
+    } else {
+        selected.value = [];
+        emit('selectionChange', []);
+    }
+};
+
+const isSelected = (item: TrashItem): boolean => {
+    const key = getSelectKey(item);
+    return selected.value.includes(key);
+};
+
+const toggleSelect = (item: TrashItem, checked: boolean | 'indeterminate') => {
+    const key = getSelectKey(item);
+    let newSelection: (string | number)[];
+
+    if (checked && checked !== 'indeterminate') {
+        if (!selected.value.includes(key)) {
+            newSelection = [...selected.value, key];
+        } else {
+            newSelection = selected.value;
+        }
+    } else {
+        newSelection = selected.value.filter((k) => k !== key);
+    }
+
+    selected.value = newSelection;
+    emit('selectionChange', newSelection);
+};
+
+const clearSelection = () => {
+    selected.value = [];
+    emit('selectionChange', []);
+};
 
 const {
     isLoading,
@@ -169,6 +237,22 @@ const paginationInfo = computed(() => {
             </div>
         </CardHeader>
         <CardContent>
+            <!-- Bulk Actions Bar -->
+            <div
+                v-if="selectable && selected.length > 0"
+                class="mb-4 flex items-center justify-between rounded-lg border bg-muted/50 px-4 py-3"
+            >
+                <span class="text-sm font-medium">
+                    {{ selected.length }} item{{ selected.length > 1 ? 's' : '' }} selected
+                </span>
+                <div class="flex items-center gap-2">
+                    <slot name="bulk-actions" :selected="selected" :clear="clearSelection" />
+                    <Button variant="ghost" size="sm" @click="clearSelection">
+                        Clear Selection
+                    </Button>
+                </div>
+            </div>
+
             <!-- Search -->
             <div v-if="searchable && items.length > 0" class="mb-4">
                 <div class="relative">
@@ -196,6 +280,13 @@ const paginationInfo = computed(() => {
                 <Table>
                     <TableHeader>
                         <TableRow>
+                            <TableHead v-if="selectable" class="w-[50px]">
+                                <Checkbox
+                                    :model-value="isAllSelected"
+                                    :indeterminate="isPartiallySelected"
+                                    @update:model-value="toggleSelectAll"
+                                />
+                            </TableHead>
                             <TableHead>Name</TableHead>
                             <TableHead v-if="showType" class="w-[120px]">Type</TableHead>
                             <TableHead class="w-[160px]">Deleted</TableHead>
@@ -204,6 +295,12 @@ const paginationInfo = computed(() => {
                     </TableHeader>
                     <TableBody>
                         <TableRow v-for="item in filteredItems" :key="item.uuid">
+                            <TableCell v-if="selectable" @click.stop>
+                                <Checkbox
+                                    :model-value="isSelected(item)"
+                                    @update:model-value="toggleSelect(item, $event)"
+                                />
+                            </TableCell>
                             <TableCell class="font-medium">
                                 {{ item.display_name }}
                             </TableCell>

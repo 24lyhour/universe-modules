@@ -2,6 +2,15 @@
 
 Cloudflare Turnstile is a CAPTCHA alternative that protects the login page from bots and automated attacks.
 
+## Quick Reference
+
+**Important**: Turnstile tokens are **SINGLE-USE**. Reset the widget:
+- On `onMounted` (SPA navigation fix)
+- After form submit (`onFinish` / `onError`)
+- On token expire (`@expire` event)
+
+See [Industry-Standard Implementation](#industry-standard-implementation) for full code.
+
 ## Overview
 
 - **Frontend**: Vue component renders the Turnstile widget
@@ -86,7 +95,21 @@ resources/js/
 
 ## Turnstile Vue Component
 
-Usage in Login.vue:
+### Critical: Token Single-Use Rule
+
+**Turnstile tokens are SINGLE-USE.** Once a token is verified by Cloudflare's API, it becomes invalid forever. This is a security feature, but it causes issues in SPA (Single Page Applications) like Inertia.js:
+
+- After logout, navigating back to login keeps the old (used) token in memory
+- Submitting with the old token results in `timeout-or-duplicate` error
+- User sees "Security token expired" even though they just verified
+
+### Industry-Standard Implementation
+
+The solution is to reset the Turnstile widget in THREE scenarios:
+
+1. **On page mount** (handles SPA navigation)
+2. **After form submission** (handles token consumption)
+3. **On token expiry** (handles timeout)
 
 ```vue
 <template>
@@ -95,16 +118,86 @@ Usage in Login.vue:
     :site-key="turnstileSiteKey"
     theme="auto"
     v-model="form.cf_turnstile_response"
+    @expire="handleTurnstileExpire"
   />
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ref, onMounted, nextTick } from 'vue';
+import { useForm } from '@inertiajs/vue3';
 import { Turnstile } from "@/components/ui/turnstile";
 
-// Reset after failed login
-const turnstileRef = ref(null);
-turnstileRef.value?.reset();
+const form = useForm({
+    email: '',
+    password: '',
+    cf_turnstile_response: '',
+});
+
+const turnstileRef = ref<InstanceType<typeof Turnstile> | null>(null);
+
+// 1. Handle token expiry
+const handleTurnstileExpire = () => {
+    console.log('Turnstile token expired, resetting widget');
+    form.cf_turnstile_response = '';
+    if (turnstileRef.value) {
+        turnstileRef.value.reset();
+    }
+};
+
+// 2. Reset on mount (CRITICAL for SPA navigation)
+onMounted(() => {
+    nextTick(() => {
+        form.cf_turnstile_response = '';
+        if (turnstileRef.value) {
+            console.log('Resetting Turnstile on mount (SPA navigation fix)');
+            turnstileRef.value.reset();
+        }
+    });
+});
+
+// 3. Reset after form submission
+const submit = () => {
+    form.post('/login', {
+        onFinish: () => {
+            form.reset('password');
+            // Reset turnstile after submission
+            if (turnstileRef.value) {
+                turnstileRef.value.reset();
+                form.cf_turnstile_response = '';
+            }
+        },
+        onError: () => {
+            // Reset turnstile on error too
+            if (turnstileRef.value) {
+                turnstileRef.value.reset();
+                form.cf_turnstile_response = '';
+            }
+        },
+    });
+};
 </script>
+```
+
+### Why `nextTick()` is Required
+
+In Vue + Inertia SPA, the component may be mounted before the Turnstile widget is fully initialized. Using `nextTick()` ensures the reset happens after the DOM is ready and the widget ref is available.
+
+### Token Lifecycle
+
+```
+Page Load → onMounted → nextTick → reset() → Widget generates NEW token
+                                                    ↓
+                                            User clicks Submit
+                                                    ↓
+                                            Token sent to backend
+                                                    ↓
+                                        Backend verifies with Cloudflare
+                                                    ↓
+                                        Token is now INVALID forever
+                                                    ↓
+                                            onFinish → reset()
+                                                    ↓
+                                        Widget generates NEW token (ready for retry)
 ```
 
 ### Props
@@ -123,13 +216,25 @@ turnstileRef.value?.reset();
 | `update:modelValue` | string | Token value changed |
 | `verify` | string | Verification successful |
 | `error` | - | Verification failed |
-| `expire` | - | Token expired |
+| `expire` | - | Token expired (MUST handle this!) |
 
 ### Exposed Methods
 
 | Method | Description |
 |--------|-------------|
-| `reset()` | Reset widget and clear token |
+| `reset()` | Reset widget and generate new token |
+
+### Required Event Handlers
+
+```vue
+<Turnstile
+    ref="turnstileRef"
+    :site-key="turnstileSiteKey"
+    theme="auto"
+    v-model="form.cf_turnstile_response"
+    @expire="handleTurnstileExpire"  <!-- REQUIRED for production -->
+/>
+```
 
 ## Backend Validation Rule
 
@@ -156,14 +261,27 @@ $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0
 
 ## Troubleshooting
 
-### Error: "Security token expired"
+### Error: "Security token expired" (Most Common)
 
-**Cause**: `timeout-or-duplicate` error from Cloudflare
+**Cause**: `timeout-or-duplicate` error from Cloudflare - token was already used or expired
+
+**Common Scenarios**:
+1. User logs out and navigates back to login (SPA keeps old token)
+2. User submits form twice quickly
+3. Token expired while user was idle on page
 
 **Solutions**:
-1. Ensure user submits form quickly after verification
-2. Check that token isn't being validated twice
-3. Verify secret key is correct in environment variables
+1. **Implement reset on `onMounted`** - See "Industry-Standard Implementation" above
+2. Reset widget after every form submission (success or error)
+3. Add `@expire` handler to reset on token expiry
+4. Verify secret key is correct in environment variables
+
+**Verification**: Check console for these logs after logout → login:
+```
+"Resetting Turnstile on mount (SPA navigation fix)"
+"Turnstile verified, token received"
+```
+If both appear, the fix is working correctly.
 
 ### Error: "Turnstile Error 300010"
 
@@ -184,6 +302,16 @@ $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0
 ### 401 Errors in Console
 
 **Note**: 401 errors for "Private Access Token challenge" are **normal and expected**. Cloudflare explicitly warns about this in the console. These do not indicate a problem.
+
+### Strange Console Logs (Normal)
+
+The following console outputs are **normal** Cloudflare internal operations:
+- `jvVq`, `HseX: CEsU`, `NaN` - Internal fingerprinting
+- `%c%d font-size:0;color:transparent` - Hidden debugging
+- `cR @ normal?lang=auto:1` - Internal scripts
+- `The resource was preloaded but not used` - Browser optimization warning
+
+**Success indicator**: Look for `"Turnstile verified, token received"` in console.
 
 ## Disabling Turnstile
 

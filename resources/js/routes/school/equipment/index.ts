@@ -245,8 +245,74 @@ templateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 template.form = templateForm
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:147
+* @route '/dashboard/equipment/bulk-delete'
+*/
+export const bulkDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkDelete.url(options),
+    method: 'delete',
+})
+
+bulkDelete.definition = {
+    methods: ["delete"],
+    url: '/dashboard/equipment/bulk-delete',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:147
+* @route '/dashboard/equipment/bulk-delete'
+*/
+bulkDelete.url = (options?: RouteQueryOptions) => {
+    return bulkDelete.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:147
+* @route '/dashboard/equipment/bulk-delete'
+*/
+bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkDelete.url(options),
+    method: 'delete',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:147
+* @route '/dashboard/equipment/bulk-delete'
+*/
+const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:147
+* @route '/dashboard/equipment/bulk-delete'
+*/
+bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDelete.form = bulkDeleteForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:50
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:53
 * @route '/dashboard/equipment/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -261,7 +327,7 @@ create.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:50
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:53
 * @route '/dashboard/equipment/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -270,7 +336,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:50
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:53
 * @route '/dashboard/equipment/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -280,7 +346,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:50
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:53
 * @route '/dashboard/equipment/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -290,7 +356,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:50
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:53
 * @route '/dashboard/equipment/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -300,7 +366,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:50
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:53
 * @route '/dashboard/equipment/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -310,7 +376,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:50
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:53
 * @route '/dashboard/equipment/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -327,7 +393,7 @@ create.form = createForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:61
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:64
 * @route '/dashboard/equipment'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -342,7 +408,7 @@ store.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:61
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:64
 * @route '/dashboard/equipment'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -351,7 +417,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:61
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:64
 * @route '/dashboard/equipment'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -361,7 +427,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:61
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:64
 * @route '/dashboard/equipment'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -371,7 +437,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:61
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:64
 * @route '/dashboard/equipment'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -383,7 +449,7 @@ store.form = storeForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:37
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:40
 * @route '/dashboard/equipment'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -398,7 +464,7 @@ index.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:37
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:40
 * @route '/dashboard/equipment'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -407,7 +473,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:37
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:40
 * @route '/dashboard/equipment'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -417,7 +483,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:37
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:40
 * @route '/dashboard/equipment'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -427,7 +493,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:37
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:40
 * @route '/dashboard/equipment'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -437,7 +503,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:37
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:40
 * @route '/dashboard/equipment'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -447,7 +513,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:37
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:40
 * @route '/dashboard/equipment'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -464,7 +530,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:73
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
 export const show = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -479,7 +545,7 @@ show.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:73
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
 show.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -512,7 +578,7 @@ show.url = (args: { equipment: string | { uuid: string } } | [equipment: string 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:73
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
 show.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -522,7 +588,7 @@ show.get = (args: { equipment: string | { uuid: string } } | [equipment: string 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:73
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
 show.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -532,7 +598,7 @@ show.head = (args: { equipment: string | { uuid: string } } | [equipment: string
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:73
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
 const showForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -542,7 +608,7 @@ const showForm = (args: { equipment: string | { uuid: string } } | [equipment: s
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:73
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
 showForm.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -552,7 +618,7 @@ showForm.get = (args: { equipment: string | { uuid: string } } | [equipment: str
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:73
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
 showForm.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -569,7 +635,7 @@ show.form = showForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:83
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
 export const edit = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -584,7 +650,7 @@ edit.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:83
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
 edit.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -617,7 +683,7 @@ edit.url = (args: { equipment: string | { uuid: string } } | [equipment: string 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:83
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
 edit.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -627,7 +693,7 @@ edit.get = (args: { equipment: string | { uuid: string } } | [equipment: string 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:83
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
 edit.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -637,7 +703,7 @@ edit.head = (args: { equipment: string | { uuid: string } } | [equipment: string
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:83
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
 const editForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -647,7 +713,7 @@ const editForm = (args: { equipment: string | { uuid: string } } | [equipment: s
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:83
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
 editForm.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -657,7 +723,7 @@ editForm.get = (args: { equipment: string | { uuid: string } } | [equipment: str
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:83
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
 editForm.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -674,7 +740,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:94
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
 export const update = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -689,7 +755,7 @@ update.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:94
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
 update.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -722,7 +788,7 @@ update.url = (args: { equipment: string | { uuid: string } } | [equipment: strin
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:94
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
 update.put = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -732,7 +798,7 @@ update.put = (args: { equipment: string | { uuid: string } } | [equipment: strin
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:94
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
 const updateForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -747,7 +813,7 @@ const updateForm = (args: { equipment: string | { uuid: string } } | [equipment:
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:94
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
 updateForm.put = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -764,7 +830,7 @@ update.form = updateForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::deleteMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:106
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
 export const deleteMethod = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -779,7 +845,7 @@ deleteMethod.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::deleteMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:106
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
 deleteMethod.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -812,7 +878,7 @@ deleteMethod.url = (args: { equipment: string | { uuid: string } } | [equipment:
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::deleteMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:106
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
 deleteMethod.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -822,7 +888,7 @@ deleteMethod.get = (args: { equipment: string | { uuid: string } } | [equipment:
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::deleteMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:106
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
 deleteMethod.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -832,7 +898,7 @@ deleteMethod.head = (args: { equipment: string | { uuid: string } } | [equipment
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::deleteMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:106
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
 const deleteMethodForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -842,7 +908,7 @@ const deleteMethodForm = (args: { equipment: string | { uuid: string } } | [equi
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::deleteMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:106
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
 deleteMethodForm.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -852,7 +918,7 @@ deleteMethodForm.get = (args: { equipment: string | { uuid: string } } | [equipm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::deleteMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:106
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
 deleteMethodForm.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -869,7 +935,7 @@ deleteMethod.form = deleteMethodForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:118
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:121
 * @route '/dashboard/equipment/{equipment}'
 */
 export const destroy = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -884,7 +950,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:118
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:121
 * @route '/dashboard/equipment/{equipment}'
 */
 destroy.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -917,7 +983,7 @@ destroy.url = (args: { equipment: string | { uuid: string } } | [equipment: stri
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:118
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:121
 * @route '/dashboard/equipment/{equipment}'
 */
 destroy.delete = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -927,7 +993,7 @@ destroy.delete = (args: { equipment: string | { uuid: string } } | [equipment: s
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:118
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:121
 * @route '/dashboard/equipment/{equipment}'
 */
 const destroyForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -942,7 +1008,7 @@ const destroyForm = (args: { equipment: string | { uuid: string } } | [equipment
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\EquipmentController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:118
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:121
 * @route '/dashboard/equipment/{equipment}'
 */
 destroyForm.delete = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -962,6 +1028,7 @@ const equipment = {
     import: Object.assign(importMethod, importMethod7367d2),
     template: Object.assign(template, template),
     trash: Object.assign(trash, trash),
+    bulkDelete: Object.assign(bulkDelete, bulkDelete),
     create: Object.assign(create, create),
     store: Object.assign(store, store),
     index: Object.assign(index, index),

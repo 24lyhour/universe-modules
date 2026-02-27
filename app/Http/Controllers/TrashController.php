@@ -151,4 +151,50 @@ abstract class TrashController extends Controller
             ->back()
             ->with('success', "{$count} {$this->getEntityLabelPlural()} permanently deleted.");
     }
+
+    /**
+     * Bulk restore soft-deleted items.
+     */
+    public function bulkRestore(Request $request): RedirectResponse
+    {
+        $uuids = $request->input('uuids', []);
+
+        if (empty($uuids)) {
+            return redirect()
+                ->back()
+                ->with('error', 'No items selected for restore.');
+        }
+
+        $modelClass = $this->getModelClass();
+        $restored = $modelClass::onlyTrashed()
+            ->whereIn('uuid', $uuids)
+            ->restore();
+
+        return redirect()
+            ->back()
+            ->with('success', "{$restored} {$this->getEntityLabelPlural()} restored successfully.");
+    }
+
+    /**
+     * Bulk permanently delete items.
+     */
+    public function bulkForceDelete(Request $request): RedirectResponse
+    {
+        $uuids = $request->input('uuids', []);
+
+        if (empty($uuids)) {
+            return redirect()
+                ->back()
+                ->with('error', 'No items selected for deletion.');
+        }
+
+        $modelClass = $this->getModelClass();
+        $deleted = $modelClass::onlyTrashed()
+            ->whereIn('uuid', $uuids)
+            ->forceDelete();
+
+        return redirect()
+            ->back()
+            ->with('success', "{$deleted} {$this->getEntityLabelPlural()} permanently deleted.");
+    }
 }

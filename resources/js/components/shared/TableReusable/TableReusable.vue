@@ -1,7 +1,8 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
     Select,
     SelectContent,
@@ -55,6 +56,8 @@ interface Props {
     loading?: boolean;
     rowKey?: keyof T | ((item: T) => string | number);
     perPageOptions?: number[];
+    selectable?: boolean;
+    selectKey?: keyof T;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -64,6 +67,8 @@ const props = withDefaults(defineProps<Props>(), {
     loading: false,
     rowKey: 'id',
     perPageOptions: () => [10, 20, 50, 100],
+    selectable: false,
+    selectKey: 'uuid' as keyof T,
 });
 
 const emit = defineEmits<{
@@ -71,6 +76,7 @@ const emit = defineEmits<{
     pageChange: [page: number];
     perPageChange: [perPage: number];
     rowClick: [item: T];
+    selectionChange: [selectedKeys: (string | number)[]];
 }>();
 
 const handlePerPageChange = (value: string | number | boolean | bigint | Record<string, unknown> | null | undefined) => {
@@ -80,12 +86,27 @@ const handlePerPageChange = (value: string | number | boolean | bigint | Record<
 };
 
 const searchQuery = defineModel<string>('searchQuery', { default: '' });
+const selected = defineModel<(string | number)[]>('selected', { default: [] });
+
+// Clear selection when data changes (deep watch to detect actual data changes, not reference changes)
+watch(() => props.data, (newData, oldData) => {
+    // Only clear if the data actually changed (different items)
+    if (JSON.stringify(newData) !== JSON.stringify(oldData)) {
+        selected.value = [];
+        emit('selectionChange', []);
+    }
+}, { deep: false });
 
 const getRowKey = (item: T, index: number): string | number => {
     if (typeof props.rowKey === 'function') {
         return props.rowKey(item);
     }
     return item[props.rowKey] ?? index;
+};
+
+const getSelectKey = (item: T): string | number => {
+    const key = props.selectKey as keyof T;
+    return item[key] as string | number;
 };
 
 const getCellValue = (item: T, column: TableColumn<T>): any => {
@@ -125,6 +146,49 @@ const paginationInfo = computed(() => {
     return { start, end, total };
 });
 
+// Selection logic
+const isAllSelected = computed(() => {
+    return props.data.length > 0 && selected.value.length === props.data.length;
+});
+
+const isPartiallySelected = computed(() => {
+    return selected.value.length > 0 && selected.value.length < props.data.length;
+});
+
+const toggleSelectAll = (checked: boolean | 'indeterminate') => {
+    if (checked === true) {
+        const newSelection = props.data.map((item) => getSelectKey(item));
+        selected.value = newSelection;
+        emit('selectionChange', newSelection);
+    } else {
+        selected.value = [];
+        emit('selectionChange', []);
+    }
+};
+
+const isSelected = (item: T): boolean => {
+    const key = getSelectKey(item);
+    return selected.value.includes(key);
+};
+
+const toggleSelect = (item: T, checked: boolean | 'indeterminate') => {
+    const key = getSelectKey(item);
+    let newSelection: (string | number)[];
+
+    if (checked && checked !== 'indeterminate') {
+        if (!selected.value.includes(key)) {
+            newSelection = [...selected.value, key];
+        } else {
+            newSelection = selected.value;
+        }
+    } else {
+        newSelection = selected.value.filter((k) => k !== key);
+    }
+
+    selected.value = newSelection;
+    emit('selectionChange', newSelection);
+};
+
 const handleSearch = (event: Event) => {
     const target = event.target as HTMLInputElement;
     searchQuery.value = target.value;
@@ -138,6 +202,19 @@ const handlePageChange = (page: number) => {
 const handleRowClick = (item: T) => {
     emit('rowClick', item);
 };
+
+const clearSelection = () => {
+    selected.value = [];
+    emit('selectionChange', []);
+};
+
+// Calculate total columns for colspan
+const totalColumns = computed(() => {
+    let count = props.columns.length;
+    if (props.selectable) count++;
+    if (props.actions && props.actions.length > 0) count++;
+    return count;
+});
 </script>
 
 <template>
@@ -156,11 +233,41 @@ const handleRowClick = (item: T) => {
             <slot name="toolbar" />
         </div>
 
+        <!-- Bulk Actions Bar -->
+        <div
+            v-if="selectable && selected.length > 0"
+            class="flex items-center justify-between rounded-lg border border-primary/20 bg-primary/5 px-4 py-3"
+        >
+            <div class="flex items-center gap-3">
+                <span class="text-sm font-medium">
+                    {{ selected.length }} item{{ selected.length > 1 ? 's' : '' }} selected
+                </span>
+                <Button variant="ghost" size="sm" @click="clearSelection">
+                    Clear
+                </Button>
+            </div>
+            <div class="flex items-center gap-2">
+                <slot name="bulk-actions" :selected="selected" :clear="clearSelection" />
+            </div>
+        </div>
+
         <!-- Table -->
         <div class="rounded-md border">
             <table class="w-full">
                 <thead>
                     <tr class="border-b bg-muted/50">
+                        <!-- Select All Checkbox -->
+                        <th
+                            v-if="selectable"
+                            class="h-12 w-12 px-4 align-middle"
+                        >
+                            <Checkbox
+                                :model-value="isAllSelected"
+                                :indeterminate="isPartiallySelected"
+                                @click.stop
+                                @update:model-value="toggleSelectAll"
+                            />
+                        </th>
                         <th
                             v-for="column in columns"
                             :key="column.key"
@@ -183,7 +290,7 @@ const handleRowClick = (item: T) => {
                 <tbody>
                     <!-- Loading State -->
                     <tr v-if="loading">
-                        <td :colspan="columns.length + (actions?.length ? 1 : 0)" class="h-24 text-center">
+                        <td :colspan="totalColumns" class="h-24 text-center">
                             <div class="flex items-center justify-center gap-2 text-muted-foreground">
                                 <svg
                                     class="h-5 w-5 animate-spin"
@@ -216,8 +323,16 @@ const handleRowClick = (item: T) => {
                             v-for="(item, index) in data"
                             :key="getRowKey(item, index)"
                             class="border-b transition-colors hover:bg-muted/50"
+                            :class="{ 'bg-primary/5': selectable && isSelected(item) }"
                             @click="handleRowClick(item)"
                         >
+                            <!-- Row Checkbox -->
+                            <td v-if="selectable" class="w-12 p-4 align-middle" @click.stop>
+                                <Checkbox
+                                    :model-value="isSelected(item)"
+                                    @update:model-value="(checked: boolean | 'indeterminate') => toggleSelect(item, checked)"
+                                />
+                            </td>
                             <td
                                 v-for="column in columns"
                                 :key="column.key"
@@ -259,7 +374,7 @@ const handleRowClick = (item: T) => {
 
                     <!-- Empty State -->
                     <tr v-else>
-                        <td :colspan="columns.length + (actions?.length ? 1 : 0)" class="h-24 text-center">
+                        <td :colspan="totalColumns" class="h-24 text-center">
                             <slot name="empty">
                                 <div class="text-muted-foreground">{{ emptyMessage }}</div>
                             </slot>

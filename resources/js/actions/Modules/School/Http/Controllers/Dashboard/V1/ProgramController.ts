@@ -1,7 +1,154 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:152
+* @route '/dashboard/programs/bulk-delete'
+*/
+export const confirmBulkDelete = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+confirmBulkDelete.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/programs/bulk-delete',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:152
+* @route '/dashboard/programs/bulk-delete'
+*/
+confirmBulkDelete.url = (options?: RouteQueryOptions) => {
+    return confirmBulkDelete.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:152
+* @route '/dashboard/programs/bulk-delete'
+*/
+confirmBulkDelete.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:152
+* @route '/dashboard/programs/bulk-delete'
+*/
+confirmBulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: confirmBulkDelete.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:152
+* @route '/dashboard/programs/bulk-delete'
+*/
+const confirmBulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:152
+* @route '/dashboard/programs/bulk-delete'
+*/
+confirmBulkDeleteForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:152
+* @route '/dashboard/programs/bulk-delete'
+*/
+confirmBulkDeleteForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmBulkDelete.form = confirmBulkDeleteForm
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:166
+* @route '/dashboard/programs/bulk-delete'
+*/
+export const bulkDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkDelete.url(options),
+    method: 'delete',
+})
+
+bulkDelete.definition = {
+    methods: ["delete"],
+    url: '/dashboard/programs/bulk-delete',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:166
+* @route '/dashboard/programs/bulk-delete'
+*/
+bulkDelete.url = (options?: RouteQueryOptions) => {
+    return bulkDelete.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:166
+* @route '/dashboard/programs/bulk-delete'
+*/
+bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkDelete.url(options),
+    method: 'delete',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:166
+* @route '/dashboard/programs/bulk-delete'
+*/
+const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:166
+* @route '/dashboard/programs/bulk-delete'
+*/
+bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDelete.form = bulkDeleteForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:55
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:58
 * @route '/dashboard/programs/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +163,7 @@ create.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:55
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:58
 * @route '/dashboard/programs/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -25,7 +172,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:55
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:58
 * @route '/dashboard/programs/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +182,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:55
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:58
 * @route '/dashboard/programs/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +192,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:55
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:58
 * @route '/dashboard/programs/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +202,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:55
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:58
 * @route '/dashboard/programs/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +212,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:55
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:58
 * @route '/dashboard/programs/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +229,7 @@ create.form = createForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:66
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:69
 * @route '/dashboard/programs'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -97,7 +244,7 @@ store.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:66
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:69
 * @route '/dashboard/programs'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -106,7 +253,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:66
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:69
 * @route '/dashboard/programs'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -116,7 +263,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:66
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:69
 * @route '/dashboard/programs'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -126,7 +273,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:66
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:69
 * @route '/dashboard/programs'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -138,7 +285,7 @@ store.form = storeForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:42
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:45
 * @route '/dashboard/programs'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -153,7 +300,7 @@ index.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:42
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:45
 * @route '/dashboard/programs'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -162,7 +309,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:42
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:45
 * @route '/dashboard/programs'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -172,7 +319,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:42
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:45
 * @route '/dashboard/programs'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -182,7 +329,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:42
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:45
 * @route '/dashboard/programs'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -192,7 +339,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:42
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:45
 * @route '/dashboard/programs'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -202,7 +349,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:42
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:45
 * @route '/dashboard/programs'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -300,7 +447,7 @@ getPrograms.form = getProgramsForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:78
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:81
 * @route '/dashboard/programs/{program}'
 */
 export const show = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -315,7 +462,7 @@ show.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:78
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:81
 * @route '/dashboard/programs/{program}'
 */
 show.url = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -348,7 +495,7 @@ show.url = (args: { program: string | { uuid: string } } | [program: string | { 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:78
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:81
 * @route '/dashboard/programs/{program}'
 */
 show.get = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -358,7 +505,7 @@ show.get = (args: { program: string | { uuid: string } } | [program: string | { 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:78
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:81
 * @route '/dashboard/programs/{program}'
 */
 show.head = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -368,7 +515,7 @@ show.head = (args: { program: string | { uuid: string } } | [program: string | {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:78
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:81
 * @route '/dashboard/programs/{program}'
 */
 const showForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -378,7 +525,7 @@ const showForm = (args: { program: string | { uuid: string } } | [program: strin
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:78
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:81
 * @route '/dashboard/programs/{program}'
 */
 showForm.get = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -388,7 +535,7 @@ showForm.get = (args: { program: string | { uuid: string } } | [program: string 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:78
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:81
 * @route '/dashboard/programs/{program}'
 */
 showForm.head = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -405,7 +552,7 @@ show.form = showForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:88
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
 * @route '/dashboard/programs/{program}/edit'
 */
 export const edit = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -420,7 +567,7 @@ edit.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:88
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
 * @route '/dashboard/programs/{program}/edit'
 */
 edit.url = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -453,7 +600,7 @@ edit.url = (args: { program: string | { uuid: string } } | [program: string | { 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:88
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
 * @route '/dashboard/programs/{program}/edit'
 */
 edit.get = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -463,7 +610,7 @@ edit.get = (args: { program: string | { uuid: string } } | [program: string | { 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:88
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
 * @route '/dashboard/programs/{program}/edit'
 */
 edit.head = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -473,7 +620,7 @@ edit.head = (args: { program: string | { uuid: string } } | [program: string | {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:88
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
 * @route '/dashboard/programs/{program}/edit'
 */
 const editForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -483,7 +630,7 @@ const editForm = (args: { program: string | { uuid: string } } | [program: strin
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:88
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
 * @route '/dashboard/programs/{program}/edit'
 */
 editForm.get = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -493,7 +640,7 @@ editForm.get = (args: { program: string | { uuid: string } } | [program: string 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:88
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
 * @route '/dashboard/programs/{program}/edit'
 */
 editForm.head = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -510,7 +657,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:99
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
 */
 const updateffcfde5b84da1505203f38950229873e = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -525,7 +672,7 @@ updateffcfde5b84da1505203f38950229873e.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:99
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
 */
 updateffcfde5b84da1505203f38950229873e.url = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -558,7 +705,7 @@ updateffcfde5b84da1505203f38950229873e.url = (args: { program: string | { uuid: 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:99
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
 */
 updateffcfde5b84da1505203f38950229873e.put = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -568,7 +715,7 @@ updateffcfde5b84da1505203f38950229873e.put = (args: { program: string | { uuid: 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:99
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
 */
 const updateffcfde5b84da1505203f38950229873eForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -583,7 +730,7 @@ const updateffcfde5b84da1505203f38950229873eForm = (args: { program: string | { 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:99
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
 */
 updateffcfde5b84da1505203f38950229873eForm.put = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -599,7 +746,7 @@ updateffcfde5b84da1505203f38950229873eForm.put = (args: { program: string | { uu
 updateffcfde5b84da1505203f38950229873e.form = updateffcfde5b84da1505203f38950229873eForm
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:99
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
 */
 const updateffcfde5b84da1505203f38950229873e = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -614,7 +761,7 @@ updateffcfde5b84da1505203f38950229873e.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:99
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
 */
 updateffcfde5b84da1505203f38950229873e.url = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -647,7 +794,7 @@ updateffcfde5b84da1505203f38950229873e.url = (args: { program: string | { uuid: 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:99
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
 */
 updateffcfde5b84da1505203f38950229873e.patch = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -657,7 +804,7 @@ updateffcfde5b84da1505203f38950229873e.patch = (args: { program: string | { uuid
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:99
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
 */
 const updateffcfde5b84da1505203f38950229873eForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -672,7 +819,7 @@ const updateffcfde5b84da1505203f38950229873eForm = (args: { program: string | { 
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:99
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
 */
 updateffcfde5b84da1505203f38950229873eForm.patch = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -694,7 +841,7 @@ export const update = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:135
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:138
 * @route '/dashboard/programs/{program}/toggle-status'
 */
 export const toggleStatus = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -709,7 +856,7 @@ toggleStatus.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:135
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:138
 * @route '/dashboard/programs/{program}/toggle-status'
 */
 toggleStatus.url = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -742,7 +889,7 @@ toggleStatus.url = (args: { program: string | { uuid: string } } | [program: str
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:135
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:138
 * @route '/dashboard/programs/{program}/toggle-status'
 */
 toggleStatus.put = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -752,7 +899,7 @@ toggleStatus.put = (args: { program: string | { uuid: string } } | [program: str
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:135
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:138
 * @route '/dashboard/programs/{program}/toggle-status'
 */
 const toggleStatusForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -767,7 +914,7 @@ const toggleStatusForm = (args: { program: string | { uuid: string } } | [progra
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:135
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:138
 * @route '/dashboard/programs/{program}/toggle-status'
 */
 toggleStatusForm.put = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -784,7 +931,7 @@ toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:111
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:114
 * @route '/dashboard/programs/{program}/delete'
 */
 export const confirmDelete = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -799,7 +946,7 @@ confirmDelete.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:111
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:114
 * @route '/dashboard/programs/{program}/delete'
 */
 confirmDelete.url = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -832,7 +979,7 @@ confirmDelete.url = (args: { program: string | { uuid: string } } | [program: st
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:111
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:114
 * @route '/dashboard/programs/{program}/delete'
 */
 confirmDelete.get = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -842,7 +989,7 @@ confirmDelete.get = (args: { program: string | { uuid: string } } | [program: st
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:111
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:114
 * @route '/dashboard/programs/{program}/delete'
 */
 confirmDelete.head = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -852,7 +999,7 @@ confirmDelete.head = (args: { program: string | { uuid: string } } | [program: s
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:111
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:114
 * @route '/dashboard/programs/{program}/delete'
 */
 const confirmDeleteForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -862,7 +1009,7 @@ const confirmDeleteForm = (args: { program: string | { uuid: string } } | [progr
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:111
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:114
 * @route '/dashboard/programs/{program}/delete'
 */
 confirmDeleteForm.get = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -872,7 +1019,7 @@ confirmDeleteForm.get = (args: { program: string | { uuid: string } } | [program
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:111
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:114
 * @route '/dashboard/programs/{program}/delete'
 */
 confirmDeleteForm.head = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -889,7 +1036,7 @@ confirmDelete.form = confirmDeleteForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:123
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:126
 * @route '/dashboard/programs/{program}'
 */
 export const destroy = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -904,7 +1051,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:123
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:126
 * @route '/dashboard/programs/{program}'
 */
 destroy.url = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -937,7 +1084,7 @@ destroy.url = (args: { program: string | { uuid: string } } | [program: string |
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:123
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:126
 * @route '/dashboard/programs/{program}'
 */
 destroy.delete = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -947,7 +1094,7 @@ destroy.delete = (args: { program: string | { uuid: string } } | [program: strin
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:123
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:126
 * @route '/dashboard/programs/{program}'
 */
 const destroyForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -962,7 +1109,7 @@ const destroyForm = (args: { program: string | { uuid: string } } | [program: st
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:123
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:126
 * @route '/dashboard/programs/{program}'
 */
 destroyForm.delete = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -977,6 +1124,6 @@ destroyForm.delete = (args: { program: string | { uuid: string } } | [program: s
 
 destroy.form = destroyForm
 
-const ProgramController = { create, store, index, getPrograms, show, edit, update, toggleStatus, confirmDelete, destroy }
+const ProgramController = { confirmBulkDelete, bulkDelete, create, store, index, getPrograms, show, edit, update, toggleStatus, confirmDelete, destroy }
 
 export default ProgramController

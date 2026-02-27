@@ -37,6 +37,7 @@ class AutoPermission
         'destroy' => 'delete',
         'confirm-delete' => 'delete',
         'delete' => 'delete',
+        'bulk-delete' => 'delete',
         'toggle-status' => 'update',
         'restore' => 'restore',
         'force-delete' => 'force_delete',
