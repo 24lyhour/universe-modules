@@ -39,12 +39,28 @@ class Turnstile implements ValidationRule
 
             $result = $response->json();
 
+            Log::info('Turnstile verification response', [
+                'success' => $result['success'] ?? false,
+                'error-codes' => $result['error-codes'] ?? [],
+                'hostname' => $result['hostname'] ?? null,
+                'ip' => request()->ip(),
+            ]);
+
             if (! ($result['success'] ?? false)) {
+                $errorCodes = $result['error-codes'] ?? [];
                 Log::warning('Turnstile verification failed', [
-                    'error-codes' => $result['error-codes'] ?? [],
+                    'error-codes' => $errorCodes,
                     'ip' => request()->ip(),
                 ]);
-                $fail('Security verification failed. Please try again.');
+
+                // Provide specific error messages
+                if (in_array('invalid-input-secret', $errorCodes)) {
+                    $fail('Security configuration error. Please contact support.');
+                } elseif (in_array('timeout-or-duplicate', $errorCodes)) {
+                    $fail('Security token expired. Please refresh and try again.');
+                } else {
+                    $fail('Security verification failed. Please try again.');
+                }
             }
         } catch (\Exception $e) {
             Log::error('Turnstile verification error: '.$e->getMessage());
