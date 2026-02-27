@@ -311,7 +311,7 @@ onUnmounted(() => {
                         <Button
                             type="submit"
                             class="w-full h-11 text-base font-medium"
-                            :disabled="form.processing"
+                            :disabled="form.processing || (turnstileSiteKey && !form.cf_turnstile_response)"
                         >
                             <Loader2 v-if="form.processing" class="mr-2 h-4 w-4 animate-spin" />
                             {{ form.processing ? 'Signing in...' : 'Sign in' }}
