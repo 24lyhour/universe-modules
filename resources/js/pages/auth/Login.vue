@@ -42,7 +42,7 @@ const props = defineProps<{
 }>()
 
 // Debug: Log props on mount
-console.log('Login props:', { lockout: props.lockout, debugIp: props.debugIp });
+console.log('Login props:', { lockout: props.lockout, debugIp: props.debugIp, turnstileSiteKey: props.turnstileSiteKey });
 
 const form = useForm({
     email: '',

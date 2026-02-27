@@ -42,6 +42,9 @@ const loadTurnstileScript = (): Promise<void> => {
 };
 
 const renderWidget = () => {
+    console.log('renderWidget called, container:', !!turnstileContainer.value, 'turnstile:', !!window.turnstile);
+    console.log('Using sitekey:', props.siteKey);
+
     if (!turnstileContainer.value || !window.turnstile) return;
 
     // Remove existing widget if any
@@ -49,23 +52,31 @@ const renderWidget = () => {
         window.turnstile.remove(widgetId.value);
     }
 
-    widgetId.value = window.turnstile.render(turnstileContainer.value, {
-        sitekey: props.siteKey,
-        theme: props.theme,
-        size: props.size,
-        callback: (token: string) => {
-            emit('update:modelValue', token);
-            emit('verify', token);
-        },
-        'error-callback': () => {
-            emit('update:modelValue', '');
-            emit('error');
-        },
-        'expired-callback': () => {
-            emit('update:modelValue', '');
-            emit('expire');
-        },
-    });
+    try {
+        widgetId.value = window.turnstile.render(turnstileContainer.value, {
+            sitekey: props.siteKey,
+            theme: props.theme,
+            size: props.size,
+            callback: (token: string) => {
+                console.log('Turnstile verified, token received');
+                emit('update:modelValue', token);
+                emit('verify', token);
+            },
+            'error-callback': () => {
+                console.error('Turnstile error callback triggered');
+                emit('update:modelValue', '');
+                emit('error');
+            },
+            'expired-callback': () => {
+                console.warn('Turnstile token expired');
+                emit('update:modelValue', '');
+                emit('expire');
+            },
+        });
+        console.log('Turnstile widget rendered, widgetId:', widgetId.value);
+    } catch (error) {
+        console.error('Turnstile render error:', error);
+    }
 };
 
 const reset = () => {
@@ -79,8 +90,10 @@ const reset = () => {
 defineExpose({ reset });
 
 onMounted(async () => {
+    console.log('Turnstile mounting with siteKey:', props.siteKey);
     try {
         await loadTurnstileScript();
+        console.log('Turnstile script loaded, rendering widget...');
         renderWidget();
     } catch (error) {
         console.error('Turnstile error:', error);
