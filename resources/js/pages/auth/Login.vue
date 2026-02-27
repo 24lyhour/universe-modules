@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Turnstile } from "@/components/ui/turnstile"
 import { useForm, Head, Link } from '@inertiajs/vue3';
 import { Loader2, ShieldAlert, Clock } from 'lucide-vue-next';
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 
 interface LoginSettings {
     app_name: string;
@@ -136,6 +136,15 @@ const submit = () => {
     });
 };
 
+// Handle Turnstile token expiry
+const handleTurnstileExpire = () => {
+    console.log('Turnstile token expired, resetting widget');
+    form.cf_turnstile_response = '';
+    if (turnstileRef.value) {
+        turnstileRef.value.reset();
+    }
+};
+
 // Initialize lockout countdown if already locked
 onMounted(() => {
     console.log('onMounted - checking lockout:', props.lockout);
@@ -143,6 +152,16 @@ onMounted(() => {
         console.log('Starting lockout countdown from onMounted');
         startLockoutCountdown(props.lockout.remaining_minutes);
     }
+
+    // CRITICAL: Reset Turnstile on mount to handle SPA navigation
+    // This ensures a fresh token when navigating back to login after logout
+    nextTick(() => {
+        form.cf_turnstile_response = '';
+        if (turnstileRef.value) {
+            console.log('Resetting Turnstile on mount (SPA navigation fix)');
+            turnstileRef.value.reset();
+        }
+    });
 });
 
 // Cleanup on unmount
@@ -301,6 +320,7 @@ onUnmounted(() => {
                                 :site-key="turnstileSiteKey"
                                 theme="auto"
                                 v-model="form.cf_turnstile_response"
+                                @expire="handleTurnstileExpire"
                             />
                             <p v-if="form.errors.cf_turnstile_response" class="text-sm text-red-500">
                                 {{ form.errors.cf_turnstile_response }}
