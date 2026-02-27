@@ -7,6 +7,7 @@ use App\Actions\Fortify\ResetUserPassword;
 use App\Http\Responses\FailedTwoFactorLoginResponse;
 use App\Http\Responses\LogoutResponse;
 use App\Models\User;
+use App\Rules\Turnstile;
 use App\Services\LoginSettingsService;
 use App\Services\TwoFactorLockoutService;
 use App\Services\UserOtpService;
@@ -14,6 +15,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -52,9 +54,22 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
         Fortify::createUsersUsing(CreateNewUser::class);
 
-        // Custom authentication with IP lockout
+        // Custom authentication with IP lockout and Turnstile
         Fortify::authenticateUsing(function (Request $request) {
             $lockoutService = app(TwoFactorLockoutService::class);
+
+            // Validate Turnstile token if enabled
+            if (config('services.turnstile.enabled')) {
+                $validator = Validator::make($request->all(), [
+                    'cf_turnstile_response' => ['required', new Turnstile],
+                ]);
+
+                if ($validator->fails()) {
+                    throw ValidationException::withMessages([
+                        'cf_turnstile_response' => $validator->errors()->first('cf_turnstile_response'),
+                    ]);
+                }
+            }
 
             // Debug: Always log the IP check
             \Log::info('Login attempt from IP: ' . $request->ip() . ', is locked: ' . ($lockoutService->isLoginLocked($request) ? 'YES' : 'NO'));
@@ -153,6 +168,7 @@ class FortifyServiceProvider extends ServiceProvider
                 'status' => $status,
                 'loginSettings' => $loginSettings,
                 'lockout' => $lockoutInfo['locked'] ? $lockoutInfo : null,
+                'turnstileSiteKey' => config('services.turnstile.enabled') ? config('services.turnstile.site_key') : null,
             ]);
         });
 
