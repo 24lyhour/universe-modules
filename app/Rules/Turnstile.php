@@ -32,11 +32,14 @@ class Turnstile implements ValidationRule
 
         try {
             $secret = config('services.turnstile.secret');
+            $requestId = uniqid('turnstile_');
 
-            // Log the secret (first 10 chars only for security)
+            // Log the secret (first 15 chars only for security)
             Log::info('Turnstile verification attempt', [
-                'secret_prefix' => substr($secret ?? '', 0, 15) . '...',
-                'token_prefix' => substr($value, 0, 20) . '...',
+                'request_id' => $requestId,
+                'secret_prefix' => substr($secret ?? '', 0, 20) . '...',
+                'token_prefix' => substr($value, 0, 30) . '...',
+                'token_length' => strlen($value),
             ]);
 
             $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
@@ -48,6 +51,7 @@ class Turnstile implements ValidationRule
 
             // Log full response for debugging
             Log::info('Turnstile verification response', [
+                'request_id' => $requestId,
                 'full_response' => $result,
                 'http_status' => $response->status(),
             ]);
