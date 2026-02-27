@@ -43,6 +43,15 @@ abstract class TrashController extends Controller
     abstract protected function getEntityLabelPlural(): string;
 
     /**
+     * Get the searchable columns for this model.
+     * Override in child class to customize search fields.
+     */
+    protected function getSearchableColumns(): array
+    {
+        return ['name'];
+    }
+
+    /**
      * Transform a model to trash item array.
      */
     protected function toTrashItem(Model $model): array
@@ -73,11 +82,17 @@ abstract class TrashController extends Controller
 
         $query = $modelClass::onlyTrashed()->latest('deleted_at');
 
-        // Apply search if model has searchable columns
+        // Apply search using configurable columns
         if ($search) {
-            $query->where(function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%")
-                    ->orWhere('code', 'like', "%{$search}%");
+            $searchColumns = $this->getSearchableColumns();
+            $query->where(function ($q) use ($search, $searchColumns) {
+                foreach ($searchColumns as $index => $column) {
+                    if ($index === 0) {
+                        $q->where($column, 'like', "%{$search}%");
+                    } else {
+                        $q->orWhere($column, 'like', "%{$search}%");
+                    }
+                }
             });
         }
 

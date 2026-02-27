@@ -1,7 +1,154 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmBulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:146
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+export const confirmBulkDelete = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+confirmBulkDelete.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/employee-types/bulk-delete',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmBulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:146
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+confirmBulkDelete.url = (options?: RouteQueryOptions) => {
+    return confirmBulkDelete.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmBulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:146
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+confirmBulkDelete.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmBulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:146
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+confirmBulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: confirmBulkDelete.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmBulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:146
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+const confirmBulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmBulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:146
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+confirmBulkDeleteForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmBulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:146
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+confirmBulkDeleteForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmBulkDelete.form = confirmBulkDeleteForm
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::bulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:160
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+export const bulkDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkDelete.url(options),
+    method: 'delete',
+})
+
+bulkDelete.definition = {
+    methods: ["delete"],
+    url: '/dashboard/employee-types/bulk-delete',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::bulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:160
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+bulkDelete.url = (options?: RouteQueryOptions) => {
+    return bulkDelete.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::bulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:160
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkDelete.url(options),
+    method: 'delete',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::bulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:160
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::bulkDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:160
+* @route '/dashboard/employee-types/bulk-delete'
+*/
+bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDelete.form = bulkDeleteForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:51
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:54
 * @route '/dashboard/employee-types/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +163,7 @@ create.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:51
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:54
 * @route '/dashboard/employee-types/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -25,7 +172,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:51
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:54
 * @route '/dashboard/employee-types/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +182,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:51
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:54
 * @route '/dashboard/employee-types/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +192,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:51
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:54
 * @route '/dashboard/employee-types/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +202,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:51
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:54
 * @route '/dashboard/employee-types/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +212,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:51
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:54
 * @route '/dashboard/employee-types/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +229,7 @@ create.form = createForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:60
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:63
 * @route '/dashboard/employee-types'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -97,7 +244,7 @@ store.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:60
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:63
 * @route '/dashboard/employee-types'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -106,7 +253,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:60
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:63
 * @route '/dashboard/employee-types'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -116,7 +263,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:60
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:63
 * @route '/dashboard/employee-types'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -126,7 +273,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:60
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:63
 * @route '/dashboard/employee-types'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -138,7 +285,7 @@ store.form = storeForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:38
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:41
 * @route '/dashboard/employee-types'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -153,7 +300,7 @@ index.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:38
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:41
 * @route '/dashboard/employee-types'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -162,7 +309,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:38
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:41
 * @route '/dashboard/employee-types'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -172,7 +319,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:38
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:41
 * @route '/dashboard/employee-types'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -182,7 +329,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:38
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:41
 * @route '/dashboard/employee-types'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -192,7 +339,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:38
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:41
 * @route '/dashboard/employee-types'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -202,7 +349,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:38
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:41
 * @route '/dashboard/employee-types'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -219,7 +366,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:72
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:75
 * @route '/dashboard/employee-types/{employee_type}'
 */
 export const show = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -234,7 +381,7 @@ show.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:72
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:75
 * @route '/dashboard/employee-types/{employee_type}'
 */
 show.url = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -261,7 +408,7 @@ show.url = (args: { employee_type: string | number } | [employee_type: string | 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:72
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:75
 * @route '/dashboard/employee-types/{employee_type}'
 */
 show.get = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -271,7 +418,7 @@ show.get = (args: { employee_type: string | number } | [employee_type: string | 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:72
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:75
 * @route '/dashboard/employee-types/{employee_type}'
 */
 show.head = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -281,7 +428,7 @@ show.head = (args: { employee_type: string | number } | [employee_type: string |
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:72
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:75
 * @route '/dashboard/employee-types/{employee_type}'
 */
 const showForm = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -291,7 +438,7 @@ const showForm = (args: { employee_type: string | number } | [employee_type: str
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:72
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:75
 * @route '/dashboard/employee-types/{employee_type}'
 */
 showForm.get = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -301,7 +448,7 @@ showForm.get = (args: { employee_type: string | number } | [employee_type: strin
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:72
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:75
 * @route '/dashboard/employee-types/{employee_type}'
 */
 showForm.head = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -318,7 +465,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:82
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:85
 * @route '/dashboard/employee-types/{employee_type}/edit'
 */
 export const edit = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -333,7 +480,7 @@ edit.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:82
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:85
 * @route '/dashboard/employee-types/{employee_type}/edit'
 */
 edit.url = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -360,7 +507,7 @@ edit.url = (args: { employee_type: string | number } | [employee_type: string | 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:82
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:85
 * @route '/dashboard/employee-types/{employee_type}/edit'
 */
 edit.get = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -370,7 +517,7 @@ edit.get = (args: { employee_type: string | number } | [employee_type: string | 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:82
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:85
 * @route '/dashboard/employee-types/{employee_type}/edit'
 */
 edit.head = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -380,7 +527,7 @@ edit.head = (args: { employee_type: string | number } | [employee_type: string |
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:82
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:85
 * @route '/dashboard/employee-types/{employee_type}/edit'
 */
 const editForm = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -390,7 +537,7 @@ const editForm = (args: { employee_type: string | number } | [employee_type: str
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:82
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:85
 * @route '/dashboard/employee-types/{employee_type}/edit'
 */
 editForm.get = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -400,7 +547,7 @@ editForm.get = (args: { employee_type: string | number } | [employee_type: strin
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:82
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:85
 * @route '/dashboard/employee-types/{employee_type}/edit'
 */
 editForm.head = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -417,7 +564,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:93
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:96
 * @route '/dashboard/employee-types/{employee_type}'
 */
 const update1ec8d453beb44da62346d3a284db4f47 = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -432,7 +579,7 @@ update1ec8d453beb44da62346d3a284db4f47.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:93
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:96
 * @route '/dashboard/employee-types/{employee_type}'
 */
 update1ec8d453beb44da62346d3a284db4f47.url = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -459,7 +606,7 @@ update1ec8d453beb44da62346d3a284db4f47.url = (args: { employee_type: string | nu
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:93
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:96
 * @route '/dashboard/employee-types/{employee_type}'
 */
 update1ec8d453beb44da62346d3a284db4f47.put = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -469,7 +616,7 @@ update1ec8d453beb44da62346d3a284db4f47.put = (args: { employee_type: string | nu
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:93
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:96
 * @route '/dashboard/employee-types/{employee_type}'
 */
 const update1ec8d453beb44da62346d3a284db4f47Form = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -484,7 +631,7 @@ const update1ec8d453beb44da62346d3a284db4f47Form = (args: { employee_type: strin
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:93
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:96
 * @route '/dashboard/employee-types/{employee_type}'
 */
 update1ec8d453beb44da62346d3a284db4f47Form.put = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -500,7 +647,7 @@ update1ec8d453beb44da62346d3a284db4f47Form.put = (args: { employee_type: string 
 update1ec8d453beb44da62346d3a284db4f47.form = update1ec8d453beb44da62346d3a284db4f47Form
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:93
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:96
 * @route '/dashboard/employee-types/{employee_type}'
 */
 const update1ec8d453beb44da62346d3a284db4f47 = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -515,7 +662,7 @@ update1ec8d453beb44da62346d3a284db4f47.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:93
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:96
 * @route '/dashboard/employee-types/{employee_type}'
 */
 update1ec8d453beb44da62346d3a284db4f47.url = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -542,7 +689,7 @@ update1ec8d453beb44da62346d3a284db4f47.url = (args: { employee_type: string | nu
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:93
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:96
 * @route '/dashboard/employee-types/{employee_type}'
 */
 update1ec8d453beb44da62346d3a284db4f47.patch = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -552,7 +699,7 @@ update1ec8d453beb44da62346d3a284db4f47.patch = (args: { employee_type: string | 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:93
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:96
 * @route '/dashboard/employee-types/{employee_type}'
 */
 const update1ec8d453beb44da62346d3a284db4f47Form = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -567,7 +714,7 @@ const update1ec8d453beb44da62346d3a284db4f47Form = (args: { employee_type: strin
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:93
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:96
 * @route '/dashboard/employee-types/{employee_type}'
 */
 update1ec8d453beb44da62346d3a284db4f47Form.patch = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -589,7 +736,7 @@ export const update = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::toggleStatus
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:129
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:132
 * @route '/dashboard/employee-types/{employee_type}/toggle-status'
 */
 export const toggleStatus = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -604,7 +751,7 @@ toggleStatus.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::toggleStatus
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:129
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:132
 * @route '/dashboard/employee-types/{employee_type}/toggle-status'
 */
 toggleStatus.url = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -631,7 +778,7 @@ toggleStatus.url = (args: { employee_type: string | number } | [employee_type: s
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::toggleStatus
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:129
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:132
 * @route '/dashboard/employee-types/{employee_type}/toggle-status'
 */
 toggleStatus.put = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -641,7 +788,7 @@ toggleStatus.put = (args: { employee_type: string | number } | [employee_type: s
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::toggleStatus
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:129
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:132
 * @route '/dashboard/employee-types/{employee_type}/toggle-status'
 */
 const toggleStatusForm = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -656,7 +803,7 @@ const toggleStatusForm = (args: { employee_type: string | number } | [employee_t
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::toggleStatus
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:129
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:132
 * @route '/dashboard/employee-types/{employee_type}/toggle-status'
 */
 toggleStatusForm.put = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -673,7 +820,7 @@ toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:105
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:108
 * @route '/dashboard/employee-types/{employee_type}/delete'
 */
 export const confirmDelete = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -688,7 +835,7 @@ confirmDelete.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:105
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:108
 * @route '/dashboard/employee-types/{employee_type}/delete'
 */
 confirmDelete.url = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -715,7 +862,7 @@ confirmDelete.url = (args: { employee_type: string | number } | [employee_type: 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:105
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:108
 * @route '/dashboard/employee-types/{employee_type}/delete'
 */
 confirmDelete.get = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -725,7 +872,7 @@ confirmDelete.get = (args: { employee_type: string | number } | [employee_type: 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:105
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:108
 * @route '/dashboard/employee-types/{employee_type}/delete'
 */
 confirmDelete.head = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -735,7 +882,7 @@ confirmDelete.head = (args: { employee_type: string | number } | [employee_type:
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:105
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:108
 * @route '/dashboard/employee-types/{employee_type}/delete'
 */
 const confirmDeleteForm = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -745,7 +892,7 @@ const confirmDeleteForm = (args: { employee_type: string | number } | [employee_
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:105
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:108
 * @route '/dashboard/employee-types/{employee_type}/delete'
 */
 confirmDeleteForm.get = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -755,7 +902,7 @@ confirmDeleteForm.get = (args: { employee_type: string | number } | [employee_ty
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::confirmDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:105
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:108
 * @route '/dashboard/employee-types/{employee_type}/delete'
 */
 confirmDeleteForm.head = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -772,7 +919,7 @@ confirmDelete.form = confirmDeleteForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:117
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:120
 * @route '/dashboard/employee-types/{employee_type}'
 */
 export const destroy = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -787,7 +934,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:117
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:120
 * @route '/dashboard/employee-types/{employee_type}'
 */
 destroy.url = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -814,7 +961,7 @@ destroy.url = (args: { employee_type: string | number } | [employee_type: string
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:117
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:120
 * @route '/dashboard/employee-types/{employee_type}'
 */
 destroy.delete = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -824,7 +971,7 @@ destroy.delete = (args: { employee_type: string | number } | [employee_type: str
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:117
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:120
 * @route '/dashboard/employee-types/{employee_type}'
 */
 const destroyForm = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -839,7 +986,7 @@ const destroyForm = (args: { employee_type: string | number } | [employee_type: 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\EmployeeTypeController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:117
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/EmployeeTypeController.php:120
 * @route '/dashboard/employee-types/{employee_type}'
 */
 destroyForm.delete = (args: { employee_type: string | number } | [employee_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -854,6 +1001,6 @@ destroyForm.delete = (args: { employee_type: string | number } | [employee_type:
 
 destroy.form = destroyForm
 
-const EmployeeTypeController = { create, store, index, show, edit, update, toggleStatus, confirmDelete, destroy }
+const EmployeeTypeController = { confirmBulkDelete, bulkDelete, create, store, index, show, edit, update, toggleStatus, confirmDelete, destroy }
 
 export default EmployeeTypeController
