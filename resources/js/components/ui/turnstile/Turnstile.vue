@@ -57,8 +57,14 @@ const renderWidget = () => {
             sitekey: props.siteKey,
             theme: props.theme,
             size: props.size,
+            // Industry best practices
+            retry: 'auto',                    // Auto-retry on failure
+            'retry-interval': 3000,           // 3 second retry interval
+            'refresh-expired': 'auto',        // Auto-refresh expired tokens
+            'response-field': false,          // Don't create hidden input (we use v-model)
+            'response-field-name': 'cf_turnstile_response',
             callback: (token: string) => {
-                console.log('Turnstile verified, token received');
+                console.log('Turnstile verified, token received, length:', token.length);
                 emit('update:modelValue', token);
                 emit('verify', token);
             },
@@ -68,9 +74,13 @@ const renderWidget = () => {
                 emit('error');
             },
             'expired-callback': () => {
-                console.warn('Turnstile token expired');
+                console.warn('Turnstile token expired, will auto-refresh');
                 emit('update:modelValue', '');
                 emit('expire');
+            },
+            'timeout-callback': () => {
+                console.warn('Turnstile challenge timed out');
+                emit('update:modelValue', '');
             },
         });
         console.log('Turnstile widget rendered, widgetId:', widgetId.value);

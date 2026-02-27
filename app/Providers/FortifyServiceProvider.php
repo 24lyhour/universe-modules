@@ -60,14 +60,23 @@ class FortifyServiceProvider extends ServiceProvider
 
             // Validate Turnstile token if enabled
             if (config('services.turnstile.enabled')) {
-                $validator = Validator::make($request->all(), [
-                    'cf_turnstile_response' => ['required', new Turnstile],
+                // TEMPORARY: Skip Turnstile for super-admin during debugging
+                $skipTurnstile = in_array($request->email, [
+                    'kouchlyhour@gmail.com',
                 ]);
 
-                if ($validator->fails()) {
-                    throw ValidationException::withMessages([
-                        'cf_turnstile_response' => $validator->errors()->first('cf_turnstile_response'),
+                if (!$skipTurnstile) {
+                    $validator = Validator::make($request->all(), [
+                        'cf_turnstile_response' => ['required', new Turnstile],
                     ]);
+
+                    if ($validator->fails()) {
+                        throw ValidationException::withMessages([
+                            'cf_turnstile_response' => $validator->errors()->first('cf_turnstile_response'),
+                        ]);
+                    }
+                } else {
+                    \Log::info('Turnstile: Skipped for whitelisted email', ['email' => $request->email]);
                 }
             }
 

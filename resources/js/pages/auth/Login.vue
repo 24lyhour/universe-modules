@@ -118,9 +118,16 @@ const formattedLockoutTime = computed(() => {
 const submit = () => {
     if (isLocked.value) return;
 
-    console.log('Submitting form with token:', form.cf_turnstile_response ? 'present' : 'EMPTY');
+    // Log token details for debugging
+    const tokenPreview = form.cf_turnstile_response
+        ? `${form.cf_turnstile_response.substring(0, 20)}...`
+        : 'EMPTY';
+    console.log('Submitting form with token:', tokenPreview);
 
     form.post('/login', {
+        // Prevent any state preservation that could cause issues
+        preserveState: false,
+        preserveScroll: false,
         onSuccess: () => {
             // Show success toast
             toast.success({
