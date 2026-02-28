@@ -1,5 +1,6 @@
 import { createInertiaApp } from '@inertiajs/vue3';
 import createServer from '@inertiajs/vue3/server';
+import { modal } from 'momentum-modal';
 import { createSSRApp, DefineComponent, h } from 'vue';
 import { renderToString } from 'vue/server-renderer';
 
@@ -40,7 +41,11 @@ createServer(
             title: (title) => (title ? `${title} - ${appName}` : appName),
             resolve: resolvePageComponent,
             setup: ({ App, props, plugin }) =>
-                createSSRApp({ render: () => h(App, props) }).use(plugin),
+                createSSRApp({ render: () => h(App, props) })
+                    .use(modal, {
+                        resolve: resolvePageComponent,
+                    })
+                    .use(plugin),
         }),
     { cluster: true },
 );
