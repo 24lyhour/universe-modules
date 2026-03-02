@@ -40,6 +40,16 @@ import {
     RemoveFormatting,
     Code2,
     MoreHorizontal,
+    Sparkles,
+    Wand2,
+    FileText,
+    Languages,
+    CheckCircle,
+    Loader2,
+    ArrowUp,
+    ArrowDown,
+    RefreshCw,
+    MessageSquare,
 } from 'lucide-vue-next';
 import { Button } from '@/components/ui/button';
 import {
@@ -87,6 +97,16 @@ const emit = defineEmits<{
 
 const linkUrl = ref('');
 const showLinkDialog = ref(false);
+
+// AI Assistant State
+const showAiDialog = ref(false);
+const aiPrompt = ref('');
+const aiLoading = ref(false);
+const aiError = ref('');
+const aiResult = ref('');
+const selectedText = ref('');
+type AiAction = 'generate' | 'improve' | 'expand' | 'summarize' | 'translate' | 'fix_grammar' | 'custom';
+const aiAction = ref<AiAction>('generate');
 
 /**
  * Initialize the editor with the provided props.
@@ -237,6 +257,168 @@ const insertTable = () => {
 
 const canUndo = computed(() => editor.value?.can().undo());
 const canRedo = computed(() => editor.value?.can().redo());
+
+/**
+ * AI Assistant Functions
+ */
+const aiActions: { value: AiAction; label: string; icon: string; description: string }[] = [
+    { value: 'generate', label: 'Generate Content', icon: 'sparkles', description: 'Create new content from a prompt' },
+    { value: 'improve', label: 'Improve Writing', icon: 'wand', description: 'Enhance clarity and style' },
+    { value: 'expand', label: 'Expand Text', icon: 'arrow-up', description: 'Add more detail and depth' },
+    { value: 'summarize', label: 'Summarize', icon: 'arrow-down', description: 'Create a shorter version' },
+    { value: 'fix_grammar', label: 'Fix Grammar', icon: 'check', description: 'Correct grammar and spelling' },
+    { value: 'translate', label: 'Translate', icon: 'languages', description: 'Translate to another language' },
+    { value: 'custom', label: 'Custom Prompt', icon: 'message', description: 'Enter your own instructions' },
+];
+
+const openAiDialog = (action: AiAction = 'generate') => {
+    const { from, to } = editor.value?.state.selection || { from: 0, to: 0 };
+    const text = editor.value?.state.doc.textBetween(from, to, ' ') || '';
+    selectedText.value = text;
+    aiAction.value = action;
+    aiPrompt.value = '';
+    aiError.value = '';
+    aiResult.value = '';
+    showAiDialog.value = true;
+};
+
+const getAiPromptPlaceholder = computed(() => {
+    switch (aiAction.value) {
+        case 'generate':
+            return 'Describe what content you want to generate...';
+        case 'improve':
+            return 'How would you like to improve the text?';
+        case 'expand':
+            return 'What details should be added?';
+        case 'summarize':
+            return 'Any specific focus for the summary?';
+        case 'fix_grammar':
+            return 'Any specific language or style preferences?';
+        case 'translate':
+            return 'Enter target language (e.g., Spanish, French, Khmer)...';
+        case 'custom':
+            return 'Enter your instructions for the AI...';
+        default:
+            return 'Enter your prompt...';
+    }
+});
+
+// Check if the action requires text to be selected
+const actionRequiresText = computed(() => {
+    return ['improve', 'expand', 'summarize', 'fix_grammar', 'translate', 'custom'].includes(aiAction.value);
+});
+
+// Get all text content from the editor
+const useAllContent = () => {
+    if (!editor.value) return;
+    const allText = editor.value.getText();
+    if (allText.trim()) {
+        selectedText.value = allText;
+        // Also select all content in the editor for visual feedback
+        editor.value.commands.selectAll();
+    }
+};
+
+// Preview of editor content (for showing before user clicks "Use All")
+const editorContentPreview = computed(() => {
+    if (!editor.value) return '';
+    return editor.value.getText() || '';
+});
+
+// Check if editor has content
+const hasEditorContent = computed(() => {
+    return editorContentPreview.value.trim().length > 0;
+});
+
+const executeAiAction = async () => {
+    if (aiAction.value !== 'generate' && !selectedText.value) {
+        aiError.value = 'Please select some text first for this action.';
+        return;
+    }
+
+    if (aiAction.value === 'translate' && !aiPrompt.value) {
+        aiError.value = 'Please enter a target language.';
+        return;
+    }
+
+    aiLoading.value = true;
+    aiError.value = '';
+    aiResult.value = '';
+
+    try {
+        const response = await fetch('/api/ai/editor', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-XSRF-TOKEN': document.cookie
+                    .split('; ')
+                    .find(row => row.startsWith('XSRF-TOKEN='))
+                    ?.split('=')[1]?.replace(/%3D/g, '=') || '',
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify({
+                action: aiAction.value,
+                text: selectedText.value,
+                prompt: aiPrompt.value,
+                context: editor.value?.getText()?.substring(0, 500) || '',
+            }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.message || 'AI request failed');
+        }
+
+        const data = await response.json();
+        aiResult.value = data.content || data.result || '';
+    } catch (error) {
+        aiError.value = error instanceof Error ? error.message : 'An error occurred';
+    } finally {
+        aiLoading.value = false;
+    }
+};
+
+// State to track if user wants to keep original text (for translate)
+const keepOriginalText = ref(true);
+
+const insertAiResult = () => {
+    if (!aiResult.value || !editor.value) return;
+
+    const { from, to } = editor.value.state.selection;
+
+    if (selectedText.value && from !== to) {
+        if (aiAction.value === 'translate' && keepOriginalText.value) {
+            // For translation: keep original and add translation below
+            editor.value.chain()
+                .focus()
+                .setTextSelection(to)
+                .insertContent('<br><hr><br>' + aiResult.value)
+                .run();
+        } else {
+            // Replace selected text
+            editor.value.chain().focus().deleteRange({ from, to }).insertContent(aiResult.value).run();
+        }
+    } else {
+        // Insert at cursor position
+        editor.value.chain().focus().insertContent(aiResult.value).run();
+    }
+
+    showAiDialog.value = false;
+    aiResult.value = '';
+    aiPrompt.value = '';
+    selectedText.value = '';
+    keepOriginalText.value = true; // Reset for next time
+};
+
+const closeAiDialog = () => {
+    showAiDialog.value = false;
+    aiResult.value = '';
+    aiPrompt.value = '';
+    aiError.value = '';
+    selectedText.value = '';
+    keepOriginalText.value = true; // Reset for next time
+};
 </script>
 
 <template>
@@ -601,6 +783,48 @@ const canRedo = computed(() => editor.value?.can().redo());
                     </DropdownMenuContent>
                 </DropdownMenu>
 
+                <Separator orientation="vertical" class="mx-1 h-6" />
+
+                <!-- AI Assistant -->
+                <DropdownMenu>
+                    <DropdownMenuTrigger as-child>
+                        <Button type="button" variant="ghost" size="sm" class="h-8 gap-1 px-2 text-purple-600 hover:text-purple-700 hover:bg-purple-50 dark:text-purple-400 dark:hover:text-purple-300 dark:hover:bg-purple-950">
+                            <Sparkles class="h-4 w-4" />
+                            <span class="text-xs font-medium">AI</span>
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" class="w-56">
+                        <DropdownMenuItem @click="openAiDialog('generate')">
+                            <Sparkles class="mr-2 h-4 w-4 text-purple-500" />
+                            Generate Content
+                        </DropdownMenuItem>
+                        <DropdownMenuItem @click="openAiDialog('improve')">
+                            <Wand2 class="mr-2 h-4 w-4 text-blue-500" />
+                            Improve Writing
+                        </DropdownMenuItem>
+                        <DropdownMenuItem @click="openAiDialog('expand')">
+                            <ArrowUp class="mr-2 h-4 w-4 text-green-500" />
+                            Expand Text
+                        </DropdownMenuItem>
+                        <DropdownMenuItem @click="openAiDialog('summarize')">
+                            <ArrowDown class="mr-2 h-4 w-4 text-orange-500" />
+                            Summarize
+                        </DropdownMenuItem>
+                        <DropdownMenuItem @click="openAiDialog('fix_grammar')">
+                            <CheckCircle class="mr-2 h-4 w-4 text-emerald-500" />
+                            Fix Grammar
+                        </DropdownMenuItem>
+                        <DropdownMenuItem @click="openAiDialog('translate')">
+                            <Languages class="mr-2 h-4 w-4 text-indigo-500" />
+                            Translate
+                        </DropdownMenuItem>
+                        <DropdownMenuItem @click="openAiDialog('custom')">
+                            <MessageSquare class="mr-2 h-4 w-4 text-gray-500" />
+                            Custom Prompt
+                        </DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu>
+
                 <div class="flex-1" />
 
                 <!-- Undo/Redo -->
@@ -667,6 +891,149 @@ const canRedo = computed(() => editor.value?.can().redo());
                 <DialogFooter class="gap-2">
                     <Button variant="outline" @click="removeLink">Remove Link</Button>
                     <Button @click="setLink">Save</Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+
+        <!-- AI Assistant Dialog -->
+        <Dialog v-model:open="showAiDialog">
+            <DialogContent class="sm:max-w-lg">
+                <DialogHeader>
+                    <DialogTitle class="flex items-center gap-2">
+                        <Sparkles class="h-5 w-5 text-purple-500" />
+                        AI Assistant
+                    </DialogTitle>
+                </DialogHeader>
+
+                <div class="space-y-4 py-4">
+                    <!-- Action Selector -->
+                    <div class="space-y-2">
+                        <Label>Action</Label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <Button
+                                v-for="action in aiActions"
+                                :key="action.value"
+                                type="button"
+                                :variant="aiAction === action.value ? 'default' : 'outline'"
+                                size="sm"
+                                class="justify-start h-auto py-2"
+                                @click="aiAction = action.value"
+                            >
+                                <component
+                                    :is="action.icon === 'sparkles' ? Sparkles :
+                                         action.icon === 'wand' ? Wand2 :
+                                         action.icon === 'arrow-up' ? ArrowUp :
+                                         action.icon === 'arrow-down' ? ArrowDown :
+                                         action.icon === 'check' ? CheckCircle :
+                                         action.icon === 'languages' ? Languages :
+                                         MessageSquare"
+                                    class="mr-2 h-4 w-4"
+                                />
+                                <span class="text-xs">{{ action.label }}</span>
+                            </Button>
+                        </div>
+                    </div>
+
+                    <!-- Selected Text Preview or No Selection Warning -->
+                    <div v-if="actionRequiresText" class="space-y-2">
+                        <Label>Selected Text</Label>
+                        <div v-if="selectedText" class="rounded-md bg-muted p-3 text-sm max-h-24 overflow-y-auto">
+                            {{ selectedText.substring(0, 200) }}{{ selectedText.length > 200 ? '...' : '' }}
+                        </div>
+                        <div v-else class="space-y-3">
+                            <!-- Show preview of editor content if available -->
+                            <div v-if="hasEditorContent" class="rounded-md border bg-muted/50 p-3">
+                                <p class="text-xs text-muted-foreground mb-2">Editor content preview:</p>
+                                <p class="text-sm max-h-16 overflow-y-auto">
+                                    {{ editorContentPreview.substring(0, 150) }}{{ editorContentPreview.length > 150 ? '...' : '' }}
+                                </p>
+                            </div>
+                            <div class="rounded-md border-2 border-dashed border-amber-300 bg-amber-50 dark:border-amber-700 dark:bg-amber-950/30 p-4">
+                                <p class="text-sm text-amber-700 dark:text-amber-400 mb-3">
+                                    {{ hasEditorContent ? 'Click below to use all editor content:' : 'No text in editor. Please add some text first.' }}
+                                </p>
+                                <Button
+                                    v-if="hasEditorContent"
+                                    type="button"
+                                    variant="outline"
+                                    size="sm"
+                                    class="w-full border-amber-400 text-amber-700 hover:bg-amber-100 dark:border-amber-600 dark:text-amber-400 dark:hover:bg-amber-900/50"
+                                    @click="useAllContent"
+                                >
+                                    <FileText class="mr-2 h-4 w-4" />
+                                    Use All Editor Content
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prompt Input -->
+                    <div class="space-y-2">
+                        <Label for="ai-prompt">
+                            {{ aiAction === 'translate' ? 'Target Language' : 'Additional Instructions' }}
+                            {{ aiAction === 'generate' || aiAction === 'custom' || aiAction === 'translate' ? '(Required)' : '(Optional)' }}
+                        </Label>
+                        <textarea
+                            id="ai-prompt"
+                            v-model="aiPrompt"
+                            class="flex min-h-20 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
+                            :placeholder="getAiPromptPlaceholder"
+                            rows="3"
+                        />
+                    </div>
+
+                    <!-- Error Message -->
+                    <div v-if="aiError" class="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+                        {{ aiError }}
+                    </div>
+
+                    <!-- AI Result Preview -->
+                    <div v-if="aiResult" class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <Label>AI Generated Content</Label>
+                            <Button
+                                type="button"
+                                variant="ghost"
+                                size="sm"
+                                class="h-7 text-xs"
+                                @click="executeAiAction"
+                            >
+                                <RefreshCw class="mr-1 h-3 w-3" />
+                                Regenerate
+                            </Button>
+                        </div>
+                        <div class="rounded-md border bg-muted/50 p-3 text-sm max-h-40 overflow-y-auto prose prose-sm dark:prose-invert" v-html="aiResult" />
+
+                        <!-- Keep original option for translate -->
+                        <div v-if="aiAction === 'translate' && selectedText" class="flex items-center gap-2 pt-2">
+                            <input
+                                id="keep-original"
+                                type="checkbox"
+                                v-model="keepOriginalText"
+                                class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                            />
+                            <label for="keep-original" class="text-sm text-muted-foreground">
+                                Keep original text (add translation below)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <DialogFooter class="gap-2">
+                    <Button variant="outline" @click="closeAiDialog">Cancel</Button>
+                    <Button
+                        v-if="!aiResult"
+                        :disabled="aiLoading || (aiAction === 'generate' && !aiPrompt) || (aiAction === 'custom' && !aiPrompt) || (actionRequiresText && !selectedText) || (aiAction === 'translate' && !aiPrompt)"
+                        @click="executeAiAction"
+                    >
+                        <Loader2 v-if="aiLoading" class="mr-2 h-4 w-4 animate-spin" />
+                        <Sparkles v-else class="mr-2 h-4 w-4" />
+                        {{ aiLoading ? 'Generating...' : 'Generate' }}
+                    </Button>
+                    <Button v-else @click="insertAiResult">
+                        <CheckCircle class="mr-2 h-4 w-4" />
+                        Insert Content
+                    </Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

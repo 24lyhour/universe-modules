@@ -44,4 +44,15 @@ return [
         'enabled' => env('TURNSTILE_ENABLED', false),
     ],
 
+    /**
+     * AI Service Configuration
+     * Supports: 'openai', 'anthropic'
+     */
+    'ai' => [
+        'provider' => env('AI_PROVIDER', 'openai'),
+        'api_key' => env('AI_API_KEY'),
+        'model' => env('AI_MODEL', 'gpt-4o-mini'),
+        'base_url' => env('AI_BASE_URL', 'https://api.openai.com/v1'),
+    ],
+
 ];

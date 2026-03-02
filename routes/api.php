@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -35,3 +36,12 @@ Route::get('/health', function () {
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+/*
+|--------------------------------------------------------------------------
+| AI Editor Endpoint
+|--------------------------------------------------------------------------
+*/
+Route::post('/ai/editor', [AiController::class, 'editor'])
+    ->middleware(['web', 'auth'])
+    ->name('api.ai.editor');
