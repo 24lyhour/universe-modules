@@ -89,7 +89,7 @@ const props = withDefaults(defineProps<Props>(), {
     placeholder: 'Enter text here...',
     disabled: false,
     editable: true,
-    minHeight: '200px',
+    minHeight: '150px',
     maxHeight: '',
 });
 
@@ -879,7 +879,7 @@ const closeAiDialog = () => {
 
         <!-- Link Dialog -->
         <Dialog v-model:open="showLinkDialog">
-            <DialogContent class="sm:max-w-md">
+            <DialogContent class="sm:max-w-md z-100">
                 <DialogHeader>
                     <DialogTitle>Insert Link</DialogTitle>
                 </DialogHeader>
@@ -903,7 +903,7 @@ const closeAiDialog = () => {
 
         <!-- AI Assistant Dialog -->
         <Dialog v-model:open="showAiDialog">
-            <DialogContent class="sm:max-w-lg">
+            <DialogContent class="sm:max-w-lg z-100">
                 <DialogHeader>
                     <DialogTitle class="flex items-center gap-2">
                         <Sparkles class="h-5 w-5 text-purple-500" />
