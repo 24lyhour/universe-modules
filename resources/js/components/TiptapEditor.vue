@@ -81,6 +81,7 @@ interface Props {
     disabled?: boolean;
     editable?: boolean;
     minHeight?: string;
+    maxHeight?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -89,6 +90,7 @@ const props = withDefaults(defineProps<Props>(), {
     disabled: false,
     editable: true,
     minHeight: '200px',
+    maxHeight: '',
 });
 
 const emit = defineEmits<{
@@ -865,11 +867,15 @@ const closeAiDialog = () => {
         </div>
 
         <!-- Editor -->
-        <EditorContent
-            :editor="editor"
-            class="prose prose-sm dark:prose-invert max-w-none p-4 focus:outline-none"
-            :style="{ minHeight }"
-        />
+        <div
+            class="overflow-y-auto"
+            :style="{ minHeight, maxHeight: maxHeight || 'none' }"
+        >
+            <EditorContent
+                :editor="editor"
+                class="prose prose-sm dark:prose-invert max-w-none p-4 focus:outline-none"
+            />
+        </div>
 
         <!-- Link Dialog -->
         <Dialog v-model:open="showLinkDialog">
