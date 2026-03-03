@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::confirmBulkDelete
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:150
@@ -44,6 +44,43 @@ confirmBulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> 
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:150
+* @route '/dashboard/courses/bulk-delete'
+*/
+const confirmBulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:150
+* @route '/dashboard/courses/bulk-delete'
+*/
+confirmBulkDeleteForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:150
+* @route '/dashboard/courses/bulk-delete'
+*/
+confirmBulkDeleteForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmBulkDelete.form = confirmBulkDeleteForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::bulkDelete
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:164
 * @route '/dashboard/courses/bulk-delete'
@@ -76,6 +113,38 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
     url: bulkDelete.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:164
+* @route '/dashboard/courses/bulk-delete'
+*/
+const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:164
+* @route '/dashboard/courses/bulk-delete'
+*/
+bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::create
@@ -122,6 +191,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::create
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:56
+* @route '/dashboard/courses/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::create
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:56
+* @route '/dashboard/courses/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::create
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:56
+* @route '/dashboard/courses/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::store
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:67
 * @route '/dashboard/courses'
@@ -154,6 +260,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::store
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:67
+* @route '/dashboard/courses'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::store
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:67
+* @route '/dashboard/courses'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::index
@@ -200,11 +328,48 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::index
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:43
+* @route '/dashboard/courses'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::index
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:43
+* @route '/dashboard/courses'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::index
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:43
+* @route '/dashboard/courses'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::show
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:79
 * @route '/dashboard/courses/{course}'
 */
-export const show = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -219,7 +384,7 @@ show.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:79
 * @route '/dashboard/courses/{course}'
 */
-show.url = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { course: args }
     }
@@ -252,7 +417,7 @@ show.url = (args: { course: string | { uuid: string } } | [course: string | { uu
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:79
 * @route '/dashboard/courses/{course}'
 */
-show.get = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -262,17 +427,54 @@ show.get = (args: { course: string | { uuid: string } } | [course: string | { uu
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:79
 * @route '/dashboard/courses/{course}'
 */
-show.head = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::show
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:79
+* @route '/dashboard/courses/{course}'
+*/
+const showForm = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::show
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:79
+* @route '/dashboard/courses/{course}'
+*/
+showForm.get = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::show
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:79
+* @route '/dashboard/courses/{course}'
+*/
+showForm.head = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::edit
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:89
 * @route '/dashboard/courses/{course}/edit'
 */
-export const edit = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -287,7 +489,7 @@ edit.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:89
 * @route '/dashboard/courses/{course}/edit'
 */
-edit.url = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { course: args }
     }
@@ -320,7 +522,7 @@ edit.url = (args: { course: string | { uuid: string } } | [course: string | { uu
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:89
 * @route '/dashboard/courses/{course}/edit'
 */
-edit.get = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -330,17 +532,54 @@ edit.get = (args: { course: string | { uuid: string } } | [course: string | { uu
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:89
 * @route '/dashboard/courses/{course}/edit'
 */
-edit.head = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::edit
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:89
+* @route '/dashboard/courses/{course}/edit'
+*/
+const editForm = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::edit
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:89
+* @route '/dashboard/courses/{course}/edit'
+*/
+editForm.get = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::edit
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:89
+* @route '/dashboard/courses/{course}/edit'
+*/
+editForm.head = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::update
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:100
 * @route '/dashboard/courses/{course}'
 */
-const updatef2bad258ac59202dd211a45f266dc62d = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const updatef2bad258ac59202dd211a45f266dc62d = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updatef2bad258ac59202dd211a45f266dc62d.url(args, options),
     method: 'put',
 })
@@ -355,7 +594,7 @@ updatef2bad258ac59202dd211a45f266dc62d.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:100
 * @route '/dashboard/courses/{course}'
 */
-updatef2bad258ac59202dd211a45f266dc62d.url = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+updatef2bad258ac59202dd211a45f266dc62d.url = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { course: args }
     }
@@ -388,7 +627,7 @@ updatef2bad258ac59202dd211a45f266dc62d.url = (args: { course: string | { uuid: s
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:100
 * @route '/dashboard/courses/{course}'
 */
-updatef2bad258ac59202dd211a45f266dc62d.put = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+updatef2bad258ac59202dd211a45f266dc62d.put = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updatef2bad258ac59202dd211a45f266dc62d.url(args, options),
     method: 'put',
 })
@@ -398,7 +637,38 @@ updatef2bad258ac59202dd211a45f266dc62d.put = (args: { course: string | { uuid: s
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:100
 * @route '/dashboard/courses/{course}'
 */
-const updatef2bad258ac59202dd211a45f266dc62d = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+const updatef2bad258ac59202dd211a45f266dc62dForm = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatef2bad258ac59202dd211a45f266dc62d.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::update
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:100
+* @route '/dashboard/courses/{course}'
+*/
+updatef2bad258ac59202dd211a45f266dc62dForm.put = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatef2bad258ac59202dd211a45f266dc62d.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updatef2bad258ac59202dd211a45f266dc62d.form = updatef2bad258ac59202dd211a45f266dc62dForm
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::update
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:100
+* @route '/dashboard/courses/{course}'
+*/
+const updatef2bad258ac59202dd211a45f266dc62d = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updatef2bad258ac59202dd211a45f266dc62d.url(args, options),
     method: 'patch',
 })
@@ -413,7 +683,7 @@ updatef2bad258ac59202dd211a45f266dc62d.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:100
 * @route '/dashboard/courses/{course}'
 */
-updatef2bad258ac59202dd211a45f266dc62d.url = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+updatef2bad258ac59202dd211a45f266dc62d.url = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { course: args }
     }
@@ -446,10 +716,42 @@ updatef2bad258ac59202dd211a45f266dc62d.url = (args: { course: string | { uuid: s
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:100
 * @route '/dashboard/courses/{course}'
 */
-updatef2bad258ac59202dd211a45f266dc62d.patch = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+updatef2bad258ac59202dd211a45f266dc62d.patch = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updatef2bad258ac59202dd211a45f266dc62d.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::update
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:100
+* @route '/dashboard/courses/{course}'
+*/
+const updatef2bad258ac59202dd211a45f266dc62dForm = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatef2bad258ac59202dd211a45f266dc62d.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::update
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:100
+* @route '/dashboard/courses/{course}'
+*/
+updatef2bad258ac59202dd211a45f266dc62dForm.patch = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatef2bad258ac59202dd211a45f266dc62d.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updatef2bad258ac59202dd211a45f266dc62d.form = updatef2bad258ac59202dd211a45f266dc62dForm
 
 export const update = {
     '/dashboard/courses/{course}': updatef2bad258ac59202dd211a45f266dc62d,
@@ -461,7 +763,7 @@ export const update = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:136
 * @route '/dashboard/courses/{course}/toggle-status'
 */
-export const toggleStatus = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleStatus = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -476,7 +778,7 @@ toggleStatus.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:136
 * @route '/dashboard/courses/{course}/toggle-status'
 */
-toggleStatus.url = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+toggleStatus.url = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { course: args }
     }
@@ -509,17 +811,49 @@ toggleStatus.url = (args: { course: string | { uuid: string } } | [course: strin
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:136
 * @route '/dashboard/courses/{course}/toggle-status'
 */
-toggleStatus.put = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleStatus.put = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::toggleStatus
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:136
+* @route '/dashboard/courses/{course}/toggle-status'
+*/
+const toggleStatusForm = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::toggleStatus
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:136
+* @route '/dashboard/courses/{course}/toggle-status'
+*/
+toggleStatusForm.put = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::confirmDelete
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:112
 * @route '/dashboard/courses/{course}/delete'
 */
-export const confirmDelete = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const confirmDelete = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -534,7 +868,7 @@ confirmDelete.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:112
 * @route '/dashboard/courses/{course}/delete'
 */
-confirmDelete.url = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+confirmDelete.url = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { course: args }
     }
@@ -567,7 +901,7 @@ confirmDelete.url = (args: { course: string | { uuid: string } } | [course: stri
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:112
 * @route '/dashboard/courses/{course}/delete'
 */
-confirmDelete.get = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+confirmDelete.get = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -577,17 +911,54 @@ confirmDelete.get = (args: { course: string | { uuid: string } } | [course: stri
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:112
 * @route '/dashboard/courses/{course}/delete'
 */
-confirmDelete.head = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+confirmDelete.head = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmDelete.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::confirmDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:112
+* @route '/dashboard/courses/{course}/delete'
+*/
+const confirmDeleteForm = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::confirmDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:112
+* @route '/dashboard/courses/{course}/delete'
+*/
+confirmDeleteForm.get = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::confirmDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:112
+* @route '/dashboard/courses/{course}/delete'
+*/
+confirmDeleteForm.head = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmDelete.form = confirmDeleteForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::destroy
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:124
 * @route '/dashboard/courses/{course}'
 */
-export const destroy = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -602,7 +973,7 @@ destroy.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:124
 * @route '/dashboard/courses/{course}'
 */
-destroy.url = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { course: args }
     }
@@ -635,10 +1006,42 @@ destroy.url = (args: { course: string | { uuid: string } } | [course: string | {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:124
 * @route '/dashboard/courses/{course}'
 */
-destroy.delete = (args: { course: string | { uuid: string } } | [course: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::destroy
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:124
+* @route '/dashboard/courses/{course}'
+*/
+const destroyForm = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\CourseController::destroy
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/CourseController.php:124
+* @route '/dashboard/courses/{course}'
+*/
+destroyForm.delete = (args: { course: string | number | { uuid: string | number } } | [course: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const CourseController = { confirmBulkDelete, bulkDelete, create, store, index, show, edit, update, toggleStatus, confirmDelete, destroy }
 

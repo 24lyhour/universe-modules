@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::index
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:32
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::index
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:32
+* @route '/dashboard/outlets'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::index
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:32
+* @route '/dashboard/outlets'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::index
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:32
+* @route '/dashboard/outlets'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::create
@@ -88,6 +125,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::create
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:50
+* @route '/dashboard/outlets/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::create
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:50
+* @route '/dashboard/outlets/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::create
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:50
+* @route '/dashboard/outlets/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::store
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:60
 * @route '/dashboard/outlets'
@@ -122,11 +196,33 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::store
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:60
+* @route '/dashboard/outlets'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::store
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:60
+* @route '/dashboard/outlets'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
+
+/**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::show
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:72
 * @route '/dashboard/outlets/{outlet}'
 */
-export const show = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -141,7 +237,7 @@ show.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:72
 * @route '/dashboard/outlets/{outlet}'
 */
-show.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -174,7 +270,7 @@ show.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uu
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:72
 * @route '/dashboard/outlets/{outlet}'
 */
-show.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -184,17 +280,54 @@ show.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uu
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:72
 * @route '/dashboard/outlets/{outlet}'
 */
-show.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::show
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:72
+* @route '/dashboard/outlets/{outlet}'
+*/
+const showForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::show
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:72
+* @route '/dashboard/outlets/{outlet}'
+*/
+showForm.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::show
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:72
+* @route '/dashboard/outlets/{outlet}'
+*/
+showForm.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::edit
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:82
 * @route '/dashboard/outlets/{outlet}/edit'
 */
-export const edit = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -209,7 +342,7 @@ edit.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:82
 * @route '/dashboard/outlets/{outlet}/edit'
 */
-edit.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -242,7 +375,7 @@ edit.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uu
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:82
 * @route '/dashboard/outlets/{outlet}/edit'
 */
-edit.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -252,17 +385,54 @@ edit.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uu
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:82
 * @route '/dashboard/outlets/{outlet}/edit'
 */
-edit.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::edit
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:82
+* @route '/dashboard/outlets/{outlet}/edit'
+*/
+const editForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::edit
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:82
+* @route '/dashboard/outlets/{outlet}/edit'
+*/
+editForm.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::edit
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:82
+* @route '/dashboard/outlets/{outlet}/edit'
+*/
+editForm.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::update
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:108
 * @route '/dashboard/outlets/{outlet}'
 */
-export const update = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -277,7 +447,7 @@ update.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:108
 * @route '/dashboard/outlets/{outlet}'
 */
-update.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -310,7 +480,7 @@ update.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { 
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:108
 * @route '/dashboard/outlets/{outlet}'
 */
-update.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -320,17 +490,64 @@ update.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { 
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:108
 * @route '/dashboard/outlets/{outlet}'
 */
-update.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::update
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:108
+* @route '/dashboard/outlets/{outlet}'
+*/
+const updateForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::update
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:108
+* @route '/dashboard/outlets/{outlet}'
+*/
+updateForm.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::update
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:108
+* @route '/dashboard/outlets/{outlet}'
+*/
+updateForm.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::destroy
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:130
 * @route '/dashboard/outlets/{outlet}'
 */
-export const destroy = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -345,7 +562,7 @@ destroy.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:130
 * @route '/dashboard/outlets/{outlet}'
 */
-destroy.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -378,17 +595,49 @@ destroy.url = (args: { outlet: string | { uuid: string } } | [outlet: string | {
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:130
 * @route '/dashboard/outlets/{outlet}'
 */
-destroy.delete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::destroy
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:130
+* @route '/dashboard/outlets/{outlet}'
+*/
+const destroyForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::destroy
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:130
+* @route '/dashboard/outlets/{outlet}'
+*/
+destroyForm.delete = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::confirmDelete
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:120
 * @route '/dashboard/outlets/{outlet}/delete'
 */
-export const confirmDelete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const confirmDelete = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -403,7 +652,7 @@ confirmDelete.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:120
 * @route '/dashboard/outlets/{outlet}/delete'
 */
-confirmDelete.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+confirmDelete.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -436,7 +685,7 @@ confirmDelete.url = (args: { outlet: string | { uuid: string } } | [outlet: stri
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:120
 * @route '/dashboard/outlets/{outlet}/delete'
 */
-confirmDelete.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+confirmDelete.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -446,10 +695,47 @@ confirmDelete.get = (args: { outlet: string | { uuid: string } } | [outlet: stri
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:120
 * @route '/dashboard/outlets/{outlet}/delete'
 */
-confirmDelete.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+confirmDelete.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmDelete.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::confirmDelete
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:120
+* @route '/dashboard/outlets/{outlet}/delete'
+*/
+const confirmDeleteForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::confirmDelete
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:120
+* @route '/dashboard/outlets/{outlet}/delete'
+*/
+confirmDeleteForm.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletDashboardController::confirmDelete
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletDashboardController.php:120
+* @route '/dashboard/outlets/{outlet}/delete'
+*/
+confirmDeleteForm.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmDelete.form = confirmDeleteForm
 
 const OutletDashboardController = { index, create, store, show, edit, update, destroy, confirmDelete }
 

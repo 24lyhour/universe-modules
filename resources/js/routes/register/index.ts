@@ -33,11 +33,21 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     method: 'post',
 })
 
+/**
+* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::store
+* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:53
+* @route '/register'
+*/
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: store.url(options),
     method: 'post',
 })
 
+/**
+* @see \Laravel\Fortify\Http\Controllers\RegisteredUserController::store
+* @see vendor/laravel/fortify/src/Http/Controllers/RegisteredUserController.php:53
+* @route '/register'
+*/
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: store.url(options),
     method: 'post',

@@ -1,10 +1,10 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::showActivate
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:22
 * @route '/dashboard/customers/{customer}/activate'
 */
-export const showActivate = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const showActivate = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showActivate.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ showActivate.definition = {
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:22
 * @route '/dashboard/customers/{customer}/activate'
 */
-showActivate.url = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+showActivate.url = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { customer: args }
     }
@@ -52,7 +52,7 @@ showActivate.url = (args: { customer: number | { id: number } } | [customer: num
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:22
 * @route '/dashboard/customers/{customer}/activate'
 */
-showActivate.get = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+showActivate.get = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showActivate.url(args, options),
     method: 'get',
 })
@@ -62,17 +62,54 @@ showActivate.get = (args: { customer: number | { id: number } } | [customer: num
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:22
 * @route '/dashboard/customers/{customer}/activate'
 */
-showActivate.head = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+showActivate.head = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: showActivate.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::showActivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:22
+* @route '/dashboard/customers/{customer}/activate'
+*/
+const showActivateForm = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showActivate.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::showActivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:22
+* @route '/dashboard/customers/{customer}/activate'
+*/
+showActivateForm.get = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showActivate.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::showActivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:22
+* @route '/dashboard/customers/{customer}/activate'
+*/
+showActivateForm.head = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showActivate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+showActivate.form = showActivateForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::showDeactivate
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
 * @route '/dashboard/customers/{customer}/deactivate'
 */
-export const showDeactivate = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const showDeactivate = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showDeactivate.url(args, options),
     method: 'get',
 })
@@ -87,7 +124,7 @@ showDeactivate.definition = {
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
 * @route '/dashboard/customers/{customer}/deactivate'
 */
-showDeactivate.url = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+showDeactivate.url = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { customer: args }
     }
@@ -120,7 +157,7 @@ showDeactivate.url = (args: { customer: number | { id: number } } | [customer: n
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
 * @route '/dashboard/customers/{customer}/deactivate'
 */
-showDeactivate.get = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+showDeactivate.get = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showDeactivate.url(args, options),
     method: 'get',
 })
@@ -130,17 +167,54 @@ showDeactivate.get = (args: { customer: number | { id: number } } | [customer: n
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
 * @route '/dashboard/customers/{customer}/deactivate'
 */
-showDeactivate.head = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+showDeactivate.head = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: showDeactivate.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::showDeactivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
+* @route '/dashboard/customers/{customer}/deactivate'
+*/
+const showDeactivateForm = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showDeactivate.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::showDeactivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
+* @route '/dashboard/customers/{customer}/deactivate'
+*/
+showDeactivateForm.get = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showDeactivate.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::showDeactivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:47
+* @route '/dashboard/customers/{customer}/deactivate'
+*/
+showDeactivateForm.head = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showDeactivate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+showDeactivate.form = showDeactivateForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::showSuspend
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:73
 * @route '/dashboard/customers/{customer}/suspend'
 */
-export const showSuspend = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const showSuspend = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showSuspend.url(args, options),
     method: 'get',
 })
@@ -155,7 +229,7 @@ showSuspend.definition = {
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:73
 * @route '/dashboard/customers/{customer}/suspend'
 */
-showSuspend.url = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+showSuspend.url = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { customer: args }
     }
@@ -188,7 +262,7 @@ showSuspend.url = (args: { customer: number | { id: number } } | [customer: numb
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:73
 * @route '/dashboard/customers/{customer}/suspend'
 */
-showSuspend.get = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+showSuspend.get = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showSuspend.url(args, options),
     method: 'get',
 })
@@ -198,17 +272,54 @@ showSuspend.get = (args: { customer: number | { id: number } } | [customer: numb
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:73
 * @route '/dashboard/customers/{customer}/suspend'
 */
-showSuspend.head = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+showSuspend.head = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: showSuspend.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::showSuspend
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:73
+* @route '/dashboard/customers/{customer}/suspend'
+*/
+const showSuspendForm = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showSuspend.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::showSuspend
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:73
+* @route '/dashboard/customers/{customer}/suspend'
+*/
+showSuspendForm.get = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showSuspend.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::showSuspend
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:73
+* @route '/dashboard/customers/{customer}/suspend'
+*/
+showSuspendForm.head = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showSuspend.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+showSuspend.form = showSuspendForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::activate
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:32
 * @route '/dashboard/customers/{customer}/activate'
 */
-export const activate = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const activate = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activate.url(args, options),
     method: 'patch',
 })
@@ -223,7 +334,7 @@ activate.definition = {
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:32
 * @route '/dashboard/customers/{customer}/activate'
 */
-activate.url = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+activate.url = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { customer: args }
     }
@@ -256,17 +367,49 @@ activate.url = (args: { customer: number | { id: number } } | [customer: number 
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:32
 * @route '/dashboard/customers/{customer}/activate'
 */
-activate.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+activate.patch = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activate.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::activate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:32
+* @route '/dashboard/customers/{customer}/activate'
+*/
+const activateForm = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: activate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::activate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:32
+* @route '/dashboard/customers/{customer}/activate'
+*/
+activateForm.patch = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: activate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+activate.form = activateForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::deactivate
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:57
 * @route '/dashboard/customers/{customer}/deactivate'
 */
-export const deactivate = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const deactivate = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate.url(args, options),
     method: 'patch',
 })
@@ -281,7 +424,7 @@ deactivate.definition = {
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:57
 * @route '/dashboard/customers/{customer}/deactivate'
 */
-deactivate.url = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+deactivate.url = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { customer: args }
     }
@@ -314,17 +457,49 @@ deactivate.url = (args: { customer: number | { id: number } } | [customer: numbe
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:57
 * @route '/dashboard/customers/{customer}/deactivate'
 */
-deactivate.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+deactivate.patch = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::deactivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:57
+* @route '/dashboard/customers/{customer}/deactivate'
+*/
+const deactivateForm = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deactivate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::deactivate
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:57
+* @route '/dashboard/customers/{customer}/deactivate'
+*/
+deactivateForm.patch = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deactivate.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+deactivate.form = deactivateForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::suspend
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:83
 * @route '/dashboard/customers/{customer}/suspend'
 */
-export const suspend = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const suspend = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: suspend.url(args, options),
     method: 'patch',
 })
@@ -339,7 +514,7 @@ suspend.definition = {
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:83
 * @route '/dashboard/customers/{customer}/suspend'
 */
-suspend.url = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+suspend.url = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { customer: args }
     }
@@ -372,10 +547,42 @@ suspend.url = (args: { customer: number | { id: number } } | [customer: number |
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:83
 * @route '/dashboard/customers/{customer}/suspend'
 */
-suspend.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+suspend.patch = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: suspend.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::suspend
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:83
+* @route '/dashboard/customers/{customer}/suspend'
+*/
+const suspendForm = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: suspend.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::suspend
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:83
+* @route '/dashboard/customers/{customer}/suspend'
+*/
+suspendForm.patch = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: suspend.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+suspend.form = suspendForm
 
 const CustomerStatusController = { showActivate, showDeactivate, showSuspend, activate, deactivate, suspend }
 

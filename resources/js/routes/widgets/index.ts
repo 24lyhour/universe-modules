@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
 * @see app/Http/Controllers/Settings/WidgetController.php:51
@@ -44,11 +44,48 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \App\Http\Controllers\Settings\WidgetController::index
+* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @route '/settings/widgets'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\WidgetController::index
+* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @route '/settings/widgets'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\WidgetController::index
+* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @route '/settings/widgets'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \App\Http\Controllers\Settings\WidgetController::update
 * @see app/Http/Controllers/Settings/WidgetController.php:84
 * @route '/settings/widgets/{widget}'
 */
-export const update = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const update = (args: { widget: string | number | { id: string | number } } | [widget: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -63,7 +100,7 @@ update.definition = {
 * @see app/Http/Controllers/Settings/WidgetController.php:84
 * @route '/settings/widgets/{widget}'
 */
-update.url = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { widget: string | number | { id: string | number } } | [widget: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { widget: args }
     }
@@ -96,10 +133,42 @@ update.url = (args: { widget: number | { id: number } } | [widget: number | { id
 * @see app/Http/Controllers/Settings/WidgetController.php:84
 * @route '/settings/widgets/{widget}'
 */
-update.patch = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { widget: string | number | { id: string | number } } | [widget: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \App\Http\Controllers\Settings\WidgetController::update
+* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @route '/settings/widgets/{widget}'
+*/
+const updateForm = (args: { widget: string | number | { id: string | number } } | [widget: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\WidgetController::update
+* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @route '/settings/widgets/{widget}'
+*/
+updateForm.patch = (args: { widget: string | number | { id: string | number } } | [widget: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::order
@@ -134,6 +203,28 @@ order.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: order.url(options),
     method: 'post',
 })
+
+/**
+* @see \App\Http\Controllers\Settings\WidgetController::order
+* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @route '/settings/widgets/order'
+*/
+const orderForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: order.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\WidgetController::order
+* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @route '/settings/widgets/order'
+*/
+orderForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: order.url(options),
+    method: 'post',
+})
+
+order.form = orderForm
 
 const widgets = {
     index: Object.assign(index, index),

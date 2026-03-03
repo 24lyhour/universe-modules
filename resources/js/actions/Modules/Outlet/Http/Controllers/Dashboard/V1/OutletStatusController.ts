@@ -1,10 +1,10 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletStatusController::__invoke
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletStatusController.php:20
 * @route '/dashboard/outlets/{outlet}/toggle-status'
 */
-const OutletStatusController = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const OutletStatusController = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: OutletStatusController.url(args, options),
     method: 'put',
 })
@@ -19,7 +19,7 @@ OutletStatusController.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletStatusController.php:20
 * @route '/dashboard/outlets/{outlet}/toggle-status'
 */
-OutletStatusController.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+OutletStatusController.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -52,9 +52,41 @@ OutletStatusController.url = (args: { outlet: string | { uuid: string } } | [out
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletStatusController.php:20
 * @route '/dashboard/outlets/{outlet}/toggle-status'
 */
-OutletStatusController.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+OutletStatusController.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: OutletStatusController.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletStatusController::__invoke
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletStatusController.php:20
+* @route '/dashboard/outlets/{outlet}/toggle-status'
+*/
+const OutletStatusControllerForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: OutletStatusController.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletStatusController::__invoke
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletStatusController.php:20
+* @route '/dashboard/outlets/{outlet}/toggle-status'
+*/
+OutletStatusControllerForm.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: OutletStatusController.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+OutletStatusController.form = OutletStatusControllerForm
 
 export default OutletStatusController

@@ -1,10 +1,10 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::manage
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-export const manage = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const manage = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: manage.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ manage.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-manage.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+manage.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -52,7 +52,7 @@ manage.url = (args: { product: number | { id: number } } | [product: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-manage.get = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+manage.get = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: manage.url(args, options),
     method: 'get',
 })
@@ -62,17 +62,54 @@ manage.get = (args: { product: number | { id: number } } | [product: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-manage.head = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+manage.head = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: manage.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::manage
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
+* @route '/dashboard/products/{product}/attributes/manage'
+*/
+const manageForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: manage.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::manage
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
+* @route '/dashboard/products/{product}/attributes/manage'
+*/
+manageForm.get = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: manage.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::manage
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
+* @route '/dashboard/products/{product}/attributes/manage'
+*/
+manageForm.head = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: manage.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+manage.form = manageForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::sync
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:219
 * @route '/dashboard/products/{product}/attributes/sync'
 */
-export const sync = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const sync = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: sync.url(args, options),
     method: 'post',
 })
@@ -87,7 +124,7 @@ sync.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:219
 * @route '/dashboard/products/{product}/attributes/sync'
 */
-sync.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+sync.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -120,10 +157,32 @@ sync.url = (args: { product: number | { id: number } } | [product: number | { id
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:219
 * @route '/dashboard/products/{product}/attributes/sync'
 */
-sync.post = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+sync.post = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: sync.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::sync
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:219
+* @route '/dashboard/products/{product}/attributes/sync'
+*/
+const syncForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: sync.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::sync
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:219
+* @route '/dashboard/products/{product}/attributes/sync'
+*/
+syncForm.post = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: sync.url(args, options),
+    method: 'post',
+})
+
+sync.form = syncForm
 
 const attributes = {
     manage: Object.assign(manage, manage),

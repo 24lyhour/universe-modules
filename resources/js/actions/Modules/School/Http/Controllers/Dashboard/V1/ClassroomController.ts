@@ -1,10 +1,10 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::qrCode
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:150
 * @route '/dashboard/classrooms/{classroom}/qr-code'
 */
-export const qrCode = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const qrCode = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: qrCode.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ qrCode.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:150
 * @route '/dashboard/classrooms/{classroom}/qr-code'
 */
-qrCode.url = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+qrCode.url = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { classroom: args }
     }
@@ -52,7 +52,7 @@ qrCode.url = (args: { classroom: string | { uuid: string } } | [classroom: strin
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:150
 * @route '/dashboard/classrooms/{classroom}/qr-code'
 */
-qrCode.get = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+qrCode.get = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: qrCode.url(args, options),
     method: 'get',
 })
@@ -62,10 +62,47 @@ qrCode.get = (args: { classroom: string | { uuid: string } } | [classroom: strin
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:150
 * @route '/dashboard/classrooms/{classroom}/qr-code'
 */
-qrCode.head = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+qrCode.head = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: qrCode.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::qrCode
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:150
+* @route '/dashboard/classrooms/{classroom}/qr-code'
+*/
+const qrCodeForm = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: qrCode.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::qrCode
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:150
+* @route '/dashboard/classrooms/{classroom}/qr-code'
+*/
+qrCodeForm.get = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: qrCode.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::qrCode
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:150
+* @route '/dashboard/classrooms/{classroom}/qr-code'
+*/
+qrCodeForm.head = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: qrCode.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+qrCode.form = qrCodeForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirmBulkDelete
@@ -112,6 +149,43 @@ confirmBulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> 
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:185
+* @route '/dashboard/classrooms/bulk-delete'
+*/
+const confirmBulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:185
+* @route '/dashboard/classrooms/bulk-delete'
+*/
+confirmBulkDeleteForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirmBulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:185
+* @route '/dashboard/classrooms/bulk-delete'
+*/
+confirmBulkDeleteForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmBulkDelete.form = confirmBulkDeleteForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::bulkDelete
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:199
 * @route '/dashboard/classrooms/bulk-delete'
@@ -144,6 +218,38 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
     url: bulkDelete.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:199
+* @route '/dashboard/classrooms/bulk-delete'
+*/
+const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:199
+* @route '/dashboard/classrooms/bulk-delete'
+*/
+bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::create
@@ -190,6 +296,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::create
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:56
+* @route '/dashboard/classrooms/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::create
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:56
+* @route '/dashboard/classrooms/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::create
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:56
+* @route '/dashboard/classrooms/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::store
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:67
 * @route '/dashboard/classrooms'
@@ -222,6 +365,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::store
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:67
+* @route '/dashboard/classrooms'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::store
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:67
+* @route '/dashboard/classrooms'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::index
@@ -268,11 +433,48 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::index
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:43
+* @route '/dashboard/classrooms'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::index
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:43
+* @route '/dashboard/classrooms'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::index
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:43
+* @route '/dashboard/classrooms'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::show
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:79
 * @route '/dashboard/classrooms/{classroom}'
 */
-export const show = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -287,7 +489,7 @@ show.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:79
 * @route '/dashboard/classrooms/{classroom}'
 */
-show.url = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { classroom: args }
     }
@@ -320,7 +522,7 @@ show.url = (args: { classroom: string | { uuid: string } } | [classroom: string 
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:79
 * @route '/dashboard/classrooms/{classroom}'
 */
-show.get = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -330,17 +532,54 @@ show.get = (args: { classroom: string | { uuid: string } } | [classroom: string 
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:79
 * @route '/dashboard/classrooms/{classroom}'
 */
-show.head = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::show
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:79
+* @route '/dashboard/classrooms/{classroom}'
+*/
+const showForm = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::show
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:79
+* @route '/dashboard/classrooms/{classroom}'
+*/
+showForm.get = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::show
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:79
+* @route '/dashboard/classrooms/{classroom}'
+*/
+showForm.head = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::edit
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:89
 * @route '/dashboard/classrooms/{classroom}/edit'
 */
-export const edit = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -355,7 +594,7 @@ edit.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:89
 * @route '/dashboard/classrooms/{classroom}/edit'
 */
-edit.url = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { classroom: args }
     }
@@ -388,7 +627,7 @@ edit.url = (args: { classroom: string | { uuid: string } } | [classroom: string 
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:89
 * @route '/dashboard/classrooms/{classroom}/edit'
 */
-edit.get = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -398,17 +637,54 @@ edit.get = (args: { classroom: string | { uuid: string } } | [classroom: string 
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:89
 * @route '/dashboard/classrooms/{classroom}/edit'
 */
-edit.head = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::edit
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:89
+* @route '/dashboard/classrooms/{classroom}/edit'
+*/
+const editForm = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::edit
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:89
+* @route '/dashboard/classrooms/{classroom}/edit'
+*/
+editForm.get = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::edit
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:89
+* @route '/dashboard/classrooms/{classroom}/edit'
+*/
+editForm.head = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::update
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:100
 * @route '/dashboard/classrooms/{classroom}'
 */
-const updatea96892df7f47b6af7b923267131dc165 = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const updatea96892df7f47b6af7b923267131dc165 = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updatea96892df7f47b6af7b923267131dc165.url(args, options),
     method: 'put',
 })
@@ -423,7 +699,7 @@ updatea96892df7f47b6af7b923267131dc165.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:100
 * @route '/dashboard/classrooms/{classroom}'
 */
-updatea96892df7f47b6af7b923267131dc165.url = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+updatea96892df7f47b6af7b923267131dc165.url = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { classroom: args }
     }
@@ -456,7 +732,7 @@ updatea96892df7f47b6af7b923267131dc165.url = (args: { classroom: string | { uuid
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:100
 * @route '/dashboard/classrooms/{classroom}'
 */
-updatea96892df7f47b6af7b923267131dc165.put = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+updatea96892df7f47b6af7b923267131dc165.put = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updatea96892df7f47b6af7b923267131dc165.url(args, options),
     method: 'put',
 })
@@ -466,7 +742,38 @@ updatea96892df7f47b6af7b923267131dc165.put = (args: { classroom: string | { uuid
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:100
 * @route '/dashboard/classrooms/{classroom}'
 */
-const updatea96892df7f47b6af7b923267131dc165 = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+const updatea96892df7f47b6af7b923267131dc165Form = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatea96892df7f47b6af7b923267131dc165.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::update
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:100
+* @route '/dashboard/classrooms/{classroom}'
+*/
+updatea96892df7f47b6af7b923267131dc165Form.put = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatea96892df7f47b6af7b923267131dc165.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updatea96892df7f47b6af7b923267131dc165.form = updatea96892df7f47b6af7b923267131dc165Form
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::update
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:100
+* @route '/dashboard/classrooms/{classroom}'
+*/
+const updatea96892df7f47b6af7b923267131dc165 = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updatea96892df7f47b6af7b923267131dc165.url(args, options),
     method: 'patch',
 })
@@ -481,7 +788,7 @@ updatea96892df7f47b6af7b923267131dc165.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:100
 * @route '/dashboard/classrooms/{classroom}'
 */
-updatea96892df7f47b6af7b923267131dc165.url = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+updatea96892df7f47b6af7b923267131dc165.url = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { classroom: args }
     }
@@ -514,10 +821,42 @@ updatea96892df7f47b6af7b923267131dc165.url = (args: { classroom: string | { uuid
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:100
 * @route '/dashboard/classrooms/{classroom}'
 */
-updatea96892df7f47b6af7b923267131dc165.patch = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+updatea96892df7f47b6af7b923267131dc165.patch = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updatea96892df7f47b6af7b923267131dc165.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::update
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:100
+* @route '/dashboard/classrooms/{classroom}'
+*/
+const updatea96892df7f47b6af7b923267131dc165Form = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatea96892df7f47b6af7b923267131dc165.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::update
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:100
+* @route '/dashboard/classrooms/{classroom}'
+*/
+updatea96892df7f47b6af7b923267131dc165Form.patch = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatea96892df7f47b6af7b923267131dc165.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updatea96892df7f47b6af7b923267131dc165.form = updatea96892df7f47b6af7b923267131dc165Form
 
 export const update = {
     '/dashboard/classrooms/{classroom}': updatea96892df7f47b6af7b923267131dc165,
@@ -529,7 +868,7 @@ export const update = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:136
 * @route '/dashboard/classrooms/{classroom}/toggle-status'
 */
-export const toggleStatus = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleStatus = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -544,7 +883,7 @@ toggleStatus.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:136
 * @route '/dashboard/classrooms/{classroom}/toggle-status'
 */
-toggleStatus.url = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+toggleStatus.url = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { classroom: args }
     }
@@ -577,17 +916,49 @@ toggleStatus.url = (args: { classroom: string | { uuid: string } } | [classroom:
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:136
 * @route '/dashboard/classrooms/{classroom}/toggle-status'
 */
-toggleStatus.put = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleStatus.put = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::toggleStatus
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:136
+* @route '/dashboard/classrooms/{classroom}/toggle-status'
+*/
+const toggleStatusForm = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::toggleStatus
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:136
+* @route '/dashboard/classrooms/{classroom}/toggle-status'
+*/
+toggleStatusForm.put = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirmDelete
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:112
 * @route '/dashboard/classrooms/{classroom}/delete'
 */
-export const confirmDelete = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const confirmDelete = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -602,7 +973,7 @@ confirmDelete.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:112
 * @route '/dashboard/classrooms/{classroom}/delete'
 */
-confirmDelete.url = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+confirmDelete.url = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { classroom: args }
     }
@@ -635,7 +1006,7 @@ confirmDelete.url = (args: { classroom: string | { uuid: string } } | [classroom
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:112
 * @route '/dashboard/classrooms/{classroom}/delete'
 */
-confirmDelete.get = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+confirmDelete.get = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -645,17 +1016,54 @@ confirmDelete.get = (args: { classroom: string | { uuid: string } } | [classroom
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:112
 * @route '/dashboard/classrooms/{classroom}/delete'
 */
-confirmDelete.head = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+confirmDelete.head = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmDelete.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirmDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:112
+* @route '/dashboard/classrooms/{classroom}/delete'
+*/
+const confirmDeleteForm = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirmDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:112
+* @route '/dashboard/classrooms/{classroom}/delete'
+*/
+confirmDeleteForm.get = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirmDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:112
+* @route '/dashboard/classrooms/{classroom}/delete'
+*/
+confirmDeleteForm.head = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmDelete.form = confirmDeleteForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::destroy
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:124
 * @route '/dashboard/classrooms/{classroom}'
 */
-export const destroy = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -670,7 +1078,7 @@ destroy.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:124
 * @route '/dashboard/classrooms/{classroom}'
 */
-destroy.url = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { classroom: args }
     }
@@ -703,10 +1111,42 @@ destroy.url = (args: { classroom: string | { uuid: string } } | [classroom: stri
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:124
 * @route '/dashboard/classrooms/{classroom}'
 */
-destroy.delete = (args: { classroom: string | { uuid: string } } | [classroom: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::destroy
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:124
+* @route '/dashboard/classrooms/{classroom}'
+*/
+const destroyForm = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::destroy
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:124
+* @route '/dashboard/classrooms/{classroom}'
+*/
+destroyForm.delete = (args: { classroom: string | number | { uuid: string | number } } | [classroom: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const ClassroomController = { qrCode, confirmBulkDelete, bulkDelete, create, store, index, show, edit, update, toggleStatus, confirmDelete, destroy }
 

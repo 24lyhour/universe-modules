@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Settings\ActivityLogController::index
 * @see app/Http/Controllers/Settings/ActivityLogController.php:20
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::index
+* @see app/Http/Controllers/Settings/ActivityLogController.php:20
+* @route '/dashboard/settings/activity-log'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::index
+* @see app/Http/Controllers/Settings/ActivityLogController.php:20
+* @route '/dashboard/settings/activity-log'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::index
+* @see app/Http/Controllers/Settings/ActivityLogController.php:20
+* @route '/dashboard/settings/activity-log'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \App\Http\Controllers\Settings\ActivityLogController::exportMethod
@@ -88,6 +125,43 @@ exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \App\Http\Controllers\Settings\ActivityLogController::exportMethod
+* @see app/Http/Controllers/Settings/ActivityLogController.php:227
+* @route '/dashboard/settings/activity-log/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::exportMethod
+* @see app/Http/Controllers/Settings/ActivityLogController.php:227
+* @route '/dashboard/settings/activity-log/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::exportMethod
+* @see app/Http/Controllers/Settings/ActivityLogController.php:227
+* @route '/dashboard/settings/activity-log/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
+
+/**
 * @see \App\Http\Controllers\Settings\ActivityLogController::clear
 * @see app/Http/Controllers/Settings/ActivityLogController.php:271
 * @route '/dashboard/settings/activity-log/clear'
@@ -122,11 +196,33 @@ clear.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
+* @see \App\Http\Controllers\Settings\ActivityLogController::clear
+* @see app/Http/Controllers/Settings/ActivityLogController.php:271
+* @route '/dashboard/settings/activity-log/clear'
+*/
+const clearForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: clear.url(options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::clear
+* @see app/Http/Controllers/Settings/ActivityLogController.php:271
+* @route '/dashboard/settings/activity-log/clear'
+*/
+clearForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: clear.url(options),
+    method: 'post',
+})
+
+clear.form = clearForm
+
+/**
 * @see \App\Http\Controllers\Settings\ActivityLogController::suspendUser
 * @see app/Http/Controllers/Settings/ActivityLogController.php:114
 * @route '/dashboard/settings/users/{user}/suspend'
 */
-export const suspendUser = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const suspendUser = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: suspendUser.url(args, options),
     method: 'post',
 })
@@ -141,7 +237,7 @@ suspendUser.definition = {
 * @see app/Http/Controllers/Settings/ActivityLogController.php:114
 * @route '/dashboard/settings/users/{user}/suspend'
 */
-suspendUser.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+suspendUser.url = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { user: args }
     }
@@ -174,17 +270,39 @@ suspendUser.url = (args: { user: number | { id: number } } | [user: number | { i
 * @see app/Http/Controllers/Settings/ActivityLogController.php:114
 * @route '/dashboard/settings/users/{user}/suspend'
 */
-suspendUser.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+suspendUser.post = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: suspendUser.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::suspendUser
+* @see app/Http/Controllers/Settings/ActivityLogController.php:114
+* @route '/dashboard/settings/users/{user}/suspend'
+*/
+const suspendUserForm = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: suspendUser.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::suspendUser
+* @see app/Http/Controllers/Settings/ActivityLogController.php:114
+* @route '/dashboard/settings/users/{user}/suspend'
+*/
+suspendUserForm.post = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: suspendUser.url(args, options),
+    method: 'post',
+})
+
+suspendUser.form = suspendUserForm
 
 /**
 * @see \App\Http\Controllers\Settings\ActivityLogController::unsuspendUser
 * @see app/Http/Controllers/Settings/ActivityLogController.php:138
 * @route '/dashboard/settings/users/{user}/unsuspend'
 */
-export const unsuspendUser = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const unsuspendUser = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: unsuspendUser.url(args, options),
     method: 'post',
 })
@@ -199,7 +317,7 @@ unsuspendUser.definition = {
 * @see app/Http/Controllers/Settings/ActivityLogController.php:138
 * @route '/dashboard/settings/users/{user}/unsuspend'
 */
-unsuspendUser.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+unsuspendUser.url = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { user: args }
     }
@@ -232,17 +350,39 @@ unsuspendUser.url = (args: { user: number | { id: number } } | [user: number | {
 * @see app/Http/Controllers/Settings/ActivityLogController.php:138
 * @route '/dashboard/settings/users/{user}/unsuspend'
 */
-unsuspendUser.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+unsuspendUser.post = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: unsuspendUser.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::unsuspendUser
+* @see app/Http/Controllers/Settings/ActivityLogController.php:138
+* @route '/dashboard/settings/users/{user}/unsuspend'
+*/
+const unsuspendUserForm = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: unsuspendUser.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::unsuspendUser
+* @see app/Http/Controllers/Settings/ActivityLogController.php:138
+* @route '/dashboard/settings/users/{user}/unsuspend'
+*/
+unsuspendUserForm.post = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: unsuspendUser.url(args, options),
+    method: 'post',
+})
+
+unsuspendUser.form = unsuspendUserForm
 
 /**
 * @see \App\Http\Controllers\Settings\ActivityLogController::forceLogout
 * @see app/Http/Controllers/Settings/ActivityLogController.php:154
 * @route '/dashboard/settings/users/{user}/force-logout'
 */
-export const forceLogout = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const forceLogout = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: forceLogout.url(args, options),
     method: 'post',
 })
@@ -257,7 +397,7 @@ forceLogout.definition = {
 * @see app/Http/Controllers/Settings/ActivityLogController.php:154
 * @route '/dashboard/settings/users/{user}/force-logout'
 */
-forceLogout.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+forceLogout.url = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { user: args }
     }
@@ -290,17 +430,39 @@ forceLogout.url = (args: { user: number | { id: number } } | [user: number | { i
 * @see app/Http/Controllers/Settings/ActivityLogController.php:154
 * @route '/dashboard/settings/users/{user}/force-logout'
 */
-forceLogout.post = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+forceLogout.post = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: forceLogout.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::forceLogout
+* @see app/Http/Controllers/Settings/ActivityLogController.php:154
+* @route '/dashboard/settings/users/{user}/force-logout'
+*/
+const forceLogoutForm = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceLogout.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::forceLogout
+* @see app/Http/Controllers/Settings/ActivityLogController.php:154
+* @route '/dashboard/settings/users/{user}/force-logout'
+*/
+forceLogoutForm.post = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceLogout.url(args, options),
+    method: 'post',
+})
+
+forceLogout.form = forceLogoutForm
 
 /**
 * @see \App\Http\Controllers\Settings\ActivityLogController::deleteUser
 * @see app/Http/Controllers/Settings/ActivityLogController.php:188
 * @route '/dashboard/settings/users/{user}'
 */
-export const deleteUser = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const deleteUser = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: deleteUser.url(args, options),
     method: 'delete',
 })
@@ -315,7 +477,7 @@ deleteUser.definition = {
 * @see app/Http/Controllers/Settings/ActivityLogController.php:188
 * @route '/dashboard/settings/users/{user}'
 */
-deleteUser.url = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+deleteUser.url = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { user: args }
     }
@@ -348,10 +510,42 @@ deleteUser.url = (args: { user: number | { id: number } } | [user: number | { id
 * @see app/Http/Controllers/Settings/ActivityLogController.php:188
 * @route '/dashboard/settings/users/{user}'
 */
-deleteUser.delete = (args: { user: number | { id: number } } | [user: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+deleteUser.delete = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: deleteUser.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::deleteUser
+* @see app/Http/Controllers/Settings/ActivityLogController.php:188
+* @route '/dashboard/settings/users/{user}'
+*/
+const deleteUserForm = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deleteUser.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\Settings\ActivityLogController::deleteUser
+* @see app/Http/Controllers/Settings/ActivityLogController.php:188
+* @route '/dashboard/settings/users/{user}'
+*/
+deleteUserForm.delete = (args: { user: string | number | { id: string | number } } | [user: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: deleteUser.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+deleteUser.form = deleteUserForm
 
 const ActivityLogController = { index, exportMethod, clear, suspendUser, unsuspendUser, forceLogout, deleteUser, export: exportMethod }
 

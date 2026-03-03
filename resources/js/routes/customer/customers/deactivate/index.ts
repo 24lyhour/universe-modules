@@ -1,10 +1,10 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerStatusController::store
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:57
 * @route '/dashboard/customers/{customer}/deactivate'
 */
-export const store = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const store = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: store.url(args, options),
     method: 'patch',
 })
@@ -19,7 +19,7 @@ store.definition = {
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:57
 * @route '/dashboard/customers/{customer}/deactivate'
 */
-store.url = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+store.url = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { customer: args }
     }
@@ -52,10 +52,42 @@ store.url = (args: { customer: number | { id: number } } | [customer: number | {
 * @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:57
 * @route '/dashboard/customers/{customer}/deactivate'
 */
-store.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+store.patch = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: store.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::store
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:57
+* @route '/dashboard/customers/{customer}/deactivate'
+*/
+const storeForm = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\CustomerStatusController::store
+* @see Modules/Customer/app/Http/Controllers/CustomerStatusController.php:57
+* @route '/dashboard/customers/{customer}/deactivate'
+*/
+storeForm.patch = (args: { customer: string | number | { id: string | number } } | [customer: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+store.form = storeForm
 
 const deactivate = {
     store: Object.assign(store, store),

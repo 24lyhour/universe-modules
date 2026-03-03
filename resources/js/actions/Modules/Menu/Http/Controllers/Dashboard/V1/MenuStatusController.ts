@@ -1,10 +1,10 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuStatusController::__invoke
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-const MenuStatusController = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const MenuStatusController = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: MenuStatusController.url(args, options),
     method: 'put',
 })
@@ -19,7 +19,7 @@ MenuStatusController.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-MenuStatusController.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+MenuStatusController.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -52,9 +52,41 @@ MenuStatusController.url = (args: { menu: string | { uuid: string } } | [menu: s
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-MenuStatusController.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+MenuStatusController.put = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: MenuStatusController.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuStatusController::__invoke
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
+* @route '/dashboard/menus/{menu}/toggle-status'
+*/
+const MenuStatusControllerForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: MenuStatusController.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuStatusController::__invoke
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
+* @route '/dashboard/menus/{menu}/toggle-status'
+*/
+MenuStatusControllerForm.put = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: MenuStatusController.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+MenuStatusController.form = MenuStatusControllerForm
 
 export default MenuStatusController

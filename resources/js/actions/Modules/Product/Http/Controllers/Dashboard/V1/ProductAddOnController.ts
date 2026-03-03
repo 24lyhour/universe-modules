@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::indexAll
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:38
@@ -42,6 +42,43 @@ indexAll.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: indexAll.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::indexAll
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:38
+* @route '/dashboard/products/addons'
+*/
+const indexAllForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: indexAll.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::indexAll
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:38
+* @route '/dashboard/products/addons'
+*/
+indexAllForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: indexAll.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::indexAll
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:38
+* @route '/dashboard/products/addons'
+*/
+indexAllForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: indexAll.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+indexAll.form = indexAllForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::createStandalone
@@ -88,6 +125,43 @@ createStandalone.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::createStandalone
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:149
+* @route '/dashboard/products/addons/create'
+*/
+const createStandaloneForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createStandalone.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::createStandalone
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:149
+* @route '/dashboard/products/addons/create'
+*/
+createStandaloneForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createStandalone.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::createStandalone
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:149
+* @route '/dashboard/products/addons/create'
+*/
+createStandaloneForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: createStandalone.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+createStandalone.form = createStandaloneForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::storeStandalone
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:159
 * @route '/dashboard/products/addons'
@@ -122,11 +196,33 @@ storeStandalone.post = (options?: RouteQueryOptions): RouteDefinition<'post'> =>
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::storeStandalone
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:159
+* @route '/dashboard/products/addons'
+*/
+const storeStandaloneForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: storeStandalone.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::storeStandalone
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:159
+* @route '/dashboard/products/addons'
+*/
+storeStandaloneForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: storeStandalone.url(options),
+    method: 'post',
+})
+
+storeStandalone.form = storeStandaloneForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::index
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:55
 * @route '/dashboard/products/{product}/addons'
 */
-export const index = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const index = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(args, options),
     method: 'get',
 })
@@ -141,7 +237,7 @@ index.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:55
 * @route '/dashboard/products/{product}/addons'
 */
-index.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+index.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -174,7 +270,7 @@ index.url = (args: { product: number | { id: number } } | [product: number | { i
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:55
 * @route '/dashboard/products/{product}/addons'
 */
-index.get = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+index.get = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(args, options),
     method: 'get',
 })
@@ -184,17 +280,54 @@ index.get = (args: { product: number | { id: number } } | [product: number | { i
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:55
 * @route '/dashboard/products/{product}/addons'
 */
-index.head = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+index.head = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::index
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:55
+* @route '/dashboard/products/{product}/addons'
+*/
+const indexForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::index
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:55
+* @route '/dashboard/products/{product}/addons'
+*/
+indexForm.get = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::index
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:55
+* @route '/dashboard/products/{product}/addons'
+*/
+indexForm.head = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::create
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:70
 * @route '/dashboard/products/{product}/addons/create'
 */
-export const create = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const create = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: create.url(args, options),
     method: 'get',
 })
@@ -209,7 +342,7 @@ create.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:70
 * @route '/dashboard/products/{product}/addons/create'
 */
-create.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+create.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -242,7 +375,7 @@ create.url = (args: { product: number | { id: number } } | [product: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:70
 * @route '/dashboard/products/{product}/addons/create'
 */
-create.get = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+create.get = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: create.url(args, options),
     method: 'get',
 })
@@ -252,17 +385,54 @@ create.get = (args: { product: number | { id: number } } | [product: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:70
 * @route '/dashboard/products/{product}/addons/create'
 */
-create.head = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+create.head = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: create.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::create
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:70
+* @route '/dashboard/products/{product}/addons/create'
+*/
+const createForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::create
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:70
+* @route '/dashboard/products/{product}/addons/create'
+*/
+createForm.get = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::create
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:70
+* @route '/dashboard/products/{product}/addons/create'
+*/
+createForm.head = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::store
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:81
 * @route '/dashboard/products/{product}/addons'
 */
-export const store = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const store = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(args, options),
     method: 'post',
 })
@@ -277,7 +447,7 @@ store.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:81
 * @route '/dashboard/products/{product}/addons'
 */
-store.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+store.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -310,17 +480,39 @@ store.url = (args: { product: number | { id: number } } | [product: number | { i
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:81
 * @route '/dashboard/products/{product}/addons'
 */
-store.post = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+store.post = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::store
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:81
+* @route '/dashboard/products/{product}/addons'
+*/
+const storeForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::store
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:81
+* @route '/dashboard/products/{product}/addons'
+*/
+storeForm.post = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(args, options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::edit
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:92
 * @route '/dashboard/products/{product}/addons/{addon}/edit'
 */
-export const edit = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -335,7 +527,7 @@ edit.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:92
 * @route '/dashboard/products/{product}/addons/{addon}/edit'
 */
-edit.url = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions) => {
+edit.url = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
             product: args[0],
@@ -365,7 +557,7 @@ edit.url = (args: { product: number | { id: number }, addon: number | { id: numb
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:92
 * @route '/dashboard/products/{product}/addons/{addon}/edit'
 */
-edit.get = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -375,17 +567,54 @@ edit.get = (args: { product: number | { id: number }, addon: number | { id: numb
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:92
 * @route '/dashboard/products/{product}/addons/{addon}/edit'
 */
-edit.head = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::edit
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:92
+* @route '/dashboard/products/{product}/addons/{addon}/edit'
+*/
+const editForm = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::edit
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:92
+* @route '/dashboard/products/{product}/addons/{addon}/edit'
+*/
+editForm.get = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::edit
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:92
+* @route '/dashboard/products/{product}/addons/{addon}/edit'
+*/
+editForm.head = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::update
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:105
 * @route '/dashboard/products/{product}/addons/{addon}'
 */
-export const update = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -400,7 +629,7 @@ update.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:105
 * @route '/dashboard/products/{product}/addons/{addon}'
 */
-update.url = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions) => {
+update.url = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
             product: args[0],
@@ -430,7 +659,7 @@ update.url = (args: { product: number | { id: number }, addon: number | { id: nu
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:105
 * @route '/dashboard/products/{product}/addons/{addon}'
 */
-update.put = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -440,17 +669,64 @@ update.put = (args: { product: number | { id: number }, addon: number | { id: nu
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:105
 * @route '/dashboard/products/{product}/addons/{addon}'
 */
-update.patch = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::update
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:105
+* @route '/dashboard/products/{product}/addons/{addon}'
+*/
+const updateForm = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::update
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:105
+* @route '/dashboard/products/{product}/addons/{addon}'
+*/
+updateForm.put = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::update
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:105
+* @route '/dashboard/products/{product}/addons/{addon}'
+*/
+updateForm.patch = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::destroy
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:116
 * @route '/dashboard/products/{product}/addons/{addon}'
 */
-export const destroy = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -465,7 +741,7 @@ destroy.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:116
 * @route '/dashboard/products/{product}/addons/{addon}'
 */
-destroy.url = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions) => {
+destroy.url = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
             product: args[0],
@@ -495,17 +771,49 @@ destroy.url = (args: { product: number | { id: number }, addon: number | { id: n
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:116
 * @route '/dashboard/products/{product}/addons/{addon}'
 */
-destroy.delete = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::destroy
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:116
+* @route '/dashboard/products/{product}/addons/{addon}'
+*/
+const destroyForm = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::destroy
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:116
+* @route '/dashboard/products/{product}/addons/{addon}'
+*/
+destroyForm.delete = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::toggleStatus
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:127
 * @route '/dashboard/products/{product}/addons/{addon}/toggle-status'
 */
-export const toggleStatus = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const toggleStatus = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: toggleStatus.url(args, options),
     method: 'patch',
 })
@@ -520,7 +828,7 @@ toggleStatus.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:127
 * @route '/dashboard/products/{product}/addons/{addon}/toggle-status'
 */
-toggleStatus.url = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions) => {
+toggleStatus.url = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
             product: args[0],
@@ -550,17 +858,49 @@ toggleStatus.url = (args: { product: number | { id: number }, addon: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:127
 * @route '/dashboard/products/{product}/addons/{addon}/toggle-status'
 */
-toggleStatus.patch = (args: { product: number | { id: number }, addon: number | { id: number } } | [product: number | { id: number }, addon: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+toggleStatus.patch = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: toggleStatus.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::toggleStatus
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:127
+* @route '/dashboard/products/{product}/addons/{addon}/toggle-status'
+*/
+const toggleStatusForm = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::toggleStatus
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:127
+* @route '/dashboard/products/{product}/addons/{addon}/toggle-status'
+*/
+toggleStatusForm.patch = (args: { product: string | number | { id: string | number }, addon: string | number | { id: string | number } } | [product: string | number | { id: string | number }, addon: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::reorder
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:138
 * @route '/dashboard/products/{product}/addons/reorder'
 */
-export const reorder = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const reorder = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reorder.url(args, options),
     method: 'post',
 })
@@ -575,7 +915,7 @@ reorder.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:138
 * @route '/dashboard/products/{product}/addons/reorder'
 */
-reorder.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+reorder.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -608,10 +948,32 @@ reorder.url = (args: { product: number | { id: number } } | [product: number | {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:138
 * @route '/dashboard/products/{product}/addons/reorder'
 */
-reorder.post = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+reorder.post = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reorder.url(args, options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::reorder
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:138
+* @route '/dashboard/products/{product}/addons/reorder'
+*/
+const reorderForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: reorder.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAddOnController::reorder
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAddOnController.php:138
+* @route '/dashboard/products/{product}/addons/reorder'
+*/
+reorderForm.post = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: reorder.url(args, options),
+    method: 'post',
+})
+
+reorder.form = reorderForm
 
 const ProductAddOnController = { indexAll, createStandalone, storeStandalone, index, create, store, edit, update, destroy, toggleStatus, reorder }
 

@@ -1,10 +1,10 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::show
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-export const show = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ show.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -52,7 +52,7 @@ show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -62,17 +62,54 @@ show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
+* @route '/dashboard/menus/{menu}/schedule'
+*/
+const showForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
+* @route '/dashboard/menus/{menu}/schedule'
+*/
+showForm.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
+* @route '/dashboard/menus/{menu}/schedule'
+*/
+showForm.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::update
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
 * @route '/dashboard/menus/{menu}/schedule'
 */
-export const update = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -87,7 +124,7 @@ update.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
 * @route '/dashboard/menus/{menu}/schedule'
 */
-update.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -120,10 +157,42 @@ update.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
 * @route '/dashboard/menus/{menu}/schedule'
 */
-update.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::update
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
+* @route '/dashboard/menus/{menu}/schedule'
+*/
+const updateForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::update
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
+* @route '/dashboard/menus/{menu}/schedule'
+*/
+updateForm.put = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
 
 const MenuScheduleController = { show, update }
 
