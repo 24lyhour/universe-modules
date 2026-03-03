@@ -1,5 +1,6 @@
 import MenuController from './MenuController'
 import MenuStatusController from './MenuStatusController'
+import MenuScheduleController from './MenuScheduleController'
 import MenuCategoryController from './MenuCategoryController'
 import CategoryController from './CategoryController'
 import CategoryStatusController from './CategoryStatusController'
@@ -10,6 +11,7 @@ import MenuTypeStatusController from './MenuTypeStatusController'
 const V1 = {
     MenuController: Object.assign(MenuController, MenuController),
     MenuStatusController: Object.assign(MenuStatusController, MenuStatusController),
+    MenuScheduleController: Object.assign(MenuScheduleController, MenuScheduleController),
     MenuCategoryController: Object.assign(MenuCategoryController, MenuCategoryController),
     CategoryController: Object.assign(CategoryController, CategoryController),
     CategoryStatusController: Object.assign(CategoryStatusController, CategoryStatusController),

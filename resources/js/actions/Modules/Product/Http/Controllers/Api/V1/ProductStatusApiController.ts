@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
 * @route '/api/v1/products/{product}/activate'
 */
-export const activate = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const activate = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activate.url(args, options),
     method: 'patch',
 })
@@ -19,7 +19,7 @@ activate.definition = {
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
 * @route '/api/v1/products/{product}/activate'
 */
-activate.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+activate.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -52,7 +52,7 @@ activate.url = (args: { product: string | number | { id: string | number } } | [
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
 * @route '/api/v1/products/{product}/activate'
 */
-activate.patch = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+activate.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activate.url(args, options),
     method: 'patch',
 })
@@ -62,7 +62,7 @@ activate.patch = (args: { product: string | number | { id: string | number } } |
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
 * @route '/api/v1/products/{product}/activate'
 */
-const activateForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const activateForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: activate.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -77,7 +77,7 @@ const activateForm = (args: { product: string | number | { id: string | number }
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
 * @route '/api/v1/products/{product}/activate'
 */
-activateForm.patch = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+activateForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: activate.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -94,7 +94,7 @@ activate.form = activateForm
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
 * @route '/api/v1/products/{product}/deactivate'
 */
-export const deactivate = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const deactivate = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate.url(args, options),
     method: 'patch',
 })
@@ -109,7 +109,7 @@ deactivate.definition = {
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
 * @route '/api/v1/products/{product}/deactivate'
 */
-deactivate.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+deactivate.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -142,7 +142,7 @@ deactivate.url = (args: { product: string | number | { id: string | number } } |
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
 * @route '/api/v1/products/{product}/deactivate'
 */
-deactivate.patch = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+deactivate.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate.url(args, options),
     method: 'patch',
 })
@@ -152,7 +152,7 @@ deactivate.patch = (args: { product: string | number | { id: string | number } }
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
 * @route '/api/v1/products/{product}/deactivate'
 */
-const deactivateForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const deactivateForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deactivate.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -167,7 +167,7 @@ const deactivateForm = (args: { product: string | number | { id: string | number
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
 * @route '/api/v1/products/{product}/deactivate'
 */
-deactivateForm.patch = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+deactivateForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deactivate.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -184,7 +184,7 @@ deactivate.form = deactivateForm
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
 * @route '/api/v1/products/{product}/draft'
 */
-export const setDraft = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const setDraft = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: setDraft.url(args, options),
     method: 'patch',
 })
@@ -199,7 +199,7 @@ setDraft.definition = {
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
 * @route '/api/v1/products/{product}/draft'
 */
-setDraft.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+setDraft.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -232,7 +232,7 @@ setDraft.url = (args: { product: string | number | { id: string | number } } | [
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
 * @route '/api/v1/products/{product}/draft'
 */
-setDraft.patch = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+setDraft.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: setDraft.url(args, options),
     method: 'patch',
 })
@@ -242,7 +242,7 @@ setDraft.patch = (args: { product: string | number | { id: string | number } } |
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
 * @route '/api/v1/products/{product}/draft'
 */
-const setDraftForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const setDraftForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: setDraft.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -257,7 +257,7 @@ const setDraftForm = (args: { product: string | number | { id: string | number }
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
 * @route '/api/v1/products/{product}/draft'
 */
-setDraftForm.patch = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+setDraftForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: setDraft.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -274,7 +274,7 @@ setDraft.form = setDraftForm
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
 * @route '/api/v1/products/{product}/toggle-featured'
 */
-export const toggleFeatured = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const toggleFeatured = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: toggleFeatured.url(args, options),
     method: 'patch',
 })
@@ -289,7 +289,7 @@ toggleFeatured.definition = {
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
 * @route '/api/v1/products/{product}/toggle-featured'
 */
-toggleFeatured.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+toggleFeatured.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -322,7 +322,7 @@ toggleFeatured.url = (args: { product: string | number | { id: string | number }
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
 * @route '/api/v1/products/{product}/toggle-featured'
 */
-toggleFeatured.patch = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+toggleFeatured.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: toggleFeatured.url(args, options),
     method: 'patch',
 })
@@ -332,7 +332,7 @@ toggleFeatured.patch = (args: { product: string | number | { id: string | number
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
 * @route '/api/v1/products/{product}/toggle-featured'
 */
-const toggleFeaturedForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleFeaturedForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleFeatured.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -347,7 +347,7 @@ const toggleFeaturedForm = (args: { product: string | number | { id: string | nu
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
 * @route '/api/v1/products/{product}/toggle-featured'
 */
-toggleFeaturedForm.patch = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleFeaturedForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleFeatured.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -364,7 +364,7 @@ toggleFeatured.form = toggleFeaturedForm
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
 * @route '/api/v1/products/{product}/stock'
 */
-export const updateStock = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const updateStock = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updateStock.url(args, options),
     method: 'patch',
 })
@@ -379,7 +379,7 @@ updateStock.definition = {
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
 * @route '/api/v1/products/{product}/stock'
 */
-updateStock.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+updateStock.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -412,7 +412,7 @@ updateStock.url = (args: { product: string | number | { id: string | number } } 
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
 * @route '/api/v1/products/{product}/stock'
 */
-updateStock.patch = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+updateStock.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updateStock.url(args, options),
     method: 'patch',
 })
@@ -422,7 +422,7 @@ updateStock.patch = (args: { product: string | number | { id: string | number } 
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
 * @route '/api/v1/products/{product}/stock'
 */
-const updateStockForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateStockForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateStock.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -437,7 +437,7 @@ const updateStockForm = (args: { product: string | number | { id: string | numbe
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
 * @route '/api/v1/products/{product}/stock'
 */
-updateStockForm.patch = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateStockForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateStock.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
