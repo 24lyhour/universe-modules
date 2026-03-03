@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-export const manage = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const manage = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: manage.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ manage.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-manage.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+manage.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -52,7 +52,7 @@ manage.url = (args: { product: number | { id: number } } | [product: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-manage.get = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+manage.get = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: manage.url(args, options),
     method: 'get',
 })
@@ -62,7 +62,7 @@ manage.get = (args: { product: number | { id: number } } | [product: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-manage.head = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+manage.head = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: manage.url(args, options),
     method: 'head',
 })
@@ -72,7 +72,7 @@ manage.head = (args: { product: number | { id: number } } | [product: number | {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-const manageForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const manageForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: manage.url(args, options),
     method: 'get',
 })
@@ -82,7 +82,7 @@ const manageForm = (args: { product: number | { id: number } } | [product: numbe
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-manageForm.get = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+manageForm.get = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: manage.url(args, options),
     method: 'get',
 })
@@ -92,7 +92,7 @@ manageForm.get = (args: { product: number | { id: number } } | [product: number 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:195
 * @route '/dashboard/products/{product}/attributes/manage'
 */
-manageForm.head = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+manageForm.head = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: manage.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -109,7 +109,7 @@ manage.form = manageForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:219
 * @route '/dashboard/products/{product}/attributes/sync'
 */
-export const sync = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const sync = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: sync.url(args, options),
     method: 'post',
 })
@@ -124,7 +124,7 @@ sync.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:219
 * @route '/dashboard/products/{product}/attributes/sync'
 */
-sync.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+sync.url = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { product: args }
     }
@@ -157,7 +157,7 @@ sync.url = (args: { product: number | { id: number } } | [product: number | { id
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:219
 * @route '/dashboard/products/{product}/attributes/sync'
 */
-sync.post = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+sync.post = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: sync.url(args, options),
     method: 'post',
 })
@@ -167,7 +167,7 @@ sync.post = (args: { product: number | { id: number } } | [product: number | { i
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:219
 * @route '/dashboard/products/{product}/attributes/sync'
 */
-const syncForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const syncForm = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: sync.url(args, options),
     method: 'post',
 })
@@ -177,7 +177,7 @@ const syncForm = (args: { product: number | { id: number } } | [product: number 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:219
 * @route '/dashboard/products/{product}/attributes/sync'
 */
-syncForm.post = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+syncForm.post = (args: { product: string | number | { id: string | number } } | [product: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: sync.url(args, options),
     method: 'post',
 })

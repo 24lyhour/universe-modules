@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-const MenuStatusController = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const MenuStatusController = (args: { menu: string | number | { id: string | number } } | [menu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: MenuStatusController.url(args, options),
     method: 'put',
 })
@@ -19,7 +19,7 @@ MenuStatusController.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-MenuStatusController.url = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+MenuStatusController.url = (args: { menu: string | number | { id: string | number } } | [menu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -52,7 +52,7 @@ MenuStatusController.url = (args: { menu: number | { id: number } } | [menu: num
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-MenuStatusController.put = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+MenuStatusController.put = (args: { menu: string | number | { id: string | number } } | [menu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: MenuStatusController.url(args, options),
     method: 'put',
 })
@@ -62,7 +62,7 @@ MenuStatusController.put = (args: { menu: number | { id: number } } | [menu: num
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-const MenuStatusControllerForm = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const MenuStatusControllerForm = (args: { menu: string | number | { id: string | number } } | [menu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: MenuStatusController.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -77,7 +77,7 @@ const MenuStatusControllerForm = (args: { menu: number | { id: number } } | [men
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-MenuStatusControllerForm.put = (args: { menu: number | { id: number } } | [menu: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+MenuStatusControllerForm.put = (args: { menu: string | number | { id: string | number } } | [menu: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: MenuStatusController.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
