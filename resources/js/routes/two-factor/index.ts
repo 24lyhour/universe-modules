@@ -139,6 +139,18 @@ confirm.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     method: 'post',
 })
 
+const confirmForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: confirm.url(options),
+    method: 'post',
+})
+
+confirmForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: confirm.url(options),
+    method: 'post',
+})
+
+confirm.form = confirmForm
+
 /**
 * @see \Laravel\Fortify\Http\Controllers\TwoFactorAuthenticationController::disable
 * @see vendor/laravel/fortify/src/Http/Controllers/TwoFactorAuthenticationController.php:35
@@ -338,6 +350,18 @@ regenerateRecoveryCodes.post = (options?: RouteQueryOptions): RouteDefinition<'p
     url: regenerateRecoveryCodes.url(options),
     method: 'post',
 })
+
+const regenerateRecoveryCodesForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: regenerateRecoveryCodes.url(options),
+    method: 'post',
+})
+
+regenerateRecoveryCodesForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: regenerateRecoveryCodes.url(options),
+    method: 'post',
+})
+
+regenerateRecoveryCodes.form = regenerateRecoveryCodesForm
 
 /**
 * @see \App\Http\Controllers\Settings\TwoFactorAuthenticationController::show
