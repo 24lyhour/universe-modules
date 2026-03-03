@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::create
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:338
@@ -67,39 +67,3 @@ create.head = (args: { wallet: number | { id: number } } | [wallet: number | { i
     method: 'head',
 })
 
-/**
-* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::create
-* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:338
-* @route '/dashboard/wallets/{wallet}/transactions/withdraw/create'
-*/
-const createForm = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::create
-* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:338
-* @route '/dashboard/wallets/{wallet}/transactions/withdraw/create'
-*/
-createForm.get = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::create
-* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:338
-* @route '/dashboard/wallets/{wallet}/transactions/withdraw/create'
-*/
-createForm.head = (args: { wallet: number | { id: number } } | [wallet: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm

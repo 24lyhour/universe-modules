@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
 import importMethod7367d2 from './import'
 import trash from './trash'
 /**
@@ -46,43 +46,6 @@ exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:161
-* @route '/dashboard/programs/export'
-*/
-const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: exportMethod.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:161
-* @route '/dashboard/programs/export'
-*/
-exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: exportMethod.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:161
-* @route '/dashboard/programs/export'
-*/
-exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: exportMethod.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-exportMethod.form = exportMethodForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
 * @route '/dashboard/programs/import'
@@ -125,43 +88,6 @@ importMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: importMethod.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
-* @route '/dashboard/programs/import'
-*/
-const importMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: importMethod.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
-* @route '/dashboard/programs/import'
-*/
-importMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: importMethod.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:168
-* @route '/dashboard/programs/import'
-*/
-importMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: importMethod.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-importMethod.form = importMethodForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
@@ -208,43 +134,6 @@ template.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:185
-* @route '/dashboard/programs/template'
-*/
-const templateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: template.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:185
-* @route '/dashboard/programs/template'
-*/
-templateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: template.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:185
-* @route '/dashboard/programs/template'
-*/
-templateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: template.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-template.form = templateForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::bulkDelete
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:166
 * @route '/dashboard/programs/bulk-delete'
@@ -277,38 +166,6 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
     url: bulkDelete.url(options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::bulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:166
-* @route '/dashboard/programs/bulk-delete'
-*/
-const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: bulkDelete.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::bulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:166
-* @route '/dashboard/programs/bulk-delete'
-*/
-bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: bulkDelete.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
@@ -355,43 +212,6 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:58
-* @route '/dashboard/programs/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:58
-* @route '/dashboard/programs/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:58
-* @route '/dashboard/programs/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::store
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:69
 * @route '/dashboard/programs'
@@ -424,28 +244,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:69
-* @route '/dashboard/programs'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:69
-* @route '/dashboard/programs'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
@@ -492,43 +290,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:45
-* @route '/dashboard/programs'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:45
-* @route '/dashboard/programs'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:45
-* @route '/dashboard/programs'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::api
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:0
 * @route '/dashboard/api/programs'
@@ -571,43 +332,6 @@ api.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: api.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::api
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:0
-* @route '/dashboard/api/programs'
-*/
-const apiForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: api.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::api
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:0
-* @route '/dashboard/api/programs'
-*/
-apiForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: api.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::api
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:0
-* @route '/dashboard/api/programs'
-*/
-apiForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: api.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-api.form = apiForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
@@ -678,43 +402,6 @@ show.head = (args: { program: string | { uuid: string } } | [program: string | {
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:81
-* @route '/dashboard/programs/{program}'
-*/
-const showForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:81
-* @route '/dashboard/programs/{program}'
-*/
-showForm.get = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:81
-* @route '/dashboard/programs/{program}'
-*/
-showForm.head = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
 * @route '/dashboard/programs/{program}/edit'
@@ -783,43 +470,6 @@ edit.head = (args: { program: string | { uuid: string } } | [program: string | {
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
-* @route '/dashboard/programs/{program}/edit'
-*/
-const editForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
-* @route '/dashboard/programs/{program}/edit'
-*/
-editForm.get = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:91
-* @route '/dashboard/programs/{program}/edit'
-*/
-editForm.head = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
 * @route '/dashboard/programs/{program}'
@@ -878,38 +528,6 @@ update.put = (args: { program: string | { uuid: string } } | [program: string | 
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
-* @route '/dashboard/programs/{program}'
-*/
-const updateForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:102
-* @route '/dashboard/programs/{program}'
-*/
-updateForm.put = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::toggleStatus
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:138
 * @route '/dashboard/programs/{program}/toggle-status'
@@ -966,38 +584,6 @@ toggleStatus.put = (args: { program: string | { uuid: string } } | [program: str
     url: toggleStatus.url(args, options),
     method: 'put',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:138
-* @route '/dashboard/programs/{program}/toggle-status'
-*/
-const toggleStatusForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleStatus.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:138
-* @route '/dashboard/programs/{program}/toggle-status'
-*/
-toggleStatusForm.put = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleStatus.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::deleteMethod
@@ -1068,43 +654,6 @@ deleteMethod.head = (args: { program: string | { uuid: string } } | [program: st
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::deleteMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:114
-* @route '/dashboard/programs/{program}/delete'
-*/
-const deleteMethodForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: deleteMethod.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::deleteMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:114
-* @route '/dashboard/programs/{program}/delete'
-*/
-deleteMethodForm.get = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: deleteMethod.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::deleteMethod
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:114
-* @route '/dashboard/programs/{program}/delete'
-*/
-deleteMethodForm.head = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: deleteMethod.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-deleteMethod.form = deleteMethodForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::destroy
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:126
 * @route '/dashboard/programs/{program}'
@@ -1161,38 +710,6 @@ destroy.delete = (args: { program: string | { uuid: string } } | [program: strin
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:126
-* @route '/dashboard/programs/{program}'
-*/
-const destroyForm = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\ProgramController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/ProgramController.php:126
-* @route '/dashboard/programs/{program}'
-*/
-destroyForm.delete = (args: { program: string | { uuid: string } } | [program: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const programs = {
     export: Object.assign(exportMethod, exportMethod),

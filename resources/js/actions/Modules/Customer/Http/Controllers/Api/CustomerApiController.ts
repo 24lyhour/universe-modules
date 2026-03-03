@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::index
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:24
@@ -44,43 +44,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::index
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:24
-* @route '/api/v1/customers'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::index
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:24
-* @route '/api/v1/customers'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::index
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:24
-* @route '/api/v1/customers'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::store
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:39
 * @route '/api/v1/customers'
@@ -113,28 +76,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::store
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:39
-* @route '/api/v1/customers'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::store
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:39
-* @route '/api/v1/customers'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::show
@@ -205,43 +146,6 @@ show.head = (args: { customer: number | { id: number } } | [customer: number | {
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::show
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:52
-* @route '/api/v1/customers/{customer}'
-*/
-const showForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::show
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:52
-* @route '/api/v1/customers/{customer}'
-*/
-showForm.get = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::show
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:52
-* @route '/api/v1/customers/{customer}'
-*/
-showForm.head = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::update
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:74
 * @route '/api/v1/customers/{customer}'
@@ -310,53 +214,6 @@ update.patch = (args: { customer: number | { id: number } } | [customer: number 
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::update
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:74
-* @route '/api/v1/customers/{customer}'
-*/
-const updateForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::update
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:74
-* @route '/api/v1/customers/{customer}'
-*/
-updateForm.put = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::update
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:74
-* @route '/api/v1/customers/{customer}'
-*/
-updateForm.patch = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::destroy
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:87
 * @route '/api/v1/customers/{customer}'
@@ -415,38 +272,6 @@ destroy.delete = (args: { customer: number | { id: number } } | [customer: numbe
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::destroy
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:87
-* @route '/api/v1/customers/{customer}'
-*/
-const destroyForm = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::destroy
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:87
-* @route '/api/v1/customers/{customer}'
-*/
-destroyForm.delete = (args: { customer: number | { id: number } } | [customer: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::stats
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:99
 * @route '/api/v1/customers-stats'
@@ -491,43 +316,6 @@ stats.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::stats
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:99
-* @route '/api/v1/customers-stats'
-*/
-const statsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stats.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::stats
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:99
-* @route '/api/v1/customers-stats'
-*/
-statsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stats.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::stats
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:99
-* @route '/api/v1/customers-stats'
-*/
-statsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stats.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-stats.form = statsForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::search
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:109
 * @route '/api/v1/customers-search'
@@ -570,43 +358,6 @@ search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: search.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::search
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:109
-* @route '/api/v1/customers-search'
-*/
-const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::search
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:109
-* @route '/api/v1/customers-search'
-*/
-searchForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\CustomerApiController::search
-* @see Modules/Customer/app/Http/Controllers/Api/CustomerApiController.php:109
-* @route '/api/v1/customers-search'
-*/
-searchForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-search.form = searchForm
 
 const CustomerApiController = { index, store, show, update, destroy, stats, search }
 

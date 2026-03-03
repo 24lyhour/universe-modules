@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Porfolio\Http\Controllers\TestimonialController::index
 * @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:16
@@ -42,43 +42,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::index
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:16
-* @route '/dashboard/testimonials'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::index
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:16
-* @route '/dashboard/testimonials'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::index
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:16
-* @route '/dashboard/testimonials'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\TestimonialController::create
@@ -125,43 +88,6 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::create
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:28
-* @route '/dashboard/testimonials/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::create
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:28
-* @route '/dashboard/testimonials/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::create
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:28
-* @route '/dashboard/testimonials/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
-
-/**
 * @see \Modules\Porfolio\Http\Controllers\TestimonialController::store
 * @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:34
 * @route '/dashboard/testimonials'
@@ -194,28 +120,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::store
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:34
-* @route '/dashboard/testimonials'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::store
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:34
-* @route '/dashboard/testimonials'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\TestimonialController::show
@@ -280,43 +184,6 @@ show.head = (args: { testimonial: string | number } | [testimonial: string | num
 })
 
 /**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::show
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:0
-* @route '/dashboard/testimonials/{testimonial}'
-*/
-const showForm = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::show
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:0
-* @route '/dashboard/testimonials/{testimonial}'
-*/
-showForm.get = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::show
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:0
-* @route '/dashboard/testimonials/{testimonial}'
-*/
-showForm.head = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\Porfolio\Http\Controllers\TestimonialController::edit
 * @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:56
 * @route '/dashboard/testimonials/{testimonial}/edit'
@@ -377,43 +244,6 @@ edit.head = (args: { testimonial: string | number } | [testimonial: string | num
     url: edit.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::edit
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:56
-* @route '/dashboard/testimonials/{testimonial}/edit'
-*/
-const editForm = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::edit
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:56
-* @route '/dashboard/testimonials/{testimonial}/edit'
-*/
-editForm.get = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::edit
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:56
-* @route '/dashboard/testimonials/{testimonial}/edit'
-*/
-editForm.head = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\TestimonialController::update
@@ -478,53 +308,6 @@ update.patch = (args: { testimonial: string | number } | [testimonial: string | 
 })
 
 /**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::update
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:65
-* @route '/dashboard/testimonials/{testimonial}'
-*/
-const updateForm = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::update
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:65
-* @route '/dashboard/testimonials/{testimonial}'
-*/
-updateForm.put = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::update
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:65
-* @route '/dashboard/testimonials/{testimonial}'
-*/
-updateForm.patch = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Porfolio\Http\Controllers\TestimonialController::destroy
 * @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:87
 * @route '/dashboard/testimonials/{testimonial}'
@@ -575,38 +358,6 @@ destroy.delete = (args: { testimonial: string | number } | [testimonial: string 
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::destroy
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:87
-* @route '/dashboard/testimonials/{testimonial}'
-*/
-const destroyForm = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\TestimonialController::destroy
-* @see Modules/Porfolio/app/Http/Controllers/TestimonialController.php:87
-* @route '/dashboard/testimonials/{testimonial}'
-*/
-destroyForm.delete = (args: { testimonial: string | number } | [testimonial: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const TestimonialController = { index, create, store, show, edit, update, destroy }
 

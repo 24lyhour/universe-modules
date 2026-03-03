@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::index
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:77
@@ -42,43 +42,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:77
-* @route '/dashboard/schools/trash'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:77
-* @route '/dashboard/schools/trash'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:77
-* @route '/dashboard/schools/trash'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::restore
@@ -133,38 +96,6 @@ restore.put = (args: { uuid: string | number } | [uuid: string | number ] | stri
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::restore
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:128
-* @route '/dashboard/schools/{uuid}/restore'
-*/
-const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: restore.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::restore
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:128
-* @route '/dashboard/schools/{uuid}/restore'
-*/
-restoreForm.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: restore.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-restore.form = restoreForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::forceDelete
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:143
 * @route '/dashboard/schools/{uuid}/force-delete'
@@ -217,38 +148,6 @@ forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ]
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::forceDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:143
-* @route '/dashboard/schools/{uuid}/force-delete'
-*/
-const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: forceDelete.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::forceDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:143
-* @route '/dashboard/schools/{uuid}/force-delete'
-*/
-forceDeleteForm.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: forceDelete.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-forceDelete.form = forceDeleteForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::empty
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:158
 * @route '/dashboard/schools/trash/empty'
@@ -281,38 +180,6 @@ empty.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: empty.url(options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::empty
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:158
-* @route '/dashboard/schools/trash/empty'
-*/
-const emptyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: empty.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::empty
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:158
-* @route '/dashboard/schools/trash/empty'
-*/
-emptyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: empty.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-empty.form = emptyForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::bulkRestore
@@ -349,38 +216,6 @@ bulkRestore.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::bulkRestore
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:173
-* @route '/dashboard/schools/trash/bulk-restore'
-*/
-const bulkRestoreForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: bulkRestore.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::bulkRestore
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:173
-* @route '/dashboard/schools/trash/bulk-restore'
-*/
-bulkRestoreForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: bulkRestore.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-bulkRestore.form = bulkRestoreForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::bulkForceDelete
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:196
 * @route '/dashboard/schools/trash/bulk-force-delete'
@@ -413,38 +248,6 @@ bulkForceDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'
     url: bulkForceDelete.url(options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::bulkForceDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:196
-* @route '/dashboard/schools/trash/bulk-force-delete'
-*/
-const bulkForceDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: bulkForceDelete.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolTrashController::bulkForceDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolTrashController.php:196
-* @route '/dashboard/schools/trash/bulk-force-delete'
-*/
-bulkForceDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: bulkForceDelete.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-bulkForceDelete.form = bulkForceDeleteForm
 
 const SchoolTrashController = { index, restore, forceDelete, empty, bulkRestore, bulkForceDelete }
 

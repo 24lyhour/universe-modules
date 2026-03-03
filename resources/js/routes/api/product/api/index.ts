@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
@@ -44,43 +44,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
-* @route '/api/v1/products'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
-* @route '/api/v1/products'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
-* @route '/api/v1/products'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::store
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:52
 * @route '/api/v1/products'
@@ -113,28 +76,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::store
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:52
-* @route '/api/v1/products'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::store
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:52
-* @route '/api/v1/products'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
@@ -205,43 +146,6 @@ show.head = (args: { product: number | { id: number } } | [product: number | { i
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:65
-* @route '/api/v1/products/{product}'
-*/
-const showForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:65
-* @route '/api/v1/products/{product}'
-*/
-showForm.get = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:65
-* @route '/api/v1/products/{product}'
-*/
-showForm.head = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
 * @route '/api/v1/products/{product}'
@@ -310,53 +214,6 @@ update.patch = (args: { product: number | { id: number } } | [product: number | 
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
-* @route '/api/v1/products/{product}'
-*/
-const updateForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
-* @route '/api/v1/products/{product}'
-*/
-updateForm.put = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
-* @route '/api/v1/products/{product}'
-*/
-updateForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::destroy
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:90
 * @route '/api/v1/products/{product}'
@@ -415,38 +272,6 @@ destroy.delete = (args: { product: number | { id: number } } | [product: number 
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::destroy
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:90
-* @route '/api/v1/products/{product}'
-*/
-const destroyForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::destroy
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:90
-* @route '/api/v1/products/{product}'
-*/
-destroyForm.delete = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
 * @route '/api/v1/products-stats'
@@ -491,43 +316,6 @@ stats.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
-* @route '/api/v1/products-stats'
-*/
-const statsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stats.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
-* @route '/api/v1/products-stats'
-*/
-statsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stats.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
-* @route '/api/v1/products-stats'
-*/
-statsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stats.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-stats.form = statsForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
 * @route '/api/v1/products-search'
@@ -570,43 +358,6 @@ search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: search.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
-* @route '/api/v1/products-search'
-*/
-const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
-* @route '/api/v1/products-search'
-*/
-searchForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
-* @route '/api/v1/products-search'
-*/
-searchForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-search.form = searchForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::activate
@@ -667,38 +418,6 @@ activate.patch = (args: { product: number | { id: number } } | [product: number 
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::activate
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
-* @route '/api/v1/products/{product}/activate'
-*/
-const activateForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: activate.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::activate
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
-* @route '/api/v1/products/{product}/activate'
-*/
-activateForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: activate.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-activate.form = activateForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::deactivate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
 * @route '/api/v1/products/{product}/deactivate'
@@ -755,38 +474,6 @@ deactivate.patch = (args: { product: number | { id: number } } | [product: numbe
     url: deactivate.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::deactivate
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
-* @route '/api/v1/products/{product}/deactivate'
-*/
-const deactivateForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: deactivate.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::deactivate
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
-* @route '/api/v1/products/{product}/deactivate'
-*/
-deactivateForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: deactivate.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-deactivate.form = deactivateForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::draft
@@ -847,38 +534,6 @@ draft.patch = (args: { product: number | { id: number } } | [product: number | {
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::draft
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
-* @route '/api/v1/products/{product}/draft'
-*/
-const draftForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: draft.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::draft
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
-* @route '/api/v1/products/{product}/draft'
-*/
-draftForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: draft.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-draft.form = draftForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::toggleFeatured
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
 * @route '/api/v1/products/{product}/toggle-featured'
@@ -937,38 +592,6 @@ toggleFeatured.patch = (args: { product: number | { id: number } } | [product: n
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::toggleFeatured
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
-* @route '/api/v1/products/{product}/toggle-featured'
-*/
-const toggleFeaturedForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleFeatured.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::toggleFeatured
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
-* @route '/api/v1/products/{product}/toggle-featured'
-*/
-toggleFeaturedForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleFeatured.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-toggleFeatured.form = toggleFeaturedForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::updateStock
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
 * @route '/api/v1/products/{product}/stock'
@@ -1025,38 +648,6 @@ updateStock.patch = (args: { product: number | { id: number } } | [product: numb
     url: updateStock.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::updateStock
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
-* @route '/api/v1/products/{product}/stock'
-*/
-const updateStockForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updateStock.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::updateStock
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
-* @route '/api/v1/products/{product}/stock'
-*/
-updateStockForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updateStock.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-updateStock.form = updateStockForm
 
 const api = {
     index: Object.assign(index, index),
