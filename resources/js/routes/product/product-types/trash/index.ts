@@ -1,8 +1,8 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::empty
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:360
-* @route '/dashboard/products/trash/empty'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::empty
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:223
+* @route '/dashboard/product-types/trash/empty'
 */
 export const empty = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: empty.url(options),
@@ -11,22 +11,22 @@ export const empty = (options?: RouteQueryOptions): RouteDefinition<'delete'> =>
 
 empty.definition = {
     methods: ["delete"],
-    url: '/dashboard/products/trash/empty',
+    url: '/dashboard/product-types/trash/empty',
 } satisfies RouteDefinition<["delete"]>
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::empty
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:360
-* @route '/dashboard/products/trash/empty'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::empty
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:223
+* @route '/dashboard/product-types/trash/empty'
 */
 empty.url = (options?: RouteQueryOptions) => {
     return empty.definition.url + queryParams(options)
 }
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::empty
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:360
-* @route '/dashboard/products/trash/empty'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::empty
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:223
+* @route '/dashboard/product-types/trash/empty'
 */
 empty.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: empty.url(options),
@@ -34,9 +34,9 @@ empty.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::empty
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:360
-* @route '/dashboard/products/trash/empty'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::empty
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:223
+* @route '/dashboard/product-types/trash/empty'
 */
 const emptyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: empty.url({
@@ -49,9 +49,9 @@ const emptyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::empty
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:360
-* @route '/dashboard/products/trash/empty'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::empty
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:223
+* @route '/dashboard/product-types/trash/empty'
 */
 emptyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: empty.url({
@@ -66,9 +66,9 @@ emptyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> =>
 empty.form = emptyForm
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::bulkRestore
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:370
-* @route '/dashboard/products/trash/bulk-restore'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkRestore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:233
+* @route '/dashboard/product-types/trash/bulk-restore'
 */
 export const bulkRestore = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: bulkRestore.url(options),
@@ -77,22 +77,22 @@ export const bulkRestore = (options?: RouteQueryOptions): RouteDefinition<'put'>
 
 bulkRestore.definition = {
     methods: ["put"],
-    url: '/dashboard/products/trash/bulk-restore',
+    url: '/dashboard/product-types/trash/bulk-restore',
 } satisfies RouteDefinition<["put"]>
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::bulkRestore
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:370
-* @route '/dashboard/products/trash/bulk-restore'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkRestore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:233
+* @route '/dashboard/product-types/trash/bulk-restore'
 */
 bulkRestore.url = (options?: RouteQueryOptions) => {
     return bulkRestore.definition.url + queryParams(options)
 }
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::bulkRestore
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:370
-* @route '/dashboard/products/trash/bulk-restore'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkRestore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:233
+* @route '/dashboard/product-types/trash/bulk-restore'
 */
 bulkRestore.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: bulkRestore.url(options),
@@ -100,9 +100,9 @@ bulkRestore.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::bulkRestore
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:370
-* @route '/dashboard/products/trash/bulk-restore'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkRestore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:233
+* @route '/dashboard/product-types/trash/bulk-restore'
 */
 const bulkRestoreForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: bulkRestore.url({
@@ -115,9 +115,9 @@ const bulkRestoreForm = (options?: RouteQueryOptions): RouteFormDefinition<'post
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::bulkRestore
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:370
-* @route '/dashboard/products/trash/bulk-restore'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkRestore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:233
+* @route '/dashboard/product-types/trash/bulk-restore'
 */
 bulkRestoreForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: bulkRestore.url({
@@ -132,9 +132,9 @@ bulkRestoreForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'>
 bulkRestore.form = bulkRestoreForm
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::bulkForceDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:386
-* @route '/dashboard/products/trash/bulk-force-delete'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkForceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:249
+* @route '/dashboard/product-types/trash/bulk-force-delete'
 */
 export const bulkForceDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: bulkForceDelete.url(options),
@@ -143,22 +143,22 @@ export const bulkForceDelete = (options?: RouteQueryOptions): RouteDefinition<'d
 
 bulkForceDelete.definition = {
     methods: ["delete"],
-    url: '/dashboard/products/trash/bulk-force-delete',
+    url: '/dashboard/product-types/trash/bulk-force-delete',
 } satisfies RouteDefinition<["delete"]>
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::bulkForceDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:386
-* @route '/dashboard/products/trash/bulk-force-delete'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkForceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:249
+* @route '/dashboard/product-types/trash/bulk-force-delete'
 */
 bulkForceDelete.url = (options?: RouteQueryOptions) => {
     return bulkForceDelete.definition.url + queryParams(options)
 }
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::bulkForceDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:386
-* @route '/dashboard/products/trash/bulk-force-delete'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkForceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:249
+* @route '/dashboard/product-types/trash/bulk-force-delete'
 */
 bulkForceDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: bulkForceDelete.url(options),
@@ -166,9 +166,9 @@ bulkForceDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::bulkForceDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:386
-* @route '/dashboard/products/trash/bulk-force-delete'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkForceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:249
+* @route '/dashboard/product-types/trash/bulk-force-delete'
 */
 const bulkForceDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: bulkForceDelete.url({
@@ -181,9 +181,9 @@ const bulkForceDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::bulkForceDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:386
-* @route '/dashboard/products/trash/bulk-force-delete'
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkForceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:249
+* @route '/dashboard/product-types/trash/bulk-force-delete'
 */
 bulkForceDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: bulkForceDelete.url({

@@ -57,7 +57,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
             // Product Module
             'product' => [
-                'products', 'product_variants', 'product_attributes',
+                'products', 'product_types', 'product_variants', 'product_attributes',
                 'product_attribute_values', 'product_add_ons', 'product_upsells'
             ],
 

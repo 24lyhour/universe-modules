@@ -55,4 +55,12 @@ return [
         'base_url' => env('AI_BASE_URL', 'https://api.openai.com/v1'),
     ],
 
+    /**
+     * Firebase Cloud Messaging (FCM V1 API)
+     */
+    'firebase' => [
+        'credentials' => env('FIREBASE_CREDENTIALS', storage_path('app/firebase-credentials.json')),
+        'project_id' => env('FIREBASE_PROJECT_ID', 'notification-push-752ac'),
+    ],
+
 ];
