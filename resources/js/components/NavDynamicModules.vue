@@ -59,6 +59,7 @@ import {
     Wrench,
     PlusCircle,
     School,
+    PackageSearch,
     DoorOpen,
     type LucideIcon,
 } from 'lucide-vue-next';
@@ -162,6 +163,7 @@ const iconMap: Record<string, LucideIcon> = {
     PlusCircle,
     School,
     DoorOpen,
+    PackageSearch,
 };
 
 const getIcon = (iconName: string | null | undefined): LucideIcon | null => {

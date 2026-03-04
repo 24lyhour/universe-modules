@@ -1,6 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
 import otp from './otp'
 import customer852f7d from './customer'
+import deviceToken from './device-token'
 /**
 * @see \Modules\Customer\Http\Controllers\Api\CustomerAuthController::login
 * @see Modules/Customer/app/Http/Controllers/Api/CustomerAuthController.php:20
@@ -427,6 +428,7 @@ const auth = {
     logout: Object.assign(logout, logout),
     logoutAll: Object.assign(logoutAll, logoutAll),
     customer: Object.assign(customer, customer852f7d),
+    deviceToken: Object.assign(deviceToken, deviceToken),
 }
 
 export default auth
