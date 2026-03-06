@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::index
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:26
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -11,13 +11,13 @@ export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 index.definition = {
     methods: ["get","head"],
-    url: '/api/outlets/outlets',
+    url: '/api/v1/admin/outlets',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::index
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:26
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ index.url = (options?: RouteQueryOptions) => {
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::index
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:26
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -36,7 +36,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::index
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:26
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
@@ -46,7 +46,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::index
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:26
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -56,7 +56,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::index
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:26
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -66,7 +66,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::index
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:26
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url({
@@ -83,7 +83,7 @@ index.form = indexForm
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::store
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:47
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -92,13 +92,13 @@ export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 store.definition = {
     methods: ["post"],
-    url: '/api/outlets/outlets',
+    url: '/api/v1/admin/outlets',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::store
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:47
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
@@ -107,7 +107,7 @@ store.url = (options?: RouteQueryOptions) => {
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::store
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:47
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -117,7 +117,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::store
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:47
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: store.url(options),
@@ -127,7 +127,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::store
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:47
-* @route '/api/outlets/outlets'
+* @route '/api/v1/admin/outlets'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: store.url(options),
@@ -139,7 +139,7 @@ store.form = storeForm
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::show
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:60
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 export const show = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
@@ -148,13 +148,13 @@ export const show = (args: { outlet: string | { uuid: string } } | [outlet: stri
 
 show.definition = {
     methods: ["get","head"],
-    url: '/api/outlets/outlets/{outlet}',
+    url: '/api/v1/admin/outlets/{outlet}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::show
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:60
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 show.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -187,7 +187,7 @@ show.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uu
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::show
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:60
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 show.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
@@ -197,7 +197,7 @@ show.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uu
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::show
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:60
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 show.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
@@ -207,7 +207,7 @@ show.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { u
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::show
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:60
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 const showForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
@@ -217,7 +217,7 @@ const showForm = (args: { outlet: string | { uuid: string } } | [outlet: string 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::show
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:60
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 showForm.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
@@ -227,7 +227,7 @@ showForm.get = (args: { outlet: string | { uuid: string } } | [outlet: string | 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::show
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:60
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 showForm.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
@@ -244,7 +244,7 @@ show.form = showForm
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::update
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:70
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 export const update = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -253,13 +253,13 @@ export const update = (args: { outlet: string | { uuid: string } } | [outlet: st
 
 update.definition = {
     methods: ["put","patch"],
-    url: '/api/outlets/outlets/{outlet}',
+    url: '/api/v1/admin/outlets/{outlet}',
 } satisfies RouteDefinition<["put","patch"]>
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::update
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:70
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 update.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -292,7 +292,7 @@ update.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::update
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:70
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 update.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -302,7 +302,7 @@ update.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::update
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:70
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 update.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
@@ -312,7 +312,7 @@ update.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::update
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:70
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 const updateForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -327,7 +327,7 @@ const updateForm = (args: { outlet: string | { uuid: string } } | [outlet: strin
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::update
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:70
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 updateForm.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -342,7 +342,7 @@ updateForm.put = (args: { outlet: string | { uuid: string } } | [outlet: string 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::update
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:70
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 updateForm.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -359,7 +359,7 @@ update.form = updateForm
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::destroy
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:83
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 export const destroy = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -368,13 +368,13 @@ export const destroy = (args: { outlet: string | { uuid: string } } | [outlet: s
 
 destroy.definition = {
     methods: ["delete"],
-    url: '/api/outlets/outlets/{outlet}',
+    url: '/api/v1/admin/outlets/{outlet}',
 } satisfies RouteDefinition<["delete"]>
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::destroy
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:83
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 destroy.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -407,7 +407,7 @@ destroy.url = (args: { outlet: string | { uuid: string } } | [outlet: string | {
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::destroy
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:83
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 destroy.delete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -417,7 +417,7 @@ destroy.delete = (args: { outlet: string | { uuid: string } } | [outlet: string 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::destroy
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:83
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 const destroyForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
@@ -432,7 +432,7 @@ const destroyForm = (args: { outlet: string | { uuid: string } } | [outlet: stri
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::destroy
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:83
-* @route '/api/outlets/outlets/{outlet}'
+* @route '/api/v1/admin/outlets/{outlet}'
 */
 destroyForm.delete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
@@ -449,7 +449,7 @@ destroy.form = destroyForm
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::stats
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:95
-* @route '/api/outlets/outlets-stats'
+* @route '/api/v1/admin/outlets-stats'
 */
 export const stats = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: stats.url(options),
@@ -458,13 +458,13 @@ export const stats = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 stats.definition = {
     methods: ["get","head"],
-    url: '/api/outlets/outlets-stats',
+    url: '/api/v1/admin/outlets-stats',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::stats
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:95
-* @route '/api/outlets/outlets-stats'
+* @route '/api/v1/admin/outlets-stats'
 */
 stats.url = (options?: RouteQueryOptions) => {
     return stats.definition.url + queryParams(options)
@@ -473,7 +473,7 @@ stats.url = (options?: RouteQueryOptions) => {
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::stats
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:95
-* @route '/api/outlets/outlets-stats'
+* @route '/api/v1/admin/outlets-stats'
 */
 stats.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: stats.url(options),
@@ -483,7 +483,7 @@ stats.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::stats
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:95
-* @route '/api/outlets/outlets-stats'
+* @route '/api/v1/admin/outlets-stats'
 */
 stats.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: stats.url(options),
@@ -493,7 +493,7 @@ stats.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::stats
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:95
-* @route '/api/outlets/outlets-stats'
+* @route '/api/v1/admin/outlets-stats'
 */
 const statsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: stats.url(options),
@@ -503,7 +503,7 @@ const statsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::stats
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:95
-* @route '/api/outlets/outlets-stats'
+* @route '/api/v1/admin/outlets-stats'
 */
 statsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: stats.url(options),
@@ -513,7 +513,7 @@ statsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::stats
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:95
-* @route '/api/outlets/outlets-stats'
+* @route '/api/v1/admin/outlets-stats'
 */
 statsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: stats.url({
@@ -528,90 +528,9 @@ statsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 stats.form = statsForm
 
 /**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/outlets/outlets-search'
-*/
-export const search = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: search.url(options),
-    method: 'get',
-})
-
-search.definition = {
-    methods: ["get","head"],
-    url: '/api/outlets/outlets-search',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/outlets/outlets-search'
-*/
-search.url = (options?: RouteQueryOptions) => {
-    return search.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/outlets/outlets-search'
-*/
-search.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/outlets/outlets-search'
-*/
-search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: search.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/outlets/outlets-search'
-*/
-const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/outlets/outlets-search'
-*/
-searchForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/outlets/outlets-search'
-*/
-searchForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-search.form = searchForm
-
-/**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::activate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:120
-* @route '/api/outlets/outlets/{outlet}/activate'
+* @route '/api/v1/admin/outlets/{outlet}/activate'
 */
 export const activate = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activate.url(args, options),
@@ -620,13 +539,13 @@ export const activate = (args: { outlet: string | { uuid: string } } | [outlet: 
 
 activate.definition = {
     methods: ["patch"],
-    url: '/api/outlets/outlets/{outlet}/activate',
+    url: '/api/v1/admin/outlets/{outlet}/activate',
 } satisfies RouteDefinition<["patch"]>
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::activate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:120
-* @route '/api/outlets/outlets/{outlet}/activate'
+* @route '/api/v1/admin/outlets/{outlet}/activate'
 */
 activate.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -659,7 +578,7 @@ activate.url = (args: { outlet: string | { uuid: string } } | [outlet: string | 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::activate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:120
-* @route '/api/outlets/outlets/{outlet}/activate'
+* @route '/api/v1/admin/outlets/{outlet}/activate'
 */
 activate.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activate.url(args, options),
@@ -669,7 +588,7 @@ activate.patch = (args: { outlet: string | { uuid: string } } | [outlet: string 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::activate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:120
-* @route '/api/outlets/outlets/{outlet}/activate'
+* @route '/api/v1/admin/outlets/{outlet}/activate'
 */
 const activateForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: activate.url(args, {
@@ -684,7 +603,7 @@ const activateForm = (args: { outlet: string | { uuid: string } } | [outlet: str
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::activate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:120
-* @route '/api/outlets/outlets/{outlet}/activate'
+* @route '/api/v1/admin/outlets/{outlet}/activate'
 */
 activateForm.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: activate.url(args, {
@@ -701,7 +620,7 @@ activate.form = activateForm
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::deactivate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:133
-* @route '/api/outlets/outlets/{outlet}/deactivate'
+* @route '/api/v1/admin/outlets/{outlet}/deactivate'
 */
 export const deactivate = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate.url(args, options),
@@ -710,13 +629,13 @@ export const deactivate = (args: { outlet: string | { uuid: string } } | [outlet
 
 deactivate.definition = {
     methods: ["patch"],
-    url: '/api/outlets/outlets/{outlet}/deactivate',
+    url: '/api/v1/admin/outlets/{outlet}/deactivate',
 } satisfies RouteDefinition<["patch"]>
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::deactivate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:133
-* @route '/api/outlets/outlets/{outlet}/deactivate'
+* @route '/api/v1/admin/outlets/{outlet}/deactivate'
 */
 deactivate.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -749,7 +668,7 @@ deactivate.url = (args: { outlet: string | { uuid: string } } | [outlet: string 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::deactivate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:133
-* @route '/api/outlets/outlets/{outlet}/deactivate'
+* @route '/api/v1/admin/outlets/{outlet}/deactivate'
 */
 deactivate.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate.url(args, options),
@@ -759,7 +678,7 @@ deactivate.patch = (args: { outlet: string | { uuid: string } } | [outlet: strin
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::deactivate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:133
-* @route '/api/outlets/outlets/{outlet}/deactivate'
+* @route '/api/v1/admin/outlets/{outlet}/deactivate'
 */
 const deactivateForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deactivate.url(args, {
@@ -774,7 +693,7 @@ const deactivateForm = (args: { outlet: string | { uuid: string } } | [outlet: s
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::deactivate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:133
-* @route '/api/outlets/outlets/{outlet}/deactivate'
+* @route '/api/v1/admin/outlets/{outlet}/deactivate'
 */
 deactivateForm.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deactivate.url(args, {
@@ -788,16 +707,15 @@ deactivateForm.patch = (args: { outlet: string | { uuid: string } } | [outlet: s
 
 deactivate.form = deactivateForm
 
-const outlet = {
+const admin = {
     index: Object.assign(index, index),
     store: Object.assign(store, store),
     show: Object.assign(show, show),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),
     stats: Object.assign(stats, stats),
-    search: Object.assign(search, search),
     activate: Object.assign(activate, activate),
     deactivate: Object.assign(deactivate, deactivate),
 }
 
-export default outlet
+export default admin

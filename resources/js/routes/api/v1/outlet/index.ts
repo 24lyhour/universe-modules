@@ -81,6 +81,87 @@ indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 index.form = indexForm
 
 /**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
+* @route '/api/v1/outlets-search'
+*/
+export const search = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: search.url(options),
+    method: 'get',
+})
+
+search.definition = {
+    methods: ["get","head"],
+    url: '/api/v1/outlets-search',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
+* @route '/api/v1/outlets-search'
+*/
+search.url = (options?: RouteQueryOptions) => {
+    return search.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
+* @route '/api/v1/outlets-search'
+*/
+search.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: search.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
+* @route '/api/v1/outlets-search'
+*/
+search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: search.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
+* @route '/api/v1/outlets-search'
+*/
+const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: search.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
+* @route '/api/v1/outlets-search'
+*/
+searchForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: search.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
+* @route '/api/v1/outlets-search'
+*/
+searchForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: search.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+search.form = searchForm
+
+/**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::store
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:47
 * @route '/api/v1/outlets'
@@ -528,87 +609,6 @@ statsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 stats.form = statsForm
 
 /**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/v1/outlets-search'
-*/
-export const search = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: search.url(options),
-    method: 'get',
-})
-
-search.definition = {
-    methods: ["get","head"],
-    url: '/api/v1/outlets-search',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/v1/outlets-search'
-*/
-search.url = (options?: RouteQueryOptions) => {
-    return search.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/v1/outlets-search'
-*/
-search.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/v1/outlets-search'
-*/
-search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: search.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/v1/outlets-search'
-*/
-const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/v1/outlets-search'
-*/
-searchForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:105
-* @route '/api/v1/outlets-search'
-*/
-searchForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-search.form = searchForm
-
-/**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\OutletApiController::activate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/OutletApiController.php:120
 * @route '/api/v1/outlets/{outlet}/activate'
@@ -790,12 +790,12 @@ deactivate.form = deactivateForm
 
 const outlet = {
     index: Object.assign(index, index),
+    search: Object.assign(search, search),
     store: Object.assign(store, store),
     show: Object.assign(show, show),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),
     stats: Object.assign(stats, stats),
-    search: Object.assign(search, search),
     activate: Object.assign(activate, activate),
     deactivate: Object.assign(deactivate, deactivate),
 }

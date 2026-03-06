@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -11,13 +11,13 @@ export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 index.definition = {
     methods: ["get","head"],
-    url: '/api/v1/products',
+    url: '/api/v1/admin/products',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ index.url = (options?: RouteQueryOptions) => {
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -36,7 +36,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
@@ -46,7 +46,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -56,7 +56,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -66,7 +66,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::index
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:26
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url({
@@ -83,7 +83,7 @@ index.form = indexForm
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::store
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:52
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -92,13 +92,13 @@ export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 store.definition = {
     methods: ["post"],
-    url: '/api/v1/products',
+    url: '/api/v1/admin/products',
 } satisfies RouteDefinition<["post"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::store
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:52
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
@@ -107,7 +107,7 @@ store.url = (options?: RouteQueryOptions) => {
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::store
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:52
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
@@ -117,7 +117,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::store
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:52
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: store.url(options),
@@ -127,7 +127,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::store
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:52
-* @route '/api/v1/products'
+* @route '/api/v1/admin/products'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: store.url(options),
@@ -139,7 +139,7 @@ store.form = storeForm
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:65
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 export const show = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
@@ -148,13 +148,13 @@ export const show = (args: { product: number | { id: number } } | [product: numb
 
 show.definition = {
     methods: ["get","head"],
-    url: '/api/v1/products/{product}',
+    url: '/api/v1/admin/products/{product}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:65
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 show.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -187,7 +187,7 @@ show.url = (args: { product: number | { id: number } } | [product: number | { id
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:65
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 show.get = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
@@ -197,7 +197,7 @@ show.get = (args: { product: number | { id: number } } | [product: number | { id
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:65
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 show.head = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
@@ -207,7 +207,7 @@ show.head = (args: { product: number | { id: number } } | [product: number | { i
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:65
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 const showForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
@@ -217,7 +217,7 @@ const showForm = (args: { product: number | { id: number } } | [product: number 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:65
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 showForm.get = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
@@ -227,7 +227,7 @@ showForm.get = (args: { product: number | { id: number } } | [product: number | 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::show
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:65
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 showForm.head = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
@@ -244,7 +244,7 @@ show.form = showForm
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 export const update = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -253,13 +253,13 @@ export const update = (args: { product: number | { id: number } } | [product: nu
 
 update.definition = {
     methods: ["put","patch"],
-    url: '/api/v1/products/{product}',
+    url: '/api/v1/admin/products/{product}',
 } satisfies RouteDefinition<["put","patch"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 update.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -292,7 +292,7 @@ update.url = (args: { product: number | { id: number } } | [product: number | { 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 update.put = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
@@ -302,7 +302,7 @@ update.put = (args: { product: number | { id: number } } | [product: number | { 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 update.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
@@ -312,7 +312,7 @@ update.patch = (args: { product: number | { id: number } } | [product: number | 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 const updateForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -327,7 +327,7 @@ const updateForm = (args: { product: number | { id: number } } | [product: numbe
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 updateForm.put = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -342,7 +342,7 @@ updateForm.put = (args: { product: number | { id: number } } | [product: number 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::update
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:77
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 updateForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
@@ -359,7 +359,7 @@ update.form = updateForm
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::destroy
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:90
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 export const destroy = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -368,13 +368,13 @@ export const destroy = (args: { product: number | { id: number } } | [product: n
 
 destroy.definition = {
     methods: ["delete"],
-    url: '/api/v1/products/{product}',
+    url: '/api/v1/admin/products/{product}',
 } satisfies RouteDefinition<["delete"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::destroy
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:90
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 destroy.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -407,7 +407,7 @@ destroy.url = (args: { product: number | { id: number } } | [product: number | {
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::destroy
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:90
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 destroy.delete = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
@@ -417,7 +417,7 @@ destroy.delete = (args: { product: number | { id: number } } | [product: number 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::destroy
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:90
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 const destroyForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
@@ -432,7 +432,7 @@ const destroyForm = (args: { product: number | { id: number } } | [product: numb
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::destroy
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:90
-* @route '/api/v1/products/{product}'
+* @route '/api/v1/admin/products/{product}'
 */
 destroyForm.delete = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
@@ -449,7 +449,7 @@ destroy.form = destroyForm
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
-* @route '/api/v1/products-stats'
+* @route '/api/v1/admin/products-stats'
 */
 export const stats = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: stats.url(options),
@@ -458,13 +458,13 @@ export const stats = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 stats.definition = {
     methods: ["get","head"],
-    url: '/api/v1/products-stats',
+    url: '/api/v1/admin/products-stats',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
-* @route '/api/v1/products-stats'
+* @route '/api/v1/admin/products-stats'
 */
 stats.url = (options?: RouteQueryOptions) => {
     return stats.definition.url + queryParams(options)
@@ -473,7 +473,7 @@ stats.url = (options?: RouteQueryOptions) => {
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
-* @route '/api/v1/products-stats'
+* @route '/api/v1/admin/products-stats'
 */
 stats.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: stats.url(options),
@@ -483,7 +483,7 @@ stats.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
-* @route '/api/v1/products-stats'
+* @route '/api/v1/admin/products-stats'
 */
 stats.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: stats.url(options),
@@ -493,7 +493,7 @@ stats.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
-* @route '/api/v1/products-stats'
+* @route '/api/v1/admin/products-stats'
 */
 const statsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: stats.url(options),
@@ -503,7 +503,7 @@ const statsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
-* @route '/api/v1/products-stats'
+* @route '/api/v1/admin/products-stats'
 */
 statsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: stats.url(options),
@@ -513,7 +513,7 @@ statsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::stats
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:102
-* @route '/api/v1/products-stats'
+* @route '/api/v1/admin/products-stats'
 */
 statsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: stats.url({
@@ -528,90 +528,9 @@ statsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 stats.form = statsForm
 
 /**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
-* @route '/api/v1/products-search'
-*/
-export const search = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: search.url(options),
-    method: 'get',
-})
-
-search.definition = {
-    methods: ["get","head"],
-    url: '/api/v1/products-search',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
-* @route '/api/v1/products-search'
-*/
-search.url = (options?: RouteQueryOptions) => {
-    return search.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
-* @route '/api/v1/products-search'
-*/
-search.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
-* @route '/api/v1/products-search'
-*/
-search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: search.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
-* @route '/api/v1/products-search'
-*/
-const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
-* @route '/api/v1/products-search'
-*/
-searchForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Api\V1\ProductApiController::search
-* @see Modules/Product/app/Http/Controllers/Api/V1/ProductApiController.php:112
-* @route '/api/v1/products-search'
-*/
-searchForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-search.form = searchForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::activate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
-* @route '/api/v1/products/{product}/activate'
+* @route '/api/v1/admin/products/{product}/activate'
 */
 export const activate = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activate.url(args, options),
@@ -620,13 +539,13 @@ export const activate = (args: { product: number | { id: number } } | [product: 
 
 activate.definition = {
     methods: ["patch"],
-    url: '/api/v1/products/{product}/activate',
+    url: '/api/v1/admin/products/{product}/activate',
 } satisfies RouteDefinition<["patch"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::activate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
-* @route '/api/v1/products/{product}/activate'
+* @route '/api/v1/admin/products/{product}/activate'
 */
 activate.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -659,7 +578,7 @@ activate.url = (args: { product: number | { id: number } } | [product: number | 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::activate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
-* @route '/api/v1/products/{product}/activate'
+* @route '/api/v1/admin/products/{product}/activate'
 */
 activate.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activate.url(args, options),
@@ -669,7 +588,7 @@ activate.patch = (args: { product: number | { id: number } } | [product: number 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::activate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
-* @route '/api/v1/products/{product}/activate'
+* @route '/api/v1/admin/products/{product}/activate'
 */
 const activateForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: activate.url(args, {
@@ -684,7 +603,7 @@ const activateForm = (args: { product: number | { id: number } } | [product: num
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::activate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:23
-* @route '/api/v1/products/{product}/activate'
+* @route '/api/v1/admin/products/{product}/activate'
 */
 activateForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: activate.url(args, {
@@ -701,7 +620,7 @@ activate.form = activateForm
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::deactivate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
-* @route '/api/v1/products/{product}/deactivate'
+* @route '/api/v1/admin/products/{product}/deactivate'
 */
 export const deactivate = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate.url(args, options),
@@ -710,13 +629,13 @@ export const deactivate = (args: { product: number | { id: number } } | [product
 
 deactivate.definition = {
     methods: ["patch"],
-    url: '/api/v1/products/{product}/deactivate',
+    url: '/api/v1/admin/products/{product}/deactivate',
 } satisfies RouteDefinition<["patch"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::deactivate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
-* @route '/api/v1/products/{product}/deactivate'
+* @route '/api/v1/admin/products/{product}/deactivate'
 */
 deactivate.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -749,7 +668,7 @@ deactivate.url = (args: { product: number | { id: number } } | [product: number 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::deactivate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
-* @route '/api/v1/products/{product}/deactivate'
+* @route '/api/v1/admin/products/{product}/deactivate'
 */
 deactivate.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate.url(args, options),
@@ -759,7 +678,7 @@ deactivate.patch = (args: { product: number | { id: number } } | [product: numbe
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::deactivate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
-* @route '/api/v1/products/{product}/deactivate'
+* @route '/api/v1/admin/products/{product}/deactivate'
 */
 const deactivateForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deactivate.url(args, {
@@ -774,7 +693,7 @@ const deactivateForm = (args: { product: number | { id: number } } | [product: n
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::deactivate
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:36
-* @route '/api/v1/products/{product}/deactivate'
+* @route '/api/v1/admin/products/{product}/deactivate'
 */
 deactivateForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deactivate.url(args, {
@@ -791,7 +710,7 @@ deactivate.form = deactivateForm
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::draft
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
-* @route '/api/v1/products/{product}/draft'
+* @route '/api/v1/admin/products/{product}/draft'
 */
 export const draft = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: draft.url(args, options),
@@ -800,13 +719,13 @@ export const draft = (args: { product: number | { id: number } } | [product: num
 
 draft.definition = {
     methods: ["patch"],
-    url: '/api/v1/products/{product}/draft',
+    url: '/api/v1/admin/products/{product}/draft',
 } satisfies RouteDefinition<["patch"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::draft
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
-* @route '/api/v1/products/{product}/draft'
+* @route '/api/v1/admin/products/{product}/draft'
 */
 draft.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -839,7 +758,7 @@ draft.url = (args: { product: number | { id: number } } | [product: number | { i
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::draft
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
-* @route '/api/v1/products/{product}/draft'
+* @route '/api/v1/admin/products/{product}/draft'
 */
 draft.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: draft.url(args, options),
@@ -849,7 +768,7 @@ draft.patch = (args: { product: number | { id: number } } | [product: number | {
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::draft
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
-* @route '/api/v1/products/{product}/draft'
+* @route '/api/v1/admin/products/{product}/draft'
 */
 const draftForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: draft.url(args, {
@@ -864,7 +783,7 @@ const draftForm = (args: { product: number | { id: number } } | [product: number
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::draft
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:49
-* @route '/api/v1/products/{product}/draft'
+* @route '/api/v1/admin/products/{product}/draft'
 */
 draftForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: draft.url(args, {
@@ -881,7 +800,7 @@ draft.form = draftForm
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::toggleFeatured
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
-* @route '/api/v1/products/{product}/toggle-featured'
+* @route '/api/v1/admin/products/{product}/toggle-featured'
 */
 export const toggleFeatured = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: toggleFeatured.url(args, options),
@@ -890,13 +809,13 @@ export const toggleFeatured = (args: { product: number | { id: number } } | [pro
 
 toggleFeatured.definition = {
     methods: ["patch"],
-    url: '/api/v1/products/{product}/toggle-featured',
+    url: '/api/v1/admin/products/{product}/toggle-featured',
 } satisfies RouteDefinition<["patch"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::toggleFeatured
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
-* @route '/api/v1/products/{product}/toggle-featured'
+* @route '/api/v1/admin/products/{product}/toggle-featured'
 */
 toggleFeatured.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -929,7 +848,7 @@ toggleFeatured.url = (args: { product: number | { id: number } } | [product: num
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::toggleFeatured
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
-* @route '/api/v1/products/{product}/toggle-featured'
+* @route '/api/v1/admin/products/{product}/toggle-featured'
 */
 toggleFeatured.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: toggleFeatured.url(args, options),
@@ -939,7 +858,7 @@ toggleFeatured.patch = (args: { product: number | { id: number } } | [product: n
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::toggleFeatured
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
-* @route '/api/v1/products/{product}/toggle-featured'
+* @route '/api/v1/admin/products/{product}/toggle-featured'
 */
 const toggleFeaturedForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleFeatured.url(args, {
@@ -954,7 +873,7 @@ const toggleFeaturedForm = (args: { product: number | { id: number } } | [produc
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::toggleFeatured
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:62
-* @route '/api/v1/products/{product}/toggle-featured'
+* @route '/api/v1/admin/products/{product}/toggle-featured'
 */
 toggleFeaturedForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleFeatured.url(args, {
@@ -971,7 +890,7 @@ toggleFeatured.form = toggleFeaturedForm
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::updateStock
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
-* @route '/api/v1/products/{product}/stock'
+* @route '/api/v1/admin/products/{product}/stock'
 */
 export const updateStock = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updateStock.url(args, options),
@@ -980,13 +899,13 @@ export const updateStock = (args: { product: number | { id: number } } | [produc
 
 updateStock.definition = {
     methods: ["patch"],
-    url: '/api/v1/products/{product}/stock',
+    url: '/api/v1/admin/products/{product}/stock',
 } satisfies RouteDefinition<["patch"]>
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::updateStock
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
-* @route '/api/v1/products/{product}/stock'
+* @route '/api/v1/admin/products/{product}/stock'
 */
 updateStock.url = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
@@ -1019,7 +938,7 @@ updateStock.url = (args: { product: number | { id: number } } | [product: number
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::updateStock
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
-* @route '/api/v1/products/{product}/stock'
+* @route '/api/v1/admin/products/{product}/stock'
 */
 updateStock.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updateStock.url(args, options),
@@ -1029,7 +948,7 @@ updateStock.patch = (args: { product: number | { id: number } } | [product: numb
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::updateStock
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
-* @route '/api/v1/products/{product}/stock'
+* @route '/api/v1/admin/products/{product}/stock'
 */
 const updateStockForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateStock.url(args, {
@@ -1044,7 +963,7 @@ const updateStockForm = (args: { product: number | { id: number } } | [product: 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\ProductStatusApiController::updateStock
 * @see Modules/Product/app/Http/Controllers/Api/V1/ProductStatusApiController.php:77
-* @route '/api/v1/products/{product}/stock'
+* @route '/api/v1/admin/products/{product}/stock'
 */
 updateStockForm.patch = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateStock.url(args, {
@@ -1058,14 +977,13 @@ updateStockForm.patch = (args: { product: number | { id: number } } | [product: 
 
 updateStock.form = updateStockForm
 
-const api = {
+const admin = {
     index: Object.assign(index, index),
     store: Object.assign(store, store),
     show: Object.assign(show, show),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),
     stats: Object.assign(stats, stats),
-    search: Object.assign(search, search),
     activate: Object.assign(activate, activate),
     deactivate: Object.assign(deactivate, deactivate),
     draft: Object.assign(draft, draft),
@@ -1073,4 +991,4 @@ const api = {
     updateStock: Object.assign(updateStock, updateStock),
 }
 
-export default api
+export default admin
