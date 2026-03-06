@@ -29,7 +29,8 @@ trait BelongsToOutlet
             $user = auth()->user();
 
             // Super-admins see all data regardless of tenant assignments
-            if ($user?->hasRole('super-admin')) {
+            // Only check hasRole for User model (not Customer which doesn't have Spatie roles)
+            if ($user && method_exists($user, 'hasRole') && $user->hasRole('super-admin')) {
                 return;
             }
 

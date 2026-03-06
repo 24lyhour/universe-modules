@@ -5,10 +5,11 @@ import company from './company'
 import customer from './customer'
 import hotel from './hotel'
 import media from './media'
+import category from './category'
 import movice from './movice'
 import order from './order'
-import outlet from './outlet'
 import v1 from './v1'
+import outlet from './outlet'
 import payment from './payment'
 import porfolio from './porfolio'
 import product from './product'
@@ -23,10 +24,11 @@ const api = {
     customer: Object.assign(customer, customer),
     hotel: Object.assign(hotel, hotel),
     media: Object.assign(media, media),
+    category: Object.assign(category, category),
     movice: Object.assign(movice, movice),
     order: Object.assign(order, order),
-    outlet: Object.assign(outlet, outlet),
     v1: Object.assign(v1, v1),
+    outlet: Object.assign(outlet, outlet),
     payment: Object.assign(payment, payment),
     porfolio: Object.assign(porfolio, porfolio),
     product: Object.assign(product, product),

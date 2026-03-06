@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::index
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:19
@@ -66,43 +66,6 @@ index.head = (args: { product: number | { id: number } } | [product: number | { 
     url: index.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:19
-* @route '/dashboard/products/{product}/upsells'
-*/
-const indexForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:19
-* @route '/dashboard/products/{product}/upsells'
-*/
-indexForm.get = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:19
-* @route '/dashboard/products/{product}/upsells'
-*/
-indexForm.head = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::create
@@ -173,43 +136,6 @@ create.head = (args: { product: number | { id: number } } | [product: number | {
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:55
-* @route '/dashboard/products/{product}/upsells/create'
-*/
-const createForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:55
-* @route '/dashboard/products/{product}/upsells/create'
-*/
-createForm.get = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:55
-* @route '/dashboard/products/{product}/upsells/create'
-*/
-createForm.head = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::store
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:79
 * @route '/dashboard/products/{product}/upsells'
@@ -266,28 +192,6 @@ store.post = (args: { product: number | { id: number } } | [product: number | { 
     url: store.url(args, options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:79
-* @route '/dashboard/products/{product}/upsells'
-*/
-const storeForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:79
-* @route '/dashboard/products/{product}/upsells'
-*/
-storeForm.post = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(args, options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::edit
@@ -355,43 +259,6 @@ edit.head = (args: { product: number | { id: number }, upsell: number | { id: nu
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:110
-* @route '/dashboard/products/{product}/upsells/{upsell}/edit'
-*/
-const editForm = (args: { product: number | { id: number }, upsell: number | { id: number } } | [product: number | { id: number }, upsell: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:110
-* @route '/dashboard/products/{product}/upsells/{upsell}/edit'
-*/
-editForm.get = (args: { product: number | { id: number }, upsell: number | { id: number } } | [product: number | { id: number }, upsell: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:110
-* @route '/dashboard/products/{product}/upsells/{upsell}/edit'
-*/
-editForm.head = (args: { product: number | { id: number }, upsell: number | { id: number } } | [product: number | { id: number }, upsell: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::update
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:127
 * @route '/dashboard/products/{product}/upsells/{upsell}'
@@ -457,53 +324,6 @@ update.patch = (args: { product: number | { id: number }, upsell: number | { id:
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:127
-* @route '/dashboard/products/{product}/upsells/{upsell}'
-*/
-const updateForm = (args: { product: number | { id: number }, upsell: number | { id: number } } | [product: number | { id: number }, upsell: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:127
-* @route '/dashboard/products/{product}/upsells/{upsell}'
-*/
-updateForm.put = (args: { product: number | { id: number }, upsell: number | { id: number } } | [product: number | { id: number }, upsell: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:127
-* @route '/dashboard/products/{product}/upsells/{upsell}'
-*/
-updateForm.patch = (args: { product: number | { id: number }, upsell: number | { id: number } } | [product: number | { id: number }, upsell: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::destroy
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:145
 * @route '/dashboard/products/{product}/upsells/{upsell}'
@@ -559,38 +379,6 @@ destroy.delete = (args: { product: number | { id: number }, upsell: number | { i
 })
 
 /**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:145
-* @route '/dashboard/products/{product}/upsells/{upsell}'
-*/
-const destroyForm = (args: { product: number | { id: number }, upsell: number | { id: number } } | [product: number | { id: number }, upsell: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:145
-* @route '/dashboard/products/{product}/upsells/{upsell}'
-*/
-destroyForm.delete = (args: { product: number | { id: number }, upsell: number | { id: number } } | [product: number | { id: number }, upsell: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
-
-/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::toggleStatus
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:157
 * @route '/dashboard/products/{product}/upsells/{upsell}/toggle-status'
@@ -644,38 +432,6 @@ toggleStatus.patch = (args: { product: number | { id: number }, upsell: number |
     url: toggleStatus.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::toggleStatus
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:157
-* @route '/dashboard/products/{product}/upsells/{upsell}/toggle-status'
-*/
-const toggleStatusForm = (args: { product: number | { id: number }, upsell: number | { id: number } } | [product: number | { id: number }, upsell: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleStatus.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::toggleStatus
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:157
-* @route '/dashboard/products/{product}/upsells/{upsell}/toggle-status'
-*/
-toggleStatusForm.patch = (args: { product: number | { id: number }, upsell: number | { id: number } } | [product: number | { id: number }, upsell: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleStatus.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::reorder
@@ -734,28 +490,6 @@ reorder.post = (args: { product: number | { id: number } } | [product: number | 
     url: reorder.url(args, options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::reorder
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:168
-* @route '/dashboard/products/{product}/upsells/reorder'
-*/
-const reorderForm = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reorder.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductUpsellController::reorder
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductUpsellController.php:168
-* @route '/dashboard/products/{product}/upsells/reorder'
-*/
-reorderForm.post = (args: { product: number | { id: number } } | [product: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reorder.url(args, options),
-    method: 'post',
-})
-
-reorder.form = reorderForm
 
 const upsells = {
     index: Object.assign(index, index),

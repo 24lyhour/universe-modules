@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryStatusController::__invoke
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryStatusController.php:20
@@ -56,37 +56,5 @@ CategoryStatusController.put = (args: { category: number | { id: number } } | [c
     url: CategoryStatusController.url(args, options),
     method: 'put',
 })
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryStatusController::__invoke
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryStatusController.php:20
-* @route '/dashboard/categories/{category}/toggle-status'
-*/
-const CategoryStatusControllerForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: CategoryStatusController.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryStatusController::__invoke
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryStatusController.php:20
-* @route '/dashboard/categories/{category}/toggle-status'
-*/
-CategoryStatusControllerForm.put = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: CategoryStatusController.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-CategoryStatusController.form = CategoryStatusControllerForm
 
 export default CategoryStatusController
