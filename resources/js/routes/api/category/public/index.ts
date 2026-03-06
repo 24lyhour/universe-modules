@@ -1,7 +1,7 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:23
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::index
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:13
 * @route '/api/v1/categories'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -15,8 +15,8 @@ index.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:23
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::index
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:13
 * @route '/api/v1/categories'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -24,8 +24,8 @@ index.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:23
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::index
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:13
 * @route '/api/v1/categories'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,8 +34,8 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:23
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::index
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:13
 * @route '/api/v1/categories'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,45 +44,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:23
-* @route '/api/v1/categories'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:23
-* @route '/api/v1/categories'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:23
-* @route '/api/v1/categories'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::featured
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:123
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::featured
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:81
 * @route '/api/v1/categories-featured'
 */
 export const featured = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -96,8 +59,8 @@ featured.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::featured
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:123
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::featured
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:81
 * @route '/api/v1/categories-featured'
 */
 featured.url = (options?: RouteQueryOptions) => {
@@ -105,8 +68,8 @@ featured.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::featured
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:123
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::featured
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:81
 * @route '/api/v1/categories-featured'
 */
 featured.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -115,8 +78,8 @@ featured.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::featured
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:123
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::featured
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:81
 * @route '/api/v1/categories-featured'
 */
 featured.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -125,45 +88,8 @@ featured.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::featured
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:123
-* @route '/api/v1/categories-featured'
-*/
-const featuredForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: featured.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::featured
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:123
-* @route '/api/v1/categories-featured'
-*/
-featuredForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: featured.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::featured
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:123
-* @route '/api/v1/categories-featured'
-*/
-featuredForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: featured.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-featured.form = featuredForm
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:55
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::show
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:36
 * @route '/api/v1/categories/{id}'
 */
 export const show = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -177,8 +103,8 @@ show.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:55
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::show
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:36
 * @route '/api/v1/categories/{id}'
 */
 show.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -204,8 +130,8 @@ show.url = (args: { id: string | number } | [id: string | number ] | string | nu
 }
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:55
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::show
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:36
 * @route '/api/v1/categories/{id}'
 */
 show.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -214,8 +140,8 @@ show.get = (args: { id: string | number } | [id: string | number ] | string | nu
 })
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:55
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::show
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:36
 * @route '/api/v1/categories/{id}'
 */
 show.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -224,45 +150,8 @@ show.head = (args: { id: string | number } | [id: string | number ] | string | n
 })
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:55
-* @route '/api/v1/categories/{id}'
-*/
-const showForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:55
-* @route '/api/v1/categories/{id}'
-*/
-showForm.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:55
-* @route '/api/v1/categories/{id}'
-*/
-showForm.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::products
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:90
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::products
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:61
 * @route '/api/v1/categories/{identifier}/products'
 */
 export const products = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -276,8 +165,8 @@ products.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::products
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:90
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::products
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:61
 * @route '/api/v1/categories/{identifier}/products'
 */
 products.url = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -303,8 +192,8 @@ products.url = (args: { identifier: string | number } | [identifier: string | nu
 }
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::products
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:90
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::products
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:61
 * @route '/api/v1/categories/{identifier}/products'
 */
 products.get = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -313,51 +202,14 @@ products.get = (args: { identifier: string | number } | [identifier: string | nu
 })
 
 /**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::products
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:90
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Category\CategoryPublicController::products
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Category/CategoryPublicController.php:61
 * @route '/api/v1/categories/{identifier}/products'
 */
 products.head = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: products.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::products
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:90
-* @route '/api/v1/categories/{identifier}/products'
-*/
-const productsForm = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: products.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::products
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:90
-* @route '/api/v1/categories/{identifier}/products'
-*/
-productsForm.get = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: products.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Api\V1\CategoryPublicController::products
-* @see Modules/Menu/app/Http/Controllers/Api/V1/CategoryPublicController.php:90
-* @route '/api/v1/categories/{identifier}/products'
-*/
-productsForm.head = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: products.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-products.form = productsForm
 
 const publicMethod = {
     index: Object.assign(index, index),

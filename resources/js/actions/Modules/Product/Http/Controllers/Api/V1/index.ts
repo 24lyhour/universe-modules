@@ -1,11 +1,7 @@
-import ProductPublicController from './ProductPublicController'
-import ProductApiController from './ProductApiController'
-import ProductStatusApiController from './ProductStatusApiController'
+import Customer from './Customer'
 
 const V1 = {
-    ProductPublicController: Object.assign(ProductPublicController, ProductPublicController),
-    ProductApiController: Object.assign(ProductApiController, ProductApiController),
-    ProductStatusApiController: Object.assign(ProductStatusApiController, ProductStatusApiController),
+    Customer: Object.assign(Customer, Customer),
 }
 
 export default V1

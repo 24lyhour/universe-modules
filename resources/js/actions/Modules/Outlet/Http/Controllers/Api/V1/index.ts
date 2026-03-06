@@ -1,9 +1,7 @@
-import OutletApiController from './OutletApiController'
-import OutletPublicController from './OutletPublicController'
+import Customer from './Customer'
 
 const V1 = {
-    OutletApiController: Object.assign(OutletApiController, OutletApiController),
-    OutletPublicController: Object.assign(OutletPublicController, OutletPublicController),
+    Customer: Object.assign(Customer, Customer),
 }
 
 export default V1
