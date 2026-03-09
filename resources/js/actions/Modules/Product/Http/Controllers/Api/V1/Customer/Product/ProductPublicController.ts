@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../../../wayfinder'
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::index
 * @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:19
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::index
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:19
+* @route '/api/v1/products'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::index
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:19
+* @route '/api/v1/products'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::index
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:19
+* @route '/api/v1/products'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::types
@@ -88,6 +125,43 @@ types.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::types
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:127
+* @route '/api/v1/product-types'
+*/
+const typesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: types.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::types
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:127
+* @route '/api/v1/product-types'
+*/
+typesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: types.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::types
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:127
+* @route '/api/v1/product-types'
+*/
+typesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: types.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+types.form = typesForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::search
 * @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:55
 * @route '/api/v1/products-search'
@@ -130,6 +204,43 @@ search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: search.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::search
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:55
+* @route '/api/v1/products-search'
+*/
+const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: search.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::search
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:55
+* @route '/api/v1/products-search'
+*/
+searchForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: search.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::search
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:55
+* @route '/api/v1/products-search'
+*/
+searchForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: search.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+search.form = searchForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::featured
@@ -176,6 +287,43 @@ featured.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::featured
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:76
+* @route '/api/v1/products-featured'
+*/
+const featuredForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: featured.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::featured
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:76
+* @route '/api/v1/products-featured'
+*/
+featuredForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: featured.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::featured
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:76
+* @route '/api/v1/products-featured'
+*/
+featuredForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: featured.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+featured.form = featuredForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::newArrivals
 * @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:89
 * @route '/api/v1/products-new-arrivals'
@@ -220,6 +368,43 @@ newArrivals.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::newArrivals
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:89
+* @route '/api/v1/products-new-arrivals'
+*/
+const newArrivalsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: newArrivals.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::newArrivals
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:89
+* @route '/api/v1/products-new-arrivals'
+*/
+newArrivalsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: newArrivals.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::newArrivals
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:89
+* @route '/api/v1/products-new-arrivals'
+*/
+newArrivalsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: newArrivals.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+newArrivals.form = newArrivalsForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::onSale
 * @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:101
 * @route '/api/v1/products-on-sale'
@@ -262,6 +447,43 @@ onSale.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: onSale.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::onSale
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:101
+* @route '/api/v1/products-on-sale'
+*/
+const onSaleForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: onSale.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::onSale
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:101
+* @route '/api/v1/products-on-sale'
+*/
+onSaleForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: onSale.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::onSale
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:101
+* @route '/api/v1/products-on-sale'
+*/
+onSaleForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: onSale.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+onSale.form = onSaleForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::show
@@ -326,6 +548,43 @@ show.head = (args: { identifier: string | number } | [identifier: string | numbe
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::show
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:45
+* @route '/api/v1/products/{identifier}'
+*/
+const showForm = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::show
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:45
+* @route '/api/v1/products/{identifier}'
+*/
+showForm.get = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::show
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:45
+* @route '/api/v1/products/{identifier}'
+*/
+showForm.head = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::related
 * @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:115
 * @route '/api/v1/products/{identifier}/related'
@@ -386,6 +645,43 @@ related.head = (args: { identifier: string | number } | [identifier: string | nu
     url: related.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::related
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:115
+* @route '/api/v1/products/{identifier}/related'
+*/
+const relatedForm = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: related.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::related
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:115
+* @route '/api/v1/products/{identifier}/related'
+*/
+relatedForm.get = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: related.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Api\V1\Customer\Product\ProductPublicController::related
+* @see Modules/Product/app/Http/Controllers/Api/V1/Customer/Product/ProductPublicController.php:115
+* @route '/api/v1/products/{identifier}/related'
+*/
+relatedForm.head = (args: { identifier: string | number } | [identifier: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: related.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+related.form = relatedForm
 
 const ProductPublicController = { index, types, search, featured, newArrivals, onSale, show, related }
 

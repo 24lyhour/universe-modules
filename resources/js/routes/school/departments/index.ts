@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 import importMethod7367d2 from './import'
 import trash from './trash'
 /**
@@ -70,6 +70,43 @@ qrCode.head = (args: { department: string | { uuid: string } } | [department: st
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::qrCode
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
+* @route '/dashboard/departments/{department}/qr-code'
+*/
+const qrCodeForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: qrCode.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::qrCode
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
+* @route '/dashboard/departments/{department}/qr-code'
+*/
+qrCodeForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: qrCode.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::qrCode
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
+* @route '/dashboard/departments/{department}/qr-code'
+*/
+qrCodeForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: qrCode.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+qrCode.form = qrCodeForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:38
 * @route '/dashboard/departments/export'
@@ -112,6 +149,43 @@ exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: exportMethod.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:38
+* @route '/dashboard/departments/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:38
+* @route '/dashboard/departments/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::exportMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:38
+* @route '/dashboard/departments/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
@@ -158,6 +232,43 @@ importMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:45
+* @route '/dashboard/departments/import'
+*/
+const importMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:45
+* @route '/dashboard/departments/import'
+*/
+importMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::importMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:45
+* @route '/dashboard/departments/import'
+*/
+importMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+importMethod.form = importMethodForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:62
 * @route '/dashboard/departments/template'
@@ -202,6 +313,43 @@ template.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:62
+* @route '/dashboard/departments/template'
+*/
+const templateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:62
+* @route '/dashboard/departments/template'
+*/
+templateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\SchoolImportExportController::template
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/SchoolImportExportController.php:62
+* @route '/dashboard/departments/template'
+*/
+templateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+template.form = templateForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::bulkDelete
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:151
 * @route '/dashboard/departments/bulk-delete'
@@ -234,6 +382,38 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
     url: bulkDelete.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:151
+* @route '/dashboard/departments/bulk-delete'
+*/
+const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::bulkDelete
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:151
+* @route '/dashboard/departments/bulk-delete'
+*/
+bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::create
@@ -280,6 +460,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::create
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:57
+* @route '/dashboard/departments/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::create
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:57
+* @route '/dashboard/departments/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::create
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:57
+* @route '/dashboard/departments/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::store
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:67
 * @route '/dashboard/departments'
@@ -312,6 +529,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::store
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:67
+* @route '/dashboard/departments'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::store
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:67
+* @route '/dashboard/departments'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::index
@@ -358,6 +597,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::index
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:44
+* @route '/dashboard/departments'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::index
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:44
+* @route '/dashboard/departments'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::index
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:44
+* @route '/dashboard/departments'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::api
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:183
 * @route '/dashboard/api/departments'
@@ -400,6 +676,43 @@ api.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: api.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::api
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:183
+* @route '/dashboard/api/departments'
+*/
+const apiForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: api.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::api
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:183
+* @route '/dashboard/api/departments'
+*/
+apiForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: api.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::api
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:183
+* @route '/dashboard/api/departments'
+*/
+apiForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: api.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+api.form = apiForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
@@ -470,6 +783,43 @@ show.head = (args: { department: string | { uuid: string } } | [department: stri
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
+* @route '/dashboard/departments/{department}'
+*/
+const showForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
+* @route '/dashboard/departments/{department}'
+*/
+showForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
+* @route '/dashboard/departments/{department}'
+*/
+showForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
@@ -538,6 +888,43 @@ edit.head = (args: { department: string | { uuid: string } } | [department: stri
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
+* @route '/dashboard/departments/{department}/edit'
+*/
+const editForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
+* @route '/dashboard/departments/{department}/edit'
+*/
+editForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
+* @route '/dashboard/departments/{department}/edit'
+*/
+editForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
@@ -596,6 +983,38 @@ update.put = (args: { department: string | { uuid: string } } | [department: str
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
+* @route '/dashboard/departments/{department}'
+*/
+const updateForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
+* @route '/dashboard/departments/{department}'
+*/
+updateForm.put = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::toggleStatus
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
 * @route '/dashboard/departments/{department}/toggle-status'
@@ -652,6 +1071,38 @@ toggleStatus.put = (args: { department: string | { uuid: string } } | [departmen
     url: toggleStatus.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::toggleStatus
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
+* @route '/dashboard/departments/{department}/toggle-status'
+*/
+const toggleStatusForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::toggleStatus
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
+* @route '/dashboard/departments/{department}/toggle-status'
+*/
+toggleStatusForm.put = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::deleteMethod
@@ -722,6 +1173,43 @@ deleteMethod.head = (args: { department: string | { uuid: string } } | [departme
 })
 
 /**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::deleteMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
+* @route '/dashboard/departments/{department}/delete'
+*/
+const deleteMethodForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deleteMethod.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::deleteMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
+* @route '/dashboard/departments/{department}/delete'
+*/
+deleteMethodForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deleteMethod.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::deleteMethod
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
+* @route '/dashboard/departments/{department}/delete'
+*/
+deleteMethodForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: deleteMethod.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+deleteMethod.form = deleteMethodForm
+
+/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::destroy
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
 * @route '/dashboard/departments/{department}'
@@ -778,6 +1266,38 @@ destroy.delete = (args: { department: string | { uuid: string } } | [department:
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::destroy
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
+* @route '/dashboard/departments/{department}'
+*/
+const destroyForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::destroy
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
+* @route '/dashboard/departments/{department}'
+*/
+destroyForm.delete = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const departments = {
     qrCode: Object.assign(qrCode, qrCode),

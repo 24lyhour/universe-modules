@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::trash
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:71
@@ -42,6 +42,43 @@ trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: trash.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:71
+* @route '/dashboard/categories/trash'
+*/
+const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:71
+* @route '/dashboard/categories/trash'
+*/
+trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:71
+* @route '/dashboard/categories/trash'
+*/
+trashForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+trash.form = trashForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::exportMethod
@@ -88,6 +125,43 @@ exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:88
+* @route '/dashboard/categories/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:88
+* @route '/dashboard/categories/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:88
+* @route '/dashboard/categories/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::importMethod
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:101
 * @route '/dashboard/categories/import'
@@ -132,6 +206,43 @@ importMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:101
+* @route '/dashboard/categories/import'
+*/
+const importMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:101
+* @route '/dashboard/categories/import'
+*/
+importMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:101
+* @route '/dashboard/categories/import'
+*/
+importMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+importMethod.form = importMethodForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::previewImport
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:111
 * @route '/dashboard/categories/import/preview'
@@ -166,6 +277,28 @@ previewImport.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::previewImport
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:111
+* @route '/dashboard/categories/import/preview'
+*/
+const previewImportForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: previewImport.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::previewImport
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:111
+* @route '/dashboard/categories/import/preview'
+*/
+previewImportForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: previewImport.url(options),
+    method: 'post',
+})
+
+previewImport.form = previewImportForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::processImport
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:134
 * @route '/dashboard/categories/import/process'
@@ -198,6 +331,28 @@ processImport.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
     url: processImport.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::processImport
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:134
+* @route '/dashboard/categories/import/process'
+*/
+const processImportForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: processImport.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::processImport
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:134
+* @route '/dashboard/categories/import/process'
+*/
+processImportForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: processImport.url(options),
+    method: 'post',
+})
+
+processImport.form = processImportForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::template
@@ -244,6 +399,43 @@ template.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::template
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:170
+* @route '/dashboard/categories/import/template'
+*/
+const templateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::template
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:170
+* @route '/dashboard/categories/import/template'
+*/
+templateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::template
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:170
+* @route '/dashboard/categories/import/template'
+*/
+templateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: template.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+template.form = templateForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::confirmBulkDelete
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:373
 * @route '/dashboard/categories/bulk-delete'
@@ -288,6 +480,43 @@ confirmBulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> 
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::confirmBulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:373
+* @route '/dashboard/categories/bulk-delete'
+*/
+const confirmBulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::confirmBulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:373
+* @route '/dashboard/categories/bulk-delete'
+*/
+confirmBulkDeleteForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::confirmBulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:373
+* @route '/dashboard/categories/bulk-delete'
+*/
+confirmBulkDeleteForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmBulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmBulkDelete.form = confirmBulkDeleteForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::bulkDelete
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:395
 * @route '/dashboard/categories/bulk-delete'
@@ -320,6 +549,38 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
     url: bulkDelete.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::bulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:395
+* @route '/dashboard/categories/bulk-delete'
+*/
+const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::bulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:395
+* @route '/dashboard/categories/bulk-delete'
+*/
+bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::bulkRestore
@@ -356,6 +617,38 @@ bulkRestore.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::bulkRestore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:235
+* @route '/dashboard/categories/trash/bulk-restore'
+*/
+const bulkRestoreForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkRestore.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::bulkRestore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:235
+* @route '/dashboard/categories/trash/bulk-restore'
+*/
+bulkRestoreForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkRestore.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkRestore.form = bulkRestoreForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::bulkForceDelete
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:251
 * @route '/dashboard/categories/trash/bulk-force-delete'
@@ -390,6 +683,38 @@ bulkForceDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::bulkForceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:251
+* @route '/dashboard/categories/trash/bulk-force-delete'
+*/
+const bulkForceDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkForceDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::bulkForceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:251
+* @route '/dashboard/categories/trash/bulk-force-delete'
+*/
+bulkForceDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkForceDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkForceDelete.form = bulkForceDeleteForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::emptyTrash
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:267
 * @route '/dashboard/categories/trash/empty'
@@ -422,6 +747,38 @@ emptyTrash.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
     url: emptyTrash.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::emptyTrash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:267
+* @route '/dashboard/categories/trash/empty'
+*/
+const emptyTrashForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: emptyTrash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::emptyTrash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:267
+* @route '/dashboard/categories/trash/empty'
+*/
+emptyTrashForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: emptyTrash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+emptyTrash.form = emptyTrashForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::index
@@ -468,6 +825,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::index
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:57
+* @route '/dashboard/categories'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::index
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:57
+* @route '/dashboard/categories'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::index
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:57
+* @route '/dashboard/categories'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::create
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:278
 * @route '/dashboard/categories/create'
@@ -512,6 +906,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::create
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:278
+* @route '/dashboard/categories/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::create
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:278
+* @route '/dashboard/categories/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::create
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:278
+* @route '/dashboard/categories/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::store
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:296
 * @route '/dashboard/categories'
@@ -544,6 +975,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::store
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:296
+* @route '/dashboard/categories'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::store
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:296
+* @route '/dashboard/categories'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::show
@@ -614,6 +1067,43 @@ show.head = (args: { category: number | { id: number } } | [category: number | {
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:316
+* @route '/dashboard/categories/{category}'
+*/
+const showForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:316
+* @route '/dashboard/categories/{category}'
+*/
+showForm.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:316
+* @route '/dashboard/categories/{category}'
+*/
+showForm.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::edit
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
 * @route '/dashboard/categories/{category}/edit'
@@ -680,6 +1170,43 @@ edit.head = (args: { category: number | { id: number } } | [category: number | {
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::edit
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
+* @route '/dashboard/categories/{category}/edit'
+*/
+const editForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::edit
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
+* @route '/dashboard/categories/{category}/edit'
+*/
+editForm.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::edit
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
+* @route '/dashboard/categories/{category}/edit'
+*/
+editForm.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::update
@@ -750,6 +1277,53 @@ update.patch = (args: { category: number | { id: number } } | [category: number 
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::update
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:337
+* @route '/dashboard/categories/{category}'
+*/
+const updateForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::update
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:337
+* @route '/dashboard/categories/{category}'
+*/
+updateForm.put = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::update
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:337
+* @route '/dashboard/categories/{category}'
+*/
+updateForm.patch = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::destroy
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:360
 * @route '/dashboard/categories/{category}'
@@ -806,6 +1380,38 @@ destroy.delete = (args: { category: number | { id: number } } | [category: numbe
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::destroy
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:360
+* @route '/dashboard/categories/{category}'
+*/
+const destroyForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::destroy
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:360
+* @route '/dashboard/categories/{category}'
+*/
+destroyForm.delete = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::confirmDelete
@@ -876,6 +1482,43 @@ confirmDelete.head = (args: { category: number | { id: number } } | [category: n
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::confirmDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:350
+* @route '/dashboard/categories/{category}/delete'
+*/
+const confirmDeleteForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::confirmDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:350
+* @route '/dashboard/categories/{category}/delete'
+*/
+confirmDeleteForm.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::confirmDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:350
+* @route '/dashboard/categories/{category}/delete'
+*/
+confirmDeleteForm.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmDelete.form = confirmDeleteForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::restore
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:211
 * @route '/dashboard/categories/{uuid}/restore'
@@ -928,6 +1571,38 @@ restore.put = (args: { uuid: string | number } | [uuid: string | number ] | stri
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::restore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:211
+* @route '/dashboard/categories/{uuid}/restore'
+*/
+const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::restore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:211
+* @route '/dashboard/categories/{uuid}/restore'
+*/
+restoreForm.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+restore.form = restoreForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::forceDelete
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:223
 * @route '/dashboard/categories/{uuid}/force-delete'
@@ -978,6 +1653,38 @@ forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ]
     url: forceDelete.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::forceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:223
+* @route '/dashboard/categories/{uuid}/force-delete'
+*/
+const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryController::forceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:223
+* @route '/dashboard/categories/{uuid}/force-delete'
+*/
+forceDeleteForm.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+forceDelete.form = forceDeleteForm
 
 const CategoryController = { trash, exportMethod, importMethod, previewImport, processImport, template, confirmBulkDelete, bulkDelete, bulkRestore, bulkForceDelete, emptyTrash, index, create, store, show, edit, update, destroy, confirmDelete, restore, forceDelete, export: exportMethod, import: importMethod }
 
