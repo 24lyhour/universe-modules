@@ -19,9 +19,9 @@ Artisan::command('inspire', function () {
 |
 */
 
-// Daily database backup at 2:00 AM
+// Daily database backup at 2:00 AM (temporarily set to everyMinute for testing)
 Schedule::command('backup:run --only-db --disable-notifications')
-    ->dailyAt('02:00')
+    ->everyMinute() // TODO: Change back to ->dailyAt('02:00') after testing
     ->name('daily-db-backup')
     ->withoutOverlapping()
     ->onOneServer();
