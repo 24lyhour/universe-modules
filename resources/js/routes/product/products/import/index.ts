@@ -1,7 +1,7 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::preview
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:431
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:442
 * @route '/dashboard/products/import/preview'
 */
 export const preview = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ preview.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::preview
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:431
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:442
 * @route '/dashboard/products/import/preview'
 */
 preview.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ preview.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::preview
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:431
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:442
 * @route '/dashboard/products/import/preview'
 */
 preview.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -34,8 +34,30 @@ preview.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::preview
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:442
+* @route '/dashboard/products/import/preview'
+*/
+const previewForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: preview.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::preview
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:442
+* @route '/dashboard/products/import/preview'
+*/
+previewForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: preview.url(options),
+    method: 'post',
+})
+
+preview.form = previewForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::process
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:464
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:475
 * @route '/dashboard/products/import'
 */
 export const process = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -50,7 +72,7 @@ process.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::process
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:464
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:475
 * @route '/dashboard/products/import'
 */
 process.url = (options?: RouteQueryOptions) => {
@@ -59,13 +81,35 @@ process.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::process
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:464
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:475
 * @route '/dashboard/products/import'
 */
 process.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: process.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::process
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:475
+* @route '/dashboard/products/import'
+*/
+const processForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: process.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductController::process
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductController.php:475
+* @route '/dashboard/products/import'
+*/
+processForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: process.url(options),
+    method: 'post',
+})
+
+process.form = processForm
 
 const importMethod = {
     preview: Object.assign(preview, preview),

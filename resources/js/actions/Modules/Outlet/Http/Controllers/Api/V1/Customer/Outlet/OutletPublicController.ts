@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../../../wayfinder'
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
@@ -44,6 +44,43 @@ types.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
+* @route '/api/v1/outlet-types'
+*/
+const typesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: types.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
+* @route '/api/v1/outlet-types'
+*/
+typesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: types.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
+* @route '/api/v1/outlet-types'
+*/
+typesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: types.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+types.form = typesForm
+
+/**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
 * @route '/api/v1/outlets-featured'
@@ -86,6 +123,43 @@ featured.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: featured.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
+* @route '/api/v1/outlets-featured'
+*/
+const featuredForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: featured.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
+* @route '/api/v1/outlets-featured'
+*/
+featuredForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: featured.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
+* @route '/api/v1/outlets-featured'
+*/
+featuredForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: featured.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+featured.form = featuredForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
@@ -150,6 +224,43 @@ show.head = (args: { uuid: string | number } | [uuid: string | number ] | string
 })
 
 /**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:28
+* @route '/api/v1/outlets/{uuid}'
+*/
+const showForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:28
+* @route '/api/v1/outlets/{uuid}'
+*/
+showForm.get = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:28
+* @route '/api/v1/outlets/{uuid}'
+*/
+showForm.head = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
 * @route '/api/v1/outlets/{uuid}/products'
@@ -210,6 +321,43 @@ products.head = (args: { uuid: string | number } | [uuid: string | number ] | st
     url: products.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
+* @route '/api/v1/outlets/{uuid}/products'
+*/
+const productsForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: products.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
+* @route '/api/v1/outlets/{uuid}/products'
+*/
+productsForm.get = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: products.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
+* @route '/api/v1/outlets/{uuid}/products'
+*/
+productsForm.head = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: products.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+products.form = productsForm
 
 const OutletPublicController = { types, featured, show, products }
 

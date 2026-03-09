@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:185
@@ -43,3 +43,39 @@ confirm.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     method: 'head',
 })
 
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirm
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:185
+* @route '/dashboard/classrooms/bulk-delete'
+*/
+const confirmForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirm.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirm
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:185
+* @route '/dashboard/classrooms/bulk-delete'
+*/
+confirmForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirm.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\School\Http\Controllers\Dashboard\V1\ClassroomController::confirm
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/ClassroomController.php:185
+* @route '/dashboard/classrooms/bulk-delete'
+*/
+confirmForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirm.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirm.form = confirmForm
