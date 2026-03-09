@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::store
 * @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:14
@@ -34,28 +34,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::store
-* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:14
-* @route '/api/v1/auth/device-token'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::store
-* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:14
-* @route '/api/v1/auth/device-token'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::destroy
 * @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:33
 * @route '/api/v1/auth/device-token'
@@ -88,38 +66,6 @@ destroy.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::destroy
-* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:33
-* @route '/api/v1/auth/device-token'
-*/
-const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::destroy
-* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:33
-* @route '/api/v1/auth/device-token'
-*/
-destroyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const DeviceTokenController = { store, destroy }
 

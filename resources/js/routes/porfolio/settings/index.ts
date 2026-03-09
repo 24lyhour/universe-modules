@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Porfolio\Http\Controllers\SiteSettingController::update
 * @see Modules/Porfolio/app/Http/Controllers/SiteSettingController.php:31
@@ -34,38 +34,6 @@ update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 })
 
 /**
-* @see \Modules\Porfolio\Http\Controllers\SiteSettingController::update
-* @see Modules/Porfolio/app/Http/Controllers/SiteSettingController.php:31
-* @route '/dashboard/settings'
-*/
-const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\SiteSettingController::update
-* @see Modules/Porfolio/app/Http/Controllers/SiteSettingController.php:31
-* @route '/dashboard/settings'
-*/
-updateForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Porfolio\Http\Controllers\SiteSettingController::store
 * @see Modules/Porfolio/app/Http/Controllers/SiteSettingController.php:52
 * @route '/dashboard/settings'
@@ -98,28 +66,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\SiteSettingController::store
-* @see Modules/Porfolio/app/Http/Controllers/SiteSettingController.php:52
-* @route '/dashboard/settings'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\SiteSettingController::store
-* @see Modules/Porfolio/app/Http/Controllers/SiteSettingController.php:52
-* @route '/dashboard/settings'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\SiteSettingController::destroy
@@ -172,38 +118,6 @@ destroy.delete = (args: { key: string | number } | [key: string | number ] | str
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\SiteSettingController::destroy
-* @see Modules/Porfolio/app/Http/Controllers/SiteSettingController.php:72
-* @route '/dashboard/settings/{key}'
-*/
-const destroyForm = (args: { key: string | number } | [key: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\SiteSettingController::destroy
-* @see Modules/Porfolio/app/Http/Controllers/SiteSettingController.php:72
-* @route '/dashboard/settings/{key}'
-*/
-destroyForm.delete = (args: { key: string | number } | [key: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const settings = {
     update: Object.assign(update, update),

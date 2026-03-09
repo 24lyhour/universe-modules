@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { toUrl, urlIsActive } from '@/lib/utils';
 import { edit as editAppearance } from '@/routes/appearance';
+import { index as backupIndex } from '@/routes/backup';
 import { edit as editProfile } from '@/routes/profile';
 import { show as showTwoFactor } from '@/routes/two-factor';
 import { edit as editPassword } from '@/routes/user-password';
@@ -31,6 +32,10 @@ const sidebarNavItems: NavItem[] = [
     {
         title: 'Widgets',
         href: widgetsIndex(),
+    },
+    {
+        title: 'Backup',
+        href: backupIndex(),
     },
 ];
 

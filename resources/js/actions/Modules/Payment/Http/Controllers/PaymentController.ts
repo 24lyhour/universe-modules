@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Payment\Http\Controllers\PaymentController::index
 * @see Modules/Payment/app/Http/Controllers/PaymentController.php:13
@@ -46,42 +46,6 @@ indexe6eeaf48c96578edecbf757646846cd7.head = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Payment\Http\Controllers\PaymentController::index
 * @see Modules/Payment/app/Http/Controllers/PaymentController.php:13
-* @route '/api/v1/payments'
-*/
-const indexe6eeaf48c96578edecbf757646846cd7Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: indexe6eeaf48c96578edecbf757646846cd7.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::index
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:13
-* @route '/api/v1/payments'
-*/
-indexe6eeaf48c96578edecbf757646846cd7Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: indexe6eeaf48c96578edecbf757646846cd7.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::index
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:13
-* @route '/api/v1/payments'
-*/
-indexe6eeaf48c96578edecbf757646846cd7Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: indexe6eeaf48c96578edecbf757646846cd7.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-indexe6eeaf48c96578edecbf757646846cd7.form = indexe6eeaf48c96578edecbf757646846cd7Form
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::index
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:13
 * @route '/payments'
 */
 const index3716bc4c1885b225d47f9da4a37440dd = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -122,43 +86,6 @@ index3716bc4c1885b225d47f9da4a37440dd.head = (options?: RouteQueryOptions): Rout
     url: index3716bc4c1885b225d47f9da4a37440dd.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::index
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:13
-* @route '/payments'
-*/
-const index3716bc4c1885b225d47f9da4a37440ddForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index3716bc4c1885b225d47f9da4a37440dd.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::index
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:13
-* @route '/payments'
-*/
-index3716bc4c1885b225d47f9da4a37440ddForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index3716bc4c1885b225d47f9da4a37440dd.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::index
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:13
-* @route '/payments'
-*/
-index3716bc4c1885b225d47f9da4a37440ddForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index3716bc4c1885b225d47f9da4a37440dd.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index3716bc4c1885b225d47f9da4a37440dd.form = index3716bc4c1885b225d47f9da4a37440ddForm
 
 export const index = {
     '/api/v1/payments': indexe6eeaf48c96578edecbf757646846cd7,
@@ -202,27 +129,6 @@ storee6eeaf48c96578edecbf757646846cd7.post = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Payment\Http\Controllers\PaymentController::store
 * @see Modules/Payment/app/Http/Controllers/PaymentController.php:29
-* @route '/api/v1/payments'
-*/
-const storee6eeaf48c96578edecbf757646846cd7Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: storee6eeaf48c96578edecbf757646846cd7.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::store
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:29
-* @route '/api/v1/payments'
-*/
-storee6eeaf48c96578edecbf757646846cd7Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: storee6eeaf48c96578edecbf757646846cd7.url(options),
-    method: 'post',
-})
-
-storee6eeaf48c96578edecbf757646846cd7.form = storee6eeaf48c96578edecbf757646846cd7Form
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::store
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:29
 * @route '/payments'
 */
 const store3716bc4c1885b225d47f9da4a37440dd = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -253,28 +159,6 @@ store3716bc4c1885b225d47f9da4a37440dd.post = (options?: RouteQueryOptions): Rout
     url: store3716bc4c1885b225d47f9da4a37440dd.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::store
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:29
-* @route '/payments'
-*/
-const store3716bc4c1885b225d47f9da4a37440ddForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store3716bc4c1885b225d47f9da4a37440dd.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::store
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:29
-* @route '/payments'
-*/
-store3716bc4c1885b225d47f9da4a37440ddForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store3716bc4c1885b225d47f9da4a37440dd.url(options),
-    method: 'post',
-})
-
-store3716bc4c1885b225d47f9da4a37440dd.form = store3716bc4c1885b225d47f9da4a37440ddForm
 
 export const store = {
     '/api/v1/payments': storee6eeaf48c96578edecbf757646846cd7,
@@ -346,42 +230,6 @@ show34b76849124853c086fb0d5919bc537f.head = (args: { payment: string | number } 
 /**
 * @see \Modules\Payment\Http\Controllers\PaymentController::show
 * @see Modules/Payment/app/Http/Controllers/PaymentController.php:34
-* @route '/api/v1/payments/{payment}'
-*/
-const show34b76849124853c086fb0d5919bc537fForm = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show34b76849124853c086fb0d5919bc537f.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::show
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:34
-* @route '/api/v1/payments/{payment}'
-*/
-show34b76849124853c086fb0d5919bc537fForm.get = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show34b76849124853c086fb0d5919bc537f.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::show
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:34
-* @route '/api/v1/payments/{payment}'
-*/
-show34b76849124853c086fb0d5919bc537fForm.head = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show34b76849124853c086fb0d5919bc537f.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show34b76849124853c086fb0d5919bc537f.form = show34b76849124853c086fb0d5919bc537fForm
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::show
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:34
 * @route '/payments/{payment}'
 */
 const showd41d92c0c1073ab3b50b6c69549c869b = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -440,43 +288,6 @@ showd41d92c0c1073ab3b50b6c69549c869b.head = (args: { payment: string | number } 
     url: showd41d92c0c1073ab3b50b6c69549c869b.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::show
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:34
-* @route '/payments/{payment}'
-*/
-const showd41d92c0c1073ab3b50b6c69549c869bForm = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: showd41d92c0c1073ab3b50b6c69549c869b.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::show
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:34
-* @route '/payments/{payment}'
-*/
-showd41d92c0c1073ab3b50b6c69549c869bForm.get = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: showd41d92c0c1073ab3b50b6c69549c869b.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::show
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:34
-* @route '/payments/{payment}'
-*/
-showd41d92c0c1073ab3b50b6c69549c869bForm.head = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: showd41d92c0c1073ab3b50b6c69549c869b.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-showd41d92c0c1073ab3b50b6c69549c869b.form = showd41d92c0c1073ab3b50b6c69549c869bForm
 
 export const show = {
     '/api/v1/payments/{payment}': show34b76849124853c086fb0d5919bc537f,
@@ -548,52 +359,6 @@ update34b76849124853c086fb0d5919bc537f.patch = (args: { payment: string | number
 /**
 * @see \Modules\Payment\Http\Controllers\PaymentController::update
 * @see Modules/Payment/app/Http/Controllers/PaymentController.php:50
-* @route '/api/v1/payments/{payment}'
-*/
-const update34b76849124853c086fb0d5919bc537fForm = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update34b76849124853c086fb0d5919bc537f.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::update
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:50
-* @route '/api/v1/payments/{payment}'
-*/
-update34b76849124853c086fb0d5919bc537fForm.put = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update34b76849124853c086fb0d5919bc537f.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::update
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:50
-* @route '/api/v1/payments/{payment}'
-*/
-update34b76849124853c086fb0d5919bc537fForm.patch = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update34b76849124853c086fb0d5919bc537f.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update34b76849124853c086fb0d5919bc537f.form = update34b76849124853c086fb0d5919bc537fForm
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::update
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:50
 * @route '/payments/{payment}'
 */
 const updated41d92c0c1073ab3b50b6c69549c869b = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -652,53 +417,6 @@ updated41d92c0c1073ab3b50b6c69549c869b.patch = (args: { payment: string | number
     url: updated41d92c0c1073ab3b50b6c69549c869b.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::update
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:50
-* @route '/payments/{payment}'
-*/
-const updated41d92c0c1073ab3b50b6c69549c869bForm = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updated41d92c0c1073ab3b50b6c69549c869b.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::update
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:50
-* @route '/payments/{payment}'
-*/
-updated41d92c0c1073ab3b50b6c69549c869bForm.put = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updated41d92c0c1073ab3b50b6c69549c869b.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::update
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:50
-* @route '/payments/{payment}'
-*/
-updated41d92c0c1073ab3b50b6c69549c869bForm.patch = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updated41d92c0c1073ab3b50b6c69549c869b.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-updated41d92c0c1073ab3b50b6c69549c869b.form = updated41d92c0c1073ab3b50b6c69549c869bForm
 
 export const update = {
     '/api/v1/payments/{payment}': update34b76849124853c086fb0d5919bc537f,
@@ -760,37 +478,6 @@ destroy34b76849124853c086fb0d5919bc537f.delete = (args: { payment: string | numb
 /**
 * @see \Modules\Payment\Http\Controllers\PaymentController::destroy
 * @see Modules/Payment/app/Http/Controllers/PaymentController.php:55
-* @route '/api/v1/payments/{payment}'
-*/
-const destroy34b76849124853c086fb0d5919bc537fForm = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy34b76849124853c086fb0d5919bc537f.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::destroy
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:55
-* @route '/api/v1/payments/{payment}'
-*/
-destroy34b76849124853c086fb0d5919bc537fForm.delete = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy34b76849124853c086fb0d5919bc537f.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy34b76849124853c086fb0d5919bc537f.form = destroy34b76849124853c086fb0d5919bc537fForm
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::destroy
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:55
 * @route '/payments/{payment}'
 */
 const destroyd41d92c0c1073ab3b50b6c69549c869b = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -840,38 +527,6 @@ destroyd41d92c0c1073ab3b50b6c69549c869b.delete = (args: { payment: string | numb
     method: 'delete',
 })
 
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::destroy
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:55
-* @route '/payments/{payment}'
-*/
-const destroyd41d92c0c1073ab3b50b6c69549c869bForm = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroyd41d92c0c1073ab3b50b6c69549c869b.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::destroy
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:55
-* @route '/payments/{payment}'
-*/
-destroyd41d92c0c1073ab3b50b6c69549c869bForm.delete = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroyd41d92c0c1073ab3b50b6c69549c869b.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroyd41d92c0c1073ab3b50b6c69549c869b.form = destroyd41d92c0c1073ab3b50b6c69549c869bForm
-
 export const destroy = {
     '/api/v1/payments/{payment}': destroy34b76849124853c086fb0d5919bc537f,
     '/payments/{payment}': destroyd41d92c0c1073ab3b50b6c69549c869b,
@@ -920,43 +575,6 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: create.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::create
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:21
-* @route '/payments/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::create
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:21
-* @route '/payments/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::create
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:21
-* @route '/payments/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
 
 /**
 * @see \Modules\Payment\Http\Controllers\PaymentController::edit
@@ -1019,43 +637,6 @@ edit.head = (args: { payment: string | number } | [payment: string | number ] | 
     url: edit.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::edit
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:42
-* @route '/payments/{payment}/edit'
-*/
-const editForm = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::edit
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:42
-* @route '/payments/{payment}/edit'
-*/
-editForm.get = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\PaymentController::edit
-* @see Modules/Payment/app/Http/Controllers/PaymentController.php:42
-* @route '/payments/{payment}/edit'
-*/
-editForm.head = (args: { payment: string | number } | [payment: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
 
 const PaymentController = { index, store, show, update, destroy, create, edit }
 

@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../wayfinder'
 import headers from './headers'
 import footers from './footers'
 import pages from './pages'
@@ -51,43 +51,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::index
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:23
-* @route '/dashboard/portfolios'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::index
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:23
-* @route '/dashboard/portfolios'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::index
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:23
-* @route '/dashboard/portfolios'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::create
 * @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:38
 * @route '/dashboard/portfolios/create'
@@ -132,43 +95,6 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::create
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:38
-* @route '/dashboard/portfolios/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::create
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:38
-* @route '/dashboard/portfolios/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::create
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:38
-* @route '/dashboard/portfolios/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
-
-/**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::store
 * @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:50
 * @route '/dashboard/portfolios'
@@ -201,28 +127,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::store
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:50
-* @route '/dashboard/portfolios'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::store
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:50
-* @route '/dashboard/portfolios'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::show
@@ -287,43 +191,6 @@ show.head = (args: { portfolio: string | number } | [portfolio: string | number 
 })
 
 /**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::show
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:62
-* @route '/dashboard/portfolios/{portfolio}'
-*/
-const showForm = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::show
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:62
-* @route '/dashboard/portfolios/{portfolio}'
-*/
-showForm.get = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::show
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:62
-* @route '/dashboard/portfolios/{portfolio}'
-*/
-showForm.head = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::edit
 * @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:79
 * @route '/dashboard/portfolios/{portfolio}/edit'
@@ -384,43 +251,6 @@ edit.head = (args: { portfolio: string | number } | [portfolio: string | number 
     url: edit.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::edit
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:79
-* @route '/dashboard/portfolios/{portfolio}/edit'
-*/
-const editForm = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::edit
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:79
-* @route '/dashboard/portfolios/{portfolio}/edit'
-*/
-editForm.get = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::edit
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:79
-* @route '/dashboard/portfolios/{portfolio}/edit'
-*/
-editForm.head = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::update
@@ -485,53 +315,6 @@ update.patch = (args: { portfolio: string | number } | [portfolio: string | numb
 })
 
 /**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::update
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:98
-* @route '/dashboard/portfolios/{portfolio}'
-*/
-const updateForm = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::update
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:98
-* @route '/dashboard/portfolios/{portfolio}'
-*/
-updateForm.put = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::update
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:98
-* @route '/dashboard/portfolios/{portfolio}'
-*/
-updateForm.patch = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Porfolio\Http\Controllers\PorfolioController::destroy
 * @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:114
 * @route '/dashboard/portfolios/{portfolio}'
@@ -582,38 +365,6 @@ destroy.delete = (args: { portfolio: string | number } | [portfolio: string | nu
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::destroy
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:114
-* @route '/dashboard/portfolios/{portfolio}'
-*/
-const destroyForm = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\PorfolioController::destroy
-* @see Modules/Porfolio/app/Http/Controllers/PorfolioController.php:114
-* @route '/dashboard/portfolios/{portfolio}'
-*/
-destroyForm.delete = (args: { portfolio: string | number } | [portfolio: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const porfolio = {
     index: Object.assign(index, index),

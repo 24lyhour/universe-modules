@@ -1,7 +1,7 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::qrCode
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
 export const qrCode = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ qrCode.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::qrCode
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
 qrCode.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -49,7 +49,7 @@ qrCode.url = (args: { department: string | { uuid: string } } | [department: str
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::qrCode
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
 qrCode.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -59,7 +59,7 @@ qrCode.get = (args: { department: string | { uuid: string } } | [department: str
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::qrCode
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:205
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
 qrCode.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -68,45 +68,8 @@ qrCode.head = (args: { department: string | { uuid: string } } | [department: st
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::qrCode
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:205
-* @route '/dashboard/departments/{department}/qr-code'
-*/
-const qrCodeForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: qrCode.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::qrCode
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:205
-* @route '/dashboard/departments/{department}/qr-code'
-*/
-qrCodeForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: qrCode.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::qrCode
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:205
-* @route '/dashboard/departments/{department}/qr-code'
-*/
-qrCodeForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: qrCode.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-qrCode.form = qrCodeForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmBulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:135
 * @route '/dashboard/departments/bulk-delete'
 */
 export const confirmBulkDelete = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -121,7 +84,7 @@ confirmBulkDelete.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmBulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:135
 * @route '/dashboard/departments/bulk-delete'
 */
 confirmBulkDelete.url = (options?: RouteQueryOptions) => {
@@ -130,7 +93,7 @@ confirmBulkDelete.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmBulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:135
 * @route '/dashboard/departments/bulk-delete'
 */
 confirmBulkDelete.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -140,7 +103,7 @@ confirmBulkDelete.get = (options?: RouteQueryOptions): RouteDefinition<'get'> =>
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmBulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:135
 * @route '/dashboard/departments/bulk-delete'
 */
 confirmBulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -149,45 +112,8 @@ confirmBulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> 
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmBulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
-* @route '/dashboard/departments/bulk-delete'
-*/
-const confirmBulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirmBulkDelete.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmBulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
-* @route '/dashboard/departments/bulk-delete'
-*/
-confirmBulkDeleteForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirmBulkDelete.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmBulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
-* @route '/dashboard/departments/bulk-delete'
-*/
-confirmBulkDeleteForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirmBulkDelete.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-confirmBulkDelete.form = confirmBulkDeleteForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::bulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:153
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:151
 * @route '/dashboard/departments/bulk-delete'
 */
 export const bulkDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -202,7 +128,7 @@ bulkDelete.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::bulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:153
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:151
 * @route '/dashboard/departments/bulk-delete'
 */
 bulkDelete.url = (options?: RouteQueryOptions) => {
@@ -211,45 +137,13 @@ bulkDelete.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::bulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:153
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:151
 * @route '/dashboard/departments/bulk-delete'
 */
 bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: bulkDelete.url(options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::bulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:153
-* @route '/dashboard/departments/bulk-delete'
-*/
-const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: bulkDelete.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::bulkDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:153
-* @route '/dashboard/departments/bulk-delete'
-*/
-bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: bulkDelete.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::create
@@ -296,45 +190,8 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:57
-* @route '/dashboard/departments/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:57
-* @route '/dashboard/departments/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::create
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:57
-* @route '/dashboard/departments/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:68
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:67
 * @route '/dashboard/departments'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -349,7 +206,7 @@ store.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:68
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:67
 * @route '/dashboard/departments'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -358,35 +215,13 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:68
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:67
 * @route '/dashboard/departments'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:68
-* @route '/dashboard/departments'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::store
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:68
-* @route '/dashboard/departments'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::index
@@ -433,45 +268,8 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:44
-* @route '/dashboard/departments'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:44
-* @route '/dashboard/departments'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::index
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:44
-* @route '/dashboard/departments'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::getDepartments
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:185
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:183
 * @route '/dashboard/api/departments'
 */
 export const getDepartments = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -486,7 +284,7 @@ getDepartments.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::getDepartments
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:185
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:183
 * @route '/dashboard/api/departments'
 */
 getDepartments.url = (options?: RouteQueryOptions) => {
@@ -495,7 +293,7 @@ getDepartments.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::getDepartments
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:185
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:183
 * @route '/dashboard/api/departments'
 */
 getDepartments.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -505,7 +303,7 @@ getDepartments.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::getDepartments
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:185
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:183
 * @route '/dashboard/api/departments'
 */
 getDepartments.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -514,45 +312,8 @@ getDepartments.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => 
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::getDepartments
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:185
-* @route '/dashboard/api/departments'
-*/
-const getDepartmentsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: getDepartments.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::getDepartments
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:185
-* @route '/dashboard/api/departments'
-*/
-getDepartmentsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: getDepartments.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::getDepartments
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:185
-* @route '/dashboard/api/departments'
-*/
-getDepartmentsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: getDepartments.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-getDepartments.form = getDepartmentsForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:80
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
 export const show = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -567,7 +328,7 @@ show.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:80
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
 show.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -600,7 +361,7 @@ show.url = (args: { department: string | { uuid: string } } | [department: strin
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:80
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
 show.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -610,7 +371,7 @@ show.get = (args: { department: string | { uuid: string } } | [department: strin
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:80
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
 show.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -619,45 +380,8 @@ show.head = (args: { department: string | { uuid: string } } | [department: stri
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:80
-* @route '/dashboard/departments/{department}'
-*/
-const showForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:80
-* @route '/dashboard/departments/{department}'
-*/
-showForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::show
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:80
-* @route '/dashboard/departments/{department}'
-*/
-showForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:90
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
 export const edit = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -672,7 +396,7 @@ edit.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:90
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
 edit.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -705,7 +429,7 @@ edit.url = (args: { department: string | { uuid: string } } | [department: strin
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:90
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
 edit.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -715,7 +439,7 @@ edit.get = (args: { department: string | { uuid: string } } | [department: strin
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:90
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
 edit.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -724,45 +448,8 @@ edit.head = (args: { department: string | { uuid: string } } | [department: stri
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:90
-* @route '/dashboard/departments/{department}/edit'
-*/
-const editForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:90
-* @route '/dashboard/departments/{department}/edit'
-*/
-editForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::edit
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:90
-* @route '/dashboard/departments/{department}/edit'
-*/
-editForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
 const update72872a0d0bc1a79cf184f4176464fbae = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -777,7 +464,7 @@ update72872a0d0bc1a79cf184f4176464fbae.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
 update72872a0d0bc1a79cf184f4176464fbae.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -810,7 +497,7 @@ update72872a0d0bc1a79cf184f4176464fbae.url = (args: { department: string | { uui
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
 update72872a0d0bc1a79cf184f4176464fbae.put = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -820,38 +507,7 @@ update72872a0d0bc1a79cf184f4176464fbae.put = (args: { department: string | { uui
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:101
-* @route '/dashboard/departments/{department}'
-*/
-const update72872a0d0bc1a79cf184f4176464fbaeForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update72872a0d0bc1a79cf184f4176464fbae.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:101
-* @route '/dashboard/departments/{department}'
-*/
-update72872a0d0bc1a79cf184f4176464fbaeForm.put = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update72872a0d0bc1a79cf184f4176464fbae.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update72872a0d0bc1a79cf184f4176464fbae.form = update72872a0d0bc1a79cf184f4176464fbaeForm
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
 const update72872a0d0bc1a79cf184f4176464fbae = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -866,7 +522,7 @@ update72872a0d0bc1a79cf184f4176464fbae.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
 update72872a0d0bc1a79cf184f4176464fbae.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -899,45 +555,13 @@ update72872a0d0bc1a79cf184f4176464fbae.url = (args: { department: string | { uui
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:101
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
 update72872a0d0bc1a79cf184f4176464fbae.patch = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update72872a0d0bc1a79cf184f4176464fbae.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:101
-* @route '/dashboard/departments/{department}'
-*/
-const update72872a0d0bc1a79cf184f4176464fbaeForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update72872a0d0bc1a79cf184f4176464fbae.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::update
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:101
-* @route '/dashboard/departments/{department}'
-*/
-update72872a0d0bc1a79cf184f4176464fbaeForm.patch = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update72872a0d0bc1a79cf184f4176464fbae.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update72872a0d0bc1a79cf184f4176464fbae.form = update72872a0d0bc1a79cf184f4176464fbaeForm
 
 export const update = {
     '/dashboard/departments/{department}': update72872a0d0bc1a79cf184f4176464fbae,
@@ -946,7 +570,7 @@ export const update = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:171
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
 * @route '/dashboard/departments/{department}/toggle-status'
 */
 export const toggleStatus = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -961,7 +585,7 @@ toggleStatus.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:171
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
 * @route '/dashboard/departments/{department}/toggle-status'
 */
 toggleStatus.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -994,7 +618,7 @@ toggleStatus.url = (args: { department: string | { uuid: string } } | [departmen
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:171
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
 * @route '/dashboard/departments/{department}/toggle-status'
 */
 toggleStatus.put = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -1003,40 +627,8 @@ toggleStatus.put = (args: { department: string | { uuid: string } } | [departmen
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:171
-* @route '/dashboard/departments/{department}/toggle-status'
-*/
-const toggleStatusForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleStatus.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::toggleStatus
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:171
-* @route '/dashboard/departments/{department}/toggle-status'
-*/
-toggleStatusForm.put = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleStatus.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-toggleStatus.form = toggleStatusForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:113
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
 export const confirmDelete = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1051,7 +643,7 @@ confirmDelete.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:113
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
 confirmDelete.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -1084,7 +676,7 @@ confirmDelete.url = (args: { department: string | { uuid: string } } | [departme
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:113
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
 confirmDelete.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1094,7 +686,7 @@ confirmDelete.get = (args: { department: string | { uuid: string } } | [departme
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:113
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
 confirmDelete.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1103,45 +695,8 @@ confirmDelete.head = (args: { department: string | { uuid: string } } | [departm
 })
 
 /**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:113
-* @route '/dashboard/departments/{department}/delete'
-*/
-const confirmDeleteForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirmDelete.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:113
-* @route '/dashboard/departments/{department}/delete'
-*/
-confirmDeleteForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirmDelete.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirmDelete
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:113
-* @route '/dashboard/departments/{department}/delete'
-*/
-confirmDeleteForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirmDelete.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-confirmDelete.form = confirmDeleteForm
-
-/**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:125
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
 * @route '/dashboard/departments/{department}'
 */
 export const destroy = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1156,7 +711,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:125
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
 * @route '/dashboard/departments/{department}'
 */
 destroy.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -1189,45 +744,13 @@ destroy.url = (args: { department: string | { uuid: string } } | [department: st
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:125
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
 * @route '/dashboard/departments/{department}'
 */
 destroy.delete = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:125
-* @route '/dashboard/departments/{department}'
-*/
-const destroyForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::destroy
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:125
-* @route '/dashboard/departments/{department}'
-*/
-destroyForm.delete = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const DepartmentController = { qrCode, confirmBulkDelete, bulkDelete, create, store, index, getDepartments, show, edit, update, toggleStatus, confirmDelete, destroy }
 

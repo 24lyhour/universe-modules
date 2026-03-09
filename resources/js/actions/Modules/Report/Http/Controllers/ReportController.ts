@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Report\Http\Controllers\ReportController::index
 * @see Modules/Report/app/Http/Controllers/ReportController.php:13
@@ -46,42 +46,6 @@ index1504e423dcc91b512648f94fdb30091e.head = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Report\Http\Controllers\ReportController::index
 * @see Modules/Report/app/Http/Controllers/ReportController.php:13
-* @route '/api/v1/reports'
-*/
-const index1504e423dcc91b512648f94fdb30091eForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index1504e423dcc91b512648f94fdb30091e.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::index
-* @see Modules/Report/app/Http/Controllers/ReportController.php:13
-* @route '/api/v1/reports'
-*/
-index1504e423dcc91b512648f94fdb30091eForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index1504e423dcc91b512648f94fdb30091e.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::index
-* @see Modules/Report/app/Http/Controllers/ReportController.php:13
-* @route '/api/v1/reports'
-*/
-index1504e423dcc91b512648f94fdb30091eForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index1504e423dcc91b512648f94fdb30091e.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index1504e423dcc91b512648f94fdb30091e.form = index1504e423dcc91b512648f94fdb30091eForm
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::index
-* @see Modules/Report/app/Http/Controllers/ReportController.php:13
 * @route '/reports'
 */
 const index58ce3b21459752ee73930d924bf98aec = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -122,43 +86,6 @@ index58ce3b21459752ee73930d924bf98aec.head = (options?: RouteQueryOptions): Rout
     url: index58ce3b21459752ee73930d924bf98aec.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::index
-* @see Modules/Report/app/Http/Controllers/ReportController.php:13
-* @route '/reports'
-*/
-const index58ce3b21459752ee73930d924bf98aecForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index58ce3b21459752ee73930d924bf98aec.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::index
-* @see Modules/Report/app/Http/Controllers/ReportController.php:13
-* @route '/reports'
-*/
-index58ce3b21459752ee73930d924bf98aecForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index58ce3b21459752ee73930d924bf98aec.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::index
-* @see Modules/Report/app/Http/Controllers/ReportController.php:13
-* @route '/reports'
-*/
-index58ce3b21459752ee73930d924bf98aecForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index58ce3b21459752ee73930d924bf98aec.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index58ce3b21459752ee73930d924bf98aec.form = index58ce3b21459752ee73930d924bf98aecForm
 
 export const index = {
     '/api/v1/reports': index1504e423dcc91b512648f94fdb30091e,
@@ -202,27 +129,6 @@ store1504e423dcc91b512648f94fdb30091e.post = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Report\Http\Controllers\ReportController::store
 * @see Modules/Report/app/Http/Controllers/ReportController.php:29
-* @route '/api/v1/reports'
-*/
-const store1504e423dcc91b512648f94fdb30091eForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store1504e423dcc91b512648f94fdb30091e.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::store
-* @see Modules/Report/app/Http/Controllers/ReportController.php:29
-* @route '/api/v1/reports'
-*/
-store1504e423dcc91b512648f94fdb30091eForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store1504e423dcc91b512648f94fdb30091e.url(options),
-    method: 'post',
-})
-
-store1504e423dcc91b512648f94fdb30091e.form = store1504e423dcc91b512648f94fdb30091eForm
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::store
-* @see Modules/Report/app/Http/Controllers/ReportController.php:29
 * @route '/reports'
 */
 const store58ce3b21459752ee73930d924bf98aec = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -253,28 +159,6 @@ store58ce3b21459752ee73930d924bf98aec.post = (options?: RouteQueryOptions): Rout
     url: store58ce3b21459752ee73930d924bf98aec.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::store
-* @see Modules/Report/app/Http/Controllers/ReportController.php:29
-* @route '/reports'
-*/
-const store58ce3b21459752ee73930d924bf98aecForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store58ce3b21459752ee73930d924bf98aec.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::store
-* @see Modules/Report/app/Http/Controllers/ReportController.php:29
-* @route '/reports'
-*/
-store58ce3b21459752ee73930d924bf98aecForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store58ce3b21459752ee73930d924bf98aec.url(options),
-    method: 'post',
-})
-
-store58ce3b21459752ee73930d924bf98aec.form = store58ce3b21459752ee73930d924bf98aecForm
 
 export const store = {
     '/api/v1/reports': store1504e423dcc91b512648f94fdb30091e,
@@ -346,42 +230,6 @@ show446f790d2518b3e491727fb62a17bb37.head = (args: { report: string | number } |
 /**
 * @see \Modules\Report\Http\Controllers\ReportController::show
 * @see Modules/Report/app/Http/Controllers/ReportController.php:34
-* @route '/api/v1/reports/{report}'
-*/
-const show446f790d2518b3e491727fb62a17bb37Form = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show446f790d2518b3e491727fb62a17bb37.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::show
-* @see Modules/Report/app/Http/Controllers/ReportController.php:34
-* @route '/api/v1/reports/{report}'
-*/
-show446f790d2518b3e491727fb62a17bb37Form.get = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show446f790d2518b3e491727fb62a17bb37.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::show
-* @see Modules/Report/app/Http/Controllers/ReportController.php:34
-* @route '/api/v1/reports/{report}'
-*/
-show446f790d2518b3e491727fb62a17bb37Form.head = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show446f790d2518b3e491727fb62a17bb37.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show446f790d2518b3e491727fb62a17bb37.form = show446f790d2518b3e491727fb62a17bb37Form
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::show
-* @see Modules/Report/app/Http/Controllers/ReportController.php:34
 * @route '/reports/{report}'
 */
 const showc05ecb8dd71c12639a282bde1a1529bb = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -440,43 +288,6 @@ showc05ecb8dd71c12639a282bde1a1529bb.head = (args: { report: string | number } |
     url: showc05ecb8dd71c12639a282bde1a1529bb.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::show
-* @see Modules/Report/app/Http/Controllers/ReportController.php:34
-* @route '/reports/{report}'
-*/
-const showc05ecb8dd71c12639a282bde1a1529bbForm = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: showc05ecb8dd71c12639a282bde1a1529bb.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::show
-* @see Modules/Report/app/Http/Controllers/ReportController.php:34
-* @route '/reports/{report}'
-*/
-showc05ecb8dd71c12639a282bde1a1529bbForm.get = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: showc05ecb8dd71c12639a282bde1a1529bb.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::show
-* @see Modules/Report/app/Http/Controllers/ReportController.php:34
-* @route '/reports/{report}'
-*/
-showc05ecb8dd71c12639a282bde1a1529bbForm.head = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: showc05ecb8dd71c12639a282bde1a1529bb.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-showc05ecb8dd71c12639a282bde1a1529bb.form = showc05ecb8dd71c12639a282bde1a1529bbForm
 
 export const show = {
     '/api/v1/reports/{report}': show446f790d2518b3e491727fb62a17bb37,
@@ -548,52 +359,6 @@ update446f790d2518b3e491727fb62a17bb37.patch = (args: { report: string | number 
 /**
 * @see \Modules\Report\Http\Controllers\ReportController::update
 * @see Modules/Report/app/Http/Controllers/ReportController.php:50
-* @route '/api/v1/reports/{report}'
-*/
-const update446f790d2518b3e491727fb62a17bb37Form = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update446f790d2518b3e491727fb62a17bb37.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::update
-* @see Modules/Report/app/Http/Controllers/ReportController.php:50
-* @route '/api/v1/reports/{report}'
-*/
-update446f790d2518b3e491727fb62a17bb37Form.put = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update446f790d2518b3e491727fb62a17bb37.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::update
-* @see Modules/Report/app/Http/Controllers/ReportController.php:50
-* @route '/api/v1/reports/{report}'
-*/
-update446f790d2518b3e491727fb62a17bb37Form.patch = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update446f790d2518b3e491727fb62a17bb37.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update446f790d2518b3e491727fb62a17bb37.form = update446f790d2518b3e491727fb62a17bb37Form
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::update
-* @see Modules/Report/app/Http/Controllers/ReportController.php:50
 * @route '/reports/{report}'
 */
 const updatec05ecb8dd71c12639a282bde1a1529bb = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -652,53 +417,6 @@ updatec05ecb8dd71c12639a282bde1a1529bb.patch = (args: { report: string | number 
     url: updatec05ecb8dd71c12639a282bde1a1529bb.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::update
-* @see Modules/Report/app/Http/Controllers/ReportController.php:50
-* @route '/reports/{report}'
-*/
-const updatec05ecb8dd71c12639a282bde1a1529bbForm = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updatec05ecb8dd71c12639a282bde1a1529bb.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::update
-* @see Modules/Report/app/Http/Controllers/ReportController.php:50
-* @route '/reports/{report}'
-*/
-updatec05ecb8dd71c12639a282bde1a1529bbForm.put = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updatec05ecb8dd71c12639a282bde1a1529bb.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::update
-* @see Modules/Report/app/Http/Controllers/ReportController.php:50
-* @route '/reports/{report}'
-*/
-updatec05ecb8dd71c12639a282bde1a1529bbForm.patch = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updatec05ecb8dd71c12639a282bde1a1529bb.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-updatec05ecb8dd71c12639a282bde1a1529bb.form = updatec05ecb8dd71c12639a282bde1a1529bbForm
 
 export const update = {
     '/api/v1/reports/{report}': update446f790d2518b3e491727fb62a17bb37,
@@ -760,37 +478,6 @@ destroy446f790d2518b3e491727fb62a17bb37.delete = (args: { report: string | numbe
 /**
 * @see \Modules\Report\Http\Controllers\ReportController::destroy
 * @see Modules/Report/app/Http/Controllers/ReportController.php:55
-* @route '/api/v1/reports/{report}'
-*/
-const destroy446f790d2518b3e491727fb62a17bb37Form = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy446f790d2518b3e491727fb62a17bb37.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::destroy
-* @see Modules/Report/app/Http/Controllers/ReportController.php:55
-* @route '/api/v1/reports/{report}'
-*/
-destroy446f790d2518b3e491727fb62a17bb37Form.delete = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy446f790d2518b3e491727fb62a17bb37.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy446f790d2518b3e491727fb62a17bb37.form = destroy446f790d2518b3e491727fb62a17bb37Form
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::destroy
-* @see Modules/Report/app/Http/Controllers/ReportController.php:55
 * @route '/reports/{report}'
 */
 const destroyc05ecb8dd71c12639a282bde1a1529bb = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -840,38 +527,6 @@ destroyc05ecb8dd71c12639a282bde1a1529bb.delete = (args: { report: string | numbe
     method: 'delete',
 })
 
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::destroy
-* @see Modules/Report/app/Http/Controllers/ReportController.php:55
-* @route '/reports/{report}'
-*/
-const destroyc05ecb8dd71c12639a282bde1a1529bbForm = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroyc05ecb8dd71c12639a282bde1a1529bb.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::destroy
-* @see Modules/Report/app/Http/Controllers/ReportController.php:55
-* @route '/reports/{report}'
-*/
-destroyc05ecb8dd71c12639a282bde1a1529bbForm.delete = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroyc05ecb8dd71c12639a282bde1a1529bb.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroyc05ecb8dd71c12639a282bde1a1529bb.form = destroyc05ecb8dd71c12639a282bde1a1529bbForm
-
 export const destroy = {
     '/api/v1/reports/{report}': destroy446f790d2518b3e491727fb62a17bb37,
     '/reports/{report}': destroyc05ecb8dd71c12639a282bde1a1529bb,
@@ -920,43 +575,6 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: create.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::create
-* @see Modules/Report/app/Http/Controllers/ReportController.php:21
-* @route '/reports/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::create
-* @see Modules/Report/app/Http/Controllers/ReportController.php:21
-* @route '/reports/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::create
-* @see Modules/Report/app/Http/Controllers/ReportController.php:21
-* @route '/reports/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
 
 /**
 * @see \Modules\Report\Http\Controllers\ReportController::edit
@@ -1019,43 +637,6 @@ edit.head = (args: { report: string | number } | [report: string | number ] | st
     url: edit.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::edit
-* @see Modules/Report/app/Http/Controllers/ReportController.php:42
-* @route '/reports/{report}/edit'
-*/
-const editForm = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::edit
-* @see Modules/Report/app/Http/Controllers/ReportController.php:42
-* @route '/reports/{report}/edit'
-*/
-editForm.get = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Report\Http\Controllers\ReportController::edit
-* @see Modules/Report/app/Http/Controllers/ReportController.php:42
-* @route '/reports/{report}/edit'
-*/
-editForm.head = (args: { report: string | number } | [report: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
 
 const ReportController = { index, store, show, update, destroy, create, edit }
 

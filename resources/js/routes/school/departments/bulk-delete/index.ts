@@ -1,7 +1,7 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirm
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:135
 * @route '/dashboard/departments/bulk-delete'
 */
 export const confirm = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ confirm.definition = {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirm
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:135
 * @route '/dashboard/departments/bulk-delete'
 */
 confirm.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ confirm.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirm
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:135
 * @route '/dashboard/departments/bulk-delete'
 */
 confirm.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ confirm.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirm
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
+* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:135
 * @route '/dashboard/departments/bulk-delete'
 */
 confirm.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -43,39 +43,3 @@ confirm.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     method: 'head',
 })
 
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirm
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
-* @route '/dashboard/departments/bulk-delete'
-*/
-const confirmForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirm.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirm
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
-* @route '/dashboard/departments/bulk-delete'
-*/
-confirmForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirm.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\School\Http\Controllers\Dashboard\V1\DepartmentController::confirm
-* @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:137
-* @route '/dashboard/departments/bulk-delete'
-*/
-confirmForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirm.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-confirm.form = confirmForm
