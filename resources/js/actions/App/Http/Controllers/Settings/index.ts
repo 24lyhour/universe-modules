@@ -7,6 +7,7 @@ import AvatarController from './AvatarController'
 import ProfileController from './ProfileController'
 import PasswordController from './PasswordController'
 import TwoFactorAuthenticationController from './TwoFactorAuthenticationController'
+import BackupController from './BackupController'
 
 const Settings = {
     WidgetController: Object.assign(WidgetController, WidgetController),
@@ -18,6 +19,7 @@ const Settings = {
     ProfileController: Object.assign(ProfileController, ProfileController),
     PasswordController: Object.assign(PasswordController, PasswordController),
     TwoFactorAuthenticationController: Object.assign(TwoFactorAuthenticationController, TwoFactorAuthenticationController),
+    BackupController: Object.assign(BackupController, BackupController),
 }
 
 export default Settings

@@ -1,7 +1,9 @@
-import outlet from './outlet'
+import publicMethod from './public'
+import admin from './admin'
 
-const outletNamespace = {
-    outlet: Object.assign(outlet, outlet),
+const outlet = {
+    public: Object.assign(publicMethod, publicMethod),
+    admin: Object.assign(admin, admin),
 }
 
-export default outletNamespace
+export default outlet

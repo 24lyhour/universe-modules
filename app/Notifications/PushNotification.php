@@ -18,11 +18,17 @@ class PushNotification extends Notification implements ShouldQueue
         protected array $data = []
     ) {}
 
+    /**
+     * Get the notification channels.
+     */
     public function via(object $notifiable): array
     {
         return [FirebaseChannel::class];
     }
 
+    /**
+     * Send the notification to the Firebase channel.
+     */
     public function toFirebase(object $notifiable): bool
     {
         $token = $notifiable->fcm_token;

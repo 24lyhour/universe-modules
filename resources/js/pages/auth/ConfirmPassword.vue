@@ -6,8 +6,25 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { store } from '@/routes/password/confirm';
-import { Form, Head, Link } from '@inertiajs/vue3';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 import { Lock, Loader2, ShieldCheck, ArrowLeft } from 'lucide-vue-next';
+import { toast } from 'vue-sonner';
+
+const form = useForm({
+    password: '',
+});
+
+const submit = () => {
+    form.post(store().url, {
+        onSuccess: () => {
+            toast.success('Password confirmed successfully.');
+        },
+        onError: () => {
+            toast.error('Invalid password. Please try again.');
+        },
+        onFinish: () => form.reset('password'),
+    });
+};
 </script>
 
 <template>
@@ -32,11 +49,7 @@ import { Lock, Loader2, ShieldCheck, ArrowLeft } from 'lucide-vue-next';
                     </div>
                 </CardHeader>
 
-                <Form
-                    v-bind="store.form()"
-                    reset-on-success
-                    v-slot="{ errors, processing }"
-                >
+                <form @submit.prevent="submit">
                     <CardContent class="space-y-4">
                         <!-- Security Notice -->
                         <Alert variant="default" class="border-amber-200 bg-amber-50 dark:border-amber-900/50 dark:bg-amber-950/20">
@@ -55,8 +68,8 @@ import { Lock, Loader2, ShieldCheck, ArrowLeft } from 'lucide-vue-next';
                                 <Lock class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                                 <Input
                                     id="password"
+                                    v-model="form.password"
                                     type="password"
-                                    name="password"
                                     placeholder="Enter your password"
                                     class="pl-10"
                                     required
@@ -64,7 +77,7 @@ import { Lock, Loader2, ShieldCheck, ArrowLeft } from 'lucide-vue-next';
                                     autofocus
                                 />
                             </div>
-                            <InputError :message="errors.password" />
+                            <InputError :message="form.errors.password" />
                         </div>
                     </CardContent>
 
@@ -73,11 +86,11 @@ import { Lock, Loader2, ShieldCheck, ArrowLeft } from 'lucide-vue-next';
                             type="submit"
                             class="w-full"
                             size="lg"
-                            :disabled="processing"
+                            :disabled="form.processing"
                         >
-                            <Loader2 v-if="processing" class="mr-2 h-4 w-4 animate-spin" />
+                            <Loader2 v-if="form.processing" class="mr-2 h-4 w-4 animate-spin" />
                             <Lock v-else class="mr-2 h-4 w-4" />
-                            {{ processing ? 'Verifying...' : 'Confirm & Continue' }}
+                            {{ form.processing ? 'Verifying...' : 'Confirm & Continue' }}
                         </Button>
 
                         <Link
@@ -88,7 +101,7 @@ import { Lock, Loader2, ShieldCheck, ArrowLeft } from 'lucide-vue-next';
                             Back to Dashboard
                         </Link>
                     </CardFooter>
-                </Form>
+                </form>
             </Card>
 
             <!-- Footer Text -->

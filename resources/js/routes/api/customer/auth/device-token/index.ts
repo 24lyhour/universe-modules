@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../wayfinder'
 /**
-* @see \Modules\Customer\Http\Controllers\Api\DeviceTokenController::store
-* @see Modules/Customer/app/Http/Controllers/Api/DeviceTokenController.php:14
+* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::store
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:14
 * @route '/api/v1/auth/device-token'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -15,8 +15,8 @@ store.definition = {
 } satisfies RouteDefinition<["post"]>
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\DeviceTokenController::store
-* @see Modules/Customer/app/Http/Controllers/Api/DeviceTokenController.php:14
+* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::store
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:14
 * @route '/api/v1/auth/device-token'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -24,8 +24,8 @@ store.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\DeviceTokenController::store
-* @see Modules/Customer/app/Http/Controllers/Api/DeviceTokenController.php:14
+* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::store
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:14
 * @route '/api/v1/auth/device-token'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -34,8 +34,8 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\DeviceTokenController::store
-* @see Modules/Customer/app/Http/Controllers/Api/DeviceTokenController.php:14
+* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::store
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:14
 * @route '/api/v1/auth/device-token'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -44,8 +44,8 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\DeviceTokenController::store
-* @see Modules/Customer/app/Http/Controllers/Api/DeviceTokenController.php:14
+* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::store
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:14
 * @route '/api/v1/auth/device-token'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -56,8 +56,8 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => (
 store.form = storeForm
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\DeviceTokenController::destroy
-* @see Modules/Customer/app/Http/Controllers/Api/DeviceTokenController.php:33
+* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::destroy
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:33
 * @route '/api/v1/auth/device-token'
 */
 export const destroy = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -71,8 +71,8 @@ destroy.definition = {
 } satisfies RouteDefinition<["delete"]>
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\DeviceTokenController::destroy
-* @see Modules/Customer/app/Http/Controllers/Api/DeviceTokenController.php:33
+* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::destroy
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:33
 * @route '/api/v1/auth/device-token'
 */
 destroy.url = (options?: RouteQueryOptions) => {
@@ -80,8 +80,8 @@ destroy.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\DeviceTokenController::destroy
-* @see Modules/Customer/app/Http/Controllers/Api/DeviceTokenController.php:33
+* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::destroy
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:33
 * @route '/api/v1/auth/device-token'
 */
 destroy.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -90,8 +90,8 @@ destroy.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\DeviceTokenController::destroy
-* @see Modules/Customer/app/Http/Controllers/Api/DeviceTokenController.php:33
+* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::destroy
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:33
 * @route '/api/v1/auth/device-token'
 */
 const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -105,8 +105,8 @@ const destroyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> =
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\Api\DeviceTokenController::destroy
-* @see Modules/Customer/app/Http/Controllers/Api/DeviceTokenController.php:33
+* @see \Modules\Customer\Http\Controllers\Api\V1\Customer\DeviceTokenController::destroy
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Customer/DeviceTokenController.php:33
 * @route '/api/v1/auth/device-token'
 */
 destroyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

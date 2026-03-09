@@ -219,9 +219,9 @@ const totalColumns = computed(() => {
 
 <template>
     <div class="space-y-4">
-        <!-- Search -->
-        <div v-if="searchable" class="flex items-center gap-2">
-            <div class="relative flex-1">
+        <!-- Search and Toolbar -->
+        <div v-if="searchable" class="flex flex-wrap items-center gap-2">
+            <div class="relative w-full max-w-xs">
                 <Search class="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                     :model-value="searchQuery"

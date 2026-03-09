@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 import trash067cdb from './trash'
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:140
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:143
 * @route '/dashboard/product-types/bulk-delete'
 */
 export const bulkDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -17,7 +17,7 @@ bulkDelete.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:140
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:143
 * @route '/dashboard/product-types/bulk-delete'
 */
 bulkDelete.url = (options?: RouteQueryOptions) => {
@@ -26,7 +26,7 @@ bulkDelete.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:140
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:143
 * @route '/dashboard/product-types/bulk-delete'
 */
 bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -36,7 +36,7 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:140
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:143
 * @route '/dashboard/product-types/bulk-delete'
 */
 const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -51,7 +51,7 @@ const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::bulkDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:140
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:143
 * @route '/dashboard/product-types/bulk-delete'
 */
 bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -68,7 +68,7 @@ bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::trash
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:156
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:185
 * @route '/dashboard/product-types/trash'
 */
 export const trash = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -83,7 +83,7 @@ trash.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::trash
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:156
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:185
 * @route '/dashboard/product-types/trash'
 */
 trash.url = (options?: RouteQueryOptions) => {
@@ -92,7 +92,7 @@ trash.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::trash
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:156
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:185
 * @route '/dashboard/product-types/trash'
 */
 trash.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -102,7 +102,7 @@ trash.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::trash
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:156
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:185
 * @route '/dashboard/product-types/trash'
 */
 trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -112,7 +112,7 @@ trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::trash
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:156
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:185
 * @route '/dashboard/product-types/trash'
 */
 const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -122,7 +122,7 @@ const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::trash
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:156
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:185
 * @route '/dashboard/product-types/trash'
 */
 trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -132,7 +132,7 @@ trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::trash
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:156
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:185
 * @route '/dashboard/product-types/trash'
 */
 trashForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -149,7 +149,7 @@ trash.form = trashForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::restore
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:201
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:230
 * @route '/dashboard/product-types/{uuid}/restore'
 */
 export const restore = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -164,7 +164,7 @@ restore.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::restore
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:201
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:230
 * @route '/dashboard/product-types/{uuid}/restore'
 */
 restore.url = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -191,7 +191,7 @@ restore.url = (args: { uuid: string | number } | [uuid: string | number ] | stri
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::restore
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:201
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:230
 * @route '/dashboard/product-types/{uuid}/restore'
 */
 restore.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -201,7 +201,7 @@ restore.put = (args: { uuid: string | number } | [uuid: string | number ] | stri
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::restore
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:201
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:230
 * @route '/dashboard/product-types/{uuid}/restore'
 */
 const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -216,7 +216,7 @@ const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::restore
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:201
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:230
 * @route '/dashboard/product-types/{uuid}/restore'
 */
 restoreForm.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -233,7 +233,7 @@ restore.form = restoreForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::forceDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:212
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:242
 * @route '/dashboard/product-types/{uuid}/force-delete'
 */
 export const forceDelete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -248,7 +248,7 @@ forceDelete.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::forceDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:212
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:242
 * @route '/dashboard/product-types/{uuid}/force-delete'
 */
 forceDelete.url = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -275,7 +275,7 @@ forceDelete.url = (args: { uuid: string | number } | [uuid: string | number ] | 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::forceDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:212
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:242
 * @route '/dashboard/product-types/{uuid}/force-delete'
 */
 forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -285,7 +285,7 @@ forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ]
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::forceDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:212
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:242
 * @route '/dashboard/product-types/{uuid}/force-delete'
 */
 const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -300,7 +300,7 @@ const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | numbe
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::forceDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:212
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:242
 * @route '/dashboard/product-types/{uuid}/force-delete'
 */
 forceDeleteForm.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -316,8 +316,89 @@ forceDeleteForm.delete = (args: { uuid: string | number } | [uuid: string | numb
 forceDelete.form = forceDeleteForm
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:174
+* @route '/dashboard/product-types/export'
+*/
+export const exportMethod = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: exportMethod.url(options),
+    method: 'get',
+})
+
+exportMethod.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/product-types/export',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:174
+* @route '/dashboard/product-types/export'
+*/
+exportMethod.url = (options?: RouteQueryOptions) => {
+    return exportMethod.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:174
+* @route '/dashboard/product-types/export'
+*/
+exportMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:174
+* @route '/dashboard/product-types/export'
+*/
+exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: exportMethod.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:174
+* @route '/dashboard/product-types/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:174
+* @route '/dashboard/product-types/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:174
+* @route '/dashboard/product-types/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:29
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:32
 * @route '/dashboard/product-types'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -332,7 +413,7 @@ index.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:29
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:32
 * @route '/dashboard/product-types'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -341,7 +422,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:29
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:32
 * @route '/dashboard/product-types'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -351,7 +432,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:29
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:32
 * @route '/dashboard/product-types'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -361,7 +442,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:29
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:32
 * @route '/dashboard/product-types'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -371,7 +452,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:29
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:32
 * @route '/dashboard/product-types'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -381,7 +462,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:29
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:32
 * @route '/dashboard/product-types'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -398,7 +479,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:48
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:51
 * @route '/dashboard/product-types/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -413,7 +494,7 @@ create.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:48
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:51
 * @route '/dashboard/product-types/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -422,7 +503,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:48
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:51
 * @route '/dashboard/product-types/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -432,7 +513,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:48
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:51
 * @route '/dashboard/product-types/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -442,7 +523,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:48
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:51
 * @route '/dashboard/product-types/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -452,7 +533,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:48
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:51
 * @route '/dashboard/product-types/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -462,7 +543,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:48
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:51
 * @route '/dashboard/product-types/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -479,7 +560,7 @@ create.form = createForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:60
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:63
 * @route '/dashboard/product-types'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -494,7 +575,7 @@ store.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:60
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:63
 * @route '/dashboard/product-types'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -503,7 +584,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:60
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:63
 * @route '/dashboard/product-types'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -513,7 +594,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:60
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:63
 * @route '/dashboard/product-types'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -523,7 +604,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:60
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:63
 * @route '/dashboard/product-types'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -535,7 +616,7 @@ store.form = storeForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:71
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
 export const show = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -550,7 +631,7 @@ show.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:71
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
 show.url = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -583,7 +664,7 @@ show.url = (args: { productType: number | { id: number } } | [productType: numbe
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:71
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
 show.get = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -593,7 +674,7 @@ show.get = (args: { productType: number | { id: number } } | [productType: numbe
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:71
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
 show.head = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -603,7 +684,7 @@ show.head = (args: { productType: number | { id: number } } | [productType: numb
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:71
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
 const showForm = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -613,7 +694,7 @@ const showForm = (args: { productType: number | { id: number } } | [productType:
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:71
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
 showForm.get = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -623,7 +704,7 @@ showForm.get = (args: { productType: number | { id: number } } | [productType: n
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:71
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
 showForm.head = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -640,7 +721,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:83
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
 export const edit = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -655,7 +736,7 @@ edit.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:83
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
 edit.url = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -688,7 +769,7 @@ edit.url = (args: { productType: number | { id: number } } | [productType: numbe
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:83
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
 edit.get = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -698,7 +779,7 @@ edit.get = (args: { productType: number | { id: number } } | [productType: numbe
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:83
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
 edit.head = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -708,7 +789,7 @@ edit.head = (args: { productType: number | { id: number } } | [productType: numb
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:83
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
 const editForm = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -718,7 +799,7 @@ const editForm = (args: { productType: number | { id: number } } | [productType:
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:83
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
 editForm.get = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -728,7 +809,7 @@ editForm.get = (args: { productType: number | { id: number } } | [productType: n
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:83
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
 editForm.head = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -745,7 +826,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:97
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
 export const update = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -760,7 +841,7 @@ update.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:97
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
 update.url = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -793,7 +874,7 @@ update.url = (args: { productType: number | { id: number } } | [productType: num
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:97
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
 update.put = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -803,7 +884,7 @@ update.put = (args: { productType: number | { id: number } } | [productType: num
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:97
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
 update.patch = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -813,7 +894,7 @@ update.patch = (args: { productType: number | { id: number } } | [productType: n
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:97
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
 const updateForm = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -828,7 +909,7 @@ const updateForm = (args: { productType: number | { id: number } } | [productTyp
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:97
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
 updateForm.put = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -843,7 +924,7 @@ updateForm.put = (args: { productType: number | { id: number } } | [productType:
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:97
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
 updateForm.patch = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -860,7 +941,7 @@ update.form = updateForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:108
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:111
 * @route '/dashboard/product-types/{productType}'
 */
 export const destroy = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -875,7 +956,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:108
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:111
 * @route '/dashboard/product-types/{productType}'
 */
 destroy.url = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -908,7 +989,7 @@ destroy.url = (args: { productType: number | { id: number } } | [productType: nu
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:108
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:111
 * @route '/dashboard/product-types/{productType}'
 */
 destroy.delete = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -918,7 +999,7 @@ destroy.delete = (args: { productType: number | { id: number } } | [productType:
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:108
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:111
 * @route '/dashboard/product-types/{productType}'
 */
 const destroyForm = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -933,7 +1014,7 @@ const destroyForm = (args: { productType: number | { id: number } } | [productTy
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:108
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:111
 * @route '/dashboard/product-types/{productType}'
 */
 destroyForm.delete = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -948,11 +1029,102 @@ destroyForm.delete = (args: { productType: number | { id: number } } | [productT
 
 destroy.form = destroyForm
 
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::toggleStatus
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:160
+* @route '/dashboard/product-types/{productType}/toggle-status'
+*/
+export const toggleStatus = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: toggleStatus.url(args, options),
+    method: 'put',
+})
+
+toggleStatus.definition = {
+    methods: ["put"],
+    url: '/dashboard/product-types/{productType}/toggle-status',
+} satisfies RouteDefinition<["put"]>
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::toggleStatus
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:160
+* @route '/dashboard/product-types/{productType}/toggle-status'
+*/
+toggleStatus.url = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { productType: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { productType: args.id }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            productType: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        productType: typeof args.productType === 'object'
+        ? args.productType.id
+        : args.productType,
+    }
+
+    return toggleStatus.definition.url
+            .replace('{productType}', parsedArgs.productType.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::toggleStatus
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:160
+* @route '/dashboard/product-types/{productType}/toggle-status'
+*/
+toggleStatus.put = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: toggleStatus.url(args, options),
+    method: 'put',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::toggleStatus
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:160
+* @route '/dashboard/product-types/{productType}/toggle-status'
+*/
+const toggleStatusForm = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductTypeController::toggleStatus
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:160
+* @route '/dashboard/product-types/{productType}/toggle-status'
+*/
+toggleStatusForm.put = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleStatus.form = toggleStatusForm
+
 const productTypes = {
     bulkDelete: Object.assign(bulkDelete, bulkDelete),
     trash: Object.assign(trash, trash067cdb),
     restore: Object.assign(restore, restore),
     forceDelete: Object.assign(forceDelete, forceDelete),
+    export: Object.assign(exportMethod, exportMethod),
     index: Object.assign(index, index),
     create: Object.assign(create, create),
     store: Object.assign(store, store),
@@ -960,6 +1132,7 @@ const productTypes = {
     edit: Object.assign(edit, edit),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),
+    toggleStatus: Object.assign(toggleStatus, toggleStatus),
 }
 
 export default productTypes

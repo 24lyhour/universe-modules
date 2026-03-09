@@ -1,8 +1,516 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import importMethod7367d2 from './import'
 import categories from './categories'
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:67
+* @route '/dashboard/menus/trash'
+*/
+export const trash = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: trash.url(options),
+    method: 'get',
+})
+
+trash.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/menus/trash',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:67
+* @route '/dashboard/menus/trash'
+*/
+trash.url = (options?: RouteQueryOptions) => {
+    return trash.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:67
+* @route '/dashboard/menus/trash'
+*/
+trash.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:67
+* @route '/dashboard/menus/trash'
+*/
+trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: trash.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:67
+* @route '/dashboard/menus/trash'
+*/
+const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:67
+* @route '/dashboard/menus/trash'
+*/
+trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:67
+* @route '/dashboard/menus/trash'
+*/
+trashForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+trash.form = trashForm
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:84
+* @route '/dashboard/menus/export'
+*/
+export const exportMethod = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: exportMethod.url(options),
+    method: 'get',
+})
+
+exportMethod.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/menus/export',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:84
+* @route '/dashboard/menus/export'
+*/
+exportMethod.url = (options?: RouteQueryOptions) => {
+    return exportMethod.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:84
+* @route '/dashboard/menus/export'
+*/
+exportMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:84
+* @route '/dashboard/menus/export'
+*/
+exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: exportMethod.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:84
+* @route '/dashboard/menus/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:84
+* @route '/dashboard/menus/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:84
+* @route '/dashboard/menus/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:97
+* @route '/dashboard/menus/import'
+*/
+export const importMethod = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: importMethod.url(options),
+    method: 'get',
+})
+
+importMethod.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/menus/import',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:97
+* @route '/dashboard/menus/import'
+*/
+importMethod.url = (options?: RouteQueryOptions) => {
+    return importMethod.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:97
+* @route '/dashboard/menus/import'
+*/
+importMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:97
+* @route '/dashboard/menus/import'
+*/
+importMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: importMethod.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:97
+* @route '/dashboard/menus/import'
+*/
+const importMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:97
+* @route '/dashboard/menus/import'
+*/
+importMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:97
+* @route '/dashboard/menus/import'
+*/
+importMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+importMethod.form = importMethodForm
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:398
+* @route '/dashboard/menus/bulk-delete'
+*/
+export const bulkDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkDelete.url(options),
+    method: 'delete',
+})
+
+bulkDelete.definition = {
+    methods: ["delete"],
+    url: '/dashboard/menus/bulk-delete',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:398
+* @route '/dashboard/menus/bulk-delete'
+*/
+bulkDelete.url = (options?: RouteQueryOptions) => {
+    return bulkDelete.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:398
+* @route '/dashboard/menus/bulk-delete'
+*/
+bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkDelete.url(options),
+    method: 'delete',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:398
+* @route '/dashboard/menus/bulk-delete'
+*/
+const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:398
+* @route '/dashboard/menus/bulk-delete'
+*/
+bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDelete.form = bulkDeleteForm
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkRestore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:230
+* @route '/dashboard/menus/trash/bulk-restore'
+*/
+export const bulkRestore = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: bulkRestore.url(options),
+    method: 'put',
+})
+
+bulkRestore.definition = {
+    methods: ["put"],
+    url: '/dashboard/menus/trash/bulk-restore',
+} satisfies RouteDefinition<["put"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkRestore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:230
+* @route '/dashboard/menus/trash/bulk-restore'
+*/
+bulkRestore.url = (options?: RouteQueryOptions) => {
+    return bulkRestore.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkRestore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:230
+* @route '/dashboard/menus/trash/bulk-restore'
+*/
+bulkRestore.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: bulkRestore.url(options),
+    method: 'put',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkRestore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:230
+* @route '/dashboard/menus/trash/bulk-restore'
+*/
+const bulkRestoreForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkRestore.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkRestore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:230
+* @route '/dashboard/menus/trash/bulk-restore'
+*/
+bulkRestoreForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkRestore.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkRestore.form = bulkRestoreForm
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkForceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:246
+* @route '/dashboard/menus/trash/bulk-force-delete'
+*/
+export const bulkForceDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkForceDelete.url(options),
+    method: 'delete',
+})
+
+bulkForceDelete.definition = {
+    methods: ["delete"],
+    url: '/dashboard/menus/trash/bulk-force-delete',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkForceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:246
+* @route '/dashboard/menus/trash/bulk-force-delete'
+*/
+bulkForceDelete.url = (options?: RouteQueryOptions) => {
+    return bulkForceDelete.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkForceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:246
+* @route '/dashboard/menus/trash/bulk-force-delete'
+*/
+bulkForceDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: bulkForceDelete.url(options),
+    method: 'delete',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkForceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:246
+* @route '/dashboard/menus/trash/bulk-force-delete'
+*/
+const bulkForceDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkForceDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::bulkForceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:246
+* @route '/dashboard/menus/trash/bulk-force-delete'
+*/
+bulkForceDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkForceDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkForceDelete.form = bulkForceDeleteForm
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::emptyTrash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:262
+* @route '/dashboard/menus/trash/empty'
+*/
+export const emptyTrash = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: emptyTrash.url(options),
+    method: 'delete',
+})
+
+emptyTrash.definition = {
+    methods: ["delete"],
+    url: '/dashboard/menus/trash/empty',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::emptyTrash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:262
+* @route '/dashboard/menus/trash/empty'
+*/
+emptyTrash.url = (options?: RouteQueryOptions) => {
+    return emptyTrash.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::emptyTrash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:262
+* @route '/dashboard/menus/trash/empty'
+*/
+emptyTrash.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: emptyTrash.url(options),
+    method: 'delete',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::emptyTrash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:262
+* @route '/dashboard/menus/trash/empty'
+*/
+const emptyTrashForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: emptyTrash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::emptyTrash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:262
+* @route '/dashboard/menus/trash/empty'
+*/
+emptyTrashForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: emptyTrash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+emptyTrash.form = emptyTrashForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:34
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:49
 * @route '/dashboard/menus'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -17,7 +525,7 @@ index.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:34
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:49
 * @route '/dashboard/menus'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -26,7 +534,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:34
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:49
 * @route '/dashboard/menus'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -36,7 +544,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:34
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:49
 * @route '/dashboard/menus'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -46,7 +554,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:34
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:49
 * @route '/dashboard/menus'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -56,7 +564,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:34
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:49
 * @route '/dashboard/menus'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -66,7 +574,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:34
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:49
 * @route '/dashboard/menus'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -83,7 +591,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::create
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:52
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:273
 * @route '/dashboard/menus/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -98,7 +606,7 @@ create.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::create
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:52
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:273
 * @route '/dashboard/menus/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -107,7 +615,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::create
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:52
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:273
 * @route '/dashboard/menus/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -117,7 +625,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::create
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:52
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:273
 * @route '/dashboard/menus/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -127,7 +635,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::create
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:52
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:273
 * @route '/dashboard/menus/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -137,7 +645,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::create
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:52
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:273
 * @route '/dashboard/menus/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -147,7 +655,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::create
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:52
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:273
 * @route '/dashboard/menus/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -164,7 +672,7 @@ create.form = createForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::store
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:73
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:294
 * @route '/dashboard/menus'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -179,7 +687,7 @@ store.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::store
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:73
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:294
 * @route '/dashboard/menus'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -188,7 +696,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::store
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:73
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:294
 * @route '/dashboard/menus'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -198,7 +706,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::store
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:73
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:294
 * @route '/dashboard/menus'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -208,7 +716,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::store
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:73
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:294
 * @route '/dashboard/menus'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -220,7 +728,7 @@ store.form = storeForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:85
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
 export const show = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -235,7 +743,7 @@ show.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:85
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
 show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -268,7 +776,7 @@ show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:85
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
 show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -278,7 +786,7 @@ show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:85
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
 show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -288,7 +796,7 @@ show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:85
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
 const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -298,7 +806,7 @@ const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:85
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
 showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -308,7 +816,7 @@ showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:85
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
 showForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -325,7 +833,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::edit
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:95
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
 export const edit = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -340,7 +848,7 @@ edit.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::edit
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:95
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
 edit.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -373,7 +881,7 @@ edit.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::edit
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:95
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
 edit.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -383,7 +891,7 @@ edit.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::edit
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:95
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
 edit.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -393,7 +901,7 @@ edit.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::edit
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:95
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
 const editForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -403,7 +911,7 @@ const editForm = (args: { menu: string | { uuid: string } } | [menu: string | { 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::edit
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:95
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
 editForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -413,7 +921,7 @@ editForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::edit
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:95
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
 editForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -430,7 +938,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::update
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:119
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
 export const update = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -445,7 +953,7 @@ update.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::update
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:119
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
 update.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -478,7 +986,7 @@ update.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::update
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:119
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
 update.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -488,7 +996,7 @@ update.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::update
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:119
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
 update.patch = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -498,7 +1006,7 @@ update.patch = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::update
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:119
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
 const updateForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -513,7 +1021,7 @@ const updateForm = (args: { menu: string | { uuid: string } } | [menu: string | 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::update
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:119
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
 updateForm.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -528,7 +1036,7 @@ updateForm.put = (args: { menu: string | { uuid: string } } | [menu: string | { 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::update
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:119
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
 updateForm.patch = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -545,7 +1053,7 @@ update.form = updateForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::destroy
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:143
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:364
 * @route '/dashboard/menus/{menu}'
 */
 export const destroy = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -560,7 +1068,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::destroy
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:143
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:364
 * @route '/dashboard/menus/{menu}'
 */
 destroy.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -593,7 +1101,7 @@ destroy.url = (args: { menu: string | { uuid: string } } | [menu: string | { uui
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::destroy
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:143
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:364
 * @route '/dashboard/menus/{menu}'
 */
 destroy.delete = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -603,7 +1111,7 @@ destroy.delete = (args: { menu: string | { uuid: string } } | [menu: string | { 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::destroy
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:143
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:364
 * @route '/dashboard/menus/{menu}'
 */
 const destroyForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -618,7 +1126,7 @@ const destroyForm = (args: { menu: string | { uuid: string } } | [menu: string |
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::destroy
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:143
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:364
 * @route '/dashboard/menus/{menu}'
 */
 destroyForm.delete = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -635,7 +1143,7 @@ destroy.form = destroyForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirmDelete
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:131
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
 export const confirmDelete = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -650,7 +1158,7 @@ confirmDelete.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirmDelete
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:131
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
 confirmDelete.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -683,7 +1191,7 @@ confirmDelete.url = (args: { menu: string | { uuid: string } } | [menu: string |
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirmDelete
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:131
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
 confirmDelete.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -693,7 +1201,7 @@ confirmDelete.get = (args: { menu: string | { uuid: string } } | [menu: string |
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirmDelete
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:131
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
 confirmDelete.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -703,7 +1211,7 @@ confirmDelete.head = (args: { menu: string | { uuid: string } } | [menu: string 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirmDelete
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:131
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
 const confirmDeleteForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -713,7 +1221,7 @@ const confirmDeleteForm = (args: { menu: string | { uuid: string } } | [menu: st
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirmDelete
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:131
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
 confirmDeleteForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -723,7 +1231,7 @@ confirmDeleteForm.get = (args: { menu: string | { uuid: string } } | [menu: stri
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirmDelete
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:131
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
 confirmDeleteForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1023,7 +1531,182 @@ updateScheduleForm.put = (args: { menu: string | { uuid: string } } | [menu: str
 
 updateSchedule.form = updateScheduleForm
 
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::restore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:206
+* @route '/dashboard/menus/{uuid}/restore'
+*/
+export const restore = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: restore.url(args, options),
+    method: 'put',
+})
+
+restore.definition = {
+    methods: ["put"],
+    url: '/dashboard/menus/{uuid}/restore',
+} satisfies RouteDefinition<["put"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::restore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:206
+* @route '/dashboard/menus/{uuid}/restore'
+*/
+restore.url = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { uuid: args }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            uuid: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        uuid: args.uuid,
+    }
+
+    return restore.definition.url
+            .replace('{uuid}', parsedArgs.uuid.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::restore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:206
+* @route '/dashboard/menus/{uuid}/restore'
+*/
+restore.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: restore.url(args, options),
+    method: 'put',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::restore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:206
+* @route '/dashboard/menus/{uuid}/restore'
+*/
+const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::restore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:206
+* @route '/dashboard/menus/{uuid}/restore'
+*/
+restoreForm.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+restore.form = restoreForm
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::forceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:218
+* @route '/dashboard/menus/{uuid}/force-delete'
+*/
+export const forceDelete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: forceDelete.url(args, options),
+    method: 'delete',
+})
+
+forceDelete.definition = {
+    methods: ["delete"],
+    url: '/dashboard/menus/{uuid}/force-delete',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::forceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:218
+* @route '/dashboard/menus/{uuid}/force-delete'
+*/
+forceDelete.url = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { uuid: args }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            uuid: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        uuid: args.uuid,
+    }
+
+    return forceDelete.definition.url
+            .replace('{uuid}', parsedArgs.uuid.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::forceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:218
+* @route '/dashboard/menus/{uuid}/force-delete'
+*/
+forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: forceDelete.url(args, options),
+    method: 'delete',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::forceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:218
+* @route '/dashboard/menus/{uuid}/force-delete'
+*/
+const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::forceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:218
+* @route '/dashboard/menus/{uuid}/force-delete'
+*/
+forceDeleteForm.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+forceDelete.form = forceDeleteForm
+
 const menus = {
+    trash: Object.assign(trash, trash),
+    export: Object.assign(exportMethod, exportMethod),
+    import: Object.assign(importMethod, importMethod7367d2),
+    bulkDelete: Object.assign(bulkDelete, bulkDelete),
+    bulkRestore: Object.assign(bulkRestore, bulkRestore),
+    bulkForceDelete: Object.assign(bulkForceDelete, bulkForceDelete),
+    emptyTrash: Object.assign(emptyTrash, emptyTrash),
     index: Object.assign(index, index),
     create: Object.assign(create, create),
     store: Object.assign(store, store),
@@ -1036,6 +1719,8 @@ const menus = {
     schedule: Object.assign(schedule, schedule),
     updateSchedule: Object.assign(updateSchedule, updateSchedule),
     categories: Object.assign(categories, categories),
+    restore: Object.assign(restore, restore),
+    forceDelete: Object.assign(forceDelete, forceDelete),
 }
 
 export default menus

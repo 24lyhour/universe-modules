@@ -1,7 +1,8 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import trash067cdb from './trash'
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:151
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:254
 * @route '/dashboard/products/attributes/bulk-delete'
 */
 export const bulkDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -16,7 +17,7 @@ bulkDelete.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:151
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:254
 * @route '/dashboard/products/attributes/bulk-delete'
 */
 bulkDelete.url = (options?: RouteQueryOptions) => {
@@ -25,7 +26,7 @@ bulkDelete.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:151
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:254
 * @route '/dashboard/products/attributes/bulk-delete'
 */
 bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -35,7 +36,7 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:151
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:254
 * @route '/dashboard/products/attributes/bulk-delete'
 */
 const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -50,7 +51,7 @@ const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkDelete
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:151
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:254
 * @route '/dashboard/products/attributes/bulk-delete'
 */
 bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -66,8 +67,338 @@ bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post
 bulkDelete.form = bulkDeleteForm
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::trash
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:51
+* @route '/dashboard/products/attributes/trash'
+*/
+export const trash = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: trash.url(options),
+    method: 'get',
+})
+
+trash.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/products/attributes/trash',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::trash
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:51
+* @route '/dashboard/products/attributes/trash'
+*/
+trash.url = (options?: RouteQueryOptions) => {
+    return trash.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::trash
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:51
+* @route '/dashboard/products/attributes/trash'
+*/
+trash.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::trash
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:51
+* @route '/dashboard/products/attributes/trash'
+*/
+trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: trash.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::trash
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:51
+* @route '/dashboard/products/attributes/trash'
+*/
+const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::trash
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:51
+* @route '/dashboard/products/attributes/trash'
+*/
+trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::trash
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:51
+* @route '/dashboard/products/attributes/trash'
+*/
+trashForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+trash.form = trashForm
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @route '/dashboard/products/attributes/export'
+*/
+export const exportMethod = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: exportMethod.url(options),
+    method: 'get',
+})
+
+exportMethod.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/products/attributes/export',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @route '/dashboard/products/attributes/export'
+*/
+exportMethod.url = (options?: RouteQueryOptions) => {
+    return exportMethod.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @route '/dashboard/products/attributes/export'
+*/
+exportMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @route '/dashboard/products/attributes/export'
+*/
+exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: exportMethod.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @route '/dashboard/products/attributes/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @route '/dashboard/products/attributes/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @route '/dashboard/products/attributes/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::restore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:81
+* @route '/dashboard/products/attributes/{uuid}/restore'
+*/
+export const restore = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: restore.url(args, options),
+    method: 'put',
+})
+
+restore.definition = {
+    methods: ["put"],
+    url: '/dashboard/products/attributes/{uuid}/restore',
+} satisfies RouteDefinition<["put"]>
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::restore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:81
+* @route '/dashboard/products/attributes/{uuid}/restore'
+*/
+restore.url = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { uuid: args }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            uuid: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        uuid: args.uuid,
+    }
+
+    return restore.definition.url
+            .replace('{uuid}', parsedArgs.uuid.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::restore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:81
+* @route '/dashboard/products/attributes/{uuid}/restore'
+*/
+restore.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: restore.url(args, options),
+    method: 'put',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::restore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:81
+* @route '/dashboard/products/attributes/{uuid}/restore'
+*/
+const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::restore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:81
+* @route '/dashboard/products/attributes/{uuid}/restore'
+*/
+restoreForm.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+restore.form = restoreForm
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::forceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:93
+* @route '/dashboard/products/attributes/{uuid}/force-delete'
+*/
+export const forceDelete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: forceDelete.url(args, options),
+    method: 'delete',
+})
+
+forceDelete.definition = {
+    methods: ["delete"],
+    url: '/dashboard/products/attributes/{uuid}/force-delete',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::forceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:93
+* @route '/dashboard/products/attributes/{uuid}/force-delete'
+*/
+forceDelete.url = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { uuid: args }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            uuid: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        uuid: args.uuid,
+    }
+
+    return forceDelete.definition.url
+            .replace('{uuid}', parsedArgs.uuid.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::forceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:93
+* @route '/dashboard/products/attributes/{uuid}/force-delete'
+*/
+forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: forceDelete.url(args, options),
+    method: 'delete',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::forceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:93
+* @route '/dashboard/products/attributes/{uuid}/force-delete'
+*/
+const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::forceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:93
+* @route '/dashboard/products/attributes/{uuid}/force-delete'
+*/
+forceDeleteForm.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+forceDelete.form = forceDeleteForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:30
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:34
 * @route '/dashboard/products/attributes'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -82,7 +413,7 @@ index.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:30
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:34
 * @route '/dashboard/products/attributes'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -91,7 +422,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:30
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:34
 * @route '/dashboard/products/attributes'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -101,7 +432,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:30
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:34
 * @route '/dashboard/products/attributes'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -111,7 +442,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:30
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:34
 * @route '/dashboard/products/attributes'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -121,7 +452,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:30
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:34
 * @route '/dashboard/products/attributes'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -131,7 +462,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::index
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:30
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:34
 * @route '/dashboard/products/attributes'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -148,7 +479,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:47
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:148
 * @route '/dashboard/products/attributes/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -163,7 +494,7 @@ create.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:47
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:148
 * @route '/dashboard/products/attributes/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -172,7 +503,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:47
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:148
 * @route '/dashboard/products/attributes/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -182,7 +513,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:47
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:148
 * @route '/dashboard/products/attributes/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -192,7 +523,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:47
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:148
 * @route '/dashboard/products/attributes/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -202,7 +533,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:47
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:148
 * @route '/dashboard/products/attributes/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -212,7 +543,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::create
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:47
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:148
 * @route '/dashboard/products/attributes/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -229,7 +560,7 @@ create.form = createForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:55
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:156
 * @route '/dashboard/products/attributes'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -244,7 +575,7 @@ store.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:55
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:156
 * @route '/dashboard/products/attributes'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -253,7 +584,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:55
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:156
 * @route '/dashboard/products/attributes'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -263,7 +594,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:55
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:156
 * @route '/dashboard/products/attributes'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -273,7 +604,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::store
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:55
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:156
 * @route '/dashboard/products/attributes'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -285,7 +616,7 @@ store.form = storeForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:170
 * @route '/dashboard/products/attributes/{attribute}'
 */
 export const show = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -300,7 +631,7 @@ show.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:170
 * @route '/dashboard/products/attributes/{attribute}'
 */
 show.url = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -333,7 +664,7 @@ show.url = (args: { attribute: number | { id: number } } | [attribute: number | 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:170
 * @route '/dashboard/products/attributes/{attribute}'
 */
 show.get = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -343,7 +674,7 @@ show.get = (args: { attribute: number | { id: number } } | [attribute: number | 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:170
 * @route '/dashboard/products/attributes/{attribute}'
 */
 show.head = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -353,7 +684,7 @@ show.head = (args: { attribute: number | { id: number } } | [attribute: number |
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:170
 * @route '/dashboard/products/attributes/{attribute}'
 */
 const showForm = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -363,7 +694,7 @@ const showForm = (args: { attribute: number | { id: number } } | [attribute: num
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:170
 * @route '/dashboard/products/attributes/{attribute}'
 */
 showForm.get = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -373,7 +704,7 @@ showForm.get = (args: { attribute: number | { id: number } } | [attribute: numbe
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::show
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:68
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:170
 * @route '/dashboard/products/attributes/{attribute}'
 */
 showForm.head = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -390,7 +721,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:80
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:182
 * @route '/dashboard/products/attributes/{attribute}/edit'
 */
 export const edit = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -405,7 +736,7 @@ edit.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:80
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:182
 * @route '/dashboard/products/attributes/{attribute}/edit'
 */
 edit.url = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -438,7 +769,7 @@ edit.url = (args: { attribute: number | { id: number } } | [attribute: number | 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:80
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:182
 * @route '/dashboard/products/attributes/{attribute}/edit'
 */
 edit.get = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -448,7 +779,7 @@ edit.get = (args: { attribute: number | { id: number } } | [attribute: number | 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:80
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:182
 * @route '/dashboard/products/attributes/{attribute}/edit'
 */
 edit.head = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -458,7 +789,7 @@ edit.head = (args: { attribute: number | { id: number } } | [attribute: number |
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:80
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:182
 * @route '/dashboard/products/attributes/{attribute}/edit'
 */
 const editForm = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -468,7 +799,7 @@ const editForm = (args: { attribute: number | { id: number } } | [attribute: num
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:80
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:182
 * @route '/dashboard/products/attributes/{attribute}/edit'
 */
 editForm.get = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -478,7 +809,7 @@ editForm.get = (args: { attribute: number | { id: number } } | [attribute: numbe
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::edit
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:80
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:182
 * @route '/dashboard/products/attributes/{attribute}/edit'
 */
 editForm.head = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -495,7 +826,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:92
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:194
 * @route '/dashboard/products/attributes/{attribute}'
 */
 export const update = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -510,7 +841,7 @@ update.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:92
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:194
 * @route '/dashboard/products/attributes/{attribute}'
 */
 update.url = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -543,7 +874,7 @@ update.url = (args: { attribute: number | { id: number } } | [attribute: number 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:92
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:194
 * @route '/dashboard/products/attributes/{attribute}'
 */
 update.put = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -553,7 +884,7 @@ update.put = (args: { attribute: number | { id: number } } | [attribute: number 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:92
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:194
 * @route '/dashboard/products/attributes/{attribute}'
 */
 update.patch = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -563,7 +894,7 @@ update.patch = (args: { attribute: number | { id: number } } | [attribute: numbe
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:92
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:194
 * @route '/dashboard/products/attributes/{attribute}'
 */
 const updateForm = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -578,7 +909,7 @@ const updateForm = (args: { attribute: number | { id: number } } | [attribute: n
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:92
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:194
 * @route '/dashboard/products/attributes/{attribute}'
 */
 updateForm.put = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -593,7 +924,7 @@ updateForm.put = (args: { attribute: number | { id: number } } | [attribute: num
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::update
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:92
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:194
 * @route '/dashboard/products/attributes/{attribute}'
 */
 updateForm.patch = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -610,7 +941,7 @@ update.form = updateForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:106
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:208
 * @route '/dashboard/products/attributes/{attribute}'
 */
 export const destroy = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -625,7 +956,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:106
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:208
 * @route '/dashboard/products/attributes/{attribute}'
 */
 destroy.url = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -658,7 +989,7 @@ destroy.url = (args: { attribute: number | { id: number } } | [attribute: number
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:106
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:208
 * @route '/dashboard/products/attributes/{attribute}'
 */
 destroy.delete = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -668,7 +999,7 @@ destroy.delete = (args: { attribute: number | { id: number } } | [attribute: num
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:106
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:208
 * @route '/dashboard/products/attributes/{attribute}'
 */
 const destroyForm = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -683,7 +1014,7 @@ const destroyForm = (args: { attribute: number | { id: number } } | [attribute: 
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::destroy
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:106
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:208
 * @route '/dashboard/products/attributes/{attribute}'
 */
 destroyForm.delete = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -700,7 +1031,7 @@ destroy.form = destroyForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::toggleStatus
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:119
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:222
 * @route '/dashboard/products/attributes/{attribute}/toggle-status'
 */
 export const toggleStatus = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -715,7 +1046,7 @@ toggleStatus.definition = {
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::toggleStatus
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:119
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:222
 * @route '/dashboard/products/attributes/{attribute}/toggle-status'
 */
 toggleStatus.url = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -748,7 +1079,7 @@ toggleStatus.url = (args: { attribute: number | { id: number } } | [attribute: n
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::toggleStatus
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:119
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:222
 * @route '/dashboard/products/attributes/{attribute}/toggle-status'
 */
 toggleStatus.patch = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -758,7 +1089,7 @@ toggleStatus.patch = (args: { attribute: number | { id: number } } | [attribute:
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::toggleStatus
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:119
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:222
 * @route '/dashboard/products/attributes/{attribute}/toggle-status'
 */
 const toggleStatusForm = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -773,7 +1104,7 @@ const toggleStatusForm = (args: { attribute: number | { id: number } } | [attrib
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::toggleStatus
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:119
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:222
 * @route '/dashboard/products/attributes/{attribute}/toggle-status'
 */
 toggleStatusForm.patch = (args: { attribute: number | { id: number } } | [attribute: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -790,6 +1121,10 @@ toggleStatus.form = toggleStatusForm
 
 const attributes = {
     bulkDelete: Object.assign(bulkDelete, bulkDelete),
+    trash: Object.assign(trash, trash067cdb),
+    export: Object.assign(exportMethod, exportMethod),
+    restore: Object.assign(restore, restore),
+    forceDelete: Object.assign(forceDelete, forceDelete),
     index: Object.assign(index, index),
     create: Object.assign(create, create),
     store: Object.assign(store, store),
