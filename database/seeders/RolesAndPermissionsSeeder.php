@@ -20,7 +20,7 @@ class RolesAndPermissionsSeeder extends Seeder
         // Define all modules and their resources
         $modules = [
             // Employee Module
-            'employee' => ['employees', 'employee_types', 'attendances'],
+            'employee' => ['employees', 'employee_types', 'attendances', 'locations'],
 
             // School Module
             'school' => ['schools', 'departments', 'classrooms', 'courses', 'programs', 'equipment'],

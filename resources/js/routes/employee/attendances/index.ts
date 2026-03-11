@@ -139,7 +139,7 @@ scan.form = scanForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:289
 * @route '/dashboard/attendances/today-summary'
 */
 export const todaySummary = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -154,7 +154,7 @@ todaySummary.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:289
 * @route '/dashboard/attendances/today-summary'
 */
 todaySummary.url = (options?: RouteQueryOptions) => {
@@ -163,7 +163,7 @@ todaySummary.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:289
 * @route '/dashboard/attendances/today-summary'
 */
 todaySummary.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -173,7 +173,7 @@ todaySummary.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:289
 * @route '/dashboard/attendances/today-summary'
 */
 todaySummary.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -183,7 +183,7 @@ todaySummary.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:289
 * @route '/dashboard/attendances/today-summary'
 */
 const todaySummaryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -193,7 +193,7 @@ const todaySummaryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:289
 * @route '/dashboard/attendances/today-summary'
 */
 todaySummaryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -203,7 +203,7 @@ todaySummaryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:289
 * @route '/dashboard/attendances/today-summary'
 */
 todaySummaryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

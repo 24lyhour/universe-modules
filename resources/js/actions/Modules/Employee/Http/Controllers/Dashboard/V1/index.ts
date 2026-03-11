@@ -4,6 +4,7 @@ import AttendanceTrashController from './AttendanceTrashController'
 import EmployeeController from './EmployeeController'
 import EmployeeImportExportController from './EmployeeImportExportController'
 import EmployeeTypeController from './EmployeeTypeController'
+import LocationController from './LocationController'
 import AttendanceController from './AttendanceController'
 
 const V1 = {
@@ -13,6 +14,7 @@ const V1 = {
     EmployeeController: Object.assign(EmployeeController, EmployeeController),
     EmployeeImportExportController: Object.assign(EmployeeImportExportController, EmployeeImportExportController),
     EmployeeTypeController: Object.assign(EmployeeTypeController, EmployeeTypeController),
+    LocationController: Object.assign(LocationController, LocationController),
     AttendanceController: Object.assign(AttendanceController, AttendanceController),
 }
 
