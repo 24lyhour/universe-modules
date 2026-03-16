@@ -1155,3 +1155,23 @@ Your options:
 
 Commit all Wayfinder files (296 files) - Works now
 Add Wayfinder to Railway build - Add php artisan wayfinder:generate before yarn build in your Dockerfile
+
+# spcofc path
+
+Here are the CLI commands for creating the EmployeeExperience model with controller in the specific path:
+
+# 1. Create model with migration, factory, seeder (no controller)
+
+php artisan module:make-model Name Module->Employee -mfs
+
+# 2. Create controller in the specific Dashboard/V1 path
+
+php artisan module:make-model Name Dashboard/V1/ -mfs
+
+php artisan module:make-controller Dashboard/V1/
+
+EmployeeExperienceController Employee
+Or if you want API resource controller:
+
+php artisan module:make-controller Dashboard/V1/EmployeeExperienceController Employee --api
+The -c flag in module:make-model creates the controller in the root Controllers/ directory, so you need to create it separately to place it in Dashboard/V1/

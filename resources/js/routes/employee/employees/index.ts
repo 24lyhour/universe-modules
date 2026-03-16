@@ -1381,7 +1381,7 @@ destroy.form = destroyForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:250
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 export const qrCode = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1396,7 +1396,7 @@ qrCode.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:250
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 qrCode.url = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -1429,7 +1429,7 @@ qrCode.url = (args: { employee: string | { uuid: string } } | [employee: string 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:250
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 qrCode.get = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1439,7 +1439,7 @@ qrCode.get = (args: { employee: string | { uuid: string } } | [employee: string 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:250
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 qrCode.head = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1449,7 +1449,7 @@ qrCode.head = (args: { employee: string | { uuid: string } } | [employee: string
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:250
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 const qrCodeForm = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1459,7 +1459,7 @@ const qrCodeForm = (args: { employee: string | { uuid: string } } | [employee: s
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:250
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 qrCodeForm.get = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1469,7 +1469,7 @@ qrCodeForm.get = (args: { employee: string | { uuid: string } } | [employee: str
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::qrCode
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:250
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 qrCodeForm.head = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
