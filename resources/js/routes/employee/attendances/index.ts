@@ -1,5 +1,87 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 import trash from './trash'
+import selfService7507af from './self-service'
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::selfService
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
+* @route '/dashboard/attendances/self-service'
+*/
+export const selfService = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: selfService.url(options),
+    method: 'get',
+})
+
+selfService.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/attendances/self-service',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::selfService
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
+* @route '/dashboard/attendances/self-service'
+*/
+selfService.url = (options?: RouteQueryOptions) => {
+    return selfService.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::selfService
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
+* @route '/dashboard/attendances/self-service'
+*/
+selfService.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: selfService.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::selfService
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
+* @route '/dashboard/attendances/self-service'
+*/
+selfService.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: selfService.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::selfService
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
+* @route '/dashboard/attendances/self-service'
+*/
+const selfServiceForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: selfService.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::selfService
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
+* @route '/dashboard/attendances/self-service'
+*/
+selfServiceForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: selfService.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::selfService
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
+* @route '/dashboard/attendances/self-service'
+*/
+selfServiceForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: selfService.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+selfService.form = selfServiceForm
+
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::scanner
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:186
@@ -975,6 +1057,7 @@ destroy.form = destroyForm
 
 const attendances = {
     trash: Object.assign(trash, trash),
+    selfService: Object.assign(selfService, selfService7507af),
     scanner: Object.assign(scanner, scanner),
     scan: Object.assign(scan, scan),
     todaySummary: Object.assign(todaySummary, todaySummary),

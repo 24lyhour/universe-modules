@@ -622,6 +622,314 @@ $attendanceRate = $analytics['summary']['attendance_rate'];
 
 ---
 
+## Self-Service Attendance
+
+The Self-Service Attendance feature allows employees to check-in and check-out directly from the web application without needing admin assistance.
+
+### Overview
+
+Similar to mobile app functionality, the self-service attendance provides:
+- **Real-time clock display** with live updates
+- **Employee profile card** with avatar and job details
+- **Today's attendance status** with check-in/out times
+- **Live work duration** calculation during work hours
+- **GPS location capture** for check-in/out verification
+- **Simple check-in/out buttons** based on current state
+
+### Architecture
+
+```
+Modules/Employee/
+├── app/
+│   ├── Actions/Dashboard/V1/Attendance/
+│   │   ├── GetSelfServiceAttendanceAction.php
+│   │   ├── SelfServiceCheckInAction.php
+│   │   └── SelfServiceCheckOutAction.php
+│   └── Http/Controllers/Dashboard/V1/
+│       └── SelfServiceAttendanceController.php
+├── resources/js/pages/Dashboard/V1/Attendance/
+│   └── SelfService.vue
+└── routes/dashboard.php
+```
+
+### Routes
+
+```php
+// Self-Service Attendance Routes
+GET  /dashboard/attendances/self-service           -> index()      // Display page
+POST /dashboard/attendances/self-service/check-in  -> checkIn()    // Process check-in
+POST /dashboard/attendances/self-service/check-out -> checkOut()   // Process check-out
+```
+
+### Controller: SelfServiceAttendanceController
+
+```php
+namespace Modules\Employee\Http\Controllers\Dashboard\V1;
+
+class SelfServiceAttendanceController extends Controller
+{
+    /**
+     * Get the authenticated employee or throw 403.
+     * Only users linked to an Employee record can access.
+     */
+    private function getAuthenticatedEmployee(): Employee;
+
+    /**
+     * Display self-service attendance page.
+     * Returns employee info, today's attendance, state, and config.
+     */
+    public function index(): Response;
+
+    /**
+     * Handle self-service check-in.
+     * Validates request, executes check-in action.
+     */
+    public function checkIn(SelfServiceCheckInRequest $request): RedirectResponse;
+
+    /**
+     * Handle self-service check-out.
+     * Validates request, executes check-out action.
+     */
+    public function checkOut(SelfServiceCheckOutRequest $request): RedirectResponse;
+}
+```
+
+### Actions
+
+#### GetSelfServiceAttendanceAction
+
+Gets all data needed for the self-service page.
+
+```php
+$action = new GetSelfServiceAttendanceAction();
+$data = $action->execute($employeeId);
+
+// Response
+[
+    'employee' => [
+        'id' => 1,
+        'uuid' => '...',
+        'full_name' => 'John Doe',
+        'employee_code' => 'EMP001',
+        'avatar_url' => '/storage/avatars/john.jpg',
+        'job_title' => 'Software Engineer',
+        'department_name' => 'IT Department',
+        'employee_type_name' => 'Full Time',
+    ],
+    'todayAttendance' => [
+        'id' => 1,
+        'uuid' => '...',
+        'check_in_time' => '08:30:00',
+        'check_out_time' => null,
+        'status' => 'present',
+        'status_label' => 'Present',
+        'work_hours' => null,
+        'work_hours_formatted' => '0h 0m',
+        'check_in_location' => 'Self Service',
+        'check_out_location' => null,
+        'notes' => null,
+    ],
+    'state' => [
+        'canCheckIn' => false,   // Already checked in
+        'canCheckOut' => true,   // Can check out now
+        'isCompleted' => false,  // Not yet done for the day
+    ],
+    'config' => [
+        'allowManualCheckIn' => true,
+        'requireLocation' => false,
+        'workStartTime' => '08:00',
+        'workEndTime' => '17:00',
+        'lateThresholdMinutes' => 30,
+    ],
+]
+```
+
+#### SelfServiceCheckInAction
+
+Processes employee self-service check-in.
+
+```php
+$action = new SelfServiceCheckInAction();
+$result = $action->execute($employeeId, [
+    'method' => 'self_service',
+    'latitude' => 11.5564,
+    'longitude' => 104.9282,
+    'location' => 'Self Service',
+    'notes' => 'Working from office',
+]);
+
+// Success Response
+[
+    'success' => true,
+    'message' => 'Checked in successfully at 08:30.',
+    'attendance' => [...],
+]
+
+// Error Response (Already checked in)
+[
+    'success' => false,
+    'message' => 'Already checked in today.',
+    'attendance' => [...],
+]
+```
+
+#### SelfServiceCheckOutAction
+
+Processes employee self-service check-out with work hours calculation.
+
+```php
+$action = new SelfServiceCheckOutAction();
+$result = $action->execute($employeeId, [
+    'method' => 'self_service',
+    'latitude' => 11.5564,
+    'longitude' => 104.9282,
+    'location' => 'Self Service',
+    'notes' => 'Finished for the day',
+]);
+
+// Success Response
+[
+    'success' => true,
+    'message' => 'Checked out successfully. Worked: 8h 30m',
+    'attendance' => [
+        'id' => 1,
+        'uuid' => '...',
+        'check_in_time' => '08:30:00',
+        'check_out_time' => '17:00:00',
+        'status' => 'present',
+        'status_label' => 'Present',
+        'work_hours' => 8.5,
+        'work_hours_formatted' => '8h 30m',
+    ],
+]
+
+// Error Response (No check-in)
+[
+    'success' => false,
+    'message' => 'You must check in before checking out.',
+    'attendance' => null,
+]
+```
+
+### Frontend: SelfService.vue
+
+```typescript
+// TypeScript Types
+interface SelfServiceProps {
+    employee: SelfServiceEmployee;
+    todayAttendance: SelfServiceAttendance | null;
+    state: SelfServiceState;
+    config: SelfServiceConfig;
+}
+
+interface SelfServiceEmployee {
+    id: number;
+    uuid: string;
+    full_name: string;
+    employee_code: string;
+    avatar_url: string | null;
+    job_title: string | null;
+    department_name: string | null;
+    employee_type_name: string | null;
+}
+
+interface SelfServiceState {
+    canCheckIn: boolean;
+    canCheckOut: boolean;
+    isCompleted: boolean;
+}
+
+interface SelfServiceConfig {
+    allowManualCheckIn: boolean;
+    requireLocation: boolean;
+    workStartTime: string;
+    workEndTime: string;
+    lateThresholdMinutes: number;
+}
+```
+
+**Key Features:**
+
+1. **Real-time Clock**: Updates every second using `setInterval`
+2. **Live Work Duration**: Calculates work hours in real-time while checked in
+3. **GPS Location**: Captures coordinates via browser Geolocation API
+4. **State-based UI**: Shows appropriate buttons based on `state` object
+5. **Flash Messages**: Displays success/error messages after actions
+
+### State Flow
+
+```
+┌─────────────────┐
+│    Not Checked  │ canCheckIn: true
+│        In       │ canCheckOut: false
+│                 │ isCompleted: false
+└────────┬────────┘
+         │ Check In
+         ▼
+┌─────────────────┐
+│    Working      │ canCheckIn: false
+│   (Checked In)  │ canCheckOut: true
+│                 │ isCompleted: false
+└────────┬────────┘
+         │ Check Out
+         ▼
+┌─────────────────┐
+│    Completed    │ canCheckIn: false
+│   (Checked Out) │ canCheckOut: false
+│                 │ isCompleted: true
+└─────────────────┘
+```
+
+### Late Detection
+
+The system automatically marks attendance as "late" if the employee checks in after the configured threshold:
+
+```php
+// In SelfServiceCheckInAction
+$lateThreshold = $employee->employeeType?->time_start
+    ?? Carbon::createFromTimeString('09:00:00');
+
+if ($now->gt($lateThreshold)) {
+    $attendance->status = Attendance::STATUS_LATE;
+}
+```
+
+### Access Control
+
+- **Authentication**: Route requires `auth` and `verified` middleware
+- **Employee Verification**: User must be linked to an Employee record
+- **Error Handling**: 403 error if user is not an employee
+
+```php
+// In controller
+$user = auth()->user();
+$employee = Employee::where('user_id', $user->id)->first();
+
+if (!$employee) {
+    throw new AccessDeniedHttpException('You are not registered as an employee.');
+}
+```
+
+### Sidebar Menu
+
+Self-service is added to the Employee module sidebar:
+
+```php
+// In EmployeeServiceProvider
+MenuService::addSubmenuItem(
+    'primary',
+    'employee',
+    __('Self Service'),
+    route('employee.attendances.self-service'),
+    70,
+    null, // No special permission - authenticated employees only
+    'employee.attendances.self-service',
+    'LogIn'
+);
+```
+
+---
+
 ## Dependencies
 
 - `html5-qrcode`: QR code scanning
