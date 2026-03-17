@@ -8,7 +8,6 @@ import EmployeeTypeController from './EmployeeTypeController'
 import LocationController from './LocationController'
 import SelfServiceAttendanceController from './SelfServiceAttendanceController'
 import AttendanceController from './AttendanceController'
-import EmployeeExperienceController from './EmployeeExperienceController'
 import PermissionRequestController from './PermissionRequestController'
 
 const V1 = {
@@ -22,7 +21,6 @@ const V1 = {
     LocationController: Object.assign(LocationController, LocationController),
     SelfServiceAttendanceController: Object.assign(SelfServiceAttendanceController, SelfServiceAttendanceController),
     AttendanceController: Object.assign(AttendanceController, AttendanceController),
-    EmployeeExperienceController: Object.assign(EmployeeExperienceController, EmployeeExperienceController),
     PermissionRequestController: Object.assign(PermissionRequestController, PermissionRequestController),
 }
 
