@@ -1175,3 +1175,10 @@ Or if you want API resource controller:
 
 php artisan module:make-controller Dashboard/V1/EmployeeExperienceController Employee --api
 The -c flag in module:make-model creates the controller in the root Controllers/ directory, so you need to create it separately to place it in Dashboard/V1/
+
+So for creating a controller in Api/V1 folder for the Employee module:
+
+php artisan module:make-controller Api/V1/EmployeeControllerName Employee
+For example:
+
+php artisan module:make-controller Api/V1/EmployeeController Employee

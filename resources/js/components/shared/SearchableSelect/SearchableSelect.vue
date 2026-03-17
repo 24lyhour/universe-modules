@@ -44,11 +44,13 @@ const open = ref(false);
 // Get selected option
 const selectedOption = computed(() => {
     if (modelValue.value === null || modelValue.value === undefined) return null;
+    if (!props.options || !Array.isArray(props.options)) return null;
     return props.options.find((opt) => opt.value === modelValue.value) || null;
 });
 
 // Filter options based on search
 const filteredOptions = computed(() => {
+    if (!props.options || !Array.isArray(props.options)) return [];
     if (!searchTerm.value) return props.options;
     const query = searchTerm.value.toLowerCase();
     return props.options.filter(
