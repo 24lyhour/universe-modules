@@ -11,7 +11,7 @@ return [
     |
     */
     'module_resources' => [
-        'Employee' => ['employees', 'employee_types', 'attendances'],
+        'Employee' => ['employees', 'employee_types', 'attendances', 'locations', 'attendance_scans', 'employee_experiences', 'permission_requests'],
         'School' => ['schools', 'departments', 'classrooms', 'courses', 'programs', 'equipment'],
         'Blog' => ['posts'],
         'Company' => ['companies'],

@@ -19,8 +19,8 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // Define all modules and their resources
         $modules = [
-            // Employee Module
-            'employee' => ['employees', 'employee_types', 'attendances'],
+            // Employee Module (includes Geofence/Locations)
+            'employee' => ['employees', 'employee_types', 'attendances', 'locations', 'attendance_scans', 'employee_experiences', 'permission_requests'],
 
             // School Module
             'school' => ['schools', 'departments', 'classrooms', 'courses', 'programs', 'equipment'],
@@ -98,26 +98,94 @@ class RolesAndPermissionsSeeder extends Seeder
             'attendances.export',
             'attendances.import',
 
+            // Geofence Location specific
+            'locations.export',
+            'locations.import',
+            'locations.manage_schedule',
+            'locations.toggle_status',
+            'locations.view_map',
+            'locations.generate_qr',
+            'locations.scan_qr',
+            'locations.assign_department',
+            'locations.view_analytics',
+            'locations.manage_geofence',
+            'locations.manage_polygon',
+            'locations.view_scans',
+
+            // Attendance Scans specific
+            'attendance_scans.export',
+            'attendance_scans.view_details',
+            'attendance_scans.verify',
+            'attendance_scans.view_map',
+
+            // Attendance Analytics specific
+            'attendances.view_analytics',
+            'attendances.view_reports',
+            'attendances.bulk_update',
+            'attendances.bulk_delete',
+
             // Employee specific
             'employees.export',
             'employees.import',
             'employees.assign_department',
             'employees.manage_schedule',
+            'employees.view_attendance',
+            'employees.generate_qr',
+
+            // Employee Types specific
+            'employee_types.export',
+            'employee_types.import',
+
+            // Permission Requests specific
+            'permission_requests.approve',
+            'permission_requests.reject',
+            'permission_requests.review',
+            'permission_requests.export',
 
             // School specific
+            'schools.export',
+            'schools.import',
             'schools.manage_departments',
             'schools.manage_programs',
             'schools.view_statistics',
+            'schools.view_analytics',
+            'schools.manage_settings',
+
+            // Department specific
             'departments.export',
             'departments.import',
+            'departments.generate_qr',
+            'departments.scan_qr',
+            'departments.assign_location',
+            'departments.view_analytics',
+            'departments.manage_geofence',
+            'departments.view_employees',
+            'departments.assign_head',
+
+            // Classroom specific
             'classrooms.export',
             'classrooms.import',
+            'classrooms.assign_department',
+            'classrooms.manage_schedule',
+            'classrooms.view_capacity',
+
+            // Course specific
             'courses.export',
             'courses.import',
+            'courses.assign_program',
+            'courses.manage_schedule',
+
+            // Program specific
             'programs.export',
             'programs.import',
+            'programs.assign_courses',
+            'programs.view_statistics',
+
+            // Equipment specific
             'equipment.export',
             'equipment.import',
+            'equipment.assign_classroom',
+            'equipment.track_status',
 
             // User specific
             'users.assign_roles',

@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::scanner
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:184
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:186
 * @route '/dashboard/attendances/scanner'
 */
 export const scanner = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ scanner.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::scanner
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:184
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:186
 * @route '/dashboard/attendances/scanner'
 */
 scanner.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ scanner.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::scanner
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:184
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:186
 * @route '/dashboard/attendances/scanner'
 */
 scanner.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ scanner.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::scanner
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:184
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:186
 * @route '/dashboard/attendances/scanner'
 */
 scanner.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ scanner.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::scanner
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:184
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:186
 * @route '/dashboard/attendances/scanner'
 */
 const scannerForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const scannerForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::scanner
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:184
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:186
 * @route '/dashboard/attendances/scanner'
 */
 scannerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ scannerForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::scanner
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:184
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:186
 * @route '/dashboard/attendances/scanner'
 */
 scannerForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ scanner.form = scannerForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::processScan
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:213
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:215
 * @route '/dashboard/attendances/scan'
 */
 export const processScan = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -97,7 +97,7 @@ processScan.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::processScan
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:213
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:215
 * @route '/dashboard/attendances/scan'
 */
 processScan.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ processScan.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::processScan
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:213
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:215
 * @route '/dashboard/attendances/scan'
 */
 processScan.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -116,7 +116,7 @@ processScan.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::processScan
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:213
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:215
 * @route '/dashboard/attendances/scan'
 */
 const processScanForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -126,7 +126,7 @@ const processScanForm = (options?: RouteQueryOptions): RouteFormDefinition<'post
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::processScan
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:213
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:215
 * @route '/dashboard/attendances/scan'
 */
 processScanForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -138,7 +138,7 @@ processScan.form = processScanForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:330
 * @route '/dashboard/attendances/today-summary'
 */
 export const todaySummary = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -153,7 +153,7 @@ todaySummary.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:330
 * @route '/dashboard/attendances/today-summary'
 */
 todaySummary.url = (options?: RouteQueryOptions) => {
@@ -162,7 +162,7 @@ todaySummary.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:330
 * @route '/dashboard/attendances/today-summary'
 */
 todaySummary.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -172,7 +172,7 @@ todaySummary.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:330
 * @route '/dashboard/attendances/today-summary'
 */
 todaySummary.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -182,7 +182,7 @@ todaySummary.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:330
 * @route '/dashboard/attendances/today-summary'
 */
 const todaySummaryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -192,7 +192,7 @@ const todaySummaryForm = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:330
 * @route '/dashboard/attendances/today-summary'
 */
 todaySummaryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -202,7 +202,7 @@ todaySummaryForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::todaySummary
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:280
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:330
 * @route '/dashboard/attendances/today-summary'
 */
 todaySummaryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -218,8 +218,89 @@ todaySummaryForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'
 todaySummary.form = todaySummaryForm
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::analytics
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:291
+* @route '/dashboard/attendances/analytics'
+*/
+export const analytics = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: analytics.url(options),
+    method: 'get',
+})
+
+analytics.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/attendances/analytics',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::analytics
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:291
+* @route '/dashboard/attendances/analytics'
+*/
+analytics.url = (options?: RouteQueryOptions) => {
+    return analytics.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::analytics
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:291
+* @route '/dashboard/attendances/analytics'
+*/
+analytics.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: analytics.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::analytics
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:291
+* @route '/dashboard/attendances/analytics'
+*/
+analytics.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: analytics.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::analytics
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:291
+* @route '/dashboard/attendances/analytics'
+*/
+const analyticsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: analytics.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::analytics
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:291
+* @route '/dashboard/attendances/analytics'
+*/
+analyticsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: analytics.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::analytics
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:291
+* @route '/dashboard/attendances/analytics'
+*/
+analyticsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: analytics.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+analytics.form = analyticsForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::confirmBulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:152
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:154
 * @route '/dashboard/attendances/bulk-delete'
 */
 export const confirmBulkDelete = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -234,7 +315,7 @@ confirmBulkDelete.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::confirmBulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:152
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:154
 * @route '/dashboard/attendances/bulk-delete'
 */
 confirmBulkDelete.url = (options?: RouteQueryOptions) => {
@@ -243,7 +324,7 @@ confirmBulkDelete.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::confirmBulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:152
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:154
 * @route '/dashboard/attendances/bulk-delete'
 */
 confirmBulkDelete.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -253,7 +334,7 @@ confirmBulkDelete.get = (options?: RouteQueryOptions): RouteDefinition<'get'> =>
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::confirmBulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:152
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:154
 * @route '/dashboard/attendances/bulk-delete'
 */
 confirmBulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -263,7 +344,7 @@ confirmBulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::confirmBulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:152
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:154
 * @route '/dashboard/attendances/bulk-delete'
 */
 const confirmBulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -273,7 +354,7 @@ const confirmBulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::confirmBulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:152
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:154
 * @route '/dashboard/attendances/bulk-delete'
 */
 confirmBulkDeleteForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -283,7 +364,7 @@ confirmBulkDeleteForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::confirmBulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:152
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:154
 * @route '/dashboard/attendances/bulk-delete'
 */
 confirmBulkDeleteForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -300,7 +381,7 @@ confirmBulkDelete.form = confirmBulkDeleteForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::bulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:166
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:168
 * @route '/dashboard/attendances/bulk-delete'
 */
 export const bulkDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -315,7 +396,7 @@ bulkDelete.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::bulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:166
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:168
 * @route '/dashboard/attendances/bulk-delete'
 */
 bulkDelete.url = (options?: RouteQueryOptions) => {
@@ -324,7 +405,7 @@ bulkDelete.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::bulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:166
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:168
 * @route '/dashboard/attendances/bulk-delete'
 */
 bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -334,7 +415,7 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::bulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:166
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:168
 * @route '/dashboard/attendances/bulk-delete'
 */
 const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -349,7 +430,7 @@ const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::bulkDelete
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:166
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:168
 * @route '/dashboard/attendances/bulk-delete'
 */
 bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -366,7 +447,7 @@ bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:59
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:61
 * @route '/dashboard/attendances/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -381,7 +462,7 @@ create.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:59
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:61
 * @route '/dashboard/attendances/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -390,7 +471,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:59
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:61
 * @route '/dashboard/attendances/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -400,7 +481,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:59
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:61
 * @route '/dashboard/attendances/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -410,7 +491,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:59
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:61
 * @route '/dashboard/attendances/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -420,7 +501,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:59
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:61
 * @route '/dashboard/attendances/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -430,7 +511,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::create
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:59
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:61
 * @route '/dashboard/attendances/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -447,7 +528,7 @@ create.form = createForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:89
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:91
 * @route '/dashboard/attendances'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -462,7 +543,7 @@ store.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:89
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:91
 * @route '/dashboard/attendances'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -471,7 +552,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:89
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:91
 * @route '/dashboard/attendances'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -481,7 +562,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:89
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:91
 * @route '/dashboard/attendances'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -491,7 +572,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::store
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:89
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:91
 * @route '/dashboard/attendances'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -503,7 +584,7 @@ store.form = storeForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:42
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:44
 * @route '/dashboard/attendances'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -518,7 +599,7 @@ index.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:42
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:44
 * @route '/dashboard/attendances'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -527,7 +608,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:42
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:44
 * @route '/dashboard/attendances'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -537,7 +618,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:42
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:44
 * @route '/dashboard/attendances'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -547,7 +628,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:42
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:44
 * @route '/dashboard/attendances'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -557,7 +638,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:42
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:44
 * @route '/dashboard/attendances'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -567,7 +648,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::index
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:42
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:44
 * @route '/dashboard/attendances'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -584,7 +665,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:101
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:103
 * @route '/dashboard/attendances/{attendance}'
 */
 export const show = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -599,7 +680,7 @@ show.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:101
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:103
 * @route '/dashboard/attendances/{attendance}'
 */
 show.url = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -632,7 +713,7 @@ show.url = (args: { attendance: string | { uuid: string } } | [attendance: strin
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:101
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:103
 * @route '/dashboard/attendances/{attendance}'
 */
 show.get = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -642,7 +723,7 @@ show.get = (args: { attendance: string | { uuid: string } } | [attendance: strin
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:101
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:103
 * @route '/dashboard/attendances/{attendance}'
 */
 show.head = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -652,7 +733,7 @@ show.head = (args: { attendance: string | { uuid: string } } | [attendance: stri
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:101
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:103
 * @route '/dashboard/attendances/{attendance}'
 */
 const showForm = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -662,7 +743,7 @@ const showForm = (args: { attendance: string | { uuid: string } } | [attendance:
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:101
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:103
 * @route '/dashboard/attendances/{attendance}'
 */
 showForm.get = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -672,7 +753,7 @@ showForm.get = (args: { attendance: string | { uuid: string } } | [attendance: s
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::show
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:101
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:103
 * @route '/dashboard/attendances/{attendance}'
 */
 showForm.head = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -689,7 +770,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:115
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:117
 * @route '/dashboard/attendances/{attendance}/edit'
 */
 export const edit = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -704,7 +785,7 @@ edit.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:115
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:117
 * @route '/dashboard/attendances/{attendance}/edit'
 */
 edit.url = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -737,7 +818,7 @@ edit.url = (args: { attendance: string | { uuid: string } } | [attendance: strin
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:115
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:117
 * @route '/dashboard/attendances/{attendance}/edit'
 */
 edit.get = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -747,7 +828,7 @@ edit.get = (args: { attendance: string | { uuid: string } } | [attendance: strin
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:115
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:117
 * @route '/dashboard/attendances/{attendance}/edit'
 */
 edit.head = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -757,7 +838,7 @@ edit.head = (args: { attendance: string | { uuid: string } } | [attendance: stri
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:115
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:117
 * @route '/dashboard/attendances/{attendance}/edit'
 */
 const editForm = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -767,7 +848,7 @@ const editForm = (args: { attendance: string | { uuid: string } } | [attendance:
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:115
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:117
 * @route '/dashboard/attendances/{attendance}/edit'
 */
 editForm.get = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -777,7 +858,7 @@ editForm.get = (args: { attendance: string | { uuid: string } } | [attendance: s
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::edit
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:115
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:117
 * @route '/dashboard/attendances/{attendance}/edit'
 */
 editForm.head = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -794,7 +875,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:128
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:130
 * @route '/dashboard/attendances/{attendance}'
 */
 const updatef4029296a6d0638064bffb3613f567eb = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -809,7 +890,7 @@ updatef4029296a6d0638064bffb3613f567eb.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:128
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:130
 * @route '/dashboard/attendances/{attendance}'
 */
 updatef4029296a6d0638064bffb3613f567eb.url = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -842,7 +923,7 @@ updatef4029296a6d0638064bffb3613f567eb.url = (args: { attendance: string | { uui
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:128
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:130
 * @route '/dashboard/attendances/{attendance}'
 */
 updatef4029296a6d0638064bffb3613f567eb.put = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -852,7 +933,7 @@ updatef4029296a6d0638064bffb3613f567eb.put = (args: { attendance: string | { uui
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:128
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:130
 * @route '/dashboard/attendances/{attendance}'
 */
 const updatef4029296a6d0638064bffb3613f567ebForm = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -867,7 +948,7 @@ const updatef4029296a6d0638064bffb3613f567ebForm = (args: { attendance: string |
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:128
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:130
 * @route '/dashboard/attendances/{attendance}'
 */
 updatef4029296a6d0638064bffb3613f567ebForm.put = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -883,7 +964,7 @@ updatef4029296a6d0638064bffb3613f567ebForm.put = (args: { attendance: string | {
 updatef4029296a6d0638064bffb3613f567eb.form = updatef4029296a6d0638064bffb3613f567ebForm
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:128
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:130
 * @route '/dashboard/attendances/{attendance}'
 */
 const updatef4029296a6d0638064bffb3613f567eb = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -898,7 +979,7 @@ updatef4029296a6d0638064bffb3613f567eb.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:128
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:130
 * @route '/dashboard/attendances/{attendance}'
 */
 updatef4029296a6d0638064bffb3613f567eb.url = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -931,7 +1012,7 @@ updatef4029296a6d0638064bffb3613f567eb.url = (args: { attendance: string | { uui
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:128
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:130
 * @route '/dashboard/attendances/{attendance}'
 */
 updatef4029296a6d0638064bffb3613f567eb.patch = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -941,7 +1022,7 @@ updatef4029296a6d0638064bffb3613f567eb.patch = (args: { attendance: string | { u
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:128
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:130
 * @route '/dashboard/attendances/{attendance}'
 */
 const updatef4029296a6d0638064bffb3613f567ebForm = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -956,7 +1037,7 @@ const updatef4029296a6d0638064bffb3613f567ebForm = (args: { attendance: string |
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::update
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:128
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:130
 * @route '/dashboard/attendances/{attendance}'
 */
 updatef4029296a6d0638064bffb3613f567ebForm.patch = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -978,7 +1059,7 @@ export const update = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:140
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:142
 * @route '/dashboard/attendances/{attendance}'
 */
 export const destroy = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -993,7 +1074,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:140
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:142
 * @route '/dashboard/attendances/{attendance}'
 */
 destroy.url = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -1026,7 +1107,7 @@ destroy.url = (args: { attendance: string | { uuid: string } } | [attendance: st
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:140
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:142
 * @route '/dashboard/attendances/{attendance}'
 */
 destroy.delete = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1036,7 +1117,7 @@ destroy.delete = (args: { attendance: string | { uuid: string } } | [attendance:
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:140
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:142
 * @route '/dashboard/attendances/{attendance}'
 */
 const destroyForm = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1051,7 +1132,7 @@ const destroyForm = (args: { attendance: string | { uuid: string } } | [attendan
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::destroy
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:140
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:142
 * @route '/dashboard/attendances/{attendance}'
 */
 destroyForm.delete = (args: { attendance: string | { uuid: string } } | [attendance: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1068,7 +1149,7 @@ destroy.form = destroyForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::generateEmployeeQr
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:241
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 export const generateEmployeeQr = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1083,7 +1164,7 @@ generateEmployeeQr.definition = {
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::generateEmployeeQr
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:241
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 generateEmployeeQr.url = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -1116,7 +1197,7 @@ generateEmployeeQr.url = (args: { employee: string | { uuid: string } } | [emplo
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::generateEmployeeQr
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:241
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 generateEmployeeQr.get = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1126,7 +1207,7 @@ generateEmployeeQr.get = (args: { employee: string | { uuid: string } } | [emplo
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::generateEmployeeQr
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:241
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 generateEmployeeQr.head = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1136,7 +1217,7 @@ generateEmployeeQr.head = (args: { employee: string | { uuid: string } } | [empl
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::generateEmployeeQr
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:241
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 const generateEmployeeQrForm = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1146,7 +1227,7 @@ const generateEmployeeQrForm = (args: { employee: string | { uuid: string } } | 
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::generateEmployeeQr
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:241
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 generateEmployeeQrForm.get = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1156,7 +1237,7 @@ generateEmployeeQrForm.get = (args: { employee: string | { uuid: string } } | [e
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceController::generateEmployeeQr
-* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:241
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceController.php:252
 * @route '/dashboard/employees/{employee}/qr-code'
 */
 generateEmployeeQrForm.head = (args: { employee: string | { uuid: string } } | [employee: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1171,6 +1252,6 @@ generateEmployeeQrForm.head = (args: { employee: string | { uuid: string } } | [
 
 generateEmployeeQr.form = generateEmployeeQrForm
 
-const AttendanceController = { scanner, processScan, todaySummary, confirmBulkDelete, bulkDelete, create, store, index, show, edit, update, destroy, generateEmployeeQr }
+const AttendanceController = { scanner, processScan, todaySummary, analytics, confirmBulkDelete, bulkDelete, create, store, index, show, edit, update, destroy, generateEmployeeQr }
 
 export default AttendanceController
