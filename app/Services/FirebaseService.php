@@ -18,6 +18,22 @@ class FirebaseService
     }
 
     /**
+     * Check if Firebase is configured and available.
+     */
+    public function isConfigured(): bool
+    {
+        if (!$this->projectId) {
+            return false;
+        }
+
+        if (!$this->credentialsPath || !file_exists($this->credentialsPath)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Send push notification to a single device.
      */
     public function sendToDevice(string $token, string $title, string $body, array $data = []): bool

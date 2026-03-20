@@ -12,6 +12,7 @@ use Modules\Product\Database\Seeders\ProductDatabaseSeeder;
 use Modules\Product\Database\Seeders\ProductTypeSeeder;
 use Modules\Product\Database\Seeders\ProductVariantSeeder;
 use Modules\Wallets\Database\Seeders\WalletsDatabaseSeeder;
+use Modules\Employee\Database\Seeders\EmployeeDatabaseSeeder;
 
 class ModuleSeeder extends Seeder
 {
@@ -55,6 +56,10 @@ class ModuleSeeder extends Seeder
 
             // 7. Wallets module (depends on Customer)
             WalletsDatabaseSeeder::class,
+
+            // 8.  emoloyee seeder modules
+
+            EmployeeDatabaseSeeder::class
         ]);
     }
 }

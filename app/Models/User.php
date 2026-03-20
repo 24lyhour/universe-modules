@@ -13,11 +13,14 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
+use App\Traits\HasNotifications;
+use App\Traits\HasDevices;
 
 class User extends Authenticatable implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, HasApiTokens, TwoFactorAuthenticatable, InteractsWithMedia, HasRoles;
+    use HasNotifications, HasDevices;
 
     /**
      * The attributes that are mass assignable.
