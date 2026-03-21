@@ -31,6 +31,9 @@ use Illuminate\Support\Str;
  * @property string|null $location
  * @property float|null $latitude
  * @property float|null $longitude
+ * @property float|null $accuracy GPS accuracy in meters
+ * @property bool $gps_enabled Whether GPS is enabled on this device
+ * @property \Carbon\Carbon|null $location_updated_at
  * @property \Carbon\Carbon|null $last_used_at
  * @property \Carbon\Carbon|null $last_login_at
  * @property bool $is_active
@@ -60,6 +63,9 @@ class Device extends Model
         'location',
         'latitude',
         'longitude',
+        'accuracy',
+        'gps_enabled',
+        'location_updated_at',
         'last_used_at',
         'last_login_at',
         'is_active',
@@ -70,6 +76,9 @@ class Device extends Model
         'deviceable_id' => 'integer',
         'latitude' => 'decimal:8',
         'longitude' => 'decimal:8',
+        'accuracy' => 'decimal:2',
+        'gps_enabled' => 'boolean',
+        'location_updated_at' => 'datetime',
         'last_used_at' => 'datetime',
         'last_login_at' => 'datetime',
         'is_active' => 'boolean',
@@ -368,6 +377,231 @@ class Device extends Model
             'last_used' => $this->last_used_at?->diffForHumans(),
             'is_trusted' => $this->is_trusted,
             'is_current' => false, // Set by caller
+            'has_location' => $this->hasLocation(),
+            'gps_enabled' => $this->gps_enabled,
+        ];
+    }
+
+    // =========================================================================
+    // GPS / LOCATION METHODS
+    // =========================================================================
+
+    /**
+     * Update device location.
+     *
+     * @param float $latitude
+     * @param float $longitude
+     * @param float|null $accuracy GPS accuracy in meters
+     * @param string|null $location Human-readable location (City, Country)
+     */
+    public function updateLocation(
+        float $latitude,
+        float $longitude,
+        ?float $accuracy = null,
+        ?string $location = null
+    ): self {
+        $data = [
+            'latitude' => $latitude,
+            'longitude' => $longitude,
+            'location_updated_at' => now(),
+            'gps_enabled' => true,
+        ];
+
+        if ($accuracy !== null) {
+            $data['accuracy'] = $accuracy;
+        }
+
+        if ($location !== null) {
+            $data['location'] = $location;
+        }
+
+        $this->update($data);
+        return $this;
+    }
+
+    /**
+     * Check if device has location data.
+     */
+    public function hasLocation(): bool
+    {
+        return $this->latitude !== null && $this->longitude !== null;
+    }
+
+    /**
+     * Check if location is recent (within specified minutes).
+     */
+    public function hasRecentLocation(int $minutes = 30): bool
+    {
+        if (!$this->hasLocation() || !$this->location_updated_at) {
+            return false;
+        }
+
+        return $this->location_updated_at->diffInMinutes(now()) <= $minutes;
+    }
+
+    /**
+     * Get coordinates as array.
+     */
+    public function getCoordinates(): ?array
+    {
+        if (!$this->hasLocation()) {
+            return null;
+        }
+
+        return [
+            'latitude' => (float) $this->latitude,
+            'longitude' => (float) $this->longitude,
+            'accuracy' => $this->accuracy ? (float) $this->accuracy : null,
+            'updated_at' => $this->location_updated_at?->toIso8601String(),
+        ];
+    }
+
+    /**
+     * Calculate distance to another point in kilometers.
+     * Uses Haversine formula.
+     *
+     * @param float $latitude Target latitude
+     * @param float $longitude Target longitude
+     * @return float|null Distance in kilometers, null if no location
+     */
+    public function distanceTo(float $latitude, float $longitude): ?float
+    {
+        if (!$this->hasLocation()) {
+            return null;
+        }
+
+        return static::calculateDistance(
+            (float) $this->latitude,
+            (float) $this->longitude,
+            $latitude,
+            $longitude
+        );
+    }
+
+    /**
+     * Check if device is within radius of a point.
+     *
+     * @param float $latitude Target latitude
+     * @param float $longitude Target longitude
+     * @param float $radiusKm Radius in kilometers
+     * @return bool True if within radius
+     */
+    public function isWithinRadius(float $latitude, float $longitude, float $radiusKm): bool
+    {
+        $distance = $this->distanceTo($latitude, $longitude);
+
+        if ($distance === null) {
+            return false;
+        }
+
+        return $distance <= $radiusKm;
+    }
+
+    /**
+     * Calculate distance between two points using Haversine formula.
+     *
+     * @param float $lat1 Point 1 latitude
+     * @param float $lon1 Point 1 longitude
+     * @param float $lat2 Point 2 latitude
+     * @param float $lon2 Point 2 longitude
+     * @return float Distance in kilometers
+     */
+    public static function calculateDistance(
+        float $lat1,
+        float $lon1,
+        float $lat2,
+        float $lon2
+    ): float {
+        $earthRadius = 6371; // Earth's radius in kilometers
+
+        $latDiff = deg2rad($lat2 - $lat1);
+        $lonDiff = deg2rad($lon2 - $lon1);
+
+        $a = sin($latDiff / 2) * sin($latDiff / 2) +
+            cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
+            sin($lonDiff / 2) * sin($lonDiff / 2);
+
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+
+        return $earthRadius * $c;
+    }
+
+    /**
+     * Scope to devices with location data.
+     */
+    public function scopeWithLocation($query)
+    {
+        return $query->whereNotNull('latitude')->whereNotNull('longitude');
+    }
+
+    /**
+     * Scope to devices with GPS enabled.
+     */
+    public function scopeGpsEnabled($query)
+    {
+        return $query->where('gps_enabled', true);
+    }
+
+    /**
+     * Scope to devices within radius of a point.
+     *
+     * @param float $latitude Center latitude
+     * @param float $longitude Center longitude
+     * @param float $radiusKm Radius in kilometers
+     */
+    public function scopeWithinRadius($query, float $latitude, float $longitude, float $radiusKm)
+    {
+        // Using raw SQL for performance with large datasets
+        // This uses the spherical law of cosines for simplicity
+        $earthRadius = 6371;
+
+        return $query->whereNotNull('latitude')
+            ->whereNotNull('longitude')
+            ->whereRaw("
+                ({$earthRadius} * acos(
+                    cos(radians(?)) * cos(radians(latitude)) *
+                    cos(radians(longitude) - radians(?)) +
+                    sin(radians(?)) * sin(radians(latitude))
+                )) <= ?
+            ", [$latitude, $longitude, $latitude, $radiusKm]);
+    }
+
+    /**
+     * Scope to devices with recent location updates.
+     */
+    public function scopeRecentlyLocated($query, int $minutes = 30)
+    {
+        return $query->where('location_updated_at', '>=', now()->subMinutes($minutes));
+    }
+
+    /**
+     * Clear location data.
+     */
+    public function clearLocation(): self
+    {
+        $this->update([
+            'latitude' => null,
+            'longitude' => null,
+            'accuracy' => null,
+            'location' => null,
+            'location_updated_at' => null,
+            'gps_enabled' => false,
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * Get location summary for API response.
+     */
+    public function getLocationSummary(): array
+    {
+        return [
+            'has_location' => $this->hasLocation(),
+            'gps_enabled' => $this->gps_enabled,
+            'coordinates' => $this->getCoordinates(),
+            'location_name' => $this->location,
+            'is_recent' => $this->hasRecentLocation(),
         ];
     }
 }

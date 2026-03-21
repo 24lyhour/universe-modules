@@ -65,6 +65,12 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'name' => config('app.name'),
+            'locale' => app()->getLocale(),
+            'availableLocales' => [
+                ['code' => 'en', 'name' => 'English', 'native' => 'English', 'flag' => '🇺🇸'],
+                ['code' => 'km', 'name' => 'Khmer', 'native' => 'ខ្មែរ', 'flag' => '🇰🇭'],
+            ],
+            'translations' => fn () => $this->getTranslations(),
             'quote' => ['message' => trim($message), 'author' => trim($author)],
             'auth' => [
                 'user' => $request->user(),
@@ -101,6 +107,23 @@ class HandleInertiaRequests extends Middleware
         } catch (\Exception $e) {
             return null;
         }
+    }
+
+    /**
+     * Get translations for the current locale.
+     */
+    private function getTranslations(): array
+    {
+        $locale = app()->getLocale();
+        $translations = [];
+
+        // Load JSON translations
+        $jsonPath = lang_path("{$locale}.json");
+        if (file_exists($jsonPath)) {
+            $translations = json_decode(file_get_contents($jsonPath), true) ?? [];
+        }
+
+        return $translations;
     }
 
     /**

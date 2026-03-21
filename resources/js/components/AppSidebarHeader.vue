@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
+import LanguageSwitcher from '@/components/LanguageSwitcher.vue';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeToggle } from '@/components/ui/theme';
 import type { BreadcrumbItemType } from '@/types';
@@ -25,6 +26,7 @@ withDefaults(
             </template>
         </div>
         <div class="flex items-center gap-2">
+            <LanguageSwitcher />
             <ThemeToggle />
         </div>
     </header>

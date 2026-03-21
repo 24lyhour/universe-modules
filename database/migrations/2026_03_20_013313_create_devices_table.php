@@ -37,8 +37,13 @@ return new class extends Migration
             // Login tracking
             $table->string('ip_address')->nullable();
             $table->string('location')->nullable(); // City, Country
+
+            // GPS / Location tracking
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
+            $table->decimal('accuracy', 10, 2)->nullable(); // GPS accuracy in meters
+            $table->boolean('gps_enabled')->default(false); // Device has GPS enabled
+            $table->timestamp('location_updated_at')->nullable();
 
             // Timestamps
             $table->timestamp('last_used_at')->nullable();

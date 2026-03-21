@@ -27,6 +27,18 @@ Route::middleware(['web', Check2FALockout::class])->group(function () {
         ->name('two-factor.email.verify');
 });
 
+// Language switching route (available to all users)
+Route::post('/language/{locale}', function (string $locale) {
+    if (!in_array($locale, ['en', 'km'])) {
+        abort(400);
+    }
+
+    session(['locale' => $locale]);
+    app()->setLocale($locale);
+
+    return back();
+})->name('language.switch');
+
 // The homepage is handled by the Porfolio module's KioskController
 // for the public-facing portfolio website
 

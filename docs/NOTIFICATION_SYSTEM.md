@@ -13,11 +13,13 @@ A comprehensive, multi-channel notification system with multi-tenant support, us
 7. [Notification Preferences](#notification-preferences)
 8. [Templates](#templates)
 9. [Multi-Tenant Support](#multi-tenant-support)
-10. [Device Login Notifications](#device-login-notifications)
-11. [Events](#events)
-12. [Logging & Analytics](#logging--analytics)
-13. [Configuration](#configuration)
-14. [API Reference](#api-reference)
+10. [Device Management](#device-management)
+11. [GPS & Location Tracking](#gps--location-tracking)
+12. [Device Login Notifications](#device-login-notifications)
+13. [Events](#events)
+14. [Logging & Analytics](#logging--analytics)
+15. [Configuration](#configuration)
+16. [API Reference](#api-reference)
 
 ---
 
@@ -401,6 +403,292 @@ In `config/notifications.php`:
 
 ---
 
+## Device Management
+
+Track user devices for push notifications and login security.
+
+### Add HasDevices Trait
+
+```php
+use App\Traits\HasDevices;
+
+class User extends Authenticatable
+{
+    use HasDevices;
+}
+```
+
+### Register Device on Login
+
+```php
+// Register device with all info
+$device = $user->registerDevice([
+    'device_id' => 'unique-device-identifier',
+    'device_type' => 'mobile', // mobile, tablet, desktop, web
+    'device_name' => 'John\'s iPhone',
+    'fcm_token' => 'firebase-token',
+    'device_os' => 'iOS',
+    'device_os_version' => '17.0',
+    'device_model' => 'iPhone 15',
+    'device_brand' => 'Apple',
+]);
+
+// Or with login tracking
+$device = $user->registerDeviceLogin([
+    'device_id' => 'unique-id',
+    'device_type' => 'mobile',
+    'fcm_token' => 'token',
+]);
+```
+
+### Manage Devices
+
+```php
+// Get all devices
+$devices = $user->devices;
+$activeDevices = $user->activeDevices;
+$trustedDevices = $user->trustedDevices;
+
+// Get devices with FCM tokens
+$pushDevices = $user->pushDevices;
+
+// Get device info
+$device = $user->getDevice($deviceId);
+$device = $user->getDeviceByUuid($uuid);
+
+// Get device summaries for UI
+$summaries = $user->getDevicesSummary();
+
+// Trust/untrust device
+$user->trustDevice($deviceId);
+$user->untrustDevice($deviceId);
+
+// Deactivate (logout)
+$user->deactivateDevice($deviceId);
+$user->deactivateAllDevices();
+$user->deactivateOtherDevices($currentDeviceId);
+
+// Delete device
+$user->deleteDevice($deviceId);
+$user->cleanOldDevices(90); // Inactive for 90 days
+```
+
+### FCM Token Management
+
+```php
+// Get all FCM tokens
+$tokens = $user->getFcmTokens();
+$latestToken = $user->getLatestFcmToken();
+
+// Store FCM token (creates device if not exists)
+$device = $user->storeFcmToken('new-fcm-token', [
+    'device_type' => 'mobile',
+]);
+
+// Update token for specific device
+$user->updateDeviceFcmToken('device-id', 'new-token');
+
+// Remove token (for logout)
+$user->removeFcmToken('fcm-token');
+```
+
+### Device Database Fields
+
+The `devices` table stores:
+
+| Field | Description |
+|-------|-------------|
+| `uuid` | Unique identifier |
+| `deviceable_type/id` | Polymorphic owner (User, Employee, etc.) |
+| `device_id` | Mobile device unique ID |
+| `device_type` | mobile, tablet, desktop, web |
+| `device_name` | User-friendly name |
+| `fcm_token` | Firebase token for push |
+| `device_os` | iOS, Android, Windows, etc. |
+| `device_os_version` | OS version |
+| `device_model` | Device model |
+| `device_brand` | Manufacturer |
+| `browser` | Browser name (for web) |
+| `browser_version` | Browser version |
+| `ip_address` | Last known IP |
+| `location` | City, Country |
+| `latitude/longitude` | GPS coordinates |
+| `accuracy` | GPS accuracy in meters |
+| `gps_enabled` | Whether GPS is active |
+| `location_updated_at` | Last location update |
+| `last_used_at` | Last activity |
+| `last_login_at` | Last login time |
+| `is_active` | Device is active |
+| `is_trusted` | User marked as trusted |
+
+---
+
+## GPS & Location Tracking
+
+Track device locations for attendance, geofencing, and security.
+
+### Update Location
+
+```php
+// Update location for a device
+$user->updateDeviceLocation(
+    deviceId: $deviceId,
+    latitude: 11.5564,
+    longitude: 104.9282,
+    accuracy: 10.5, // meters
+    location: 'Phnom Penh, Cambodia'
+);
+
+// Update by device unique ID (from mobile app)
+$user->updateDeviceLocationById(
+    deviceUniqueId: 'mobile-device-id',
+    latitude: 11.5564,
+    longitude: 104.9282
+);
+
+// On Device model directly
+$device->updateLocation(11.5564, 104.9282, 10.5, 'Phnom Penh');
+```
+
+### Get Location Data
+
+```php
+// Get all device locations
+$locations = $user->getDeviceLocations();
+// Returns array with id, uuid, name, and location details
+
+// Get latest location from any device
+$latestLocation = $user->getLatestLocation();
+// Returns: ['latitude' => 11.5564, 'longitude' => 104.9282, 'accuracy' => 10.5, 'updated_at' => '...']
+
+// On Device model
+$coords = $device->getCoordinates();
+$summary = $device->getLocationSummary();
+```
+
+### Check Location
+
+```php
+// Device methods
+if ($device->hasLocation()) {
+    // Has coordinates
+}
+
+if ($device->hasRecentLocation(30)) {
+    // Location updated within 30 minutes
+}
+
+// Check if device is within radius
+if ($device->isWithinRadius($officeLat, $officeLon, radiusKm: 0.5)) {
+    // Device is within 500m of office
+}
+
+// Calculate distance
+$km = $device->distanceTo($targetLat, $targetLon);
+
+// Static helper
+$km = Device::calculateDistance($lat1, $lon1, $lat2, $lon2);
+```
+
+### Geofencing / Find Nearby
+
+```php
+// Get devices within radius
+$nearbyDevices = $user->getDevicesWithinRadius(
+    latitude: 11.5564,
+    longitude: 104.9282,
+    radiusKm: 1.0 // 1 km radius
+);
+
+// Check if any device is within radius
+if ($user->hasDeviceWithinRadius($officeLat, $officeLon, 0.1)) {
+    // User has device within 100m of office
+}
+
+// Query scope for all devices
+$nearbyDevices = Device::withinRadius(11.5564, 104.9282, 1.0)->get();
+
+// Devices with recent locations
+$recentlyTracked = Device::recentlyLocated(30)->get(); // Updated in last 30 min
+
+// Devices with GPS enabled
+$gpsDevices = Device::gpsEnabled()->get();
+```
+
+### Clear Location
+
+```php
+// Clear location for one device
+$device->clearLocation();
+
+// Clear all device locations for user
+$user->clearAllDeviceLocations();
+```
+
+### GPS Scopes
+
+```php
+// Devices with location data
+$devices = Device::withLocation()->get();
+
+// Devices with GPS enabled
+$devices = Device::gpsEnabled()->get();
+
+// Devices within radius
+$devices = Device::withinRadius($lat, $lon, $radiusKm)->get();
+
+// Recently located devices
+$devices = Device::recentlyLocated(60)->get(); // Within 60 minutes
+```
+
+### Example: Attendance Check-in
+
+```php
+// API endpoint for mobile app
+public function checkIn(Request $request)
+{
+    $request->validate([
+        'device_id' => 'required|string',
+        'latitude' => 'required|numeric',
+        'longitude' => 'required|numeric',
+        'accuracy' => 'nullable|numeric',
+    ]);
+
+    $employee = auth()->user();
+    $office = $employee->office;
+
+    // Update device location
+    $device = $employee->updateDeviceLocationById(
+        $request->device_id,
+        $request->latitude,
+        $request->longitude,
+        $request->accuracy
+    );
+
+    // Check if within office radius
+    if (!$device->isWithinRadius($office->lat, $office->lon, 0.1)) {
+        return response()->json([
+            'success' => false,
+            'message' => 'You must be within 100m of the office to check in.',
+            'distance' => $device->distanceTo($office->lat, $office->lon),
+        ], 422);
+    }
+
+    // Create attendance record
+    $attendance = Attendance::create([
+        'employee_id' => $employee->id,
+        'device_id' => $device->id,
+        'check_in_at' => now(),
+        'latitude' => $request->latitude,
+        'longitude' => $request->longitude,
+    ]);
+
+    return response()->json(['success' => true, 'attendance' => $attendance]);
+}
+```
+
+---
+
 ## Device Login Notifications
 
 Automatically notify users when they log in from a new device.
@@ -679,6 +967,111 @@ return [
 | `getChannel($id)` | Get channel instance |
 | `getAvailableChannels()` | Get configured channels |
 
+### HasDevices Trait Methods
+
+| Method | Description |
+|--------|-------------|
+| `devices()` | Get all devices relationship |
+| `activeDevices()` | Get active devices |
+| `trustedDevices()` | Get trusted devices |
+| `pushDevices()` | Get devices with FCM tokens |
+| `devicesWithLocation()` | Get devices with GPS data |
+| `gpsEnabledDevices()` | Get devices with GPS enabled |
+| `registerDevice($data, $checkNew)` | Register new device |
+| `registerDeviceLogin($data)` | Register device + record login |
+| `isNewDevice($deviceId, $ip, $userAgent)` | Check if new device |
+| `hasDevices()` | Check if has any devices |
+| `hasPushDevices()` | Check if has push-enabled devices |
+| `getFcmTokens()` | Get all FCM tokens |
+| `getLatestFcmToken()` | Get most recent FCM token |
+| `storeFcmToken($token, $deviceData)` | Store FCM token |
+| `removeFcmToken($token)` | Remove FCM token |
+| `updateDeviceFcmToken($deviceId, $token)` | Update token |
+| `getDevice($id)` | Get device by ID |
+| `getDeviceByUuid($uuid)` | Get device by UUID |
+| `deactivateDevice($id)` | Logout from device |
+| `deactivateAllDevices()` | Logout all devices |
+| `deactivateOtherDevices($currentId)` | Logout other devices |
+| `trustDevice($id)` | Mark device as trusted |
+| `untrustDevice($id)` | Remove trust |
+| `deleteDevice($id)` | Delete device |
+| `cleanOldDevices($days)` | Clean inactive devices |
+| `getDevicesSummary()` | Get all devices as array |
+| `getDevicesCount()` | Count total devices |
+| `getActiveDevicesCount()` | Count active devices |
+| `updateDeviceLocation($id, $lat, $lon, $acc, $loc)` | Update GPS location |
+| `updateDeviceLocationById($deviceId, $lat, $lon)` | Update by device_id |
+| `getDeviceLocations()` | Get all device locations |
+| `getLatestLocation()` | Get most recent location |
+| `getDevicesWithinRadius($lat, $lon, $km)` | Find nearby devices |
+| `hasDeviceWithinRadius($lat, $lon, $km)` | Check if device nearby |
+| `clearAllDeviceLocations()` | Clear all GPS data |
+
+### Device Model Methods
+
+| Method | Description |
+|--------|-------------|
+| `touchLastUsed()` | Update last_used_at |
+| `recordLogin($ip)` | Record login with IP |
+| `updateFcmToken($token)` | Update FCM token |
+| `markAsTrusted()` | Mark as trusted |
+| `markAsUntrusted()` | Remove trust |
+| `deactivate()` | Deactivate device |
+| `activate()` | Activate device |
+| `getDisplayName()` | Get friendly name |
+| `getSummary()` | Get device summary array |
+| `updateLocation($lat, $lon, $acc, $loc)` | Update GPS location |
+| `hasLocation()` | Check if has GPS data |
+| `hasRecentLocation($minutes)` | Check if recent GPS |
+| `getCoordinates()` | Get lat/lon array |
+| `distanceTo($lat, $lon)` | Calculate distance (km) |
+| `isWithinRadius($lat, $lon, $km)` | Check if within radius |
+| `clearLocation()` | Clear GPS data |
+| `getLocationSummary()` | Get location summary |
+| `isNewDevice($user, $deviceId, $ip, $ua)` | Static: check if new |
+| `registerDevice($user, $data)` | Static: register device |
+| `parseBrowser($ua)` | Static: parse browser |
+| `parseOS($ua)` | Static: parse OS |
+| `calculateDistance($lat1, $lon1, $lat2, $lon2)` | Static: calc distance |
+
+### Device Query Scopes
+
+| Scope | Description |
+|-------|-------------|
+| `active()` | Active devices only |
+| `trusted()` | Trusted devices only |
+| `withFcmToken()` | Devices with FCM token |
+| `ofType($type)` | Filter by device type |
+| `recentlyUsed($days)` | Used within X days |
+| `withLocation()` | Has GPS coordinates |
+| `gpsEnabled()` | GPS is enabled |
+| `withinRadius($lat, $lon, $km)` | Within radius of point |
+| `recentlyLocated($minutes)` | Located within X minutes |
+
+### HasFcmTokenNotification Trait Methods
+
+| Method | Description |
+|--------|-------------|
+| `storeFcmToken($token)` | Store FCM token on model |
+| `removeFcmToken()` | Remove FCM token |
+| `getFcmToken()` | Get FCM token |
+| `getAllFcmTokens()` | Get all FCM tokens |
+| `hasFcmToken()` | Check if has token |
+| `hasMultipleFcmTokens()` | Check if multiple tokens |
+| `sendPush($title, $body, $data)` | Send push to primary device |
+| `sendPushToAllDevices($title, $body, $data)` | Send to all devices |
+| `sendPushNotification($title, $body, $data)` | Send via Laravel notification |
+| `sendSilentPush($data)` | Send data-only push |
+| `notifyOrderUpdate($orderId, $status, $msg)` | Order update push |
+| `notifyPayment($type, $amount, $currency)` | Payment push |
+| `notifyPromotion($title, $body, $code, $link)` | Promotion push |
+| `notifyReminder($title, $body, $action)` | Reminder push |
+| `notifyMessage($sender, $preview, $convId)` | Chat message push |
+| `notifySecurityAlert($type, $msg, $details)` | Security alert push |
+| `sendPushToMany($users, $title, $body, $data)` | Static: batch send |
+| `sendPushToTopic($topic, $title, $body, $data)` | Static: topic send |
+| `getPushTopics()` | Get subscribed topics |
+
 ---
 
 ## File Structure
@@ -696,10 +1089,12 @@ app/
 ├── Listeners/
 │   └── SendNewDeviceLoginNotification.php
 ├── Models/
+│   ├── Device.php                      # Device model with GPS
 │   ├── NotificationLog.php
 │   ├── NotificationPreference.php
 │   └── NotificationTemplate.php
 ├── Services/
+│   ├── FirebaseService.php             # FCM integration
 │   └── Notification/
 │       ├── NotificationService.php
 │       └── Channels/
@@ -711,10 +1106,14 @@ app/
 │           ├── TelegramChannel.php
 │           └── WhatsAppChannel.php
 └── Traits/
-    └── HasNotifications.php
+    ├── HasDevices.php                  # Device management trait
+    ├── HasFcmTokenNotification.php     # Lightweight FCM trait
+    └── HasNotifications.php            # Full notification trait
 config/
 └── notifications.php
 database/migrations/
+├── xxx_create_devices_table.php
+├── xxx_add_gps_columns_to_devices_table.php
 ├── xxx_create_notification_preferences_table.php
 ├── xxx_create_notification_templates_table.php
 ├── xxx_create_notification_logs_table.php

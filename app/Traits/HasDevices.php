@@ -375,4 +375,149 @@ trait HasDevices
     {
         return $this->activeDevices()->count();
     }
+
+    // =========================================================================
+    // GPS / LOCATION MANAGEMENT
+    // =========================================================================
+
+    /**
+     * Get devices with location data.
+     */
+    public function devicesWithLocation(): MorphMany
+    {
+        return $this->devices()->withLocation();
+    }
+
+    /**
+     * Get devices with GPS enabled.
+     */
+    public function gpsEnabledDevices(): MorphMany
+    {
+        return $this->devices()->active()->gpsEnabled();
+    }
+
+    /**
+     * Update location for a device.
+     *
+     * @param int $deviceId
+     * @param float $latitude
+     * @param float $longitude
+     * @param float|null $accuracy
+     * @param string|null $location
+     * @return Device|null
+     */
+    public function updateDeviceLocation(
+        int $deviceId,
+        float $latitude,
+        float $longitude,
+        ?float $accuracy = null,
+        ?string $location = null
+    ): ?Device {
+        $device = $this->getDevice($deviceId);
+
+        if ($device) {
+            $device->updateLocation($latitude, $longitude, $accuracy, $location);
+            return $device;
+        }
+
+        return null;
+    }
+
+    /**
+     * Update location for a device by device_id (mobile identifier).
+     */
+    public function updateDeviceLocationById(
+        string $deviceUniqueId,
+        float $latitude,
+        float $longitude,
+        ?float $accuracy = null,
+        ?string $location = null
+    ): ?Device {
+        $device = $this->devices()->where('device_id', $deviceUniqueId)->first();
+
+        if ($device) {
+            $device->updateLocation($latitude, $longitude, $accuracy, $location);
+            return $device;
+        }
+
+        return null;
+    }
+
+    /**
+     * Get all device locations.
+     */
+    public function getDeviceLocations(): array
+    {
+        return $this->devicesWithLocation()
+            ->active()
+            ->orderByDesc('location_updated_at')
+            ->get()
+            ->map(fn(Device $device) => [
+                'id' => $device->id,
+                'uuid' => $device->uuid,
+                'name' => $device->getDisplayName(),
+                'location' => $device->getLocationSummary(),
+            ])
+            ->toArray();
+    }
+
+    /**
+     * Get latest location from any device.
+     */
+    public function getLatestLocation(): ?array
+    {
+        $device = $this->devicesWithLocation()
+            ->active()
+            ->orderByDesc('location_updated_at')
+            ->first();
+
+        return $device?->getCoordinates();
+    }
+
+    /**
+     * Get devices within radius of a point.
+     *
+     * @param float $latitude Center latitude
+     * @param float $longitude Center longitude
+     * @param float $radiusKm Radius in kilometers
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getDevicesWithinRadius(
+        float $latitude,
+        float $longitude,
+        float $radiusKm
+    ) {
+        return $this->devices()
+            ->active()
+            ->withinRadius($latitude, $longitude, $radiusKm)
+            ->get();
+    }
+
+    /**
+     * Check if any device is within radius of a point.
+     */
+    public function hasDeviceWithinRadius(
+        float $latitude,
+        float $longitude,
+        float $radiusKm
+    ): bool {
+        return $this->devices()
+            ->active()
+            ->withinRadius($latitude, $longitude, $radiusKm)
+            ->exists();
+    }
+
+    /**
+     * Clear location for all devices.
+     */
+    public function clearAllDeviceLocations(): int
+    {
+        return $this->devices()->update([
+            'latitude' => null,
+            'longitude' => null,
+            'accuracy' => null,
+            'location_updated_at' => null,
+            'gps_enabled' => false,
+        ]);
+    }
 }
