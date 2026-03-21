@@ -64,4 +64,7 @@ php artisan module:migrate Product
 # Seed only Employee module
 
 php artisan module:seed Employee
-s
+
+# spacific patten
+
+php artisan module:make-controller Dashboard/V1/Cart Order
