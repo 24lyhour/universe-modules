@@ -20,7 +20,12 @@ class RolesAndPermissionsSeeder extends Seeder
         // Define all modules and their resources
         $modules = [
             // Employee Module (includes Geofence/Locations)
-            'employee' => ['employees', 'employee_types', 'attendances', 'locations', 'attendance_scans', 'employee_experiences', 'permission_requests'],
+            'employee' => [
+                'employees', 'employee_types', 'attendances', 'locations',
+                'attendance_scans', 'employee_experiences', 'permission_requests',
+                'employee_family_members', 'employee_academic_levels',
+                'employee_foreign_languages', 'employee_job_experiences'
+            ],
 
             // School Module
             'school' => ['schools', 'departments', 'classrooms', 'courses', 'programs', 'equipment'],
@@ -57,7 +62,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
             // Product Module
             'product' => [
-                'products', 'product_types', 'product_variants', 'product_attributes',
+                'products', 'product_types', 'brands', 'product_variants', 'product_attributes',
                 'product_attribute_values', 'product_add_ons', 'product_upsells'
             ],
 
@@ -141,6 +146,15 @@ class RolesAndPermissionsSeeder extends Seeder
             'permission_requests.reject',
             'permission_requests.review',
             'permission_requests.export',
+            'permission_requests.create_own',
+            'permission_requests.view_own',
+
+            // Employee account management
+            'employees.create_account',
+            'employees.change_password',
+            'employees.manage_account',
+            'employees.bulk_delete',
+            'employees.toggle_status',
 
             // School specific
             'schools.export',
@@ -321,17 +335,31 @@ class RolesAndPermissionsSeeder extends Seeder
         $staff = Role::firstOrCreate(['name' => 'staff', 'guard_name' => 'web']);
         $staff->syncPermissions($staffPermissions);
 
-        // Employee - basic permissions for employees to check attendance
+        // Employee - basic permissions for employees to check attendance and manage their own data
         $employeePermissions = [
             'dashboard.view',
+            'dashboard.employee',
+            // Attendance
             'attendances.view',
             'attendances.view_any',
             'attendances.check_in',
             'attendances.check_out',
             'attendances.scan_qr',
+            // Employee profile
             'employees.view',
             'employees.view_any',
-            'users.force_logout', // Default for all users
+            // Permission requests (own)
+            'permission_requests.view',
+            'permission_requests.view_any',
+            'permission_requests.create',
+            'permission_requests.create_own',
+            'permission_requests.view_own',
+            // Locations (for scanning)
+            'locations.view',
+            'locations.view_any',
+            'locations.scan_qr',
+            // User
+            'users.force_logout',
         ];
         $employee = Role::firstOrCreate(['name' => 'employee', 'guard_name' => 'web']);
         $employee->syncPermissions($employeePermissions);
