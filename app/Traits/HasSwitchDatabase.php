@@ -9,7 +9,7 @@ trait HasSwitchDatabase
      */
     public function getConnectionName()
     {
-        return config('database.order_connection', 'mysql');
+        return config('database.environment_connection', 'mysql');
     }
 
     /**
@@ -17,6 +17,6 @@ trait HasSwitchDatabase
      */
     public function switchDatabase($database)
     {
-        config(['database.order_connection' => $database]);
+        config(['database.environment_connection' => $database]);
     }
 }

@@ -259,5 +259,143 @@ public function run(): void
 
 > **Remember:** `--database=ecommerce_app` (connection name) NOT `--database=e_commerce_app` (database name).
 
-php artisan migrate:status # universe
+```bash
+php artisan migrate:status                          # universe
 php artisan migrate:status --database=ecommerce_app # ecommerce_app
+```
+
+---
+
+## HasSwitchDatabase Trait
+
+Reusable trait to dynamically switch database connections for any model via `.env`.
+
+**Location:** `app/Traits/HasSwitchDatabase.php`
+
+### How It Works
+
+```
+.env (ENVIRONMENT_DB_CONNECTION)
+  → config/database.php (environment_connection)
+    → HasSwitchDatabase trait (getConnectionName)
+      → Model uses the configured database
+```
+
+### Setup
+
+**1. Config** — already added in `config/database.php`:
+
+```php
+'environment_connection' => env('ENVIRONMENT_DB_CONNECTION', 'mysql'),
+```
+
+**2. `.env`** — set which database to use:
+
+```env
+# Use universe (default)
+ENVIRONMENT_DB_CONNECTION=mysql
+
+# Use e-commerce
+ENVIRONMENT_DB_CONNECTION=ecommerce_app
+```
+
+**3. Add trait to any model:**
+
+```php
+use App\Traits\HasSwitchDatabase;
+
+class Order extends Model
+{
+    use HasSwitchDatabase;
+}
+
+class Cart extends Model
+{
+    use HasSwitchDatabase;
+}
+```
+
+### Switch Database
+
+**Via `.env` (persistent):**
+
+```env
+ENVIRONMENT_DB_CONNECTION=ecommerce_app
+```
+
+Then clear config cache:
+
+```bash
+php artisan config:clear
+```
+
+**Via code (runtime only):**
+
+```php
+$order = new Order();
+$order->switchDatabase('ecommerce_app');
+
+// Or switch back
+$order->switchDatabase('mysql');
+```
+
+### Available Connections
+
+| `.env` Value      | Database         | Description     |
+| ----------------- | ---------------- | --------------- |
+| `mysql` (default) | `universe`       | Core app data   |
+| `ecommerce_app`   | `e_commerce_app` | E-commerce data |
+
+### Example: Order Module
+
+```php
+// app/Traits/HasSwitchDatabase.php (already created)
+namespace App\Traits;
+
+trait HasSwitchDatabase
+{
+    public function getConnectionName()
+    {
+        return config('database.environment_connection', 'mysql');
+    }
+
+    public function switchDatabase($database)
+    {
+        config(['database.environment_connection' => $database]);
+    }
+}
+```
+
+```php
+// Modules/Order/app/Models/Order.php
+namespace Modules\Order\Models;
+
+use App\Traits\HasSwitchDatabase;
+use Illuminate\Database\Eloquent\Model;
+
+class Order extends Model
+{
+    use HasSwitchDatabase;
+
+    protected $table = 'order_orders';
+}
+```
+
+### Which Models Should Use This Trait?
+
+Add `use HasSwitchDatabase;` to any model whose table exists in **both** databases:
+
+| Module | Models                                                                                                          |
+| ------ | --------------------------------------------------------------------------------------------------------------- |
+| Order  | Order, OrderItem, Cart, CartItem, OrderShipping, ProductReview, OutletReview, Refund, Transaction, ShippingZone |
+
+> Models **without** the trait always use `universe` (default `mysql` connection).
+
+### Quick Reference
+
+| Action                  | How                                                                |
+| ----------------------- | ------------------------------------------------------------------ |
+| Switch to ecommerce     | Set `ENVIRONMENT_DB_CONNECTION=ecommerce_app` in `.env`            |
+| Switch back to universe | Set `ENVIRONMENT_DB_CONNECTION=mysql` in `.env` or remove the line |
+| Switch at runtime       | `$model->switchDatabase('ecommerce_app')`                          |
+| Clear config cache      | `php artisan config:clear`                                         |

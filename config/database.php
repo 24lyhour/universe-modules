@@ -20,6 +20,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    |  Switch change data base for multiple database
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which of the database connections below you wish
+    | to use as your multiple database connection for database operations. This is
+    | the connection which will be utilized unless another connection
+    | is explicitly specified when you execute a query / statement. ENVIRONMENT_DB_CONNECTION=Name Database
+    |
+    */
+    'environment_connection' => env('ENVIRONMENT_DB_CONNECTION', 'mysql'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Database Connections
     |--------------------------------------------------------------------------
     |
