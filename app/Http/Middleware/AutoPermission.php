@@ -142,6 +142,86 @@ class AutoPermission
         'employee.attendances.import.store' => 'attendances.import',
         'employee.attendances.import.preview' => 'attendances.import',
         'employee.attendances.export' => 'attendances.export',
+
+        // ==========================================
+        // ORDER MODULE ROUTES
+        // ==========================================
+
+        // Orders
+        'order.orders.index' => 'orders.view_any',
+        'order.orders.create' => 'orders.create',
+        'order.orders.store' => 'orders.create',
+        'order.orders.show' => 'orders.view',
+        'order.orders.edit' => 'orders.update',
+        'order.orders.update' => 'orders.update',
+        'order.orders.destroy' => 'orders.delete',
+        'order.orders.status-modal' => 'orders.status_modal',
+        'order.orders.update-status' => 'orders.update_status',
+        'order.orders.update-payment-status' => 'orders.update_payment_status',
+        'order.orders.export' => 'orders.export',
+        'order.orders.import' => 'orders.import',
+        'order.orders.cancel' => 'orders.cancel',
+        'order.orders.refund' => 'orders.refund',
+        'order.orders.print' => 'orders.print',
+        'order.orders.track' => 'orders.track',
+        'order.orders.assign-driver' => 'orders.assign_driver',
+        'order.orders.bulk-delete' => 'orders.bulk_delete',
+
+        // Carts
+        'order.carts.index' => 'carts.view_any',
+        'order.carts.create' => 'carts.create',
+        'order.carts.store' => 'carts.create',
+        'order.carts.show' => 'carts.view',
+        'order.carts.edit' => 'carts.update',
+        'order.carts.update' => 'carts.update',
+        'order.carts.destroy' => 'carts.delete',
+        'order.carts.convert-to-order' => 'carts.convert_to_order',
+        'order.carts.toggle-status' => 'carts.toggle_status',
+        'order.carts.clear-items' => 'carts.clear_items',
+        'order.carts.export' => 'carts.export',
+        'order.carts.bulk-delete' => 'carts.bulk_delete',
+
+        // Product Reviews
+        'order.product-reviews.index' => 'product_reviews.view_any',
+        'order.product-reviews.create' => 'product_reviews.create',
+        'order.product-reviews.store' => 'product_reviews.create',
+        'order.product-reviews.show' => 'product_reviews.view',
+        'order.product-reviews.edit' => 'product_reviews.update',
+        'order.product-reviews.update' => 'product_reviews.update',
+        'order.product-reviews.destroy' => 'product_reviews.delete',
+        'order.product-reviews.reply-modal' => 'product_reviews.reply',
+        'order.product-reviews.reply' => 'product_reviews.reply',
+        'order.product-reviews.toggle-active' => 'product_reviews.toggle_active',
+        'order.product-reviews.export' => 'product_reviews.export',
+        'order.product-reviews.bulk-delete' => 'product_reviews.bulk_delete',
+
+        // Outlet Reviews
+        'order.outlet-reviews.index' => 'outlet_reviews.view_any',
+        'order.outlet-reviews.create' => 'outlet_reviews.create',
+        'order.outlet-reviews.store' => 'outlet_reviews.create',
+        'order.outlet-reviews.show' => 'outlet_reviews.view',
+        'order.outlet-reviews.edit' => 'outlet_reviews.update',
+        'order.outlet-reviews.update' => 'outlet_reviews.update',
+        'order.outlet-reviews.destroy' => 'outlet_reviews.delete',
+        'order.outlet-reviews.reply-modal' => 'outlet_reviews.reply',
+        'order.outlet-reviews.reply' => 'outlet_reviews.reply',
+        'order.outlet-reviews.toggle-active' => 'outlet_reviews.toggle_active',
+        'order.outlet-reviews.export' => 'outlet_reviews.export',
+        'order.outlet-reviews.bulk-delete' => 'outlet_reviews.bulk_delete',
+
+        // Shipping Zones
+        'order.shipping-zones.index' => 'shipping_zones.view_any',
+        'order.shipping-zones.create' => 'shipping_zones.create',
+        'order.shipping-zones.store' => 'shipping_zones.create',
+        'order.shipping-zones.show' => 'shipping_zones.view',
+        'order.shipping-zones.edit' => 'shipping_zones.update',
+        'order.shipping-zones.update' => 'shipping_zones.update',
+        'order.shipping-zones.destroy' => 'shipping_zones.delete',
+        'order.shipping-zones.toggle-active' => 'shipping_zones.toggle_active',
+        'order.shipping-zones.check-delivery' => 'shipping_zones.check_delivery',
+        'order.shipping-zones.export' => 'shipping_zones.export',
+        'order.shipping-zones.import' => 'shipping_zones.import',
+        'order.shipping-zones.bulk-delete' => 'shipping_zones.bulk_delete',
     ];
 
     /**

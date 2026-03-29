@@ -57,12 +57,16 @@ import {
     School,
     Settings,
     Shield,
+    ShoppingBag,
+    ShoppingCart,
     Tag,
     Tags,
     Users,
     UtensilsCrossed,
     Wallet,
     Wrench,
+    Store,
+    Star,
     type LucideIcon,
 } from 'lucide-vue-next';
 import { ref, computed, onUnmounted } from 'vue';
@@ -162,12 +166,17 @@ const iconMap: Record<string, LucideIcon> = {
     School,
     Settings,
     Shield,
+    ShoppingBag,
+    ShoppingCart,
     Tag,
     Tags,
     Users,
     UtensilsCrossed,
     Wallet,
     Wrench,
+    Store,
+    Star,
+
 };
 
 const getIcon = (iconName: string | null | undefined): LucideIcon | null => {

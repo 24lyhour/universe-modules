@@ -70,7 +70,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'booking' => ['bookings'],
 
             // Order Module
-            'order' => ['orders'],
+            'order' => [
+                'orders', 'order_items', 'order_shipping',
+                'carts', 'cart_items',
+                'product_reviews', 'outlet_reviews',
+                'shipping_zones', 'refunds'
+            ],
 
             // Payment Module
             'payment' => ['payments'],
@@ -240,6 +245,63 @@ class RolesAndPermissionsSeeder extends Seeder
             // API access
             'api.access',
             'api.manage_tokens',
+
+            // ==========================================
+            // ORDER MODULE PERMISSIONS
+            // ==========================================
+
+            // Order specific
+            'orders.export',
+            'orders.import',
+            'orders.update_status',
+            'orders.update_payment_status',
+            'orders.status_modal',
+            'orders.cancel',
+            'orders.refund',
+            'orders.print',
+            'orders.track',
+            'orders.assign_driver',
+            'orders.view_map',
+            'orders.bulk_update_status',
+            'orders.bulk_delete',
+
+            // Cart specific
+            'carts.export',
+            'carts.convert_to_order',
+            'carts.toggle_status',
+            'carts.clear_items',
+            'carts.checkout',
+            'carts.bulk_delete',
+
+            // Product Reviews specific
+            'product_reviews.export',
+            'product_reviews.reply',
+            'product_reviews.toggle_active',
+            'product_reviews.approve',
+            'product_reviews.reject',
+            'product_reviews.bulk_delete',
+
+            // Outlet Reviews specific
+            'outlet_reviews.export',
+            'outlet_reviews.reply',
+            'outlet_reviews.toggle_active',
+            'outlet_reviews.approve',
+            'outlet_reviews.reject',
+            'outlet_reviews.bulk_delete',
+
+            // Shipping Zones specific
+            'shipping_zones.export',
+            'shipping_zones.import',
+            'shipping_zones.toggle_active',
+            'shipping_zones.check_delivery',
+            'shipping_zones.view_map',
+            'shipping_zones.bulk_delete',
+
+            // Refunds specific
+            'refunds.export',
+            'refunds.approve',
+            'refunds.reject',
+            'refunds.process',
         ];
 
         // Create permissions for each module resource

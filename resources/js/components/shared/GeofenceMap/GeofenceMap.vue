@@ -22,6 +22,8 @@ interface Props {
     height?: string;
     zoom?: number;
     readonly?: boolean;
+    /** Mode: 'location' = simple pin picker (for Outlet), 'geofence' = full zone editor (for ShippingZone) */
+    mode?: 'location' | 'geofence';
     geofenceType?: GeofenceType;
     latitude?: number | null;
     longitude?: number | null;
@@ -36,6 +38,7 @@ const props = withDefaults(defineProps<Props>(), {
     height: '400px',
     zoom: 16,
     readonly: false,
+    mode: 'geofence',
     geofenceType: 'circle',
     latitude: null,
     longitude: null,
@@ -45,6 +48,9 @@ const props = withDefaults(defineProps<Props>(), {
     referenceLongitude: null,
     dynamicRadius: 100,
 });
+
+// Computed: is location-only mode (simple pin picker)
+const isLocationMode = computed(() => props.mode === 'location');
 
 const emit = defineEmits<{
     'update:latitude': [value: number | null];
@@ -61,7 +67,7 @@ const map = ref<any>(null);
 const isLoading = ref(true);
 const isGettingLocation = ref(false);
 const locationError = ref<string | null>(null);
-const currentLayer = ref<'street' | 'satellite' | 'terrain' | 'dark'>('street');
+const currentLayer = ref<'street' | 'satellite' | 'terrain' | 'dark'>('satellite');
 const tileLayer = ref<any>(null);
 
 // Search state
@@ -138,14 +144,24 @@ const initMap = async () => {
 
     // Default center (Cambodia)
     const defaultCenter: [number, number] = [11.5564, 104.9282];
-    const center: [number, number] = props.latitude && props.longitude
-        ? [props.latitude, props.longitude]
-        : defaultCenter;
+    // Priority: 1) Zone coordinates, 2) Reference coordinates (outlet), 3) Default
+    let center: [number, number];
+    if (props.latitude != null && props.longitude != null) {
+        center = [props.latitude, props.longitude];
+    } else if (props.referenceLatitude != null && props.referenceLongitude != null) {
+        center = [props.referenceLatitude, props.referenceLongitude];
+    } else {
+        center = defaultCenter;
+    }
+
+    // Determine zoom level: use props.zoom if we have coordinates, otherwise 12 for default view
+    const hasCoordinates = (props.latitude != null && props.longitude != null) ||
+                           (props.referenceLatitude != null && props.referenceLongitude != null);
 
     // Create map
     map.value = L.map(mapContainer.value, {
         center,
-        zoom: props.latitude ? props.zoom : 12,
+        zoom: hasCoordinates ? props.zoom : 12,
         zoomControl: true,
     });
 
@@ -164,11 +180,19 @@ const initMap = async () => {
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
     });
 
-    // Initialize existing geofence
-    if (props.geofenceType === 'circle' && props.latitude && props.longitude) {
-        createCircle(props.latitude, props.longitude, props.radius);
-    } else if (props.geofenceType === 'polygon' && props.polygonCoordinates?.length) {
-        createPolygon(props.polygonCoordinates);
+    // Initialize based on mode
+    if (isLocationMode.value) {
+        // Location mode: just show a marker if coordinates exist
+        if (props.latitude != null && props.longitude != null) {
+            createLocationMarker(props.latitude, props.longitude, true); // Center on initial load
+        }
+    } else {
+        // Geofence mode: show circle/polygon
+        if (props.geofenceType === 'circle' && props.latitude != null && props.longitude != null) {
+            createCircle(props.latitude, props.longitude, props.radius || 100);
+        } else if (props.geofenceType === 'polygon' && props.polygonCoordinates?.length) {
+            createPolygon(props.polygonCoordinates);
+        }
     }
 
     // Add click handler for drawing
@@ -184,7 +208,17 @@ const handleMapClick = (e: any) => {
 
     const { lat, lng } = e.latlng;
 
-    if (drawMode.value === 'circle') {
+    // Location mode: just place/move marker
+    if (isLocationMode.value) {
+        clearGeofence();
+        createLocationMarker(lat, lng, false); // Don't auto-center on click
+        emit('update:latitude', lat);
+        emit('update:longitude', lng);
+        return;
+    }
+
+    // Handle circle mode - works both when drawMode is 'circle' or when geofenceType is 'circle'
+    if (drawMode.value === 'circle' || (props.geofenceType === 'circle' && drawMode.value === 'none')) {
         clearGeofence();
         createCircle(lat, lng, localRadius.value);
         emitChange();
@@ -194,16 +228,56 @@ const handleMapClick = (e: any) => {
     }
 };
 
+/**
+ * Create a simple location marker (for location mode - Outlet)
+ */
+const createLocationMarker = (lat: number, lng: number, shouldCenter: boolean = true) => {
+    if (!map.value || !L) return;
+
+    // Create marker icon - pin tip at bottom center
+    const markerIcon = L.divIcon({
+        html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:40px;height:40px;color:#ef4444;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">
+            <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+        </svg>`,
+        className: 'location-marker',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40], // Pin tip at bottom-center
+    });
+
+    centerMarker.value = L.marker([lat, lng], {
+        icon: markerIcon,
+        draggable: !props.readonly,
+    }).addTo(map.value);
+
+    // Handle marker drag
+    if (!props.readonly) {
+        centerMarker.value.on('dragend', (e: any) => {
+            const marker = e.target;
+            const pos = marker.getLatLng();
+            emit('update:latitude', pos.lat);
+            emit('update:longitude', pos.lng);
+        });
+    }
+
+    // Only center map when explicitly requested (not on every click)
+    if (shouldCenter) {
+        map.value.setView([lat, lng], map.value.getZoom()); // Keep current zoom level
+    }
+};
+
 const createCircle = (lat: number, lng: number, radius: number) => {
     if (!map.value || !L) return;
 
-    // Create circle
+    // Ensure radius is valid (minimum 10 meters)
+    const safeRadius = Math.max(radius || 100, 10);
+
+    // Create circle with more visible styling
     currentCircle.value = L.circle([lat, lng], {
-        radius,
+        radius: safeRadius,
         color: '#3b82f6',
         fillColor: '#3b82f6',
-        fillOpacity: 0.2,
-        weight: 2,
+        fillOpacity: 0.25,
+        weight: 3,
     }).addTo(map.value);
 
     // Create center marker (draggable if not readonly)
@@ -265,7 +339,7 @@ const addPolygonPoint = (lat: number, lng: number) => {
 
     // Add marker for this point
     const markerIcon = L.divIcon({
-        html: `<div style="width: 16px; height: 16px; background: #22c55e; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3); cursor: move;"></div>`,
+        html: `<div class="polygon-vertex" style="width: 16px; height: 16px; background: #22c55e; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.4); cursor: grab;"></div>`,
         className: 'polygon-point-marker',
         iconSize: [16, 16],
         iconAnchor: [8, 8],
@@ -274,9 +348,14 @@ const addPolygonPoint = (lat: number, lng: number) => {
     const marker = L.marker([lat, lng], {
         icon: markerIcon,
         draggable: true,
+        zIndexOffset: 2000,
     }).addTo(map.value);
 
     // Add drag handlers
+    marker.on('dragstart', () => {
+        marker.getElement()?.querySelector('.polygon-vertex')?.classList.add('dragging');
+    });
+
     marker.on('drag', () => {
         const pos = marker.getLatLng();
         tempPolygonPoints.value[pointIndex] = { lat: pos.lat, lng: pos.lng };
@@ -284,6 +363,7 @@ const addPolygonPoint = (lat: number, lng: number) => {
     });
 
     marker.on('dragend', () => {
+        marker.getElement()?.querySelector('.polygon-vertex')?.classList.remove('dragging');
         const pos = marker.getLatLng();
         tempPolygonPoints.value[pointIndex] = { lat: pos.lat, lng: pos.lng };
     });
@@ -346,30 +426,38 @@ const createPolygon = (coordinates: [number, number][]) => {
         fillColor: '#22c55e',
         fillOpacity: 0.2,
         weight: 2,
+        // Allow clicks to pass through to markers underneath
+        interactive: props.readonly,
     }).addTo(map.value);
 
     // Add draggable markers for each vertex
     coordinates.forEach((coord) => {
         const markerIcon = L.divIcon({
-            html: `<div style="width: 20px; height: 20px; background: #22c55e; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.4); cursor: move;"></div>`,
+            html: `<div class="polygon-vertex" style="width: 16px; height: 16px; background: #22c55e; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.4); cursor: ${props.readonly ? 'default' : 'grab'};"></div>`,
             className: 'polygon-point-marker',
-            iconSize: [20, 20],
-            iconAnchor: [10, 10],
+            iconSize: [16, 16],
+            iconAnchor: [8, 8],
         });
 
         const marker = L.marker(coord, {
             icon: markerIcon,
             draggable: !props.readonly,
-            zIndexOffset: 1000,
+            zIndexOffset: 2000,
         }).addTo(map.value!);
 
         if (!props.readonly) {
+            marker.on('dragstart', () => {
+                // Visual feedback when dragging starts
+                marker.getElement()?.querySelector('.polygon-vertex')?.classList.add('dragging');
+            });
+
             marker.on('drag', () => {
                 const latlngs = polygonMarkers.value.map(m => m.getLatLng());
                 currentPolygon.value?.setLatLngs(latlngs);
             });
 
             marker.on('dragend', () => {
+                marker.getElement()?.querySelector('.polygon-vertex')?.classList.remove('dragging');
                 const coords: [number, number][] = polygonMarkers.value.map(m => {
                     const pos = m.getLatLng();
                     return [pos.lat, pos.lng];
@@ -428,8 +516,15 @@ const cancelDraw = () => {
 };
 
 const getCurrentLocation = () => {
+    // Check if geolocation is supported
     if (!navigator.geolocation) {
-        locationError.value = 'Geolocation is not supported';
+        locationError.value = 'Geolocation is not supported by your browser';
+        return;
+    }
+
+    // Check if we're in a secure context (HTTPS required for geolocation)
+    if (typeof window !== 'undefined' && window.isSecureContext === false) {
+        locationError.value = 'Geolocation requires HTTPS. Please use a secure connection.';
         return;
     }
 
@@ -445,8 +540,16 @@ const getCurrentLocation = () => {
                 map.value.setView([latitude, longitude], props.zoom);
             }
 
-            // Always create a circle at current location (for circle mode)
-            // For polygon mode, just pan to location
+            // Location mode: just place marker
+            if (isLocationMode.value) {
+                clearGeofence();
+                createLocationMarker(latitude, longitude, false); // Map already centered by setView above
+                emit('update:latitude', latitude);
+                emit('update:longitude', longitude);
+                return;
+            }
+
+            // Geofence mode: create circle or just pan for polygon
             if (props.geofenceType === 'circle' || props.geofenceType === 'polygon') {
                 if (props.geofenceType === 'circle') {
                     clearGeofence();
@@ -461,18 +564,20 @@ const getCurrentLocation = () => {
         },
         (error) => {
             isGettingLocation.value = false;
+            // Use numeric codes for better browser compatibility
+            // 1 = PERMISSION_DENIED, 2 = POSITION_UNAVAILABLE, 3 = TIMEOUT
             switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    locationError.value = 'Location permission denied. Please allow location access.';
+                case 1: // PERMISSION_DENIED
+                    locationError.value = 'Location permission denied. Please allow location access in your browser settings.';
                     break;
-                case error.POSITION_UNAVAILABLE:
-                    locationError.value = 'Location unavailable. Please try again.';
+                case 2: // POSITION_UNAVAILABLE
+                    locationError.value = 'Location unavailable. Please check your device GPS settings.';
                     break;
-                case error.TIMEOUT:
+                case 3: // TIMEOUT
                     locationError.value = 'Location request timed out. Please try again.';
                     break;
                 default:
-                    locationError.value = error.message;
+                    locationError.value = error.message || 'Failed to get location. Please try again.';
             }
         },
         { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
@@ -589,8 +694,15 @@ const selectSearchResult = (result: { display_name: string; lat: string; lon: st
         map.value.setView([lat, lng], 17);
     }
 
-    // If circle mode, create geofence at selected location
-    if (props.geofenceType === 'circle') {
+    // Location mode: place marker
+    if (isLocationMode.value) {
+        clearGeofence();
+        createLocationMarker(lat, lng, false); // Map already centered by setView above
+        emit('update:latitude', lat);
+        emit('update:longitude', lng);
+    }
+    // Geofence mode: create circle if circle mode
+    else if (props.geofenceType === 'circle') {
         clearGeofence();
         createCircle(lat, lng, localRadius.value);
         emitChange();
@@ -614,6 +726,50 @@ watch(() => props.radius, (newRadius) => {
         updateCircleRadius(newRadius);
     }
 });
+
+// Watch for reference coordinates (outlet location) to center map when outlet changes
+// This only centers the map - it does NOT create a zone (user must click to draw)
+watch(
+    () => [props.referenceLatitude, props.referenceLongitude] as const,
+    ([newRefLat, newRefLng]) => {
+        if (!map.value || !L || isLoading.value) return;
+
+        // Only center if we don't have zone coordinates yet (Create mode)
+        // and the outlet has a valid location
+        if (props.latitude == null && props.longitude == null &&
+            newRefLat != null && newRefLng != null) {
+            map.value.setView([newRefLat, newRefLng], props.zoom);
+        }
+    }
+);
+
+// Watch for latitude/longitude/polygon changes to render zone on Edit page
+watch(
+    () => [props.latitude, props.longitude, props.geofenceType, props.polygonCoordinates] as const,
+    ([newLat, newLng, newType, newPolygon]) => {
+        // Only proceed if map is ready and no zone exists yet
+        if (!map.value || !L || isLoading.value) return;
+
+        // Skip if we already have a geofence drawn
+        if (currentCircle.value || currentPolygon.value || centerMarker.value) return;
+
+        // Render zone based on type
+        if (isLocationMode.value) {
+            // Location mode: show marker
+            if (newLat != null && newLng != null) {
+                createLocationMarker(newLat, newLng, true);
+            }
+        } else {
+            // Geofence mode: show circle or polygon
+            if (newType === 'circle' && newLat != null && newLng != null) {
+                createCircle(newLat, newLng, localRadius.value);
+            } else if (newType === 'polygon' && newPolygon?.length && newPolygon.length >= 3) {
+                createPolygon(newPolygon);
+            }
+        }
+    },
+    { immediate: true }
+);
 
 // Computed
 const hasGeofence = computed(() => {
@@ -756,8 +912,8 @@ const formattedPerimeter = computed(() => {
 
         <!-- Clean Toolbar -->
         <div v-if="!readonly" class="flex items-center justify-between gap-2">
-            <!-- Draw Tools -->
-            <div class="flex items-center gap-1 bg-background border rounded-lg p-1">
+            <!-- Draw Tools (hidden in location mode) -->
+            <div v-if="!isLocationMode" class="flex items-center gap-1 bg-background border rounded-lg p-1">
                 <button
                     type="button"
                     :class="[
@@ -786,6 +942,12 @@ const formattedPerimeter = computed(() => {
                 </button>
             </div>
 
+            <!-- Location mode hint -->
+            <div v-else class="flex items-center gap-2 text-sm text-muted-foreground">
+                <MapPin class="h-4 w-4" />
+                <span>Click on the map to set location</span>
+            </div>
+
             <!-- Actions -->
             <div class="flex items-center gap-1">
                 <button
@@ -798,7 +960,7 @@ const formattedPerimeter = computed(() => {
                     <span class="hidden sm:inline">{{ isGettingLocation ? 'Getting...' : 'My Location' }}</span>
                 </button>
                 <button
-                    v-if="hasGeofence"
+                    v-if="hasGeofence || centerMarker"
                     type="button"
                     class="flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md border bg-background hover:bg-destructive hover:text-destructive-foreground transition-all"
                     @click="clearGeofence"
@@ -834,8 +996,8 @@ const formattedPerimeter = computed(() => {
             </div>
         </div>
 
-        <!-- Draw mode indicator -->
-        <div v-if="drawMode !== 'none'" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400">
+        <!-- Draw mode indicator (hidden in location mode) -->
+        <div v-if="!isLocationMode && drawMode !== 'none'" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-600 dark:text-blue-400">
             <Crosshair class="h-4 w-4 animate-pulse" />
             <span class="text-sm font-medium">{{ drawModeLabel }}</span>
             <div class="flex-1" />
@@ -877,8 +1039,8 @@ const formattedPerimeter = computed(() => {
             </div>
         </div>
 
-        <!-- Circle radius control -->
-        <div v-if="geofenceType === 'circle' && !readonly && hasGeofence" class="flex items-center gap-4 px-4 py-3 bg-muted/50 rounded-lg">
+        <!-- Circle radius control (hidden in location mode) -->
+        <div v-if="!isLocationMode && geofenceType === 'circle' && !readonly && hasGeofence" class="flex items-center gap-4 px-4 py-3 bg-muted/50 rounded-lg">
             <div class="flex items-center gap-2 shrink-0">
                 <Circle class="h-4 w-4 text-blue-500" />
                 <span class="text-sm font-medium">Radius</span>
@@ -887,15 +1049,15 @@ const formattedPerimeter = computed(() => {
                 <Slider
                     v-model="radiusSliderValue"
                     :min="10"
-                    :max="1000"
+                    :max="10000"
                     :step="10"
                 />
             </div>
-            <Badge variant="outline" class="font-mono text-sm">{{ localRadius }}m</Badge>
+            <Badge variant="outline" class="font-mono text-sm">{{ localRadius >= 1000 ? (localRadius / 1000).toFixed(1) + 'km' : localRadius + 'm' }}</Badge>
         </div>
 
-        <!-- Polygon info -->
-        <div v-if="geofenceType === 'polygon' && polygonMarkers.length >= 3" class="px-4 py-3 bg-green-500/10 rounded-lg space-y-2">
+        <!-- Polygon info (hidden in location mode) -->
+        <div v-if="!isLocationMode && geofenceType === 'polygon' && polygonMarkers.length >= 3" class="px-4 py-3 bg-green-500/10 rounded-lg space-y-2">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2 text-green-600 dark:text-green-400">
                     <Hexagon class="h-4 w-4" />
@@ -918,7 +1080,8 @@ const formattedPerimeter = computed(() => {
 </template>
 
 <style>
-.custom-marker {
+.custom-marker,
+.location-marker {
     background: transparent !important;
     border: none !important;
 }
@@ -926,11 +1089,27 @@ const formattedPerimeter = computed(() => {
 .polygon-point-marker {
     background: transparent !important;
     border: none !important;
-    z-index: 1000 !important;
+    z-index: 2000 !important;
 }
 
 .polygon-point-marker > div {
     pointer-events: auto !important;
+}
+
+.polygon-vertex {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.polygon-vertex:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+    cursor: grab !important;
+}
+
+.polygon-vertex.dragging {
+    transform: scale(1.3);
+    box-shadow: 0 6px 16px rgba(34, 197, 94, 0.6) !important;
+    cursor: grabbing !important;
 }
 
 .leaflet-container {
@@ -938,6 +1117,10 @@ const formattedPerimeter = computed(() => {
 }
 
 .leaflet-marker-draggable {
-    cursor: move !important;
+    cursor: grab !important;
+}
+
+.leaflet-marker-draggable:active {
+    cursor: grabbing !important;
 }
 </style>

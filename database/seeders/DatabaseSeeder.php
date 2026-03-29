@@ -5,8 +5,11 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Modules\School\Database\Seeders\SchoolDatabaseSeeder;
+use Modules\Customer\Database\Seeders\CustomerDatabaseSeeder;
+use Modules\Order\Database\Seeders\OrderDatabaseSeeder;
 use Modules\Outlet\Database\Seeders\OutletDatabaseSeeder;
+use Modules\Product\Database\Seeders\ProductDatabaseSeeder;
+use Modules\School\Database\Seeders\SchoolDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,15 +28,16 @@ class DatabaseSeeder extends Seeder
 
         // Module seeders
         $this->call([
-SchoolDatabaseSeeder::class,
-OutletDatabaseSeeder::class,
+            SchoolDatabaseSeeder::class,
+            OutletDatabaseSeeder::class,
+            CustomerDatabaseSeeder::class,
+            ProductDatabaseSeeder::class,
+            OrderDatabaseSeeder::class, // Must run after Customer, Product, Outlet
             // \Modules\Blog\Database\Seeders\BlogDatabaseSeeder::class,
             // \Modules\Company\Database\Seeders\CompanyDatabaseSeeder::class,
-            // \Modules\Customer\Database\Seeders\CustomerDatabaseSeeder::class,
             // \Modules\Employee\Database\Seeders\EmployeeDatabaseSeeder::class,
             // \Modules\Hotel\Database\Seeders\HotelDatabaseSeeder::class,
             // \Modules\Menu\Database\Seeders\MenuDatabaseSeeder::class,
-            // \Modules\Product\Database\Seeders\ProductDatabaseSeeder::class,
             // \Modules\Porfolio\Database\Seeders\PorfolioDatabaseSeeder::class,
         ]);
     }

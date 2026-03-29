@@ -55,6 +55,7 @@ import { Button } from '@/components/ui/button';
 import {
     Dialog,
     DialogContent,
+    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogFooter,
@@ -882,6 +883,7 @@ const closeAiDialog = () => {
             <DialogContent class="sm:max-w-md z-100">
                 <DialogHeader>
                     <DialogTitle>Insert Link</DialogTitle>
+                    <DialogDescription>Add a URL to create a clickable link.</DialogDescription>
                 </DialogHeader>
                 <div class="space-y-4 py-4">
                     <div class="space-y-2">
@@ -909,6 +911,7 @@ const closeAiDialog = () => {
                         <Sparkles class="h-5 w-5 text-purple-500" />
                         AI Assistant
                     </DialogTitle>
+                    <DialogDescription>Use AI to generate, improve, or transform your content.</DialogDescription>
                 </DialogHeader>
 
                 <div class="space-y-4 py-4">

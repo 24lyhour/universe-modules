@@ -1,7 +1,7 @@
-import OrderController from './OrderController'
+import Dashboard from './Dashboard'
 
 const Controllers = {
-    OrderController: Object.assign(OrderController, OrderController),
+    Dashboard: Object.assign(Dashboard, Dashboard),
 }
 
 export default Controllers

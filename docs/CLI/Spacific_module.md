@@ -29,7 +29,7 @@ php artisan module:migrate-refresh ModuleName
 
 # Create a migration in a specific module
 
-php artisan module:make-migration create_table_name_table ModuleName
+php artisan module:make-migration create_table_product_promotion_table ModuleName
 Other Useful Module Commands
 
 # Create model in module
@@ -67,4 +67,23 @@ php artisan module:seed Employee
 
 # spacific patten
 
-php artisan module:make-controller Dashboard/V1/Cart Order
+Here are the CLI commands to create a Form Request in Laravel:
+
+Standard Laravel
+
+php artisan make:request StoreOrderRequest
+php artisan make:request UpdateOrderRequest
+For Module (nwidart/laravel-modules)
+
+# Basic
+
+php artisan module:make-request StoreShippingZoneRequest Order
+
+# With subdirectory
+
+php artisan module:make-request Dashboard/V1/ShippingZone/StoreShippingZoneRequest Order
+php artisan module:make-request Dashboard/V1/ShippingZoneRequest/UpdateShippingZoneRequest Order
+This creates files at:
+
+Modules/Order/app/Http/Requests/Dashboard/V1/ShippingZone/StoreShippingZoneRequest.php
+Modules/Order/app/Http/Requests/Dashboard/V1/ShippingZone/UpdateShippingZoneRequest.php

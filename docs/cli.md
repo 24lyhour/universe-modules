@@ -1182,3 +1182,6 @@ php artisan module:make-controller Api/V1/EmployeeControllerName Employee
 For example:
 
 php artisan module:make-controller Api/V1/EmployeeController Employee
+
+make module
+a module:make-model Cart Order
