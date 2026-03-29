@@ -22,6 +22,7 @@ use Modules\School\Models\School;
 use Modules\School\Models\Department;
 use Modules\School\Models\Program;
 use Modules\School\Models\Classroom;
+use Modules\Order\Models\Order;
 use Modules\Wallets\Models\Wallet;
 use Modules\Wallets\Models\Transaction;
 
@@ -101,6 +102,9 @@ class DashboardController extends Controller
         if (in_array('product', $activeModules)) {
             $widgets['product'] = $this->getProductStats();
         }
+        if (in_array('order', $activeModules)) {
+            $widgets['order'] = $this->getOrderStats();
+        }
         if (in_array('wallets', $activeModules)) {
             $widgets['wallets'] = $this->getWalletStats();
         }
@@ -123,6 +127,9 @@ class DashboardController extends Controller
                 : null,
             'productWidget' => in_array('product', $activeModules)
                 ? $this->getProductWidgetData($dateRange)
+                : null,
+            'orderWidget' => in_array('order', $activeModules)
+                ? $this->getOrderWidgetData($dateRange)
                 : null,
             'employeeWidget' => in_array('employee', $activeModules)
                 ? $this->getEmployeeWidgetData($dateRange)
@@ -262,6 +269,137 @@ class DashboardController extends Controller
             'out_of_stock' => Product::where('stock', '<=', 0)->count(),
             'low_stock' => Product::where('stock', '>', 0)->where('stock', '<=', 10)->count(),
             'discontinued' => Product::where('status', 'discontinued')->count(),
+        ];
+    }
+
+    private function getOrderStats(): array
+    {
+        $total = Order::count();
+        $completed = Order::where('status', 'completed')->count();
+        $pending = Order::where('status', 'pending')->count();
+        $cancelled = Order::where('status', 'cancelled')->count();
+        $totalRevenue = (float) Order::where('status', 'completed')->sum('total_amount');
+        $averageOrderValue = $completed > 0 ? round($totalRevenue / $completed, 2) : 0;
+
+        // Growth: compare current 30 days vs previous 30 days
+        $currentPeriodTotal = Order::where('created_at', '>=', now()->subDays(30))->count();
+        $previousPeriodTotal = Order::whereBetween('created_at', [now()->subDays(60), now()->subDays(30)])->count();
+        $growthPercent = $previousPeriodTotal > 0
+            ? round((($currentPeriodTotal - $previousPeriodTotal) / $previousPeriodTotal) * 100, 1)
+            : ($currentPeriodTotal > 0 ? 100.0 : 0.0);
+
+        return [
+            'total' => $total,
+            'completed' => $completed,
+            'pending' => $pending,
+            'cancelled' => $cancelled,
+            'total_revenue' => $totalRevenue,
+            'average_order_value' => $averageOrderValue,
+            'growth_percent' => $growthPercent,
+        ];
+    }
+
+    private function getOrderWidgetData(string $dateRange): array
+    {
+        $total = Order::count();
+        $completed = Order::where('status', 'completed')->count();
+        $pending = Order::where('status', 'pending')->count();
+        $cancelled = Order::where('status', 'cancelled')->count();
+        $totalRevenue = (float) Order::where('status', 'completed')->sum('total_amount');
+        $averageOrderValue = $completed > 0 ? round($totalRevenue / $completed, 2) : 0;
+
+        // Growth comparison
+        $currentPeriodTotal = Order::where('created_at', '>=', now()->subDays(30))->count();
+        $previousPeriodTotal = Order::whereBetween('created_at', [now()->subDays(60), now()->subDays(30)])->count();
+        $growthPercent = $previousPeriodTotal > 0
+            ? round((($currentPeriodTotal - $previousPeriodTotal) / $previousPeriodTotal) * 100, 1)
+            : ($currentPeriodTotal > 0 ? 100.0 : 0.0);
+
+        // Full status breakdown
+        $statuses = ['pending', 'confirmed', 'preparing', 'ready', 'delivering', 'delivered', 'completed', 'cancelled', 'refunded'];
+        $statusBreakdown = [];
+        foreach ($statuses as $status) {
+            $statusBreakdown[$status] = Order::where('status', $status)->count();
+        }
+
+        // Payment status breakdown
+        $paymentStatuses = ['pending', 'paid', 'failed', 'refunded', 'partial'];
+        $paymentBreakdown = [];
+        foreach ($paymentStatuses as $ps) {
+            $paymentBreakdown[$ps] = Order::where('payment_status', $ps)->count();
+        }
+        $paymentRevenue = (float) Order::where('payment_status', 'paid')->sum('total_amount');
+
+        // Revenue trend (last 6 months) - use startOfMonth to avoid date overflow
+        $revenueTrend = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $date = now()->startOfMonth()->subMonths($i);
+            $monthStart = $date->copy()->startOfMonth();
+            $monthEnd = $date->copy()->endOfMonth();
+
+            $monthOrdersCount = Order::whereBetween('created_at', [$monthStart, $monthEnd])->count();
+            $monthCompletedQuery = Order::whereBetween('created_at', [$monthStart, $monthEnd])->where('status', 'completed');
+
+            $revenueTrend[] = [
+                'label' => $date->format('M Y'),
+                'orders' => $monthOrdersCount,
+                'revenue' => (float) (clone $monthCompletedQuery)->sum('total_amount'),
+                'completed' => (clone $monthCompletedQuery)->count(),
+            ];
+        }
+
+        // Order volume trend (last 7 days)
+        $dailyTrend = [];
+        for ($i = 6; $i >= 0; $i--) {
+            $date = now()->subDays($i);
+            $dayOrdersQuery = Order::whereDate('created_at', $date);
+
+            $dailyTrend[] = [
+                'label' => $date->format('D'),
+                'date' => $date->format('Y-m-d'),
+                'orders' => (clone $dayOrdersQuery)->count(),
+                'revenue' => (float) (clone $dayOrdersQuery)->where('status', 'completed')->sum('total_amount'),
+            ];
+        }
+
+        // Recent orders
+        $recentOrders = Order::with(['customer', 'outlet'])
+            ->latest()
+            ->take(5)
+            ->get()
+            ->map(fn($order) => [
+                'id' => $order->id,
+                'uuid' => $order->uuid,
+                'order_number' => $order->order_number,
+                'customer_name' => $order->customer?->name ?? 'Guest',
+                'outlet_name' => $order->outlet?->name ?? '-',
+                'total_amount' => (float) $order->total_amount,
+                'status' => $order->getRawOriginal('status'),
+                'payment_status' => $order->getRawOriginal('payment_status'),
+                'created_at' => $order->created_at->toIso8601String(),
+            ])
+            ->toArray();
+
+        return [
+            'metrics' => [
+                'total' => $total,
+                'completed' => $completed,
+                'pending' => $pending,
+                'cancelled' => $cancelled,
+                'total_revenue' => $totalRevenue,
+                'average_order_value' => $averageOrderValue,
+                'growth_percent' => $growthPercent,
+                'today_orders' => Order::whereDate('created_at', today())->count(),
+                'today_revenue' => (float) Order::whereDate('created_at', today())->where('status', 'completed')->sum('total_amount'),
+            ],
+            'statusBreakdown' => $statusBreakdown,
+            'paymentBreakdown' => [
+                'statuses' => $paymentBreakdown,
+                'total_paid' => $paymentRevenue,
+            ],
+            'revenueTrend' => $revenueTrend,
+            'dailyTrend' => $dailyTrend,
+            'recentOrders' => $recentOrders,
         ];
     }
 

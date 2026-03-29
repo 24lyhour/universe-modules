@@ -26,7 +26,7 @@ import {
 import type { BreadcrumbItem } from '@/types';
 import type { CustomerWidgetData } from '@customer/types';
 import type { ProductMetrics, SalesDataPoint, CategoryDistribution } from '@product/Components/Widgets';
-import type { OrderMetrics } from '@order/Components/Widgets';
+import type { OrderMetrics, StatusBreakdown, PaymentBreakdown, RevenueTrendPoint, DailyTrendPoint, RecentOrder } from '@order/Components/Widgets';
 import type { WalletMetrics } from '@wallets/Components/Widgets';
 import type { EmployeeMetrics, AttendanceTrendPoint, GrowthTrendPoint as EmployeeGrowthTrendPoint, RecentEmployee } from '@employee/Components/Widgets';
 import type { SchoolMetrics, DepartmentBySchool, GrowthTrendPoint as SchoolGrowthTrendPoint, RecentSchool } from '@school/Components/Widgets';
@@ -150,7 +150,14 @@ interface Props {
     };
     customerWidget?: CustomerWidgetData | null;
     productWidget?: { metrics: ProductMetrics; salesData: SalesDataPoint[]; categoryDistribution: CategoryDistribution[] } | null;
-    orderWidget?: { metrics: OrderMetrics } | null;
+    orderWidget?: {
+        metrics: OrderMetrics;
+        statusBreakdown: StatusBreakdown;
+        paymentBreakdown: PaymentBreakdown;
+        revenueTrend: RevenueTrendPoint[];
+        dailyTrend: DailyTrendPoint[];
+        recentOrders: RecentOrder[];
+    } | null;
     walletWidget?: { metrics: WalletMetrics } | null;
     employeeWidget?: EmployeeWidgetData | null;
     schoolWidget?: SchoolWidgetData | null;
@@ -334,9 +341,14 @@ const handleRefresh = () => {
                 </TabsContent>
 
                 <!-- Order Tab -->
-                <TabsContent v-if="isWidgetActive('order') && props.widgets.order" value="order" class="space-y-6">
+                <TabsContent v-if="isWidgetActive('order') && orderWidget" value="order" class="space-y-6">
                     <OrderWidget
-                        :metrics="props.widgets.order"
+                        :metrics="orderWidget.metrics"
+                        :status-breakdown="orderWidget.statusBreakdown"
+                        :payment-breakdown="orderWidget.paymentBreakdown"
+                        :revenue-trend="orderWidget.revenueTrend"
+                        :daily-trend="orderWidget.dailyTrend"
+                        :recent-orders="orderWidget.recentOrders"
                         :date-range="dateRange"
                         :loading="loading"
                         @date-range-change="handleDateRangeChange"
