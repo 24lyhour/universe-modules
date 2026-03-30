@@ -87,3 +87,11 @@ This creates files at:
 
 Modules/Order/app/Http/Requests/Dashboard/V1/ShippingZone/StoreShippingZoneRequest.php
 Modules/Order/app/Http/Requests/Dashboard/V1/ShippingZone/UpdateShippingZoneRequest.php
+
+## MAKE RESCOURCE
+
+php artisan module:make-api-resource MenuResource Menu
+
+# → Modules/Menu/app/Http/Resources/Api/V1/MenuResource.php
+
+php artisan module:make-resource Api/V1/MenuResource Menu
