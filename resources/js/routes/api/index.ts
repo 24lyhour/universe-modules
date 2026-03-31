@@ -7,6 +7,7 @@ import shipping from './shipping'
 import employee from './employee'
 import hotel from './hotel'
 import media from './media'
+import menu from './menu'
 import category from './category'
 import movice from './movice'
 import order from './order'
@@ -28,6 +29,7 @@ const api = {
     employee: Object.assign(employee, employee),
     hotel: Object.assign(hotel, hotel),
     media: Object.assign(media, media),
+    menu: Object.assign(menu, menu),
     category: Object.assign(category, category),
     movice: Object.assign(movice, movice),
     order: Object.assign(order, order),

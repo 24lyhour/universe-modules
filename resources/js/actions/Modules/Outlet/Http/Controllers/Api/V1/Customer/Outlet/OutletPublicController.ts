@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../../../wayfinder'
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:42
 * @route '/api/v1/outlet-types'
 */
 export const types = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ types.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:42
 * @route '/api/v1/outlet-types'
 */
 types.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ types.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:42
 * @route '/api/v1/outlet-types'
 */
 types.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ types.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:42
 * @route '/api/v1/outlet-types'
 */
 types.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ types.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:42
 * @route '/api/v1/outlet-types'
 */
 const typesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const typesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:42
 * @route '/api/v1/outlet-types'
 */
 typesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ typesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::types
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:38
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:42
 * @route '/api/v1/outlet-types'
 */
 typesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ types.form = typesForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:64
 * @route '/api/v1/outlets-featured'
 */
 export const featured = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ featured.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:64
 * @route '/api/v1/outlets-featured'
 */
 featured.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ featured.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:64
 * @route '/api/v1/outlets-featured'
 */
 featured.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +116,7 @@ featured.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:64
 * @route '/api/v1/outlets-featured'
 */
 featured.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +126,7 @@ featured.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:64
 * @route '/api/v1/outlets-featured'
 */
 const featuredForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +136,7 @@ const featuredForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:64
 * @route '/api/v1/outlets-featured'
 */
 featuredForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +146,7 @@ featuredForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::featured
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:58
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:64
 * @route '/api/v1/outlets-featured'
 */
 featuredForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -163,7 +163,7 @@ featured.form = featuredForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:28
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:30
 * @route '/api/v1/outlets/{uuid}'
 */
 export const show = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ show.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:28
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:30
 * @route '/api/v1/outlets/{uuid}'
 */
 show.url = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -205,7 +205,7 @@ show.url = (args: { uuid: string | number } | [uuid: string | number ] | string 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:28
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:30
 * @route '/api/v1/outlets/{uuid}'
 */
 show.get = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -215,7 +215,7 @@ show.get = (args: { uuid: string | number } | [uuid: string | number ] | string 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:28
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:30
 * @route '/api/v1/outlets/{uuid}'
 */
 show.head = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -225,7 +225,7 @@ show.head = (args: { uuid: string | number } | [uuid: string | number ] | string
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:28
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:30
 * @route '/api/v1/outlets/{uuid}'
 */
 const showForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -235,7 +235,7 @@ const showForm = (args: { uuid: string | number } | [uuid: string | number ] | s
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:28
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:30
 * @route '/api/v1/outlets/{uuid}'
 */
 showForm.get = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -245,7 +245,7 @@ showForm.get = (args: { uuid: string | number } | [uuid: string | number ] | str
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:28
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:30
 * @route '/api/v1/outlets/{uuid}'
 */
 showForm.head = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -262,7 +262,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:78
 * @route '/api/v1/outlets/{uuid}/products'
 */
 export const products = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -277,7 +277,7 @@ products.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:78
 * @route '/api/v1/outlets/{uuid}/products'
 */
 products.url = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -304,7 +304,7 @@ products.url = (args: { uuid: string | number } | [uuid: string | number ] | str
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:78
 * @route '/api/v1/outlets/{uuid}/products'
 */
 products.get = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -314,7 +314,7 @@ products.get = (args: { uuid: string | number } | [uuid: string | number ] | str
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:78
 * @route '/api/v1/outlets/{uuid}/products'
 */
 products.head = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -324,7 +324,7 @@ products.head = (args: { uuid: string | number } | [uuid: string | number ] | st
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:78
 * @route '/api/v1/outlets/{uuid}/products'
 */
 const productsForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -334,7 +334,7 @@ const productsForm = (args: { uuid: string | number } | [uuid: string | number ]
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:78
 * @route '/api/v1/outlets/{uuid}/products'
 */
 productsForm.get = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -344,7 +344,7 @@ productsForm.get = (args: { uuid: string | number } | [uuid: string | number ] |
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletPublicController::products
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:70
+* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletPublicController.php:78
 * @route '/api/v1/outlets/{uuid}/products'
 */
 productsForm.head = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

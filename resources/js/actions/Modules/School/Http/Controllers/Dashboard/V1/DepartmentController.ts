@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
-export const qrCode = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const qrCode = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: qrCode.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ qrCode.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
-qrCode.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+qrCode.url = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { department: args }
     }
@@ -52,7 +52,7 @@ qrCode.url = (args: { department: string | { uuid: string } } | [department: str
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
-qrCode.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+qrCode.get = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: qrCode.url(args, options),
     method: 'get',
 })
@@ -62,7 +62,7 @@ qrCode.get = (args: { department: string | { uuid: string } } | [department: str
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
-qrCode.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+qrCode.head = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: qrCode.url(args, options),
     method: 'head',
 })
@@ -72,7 +72,7 @@ qrCode.head = (args: { department: string | { uuid: string } } | [department: st
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
-const qrCodeForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const qrCodeForm = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: qrCode.url(args, options),
     method: 'get',
 })
@@ -82,7 +82,7 @@ const qrCodeForm = (args: { department: string | { uuid: string } } | [departmen
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
-qrCodeForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+qrCodeForm.get = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: qrCode.url(args, options),
     method: 'get',
 })
@@ -92,7 +92,7 @@ qrCodeForm.get = (args: { department: string | { uuid: string } } | [department:
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:203
 * @route '/dashboard/departments/{department}/qr-code'
 */
-qrCodeForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+qrCodeForm.head = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: qrCode.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -555,7 +555,7 @@ getDepartments.form = getDepartmentsForm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
-export const show = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -570,7 +570,7 @@ show.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
-show.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { department: args }
     }
@@ -603,7 +603,7 @@ show.url = (args: { department: string | { uuid: string } } | [department: strin
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
-show.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -613,7 +613,7 @@ show.get = (args: { department: string | { uuid: string } } | [department: strin
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
-show.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -623,7 +623,7 @@ show.head = (args: { department: string | { uuid: string } } | [department: stri
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
-const showForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -633,7 +633,7 @@ const showForm = (args: { department: string | { uuid: string } } | [department:
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
-showForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -643,7 +643,7 @@ showForm.get = (args: { department: string | { uuid: string } } | [department: s
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:79
 * @route '/dashboard/departments/{department}'
 */
-showForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -660,7 +660,7 @@ show.form = showForm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
-export const edit = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -675,7 +675,7 @@ edit.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
-edit.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { department: args }
     }
@@ -708,7 +708,7 @@ edit.url = (args: { department: string | { uuid: string } } | [department: strin
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
-edit.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -718,7 +718,7 @@ edit.get = (args: { department: string | { uuid: string } } | [department: strin
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
-edit.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -728,7 +728,7 @@ edit.head = (args: { department: string | { uuid: string } } | [department: stri
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
-const editForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -738,7 +738,7 @@ const editForm = (args: { department: string | { uuid: string } } | [department:
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
-editForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -748,7 +748,7 @@ editForm.get = (args: { department: string | { uuid: string } } | [department: s
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:89
 * @route '/dashboard/departments/{department}/edit'
 */
-editForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -765,7 +765,7 @@ edit.form = editForm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
-const update72872a0d0bc1a79cf184f4176464fbae = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const update72872a0d0bc1a79cf184f4176464fbae = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update72872a0d0bc1a79cf184f4176464fbae.url(args, options),
     method: 'put',
 })
@@ -780,7 +780,7 @@ update72872a0d0bc1a79cf184f4176464fbae.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
-update72872a0d0bc1a79cf184f4176464fbae.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update72872a0d0bc1a79cf184f4176464fbae.url = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { department: args }
     }
@@ -813,7 +813,7 @@ update72872a0d0bc1a79cf184f4176464fbae.url = (args: { department: string | { uui
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
-update72872a0d0bc1a79cf184f4176464fbae.put = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update72872a0d0bc1a79cf184f4176464fbae.put = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update72872a0d0bc1a79cf184f4176464fbae.url(args, options),
     method: 'put',
 })
@@ -823,7 +823,7 @@ update72872a0d0bc1a79cf184f4176464fbae.put = (args: { department: string | { uui
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
-const update72872a0d0bc1a79cf184f4176464fbaeForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const update72872a0d0bc1a79cf184f4176464fbaeForm = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update72872a0d0bc1a79cf184f4176464fbae.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -838,7 +838,7 @@ const update72872a0d0bc1a79cf184f4176464fbaeForm = (args: { department: string |
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
-update72872a0d0bc1a79cf184f4176464fbaeForm.put = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+update72872a0d0bc1a79cf184f4176464fbaeForm.put = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update72872a0d0bc1a79cf184f4176464fbae.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -854,7 +854,7 @@ update72872a0d0bc1a79cf184f4176464fbae.form = update72872a0d0bc1a79cf184f4176464
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
-const update72872a0d0bc1a79cf184f4176464fbae = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+const update72872a0d0bc1a79cf184f4176464fbae = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update72872a0d0bc1a79cf184f4176464fbae.url(args, options),
     method: 'patch',
 })
@@ -869,7 +869,7 @@ update72872a0d0bc1a79cf184f4176464fbae.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
-update72872a0d0bc1a79cf184f4176464fbae.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update72872a0d0bc1a79cf184f4176464fbae.url = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { department: args }
     }
@@ -902,7 +902,7 @@ update72872a0d0bc1a79cf184f4176464fbae.url = (args: { department: string | { uui
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
-update72872a0d0bc1a79cf184f4176464fbae.patch = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update72872a0d0bc1a79cf184f4176464fbae.patch = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update72872a0d0bc1a79cf184f4176464fbae.url(args, options),
     method: 'patch',
 })
@@ -912,7 +912,7 @@ update72872a0d0bc1a79cf184f4176464fbae.patch = (args: { department: string | { u
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
-const update72872a0d0bc1a79cf184f4176464fbaeForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const update72872a0d0bc1a79cf184f4176464fbaeForm = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update72872a0d0bc1a79cf184f4176464fbae.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -927,7 +927,7 @@ const update72872a0d0bc1a79cf184f4176464fbaeForm = (args: { department: string |
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:99
 * @route '/dashboard/departments/{department}'
 */
-update72872a0d0bc1a79cf184f4176464fbaeForm.patch = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+update72872a0d0bc1a79cf184f4176464fbaeForm.patch = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update72872a0d0bc1a79cf184f4176464fbae.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -949,7 +949,7 @@ export const update = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
 * @route '/dashboard/departments/{department}/toggle-status'
 */
-export const toggleStatus = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleStatus = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -964,7 +964,7 @@ toggleStatus.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
 * @route '/dashboard/departments/{department}/toggle-status'
 */
-toggleStatus.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+toggleStatus.url = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { department: args }
     }
@@ -997,7 +997,7 @@ toggleStatus.url = (args: { department: string | { uuid: string } } | [departmen
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
 * @route '/dashboard/departments/{department}/toggle-status'
 */
-toggleStatus.put = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleStatus.put = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -1007,7 +1007,7 @@ toggleStatus.put = (args: { department: string | { uuid: string } } | [departmen
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
 * @route '/dashboard/departments/{department}/toggle-status'
 */
-const toggleStatusForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleStatusForm = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1022,7 +1022,7 @@ const toggleStatusForm = (args: { department: string | { uuid: string } } | [dep
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:169
 * @route '/dashboard/departments/{department}/toggle-status'
 */
-toggleStatusForm.put = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleStatusForm.put = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1039,7 +1039,7 @@ toggleStatus.form = toggleStatusForm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
-export const confirmDelete = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const confirmDelete = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1054,7 +1054,7 @@ confirmDelete.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
-confirmDelete.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+confirmDelete.url = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { department: args }
     }
@@ -1087,7 +1087,7 @@ confirmDelete.url = (args: { department: string | { uuid: string } } | [departme
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
-confirmDelete.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+confirmDelete.get = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1097,7 +1097,7 @@ confirmDelete.get = (args: { department: string | { uuid: string } } | [departme
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
-confirmDelete.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+confirmDelete.head = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmDelete.url(args, options),
     method: 'head',
 })
@@ -1107,7 +1107,7 @@ confirmDelete.head = (args: { department: string | { uuid: string } } | [departm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
-const confirmDeleteForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const confirmDeleteForm = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1117,7 +1117,7 @@ const confirmDeleteForm = (args: { department: string | { uuid: string } } | [de
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
-confirmDeleteForm.get = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.get = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1127,7 +1127,7 @@ confirmDeleteForm.get = (args: { department: string | { uuid: string } } | [depa
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:111
 * @route '/dashboard/departments/{department}/delete'
 */
-confirmDeleteForm.head = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.head = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -1144,7 +1144,7 @@ confirmDelete.form = confirmDeleteForm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
 * @route '/dashboard/departments/{department}'
 */
-export const destroy = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -1159,7 +1159,7 @@ destroy.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
 * @route '/dashboard/departments/{department}'
 */
-destroy.url = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { department: args }
     }
@@ -1192,7 +1192,7 @@ destroy.url = (args: { department: string | { uuid: string } } | [department: st
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
 * @route '/dashboard/departments/{department}'
 */
-destroy.delete = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -1202,7 +1202,7 @@ destroy.delete = (args: { department: string | { uuid: string } } | [department:
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
 * @route '/dashboard/departments/{department}'
 */
-const destroyForm = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1217,7 +1217,7 @@ const destroyForm = (args: { department: string | { uuid: string } } | [departme
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/DepartmentController.php:123
 * @route '/dashboard/departments/{department}'
 */
-destroyForm.delete = (args: { department: string | { uuid: string } } | [department: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { department: string | number | { uuid: string | number } } | [department: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
