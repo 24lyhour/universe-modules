@@ -1,7 +1,89 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
+import ordersB47e5f from './orders'
 import cartB8cf73 from './cart'
 import productReviews356f95 from './product-reviews'
 import outletReviewsE9f95e from './outlet-reviews'
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\OrderController::orders
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:21
+* @route '/api/v1/customer/orders'
+*/
+export const orders = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: orders.url(options),
+    method: 'get',
+})
+
+orders.definition = {
+    methods: ["get","head"],
+    url: '/api/v1/customer/orders',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\OrderController::orders
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:21
+* @route '/api/v1/customer/orders'
+*/
+orders.url = (options?: RouteQueryOptions) => {
+    return orders.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\OrderController::orders
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:21
+* @route '/api/v1/customer/orders'
+*/
+orders.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: orders.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\OrderController::orders
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:21
+* @route '/api/v1/customer/orders'
+*/
+orders.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: orders.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\OrderController::orders
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:21
+* @route '/api/v1/customer/orders'
+*/
+const ordersForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: orders.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\OrderController::orders
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:21
+* @route '/api/v1/customer/orders'
+*/
+ordersForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: orders.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\OrderController::orders
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:21
+* @route '/api/v1/customer/orders'
+*/
+ordersForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: orders.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+orders.form = ordersForm
+
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\CartController::cart
 * @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:24
@@ -246,6 +328,7 @@ outletReviewsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get
 outletReviews.form = outletReviewsForm
 
 const customer = {
+    orders: Object.assign(orders, ordersB47e5f),
     cart: Object.assign(cart, cartB8cf73),
     productReviews: Object.assign(productReviews, productReviews356f95),
     outletReviews: Object.assign(outletReviews, outletReviewsE9f95e),

@@ -18,6 +18,7 @@ import porfolio from './porfolio'
 import product from './product'
 import report from './report'
 import school from './school'
+import wallets from './wallets'
 
 const api = {
     ai: Object.assign(ai, ai),
@@ -40,6 +41,7 @@ const api = {
     product: Object.assign(product, product),
     report: Object.assign(report, report),
     school: Object.assign(school, school),
+    wallets: Object.assign(wallets, wallets),
 }
 
 export default api

@@ -619,7 +619,7 @@ store.form = storeForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
-export const show = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -634,7 +634,7 @@ show.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
-show.url = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+show.url = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productType: args }
     }
@@ -667,7 +667,7 @@ show.url = (args: { productType: string | number | { id: string | number } } | [
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
-show.get = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -677,7 +677,7 @@ show.get = (args: { productType: string | number | { id: string | number } } | [
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
-show.head = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -687,7 +687,7 @@ show.head = (args: { productType: string | number | { id: string | number } } | 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
-const showForm = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -697,7 +697,7 @@ const showForm = (args: { productType: string | number | { id: string | number }
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
-showForm.get = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -707,7 +707,7 @@ showForm.get = (args: { productType: string | number | { id: string | number } }
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:74
 * @route '/dashboard/product-types/{productType}'
 */
-showForm.head = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -724,7 +724,7 @@ show.form = showForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
-export const edit = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -739,7 +739,7 @@ edit.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
-edit.url = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+edit.url = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productType: args }
     }
@@ -772,7 +772,7 @@ edit.url = (args: { productType: string | number | { id: string | number } } | [
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
-edit.get = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -782,7 +782,7 @@ edit.get = (args: { productType: string | number | { id: string | number } } | [
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
-edit.head = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -792,7 +792,7 @@ edit.head = (args: { productType: string | number | { id: string | number } } | 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
-const editForm = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -802,7 +802,7 @@ const editForm = (args: { productType: string | number | { id: string | number }
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
-editForm.get = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -812,7 +812,7 @@ editForm.get = (args: { productType: string | number | { id: string | number } }
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:86
 * @route '/dashboard/product-types/{productType}/edit'
 */
-editForm.head = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -829,7 +829,7 @@ edit.form = editForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
-export const update = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -844,7 +844,7 @@ update.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
-update.url = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productType: args }
     }
@@ -877,7 +877,7 @@ update.url = (args: { productType: string | number | { id: string | number } } |
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
-update.put = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -887,7 +887,7 @@ update.put = (args: { productType: string | number | { id: string | number } } |
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
-update.patch = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -897,7 +897,7 @@ update.patch = (args: { productType: string | number | { id: string | number } }
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
-const updateForm = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -912,7 +912,7 @@ const updateForm = (args: { productType: string | number | { id: string | number
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
-updateForm.put = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -927,7 +927,7 @@ updateForm.put = (args: { productType: string | number | { id: string | number }
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:100
 * @route '/dashboard/product-types/{productType}'
 */
-updateForm.patch = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -944,7 +944,7 @@ update.form = updateForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:111
 * @route '/dashboard/product-types/{productType}'
 */
-export const destroy = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -959,7 +959,7 @@ destroy.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:111
 * @route '/dashboard/product-types/{productType}'
 */
-destroy.url = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productType: args }
     }
@@ -992,7 +992,7 @@ destroy.url = (args: { productType: string | number | { id: string | number } } 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:111
 * @route '/dashboard/product-types/{productType}'
 */
-destroy.delete = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -1002,7 +1002,7 @@ destroy.delete = (args: { productType: string | number | { id: string | number }
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:111
 * @route '/dashboard/product-types/{productType}'
 */
-const destroyForm = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1017,7 +1017,7 @@ const destroyForm = (args: { productType: string | number | { id: string | numbe
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:111
 * @route '/dashboard/product-types/{productType}'
 */
-destroyForm.delete = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1034,7 +1034,7 @@ destroy.form = destroyForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:160
 * @route '/dashboard/product-types/{productType}/toggle-status'
 */
-export const toggleStatus = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleStatus = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -1049,7 +1049,7 @@ toggleStatus.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:160
 * @route '/dashboard/product-types/{productType}/toggle-status'
 */
-toggleStatus.url = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+toggleStatus.url = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productType: args }
     }
@@ -1082,7 +1082,7 @@ toggleStatus.url = (args: { productType: string | number | { id: string | number
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:160
 * @route '/dashboard/product-types/{productType}/toggle-status'
 */
-toggleStatus.put = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleStatus.put = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -1092,7 +1092,7 @@ toggleStatus.put = (args: { productType: string | number | { id: string | number
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:160
 * @route '/dashboard/product-types/{productType}/toggle-status'
 */
-const toggleStatusForm = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleStatusForm = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1107,7 +1107,7 @@ const toggleStatusForm = (args: { productType: string | number | { id: string | 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductTypeController.php:160
 * @route '/dashboard/product-types/{productType}/toggle-status'
 */
-toggleStatusForm.put = (args: { productType: string | number | { id: string | number } } | [productType: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleStatusForm.put = (args: { productType: number | { id: number } } | [productType: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',

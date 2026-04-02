@@ -15,5 +15,6 @@
     "Outlet": true,
     "Wallets": true,
     "Media": true,
-    "Employee": true
+    "Employee": true,
+    "Delivery": true
 }

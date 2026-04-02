@@ -1,34 +1,27 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
-
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
 
 /*
 |--------------------------------------------------------------------------
-| Scheduled Database Backups
+| Scheduled Tasks
 |--------------------------------------------------------------------------
 |
-| Configure automatic database backups here.
-| Make sure to set up the cron job on your server:
+| Server cron entry (required):
 | * * * * * cd /path-to-project && php artisan schedule:run >> /dev/null 2>&1
 |
 */
 
-// Daily database backup at 2:00 AM (temporarily set to everyMinute for testing)
+// Daily database backup at 2:00 AM
 Schedule::command('backup:run --only-db --disable-notifications')
-    ->everyMinute() // TODO: Change back to ->dailyAt('02:00') after testing
+    ->dailyAt('02:00')
     ->name('daily-db-backup')
     ->withoutOverlapping()
     ->onOneServer();
 
 // Weekly full backup on Sunday at 3:00 AM
 Schedule::command('backup:run --disable-notifications')
-    ->weeklyOn(0, '03:00') // Sunday
+    ->weeklyOn(0, '03:00')
     ->name('weekly-full-backup')
     ->withoutOverlapping()
     ->onOneServer();
