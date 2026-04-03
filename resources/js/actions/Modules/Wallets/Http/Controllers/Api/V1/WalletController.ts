@@ -82,7 +82,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::balance
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:41
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:29
 * @route '/api/v1/customer/wallet/balance'
 */
 export const balance = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ balance.definition = {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::balance
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:41
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:29
 * @route '/api/v1/customer/wallet/balance'
 */
 balance.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ balance.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::balance
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:41
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:29
 * @route '/api/v1/customer/wallet/balance'
 */
 balance.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +116,7 @@ balance.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::balance
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:41
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:29
 * @route '/api/v1/customer/wallet/balance'
 */
 balance.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +126,7 @@ balance.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::balance
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:41
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:29
 * @route '/api/v1/customer/wallet/balance'
 */
 const balanceForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +136,7 @@ const balanceForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::balance
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:41
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:29
 * @route '/api/v1/customer/wallet/balance'
 */
 balanceForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +146,7 @@ balanceForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::balance
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:41
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:29
 * @route '/api/v1/customer/wallet/balance'
 */
 balanceForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -163,7 +163,7 @@ balance.form = balanceForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transactions
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:57
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:45
 * @route '/api/v1/customer/wallet/transactions'
 */
 export const transactions = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ transactions.definition = {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transactions
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:57
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:45
 * @route '/api/v1/customer/wallet/transactions'
 */
 transactions.url = (options?: RouteQueryOptions) => {
@@ -187,7 +187,7 @@ transactions.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transactions
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:57
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:45
 * @route '/api/v1/customer/wallet/transactions'
 */
 transactions.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -197,7 +197,7 @@ transactions.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transactions
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:57
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:45
 * @route '/api/v1/customer/wallet/transactions'
 */
 transactions.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -207,7 +207,7 @@ transactions.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transactions
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:57
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:45
 * @route '/api/v1/customer/wallet/transactions'
 */
 const transactionsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -217,7 +217,7 @@ const transactionsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transactions
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:57
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:45
 * @route '/api/v1/customer/wallet/transactions'
 */
 transactionsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -227,7 +227,7 @@ transactionsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transactions
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:57
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:45
 * @route '/api/v1/customer/wallet/transactions'
 */
 transactionsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -244,7 +244,7 @@ transactions.form = transactionsForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::topUp
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:95
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:83
 * @route '/api/v1/customer/wallet/top-up'
 */
 export const topUp = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -259,7 +259,7 @@ topUp.definition = {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::topUp
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:95
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:83
 * @route '/api/v1/customer/wallet/top-up'
 */
 topUp.url = (options?: RouteQueryOptions) => {
@@ -268,7 +268,7 @@ topUp.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::topUp
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:95
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:83
 * @route '/api/v1/customer/wallet/top-up'
 */
 topUp.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -278,7 +278,7 @@ topUp.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::topUp
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:95
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:83
 * @route '/api/v1/customer/wallet/top-up'
 */
 const topUpForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -288,7 +288,7 @@ const topUpForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::topUp
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:95
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:83
 * @route '/api/v1/customer/wallet/top-up'
 */
 topUpForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -300,7 +300,7 @@ topUp.form = topUpForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::pay
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:132
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:120
 * @route '/api/v1/customer/wallet/pay'
 */
 export const pay = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -315,7 +315,7 @@ pay.definition = {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::pay
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:132
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:120
 * @route '/api/v1/customer/wallet/pay'
 */
 pay.url = (options?: RouteQueryOptions) => {
@@ -324,7 +324,7 @@ pay.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::pay
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:132
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:120
 * @route '/api/v1/customer/wallet/pay'
 */
 pay.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -334,7 +334,7 @@ pay.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::pay
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:132
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:120
 * @route '/api/v1/customer/wallet/pay'
 */
 const payForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -344,7 +344,7 @@ const payForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::pay
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:132
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:120
 * @route '/api/v1/customer/wallet/pay'
 */
 payForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -356,7 +356,7 @@ pay.form = payForm
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transfer
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:175
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:163
 * @route '/api/v1/customer/wallet/transfer'
 */
 export const transfer = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -371,7 +371,7 @@ transfer.definition = {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transfer
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:175
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:163
 * @route '/api/v1/customer/wallet/transfer'
 */
 transfer.url = (options?: RouteQueryOptions) => {
@@ -380,7 +380,7 @@ transfer.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transfer
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:175
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:163
 * @route '/api/v1/customer/wallet/transfer'
 */
 transfer.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -390,7 +390,7 @@ transfer.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transfer
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:175
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:163
 * @route '/api/v1/customer/wallet/transfer'
 */
 const transferForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -400,7 +400,7 @@ const transferForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> 
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Api\V1\WalletController::transfer
-* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:175
+* @see Modules/Wallets/app/Http/Controllers/Api/V1/WalletController.php:163
 * @route '/api/v1/customer/wallet/transfer'
 */
 transferForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

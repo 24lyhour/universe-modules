@@ -95,3 +95,5 @@ php artisan module:make-api-resource MenuResource Menu
 # → Modules/Menu/app/Http/Resources/Api/V1/MenuResource.php
 
 php artisan module:make-resource Api/V1/MenuResource Menu
+
+a module:make-Controller /Dashboard/V1/RiderController Delivery

@@ -2,6 +2,7 @@ import Blog from './Blog'
 import Booking from './Booking'
 import Company from './Company'
 import Customer from './Customer'
+import Delivery from './Delivery'
 import Employee from './Employee'
 import School from './School'
 import Hotel from './Hotel'
@@ -21,6 +22,7 @@ const Modules = {
     Booking: Object.assign(Booking, Booking),
     Company: Object.assign(Company, Company),
     Customer: Object.assign(Customer, Customer),
+    Delivery: Object.assign(Delivery, Delivery),
     Employee: Object.assign(Employee, Employee),
     School: Object.assign(School, School),
     Hotel: Object.assign(Hotel, Hotel),

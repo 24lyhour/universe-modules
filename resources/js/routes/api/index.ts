@@ -4,6 +4,7 @@ import booking from './booking'
 import company from './company'
 import customer from './customer'
 import shipping from './shipping'
+import delivery from './delivery'
 import employee from './employee'
 import hotel from './hotel'
 import media from './media'
@@ -27,6 +28,7 @@ const api = {
     company: Object.assign(company, company),
     customer: Object.assign(customer, customer),
     shipping: Object.assign(shipping, shipping),
+    delivery: Object.assign(delivery, delivery),
     employee: Object.assign(employee, employee),
     hotel: Object.assign(hotel, hotel),
     media: Object.assign(media, media),

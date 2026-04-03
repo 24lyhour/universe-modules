@@ -369,7 +369,7 @@ index.form = indexForm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
-export const show = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -384,7 +384,7 @@ show.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
-show.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { equipment: args }
     }
@@ -417,7 +417,7 @@ show.url = (args: { equipment: string | { uuid: string } } | [equipment: string 
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
-show.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -427,7 +427,7 @@ show.get = (args: { equipment: string | { uuid: string } } | [equipment: string 
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
-show.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -437,7 +437,7 @@ show.head = (args: { equipment: string | { uuid: string } } | [equipment: string
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
-const showForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -447,7 +447,7 @@ const showForm = (args: { equipment: string | { uuid: string } } | [equipment: s
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
-showForm.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -457,7 +457,7 @@ showForm.get = (args: { equipment: string | { uuid: string } } | [equipment: str
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:76
 * @route '/dashboard/equipment/{equipment}'
 */
-showForm.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -474,7 +474,7 @@ show.form = showForm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
-export const edit = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -489,7 +489,7 @@ edit.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
-edit.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { equipment: args }
     }
@@ -522,7 +522,7 @@ edit.url = (args: { equipment: string | { uuid: string } } | [equipment: string 
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
-edit.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -532,7 +532,7 @@ edit.get = (args: { equipment: string | { uuid: string } } | [equipment: string 
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
-edit.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -542,7 +542,7 @@ edit.head = (args: { equipment: string | { uuid: string } } | [equipment: string
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
-const editForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -552,7 +552,7 @@ const editForm = (args: { equipment: string | { uuid: string } } | [equipment: s
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
-editForm.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -562,7 +562,7 @@ editForm.get = (args: { equipment: string | { uuid: string } } | [equipment: str
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:86
 * @route '/dashboard/equipment/{equipment}/edit'
 */
-editForm.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -579,7 +579,7 @@ edit.form = editForm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
-const updated44ff1d59251d5ed1bb5146ca465bf3c = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const updated44ff1d59251d5ed1bb5146ca465bf3c = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updated44ff1d59251d5ed1bb5146ca465bf3c.url(args, options),
     method: 'put',
 })
@@ -594,7 +594,7 @@ updated44ff1d59251d5ed1bb5146ca465bf3c.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
-updated44ff1d59251d5ed1bb5146ca465bf3c.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+updated44ff1d59251d5ed1bb5146ca465bf3c.url = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { equipment: args }
     }
@@ -627,7 +627,7 @@ updated44ff1d59251d5ed1bb5146ca465bf3c.url = (args: { equipment: string | { uuid
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
-updated44ff1d59251d5ed1bb5146ca465bf3c.put = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+updated44ff1d59251d5ed1bb5146ca465bf3c.put = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updated44ff1d59251d5ed1bb5146ca465bf3c.url(args, options),
     method: 'put',
 })
@@ -637,7 +637,7 @@ updated44ff1d59251d5ed1bb5146ca465bf3c.put = (args: { equipment: string | { uuid
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
-const updated44ff1d59251d5ed1bb5146ca465bf3cForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updated44ff1d59251d5ed1bb5146ca465bf3cForm = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updated44ff1d59251d5ed1bb5146ca465bf3c.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -652,7 +652,7 @@ const updated44ff1d59251d5ed1bb5146ca465bf3cForm = (args: { equipment: string | 
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
-updated44ff1d59251d5ed1bb5146ca465bf3cForm.put = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updated44ff1d59251d5ed1bb5146ca465bf3cForm.put = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updated44ff1d59251d5ed1bb5146ca465bf3c.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -668,7 +668,7 @@ updated44ff1d59251d5ed1bb5146ca465bf3c.form = updated44ff1d59251d5ed1bb5146ca465
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
-const updated44ff1d59251d5ed1bb5146ca465bf3c = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+const updated44ff1d59251d5ed1bb5146ca465bf3c = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updated44ff1d59251d5ed1bb5146ca465bf3c.url(args, options),
     method: 'patch',
 })
@@ -683,7 +683,7 @@ updated44ff1d59251d5ed1bb5146ca465bf3c.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
-updated44ff1d59251d5ed1bb5146ca465bf3c.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+updated44ff1d59251d5ed1bb5146ca465bf3c.url = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { equipment: args }
     }
@@ -716,7 +716,7 @@ updated44ff1d59251d5ed1bb5146ca465bf3c.url = (args: { equipment: string | { uuid
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
-updated44ff1d59251d5ed1bb5146ca465bf3c.patch = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+updated44ff1d59251d5ed1bb5146ca465bf3c.patch = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updated44ff1d59251d5ed1bb5146ca465bf3c.url(args, options),
     method: 'patch',
 })
@@ -726,7 +726,7 @@ updated44ff1d59251d5ed1bb5146ca465bf3c.patch = (args: { equipment: string | { uu
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
-const updated44ff1d59251d5ed1bb5146ca465bf3cForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updated44ff1d59251d5ed1bb5146ca465bf3cForm = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updated44ff1d59251d5ed1bb5146ca465bf3c.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -741,7 +741,7 @@ const updated44ff1d59251d5ed1bb5146ca465bf3cForm = (args: { equipment: string | 
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:97
 * @route '/dashboard/equipment/{equipment}'
 */
-updated44ff1d59251d5ed1bb5146ca465bf3cForm.patch = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updated44ff1d59251d5ed1bb5146ca465bf3cForm.patch = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updated44ff1d59251d5ed1bb5146ca465bf3c.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -763,7 +763,7 @@ export const update = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
-export const confirmDelete = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const confirmDelete = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -778,7 +778,7 @@ confirmDelete.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
-confirmDelete.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+confirmDelete.url = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { equipment: args }
     }
@@ -811,7 +811,7 @@ confirmDelete.url = (args: { equipment: string | { uuid: string } } | [equipment
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
-confirmDelete.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+confirmDelete.get = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -821,7 +821,7 @@ confirmDelete.get = (args: { equipment: string | { uuid: string } } | [equipment
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
-confirmDelete.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+confirmDelete.head = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmDelete.url(args, options),
     method: 'head',
 })
@@ -831,7 +831,7 @@ confirmDelete.head = (args: { equipment: string | { uuid: string } } | [equipmen
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
-const confirmDeleteForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const confirmDeleteForm = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -841,7 +841,7 @@ const confirmDeleteForm = (args: { equipment: string | { uuid: string } } | [equ
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
-confirmDeleteForm.get = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.get = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -851,7 +851,7 @@ confirmDeleteForm.get = (args: { equipment: string | { uuid: string } } | [equip
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:109
 * @route '/dashboard/equipment/{equipment}/delete'
 */
-confirmDeleteForm.head = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.head = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -868,7 +868,7 @@ confirmDelete.form = confirmDeleteForm
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:121
 * @route '/dashboard/equipment/{equipment}'
 */
-export const destroy = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -883,7 +883,7 @@ destroy.definition = {
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:121
 * @route '/dashboard/equipment/{equipment}'
 */
-destroy.url = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { equipment: args }
     }
@@ -916,7 +916,7 @@ destroy.url = (args: { equipment: string | { uuid: string } } | [equipment: stri
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:121
 * @route '/dashboard/equipment/{equipment}'
 */
-destroy.delete = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -926,7 +926,7 @@ destroy.delete = (args: { equipment: string | { uuid: string } } | [equipment: s
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:121
 * @route '/dashboard/equipment/{equipment}'
 */
-const destroyForm = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -941,7 +941,7 @@ const destroyForm = (args: { equipment: string | { uuid: string } } | [equipment
 * @see Modules/School/app/Http/Controllers/Dashboard/V1/EquipmentController.php:121
 * @route '/dashboard/equipment/{equipment}'
 */
-destroyForm.delete = (args: { equipment: string | { uuid: string } } | [equipment: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { equipment: string | number | { uuid: string | number } } | [equipment: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
