@@ -162,7 +162,7 @@ store.form = storeForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OrderController::checkDelivery
-* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:163
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:247
 * @route '/api/v1/customer/orders/check-delivery'
 */
 export const checkDelivery = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -177,7 +177,7 @@ checkDelivery.definition = {
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OrderController::checkDelivery
-* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:163
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:247
 * @route '/api/v1/customer/orders/check-delivery'
 */
 checkDelivery.url = (options?: RouteQueryOptions) => {
@@ -186,7 +186,7 @@ checkDelivery.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OrderController::checkDelivery
-* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:163
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:247
 * @route '/api/v1/customer/orders/check-delivery'
 */
 checkDelivery.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -196,7 +196,7 @@ checkDelivery.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OrderController::checkDelivery
-* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:163
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:247
 * @route '/api/v1/customer/orders/check-delivery'
 */
 const checkDeliveryForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -206,7 +206,7 @@ const checkDeliveryForm = (options?: RouteQueryOptions): RouteFormDefinition<'po
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OrderController::checkDelivery
-* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:163
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:247
 * @route '/api/v1/customer/orders/check-delivery'
 */
 checkDeliveryForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -218,7 +218,7 @@ checkDelivery.form = checkDeliveryForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OrderController::cancel
-* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:199
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:283
 * @route '/api/v1/customer/orders/{order}/cancel'
 */
 export const cancel = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -233,7 +233,7 @@ cancel.definition = {
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OrderController::cancel
-* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:199
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:283
 * @route '/api/v1/customer/orders/{order}/cancel'
 */
 cancel.url = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -266,7 +266,7 @@ cancel.url = (args: { order: string | { uuid: string } } | [order: string | { uu
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OrderController::cancel
-* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:199
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:283
 * @route '/api/v1/customer/orders/{order}/cancel'
 */
 cancel.post = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -276,7 +276,7 @@ cancel.post = (args: { order: string | { uuid: string } } | [order: string | { u
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OrderController::cancel
-* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:199
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:283
 * @route '/api/v1/customer/orders/{order}/cancel'
 */
 const cancelForm = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -286,7 +286,7 @@ const cancelForm = (args: { order: string | { uuid: string } } | [order: string 
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OrderController::cancel
-* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:199
+* @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:283
 * @route '/api/v1/customer/orders/{order}/cancel'
 */
 cancelForm.post = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
