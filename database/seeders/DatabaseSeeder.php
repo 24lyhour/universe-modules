@@ -28,11 +28,11 @@ class DatabaseSeeder extends Seeder
 
         // Module seeders
         $this->call([
-            SchoolDatabaseSeeder::class,
-            OutletDatabaseSeeder::class,
-            CustomerDatabaseSeeder::class,
-            ProductDatabaseSeeder::class,
-            OrderDatabaseSeeder::class, // Must run after Customer, Product, Outlet
+            // SchoolDatabaseSeeder::class,
+            // OutletDatabaseSeeder::class,
+            // CustomerDatabaseSeeder::class,
+            // ProductDatabaseSeeder::class,
+            // OrderDatabaseSeeder::class, // Must run after Customer, Product, Outlet
             // \Modules\Blog\Database\Seeders\BlogDatabaseSeeder::class,
             // \Modules\Company\Database\Seeders\CompanyDatabaseSeeder::class,
             // \Modules\Employee\Database\Seeders\EmployeeDatabaseSeeder::class,

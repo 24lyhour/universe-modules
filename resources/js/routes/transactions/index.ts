@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
-* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:31
 * @route '/dashboard/transactions'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
-* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:31
 * @route '/dashboard/transactions'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
-* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:31
 * @route '/dashboard/transactions'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
-* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:31
 * @route '/dashboard/transactions'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
-* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:31
 * @route '/dashboard/transactions'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
-* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:31
 * @route '/dashboard/transactions'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Wallets\Http\Controllers\Dashboard\V1\TransactionController::index
-* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TransactionController.php:31
 * @route '/dashboard/transactions'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
