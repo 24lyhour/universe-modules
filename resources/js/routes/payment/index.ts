@@ -1,4 +1,6 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import transactions from './transactions'
+import settings from './settings'
 /**
 * @see \Modules\Payment\Http\Controllers\PaymentController::index
 * @see Modules/Payment/app/Http/Controllers/PaymentController.php:13
@@ -616,6 +618,8 @@ const payment = {
     edit: Object.assign(edit, edit),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),
+    transactions: Object.assign(transactions, transactions),
+    settings: Object.assign(settings, settings),
 }
 
 export default payment

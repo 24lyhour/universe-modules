@@ -1,0 +1,5 @@
+<svg width="80" height="50" viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+  <rect width="80" height="50" rx="6" fill="#005E7B"/>
+  <text x="36" y="33" font-family="Arial Black, Arial, sans-serif" font-size="20" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">ABA</text>
+  <rect x="58" y="14" width="4" height="8" rx="1" fill="#E1232E"/>
+</svg>

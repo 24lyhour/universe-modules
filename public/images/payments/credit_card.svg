@@ -1,0 +1,14 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="256" height="256" rx="40" fill="#0E7490"/>
+  <!-- Back card -->
+  <rect x="44" y="52" width="120" height="80" rx="12" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="round"/>
+  <!-- Chip on back card -->
+  <rect x="60" y="72" width="20" height="16" rx="3" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+  <!-- Front card -->
+  <rect x="92" y="104" width="120" height="80" rx="12" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="round"/>
+  <!-- Lines on front card -->
+  <line x1="112" y1="134" x2="192" y2="134" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+  <line x1="112" y1="150" x2="180" y2="150" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+  <line x1="112" y1="166" x2="144" y2="166" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+</svg>

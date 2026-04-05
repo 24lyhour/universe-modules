@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             ['email' => 'kouchlyhour@gmail.com'],
             [
                 'name' => 'kouchlyhour',
-                'avatar' => '/images/users/kouchlyhour.jpg',
+                'avatar' => '/images/users/kouchlyhour.svg',
                 'password' => '12345678',
                 'role' => 'super-admin',
                 'email_verified_at' => now(),

@@ -1,0 +1,58 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="walletMain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9ae600;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b0f030;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="walletFront" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7abf00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9ae600;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#818CF8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="256" height="256" rx="20" fill="#F5FCE8"/>
+
+  <!-- Wallet back (full width) -->
+  <rect x="10" y="38" width="236" height="190" rx="22" fill="url(#walletMain)"/>
+
+  <!-- Card 1 gold peeking -->
+  <rect x="30" y="12" width="110" height="58" rx="10" fill="url(#cardGold)" transform="rotate(-5, 85, 41)"/>
+  <rect x="42" y="26" width="36" height="7" rx="3.5" fill="#FDE68A" opacity="0.7" transform="rotate(-5, 85, 41)"/>
+
+  <!-- Card 2 indigo peeking -->
+  <rect x="120" y="8" width="110" height="58" rx="10" fill="url(#cardBlue)" transform="rotate(4, 175, 37)"/>
+  <rect x="132" y="22" width="36" height="7" rx="3.5" fill="#C7D2FE" opacity="0.7" transform="rotate(4, 175, 37)"/>
+
+  <!-- Cash peeking -->
+  <rect x="55" y="22" width="85" height="42" rx="5" fill="#c4f54a" transform="rotate(-1, 97, 43)"/>
+  <text x="97" y="51" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#4a7000" text-anchor="middle" opacity="0.5" transform="rotate(-1, 97, 43)">$</text>
+
+  <!-- Wallet front flap (big, full width) -->
+  <path d="M10,100 L10,60 Q10,38 32,38 L224,38 Q246,38 246,60 L246,206 Q246,228 224,228 L32,228 Q10,228 10,206 Z" fill="url(#walletFront)"/>
+
+  <!-- Fold line -->
+  <line x1="26" y1="100" x2="230" y2="100" stroke="#b0f030" stroke-width="2.5" opacity="0.35"/>
+
+  <!-- Clasp -->
+  <circle cx="128" cy="70" r="16" fill="#E8FACB" stroke="#9ae600" stroke-width="3"/>
+  <circle cx="128" cy="70" r="7" fill="#4a7000"/>
+
+  <!-- Inner lines -->
+  <line x1="34" y1="128" x2="155" y2="128" stroke="#b0f030" stroke-width="2.5" opacity="0.2" stroke-linecap="round"/>
+  <line x1="34" y1="146" x2="120" y2="146" stroke="#b0f030" stroke-width="2.5" opacity="0.14" stroke-linecap="round"/>
+  <line x1="34" y1="164" x2="95" y2="164" stroke="#b0f030" stroke-width="2.5" opacity="0.08" stroke-linecap="round"/>
+
+  <!-- Coin -->
+  <circle cx="200" cy="180" r="26" fill="#E8FACB" opacity="0.3"/>
+  <circle cx="200" cy="180" r="16" fill="#9ae600" opacity="0.35"/>
+  <text x="200" y="187" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#4a7000" text-anchor="middle" opacity="0.5">$</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="20" fill="#F0FDF4"/>
+
+  <!-- Circular arrows -->
+  <path d="M128,40 A88,88 0 0,1 210,148" fill="none" stroke="#86EFAC" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="210,148 200,134 220,136" fill="#86EFAC"/>
+  <path d="M128,216 A88,88 0 0,1 46,108" fill="none" stroke="#86EFAC" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="46,108 56,122 36,120" fill="#86EFAC"/>
+
+  <!-- Left hand with package -->
+  <g transform="translate(50, 80)">
+    <!-- Hand -->
+    <path d="M10,60 Q0,58 2,50 L8,35 Q12,28 20,30 L55,30 Q60,30 60,36 L60,55 Q60,62 54,62 Z" fill="#F5D6B8" stroke="#D4A574" stroke-width="1.5"/>
+    <!-- Package box -->
+    <rect x="12" y="2" width="46" height="32" rx="3" fill="#D4A06A" stroke="#B8864A" stroke-width="1.5"/>
+    <line x1="35" y1="2" x2="35" y2="34" stroke="#B8864A" stroke-width="1.5"/>
+    <line x1="12" y1="18" x2="58" y2="18" stroke="#B8864A" stroke-width="1.5"/>
+    <!-- Tape -->
+    <rect x="28" y="6" width="14" height="12" rx="1" fill="#E8C98A" opacity="0.6"/>
+  </g>
+
+  <!-- Right hand with cash -->
+  <g transform="translate(145, 110)">
+    <!-- Hand -->
+    <path d="M60,60 Q70,58 68,50 L62,35 Q58,28 50,30 L15,30 Q10,30 10,36 L10,55 Q10,62 16,62 Z" fill="#F5D6B8" stroke="#D4A574" stroke-width="1.5"/>
+    <!-- Cash bills -->
+    <rect x="8" y="0" width="50" height="28" rx="3" fill="#6BBF6B" stroke="#4A9E4A" stroke-width="1.5" transform="rotate(-5, 33, 14)"/>
+    <rect x="12" y="3" width="50" height="28" rx="3" fill="#7DD87D" stroke="#5AB85A" stroke-width="1.5" transform="rotate(2, 37, 17)"/>
+    <rect x="10" y="6" width="50" height="28" rx="3" fill="#90EE90" stroke="#6BCB6B" stroke-width="1.5"/>
+    <!-- Dollar sign -->
+    <text x="35" y="27" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#2E7D32" text-anchor="middle">$</text>
+  </g>
+</svg>

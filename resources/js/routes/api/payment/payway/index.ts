@@ -113,7 +113,7 @@ create.form = createForm
 
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:181
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
 * @route '/api/v1/payments/payway/check/{tranId}'
 */
 export const check = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -128,7 +128,7 @@ check.definition = {
 
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:181
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
 * @route '/api/v1/payments/payway/check/{tranId}'
 */
 check.url = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -155,7 +155,7 @@ check.url = (args: { tranId: string | number } | [tranId: string | number ] | st
 
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:181
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
 * @route '/api/v1/payments/payway/check/{tranId}'
 */
 check.get = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -165,7 +165,7 @@ check.get = (args: { tranId: string | number } | [tranId: string | number ] | st
 
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:181
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
 * @route '/api/v1/payments/payway/check/{tranId}'
 */
 check.head = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -175,7 +175,7 @@ check.head = (args: { tranId: string | number } | [tranId: string | number ] | s
 
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:181
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
 * @route '/api/v1/payments/payway/check/{tranId}'
 */
 const checkForm = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -185,7 +185,7 @@ const checkForm = (args: { tranId: string | number } | [tranId: string | number 
 
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:181
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
 * @route '/api/v1/payments/payway/check/{tranId}'
 */
 checkForm.get = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -195,7 +195,7 @@ checkForm.get = (args: { tranId: string | number } | [tranId: string | number ] 
 
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:181
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
 * @route '/api/v1/payments/payway/check/{tranId}'
 */
 checkForm.head = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
