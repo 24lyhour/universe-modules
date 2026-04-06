@@ -97,3 +97,7 @@ php artisan module:make-api-resource MenuResource Menu
 php artisan module:make-resource Api/V1/MenuResource Menu
 
 a module:make-Controller /Dashboard/V1/RiderController Delivery
+
+## enum
+
+php artisan module:make-enum DeliveryPaymentEnum Order

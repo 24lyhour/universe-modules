@@ -108,6 +108,7 @@ const currentCircle = ref<any>(null);
 const currentPolygon = ref<any>(null);
 const centerMarker = ref<any>(null);
 const polygonMarkers = ref<any[]>([]);
+const outletMarker = ref<any>(null);
 
 // Local state for manual input
 const localRadius = ref(props.radius);
@@ -195,12 +196,53 @@ const initMap = async () => {
         }
     }
 
+    // Show outlet marker if reference coordinates exist (geofence mode only)
+    if (!isLocationMode.value) {
+        showOutletMarker();
+    }
+
     // Add click handler for drawing
     if (!props.readonly) {
         map.value.on('click', handleMapClick);
     }
 
     isLoading.value = false;
+};
+
+/**
+ * Show/update the outlet location marker on the map.
+ */
+const showOutletMarker = () => {
+    if (!map.value || !L) return;
+
+    // Remove existing outlet marker
+    if (outletMarker.value) {
+        outletMarker.value.remove();
+        outletMarker.value = null;
+    }
+
+    if (props.referenceLatitude == null || props.referenceLongitude == null) return;
+
+    const pinIcon = L.divIcon({
+        html: `<svg width="30" height="40" viewBox="0 0 30 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 25 15 25s15-14.5 15-25C30 6.7 23.3 0 15 0z" fill="#E53E3E" stroke="#fff" stroke-width="2"/>
+            <circle cx="15" cy="14" r="6" fill="#fff"/>
+        </svg>`,
+        className: '',
+        iconSize: [30, 40],
+        iconAnchor: [15, 40],
+    });
+
+    outletMarker.value = L.marker(
+        [props.referenceLatitude, props.referenceLongitude],
+        { icon: pinIcon, interactive: true, zIndexOffset: 1000 }
+    ).addTo(map.value);
+
+    outletMarker.value.bindTooltip('Outlet Location', {
+        permanent: false,
+        direction: 'top',
+        offset: [0, -16],
+    });
 };
 
 const handleMapClick = (e: any) => {
@@ -420,6 +462,14 @@ const finishPolygon = () => {
 
 const createPolygon = (coordinates: [number, number][]) => {
     if (!map.value || !L || coordinates.length < 3) return;
+
+    // Clear existing polygon and markers to prevent duplicates
+    if (currentPolygon.value) {
+        currentPolygon.value.remove();
+        currentPolygon.value = null;
+    }
+    polygonMarkers.value.forEach(m => m.remove());
+    polygonMarkers.value = [];
 
     currentPolygon.value = L.polygon(coordinates, {
         color: '#22c55e',
@@ -740,6 +790,11 @@ watch(
             newRefLat != null && newRefLng != null) {
             map.value.setView([newRefLat, newRefLng], props.zoom);
         }
+
+        // Update outlet marker
+        if (!isLocationMode.value) {
+            showOutletMarker();
+        }
     }
 );
 
@@ -767,8 +822,7 @@ watch(
                 createPolygon(newPolygon);
             }
         }
-    },
-    { immediate: true }
+    }
 );
 
 // Computed
