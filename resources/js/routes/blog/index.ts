@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 import banners from './banners'
 import specialOffers from './special-offers'
 import sliderShows from './slider-shows'
@@ -47,6 +47,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::index
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:22
+* @route '/blogs'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::index
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:22
+* @route '/blogs'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::index
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:22
+* @route '/blogs'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::create
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:34
 * @route '/blogs/create'
@@ -91,6 +128,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::create
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:34
+* @route '/blogs/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::create
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:34
+* @route '/blogs/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::create
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:34
+* @route '/blogs/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::store
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:42
 * @route '/blogs'
@@ -123,6 +197,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::store
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:42
+* @route '/blogs'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::store
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:42
+* @route '/blogs'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::show
@@ -187,6 +283,43 @@ show.head = (args: { blog: string | number } | [blog: string | number ] | string
 })
 
 /**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::show
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:54
+* @route '/blogs/{blog}'
+*/
+const showForm = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::show
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:54
+* @route '/blogs/{blog}'
+*/
+showForm.get = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::show
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:54
+* @route '/blogs/{blog}'
+*/
+showForm.head = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::edit
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:70
 * @route '/blogs/{blog}/edit'
@@ -247,6 +380,43 @@ edit.head = (args: { blog: string | number } | [blog: string | number ] | string
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::edit
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:70
+* @route '/blogs/{blog}/edit'
+*/
+const editForm = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::edit
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:70
+* @route '/blogs/{blog}/edit'
+*/
+editForm.get = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::edit
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:70
+* @route '/blogs/{blog}/edit'
+*/
+editForm.head = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::update
@@ -311,6 +481,53 @@ update.patch = (args: { blog: string | number } | [blog: string | number ] | str
 })
 
 /**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::update
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:86
+* @route '/blogs/{blog}'
+*/
+const updateForm = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::update
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:86
+* @route '/blogs/{blog}'
+*/
+updateForm.put = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::update
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:86
+* @route '/blogs/{blog}'
+*/
+updateForm.patch = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::destroy
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:102
 * @route '/blogs/{blog}'
@@ -361,6 +578,38 @@ destroy.delete = (args: { blog: string | number } | [blog: string | number ] | s
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::destroy
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:102
+* @route '/blogs/{blog}'
+*/
+const destroyForm = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BlogController::destroy
+* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BlogController.php:102
+* @route '/blogs/{blog}'
+*/
+destroyForm.delete = (args: { blog: string | number } | [blog: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const blog = {
     index: Object.assign(index, index),

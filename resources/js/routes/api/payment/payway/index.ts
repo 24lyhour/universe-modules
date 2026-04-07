@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::callback
 * @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:116
@@ -34,6 +34,28 @@ callback.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
+* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::callback
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:116
+* @route '/api/v1/payments/payway/callback'
+*/
+const callbackForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: callback.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::callback
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:116
+* @route '/api/v1/payments/payway/callback'
+*/
+callbackForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: callback.url(options),
+    method: 'post',
+})
+
+callback.form = callbackForm
+
+/**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::create
 * @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:24
 * @route '/api/v1/payments/payway/create'
@@ -66,6 +88,28 @@ create.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: create.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::create
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:24
+* @route '/api/v1/payments/payway/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: create.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::create
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:24
+* @route '/api/v1/payments/payway/create'
+*/
+createForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: create.url(options),
+    method: 'post',
+})
+
+create.form = createForm
 
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
@@ -128,6 +172,43 @@ check.head = (args: { tranId: string | number } | [tranId: string | number ] | s
     url: check.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
+* @route '/api/v1/payments/payway/check/{tranId}'
+*/
+const checkForm = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: check.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
+* @route '/api/v1/payments/payway/check/{tranId}'
+*/
+checkForm.get = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: check.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::check
+* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
+* @route '/api/v1/payments/payway/check/{tranId}'
+*/
+checkForm.head = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: check.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+check.form = checkForm
 
 const payway = {
     callback: Object.assign(callback, callback),

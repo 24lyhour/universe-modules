@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../wayfinder'
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::empty
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:137
@@ -32,6 +32,38 @@ empty.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: empty.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::empty
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:137
+* @route '/dashboard/products/attributes/trash/empty'
+*/
+const emptyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: empty.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::empty
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:137
+* @route '/dashboard/products/attributes/trash/empty'
+*/
+emptyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: empty.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+empty.form = emptyForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkRestore
@@ -68,6 +100,38 @@ bulkRestore.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkRestore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:105
+* @route '/dashboard/products/attributes/trash/bulk-restore'
+*/
+const bulkRestoreForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkRestore.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkRestore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:105
+* @route '/dashboard/products/attributes/trash/bulk-restore'
+*/
+bulkRestoreForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkRestore.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkRestore.form = bulkRestoreForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkForceDelete
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:121
 * @route '/dashboard/products/attributes/trash/bulk-force-delete'
@@ -100,6 +164,38 @@ bulkForceDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'
     url: bulkForceDelete.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkForceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:121
+* @route '/dashboard/products/attributes/trash/bulk-force-delete'
+*/
+const bulkForceDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkForceDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductAttributeController::bulkForceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductAttributeController.php:121
+* @route '/dashboard/products/attributes/trash/bulk-force-delete'
+*/
+bulkForceDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkForceDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkForceDelete.form = bulkForceDeleteForm
 
 const trash = {
     empty: Object.assign(empty, empty),

@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::index
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:33
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:33
+* @route '/dashboard/orders'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:33
+* @route '/dashboard/orders'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:33
+* @route '/dashboard/orders'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::create
@@ -88,6 +125,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:54
+* @route '/dashboard/orders/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:54
+* @route '/dashboard/orders/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:54
+* @route '/dashboard/orders/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::store
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:70
 * @route '/dashboard/orders'
@@ -120,6 +194,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::store
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:70
+* @route '/dashboard/orders'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::store
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:70
+* @route '/dashboard/orders'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::show
@@ -190,6 +286,43 @@ show.head = (args: { order: string | { uuid: string } } | [order: string | { uui
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:81
+* @route '/dashboard/orders/{order}'
+*/
+const showForm = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:81
+* @route '/dashboard/orders/{order}'
+*/
+showForm.get = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:81
+* @route '/dashboard/orders/{order}'
+*/
+showForm.head = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::edit
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:93
 * @route '/dashboard/orders/{order}/edit'
@@ -256,6 +389,43 @@ edit.head = (args: { order: string | { uuid: string } } | [order: string | { uui
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:93
+* @route '/dashboard/orders/{order}/edit'
+*/
+const editForm = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:93
+* @route '/dashboard/orders/{order}/edit'
+*/
+editForm.get = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:93
+* @route '/dashboard/orders/{order}/edit'
+*/
+editForm.head = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::update
@@ -326,6 +496,53 @@ update.patch = (args: { order: string | { uuid: string } } | [order: string | { 
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:111
+* @route '/dashboard/orders/{order}'
+*/
+const updateForm = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:111
+* @route '/dashboard/orders/{order}'
+*/
+updateForm.put = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:111
+* @route '/dashboard/orders/{order}'
+*/
+updateForm.patch = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::destroy
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:122
 * @route '/dashboard/orders/{order}'
@@ -382,6 +599,38 @@ destroy.delete = (args: { order: string | { uuid: string } } | [order: string | 
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::destroy
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:122
+* @route '/dashboard/orders/{order}'
+*/
+const destroyForm = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::destroy
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:122
+* @route '/dashboard/orders/{order}'
+*/
+destroyForm.delete = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::statusModal
@@ -452,6 +701,43 @@ statusModal.head = (args: { order: string | { uuid: string } } | [order: string 
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::statusModal
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:133
+* @route '/dashboard/orders/{order}/status'
+*/
+const statusModalForm = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: statusModal.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::statusModal
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:133
+* @route '/dashboard/orders/{order}/status'
+*/
+statusModalForm.get = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: statusModal.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::statusModal
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:133
+* @route '/dashboard/orders/{order}/status'
+*/
+statusModalForm.head = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: statusModal.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+statusModal.form = statusModalForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::updateStatus
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:145
 * @route '/dashboard/orders/{order}/status'
@@ -510,6 +796,38 @@ updateStatus.put = (args: { order: string | { uuid: string } } | [order: string 
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::updateStatus
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:145
+* @route '/dashboard/orders/{order}/status'
+*/
+const updateStatusForm = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updateStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::updateStatus
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:145
+* @route '/dashboard/orders/{order}/status'
+*/
+updateStatusForm.put = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updateStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updateStatus.form = updateStatusForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::updatePaymentStatus
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:161
 * @route '/dashboard/orders/{order}/payment-status'
@@ -566,6 +884,38 @@ updatePaymentStatus.put = (args: { order: string | { uuid: string } } | [order: 
     url: updatePaymentStatus.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::updatePaymentStatus
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:161
+* @route '/dashboard/orders/{order}/payment-status'
+*/
+const updatePaymentStatusForm = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatePaymentStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OrderController::updatePaymentStatus
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OrderController.php:161
+* @route '/dashboard/orders/{order}/payment-status'
+*/
+updatePaymentStatusForm.put = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatePaymentStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updatePaymentStatus.form = updatePaymentStatusForm
 
 const OrderController = { index, create, store, show, edit, update, destroy, statusModal, updateStatus, updatePaymentStatus }
 

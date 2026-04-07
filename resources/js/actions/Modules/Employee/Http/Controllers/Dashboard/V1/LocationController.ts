@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::create
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:56
@@ -44,6 +44,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::create
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:56
+* @route '/dashboard/locations/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::create
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:56
+* @route '/dashboard/locations/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::create
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:56
+* @route '/dashboard/locations/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::store
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:88
 * @route '/dashboard/locations'
@@ -76,6 +113,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::store
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:88
+* @route '/dashboard/locations'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::store
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:88
+* @route '/dashboard/locations'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::index
@@ -120,6 +179,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::index
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:20
+* @route '/dashboard/locations'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::index
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:20
+* @route '/dashboard/locations'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::index
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:20
+* @route '/dashboard/locations'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::show
@@ -190,6 +286,43 @@ show.head = (args: { location: string | { uuid: string } } | [location: string |
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::show
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:132
+* @route '/dashboard/locations/{location}'
+*/
+const showForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::show
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:132
+* @route '/dashboard/locations/{location}'
+*/
+showForm.get = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::show
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:132
+* @route '/dashboard/locations/{location}'
+*/
+showForm.head = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::edit
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
 * @route '/dashboard/locations/{location}/edit'
@@ -258,6 +391,43 @@ edit.head = (args: { location: string | { uuid: string } } | [location: string |
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::edit
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
+* @route '/dashboard/locations/{location}/edit'
+*/
+const editForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::edit
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
+* @route '/dashboard/locations/{location}/edit'
+*/
+editForm.get = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::edit
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
+* @route '/dashboard/locations/{location}/edit'
+*/
+editForm.head = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::update
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:170
 * @route '/dashboard/locations/{location}'
@@ -314,6 +484,38 @@ update.put = (args: { location: string | { uuid: string } } | [location: string 
     url: update.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::update
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:170
+* @route '/dashboard/locations/{location}'
+*/
+const updateForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::update
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:170
+* @route '/dashboard/locations/{location}'
+*/
+updateForm.put = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::updateSchedule
@@ -374,6 +576,38 @@ updateSchedule.put = (args: { location: string | { uuid: string } } | [location:
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::updateSchedule
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:210
+* @route '/dashboard/locations/{location}/schedule'
+*/
+const updateScheduleForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updateSchedule.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::updateSchedule
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:210
+* @route '/dashboard/locations/{location}/schedule'
+*/
+updateScheduleForm.put = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updateSchedule.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updateSchedule.form = updateScheduleForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::toggleStatus
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:249
 * @route '/dashboard/locations/{location}/toggle-status'
@@ -432,6 +666,38 @@ toggleStatus.put = (args: { location: string | { uuid: string } } | [location: s
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::toggleStatus
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:249
+* @route '/dashboard/locations/{location}/toggle-status'
+*/
+const toggleStatusForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::toggleStatus
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:249
+* @route '/dashboard/locations/{location}/toggle-status'
+*/
+toggleStatusForm.put = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleStatus.form = toggleStatusForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::destroy
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:269
 * @route '/dashboard/locations/{location}'
@@ -488,6 +754,38 @@ destroy.delete = (args: { location: string | { uuid: string } } | [location: str
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::destroy
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:269
+* @route '/dashboard/locations/{location}'
+*/
+const destroyForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\LocationController::destroy
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:269
+* @route '/dashboard/locations/{location}'
+*/
+destroyForm.delete = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const LocationController = { create, store, index, show, edit, update, updateSchedule, toggleStatus, destroy }
 

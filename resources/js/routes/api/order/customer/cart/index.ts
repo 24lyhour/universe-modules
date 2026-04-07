@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\CartController::store
 * @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:63
@@ -32,6 +32,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\CartController::store
+* @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:63
+* @route '/api/v1/customer/cart'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\CartController::store
+* @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:63
+* @route '/api/v1/customer/cart'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\CartController::update
@@ -86,6 +108,38 @@ update.put = (args: { itemId: string | number } | [itemId: string | number ] | s
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Api\V1\CartController::update
+* @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:98
+* @route '/api/v1/customer/cart/{itemId}'
+*/
+const updateForm = (args: { itemId: string | number } | [itemId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\CartController::update
+* @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:98
+* @route '/api/v1/customer/cart/{itemId}'
+*/
+updateForm.put = (args: { itemId: string | number } | [itemId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Api\V1\CartController::destroy
 * @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:128
 * @route '/api/v1/customer/cart/{itemId}'
@@ -138,6 +192,38 @@ destroy.delete = (args: { itemId: string | number } | [itemId: string | number ]
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Api\V1\CartController::destroy
+* @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:128
+* @route '/api/v1/customer/cart/{itemId}'
+*/
+const destroyForm = (args: { itemId: string | number } | [itemId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\CartController::destroy
+* @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:128
+* @route '/api/v1/customer/cart/{itemId}'
+*/
+destroyForm.delete = (args: { itemId: string | number } | [itemId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Api\V1\CartController::clear
 * @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:144
 * @route '/api/v1/customer/cart'
@@ -170,6 +256,38 @@ clear.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: clear.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\CartController::clear
+* @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:144
+* @route '/api/v1/customer/cart'
+*/
+const clearForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: clear.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\CartController::clear
+* @see Modules/Order/app/Http/Controllers/Api/V1/CartController.php:144
+* @route '/api/v1/customer/cart'
+*/
+clearForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: clear.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+clear.form = clearForm
 
 const cart = {
     store: Object.assign(store, store),

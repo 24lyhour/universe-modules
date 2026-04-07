@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::summary
 * @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:67
@@ -60,6 +60,43 @@ summary.head = (args: { outletId: string | number } | [outletId: string | number
     url: summary.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::summary
+* @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:67
+* @route '/api/v1/outlets/{outletId}/reviews/summary'
+*/
+const summaryForm = (args: { outletId: string | number } | [outletId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: summary.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::summary
+* @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:67
+* @route '/api/v1/outlets/{outletId}/reviews/summary'
+*/
+summaryForm.get = (args: { outletId: string | number } | [outletId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: summary.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::summary
+* @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:67
+* @route '/api/v1/outlets/{outletId}/reviews/summary'
+*/
+summaryForm.head = (args: { outletId: string | number } | [outletId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: summary.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+summary.form = summaryForm
 
 const reviews = {
     summary: Object.assign(summary, summary),

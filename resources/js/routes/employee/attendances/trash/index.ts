@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::index
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:77
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::index
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:77
+* @route '/dashboard/attendances/trash'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::index
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:77
+* @route '/dashboard/attendances/trash'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::index
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:77
+* @route '/dashboard/attendances/trash'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::restore
@@ -96,6 +133,38 @@ restore.put = (args: { uuid: string | number } | [uuid: string | number ] | stri
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::restore
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:128
+* @route '/dashboard/attendances/{uuid}/restore'
+*/
+const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::restore
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:128
+* @route '/dashboard/attendances/{uuid}/restore'
+*/
+restoreForm.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+restore.form = restoreForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::forceDelete
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:143
 * @route '/dashboard/attendances/{uuid}/force-delete'
@@ -148,6 +217,38 @@ forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ]
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::forceDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:143
+* @route '/dashboard/attendances/{uuid}/force-delete'
+*/
+const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::forceDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:143
+* @route '/dashboard/attendances/{uuid}/force-delete'
+*/
+forceDeleteForm.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+forceDelete.form = forceDeleteForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::empty
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:158
 * @route '/dashboard/attendances/trash/empty'
@@ -180,6 +281,38 @@ empty.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: empty.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::empty
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:158
+* @route '/dashboard/attendances/trash/empty'
+*/
+const emptyForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: empty.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::empty
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:158
+* @route '/dashboard/attendances/trash/empty'
+*/
+emptyForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: empty.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+empty.form = emptyForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::bulkRestore
@@ -216,6 +349,38 @@ bulkRestore.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::bulkRestore
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:173
+* @route '/dashboard/attendances/trash/bulk-restore'
+*/
+const bulkRestoreForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkRestore.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::bulkRestore
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:173
+* @route '/dashboard/attendances/trash/bulk-restore'
+*/
+bulkRestoreForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkRestore.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkRestore.form = bulkRestoreForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::bulkForceDelete
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:196
 * @route '/dashboard/attendances/trash/bulk-force-delete'
@@ -248,6 +413,38 @@ bulkForceDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'
     url: bulkForceDelete.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::bulkForceDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:196
+* @route '/dashboard/attendances/trash/bulk-force-delete'
+*/
+const bulkForceDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkForceDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\AttendanceTrashController::bulkForceDelete
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/AttendanceTrashController.php:196
+* @route '/dashboard/attendances/trash/bulk-force-delete'
+*/
+bulkForceDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkForceDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkForceDelete.form = bulkForceDeleteForm
 
 const trash = {
     index: Object.assign(index, index),

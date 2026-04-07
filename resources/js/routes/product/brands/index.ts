@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 import trash067cdb from './trash'
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::bulkDelete
@@ -33,6 +33,38 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
     url: bulkDelete.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::bulkDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:142
+* @route '/dashboard/brands/bulk-delete'
+*/
+const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::bulkDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:142
+* @route '/dashboard/brands/bulk-delete'
+*/
+bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::trash
@@ -77,6 +109,43 @@ trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: trash.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::trash
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:184
+* @route '/dashboard/brands/trash'
+*/
+const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::trash
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:184
+* @route '/dashboard/brands/trash'
+*/
+trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::trash
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:184
+* @route '/dashboard/brands/trash'
+*/
+trashForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+trash.form = trashForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::restore
@@ -131,6 +200,38 @@ restore.put = (args: { uuid: string | number } | [uuid: string | number ] | stri
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::restore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:229
+* @route '/dashboard/brands/{uuid}/restore'
+*/
+const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::restore
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:229
+* @route '/dashboard/brands/{uuid}/restore'
+*/
+restoreForm.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+restore.form = restoreForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::forceDelete
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:241
 * @route '/dashboard/brands/{uuid}/force-delete'
@@ -183,6 +284,38 @@ forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ]
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::forceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:241
+* @route '/dashboard/brands/{uuid}/force-delete'
+*/
+const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::forceDelete
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:241
+* @route '/dashboard/brands/{uuid}/force-delete'
+*/
+forceDeleteForm.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+forceDelete.form = forceDeleteForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::exportMethod
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:173
 * @route '/dashboard/brands/export'
@@ -225,6 +358,43 @@ exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: exportMethod.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:173
+* @route '/dashboard/brands/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:173
+* @route '/dashboard/brands/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::exportMethod
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:173
+* @route '/dashboard/brands/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::index
@@ -271,6 +441,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::index
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:31
+* @route '/dashboard/brands'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::index
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:31
+* @route '/dashboard/brands'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::index
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:31
+* @route '/dashboard/brands'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::create
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:50
 * @route '/dashboard/brands/create'
@@ -315,6 +522,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::create
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:50
+* @route '/dashboard/brands/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::create
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:50
+* @route '/dashboard/brands/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::create
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:50
+* @route '/dashboard/brands/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::store
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:62
 * @route '/dashboard/brands'
@@ -347,6 +591,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::store
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:62
+* @route '/dashboard/brands'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::store
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:62
+* @route '/dashboard/brands'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::show
@@ -417,6 +683,43 @@ show.head = (args: { brand: number | { id: number } } | [brand: number | { id: n
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::show
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:73
+* @route '/dashboard/brands/{brand}'
+*/
+const showForm = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::show
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:73
+* @route '/dashboard/brands/{brand}'
+*/
+showForm.get = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::show
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:73
+* @route '/dashboard/brands/{brand}'
+*/
+showForm.head = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::edit
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
 * @route '/dashboard/brands/{brand}/edit'
@@ -483,6 +786,43 @@ edit.head = (args: { brand: number | { id: number } } | [brand: number | { id: n
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::edit
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
+* @route '/dashboard/brands/{brand}/edit'
+*/
+const editForm = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::edit
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
+* @route '/dashboard/brands/{brand}/edit'
+*/
+editForm.get = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::edit
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
+* @route '/dashboard/brands/{brand}/edit'
+*/
+editForm.head = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::update
@@ -553,6 +893,53 @@ update.patch = (args: { brand: number | { id: number } } | [brand: number | { id
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::update
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:99
+* @route '/dashboard/brands/{brand}'
+*/
+const updateForm = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::update
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:99
+* @route '/dashboard/brands/{brand}'
+*/
+updateForm.put = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::update
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:99
+* @route '/dashboard/brands/{brand}'
+*/
+updateForm.patch = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::destroy
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:110
 * @route '/dashboard/brands/{brand}'
@@ -611,6 +998,38 @@ destroy.delete = (args: { brand: number | { id: number } } | [brand: number | { 
 })
 
 /**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::destroy
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:110
+* @route '/dashboard/brands/{brand}'
+*/
+const destroyForm = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::destroy
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:110
+* @route '/dashboard/brands/{brand}'
+*/
+destroyForm.delete = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
+
+/**
 * @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::toggleStatus
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:159
 * @route '/dashboard/brands/{brand}/toggle-status'
@@ -667,6 +1086,38 @@ toggleStatus.put = (args: { brand: number | { id: number } } | [brand: number | 
     url: toggleStatus.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::toggleStatus
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:159
+* @route '/dashboard/brands/{brand}/toggle-status'
+*/
+const toggleStatusForm = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Product\Http\Controllers\Dashboard\V1\BrandController::toggleStatus
+* @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:159
+* @route '/dashboard/brands/{brand}/toggle-status'
+*/
+toggleStatusForm.put = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleStatus.form = toggleStatusForm
 
 const brands = {
     bulkDelete: Object.assign(bulkDelete, bulkDelete),

@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::index
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:32
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:32
+* @route '/dashboard/shipping-zones'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:32
+* @route '/dashboard/shipping-zones'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:32
+* @route '/dashboard/shipping-zones'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::create
@@ -88,6 +125,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:53
+* @route '/dashboard/shipping-zones/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:53
+* @route '/dashboard/shipping-zones/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:53
+* @route '/dashboard/shipping-zones/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::store
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:67
 * @route '/dashboard/shipping-zones'
@@ -120,6 +194,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::store
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:67
+* @route '/dashboard/shipping-zones'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::store
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:67
+* @route '/dashboard/shipping-zones'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::show
@@ -190,6 +286,43 @@ show.head = (args: { shippingZone: string | { uuid: string } } | [shippingZone: 
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:78
+* @route '/dashboard/shipping-zones/{shippingZone}'
+*/
+const showForm = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:78
+* @route '/dashboard/shipping-zones/{shippingZone}'
+*/
+showForm.get = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:78
+* @route '/dashboard/shipping-zones/{shippingZone}'
+*/
+showForm.head = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::edit
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
 * @route '/dashboard/shipping-zones/{shippingZone}/edit'
@@ -256,6 +389,43 @@ edit.head = (args: { shippingZone: string | { uuid: string } } | [shippingZone: 
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
+* @route '/dashboard/shipping-zones/{shippingZone}/edit'
+*/
+const editForm = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
+* @route '/dashboard/shipping-zones/{shippingZone}/edit'
+*/
+editForm.get = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
+* @route '/dashboard/shipping-zones/{shippingZone}/edit'
+*/
+editForm.head = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::update
@@ -326,6 +496,53 @@ update.patch = (args: { shippingZone: string | { uuid: string } } | [shippingZon
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:106
+* @route '/dashboard/shipping-zones/{shippingZone}'
+*/
+const updateForm = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:106
+* @route '/dashboard/shipping-zones/{shippingZone}'
+*/
+updateForm.put = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:106
+* @route '/dashboard/shipping-zones/{shippingZone}'
+*/
+updateForm.patch = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::destroy
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:117
 * @route '/dashboard/shipping-zones/{shippingZone}'
@@ -382,6 +599,38 @@ destroy.delete = (args: { shippingZone: string | { uuid: string } } | [shippingZ
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::destroy
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:117
+* @route '/dashboard/shipping-zones/{shippingZone}'
+*/
+const destroyForm = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::destroy
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:117
+* @route '/dashboard/shipping-zones/{shippingZone}'
+*/
+destroyForm.delete = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::toggleActive
@@ -442,6 +691,38 @@ toggleActive.put = (args: { shippingZone: string | { uuid: string } } | [shippin
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::toggleActive
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:128
+* @route '/dashboard/shipping-zones/{shippingZone}/toggle-active'
+*/
+const toggleActiveForm = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleActive.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::toggleActive
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:128
+* @route '/dashboard/shipping-zones/{shippingZone}/toggle-active'
+*/
+toggleActiveForm.put = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleActive.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleActive.form = toggleActiveForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::checkDelivery
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:140
 * @route '/dashboard/shipping-zones/check-delivery'
@@ -474,6 +755,28 @@ checkDelivery.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
     url: checkDelivery.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::checkDelivery
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:140
+* @route '/dashboard/shipping-zones/check-delivery'
+*/
+const checkDeliveryForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: checkDelivery.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\ShippingZoneController::checkDelivery
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:140
+* @route '/dashboard/shipping-zones/check-delivery'
+*/
+checkDeliveryForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: checkDelivery.url(options),
+    method: 'post',
+})
+
+checkDelivery.form = checkDeliveryForm
 
 const ShippingZoneController = { index, create, store, show, edit, update, destroy, toggleActive, checkDelivery }
 

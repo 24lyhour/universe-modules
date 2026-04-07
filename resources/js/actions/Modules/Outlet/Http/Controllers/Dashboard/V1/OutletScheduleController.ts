@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletScheduleController::show
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
@@ -68,6 +68,43 @@ show.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { u
 })
 
 /**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletScheduleController::show
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
+* @route '/dashboard/outlets/{outlet}/schedule'
+*/
+const showForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletScheduleController::show
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
+* @route '/dashboard/outlets/{outlet}/schedule'
+*/
+showForm.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletScheduleController::show
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
+* @route '/dashboard/outlets/{outlet}/schedule'
+*/
+showForm.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletScheduleController::update
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:29
 * @route '/dashboard/outlets/{outlet}/schedule'
@@ -124,6 +161,38 @@ update.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { 
     url: update.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletScheduleController::update
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:29
+* @route '/dashboard/outlets/{outlet}/schedule'
+*/
+const updateForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletScheduleController::update
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:29
+* @route '/dashboard/outlets/{outlet}/schedule'
+*/
+updateForm.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
 
 const OutletScheduleController = { show, update }
 

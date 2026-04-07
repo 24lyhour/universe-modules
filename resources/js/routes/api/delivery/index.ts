@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Delivery\Http\Controllers\DeliveryController::index
 * @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
@@ -44,6 +44,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::index
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::index
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::index
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Delivery\Http\Controllers\DeliveryController::store
 * @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
 * @route '/api/v1/deliveries'
@@ -76,6 +113,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::store
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::store
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Delivery\Http\Controllers\DeliveryController::show
@@ -140,6 +199,43 @@ show.head = (args: { delivery: string | number } | [delivery: string | number ] 
 })
 
 /**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::show
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries/{delivery}'
+*/
+const showForm = (args: { delivery: string | number } | [delivery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::show
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries/{delivery}'
+*/
+showForm.get = (args: { delivery: string | number } | [delivery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::show
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries/{delivery}'
+*/
+showForm.head = (args: { delivery: string | number } | [delivery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Delivery\Http\Controllers\DeliveryController::update
 * @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
 * @route '/api/v1/deliveries/{delivery}'
@@ -202,6 +298,53 @@ update.patch = (args: { delivery: string | number } | [delivery: string | number
 })
 
 /**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::update
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries/{delivery}'
+*/
+const updateForm = (args: { delivery: string | number } | [delivery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::update
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries/{delivery}'
+*/
+updateForm.put = (args: { delivery: string | number } | [delivery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::update
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries/{delivery}'
+*/
+updateForm.patch = (args: { delivery: string | number } | [delivery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Delivery\Http\Controllers\DeliveryController::destroy
 * @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
 * @route '/api/v1/deliveries/{delivery}'
@@ -252,6 +395,38 @@ destroy.delete = (args: { delivery: string | number } | [delivery: string | numb
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::destroy
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries/{delivery}'
+*/
+const destroyForm = (args: { delivery: string | number } | [delivery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Delivery\Http\Controllers\DeliveryController::destroy
+* @see Modules/Delivery/app/Http/Controllers/DeliveryController.php:0
+* @route '/api/v1/deliveries/{delivery}'
+*/
+destroyForm.delete = (args: { delivery: string | number } | [delivery: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const delivery = {
     index: Object.assign(index, index),

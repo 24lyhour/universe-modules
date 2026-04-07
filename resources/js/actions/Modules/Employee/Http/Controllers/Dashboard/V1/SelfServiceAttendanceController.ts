@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::index
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
@@ -44,6 +44,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::index
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
+* @route '/dashboard/attendances/self-service'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::index
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
+* @route '/dashboard/attendances/self-service'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::index
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:69
+* @route '/dashboard/attendances/self-service'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::checkIn
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:116
 * @route '/dashboard/attendances/self-service/check-in'
@@ -78,6 +115,28 @@ checkIn.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::checkIn
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:116
+* @route '/dashboard/attendances/self-service/check-in'
+*/
+const checkInForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: checkIn.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::checkIn
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:116
+* @route '/dashboard/attendances/self-service/check-in'
+*/
+checkInForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: checkIn.url(options),
+    method: 'post',
+})
+
+checkIn.form = checkInForm
+
+/**
 * @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::checkOut
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:145
 * @route '/dashboard/attendances/self-service/check-out'
@@ -110,6 +169,28 @@ checkOut.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: checkOut.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::checkOut
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:145
+* @route '/dashboard/attendances/self-service/check-out'
+*/
+const checkOutForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: checkOut.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Employee\Http\Controllers\Dashboard\V1\SelfServiceAttendanceController::checkOut
+* @see Modules/Employee/app/Http/Controllers/Dashboard/V1/SelfServiceAttendanceController.php:145
+* @route '/dashboard/attendances/self-service/check-out'
+*/
+checkOutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: checkOut.url(options),
+    method: 'post',
+})
+
+checkOut.form = checkOutForm
 
 const SelfServiceAttendanceController = { index, checkIn, checkOut }
 
