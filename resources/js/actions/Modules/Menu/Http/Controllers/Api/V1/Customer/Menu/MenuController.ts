@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
 * @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
+* @route '/api/v1/menus'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
+* @route '/api/v1/menus'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
+* @route '/api/v1/menus'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
@@ -110,6 +147,43 @@ show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
     url: show.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:38
+* @route '/api/v1/menus/{menu}'
+*/
+const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:38
+* @route '/api/v1/menus/{menu}'
+*/
+showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:38
+* @route '/api/v1/menus/{menu}'
+*/
+showForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
 
 const MenuController = { index, show }
 

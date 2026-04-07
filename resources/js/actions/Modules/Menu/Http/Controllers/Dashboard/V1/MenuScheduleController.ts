@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::show
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
@@ -68,6 +68,43 @@ show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
+* @route '/dashboard/menus/{menu}/schedule'
+*/
+const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
+* @route '/dashboard/menus/{menu}/schedule'
+*/
+showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
+* @route '/dashboard/menus/{menu}/schedule'
+*/
+showForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::update
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
 * @route '/dashboard/menus/{menu}/schedule'
@@ -124,6 +161,38 @@ update.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid
     url: update.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::update
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
+* @route '/dashboard/menus/{menu}/schedule'
+*/
+const updateForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuScheduleController::update
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
+* @route '/dashboard/menus/{menu}/schedule'
+*/
+updateForm.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
 
 const MenuScheduleController = { show, update }
 

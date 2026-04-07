@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::index
 * @see Modules/Company/app/Http/Controllers/CompanyController.php:22
@@ -46,6 +46,42 @@ indexaa2996eb82d2b936339638ef6a4e0dca.head = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::index
 * @see Modules/Company/app/Http/Controllers/CompanyController.php:22
+* @route '/api/v1/companies'
+*/
+const indexaa2996eb82d2b936339638ef6a4e0dcaForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: indexaa2996eb82d2b936339638ef6a4e0dca.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::index
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:22
+* @route '/api/v1/companies'
+*/
+indexaa2996eb82d2b936339638ef6a4e0dcaForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: indexaa2996eb82d2b936339638ef6a4e0dca.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::index
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:22
+* @route '/api/v1/companies'
+*/
+indexaa2996eb82d2b936339638ef6a4e0dcaForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: indexaa2996eb82d2b936339638ef6a4e0dca.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+indexaa2996eb82d2b936339638ef6a4e0dca.form = indexaa2996eb82d2b936339638ef6a4e0dcaForm
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::index
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:22
 * @route '/companies'
 */
 const index5000462d9c23a562f4014a314fb30901 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -86,6 +122,43 @@ index5000462d9c23a562f4014a314fb30901.head = (options?: RouteQueryOptions): Rout
     url: index5000462d9c23a562f4014a314fb30901.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::index
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:22
+* @route '/companies'
+*/
+const index5000462d9c23a562f4014a314fb30901Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index5000462d9c23a562f4014a314fb30901.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::index
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:22
+* @route '/companies'
+*/
+index5000462d9c23a562f4014a314fb30901Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index5000462d9c23a562f4014a314fb30901.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::index
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:22
+* @route '/companies'
+*/
+index5000462d9c23a562f4014a314fb30901Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index5000462d9c23a562f4014a314fb30901.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index5000462d9c23a562f4014a314fb30901.form = index5000462d9c23a562f4014a314fb30901Form
 
 export const index = {
     '/api/v1/companies': indexaa2996eb82d2b936339638ef6a4e0dca,
@@ -129,6 +202,27 @@ storeaa2996eb82d2b936339638ef6a4e0dca.post = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::store
 * @see Modules/Company/app/Http/Controllers/CompanyController.php:42
+* @route '/api/v1/companies'
+*/
+const storeaa2996eb82d2b936339638ef6a4e0dcaForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: storeaa2996eb82d2b936339638ef6a4e0dca.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::store
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:42
+* @route '/api/v1/companies'
+*/
+storeaa2996eb82d2b936339638ef6a4e0dcaForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: storeaa2996eb82d2b936339638ef6a4e0dca.url(options),
+    method: 'post',
+})
+
+storeaa2996eb82d2b936339638ef6a4e0dca.form = storeaa2996eb82d2b936339638ef6a4e0dcaForm
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::store
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:42
 * @route '/companies'
 */
 const store5000462d9c23a562f4014a314fb30901 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -159,6 +253,28 @@ store5000462d9c23a562f4014a314fb30901.post = (options?: RouteQueryOptions): Rout
     url: store5000462d9c23a562f4014a314fb30901.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::store
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:42
+* @route '/companies'
+*/
+const store5000462d9c23a562f4014a314fb30901Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store5000462d9c23a562f4014a314fb30901.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::store
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:42
+* @route '/companies'
+*/
+store5000462d9c23a562f4014a314fb30901Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store5000462d9c23a562f4014a314fb30901.url(options),
+    method: 'post',
+})
+
+store5000462d9c23a562f4014a314fb30901.form = store5000462d9c23a562f4014a314fb30901Form
 
 export const store = {
     '/api/v1/companies': storeaa2996eb82d2b936339638ef6a4e0dca,
@@ -230,6 +346,42 @@ showe6d4504e010b72e5bbee1bcb7de80765.head = (args: { company: string | number } 
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::show
 * @see Modules/Company/app/Http/Controllers/CompanyController.php:54
+* @route '/api/v1/companies/{company}'
+*/
+const showe6d4504e010b72e5bbee1bcb7de80765Form = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showe6d4504e010b72e5bbee1bcb7de80765.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::show
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:54
+* @route '/api/v1/companies/{company}'
+*/
+showe6d4504e010b72e5bbee1bcb7de80765Form.get = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showe6d4504e010b72e5bbee1bcb7de80765.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::show
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:54
+* @route '/api/v1/companies/{company}'
+*/
+showe6d4504e010b72e5bbee1bcb7de80765Form.head = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: showe6d4504e010b72e5bbee1bcb7de80765.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+showe6d4504e010b72e5bbee1bcb7de80765.form = showe6d4504e010b72e5bbee1bcb7de80765Form
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::show
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:54
 * @route '/companies/{company}'
 */
 const show51e32776e1cd4375dda876ca4fc54c6c = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -288,6 +440,43 @@ show51e32776e1cd4375dda876ca4fc54c6c.head = (args: { company: string | number } 
     url: show51e32776e1cd4375dda876ca4fc54c6c.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::show
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:54
+* @route '/companies/{company}'
+*/
+const show51e32776e1cd4375dda876ca4fc54c6cForm = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show51e32776e1cd4375dda876ca4fc54c6c.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::show
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:54
+* @route '/companies/{company}'
+*/
+show51e32776e1cd4375dda876ca4fc54c6cForm.get = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show51e32776e1cd4375dda876ca4fc54c6c.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::show
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:54
+* @route '/companies/{company}'
+*/
+show51e32776e1cd4375dda876ca4fc54c6cForm.head = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show51e32776e1cd4375dda876ca4fc54c6c.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show51e32776e1cd4375dda876ca4fc54c6c.form = show51e32776e1cd4375dda876ca4fc54c6cForm
 
 export const show = {
     '/api/v1/companies/{company}': showe6d4504e010b72e5bbee1bcb7de80765,
@@ -359,6 +548,52 @@ updatee6d4504e010b72e5bbee1bcb7de80765.patch = (args: { company: string | number
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::update
 * @see Modules/Company/app/Http/Controllers/CompanyController.php:86
+* @route '/api/v1/companies/{company}'
+*/
+const updatee6d4504e010b72e5bbee1bcb7de80765Form = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatee6d4504e010b72e5bbee1bcb7de80765.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::update
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:86
+* @route '/api/v1/companies/{company}'
+*/
+updatee6d4504e010b72e5bbee1bcb7de80765Form.put = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatee6d4504e010b72e5bbee1bcb7de80765.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::update
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:86
+* @route '/api/v1/companies/{company}'
+*/
+updatee6d4504e010b72e5bbee1bcb7de80765Form.patch = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: updatee6d4504e010b72e5bbee1bcb7de80765.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+updatee6d4504e010b72e5bbee1bcb7de80765.form = updatee6d4504e010b72e5bbee1bcb7de80765Form
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::update
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:86
 * @route '/companies/{company}'
 */
 const update51e32776e1cd4375dda876ca4fc54c6c = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -417,6 +652,53 @@ update51e32776e1cd4375dda876ca4fc54c6c.patch = (args: { company: string | number
     url: update51e32776e1cd4375dda876ca4fc54c6c.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::update
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:86
+* @route '/companies/{company}'
+*/
+const update51e32776e1cd4375dda876ca4fc54c6cForm = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update51e32776e1cd4375dda876ca4fc54c6c.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::update
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:86
+* @route '/companies/{company}'
+*/
+update51e32776e1cd4375dda876ca4fc54c6cForm.put = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update51e32776e1cd4375dda876ca4fc54c6c.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::update
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:86
+* @route '/companies/{company}'
+*/
+update51e32776e1cd4375dda876ca4fc54c6cForm.patch = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update51e32776e1cd4375dda876ca4fc54c6c.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update51e32776e1cd4375dda876ca4fc54c6c.form = update51e32776e1cd4375dda876ca4fc54c6cForm
 
 export const update = {
     '/api/v1/companies/{company}': updatee6d4504e010b72e5bbee1bcb7de80765,
@@ -478,6 +760,37 @@ destroye6d4504e010b72e5bbee1bcb7de80765.delete = (args: { company: string | numb
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::destroy
 * @see Modules/Company/app/Http/Controllers/CompanyController.php:102
+* @route '/api/v1/companies/{company}'
+*/
+const destroye6d4504e010b72e5bbee1bcb7de80765Form = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroye6d4504e010b72e5bbee1bcb7de80765.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::destroy
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:102
+* @route '/api/v1/companies/{company}'
+*/
+destroye6d4504e010b72e5bbee1bcb7de80765Form.delete = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroye6d4504e010b72e5bbee1bcb7de80765.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroye6d4504e010b72e5bbee1bcb7de80765.form = destroye6d4504e010b72e5bbee1bcb7de80765Form
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::destroy
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:102
 * @route '/companies/{company}'
 */
 const destroy51e32776e1cd4375dda876ca4fc54c6c = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -527,6 +840,38 @@ destroy51e32776e1cd4375dda876ca4fc54c6c.delete = (args: { company: string | numb
     method: 'delete',
 })
 
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::destroy
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:102
+* @route '/companies/{company}'
+*/
+const destroy51e32776e1cd4375dda876ca4fc54c6cForm = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy51e32776e1cd4375dda876ca4fc54c6c.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::destroy
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:102
+* @route '/companies/{company}'
+*/
+destroy51e32776e1cd4375dda876ca4fc54c6cForm.delete = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy51e32776e1cd4375dda876ca4fc54c6c.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy51e32776e1cd4375dda876ca4fc54c6c.form = destroy51e32776e1cd4375dda876ca4fc54c6cForm
+
 export const destroy = {
     '/api/v1/companies/{company}': destroye6d4504e010b72e5bbee1bcb7de80765,
     '/companies/{company}': destroy51e32776e1cd4375dda876ca4fc54c6c,
@@ -575,6 +920,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: create.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::create
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:34
+* @route '/companies/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::create
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:34
+* @route '/companies/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::create
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:34
+* @route '/companies/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
 
 /**
 * @see \Modules\Company\Http\Controllers\CompanyController::edit
@@ -637,6 +1019,43 @@ edit.head = (args: { company: string | number } | [company: string | number ] | 
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::edit
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:70
+* @route '/companies/{company}/edit'
+*/
+const editForm = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::edit
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:70
+* @route '/companies/{company}/edit'
+*/
+editForm.get = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Company\Http\Controllers\CompanyController::edit
+* @see Modules/Company/app/Http/Controllers/CompanyController.php:70
+* @route '/companies/{company}/edit'
+*/
+editForm.head = (args: { company: string | number } | [company: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 const CompanyController = { index, store, show, update, destroy, create, edit }
 

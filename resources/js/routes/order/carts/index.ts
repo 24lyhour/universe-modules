@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::index
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:34
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:34
+* @route '/dashboard/carts'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:34
+* @route '/dashboard/carts'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:34
+* @route '/dashboard/carts'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::create
@@ -88,6 +125,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:54
+* @route '/dashboard/carts/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:54
+* @route '/dashboard/carts/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:54
+* @route '/dashboard/carts/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::store
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:69
 * @route '/dashboard/carts'
@@ -120,6 +194,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::store
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:69
+* @route '/dashboard/carts'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::store
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:69
+* @route '/dashboard/carts'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::show
@@ -190,6 +286,43 @@ show.head = (args: { cart: number | { id: number } } | [cart: number | { id: num
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:80
+* @route '/dashboard/carts/{cart}'
+*/
+const showForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:80
+* @route '/dashboard/carts/{cart}'
+*/
+showForm.get = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:80
+* @route '/dashboard/carts/{cart}'
+*/
+showForm.head = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::edit
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
 * @route '/dashboard/carts/{cart}/edit'
@@ -256,6 +389,43 @@ edit.head = (args: { cart: number | { id: number } } | [cart: number | { id: num
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
+* @route '/dashboard/carts/{cart}/edit'
+*/
+const editForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
+* @route '/dashboard/carts/{cart}/edit'
+*/
+editForm.get = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
+* @route '/dashboard/carts/{cart}/edit'
+*/
+editForm.head = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::update
@@ -326,6 +496,53 @@ update.patch = (args: { cart: number | { id: number } } | [cart: number | { id: 
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:109
+* @route '/dashboard/carts/{cart}'
+*/
+const updateForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:109
+* @route '/dashboard/carts/{cart}'
+*/
+updateForm.put = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:109
+* @route '/dashboard/carts/{cart}'
+*/
+updateForm.patch = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::destroy
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:120
 * @route '/dashboard/carts/{cart}'
@@ -382,6 +599,38 @@ destroy.delete = (args: { cart: number | { id: number } } | [cart: number | { id
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::destroy
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:120
+* @route '/dashboard/carts/{cart}'
+*/
+const destroyForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::destroy
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:120
+* @route '/dashboard/carts/{cart}'
+*/
+destroyForm.delete = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::toggleStatus
@@ -442,6 +691,38 @@ toggleStatus.put = (args: { cart: number | { id: number } } | [cart: number | { 
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::toggleStatus
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:142
+* @route '/dashboard/carts/{cart}/toggle-status'
+*/
+const toggleStatusForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::toggleStatus
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:142
+* @route '/dashboard/carts/{cart}/toggle-status'
+*/
+toggleStatusForm.put = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleStatus.form = toggleStatusForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::convertToOrder
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:131
 * @route '/dashboard/carts/{cart}/convert-to-order'
@@ -500,6 +781,28 @@ convertToOrder.post = (args: { cart: number | { id: number } } | [cart: number |
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::convertToOrder
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:131
+* @route '/dashboard/carts/{cart}/convert-to-order'
+*/
+const convertToOrderForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: convertToOrder.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::convertToOrder
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:131
+* @route '/dashboard/carts/{cart}/convert-to-order'
+*/
+convertToOrderForm.post = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: convertToOrder.url(args, options),
+    method: 'post',
+})
+
+convertToOrder.form = convertToOrderForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::clearItems
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:152
 * @route '/dashboard/carts/{cart}/clear-items'
@@ -556,6 +859,38 @@ clearItems.delete = (args: { cart: number | { id: number } } | [cart: number | {
     url: clearItems.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::clearItems
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:152
+* @route '/dashboard/carts/{cart}/clear-items'
+*/
+const clearItemsForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: clearItems.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\CartController::clearItems
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:152
+* @route '/dashboard/carts/{cart}/clear-items'
+*/
+clearItemsForm.delete = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: clearItems.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+clearItems.form = clearItemsForm
 
 const carts = {
     index: Object.assign(index, index),

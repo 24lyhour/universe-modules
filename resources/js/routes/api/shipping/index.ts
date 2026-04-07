@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::index
 * @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:18
@@ -44,6 +44,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::index
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:18
+* @route '/api/v1/shipping-addresses'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::index
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:18
+* @route '/api/v1/shipping-addresses'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::index
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:18
+* @route '/api/v1/shipping-addresses'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::store
 * @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:37
 * @route '/api/v1/shipping-addresses'
@@ -76,6 +113,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::store
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:37
+* @route '/api/v1/shipping-addresses'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::store
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:37
+* @route '/api/v1/shipping-addresses'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::defaultMethod
@@ -120,6 +179,43 @@ defaultMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => (
     url: defaultMethod.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::defaultMethod
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:152
+* @route '/api/v1/shipping-addresses/default'
+*/
+const defaultMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: defaultMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::defaultMethod
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:152
+* @route '/api/v1/shipping-addresses/default'
+*/
+defaultMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: defaultMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::defaultMethod
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:152
+* @route '/api/v1/shipping-addresses/default'
+*/
+defaultMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: defaultMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+defaultMethod.form = defaultMethodForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::show
@@ -184,6 +280,43 @@ show.head = (args: { uuid: string | number } | [uuid: string | number ] | string
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::show
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:62
+* @route '/api/v1/shipping-addresses/{uuid}'
+*/
+const showForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::show
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:62
+* @route '/api/v1/shipping-addresses/{uuid}'
+*/
+showForm.get = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::show
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:62
+* @route '/api/v1/shipping-addresses/{uuid}'
+*/
+showForm.head = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::update
 * @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:80
 * @route '/api/v1/shipping-addresses/{uuid}'
@@ -234,6 +367,38 @@ update.put = (args: { uuid: string | number } | [uuid: string | number ] | strin
     url: update.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::update
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:80
+* @route '/api/v1/shipping-addresses/{uuid}'
+*/
+const updateForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::update
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:80
+* @route '/api/v1/shipping-addresses/{uuid}'
+*/
+updateForm.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::destroy
@@ -288,6 +453,38 @@ destroy.delete = (args: { uuid: string | number } | [uuid: string | number ] | s
 })
 
 /**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::destroy
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:100
+* @route '/api/v1/shipping-addresses/{uuid}'
+*/
+const destroyForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::destroy
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:100
+* @route '/api/v1/shipping-addresses/{uuid}'
+*/
+destroyForm.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
+
+/**
 * @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::setDefault
 * @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:132
 * @route '/api/v1/shipping-addresses/{uuid}/set-default'
@@ -338,6 +535,38 @@ setDefault.patch = (args: { uuid: string | number } | [uuid: string | number ] |
     url: setDefault.url(args, options),
     method: 'patch',
 })
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::setDefault
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:132
+* @route '/api/v1/shipping-addresses/{uuid}/set-default'
+*/
+const setDefaultForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: setDefault.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Customer\Http\Controllers\Api\V1\Shipping\CustomerShippingController::setDefault
+* @see Modules/Customer/app/Http/Controllers/Api/V1/Shipping/CustomerShippingController.php:132
+* @route '/api/v1/shipping-addresses/{uuid}/set-default'
+*/
+setDefaultForm.patch = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: setDefault.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+setDefault.form = setDefaultForm
 
 const shipping = {
     index: Object.assign(index, index),

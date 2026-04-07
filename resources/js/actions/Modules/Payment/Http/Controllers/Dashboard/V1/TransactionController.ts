@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::exportMethod
 * @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:57
@@ -44,6 +44,43 @@ exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::exportMethod
+* @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:57
+* @route '/dashboard/payment-transactions/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::exportMethod
+* @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:57
+* @route '/dashboard/payment-transactions/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::exportMethod
+* @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:57
+* @route '/dashboard/payment-transactions/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
+
+/**
 * @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::index
 * @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
 * @route '/dashboard/payment-transactions'
@@ -86,6 +123,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::index
+* @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @route '/dashboard/payment-transactions'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::index
+* @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @route '/dashboard/payment-transactions'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::index
+* @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:24
+* @route '/dashboard/payment-transactions'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::show
@@ -154,6 +228,43 @@ show.head = (args: { transaction: string | { uuid: string } } | [transaction: st
     url: show.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::show
+* @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:45
+* @route '/dashboard/payment-transactions/{transaction}'
+*/
+const showForm = (args: { transaction: string | { uuid: string } } | [transaction: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::show
+* @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:45
+* @route '/dashboard/payment-transactions/{transaction}'
+*/
+showForm.get = (args: { transaction: string | { uuid: string } } | [transaction: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Payment\Http\Controllers\Dashboard\V1\TransactionController::show
+* @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:45
+* @route '/dashboard/payment-transactions/{transaction}'
+*/
+showForm.head = (args: { transaction: string | { uuid: string } } | [transaction: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
 
 const TransactionController = { exportMethod, index, show, export: exportMethod }
 

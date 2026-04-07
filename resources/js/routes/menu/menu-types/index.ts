@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 import importMethod7367d2 from './import'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::trash
@@ -45,6 +45,43 @@ trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:69
+* @route '/dashboard/menu-types/trash'
+*/
+const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:69
+* @route '/dashboard/menu-types/trash'
+*/
+trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::trash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:69
+* @route '/dashboard/menu-types/trash'
+*/
+trashForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: trash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+trash.form = trashForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::exportMethod
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:86
 * @route '/dashboard/menu-types/export'
@@ -87,6 +124,43 @@ exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: exportMethod.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:86
+* @route '/dashboard/menu-types/export'
+*/
+const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:86
+* @route '/dashboard/menu-types/export'
+*/
+exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::exportMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:86
+* @route '/dashboard/menu-types/export'
+*/
+exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: exportMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+exportMethod.form = exportMethodForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::importMethod
@@ -133,6 +207,43 @@ importMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:99
+* @route '/dashboard/menu-types/import'
+*/
+const importMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:99
+* @route '/dashboard/menu-types/import'
+*/
+importMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::importMethod
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:99
+* @route '/dashboard/menu-types/import'
+*/
+importMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: importMethod.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+importMethod.form = importMethodForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::bulkDelete
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:379
 * @route '/dashboard/menu-types/bulk-delete'
@@ -165,6 +276,38 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
     url: bulkDelete.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::bulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:379
+* @route '/dashboard/menu-types/bulk-delete'
+*/
+const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::bulkDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:379
+* @route '/dashboard/menu-types/bulk-delete'
+*/
+bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::bulkRestore
@@ -201,6 +344,38 @@ bulkRestore.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::bulkRestore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:233
+* @route '/dashboard/menu-types/trash/bulk-restore'
+*/
+const bulkRestoreForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkRestore.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::bulkRestore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:233
+* @route '/dashboard/menu-types/trash/bulk-restore'
+*/
+bulkRestoreForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkRestore.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkRestore.form = bulkRestoreForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::bulkForceDelete
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:249
 * @route '/dashboard/menu-types/trash/bulk-force-delete'
@@ -235,6 +410,38 @@ bulkForceDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::bulkForceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:249
+* @route '/dashboard/menu-types/trash/bulk-force-delete'
+*/
+const bulkForceDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkForceDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::bulkForceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:249
+* @route '/dashboard/menu-types/trash/bulk-force-delete'
+*/
+bulkForceDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: bulkForceDelete.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+bulkForceDelete.form = bulkForceDeleteForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::emptyTrash
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:265
 * @route '/dashboard/menu-types/trash/empty'
@@ -267,6 +474,38 @@ emptyTrash.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
     url: emptyTrash.url(options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::emptyTrash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:265
+* @route '/dashboard/menu-types/trash/empty'
+*/
+const emptyTrashForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: emptyTrash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::emptyTrash
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:265
+* @route '/dashboard/menu-types/trash/empty'
+*/
+emptyTrashForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: emptyTrash.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+emptyTrash.form = emptyTrashForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::index
@@ -313,6 +552,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::index
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:55
+* @route '/dashboard/menu-types'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::index
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:55
+* @route '/dashboard/menu-types'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::index
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:55
+* @route '/dashboard/menu-types'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::create
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:276
 * @route '/dashboard/menu-types/create'
@@ -357,6 +633,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::create
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:276
+* @route '/dashboard/menu-types/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::create
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:276
+* @route '/dashboard/menu-types/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::create
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:276
+* @route '/dashboard/menu-types/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::store
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:287
 * @route '/dashboard/menu-types'
@@ -389,6 +702,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::store
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:287
+* @route '/dashboard/menu-types'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::store
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:287
+* @route '/dashboard/menu-types'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::show
@@ -453,6 +788,43 @@ show.head = (args: { menu_type: string | number } | [menu_type: string | number 
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:300
+* @route '/dashboard/menu-types/{menu_type}'
+*/
+const showForm = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:300
+* @route '/dashboard/menu-types/{menu_type}'
+*/
+showForm.get = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::show
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:300
+* @route '/dashboard/menu-types/{menu_type}'
+*/
+showForm.head = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::edit
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:310
 * @route '/dashboard/menu-types/{menu_type}/edit'
@@ -513,6 +885,43 @@ edit.head = (args: { menu_type: string | number } | [menu_type: string | number 
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::edit
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:310
+* @route '/dashboard/menu-types/{menu_type}/edit'
+*/
+const editForm = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::edit
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:310
+* @route '/dashboard/menu-types/{menu_type}/edit'
+*/
+editForm.get = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::edit
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:310
+* @route '/dashboard/menu-types/{menu_type}/edit'
+*/
+editForm.head = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::update
@@ -577,6 +986,53 @@ update.patch = (args: { menu_type: string | number } | [menu_type: string | numb
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::update
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:321
+* @route '/dashboard/menu-types/{menu_type}'
+*/
+const updateForm = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::update
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:321
+* @route '/dashboard/menu-types/{menu_type}'
+*/
+updateForm.put = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::update
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:321
+* @route '/dashboard/menu-types/{menu_type}'
+*/
+updateForm.patch = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::destroy
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:344
 * @route '/dashboard/menu-types/{menu_type}'
@@ -627,6 +1083,38 @@ destroy.delete = (args: { menu_type: string | number } | [menu_type: string | nu
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::destroy
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:344
+* @route '/dashboard/menu-types/{menu_type}'
+*/
+const destroyForm = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::destroy
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:344
+* @route '/dashboard/menu-types/{menu_type}'
+*/
+destroyForm.delete = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::confirmDelete
@@ -691,6 +1179,43 @@ confirmDelete.head = (args: { menu_type: string | number } | [menu_type: string 
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::confirmDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:334
+* @route '/dashboard/menu-types/{menu_type}/delete'
+*/
+const confirmDeleteForm = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::confirmDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:334
+* @route '/dashboard/menu-types/{menu_type}/delete'
+*/
+confirmDeleteForm.get = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::confirmDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:334
+* @route '/dashboard/menu-types/{menu_type}/delete'
+*/
+confirmDeleteForm.head = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmDelete.form = confirmDeleteForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeStatusController::__invoke
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeStatusController.php:20
 * @route '/dashboard/menu-types/{menu_type}/toggle-status'
@@ -741,6 +1266,38 @@ toggleStatus.put = (args: { menu_type: string | number } | [menu_type: string | 
     url: toggleStatus.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeStatusController::__invoke
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeStatusController.php:20
+* @route '/dashboard/menu-types/{menu_type}/toggle-status'
+*/
+const toggleStatusForm = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeStatusController::__invoke
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeStatusController.php:20
+* @route '/dashboard/menu-types/{menu_type}/toggle-status'
+*/
+toggleStatusForm.put = (args: { menu_type: string | number } | [menu_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleStatus.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::restore
@@ -795,6 +1352,38 @@ restore.put = (args: { uuid: string | number } | [uuid: string | number ] | stri
 })
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::restore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:209
+* @route '/dashboard/menu-types/{uuid}/restore'
+*/
+const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::restore
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:209
+* @route '/dashboard/menu-types/{uuid}/restore'
+*/
+restoreForm.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: restore.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+restore.form = restoreForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::forceDelete
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:221
 * @route '/dashboard/menu-types/{uuid}/force-delete'
@@ -845,6 +1434,38 @@ forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ]
     url: forceDelete.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::forceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:221
+* @route '/dashboard/menu-types/{uuid}/force-delete'
+*/
+const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::forceDelete
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:221
+* @route '/dashboard/menu-types/{uuid}/force-delete'
+*/
+forceDeleteForm.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: forceDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+forceDelete.form = forceDeleteForm
 
 const menuTypes = {
     trash: Object.assign(trash, trash),

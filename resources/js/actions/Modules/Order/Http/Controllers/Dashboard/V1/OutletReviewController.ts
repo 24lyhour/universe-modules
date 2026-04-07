@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::index
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:20
@@ -42,6 +42,43 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:20
+* @route '/dashboard/outlet-reviews'
+*/
+const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:20
+* @route '/dashboard/outlet-reviews'
+*/
+indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::index
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:20
+* @route '/dashboard/outlet-reviews'
+*/
+indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: index.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+index.form = indexForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::create
@@ -88,6 +125,43 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:77
+* @route '/dashboard/outlet-reviews/create'
+*/
+const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:77
+* @route '/dashboard/outlet-reviews/create'
+*/
+createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::create
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:77
+* @route '/dashboard/outlet-reviews/create'
+*/
+createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: create.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+create.form = createForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::store
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:87
 * @route '/dashboard/outlet-reviews'
@@ -120,6 +194,28 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::store
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:87
+* @route '/dashboard/outlet-reviews'
+*/
+const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::store
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:87
+* @route '/dashboard/outlet-reviews'
+*/
+storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: store.url(options),
+    method: 'post',
+})
+
+store.form = storeForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::show
@@ -190,6 +286,43 @@ show.head = (args: { outletReview: number | { id: number } } | [outletReview: nu
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:67
+* @route '/dashboard/outlet-reviews/{outletReview}'
+*/
+const showForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:67
+* @route '/dashboard/outlet-reviews/{outletReview}'
+*/
+showForm.get = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::show
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:67
+* @route '/dashboard/outlet-reviews/{outletReview}'
+*/
+showForm.head = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::edit
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
 * @route '/dashboard/outlet-reviews/{outletReview}/edit'
@@ -256,6 +389,43 @@ edit.head = (args: { outletReview: number | { id: number } } | [outletReview: nu
     url: edit.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
+* @route '/dashboard/outlet-reviews/{outletReview}/edit'
+*/
+const editForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
+* @route '/dashboard/outlet-reviews/{outletReview}/edit'
+*/
+editForm.get = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::edit
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
+* @route '/dashboard/outlet-reviews/{outletReview}/edit'
+*/
+editForm.head = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: edit.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+edit.form = editForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::update
@@ -326,6 +496,53 @@ update.patch = (args: { outletReview: number | { id: number } } | [outletReview:
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:105
+* @route '/dashboard/outlet-reviews/{outletReview}'
+*/
+const updateForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:105
+* @route '/dashboard/outlet-reviews/{outletReview}'
+*/
+updateForm.put = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::update
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:105
+* @route '/dashboard/outlet-reviews/{outletReview}'
+*/
+updateForm.patch = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PATCH',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::destroy
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:113
 * @route '/dashboard/outlet-reviews/{outletReview}'
@@ -382,6 +599,38 @@ destroy.delete = (args: { outletReview: number | { id: number } } | [outletRevie
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::destroy
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:113
+* @route '/dashboard/outlet-reviews/{outletReview}'
+*/
+const destroyForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::destroy
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:113
+* @route '/dashboard/outlet-reviews/{outletReview}'
+*/
+destroyForm.delete = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::replyModal
@@ -452,6 +701,43 @@ replyModal.head = (args: { outletReview: number | { id: number } } | [outletRevi
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::replyModal
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:121
+* @route '/dashboard/outlet-reviews/{outletReview}/reply'
+*/
+const replyModalForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: replyModal.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::replyModal
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:121
+* @route '/dashboard/outlet-reviews/{outletReview}/reply'
+*/
+replyModalForm.get = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: replyModal.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::replyModal
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:121
+* @route '/dashboard/outlet-reviews/{outletReview}/reply'
+*/
+replyModalForm.head = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: replyModal.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+replyModal.form = replyModalForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::reply
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:131
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
@@ -510,6 +796,28 @@ reply.post = (args: { outletReview: number | { id: number } } | [outletReview: n
 })
 
 /**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::reply
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:131
+* @route '/dashboard/outlet-reviews/{outletReview}/reply'
+*/
+const replyForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: reply.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::reply
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:131
+* @route '/dashboard/outlet-reviews/{outletReview}/reply'
+*/
+replyForm.post = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: reply.url(args, options),
+    method: 'post',
+})
+
+reply.form = replyForm
+
+/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::toggleActive
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:138
 * @route '/dashboard/outlet-reviews/{outletReview}/toggle-active'
@@ -566,6 +874,38 @@ toggleActive.put = (args: { outletReview: number | { id: number } } | [outletRev
     url: toggleActive.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::toggleActive
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:138
+* @route '/dashboard/outlet-reviews/{outletReview}/toggle-active'
+*/
+const toggleActiveForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleActive.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Order\Http\Controllers\Dashboard\V1\OutletReviewController::toggleActive
+* @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:138
+* @route '/dashboard/outlet-reviews/{outletReview}/toggle-active'
+*/
+toggleActiveForm.put = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggleActive.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggleActive.form = toggleActiveForm
 
 const OutletReviewController = { index, create, store, show, edit, update, destroy, replyModal, reply, toggleActive }
 

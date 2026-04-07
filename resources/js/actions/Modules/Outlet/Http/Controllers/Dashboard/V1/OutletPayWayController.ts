@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::show
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:22
@@ -68,6 +68,43 @@ show.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { u
 })
 
 /**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::show
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:22
+* @route '/dashboard/outlets/{outlet}/payway'
+*/
+const showForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::show
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:22
+* @route '/dashboard/outlets/{outlet}/payway'
+*/
+showForm.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::show
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:22
+* @route '/dashboard/outlets/{outlet}/payway'
+*/
+showForm.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
+
+/**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::update
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:32
 * @route '/dashboard/outlets/{outlet}/payway'
@@ -124,6 +161,38 @@ update.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { 
     url: update.url(args, options),
     method: 'put',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::update
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:32
+* @route '/dashboard/outlets/{outlet}/payway'
+*/
+const updateForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::update
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:32
+* @route '/dashboard/outlets/{outlet}/payway'
+*/
+updateForm.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: update.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+update.form = updateForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::test
@@ -184,6 +253,28 @@ test.post = (args: { outlet: string | { uuid: string } } | [outlet: string | { u
 })
 
 /**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::test
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:44
+* @route '/dashboard/outlets/{outlet}/payway/test'
+*/
+const testForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: test.url(args, options),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::test
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:44
+* @route '/dashboard/outlets/{outlet}/payway/test'
+*/
+testForm.post = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: test.url(args, options),
+    method: 'post',
+})
+
+test.form = testForm
+
+/**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::toggle
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:66
 * @route '/dashboard/outlets/{outlet}/payway/toggle'
@@ -242,6 +333,38 @@ toggle.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { 
 })
 
 /**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::toggle
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:66
+* @route '/dashboard/outlets/{outlet}/payway/toggle'
+*/
+const toggleForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggle.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::toggle
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:66
+* @route '/dashboard/outlets/{outlet}/payway/toggle'
+*/
+toggleForm.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: toggle.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+toggle.form = toggleForm
+
+/**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::destroy
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:54
 * @route '/dashboard/outlets/{outlet}/payway'
@@ -298,6 +421,38 @@ destroy.delete = (args: { outlet: string | { uuid: string } } | [outlet: string 
     url: destroy.url(args, options),
     method: 'delete',
 })
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::destroy
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:54
+* @route '/dashboard/outlets/{outlet}/payway'
+*/
+const destroyForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Outlet\Http\Controllers\Dashboard\V1\OutletPayWayController::destroy
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletPayWayController.php:54
+* @route '/dashboard/outlets/{outlet}/payway'
+*/
+destroyForm.delete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: destroy.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+destroy.form = destroyForm
 
 const OutletPayWayController = { show, update, test, toggle, destroy }
 

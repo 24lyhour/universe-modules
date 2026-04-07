@@ -31,7 +31,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'school' => ['schools', 'departments', 'classrooms', 'courses', 'programs', 'equipment'],
 
             // Blog Module
-            'blog' => ['posts', 'banners'],
+            'blog' => ['posts', 'banners', 'special_offers', 'slider_shows'],
 
             // Company Module
             'company' => ['companies'],

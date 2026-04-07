@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \Modules\Porfolio\Http\Controllers\KioskController::show
 * @see Modules/Porfolio/app/Http/Controllers/KioskController.php:189
@@ -60,6 +60,43 @@ show.head = (args: { slug: string | number } | [slug: string | number ] | string
     url: show.url(args, options),
     method: 'head',
 })
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\KioskController::show
+* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:189
+* @route '/page/{slug}'
+*/
+const showForm = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\KioskController::show
+* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:189
+* @route '/page/{slug}'
+*/
+showForm.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Porfolio\Http\Controllers\KioskController::show
+* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:189
+* @route '/page/{slug}'
+*/
+showForm.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: show.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+show.form = showForm
 
 const page = {
     show: Object.assign(show, show),
