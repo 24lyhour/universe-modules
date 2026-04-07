@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::index
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:24
@@ -42,43 +42,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::index
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:24
-* @route '/dashboard/banners'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::index
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:24
-* @route '/dashboard/banners'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::index
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:24
-* @route '/dashboard/banners'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
 
 /**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::create
@@ -125,43 +88,6 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::create
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:38
-* @route '/dashboard/banners/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::create
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:38
-* @route '/dashboard/banners/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::create
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:38
-* @route '/dashboard/banners/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
-
-/**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::store
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:44
 * @route '/dashboard/banners'
@@ -194,28 +120,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::store
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:44
-* @route '/dashboard/banners'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::store
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:44
-* @route '/dashboard/banners'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::show
@@ -286,43 +190,6 @@ show.head = (args: { banner: string | { uuid: string } } | [banner: string | { u
 })
 
 /**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::show
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:52
-* @route '/dashboard/banners/{banner}'
-*/
-const showForm = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::show
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:52
-* @route '/dashboard/banners/{banner}'
-*/
-showForm.get = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::show
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:52
-* @route '/dashboard/banners/{banner}'
-*/
-showForm.head = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::edit
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
 * @route '/dashboard/banners/{banner}/edit'
@@ -389,43 +256,6 @@ edit.head = (args: { banner: string | { uuid: string } } | [banner: string | { u
     url: edit.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::edit
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
-* @route '/dashboard/banners/{banner}/edit'
-*/
-const editForm = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::edit
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
-* @route '/dashboard/banners/{banner}/edit'
-*/
-editForm.get = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::edit
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
-* @route '/dashboard/banners/{banner}/edit'
-*/
-editForm.head = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
 
 /**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::update
@@ -496,53 +326,6 @@ update.patch = (args: { banner: string | { uuid: string } } | [banner: string | 
 })
 
 /**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::update
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:66
-* @route '/dashboard/banners/{banner}'
-*/
-const updateForm = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::update
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:66
-* @route '/dashboard/banners/{banner}'
-*/
-updateForm.put = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::update
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:66
-* @route '/dashboard/banners/{banner}'
-*/
-updateForm.patch = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::destroy
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:74
 * @route '/dashboard/banners/{banner}'
@@ -601,38 +384,6 @@ destroy.delete = (args: { banner: string | { uuid: string } } | [banner: string 
 })
 
 /**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::destroy
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:74
-* @route '/dashboard/banners/{banner}'
-*/
-const destroyForm = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::destroy
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:74
-* @route '/dashboard/banners/{banner}'
-*/
-destroyForm.delete = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
-
-/**
 * @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::toggleActive
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:82
 * @route '/dashboard/banners/{banner}/toggle-active'
@@ -689,38 +440,6 @@ toggleActive.put = (args: { banner: string | { uuid: string } } | [banner: strin
     url: toggleActive.url(args, options),
     method: 'put',
 })
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::toggleActive
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:82
-* @route '/dashboard/banners/{banner}/toggle-active'
-*/
-const toggleActiveForm = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleActive.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Blog\Http\Controllers\Dashboard\V1\BannerController::toggleActive
-* @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:82
-* @route '/dashboard/banners/{banner}/toggle-active'
-*/
-toggleActiveForm.put = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleActive.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-toggleActive.form = toggleActiveForm
 
 const BannerController = { index, create, store, show, edit, update, destroy, toggleActive }
 

@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::confirm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:357
@@ -43,39 +43,3 @@ confirm.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     method: 'head',
 })
 
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::confirm
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:357
-* @route '/dashboard/menu-types/bulk-delete'
-*/
-const confirmForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirm.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::confirm
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:357
-* @route '/dashboard/menu-types/bulk-delete'
-*/
-confirmForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirm.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuTypeController::confirm
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuTypeController.php:357
-* @route '/dashboard/menu-types/bulk-delete'
-*/
-confirmForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: confirm.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-confirm.form = confirmForm

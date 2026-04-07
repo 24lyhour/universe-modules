@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Hotel\Http\Controllers\HotelController::index
 * @see Modules/Hotel/app/Http/Controllers/HotelController.php:22
@@ -44,43 +44,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Hotel\Http\Controllers\HotelController::index
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:22
-* @route '/api/v1/hotels'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\HotelController::index
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:22
-* @route '/api/v1/hotels'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\HotelController::index
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:22
-* @route '/api/v1/hotels'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \Modules\Hotel\Http\Controllers\HotelController::store
 * @see Modules/Hotel/app/Http/Controllers/HotelController.php:42
 * @route '/api/v1/hotels'
@@ -113,28 +76,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Hotel\Http\Controllers\HotelController::store
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:42
-* @route '/api/v1/hotels'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\HotelController::store
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:42
-* @route '/api/v1/hotels'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\HotelController::show
@@ -199,43 +140,6 @@ show.head = (args: { hotel: string | number } | [hotel: string | number ] | stri
 })
 
 /**
-* @see \Modules\Hotel\Http\Controllers\HotelController::show
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:54
-* @route '/api/v1/hotels/{hotel}'
-*/
-const showForm = (args: { hotel: string | number } | [hotel: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\HotelController::show
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:54
-* @route '/api/v1/hotels/{hotel}'
-*/
-showForm.get = (args: { hotel: string | number } | [hotel: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\HotelController::show
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:54
-* @route '/api/v1/hotels/{hotel}'
-*/
-showForm.head = (args: { hotel: string | number } | [hotel: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\Hotel\Http\Controllers\HotelController::update
 * @see Modules/Hotel/app/Http/Controllers/HotelController.php:86
 * @route '/api/v1/hotels/{hotel}'
@@ -298,53 +202,6 @@ update.patch = (args: { hotel: string | number } | [hotel: string | number ] | s
 })
 
 /**
-* @see \Modules\Hotel\Http\Controllers\HotelController::update
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:86
-* @route '/api/v1/hotels/{hotel}'
-*/
-const updateForm = (args: { hotel: string | number } | [hotel: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\HotelController::update
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:86
-* @route '/api/v1/hotels/{hotel}'
-*/
-updateForm.put = (args: { hotel: string | number } | [hotel: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\HotelController::update
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:86
-* @route '/api/v1/hotels/{hotel}'
-*/
-updateForm.patch = (args: { hotel: string | number } | [hotel: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Hotel\Http\Controllers\HotelController::destroy
 * @see Modules/Hotel/app/Http/Controllers/HotelController.php:102
 * @route '/api/v1/hotels/{hotel}'
@@ -395,38 +252,6 @@ destroy.delete = (args: { hotel: string | number } | [hotel: string | number ] |
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Hotel\Http\Controllers\HotelController::destroy
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:102
-* @route '/api/v1/hotels/{hotel}'
-*/
-const destroyForm = (args: { hotel: string | number } | [hotel: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\HotelController::destroy
-* @see Modules/Hotel/app/Http/Controllers/HotelController.php:102
-* @route '/api/v1/hotels/{hotel}'
-*/
-destroyForm.delete = (args: { hotel: string | number } | [hotel: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const hotel = {
     index: Object.assign(index, index),

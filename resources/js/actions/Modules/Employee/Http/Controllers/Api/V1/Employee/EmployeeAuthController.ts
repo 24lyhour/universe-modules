@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../../../../wayfinder'
 /**
 * @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::login
 * @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:20
@@ -32,28 +32,6 @@ login.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: login.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::login
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:20
-* @route '/api/v1/employee/auth/login'
-*/
-const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: login.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::login
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:20
-* @route '/api/v1/employee/auth/login'
-*/
-loginForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: login.url(options),
-    method: 'post',
-})
-
-login.form = loginForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::logout
@@ -90,28 +68,6 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::logout
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:30
-* @route '/api/v1/employee/auth/logout'
-*/
-const logoutForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logout.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::logout
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:30
-* @route '/api/v1/employee/auth/logout'
-*/
-logoutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logout.url(options),
-    method: 'post',
-})
-
-logout.form = logoutForm
-
-/**
 * @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::logoutAll
 * @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:40
 * @route '/api/v1/employee/auth/logout-all'
@@ -144,28 +100,6 @@ logoutAll.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: logoutAll.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::logoutAll
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:40
-* @route '/api/v1/employee/auth/logout-all'
-*/
-const logoutAllForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logoutAll.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::logoutAll
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:40
-* @route '/api/v1/employee/auth/logout-all'
-*/
-logoutAllForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: logoutAll.url(options),
-    method: 'post',
-})
-
-logoutAll.form = logoutAllForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::me
@@ -212,43 +146,6 @@ me.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::me
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:50
-* @route '/api/v1/employee/auth/me'
-*/
-const meForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: me.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::me
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:50
-* @route '/api/v1/employee/auth/me'
-*/
-meForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: me.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::me
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:50
-* @route '/api/v1/employee/auth/me'
-*/
-meForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: me.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-me.form = meForm
-
-/**
 * @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::updateProfile
 * @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:60
 * @route '/api/v1/employee/auth/update-profile'
@@ -281,28 +178,6 @@ updateProfile.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => (
     url: updateProfile.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::updateProfile
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:60
-* @route '/api/v1/employee/auth/update-profile'
-*/
-const updateProfileForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updateProfile.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\EmployeeAuthController::updateProfile
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/EmployeeAuthController.php:60
-* @route '/api/v1/employee/auth/update-profile'
-*/
-updateProfileForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: updateProfile.url(options),
-    method: 'post',
-})
-
-updateProfile.form = updateProfileForm
 
 const EmployeeAuthController = { login, logout, logoutAll, me, updateProfile }
 

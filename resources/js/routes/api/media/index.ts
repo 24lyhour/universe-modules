@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Media\Http\Controllers\MediaController::upload
 * @see Modules/Media/app/Http/Controllers/MediaController.php:71
@@ -32,28 +32,6 @@ upload.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: upload.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::upload
-* @see Modules/Media/app/Http/Controllers/MediaController.php:71
-* @route '/api/v1/media/upload'
-*/
-const uploadForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: upload.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::upload
-* @see Modules/Media/app/Http/Controllers/MediaController.php:71
-* @route '/api/v1/media/upload'
-*/
-uploadForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: upload.url(options),
-    method: 'post',
-})
-
-upload.form = uploadForm
 
 /**
 * @see \Modules\Media\Http\Controllers\MediaController::index
@@ -100,43 +78,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Media\Http\Controllers\MediaController::index
-* @see Modules/Media/app/Http/Controllers/MediaController.php:20
-* @route '/api/v1/media'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::index
-* @see Modules/Media/app/Http/Controllers/MediaController.php:20
-* @route '/api/v1/media'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::index
-* @see Modules/Media/app/Http/Controllers/MediaController.php:20
-* @route '/api/v1/media'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
-/**
 * @see \Modules\Media\Http\Controllers\MediaController::store
 * @see Modules/Media/app/Http/Controllers/MediaController.php:0
 * @route '/api/v1/media'
@@ -169,28 +110,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::store
-* @see Modules/Media/app/Http/Controllers/MediaController.php:0
-* @route '/api/v1/media'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::store
-* @see Modules/Media/app/Http/Controllers/MediaController.php:0
-* @route '/api/v1/media'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Media\Http\Controllers\MediaController::show
@@ -255,43 +174,6 @@ show.head = (args: { medium: string | number } | [medium: string | number ] | st
 })
 
 /**
-* @see \Modules\Media\Http\Controllers\MediaController::show
-* @see Modules/Media/app/Http/Controllers/MediaController.php:123
-* @route '/api/v1/media/{medium}'
-*/
-const showForm = (args: { medium: string | number } | [medium: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::show
-* @see Modules/Media/app/Http/Controllers/MediaController.php:123
-* @route '/api/v1/media/{medium}'
-*/
-showForm.get = (args: { medium: string | number } | [medium: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::show
-* @see Modules/Media/app/Http/Controllers/MediaController.php:123
-* @route '/api/v1/media/{medium}'
-*/
-showForm.head = (args: { medium: string | number } | [medium: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\Media\Http\Controllers\MediaController::update
 * @see Modules/Media/app/Http/Controllers/MediaController.php:0
 * @route '/api/v1/media/{medium}'
@@ -354,53 +236,6 @@ update.patch = (args: { medium: string | number } | [medium: string | number ] |
 })
 
 /**
-* @see \Modules\Media\Http\Controllers\MediaController::update
-* @see Modules/Media/app/Http/Controllers/MediaController.php:0
-* @route '/api/v1/media/{medium}'
-*/
-const updateForm = (args: { medium: string | number } | [medium: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::update
-* @see Modules/Media/app/Http/Controllers/MediaController.php:0
-* @route '/api/v1/media/{medium}'
-*/
-updateForm.put = (args: { medium: string | number } | [medium: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::update
-* @see Modules/Media/app/Http/Controllers/MediaController.php:0
-* @route '/api/v1/media/{medium}'
-*/
-updateForm.patch = (args: { medium: string | number } | [medium: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Media\Http\Controllers\MediaController::destroy
 * @see Modules/Media/app/Http/Controllers/MediaController.php:156
 * @route '/api/v1/media/{medium}'
@@ -451,38 +286,6 @@ destroy.delete = (args: { medium: string | number } | [medium: string | number ]
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::destroy
-* @see Modules/Media/app/Http/Controllers/MediaController.php:156
-* @route '/api/v1/media/{medium}'
-*/
-const destroyForm = (args: { medium: string | number } | [medium: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Media\Http\Controllers\MediaController::destroy
-* @see Modules/Media/app/Http/Controllers/MediaController.php:156
-* @route '/api/v1/media/{medium}'
-*/
-destroyForm.delete = (args: { medium: string | number } | [medium: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const media = {
     upload: Object.assign(upload, upload),

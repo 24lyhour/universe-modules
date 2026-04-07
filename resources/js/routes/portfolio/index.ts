@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see \Modules\Porfolio\Http\Controllers\KioskController::index
 * @see Modules/Porfolio/app/Http/Controllers/KioskController.php:57
@@ -42,43 +42,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\KioskController::index
-* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:57
-* @route '/portfolio'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\KioskController::index
-* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:57
-* @route '/portfolio'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\KioskController::index
-* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:57
-* @route '/portfolio'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
 
 /**
 * @see \Modules\Porfolio\Http\Controllers\KioskController::show
@@ -141,43 +104,6 @@ show.head = (args: { slug: string | number } | [slug: string | number ] | string
     url: show.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\KioskController::show
-* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:87
-* @route '/portfolio/{slug}'
-*/
-const showForm = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\KioskController::show
-* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:87
-* @route '/portfolio/{slug}'
-*/
-showForm.get = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Porfolio\Http\Controllers\KioskController::show
-* @see Modules/Porfolio/app/Http/Controllers/KioskController.php:87
-* @route '/portfolio/{slug}'
-*/
-showForm.head = (args: { slug: string | number } | [slug: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
 
 const portfolio = {
     index: Object.assign(index, index),

@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::manageProducts
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
@@ -68,43 +68,6 @@ manageProducts.head = (args: { category: number | { id: number } } | [category: 
 })
 
 /**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::manageProducts
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
-* @route '/dashboard/categories/{category}/products/manage'
-*/
-const manageProductsForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: manageProducts.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::manageProducts
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
-* @route '/dashboard/categories/{category}/products/manage'
-*/
-manageProductsForm.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: manageProducts.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::manageProducts
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
-* @route '/dashboard/categories/{category}/products/manage'
-*/
-manageProductsForm.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: manageProducts.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-manageProducts.form = manageProductsForm
-
-/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::syncProducts
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:51
 * @route '/dashboard/categories/{category}/products/sync'
@@ -161,28 +124,6 @@ syncProducts.post = (args: { category: number | { id: number } } | [category: nu
     url: syncProducts.url(args, options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::syncProducts
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:51
-* @route '/dashboard/categories/{category}/products/sync'
-*/
-const syncProductsForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: syncProducts.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::syncProducts
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:51
-* @route '/dashboard/categories/{category}/products/sync'
-*/
-syncProductsForm.post = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: syncProducts.url(args, options),
-    method: 'post',
-})
-
-syncProducts.form = syncProductsForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::reorderProducts
@@ -243,28 +184,6 @@ reorderProducts.post = (args: { category: number | { id: number } } | [category:
 })
 
 /**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::reorderProducts
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:89
-* @route '/dashboard/categories/{category}/products/reorder'
-*/
-const reorderProductsForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reorderProducts.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::reorderProducts
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:89
-* @route '/dashboard/categories/{category}/products/reorder'
-*/
-reorderProductsForm.post = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reorderProducts.url(args, options),
-    method: 'post',
-})
-
-reorderProducts.form = reorderProductsForm
-
-/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::toggleAvailability
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:73
 * @route '/dashboard/categories/{category}/products/{product}/toggle-availability'
@@ -318,38 +237,6 @@ toggleAvailability.put = (args: { category: number | { id: number }, product: nu
     url: toggleAvailability.url(args, options),
     method: 'put',
 })
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::toggleAvailability
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:73
-* @route '/dashboard/categories/{category}/products/{product}/toggle-availability'
-*/
-const toggleAvailabilityForm = (args: { category: number | { id: number }, product: number | { id: number } } | [category: number | { id: number }, product: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleAvailability.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Menu\Http\Controllers\Dashboard\V1\CategoryProductController::toggleAvailability
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:73
-* @route '/dashboard/categories/{category}/products/{product}/toggle-availability'
-*/
-toggleAvailabilityForm.put = (args: { category: number | { id: number }, product: number | { id: number } } | [category: number | { id: number }, product: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleAvailability.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-toggleAvailability.form = toggleAvailabilityForm
 
 const CategoryProductController = { manageProducts, syncProducts, reorderProducts, toggleAvailability }
 

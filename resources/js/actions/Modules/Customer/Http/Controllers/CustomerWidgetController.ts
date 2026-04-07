@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../../wayfinder'
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerWidgetController::getData
 * @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:36
@@ -42,43 +42,6 @@ getData.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: getData.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerWidgetController::getData
-* @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:36
-* @route '/dashboard/customers/widget/data'
-*/
-const getDataForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: getData.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerWidgetController::getData
-* @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:36
-* @route '/dashboard/customers/widget/data'
-*/
-getDataForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: getData.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerWidgetController::getData
-* @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:36
-* @route '/dashboard/customers/widget/data'
-*/
-getDataForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: getData.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-getData.form = getDataForm
 
 /**
 * @see \Modules\Customer\Http\Controllers\CustomerWidgetController::metrics
@@ -125,43 +88,6 @@ metrics.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Customer\Http\Controllers\CustomerWidgetController::metrics
-* @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:48
-* @route '/dashboard/customers/widget/metrics'
-*/
-const metricsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: metrics.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerWidgetController::metrics
-* @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:48
-* @route '/dashboard/customers/widget/metrics'
-*/
-metricsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: metrics.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerWidgetController::metrics
-* @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:48
-* @route '/dashboard/customers/widget/metrics'
-*/
-metricsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: metrics.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-metrics.form = metricsForm
-
-/**
 * @see \Modules\Customer\Http\Controllers\CustomerWidgetController::growth
 * @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:60
 * @route '/dashboard/customers/widget/growth'
@@ -204,43 +130,6 @@ growth.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: growth.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerWidgetController::growth
-* @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:60
-* @route '/dashboard/customers/widget/growth'
-*/
-const growthForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: growth.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerWidgetController::growth
-* @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:60
-* @route '/dashboard/customers/widget/growth'
-*/
-growthForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: growth.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Customer\Http\Controllers\CustomerWidgetController::growth
-* @see Modules/Customer/app/Http/Controllers/CustomerWidgetController.php:60
-* @route '/dashboard/customers/widget/growth'
-*/
-growthForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: growth.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-growth.form = growthForm
 
 const CustomerWidgetController = { getData, metrics, growth }
 
