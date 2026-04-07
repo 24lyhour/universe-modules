@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::callback
 * @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:116
@@ -34,28 +34,6 @@ callback.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
-* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::callback
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:116
-* @route '/api/v1/payments/payway/callback'
-*/
-const callbackForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: callback.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::callback
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:116
-* @route '/api/v1/payments/payway/callback'
-*/
-callbackForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: callback.url(options),
-    method: 'post',
-})
-
-callback.form = callbackForm
-
-/**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::createPurchase
 * @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:24
 * @route '/api/v1/payments/payway/create'
@@ -88,28 +66,6 @@ createPurchase.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => 
     url: createPurchase.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::createPurchase
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:24
-* @route '/api/v1/payments/payway/create'
-*/
-const createPurchaseForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: createPurchase.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::createPurchase
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:24
-* @route '/api/v1/payments/payway/create'
-*/
-createPurchaseForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: createPurchase.url(options),
-    method: 'post',
-})
-
-createPurchase.form = createPurchaseForm
 
 /**
 * @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::checkStatus
@@ -172,43 +128,6 @@ checkStatus.head = (args: { tranId: string | number } | [tranId: string | number
     url: checkStatus.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::checkStatus
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
-* @route '/api/v1/payments/payway/check/{tranId}'
-*/
-const checkStatusForm = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: checkStatus.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::checkStatus
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
-* @route '/api/v1/payments/payway/check/{tranId}'
-*/
-checkStatusForm.get = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: checkStatus.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Payment\Http\Controllers\Api\V1\PayWayController::checkStatus
-* @see Modules/Payment/app/Http/Controllers/Api/V1/PayWayController.php:187
-* @route '/api/v1/payments/payway/check/{tranId}'
-*/
-checkStatusForm.head = (args: { tranId: string | number } | [tranId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: checkStatus.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-checkStatus.form = checkStatusForm
 
 const PayWayController = { callback, createPurchase, checkStatus }
 

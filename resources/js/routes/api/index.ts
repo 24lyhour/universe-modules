@@ -1,5 +1,4 @@
 import ai from './ai'
-import blog from './blog'
 import booking from './booking'
 import company from './company'
 import customer from './customer'
@@ -23,7 +22,6 @@ import wallets from './wallets'
 
 const api = {
     ai: Object.assign(ai, ai),
-    blog: Object.assign(blog, blog),
     booking: Object.assign(booking, booking),
     company: Object.assign(company, company),
     customer: Object.assign(customer, customer),

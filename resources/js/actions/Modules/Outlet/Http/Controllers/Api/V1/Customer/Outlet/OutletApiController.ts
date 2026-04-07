@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../../../../../wayfinder'
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::index
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:20
@@ -46,42 +46,6 @@ index868b732ed7f8d75965954e62fdbc29f0.head = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::index
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:20
-* @route '/api/v1/outlets'
-*/
-const index868b732ed7f8d75965954e62fdbc29f0Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index868b732ed7f8d75965954e62fdbc29f0.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::index
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:20
-* @route '/api/v1/outlets'
-*/
-index868b732ed7f8d75965954e62fdbc29f0Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index868b732ed7f8d75965954e62fdbc29f0.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::index
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:20
-* @route '/api/v1/outlets'
-*/
-index868b732ed7f8d75965954e62fdbc29f0Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index868b732ed7f8d75965954e62fdbc29f0.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index868b732ed7f8d75965954e62fdbc29f0.form = index868b732ed7f8d75965954e62fdbc29f0Form
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::index
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:20
 * @route '/api/v1/admin/outlets'
 */
 const index750dedf4456f8dbde4e1c25b89ddfdff = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -122,43 +86,6 @@ index750dedf4456f8dbde4e1c25b89ddfdff.head = (options?: RouteQueryOptions): Rout
     url: index750dedf4456f8dbde4e1c25b89ddfdff.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::index
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:20
-* @route '/api/v1/admin/outlets'
-*/
-const index750dedf4456f8dbde4e1c25b89ddfdffForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index750dedf4456f8dbde4e1c25b89ddfdff.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::index
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:20
-* @route '/api/v1/admin/outlets'
-*/
-index750dedf4456f8dbde4e1c25b89ddfdffForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index750dedf4456f8dbde4e1c25b89ddfdff.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::index
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:20
-* @route '/api/v1/admin/outlets'
-*/
-index750dedf4456f8dbde4e1c25b89ddfdffForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index750dedf4456f8dbde4e1c25b89ddfdff.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index750dedf4456f8dbde4e1c25b89ddfdff.form = index750dedf4456f8dbde4e1c25b89ddfdffForm
 
 export const index = {
     '/api/v1/outlets': index868b732ed7f8d75965954e62fdbc29f0,
@@ -210,43 +137,6 @@ search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:0
-* @route '/api/v1/outlets-search'
-*/
-const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:0
-* @route '/api/v1/outlets-search'
-*/
-searchForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::search
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:0
-* @route '/api/v1/outlets-search'
-*/
-searchForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: search.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-search.form = searchForm
-
-/**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::store
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:34
 * @route '/api/v1/admin/outlets'
@@ -283,27 +173,6 @@ store750dedf4456f8dbde4e1c25b89ddfdff.post = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::store
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:34
-* @route '/api/v1/admin/outlets'
-*/
-const store750dedf4456f8dbde4e1c25b89ddfdffForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store750dedf4456f8dbde4e1c25b89ddfdff.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::store
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:34
-* @route '/api/v1/admin/outlets'
-*/
-store750dedf4456f8dbde4e1c25b89ddfdffForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store750dedf4456f8dbde4e1c25b89ddfdff.url(options),
-    method: 'post',
-})
-
-store750dedf4456f8dbde4e1c25b89ddfdff.form = store750dedf4456f8dbde4e1c25b89ddfdffForm
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::store
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:34
 * @route '/api/v1/outlets'
 */
 const store868b732ed7f8d75965954e62fdbc29f0 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -334,28 +203,6 @@ store868b732ed7f8d75965954e62fdbc29f0.post = (options?: RouteQueryOptions): Rout
     url: store868b732ed7f8d75965954e62fdbc29f0.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::store
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:34
-* @route '/api/v1/outlets'
-*/
-const store868b732ed7f8d75965954e62fdbc29f0Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store868b732ed7f8d75965954e62fdbc29f0.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::store
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:34
-* @route '/api/v1/outlets'
-*/
-store868b732ed7f8d75965954e62fdbc29f0Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store868b732ed7f8d75965954e62fdbc29f0.url(options),
-    method: 'post',
-})
-
-store868b732ed7f8d75965954e62fdbc29f0.form = store868b732ed7f8d75965954e62fdbc29f0Form
 
 export const store = {
     '/api/v1/admin/outlets': store750dedf4456f8dbde4e1c25b89ddfdff,
@@ -433,42 +280,6 @@ show178358a3c51ddd1b044cd422e96b73fd.head = (args: { outlet: string | { uuid: st
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::show
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
-* @route '/api/v1/admin/outlets/{outlet}'
-*/
-const show178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show178358a3c51ddd1b044cd422e96b73fd.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
-* @route '/api/v1/admin/outlets/{outlet}'
-*/
-show178358a3c51ddd1b044cd422e96b73fdForm.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show178358a3c51ddd1b044cd422e96b73fd.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
-* @route '/api/v1/admin/outlets/{outlet}'
-*/
-show178358a3c51ddd1b044cd422e96b73fdForm.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show178358a3c51ddd1b044cd422e96b73fd.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show178358a3c51ddd1b044cd422e96b73fd.form = show178358a3c51ddd1b044cd422e96b73fdForm
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/outlets/{outlet}'
 */
 const show6bce8bd6bc44d74526728ef09747dba2 = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -533,43 +344,6 @@ show6bce8bd6bc44d74526728ef09747dba2.head = (args: { outlet: string | { uuid: st
     url: show6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
-* @route '/api/v1/outlets/{outlet}'
-*/
-const show6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show6bce8bd6bc44d74526728ef09747dba2.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
-* @route '/api/v1/outlets/{outlet}'
-*/
-show6bce8bd6bc44d74526728ef09747dba2Form.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show6bce8bd6bc44d74526728ef09747dba2.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::show
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
-* @route '/api/v1/outlets/{outlet}'
-*/
-show6bce8bd6bc44d74526728ef09747dba2Form.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show6bce8bd6bc44d74526728ef09747dba2.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show6bce8bd6bc44d74526728ef09747dba2.form = show6bce8bd6bc44d74526728ef09747dba2Form
 
 export const show = {
     '/api/v1/admin/outlets/{outlet}': show178358a3c51ddd1b044cd422e96b73fd,
@@ -647,52 +421,6 @@ update178358a3c51ddd1b044cd422e96b73fd.patch = (args: { outlet: string | { uuid:
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::update
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
-* @route '/api/v1/admin/outlets/{outlet}'
-*/
-const update178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update178358a3c51ddd1b044cd422e96b73fd.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::update
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
-* @route '/api/v1/admin/outlets/{outlet}'
-*/
-update178358a3c51ddd1b044cd422e96b73fdForm.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update178358a3c51ddd1b044cd422e96b73fd.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::update
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
-* @route '/api/v1/admin/outlets/{outlet}'
-*/
-update178358a3c51ddd1b044cd422e96b73fdForm.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update178358a3c51ddd1b044cd422e96b73fd.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update178358a3c51ddd1b044cd422e96b73fd.form = update178358a3c51ddd1b044cd422e96b73fdForm
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::update
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/outlets/{outlet}'
 */
 const update6bce8bd6bc44d74526728ef09747dba2 = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -757,53 +485,6 @@ update6bce8bd6bc44d74526728ef09747dba2.patch = (args: { outlet: string | { uuid:
     url: update6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::update
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
-* @route '/api/v1/outlets/{outlet}'
-*/
-const update6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update6bce8bd6bc44d74526728ef09747dba2.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::update
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
-* @route '/api/v1/outlets/{outlet}'
-*/
-update6bce8bd6bc44d74526728ef09747dba2Form.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update6bce8bd6bc44d74526728ef09747dba2.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::update
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
-* @route '/api/v1/outlets/{outlet}'
-*/
-update6bce8bd6bc44d74526728ef09747dba2Form.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update6bce8bd6bc44d74526728ef09747dba2.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update6bce8bd6bc44d74526728ef09747dba2.form = update6bce8bd6bc44d74526728ef09747dba2Form
 
 export const update = {
     '/api/v1/admin/outlets/{outlet}': update178358a3c51ddd1b044cd422e96b73fd,
@@ -871,37 +552,6 @@ destroy178358a3c51ddd1b044cd422e96b73fd.delete = (args: { outlet: string | { uui
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::destroy
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
-* @route '/api/v1/admin/outlets/{outlet}'
-*/
-const destroy178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy178358a3c51ddd1b044cd422e96b73fd.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::destroy
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
-* @route '/api/v1/admin/outlets/{outlet}'
-*/
-destroy178358a3c51ddd1b044cd422e96b73fdForm.delete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy178358a3c51ddd1b044cd422e96b73fd.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy178358a3c51ddd1b044cd422e96b73fd.form = destroy178358a3c51ddd1b044cd422e96b73fdForm
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::destroy
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/outlets/{outlet}'
 */
 const destroy6bce8bd6bc44d74526728ef09747dba2 = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -957,38 +607,6 @@ destroy6bce8bd6bc44d74526728ef09747dba2.delete = (args: { outlet: string | { uui
     method: 'delete',
 })
 
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::destroy
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
-* @route '/api/v1/outlets/{outlet}'
-*/
-const destroy6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy6bce8bd6bc44d74526728ef09747dba2.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::destroy
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
-* @route '/api/v1/outlets/{outlet}'
-*/
-destroy6bce8bd6bc44d74526728ef09747dba2Form.delete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy6bce8bd6bc44d74526728ef09747dba2.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy6bce8bd6bc44d74526728ef09747dba2.form = destroy6bce8bd6bc44d74526728ef09747dba2Form
-
 export const destroy = {
     '/api/v1/admin/outlets/{outlet}': destroy178358a3c51ddd1b044cd422e96b73fd,
     '/api/v1/outlets/{outlet}': destroy6bce8bd6bc44d74526728ef09747dba2,
@@ -1041,42 +659,6 @@ stats603d6939c8db45cfde989b204e9ecee8.head = (options?: RouteQueryOptions): Rout
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::stats
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:68
-* @route '/api/v1/admin/outlets-stats'
-*/
-const stats603d6939c8db45cfde989b204e9ecee8Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stats603d6939c8db45cfde989b204e9ecee8.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::stats
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:68
-* @route '/api/v1/admin/outlets-stats'
-*/
-stats603d6939c8db45cfde989b204e9ecee8Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stats603d6939c8db45cfde989b204e9ecee8.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::stats
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:68
-* @route '/api/v1/admin/outlets-stats'
-*/
-stats603d6939c8db45cfde989b204e9ecee8Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: stats603d6939c8db45cfde989b204e9ecee8.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-stats603d6939c8db45cfde989b204e9ecee8.form = stats603d6939c8db45cfde989b204e9ecee8Form
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::stats
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:68
 * @route '/api/v1/outlets-stats'
 */
 const statseba1790579c60c409d595b7aa3a51009 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1117,43 +699,6 @@ statseba1790579c60c409d595b7aa3a51009.head = (options?: RouteQueryOptions): Rout
     url: statseba1790579c60c409d595b7aa3a51009.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::stats
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:68
-* @route '/api/v1/outlets-stats'
-*/
-const statseba1790579c60c409d595b7aa3a51009Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: statseba1790579c60c409d595b7aa3a51009.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::stats
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:68
-* @route '/api/v1/outlets-stats'
-*/
-statseba1790579c60c409d595b7aa3a51009Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: statseba1790579c60c409d595b7aa3a51009.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::stats
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:68
-* @route '/api/v1/outlets-stats'
-*/
-statseba1790579c60c409d595b7aa3a51009Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: statseba1790579c60c409d595b7aa3a51009.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-statseba1790579c60c409d595b7aa3a51009.form = statseba1790579c60c409d595b7aa3a51009Form
 
 export const stats = {
     '/api/v1/admin/outlets-stats': stats603d6939c8db45cfde989b204e9ecee8,
@@ -1221,37 +766,6 @@ activate4af3a865935451874c65a44927dd34a8.patch = (args: { outlet: string | { uui
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::activate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
-* @route '/api/v1/admin/outlets/{outlet}/activate'
-*/
-const activate4af3a865935451874c65a44927dd34a8Form = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: activate4af3a865935451874c65a44927dd34a8.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::activate
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
-* @route '/api/v1/admin/outlets/{outlet}/activate'
-*/
-activate4af3a865935451874c65a44927dd34a8Form.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: activate4af3a865935451874c65a44927dd34a8.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-activate4af3a865935451874c65a44927dd34a8.form = activate4af3a865935451874c65a44927dd34a8Form
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::activate
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/outlets/{outlet}/activate'
 */
 const activatece8a40e38344b532601a14c6eb1ca7f3 = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -1306,38 +820,6 @@ activatece8a40e38344b532601a14c6eb1ca7f3.patch = (args: { outlet: string | { uui
     url: activatece8a40e38344b532601a14c6eb1ca7f3.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::activate
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
-* @route '/api/v1/outlets/{outlet}/activate'
-*/
-const activatece8a40e38344b532601a14c6eb1ca7f3Form = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: activatece8a40e38344b532601a14c6eb1ca7f3.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::activate
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
-* @route '/api/v1/outlets/{outlet}/activate'
-*/
-activatece8a40e38344b532601a14c6eb1ca7f3Form.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: activatece8a40e38344b532601a14c6eb1ca7f3.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-activatece8a40e38344b532601a14c6eb1ca7f3.form = activatece8a40e38344b532601a14c6eb1ca7f3Form
 
 export const activate = {
     '/api/v1/admin/outlets/{outlet}/activate': activate4af3a865935451874c65a44927dd34a8,
@@ -1405,37 +887,6 @@ deactivate1b948d3c0754b00071b05bdf5ffdf35a.patch = (args: { outlet: string | { u
 /**
 * @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::deactivate
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
-* @route '/api/v1/admin/outlets/{outlet}/deactivate'
-*/
-const deactivate1b948d3c0754b00071b05bdf5ffdf35aForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: deactivate1b948d3c0754b00071b05bdf5ffdf35a.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::deactivate
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
-* @route '/api/v1/admin/outlets/{outlet}/deactivate'
-*/
-deactivate1b948d3c0754b00071b05bdf5ffdf35aForm.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: deactivate1b948d3c0754b00071b05bdf5ffdf35a.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-deactivate1b948d3c0754b00071b05bdf5ffdf35a.form = deactivate1b948d3c0754b00071b05bdf5ffdf35aForm
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::deactivate
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/outlets/{outlet}/deactivate'
 */
 const deactivate256ada6cebab7832b45e75f745b4e7cf = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -1490,38 +941,6 @@ deactivate256ada6cebab7832b45e75f745b4e7cf.patch = (args: { outlet: string | { u
     url: deactivate256ada6cebab7832b45e75f745b4e7cf.url(args, options),
     method: 'patch',
 })
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::deactivate
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
-* @route '/api/v1/outlets/{outlet}/deactivate'
-*/
-const deactivate256ada6cebab7832b45e75f745b4e7cfForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: deactivate256ada6cebab7832b45e75f745b4e7cf.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Outlet\Http\Controllers\Api\V1\Customer\Outlet\OutletApiController::deactivate
-* @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
-* @route '/api/v1/outlets/{outlet}/deactivate'
-*/
-deactivate256ada6cebab7832b45e75f745b4e7cfForm.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: deactivate256ada6cebab7832b45e75f745b4e7cf.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-deactivate256ada6cebab7832b45e75f745b4e7cf.form = deactivate256ada6cebab7832b45e75f745b4e7cfForm
 
 export const deactivate = {
     '/api/v1/admin/outlets/{outlet}/deactivate': deactivate1b948d3c0754b00071b05bdf5ffdf35a,

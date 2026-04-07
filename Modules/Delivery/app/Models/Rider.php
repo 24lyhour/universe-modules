@@ -30,11 +30,13 @@ class Rider extends Model
         'rating',
         'device_token',
         'gps_status',
+        'gps_location',
         'total_orders',
         'total_earnings',
         'commission_rate',
         'documents',
         'is_active',
+        'telegram_chat_id',
         'notes',
     ];
 

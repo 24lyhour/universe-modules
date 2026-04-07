@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 import reviews83e781 from './reviews'
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\ProductReviewController::reviews
@@ -61,43 +61,6 @@ reviews.head = (args: { productId: string | number } | [productId: string | numb
     url: reviews.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\Api\V1\ProductReviewController::reviews
-* @see Modules/Order/app/Http/Controllers/Api/V1/ProductReviewController.php:43
-* @route '/api/v1/products/{productId}/reviews'
-*/
-const reviewsForm = (args: { productId: string | number } | [productId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: reviews.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Api\V1\ProductReviewController::reviews
-* @see Modules/Order/app/Http/Controllers/Api/V1/ProductReviewController.php:43
-* @route '/api/v1/products/{productId}/reviews'
-*/
-reviewsForm.get = (args: { productId: string | number } | [productId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: reviews.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Api\V1\ProductReviewController::reviews
-* @see Modules/Order/app/Http/Controllers/Api/V1/ProductReviewController.php:43
-* @route '/api/v1/products/{productId}/reviews'
-*/
-reviewsForm.head = (args: { productId: string | number } | [productId: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: reviews.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-reviews.form = reviewsForm
 
 const products = {
     reviews: Object.assign(reviews, reviews83e781),

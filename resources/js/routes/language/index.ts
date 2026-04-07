@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../wayfinder'
 /**
 * @see routes/web.php:31
 * @route '/language/{locale}'
@@ -47,26 +47,6 @@ switchMethod.post = (args: { locale: string | number } | [locale: string | numbe
     url: switchMethod.url(args, options),
     method: 'post',
 })
-
-/**
-* @see routes/web.php:31
-* @route '/language/{locale}'
-*/
-const switchMethodForm = (args: { locale: string | number } | [locale: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: switchMethod.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see routes/web.php:31
-* @route '/language/{locale}'
-*/
-switchMethodForm.post = (args: { locale: string | number } | [locale: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: switchMethod.url(args, options),
-    method: 'post',
-})
-
-switchMethod.form = switchMethodForm
 
 const language = {
     switch: Object.assign(switchMethod, switchMethod),

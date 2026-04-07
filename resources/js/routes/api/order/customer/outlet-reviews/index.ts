@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::store
 * @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:92
@@ -32,28 +32,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::store
-* @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:92
-* @route '/api/v1/customer/outlet-reviews'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::store
-* @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:92
-* @route '/api/v1/customer/outlet-reviews'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::update
@@ -108,38 +86,6 @@ update.put = (args: { id: string | number } | [id: string | number ] | string | 
 })
 
 /**
-* @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::update
-* @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:113
-* @route '/api/v1/customer/outlet-reviews/{id}'
-*/
-const updateForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::update
-* @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:113
-* @route '/api/v1/customer/outlet-reviews/{id}'
-*/
-updateForm.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::destroy
 * @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:132
 * @route '/api/v1/customer/outlet-reviews/{id}'
@@ -190,38 +136,6 @@ destroy.delete = (args: { id: string | number } | [id: string | number ] | strin
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::destroy
-* @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:132
-* @route '/api/v1/customer/outlet-reviews/{id}'
-*/
-const destroyForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Api\V1\OutletReviewController::destroy
-* @see Modules/Order/app/Http/Controllers/Api/V1/OutletReviewController.php:132
-* @route '/api/v1/customer/outlet-reviews/{id}'
-*/
-destroyForm.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 const outletReviews = {
     store: Object.assign(store, store),

@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::index
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:20
@@ -42,43 +42,6 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::index
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:20
-* @route '/dashboard/product-reviews'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::index
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:20
-* @route '/dashboard/product-reviews'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::index
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:20
-* @route '/dashboard/product-reviews'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::create
@@ -125,43 +88,6 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::create
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:75
-* @route '/dashboard/product-reviews/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::create
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:75
-* @route '/dashboard/product-reviews/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::create
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:75
-* @route '/dashboard/product-reviews/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
-
-/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::store
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:84
 * @route '/dashboard/product-reviews'
@@ -194,28 +120,6 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::store
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:84
-* @route '/dashboard/product-reviews'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::store
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:84
-* @route '/dashboard/product-reviews'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::show
@@ -286,43 +190,6 @@ show.head = (args: { productReview: number | { id: number } } | [productReview: 
 })
 
 /**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::show
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:66
-* @route '/dashboard/product-reviews/{productReview}'
-*/
-const showForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::show
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:66
-* @route '/dashboard/product-reviews/{productReview}'
-*/
-showForm.get = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::show
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:66
-* @route '/dashboard/product-reviews/{productReview}'
-*/
-showForm.head = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
-/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::edit
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
 * @route '/dashboard/product-reviews/{productReview}/edit'
@@ -389,43 +256,6 @@ edit.head = (args: { productReview: number | { id: number } } | [productReview: 
     url: edit.url(args, options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::edit
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
-* @route '/dashboard/product-reviews/{productReview}/edit'
-*/
-const editForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::edit
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
-* @route '/dashboard/product-reviews/{productReview}/edit'
-*/
-editForm.get = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::edit
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
-* @route '/dashboard/product-reviews/{productReview}/edit'
-*/
-editForm.head = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::update
@@ -496,53 +326,6 @@ update.patch = (args: { productReview: number | { id: number } } | [productRevie
 })
 
 /**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::update
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:101
-* @route '/dashboard/product-reviews/{productReview}'
-*/
-const updateForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::update
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:101
-* @route '/dashboard/product-reviews/{productReview}'
-*/
-updateForm.put = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::update
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:101
-* @route '/dashboard/product-reviews/{productReview}'
-*/
-updateForm.patch = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
-/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::destroy
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:109
 * @route '/dashboard/product-reviews/{productReview}'
@@ -599,38 +382,6 @@ destroy.delete = (args: { productReview: number | { id: number } } | [productRev
     url: destroy.url(args, options),
     method: 'delete',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::destroy
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:109
-* @route '/dashboard/product-reviews/{productReview}'
-*/
-const destroyForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::destroy
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:109
-* @route '/dashboard/product-reviews/{productReview}'
-*/
-destroyForm.delete = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
 
 /**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::replyModal
@@ -701,43 +452,6 @@ replyModal.head = (args: { productReview: number | { id: number } } | [productRe
 })
 
 /**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::replyModal
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:117
-* @route '/dashboard/product-reviews/{productReview}/reply'
-*/
-const replyModalForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: replyModal.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::replyModal
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:117
-* @route '/dashboard/product-reviews/{productReview}/reply'
-*/
-replyModalForm.get = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: replyModal.url(args, options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::replyModal
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:117
-* @route '/dashboard/product-reviews/{productReview}/reply'
-*/
-replyModalForm.head = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: replyModal.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-replyModal.form = replyModalForm
-
-/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::reply
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:126
 * @route '/dashboard/product-reviews/{productReview}/reply'
@@ -796,28 +510,6 @@ reply.post = (args: { productReview: number | { id: number } } | [productReview:
 })
 
 /**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::reply
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:126
-* @route '/dashboard/product-reviews/{productReview}/reply'
-*/
-const replyForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reply.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::reply
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:126
-* @route '/dashboard/product-reviews/{productReview}/reply'
-*/
-replyForm.post = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: reply.url(args, options),
-    method: 'post',
-})
-
-reply.form = replyForm
-
-/**
 * @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::toggleActive
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:133
 * @route '/dashboard/product-reviews/{productReview}/toggle-active'
@@ -874,38 +566,6 @@ toggleActive.put = (args: { productReview: number | { id: number } } | [productR
     url: toggleActive.url(args, options),
     method: 'put',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::toggleActive
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:133
-* @route '/dashboard/product-reviews/{productReview}/toggle-active'
-*/
-const toggleActiveForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleActive.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Dashboard\V1\ProductReviewController::toggleActive
-* @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:133
-* @route '/dashboard/product-reviews/{productReview}/toggle-active'
-*/
-toggleActiveForm.put = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleActive.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-toggleActive.form = toggleActiveForm
 
 const productReviews = {
     index: Object.assign(index, index),

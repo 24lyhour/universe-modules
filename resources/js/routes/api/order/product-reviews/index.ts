@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Order\Http\Controllers\Api\V1\ProductReviewController::helpful
 * @see Modules/Order/app/Http/Controllers/Api/V1/ProductReviewController.php:144
@@ -50,28 +50,6 @@ helpful.post = (args: { id: string | number } | [id: string | number ] | string 
     url: helpful.url(args, options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Order\Http\Controllers\Api\V1\ProductReviewController::helpful
-* @see Modules/Order/app/Http/Controllers/Api/V1/ProductReviewController.php:144
-* @route '/api/v1/product-reviews/{id}/helpful'
-*/
-const helpfulForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: helpful.url(args, options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Order\Http\Controllers\Api\V1\ProductReviewController::helpful
-* @see Modules/Order/app/Http/Controllers/Api/V1/ProductReviewController.php:144
-* @route '/api/v1/product-reviews/{id}/helpful'
-*/
-helpfulForm.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: helpful.url(args, options),
-    method: 'post',
-})
-
-helpful.form = helpfulForm
 
 const productReviews = {
     helpful: Object.assign(helpful, helpful),

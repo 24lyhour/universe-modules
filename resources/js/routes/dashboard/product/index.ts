@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../wayfinder'
 import settings69f00b from './settings'
 import attributes from './attributes'
 import addons from './addons'
@@ -47,43 +47,6 @@ settings.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: settings.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductSettingsController::settings
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:12
-* @route '/dashboard/products/settings'
-*/
-const settingsForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: settings.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductSettingsController::settings
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:12
-* @route '/dashboard/products/settings'
-*/
-settingsForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: settings.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Product\Http\Controllers\Dashboard\V1\ProductSettingsController::settings
-* @see Modules/Product/app/Http/Controllers/Dashboard/V1/ProductSettingsController.php:12
-* @route '/dashboard/products/settings'
-*/
-settingsForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: settings.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-settings.form = settingsForm
 
 const product = {
     settings: Object.assign(settings, settings69f00b),

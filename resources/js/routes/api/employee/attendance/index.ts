@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
 /**
 * @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::today
 * @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:19
@@ -44,43 +44,6 @@ today.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::today
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:19
-* @route '/api/v1/employee/attendance/today'
-*/
-const todayForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: today.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::today
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:19
-* @route '/api/v1/employee/attendance/today'
-*/
-todayForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: today.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::today
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:19
-* @route '/api/v1/employee/attendance/today'
-*/
-todayForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: today.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-today.form = todayForm
-
-/**
 * @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::checkIn
 * @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:29
 * @route '/api/v1/employee/attendance/check-in'
@@ -115,28 +78,6 @@ checkIn.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::checkIn
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:29
-* @route '/api/v1/employee/attendance/check-in'
-*/
-const checkInForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: checkIn.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::checkIn
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:29
-* @route '/api/v1/employee/attendance/check-in'
-*/
-checkInForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: checkIn.url(options),
-    method: 'post',
-})
-
-checkIn.form = checkInForm
-
-/**
 * @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::checkOut
 * @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:39
 * @route '/api/v1/employee/attendance/check-out'
@@ -169,28 +110,6 @@ checkOut.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: checkOut.url(options),
     method: 'post',
 })
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::checkOut
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:39
-* @route '/api/v1/employee/attendance/check-out'
-*/
-const checkOutForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: checkOut.url(options),
-    method: 'post',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::checkOut
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:39
-* @route '/api/v1/employee/attendance/check-out'
-*/
-checkOutForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: checkOut.url(options),
-    method: 'post',
-})
-
-checkOut.form = checkOutForm
 
 /**
 * @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::history
@@ -235,43 +154,6 @@ history.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: history.url(options),
     method: 'head',
 })
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::history
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:49
-* @route '/api/v1/employee/attendance/history'
-*/
-const historyForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: history.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::history
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:49
-* @route '/api/v1/employee/attendance/history'
-*/
-historyForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: history.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Employee\Http\Controllers\Api\V1\Employee\AttendanceController::history
-* @see Modules/Employee/app/Http/Controllers/Api/V1/Employee/AttendanceController.php:49
-* @route '/api/v1/employee/attendance/history'
-*/
-historyForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: history.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-history.form = historyForm
 
 const attendance = {
     today: Object.assign(today, today),

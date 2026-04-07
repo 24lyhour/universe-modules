@@ -40,8 +40,10 @@ import {
     FileText,
     GraduationCap,
     Hotel,
+    Image,
     Layers,
     LayoutGrid,
+    List,
     ListOrdered,
     LogIn,
     Mail,
@@ -52,6 +54,7 @@ import {
     PackageSearch,
     PanelBottom,
     PanelTop,
+    Plus,
     PlusCircle,
     QrCode,
     School,
@@ -149,8 +152,10 @@ const iconMap: Record<string, LucideIcon> = {
     FileText,
     GraduationCap,
     Hotel,
+    Image,
     Layers,
     LayoutGrid,
+    List,
     ListOrdered,
     LogIn,
     Mail,
@@ -161,6 +166,7 @@ const iconMap: Record<string, LucideIcon> = {
     PackageSearch,
     PanelBottom,
     PanelTop,
+    Plus,
     PlusCircle,
     QrCode,
     School,
@@ -176,7 +182,6 @@ const iconMap: Record<string, LucideIcon> = {
     Wrench,
     Store,
     Star,
-
 };
 
 const getIcon = (iconName: string | null | undefined): LucideIcon | null => {
