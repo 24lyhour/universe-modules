@@ -1,12 +1,12 @@
 import ai from './ai'
 import blog from './blog'
-import booking from './booking'
 import company from './company'
 import customer from './customer'
 import shipping from './shipping'
 import delivery from './delivery'
 import employee from './employee'
 import hotel from './hotel'
+import api from './api'
 import media from './media'
 import menu from './menu'
 import category from './category'
@@ -21,16 +21,16 @@ import report from './report'
 import school from './school'
 import wallets from './wallets'
 
-const api = {
+const apiNamespace = {
     ai: Object.assign(ai, ai),
     blog: Object.assign(blog, blog),
-    booking: Object.assign(booking, booking),
     company: Object.assign(company, company),
     customer: Object.assign(customer, customer),
     shipping: Object.assign(shipping, shipping),
     delivery: Object.assign(delivery, delivery),
     employee: Object.assign(employee, employee),
     hotel: Object.assign(hotel, hotel),
+    api: Object.assign(api, api),
     media: Object.assign(media, media),
     menu: Object.assign(menu, menu),
     category: Object.assign(category, category),
@@ -46,4 +46,4 @@ const api = {
     wallets: Object.assign(wallets, wallets),
 }
 
-export default api
+export default apiNamespace

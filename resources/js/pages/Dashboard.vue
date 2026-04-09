@@ -12,6 +12,7 @@ import { OrderWidget } from '@order/Components/Widgets';
 import { WalletWidget } from '@wallets/Components/Widgets';
 import { EmployeeWidget } from '@employee/Components/Widgets';
 import { SchoolWidget } from '@school/Components/Widgets';
+import { HotelWidget } from '@hotel/Components/Widgets';
 import {
     Users,
     Package,
@@ -22,6 +23,7 @@ import {
     Store,
     GraduationCap,
     UserCheck,
+    Hotel,
 } from 'lucide-vue-next';
 import type { BreadcrumbItem } from '@/types';
 import type { CustomerWidgetData } from '@customer/types';
@@ -30,6 +32,7 @@ import type { OrderMetrics, StatusBreakdown, PaymentBreakdown, RevenueTrendPoint
 import type { WalletMetrics } from '@wallets/Components/Widgets';
 import type { EmployeeMetrics, AttendanceTrendPoint, GrowthTrendPoint as EmployeeGrowthTrendPoint, RecentEmployee } from '@employee/Components/Widgets';
 import type { SchoolMetrics, DepartmentBySchool, GrowthTrendPoint as SchoolGrowthTrendPoint, RecentSchool } from '@school/Components/Widgets';
+import type { HotelWidgetStats, RecentHotel, CityDistribution } from '@hotel/Components/Widgets';
 import { useChartColors } from '@/composables/useChartColors';
 
 interface CustomerStats {
@@ -161,6 +164,7 @@ interface Props {
     walletWidget?: { metrics: WalletMetrics } | null;
     employeeWidget?: EmployeeWidgetData | null;
     schoolWidget?: SchoolWidgetData | null;
+    hotelWidget?: { stats: HotelWidgetStats; recentHotels: RecentHotel[]; citiesDistribution: CityDistribution[] } | null;
     dateRange: string;
     tab?: string;
     activeWidgets: string[];
@@ -182,6 +186,7 @@ const tabConfig: Record<string, { icon: any; label: string }> = {
     wallets: { icon: Wallet, label: 'Wallet' },
     employee: { icon: UserCheck, label: 'Employee' },
     school: { icon: GraduationCap, label: 'School' },
+    hotel: { icon: Hotel, label: 'Hotel' },
 };
 
 // Individual widget status helpers for granular control
@@ -396,6 +401,16 @@ const handleRefresh = () => {
                         :loading="loading"
                         @date-range-change="handleDateRangeChange"
                         @refresh="handleRefresh"
+                    />
+                </TabsContent>
+
+                <!-- Hotel Tab -->
+                <TabsContent v-if="isWidgetActive('hotel') && hotelWidget" value="hotel" class="space-y-6">
+                    <HotelWidget
+                        :stats="hotelWidget.stats"
+                        :recent-hotels="hotelWidget.recentHotels"
+                        :cities-distribution="hotelWidget.citiesDistribution"
+                        :loading="loading"
                     />
                 </TabsContent>
 

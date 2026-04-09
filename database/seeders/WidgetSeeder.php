@@ -187,6 +187,34 @@ class WidgetSeeder extends Seeder
                 'sort_order' => 19,
                 'status' => true,
             ],
+            // Hotel widgets
+            [
+                'name' => 'Hotel Statistics',
+                'description' => 'Overview of hotel counts, rooms, and occupancy',
+                'module' => 'Hotel',
+                'type' => 'dashboard',
+                'chart_type' => 'stats',
+                'sort_order' => 26,
+                'status' => true,
+            ],
+            [
+                'name' => 'Hotel Status Distribution',
+                'description' => 'Breakdown by hotel status (active, inactive, featured)',
+                'module' => 'Hotel',
+                'type' => 'dashboard',
+                'chart_type' => 'donut',
+                'sort_order' => 27,
+                'status' => true,
+            ],
+            [
+                'name' => 'Hotels by City',
+                'description' => 'Hotel distribution across cities',
+                'module' => 'Hotel',
+                'type' => 'dashboard',
+                'chart_type' => 'bar',
+                'sort_order' => 28,
+                'status' => true,
+            ],
             // Employee widgets
             [
                 'name' => 'Employee Statistics',

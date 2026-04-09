@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../../wayfinder'
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::index
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:21
@@ -695,15 +695,6 @@ roomsForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | 
 
 rooms.form = roomsForm
 
-const hotel = {
-    index: Object.assign(index, index),
-    featured: Object.assign(featured, featured),
-    cities: Object.assign(cities, cities),
-    provinces: Object.assign(provinces, provinces),
-    categories: Object.assign(categories, categories),
-    amenities: Object.assign(amenities, amenities),
-    show: Object.assign(show, show),
-    rooms: Object.assign(rooms, rooms),
-}
+const HotelApiController = { index, featured, cities, provinces, categories, amenities, show, rooms }
 
-export default hotel
+export default HotelApiController

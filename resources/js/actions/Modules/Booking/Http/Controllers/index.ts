@@ -1,7 +1,7 @@
-import BookingController from './BookingController'
+import Dashboard from './Dashboard'
 
 const Controllers = {
-    BookingController: Object.assign(BookingController, BookingController),
+    Dashboard: Object.assign(Dashboard, Dashboard),
 }
 
 export default Controllers

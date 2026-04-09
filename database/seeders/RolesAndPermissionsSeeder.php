@@ -37,7 +37,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'company' => ['companies'],
 
             // Hotel Module
-            'hotel' => ['hotels'],
+            'hotel' => ['hotels', 'hotel_categories', 'hotel_amenities', 'hotel_rooms'],
 
             // Customer Module
             'customer' => ['customers', 'customer_otps'],
@@ -229,6 +229,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'dashboard.employee',
             'dashboard.school',
             'dashboard.booking',
+            'dashboard.hotel',
             'dashboard.payment',
             'dashboard.report',
          

@@ -70,6 +70,8 @@ import {
     Wrench,
     Store,
     Star,
+    Sparkles,
+    BedDouble,
     type LucideIcon,
 } from 'lucide-vue-next';
 import { ref, computed, onUnmounted } from 'vue';
@@ -182,6 +184,8 @@ const iconMap: Record<string, LucideIcon> = {
     Wrench,
     Store,
     Star,
+    Sparkles,
+    BedDouble,
 };
 
 const getIcon = (iconName: string | null | undefined): LucideIcon | null => {

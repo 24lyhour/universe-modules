@@ -1,7 +1,9 @@
-import HotelController from './HotelController'
+import Api from './Api'
+import Dashboard from './Dashboard'
 
 const Controllers = {
-    HotelController: Object.assign(HotelController, HotelController),
+    Api: Object.assign(Api, Api),
+    Dashboard: Object.assign(Dashboard, Dashboard),
 }
 
 export default Controllers

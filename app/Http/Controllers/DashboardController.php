@@ -25,6 +25,9 @@ use Modules\School\Models\Classroom;
 use Modules\Order\Models\Order;
 use Modules\Wallets\Models\Wallet;
 use Modules\Wallets\Models\Transaction;
+use Modules\Hotel\Models\Hotel;
+use Modules\Hotel\Models\Room;
+use Modules\Hotel\Models\HotelCategory;
 
 class DashboardController extends Controller
 {
@@ -56,6 +59,7 @@ class DashboardController extends Controller
             'wallets' => 'dashboard.wallets',
             'employee' => 'dashboard.employee',
             'school' => 'dashboard.school',
+            'hotel' => 'dashboard.hotel',
         ];
 
         // Get modules that have AT LEAST ONE active widget AND user has permission
@@ -114,6 +118,9 @@ class DashboardController extends Controller
         if (in_array('school', $activeModules)) {
             $widgets['school'] = $this->getSchoolStats();
         }
+        if (in_array('hotel', $activeModules)) {
+            $widgets['hotel'] = $this->getHotelStats();
+        }
 
         // Set default tab to first available module
         if (!$tab || !in_array($tab, $activeModules)) {
@@ -136,6 +143,9 @@ class DashboardController extends Controller
                 : null,
             'schoolWidget' => in_array('school', $activeModules)
                 ? $this->getSchoolWidgetData($dateRange)
+                : null,
+            'hotelWidget' => in_array('hotel', $activeModules)
+                ? $this->getHotelWidgetData()
                 : null,
             'dateRange' => $dateRange,
             'tab' => $tab,
@@ -825,6 +835,60 @@ class DashboardController extends Controller
             'departmentsBySchool' => $departmentsBySchool,
             'growthTrend' => $growthTrend,
             'recentSchools' => $recentSchools,
+        ];
+    }
+
+    private function getHotelStats(): array
+    {
+        return [
+            'total' => Hotel::count(),
+            'active' => Hotel::where('status', 'active')->count(),
+            'inactive' => Hotel::where('status', 'inactive')->count(),
+            'featured' => Hotel::where('is_featured', true)->count(),
+            'total_rooms' => Room::count(),
+            'available_rooms' => Room::where('is_available', true)->count(),
+            'categories' => HotelCategory::where('is_active', true)->count(),
+        ];
+    }
+
+    private function getHotelWidgetData(): array
+    {
+        $stats = $this->getHotelStats();
+
+        $recentHotels = Hotel::with('category')
+            ->latest()
+            ->take(5)
+            ->get()
+            ->map(fn ($hotel) => [
+                'id' => $hotel->id,
+                'uuid' => $hotel->uuid,
+                'name' => $hotel->name,
+                'city' => $hotel->city,
+                'star_rating' => $hotel->star_rating,
+                'price_per_night' => (float) $hotel->price_per_night,
+                'status' => $hotel->status->value ?? $hotel->status,
+                'is_featured' => $hotel->is_featured,
+                'category' => $hotel->category?->name,
+                'created_at' => $hotel->created_at->toDateString(),
+            ])
+            ->toArray();
+
+        $citiesDistribution = Hotel::where('status', 'active')
+            ->selectRaw('city, COUNT(*) as count')
+            ->groupBy('city')
+            ->orderByDesc('count')
+            ->limit(6)
+            ->get()
+            ->map(fn ($item) => [
+                'city' => $item->city,
+                'count' => $item->count,
+            ])
+            ->toArray();
+
+        return [
+            'stats' => $stats,
+            'recentHotels' => $recentHotels,
+            'citiesDistribution' => $citiesDistribution,
         ];
     }
 }

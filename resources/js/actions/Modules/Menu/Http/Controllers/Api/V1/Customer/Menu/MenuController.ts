@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:22
 * @route '/api/v1/menus'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:22
 * @route '/api/v1/menus'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:22
 * @route '/api/v1/menus'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:22
 * @route '/api/v1/menus'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:22
 * @route '/api/v1/menus'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:22
 * @route '/api/v1/menus'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::index
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:21
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:22
 * @route '/api/v1/menus'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:38
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
 export const show = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ show.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:38
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
 show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -130,7 +130,7 @@ show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:38
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
 show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -140,7 +140,7 @@ show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:38
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
 show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -150,7 +150,7 @@ show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:38
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
 const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -160,7 +160,7 @@ const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:38
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
 showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -170,7 +170,7 @@ showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 
 /**
 * @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::show
-* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:38
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
 showForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -185,6 +185,87 @@ showForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { u
 
 show.form = showForm
 
-const MenuController = { index, show }
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::menuTypes
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:39
+* @route '/api/v1/menu-types'
+*/
+export const menuTypes = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: menuTypes.url(options),
+    method: 'get',
+})
+
+menuTypes.definition = {
+    methods: ["get","head"],
+    url: '/api/v1/menu-types',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::menuTypes
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:39
+* @route '/api/v1/menu-types'
+*/
+menuTypes.url = (options?: RouteQueryOptions) => {
+    return menuTypes.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::menuTypes
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:39
+* @route '/api/v1/menu-types'
+*/
+menuTypes.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: menuTypes.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::menuTypes
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:39
+* @route '/api/v1/menu-types'
+*/
+menuTypes.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: menuTypes.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::menuTypes
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:39
+* @route '/api/v1/menu-types'
+*/
+const menuTypesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: menuTypes.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::menuTypes
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:39
+* @route '/api/v1/menu-types'
+*/
+menuTypesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: menuTypes.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Api\V1\Customer\Menu\MenuController::menuTypes
+* @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:39
+* @route '/api/v1/menu-types'
+*/
+menuTypesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: menuTypes.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+menuTypes.form = menuTypesForm
+
+const MenuController = { index, show, menuTypes }
 
 export default MenuController
