@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 import wallet0fdd46 from './wallet'
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -17,7 +17,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -26,7 +26,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -36,7 +36,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -46,7 +46,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -56,7 +56,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -66,7 +66,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -83,7 +83,7 @@ index.form = indexForm
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/dashboard/settings/widgets/{widget}'
 */
 export const update = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -98,7 +98,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/dashboard/settings/widgets/{widget}'
 */
 update.url = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -131,7 +131,7 @@ update.url = (args: { widget: number | { id: number } } | [widget: number | { id
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/dashboard/settings/widgets/{widget}'
 */
 update.patch = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -141,7 +141,7 @@ update.patch = (args: { widget: number | { id: number } } | [widget: number | { 
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/dashboard/settings/widgets/{widget}'
 */
 const updateForm = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -156,7 +156,7 @@ const updateForm = (args: { widget: number | { id: number } } | [widget: number 
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/dashboard/settings/widgets/{widget}'
 */
 updateForm.patch = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -173,7 +173,7 @@ update.form = updateForm
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::order
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/dashboard/settings/widgets/order'
 */
 export const order = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -188,7 +188,7 @@ order.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::order
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/dashboard/settings/widgets/order'
 */
 order.url = (options?: RouteQueryOptions) => {
@@ -197,7 +197,7 @@ order.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::order
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/dashboard/settings/widgets/order'
 */
 order.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -207,7 +207,7 @@ order.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::order
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/dashboard/settings/widgets/order'
 */
 const orderForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -217,7 +217,7 @@ const orderForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::order
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/dashboard/settings/widgets/order'
 */
 orderForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -229,7 +229,7 @@ order.form = orderForm
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::toggle
-* @see app/Http/Controllers/Settings/WidgetController.php:122
+* @see app/Http/Controllers/Settings/WidgetController.php:123
 * @route '/dashboard/settings/widgets/toggle-module'
 */
 export const toggle = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -244,7 +244,7 @@ toggle.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::toggle
-* @see app/Http/Controllers/Settings/WidgetController.php:122
+* @see app/Http/Controllers/Settings/WidgetController.php:123
 * @route '/dashboard/settings/widgets/toggle-module'
 */
 toggle.url = (options?: RouteQueryOptions) => {
@@ -253,7 +253,7 @@ toggle.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::toggle
-* @see app/Http/Controllers/Settings/WidgetController.php:122
+* @see app/Http/Controllers/Settings/WidgetController.php:123
 * @route '/dashboard/settings/widgets/toggle-module'
 */
 toggle.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -263,7 +263,7 @@ toggle.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::toggle
-* @see app/Http/Controllers/Settings/WidgetController.php:122
+* @see app/Http/Controllers/Settings/WidgetController.php:123
 * @route '/dashboard/settings/widgets/toggle-module'
 */
 const toggleForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -273,7 +273,7 @@ const toggleForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> =>
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::toggle
-* @see app/Http/Controllers/Settings/WidgetController.php:122
+* @see app/Http/Controllers/Settings/WidgetController.php:123
 * @route '/dashboard/settings/widgets/toggle-module'
 */
 toggleForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

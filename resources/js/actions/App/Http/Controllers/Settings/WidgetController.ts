@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 const index4afa5860ec9efce08b0baa86e7a3f13f = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index4afa5860ec9efce08b0baa86e7a3f13f.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 index4afa5860ec9efce08b0baa86e7a3f13f.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index4afa5860ec9efce08b0baa86e7a3f13f.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 index4afa5860ec9efce08b0baa86e7a3f13f.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ index4afa5860ec9efce08b0baa86e7a3f13f.get = (options?: RouteQueryOptions): Route
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 index4afa5860ec9efce08b0baa86e7a3f13f.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ index4afa5860ec9efce08b0baa86e7a3f13f.head = (options?: RouteQueryOptions): Rout
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 const index4afa5860ec9efce08b0baa86e7a3f13fForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const index4afa5860ec9efce08b0baa86e7a3f13fForm = (options?: RouteQueryOptions):
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 index4afa5860ec9efce08b0baa86e7a3f13fForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ index4afa5860ec9efce08b0baa86e7a3f13fForm.get = (options?: RouteQueryOptions): R
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/dashboard/settings'
 */
 index4afa5860ec9efce08b0baa86e7a3f13fForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -81,7 +81,7 @@ index4afa5860ec9efce08b0baa86e7a3f13fForm.head = (options?: RouteQueryOptions): 
 index4afa5860ec9efce08b0baa86e7a3f13f.form = index4afa5860ec9efce08b0baa86e7a3f13fForm
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/settings/widgets'
 */
 const indexece6000b7bfaa8222ecc252466848ad9 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -96,7 +96,7 @@ indexece6000b7bfaa8222ecc252466848ad9.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/settings/widgets'
 */
 indexece6000b7bfaa8222ecc252466848ad9.url = (options?: RouteQueryOptions) => {
@@ -105,7 +105,7 @@ indexece6000b7bfaa8222ecc252466848ad9.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/settings/widgets'
 */
 indexece6000b7bfaa8222ecc252466848ad9.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -115,7 +115,7 @@ indexece6000b7bfaa8222ecc252466848ad9.get = (options?: RouteQueryOptions): Route
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/settings/widgets'
 */
 indexece6000b7bfaa8222ecc252466848ad9.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -125,7 +125,7 @@ indexece6000b7bfaa8222ecc252466848ad9.head = (options?: RouteQueryOptions): Rout
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/settings/widgets'
 */
 const indexece6000b7bfaa8222ecc252466848ad9Form = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -135,7 +135,7 @@ const indexece6000b7bfaa8222ecc252466848ad9Form = (options?: RouteQueryOptions):
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/settings/widgets'
 */
 indexece6000b7bfaa8222ecc252466848ad9Form.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -145,7 +145,7 @@ indexece6000b7bfaa8222ecc252466848ad9Form.get = (options?: RouteQueryOptions): R
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::index
-* @see app/Http/Controllers/Settings/WidgetController.php:51
+* @see app/Http/Controllers/Settings/WidgetController.php:52
 * @route '/settings/widgets'
 */
 indexece6000b7bfaa8222ecc252466848ad9Form.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -167,7 +167,7 @@ export const index = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/dashboard/settings/widgets/{widget}'
 */
 const updatebe0eed584efe07a5bb507a31908977b1 = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -182,7 +182,7 @@ updatebe0eed584efe07a5bb507a31908977b1.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/dashboard/settings/widgets/{widget}'
 */
 updatebe0eed584efe07a5bb507a31908977b1.url = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -215,7 +215,7 @@ updatebe0eed584efe07a5bb507a31908977b1.url = (args: { widget: number | { id: num
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/dashboard/settings/widgets/{widget}'
 */
 updatebe0eed584efe07a5bb507a31908977b1.patch = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -225,7 +225,7 @@ updatebe0eed584efe07a5bb507a31908977b1.patch = (args: { widget: number | { id: n
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/dashboard/settings/widgets/{widget}'
 */
 const updatebe0eed584efe07a5bb507a31908977b1Form = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -240,7 +240,7 @@ const updatebe0eed584efe07a5bb507a31908977b1Form = (args: { widget: number | { i
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/dashboard/settings/widgets/{widget}'
 */
 updatebe0eed584efe07a5bb507a31908977b1Form.patch = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -256,7 +256,7 @@ updatebe0eed584efe07a5bb507a31908977b1Form.patch = (args: { widget: number | { i
 updatebe0eed584efe07a5bb507a31908977b1.form = updatebe0eed584efe07a5bb507a31908977b1Form
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/settings/widgets/{widget}'
 */
 const update685d674c98896447044b43e90e172ed7 = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -271,7 +271,7 @@ update685d674c98896447044b43e90e172ed7.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/settings/widgets/{widget}'
 */
 update685d674c98896447044b43e90e172ed7.url = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -304,7 +304,7 @@ update685d674c98896447044b43e90e172ed7.url = (args: { widget: number | { id: num
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/settings/widgets/{widget}'
 */
 update685d674c98896447044b43e90e172ed7.patch = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -314,7 +314,7 @@ update685d674c98896447044b43e90e172ed7.patch = (args: { widget: number | { id: n
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/settings/widgets/{widget}'
 */
 const update685d674c98896447044b43e90e172ed7Form = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -329,7 +329,7 @@ const update685d674c98896447044b43e90e172ed7Form = (args: { widget: number | { i
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::update
-* @see app/Http/Controllers/Settings/WidgetController.php:84
+* @see app/Http/Controllers/Settings/WidgetController.php:85
 * @route '/settings/widgets/{widget}'
 */
 update685d674c98896447044b43e90e172ed7Form.patch = (args: { widget: number | { id: number } } | [widget: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -351,7 +351,7 @@ export const update = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::updateOrder
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/dashboard/settings/widgets/order'
 */
 const updateOrderedf5d6349c8c6255e1d987cebc720d24 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -366,7 +366,7 @@ updateOrderedf5d6349c8c6255e1d987cebc720d24.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::updateOrder
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/dashboard/settings/widgets/order'
 */
 updateOrderedf5d6349c8c6255e1d987cebc720d24.url = (options?: RouteQueryOptions) => {
@@ -375,7 +375,7 @@ updateOrderedf5d6349c8c6255e1d987cebc720d24.url = (options?: RouteQueryOptions) 
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::updateOrder
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/dashboard/settings/widgets/order'
 */
 updateOrderedf5d6349c8c6255e1d987cebc720d24.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -385,7 +385,7 @@ updateOrderedf5d6349c8c6255e1d987cebc720d24.post = (options?: RouteQueryOptions)
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::updateOrder
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/dashboard/settings/widgets/order'
 */
 const updateOrderedf5d6349c8c6255e1d987cebc720d24Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -395,7 +395,7 @@ const updateOrderedf5d6349c8c6255e1d987cebc720d24Form = (options?: RouteQueryOpt
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::updateOrder
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/dashboard/settings/widgets/order'
 */
 updateOrderedf5d6349c8c6255e1d987cebc720d24Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -406,7 +406,7 @@ updateOrderedf5d6349c8c6255e1d987cebc720d24Form.post = (options?: RouteQueryOpti
 updateOrderedf5d6349c8c6255e1d987cebc720d24.form = updateOrderedf5d6349c8c6255e1d987cebc720d24Form
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::updateOrder
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/settings/widgets/order'
 */
 const updateOrderbb97ee3df2ee7f654f907b60b18e72c8 = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -421,7 +421,7 @@ updateOrderbb97ee3df2ee7f654f907b60b18e72c8.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::updateOrder
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/settings/widgets/order'
 */
 updateOrderbb97ee3df2ee7f654f907b60b18e72c8.url = (options?: RouteQueryOptions) => {
@@ -430,7 +430,7 @@ updateOrderbb97ee3df2ee7f654f907b60b18e72c8.url = (options?: RouteQueryOptions) 
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::updateOrder
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/settings/widgets/order'
 */
 updateOrderbb97ee3df2ee7f654f907b60b18e72c8.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -440,7 +440,7 @@ updateOrderbb97ee3df2ee7f654f907b60b18e72c8.post = (options?: RouteQueryOptions)
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::updateOrder
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/settings/widgets/order'
 */
 const updateOrderbb97ee3df2ee7f654f907b60b18e72c8Form = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -450,7 +450,7 @@ const updateOrderbb97ee3df2ee7f654f907b60b18e72c8Form = (options?: RouteQueryOpt
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::updateOrder
-* @see app/Http/Controllers/Settings/WidgetController.php:102
+* @see app/Http/Controllers/Settings/WidgetController.php:103
 * @route '/settings/widgets/order'
 */
 updateOrderbb97ee3df2ee7f654f907b60b18e72c8Form.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -467,7 +467,7 @@ export const updateOrder = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::toggleModule
-* @see app/Http/Controllers/Settings/WidgetController.php:122
+* @see app/Http/Controllers/Settings/WidgetController.php:123
 * @route '/dashboard/settings/widgets/toggle-module'
 */
 export const toggleModule = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -482,7 +482,7 @@ toggleModule.definition = {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::toggleModule
-* @see app/Http/Controllers/Settings/WidgetController.php:122
+* @see app/Http/Controllers/Settings/WidgetController.php:123
 * @route '/dashboard/settings/widgets/toggle-module'
 */
 toggleModule.url = (options?: RouteQueryOptions) => {
@@ -491,7 +491,7 @@ toggleModule.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::toggleModule
-* @see app/Http/Controllers/Settings/WidgetController.php:122
+* @see app/Http/Controllers/Settings/WidgetController.php:123
 * @route '/dashboard/settings/widgets/toggle-module'
 */
 toggleModule.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -501,7 +501,7 @@ toggleModule.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::toggleModule
-* @see app/Http/Controllers/Settings/WidgetController.php:122
+* @see app/Http/Controllers/Settings/WidgetController.php:123
 * @route '/dashboard/settings/widgets/toggle-module'
 */
 const toggleModuleForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -511,7 +511,7 @@ const toggleModuleForm = (options?: RouteQueryOptions): RouteFormDefinition<'pos
 
 /**
 * @see \App\Http\Controllers\Settings\WidgetController::toggleModule
-* @see app/Http/Controllers/Settings/WidgetController.php:122
+* @see app/Http/Controllers/Settings/WidgetController.php:123
 * @route '/dashboard/settings/widgets/toggle-module'
 */
 toggleModuleForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

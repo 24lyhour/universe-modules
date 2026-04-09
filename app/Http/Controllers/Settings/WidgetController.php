@@ -23,6 +23,7 @@ class WidgetController extends Controller
         'Wallets' => 'dashboard.wallets',
         'Employee' => 'dashboard.employee',
         'School' => 'dashboard.school',
+        'Hotel' => 'dashboard.hotel',
     ];
 
     /**
