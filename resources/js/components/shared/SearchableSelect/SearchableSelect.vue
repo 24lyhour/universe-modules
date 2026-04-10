@@ -111,7 +111,7 @@ const clearSelection = (e: Event) => {
         </ComboboxAnchor>
 
         <ComboboxList class="w-[--reka-combobox-trigger-width]">
-            <ComboboxInput :placeholder="searchPlaceholder" />
+            <ComboboxInput :placeholder="searchPlaceholder" :display-value="() => searchTerm" />
             <ComboboxViewport class="max-h-[200px] p-1">
                 <ComboboxEmpty>{{ emptyMessage }}</ComboboxEmpty>
                 <ComboboxItem

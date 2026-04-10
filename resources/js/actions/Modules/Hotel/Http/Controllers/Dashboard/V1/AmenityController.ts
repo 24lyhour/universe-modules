@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../../../../wayfinder'
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:98
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:88
 * @route '/dashboard/hotel-amenities/trash'
 */
 export const trash = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ trash.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:98
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:88
 * @route '/dashboard/hotel-amenities/trash'
 */
 trash.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ trash.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:98
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:88
 * @route '/dashboard/hotel-amenities/trash'
 */
 trash.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ trash.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:98
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:88
 * @route '/dashboard/hotel-amenities/trash'
 */
 trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:98
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:88
 * @route '/dashboard/hotel-amenities/trash'
 */
 const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:98
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:88
 * @route '/dashboard/hotel-amenities/trash'
 */
 trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:98
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:88
 * @route '/dashboard/hotel-amenities/trash'
 */
 trashForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ trash.form = trashForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::restore
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:107
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:97
 * @route '/dashboard/hotel-amenities/{uuid}/restore'
 */
 export const restore = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -97,7 +97,7 @@ restore.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::restore
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:107
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:97
 * @route '/dashboard/hotel-amenities/{uuid}/restore'
 */
 restore.url = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -124,7 +124,7 @@ restore.url = (args: { uuid: string | number } | [uuid: string | number ] | stri
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::restore
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:107
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:97
 * @route '/dashboard/hotel-amenities/{uuid}/restore'
 */
 restore.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -134,7 +134,7 @@ restore.put = (args: { uuid: string | number } | [uuid: string | number ] | stri
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::restore
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:107
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:97
 * @route '/dashboard/hotel-amenities/{uuid}/restore'
 */
 const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -149,7 +149,7 @@ const restoreForm = (args: { uuid: string | number } | [uuid: string | number ] 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::restore
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:107
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:97
 * @route '/dashboard/hotel-amenities/{uuid}/restore'
 */
 restoreForm.put = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -166,7 +166,7 @@ restore.form = restoreForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::forceDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:114
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:108
 * @route '/dashboard/hotel-amenities/{uuid}/force-delete'
 */
 export const forceDelete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -181,7 +181,7 @@ forceDelete.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::forceDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:114
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:108
 * @route '/dashboard/hotel-amenities/{uuid}/force-delete'
 */
 forceDelete.url = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -208,7 +208,7 @@ forceDelete.url = (args: { uuid: string | number } | [uuid: string | number ] | 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::forceDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:114
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:108
 * @route '/dashboard/hotel-amenities/{uuid}/force-delete'
 */
 forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -218,7 +218,7 @@ forceDelete.delete = (args: { uuid: string | number } | [uuid: string | number ]
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::forceDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:114
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:108
 * @route '/dashboard/hotel-amenities/{uuid}/force-delete'
 */
 const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -233,7 +233,7 @@ const forceDeleteForm = (args: { uuid: string | number } | [uuid: string | numbe
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::forceDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:114
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:108
 * @route '/dashboard/hotel-amenities/{uuid}/force-delete'
 */
 forceDeleteForm.delete = (args: { uuid: string | number } | [uuid: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -250,7 +250,7 @@ forceDelete.form = forceDeleteForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::bulkDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:121
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:119
 * @route '/dashboard/hotel-amenities/bulk-delete'
 */
 export const bulkDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -265,7 +265,7 @@ bulkDelete.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::bulkDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:121
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:119
 * @route '/dashboard/hotel-amenities/bulk-delete'
 */
 bulkDelete.url = (options?: RouteQueryOptions) => {
@@ -274,7 +274,7 @@ bulkDelete.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::bulkDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:121
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:119
 * @route '/dashboard/hotel-amenities/bulk-delete'
 */
 bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -284,7 +284,7 @@ bulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::bulkDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:121
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:119
 * @route '/dashboard/hotel-amenities/bulk-delete'
 */
 const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -299,7 +299,7 @@ const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::bulkDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:121
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:119
 * @route '/dashboard/hotel-amenities/bulk-delete'
 */
 bulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -316,7 +316,7 @@ bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::toggleActive
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:89
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:79
 * @route '/dashboard/hotel-amenities/{amenity}/toggle-active'
 */
 export const toggleActive = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -331,7 +331,7 @@ toggleActive.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::toggleActive
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:89
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:79
 * @route '/dashboard/hotel-amenities/{amenity}/toggle-active'
 */
 toggleActive.url = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -364,7 +364,7 @@ toggleActive.url = (args: { amenity: string | { uuid: string } } | [amenity: str
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::toggleActive
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:89
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:79
 * @route '/dashboard/hotel-amenities/{amenity}/toggle-active'
 */
 toggleActive.patch = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -374,7 +374,7 @@ toggleActive.patch = (args: { amenity: string | { uuid: string } } | [amenity: s
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::toggleActive
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:89
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:79
 * @route '/dashboard/hotel-amenities/{amenity}/toggle-active'
 */
 const toggleActiveForm = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -389,7 +389,7 @@ const toggleActiveForm = (args: { amenity: string | { uuid: string } } | [amenit
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::toggleActive
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:89
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:79
 * @route '/dashboard/hotel-amenities/{amenity}/toggle-active'
 */
 toggleActiveForm.patch = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -405,8 +405,113 @@ toggleActiveForm.patch = (args: { amenity: string | { uuid: string } } | [amenit
 toggleActive.form = toggleActiveForm
 
 /**
+* @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::confirmDelete
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @route '/dashboard/hotel-amenities/{amenity}/delete'
+*/
+export const confirmDelete = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+confirmDelete.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/hotel-amenities/{amenity}/delete',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::confirmDelete
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @route '/dashboard/hotel-amenities/{amenity}/delete'
+*/
+confirmDelete.url = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { amenity: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'uuid' in args) {
+        args = { amenity: args.uuid }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            amenity: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        amenity: typeof args.amenity === 'object'
+        ? args.amenity.uuid
+        : args.amenity,
+    }
+
+    return confirmDelete.definition.url
+            .replace('{amenity}', parsedArgs.amenity.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::confirmDelete
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @route '/dashboard/hotel-amenities/{amenity}/delete'
+*/
+confirmDelete.get = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::confirmDelete
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @route '/dashboard/hotel-amenities/{amenity}/delete'
+*/
+confirmDelete.head = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: confirmDelete.url(args, options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::confirmDelete
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @route '/dashboard/hotel-amenities/{amenity}/delete'
+*/
+const confirmDeleteForm = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::confirmDelete
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @route '/dashboard/hotel-amenities/{amenity}/delete'
+*/
+confirmDeleteForm.get = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::confirmDelete
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @route '/dashboard/hotel-amenities/{amenity}/delete'
+*/
+confirmDeleteForm.head = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: confirmDelete.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+confirmDelete.form = confirmDeleteForm
+
+/**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:20
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:26
 * @route '/dashboard/hotel-amenities'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -421,7 +526,7 @@ index.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:20
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:26
 * @route '/dashboard/hotel-amenities'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -430,7 +535,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:20
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:26
 * @route '/dashboard/hotel-amenities'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -440,7 +545,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:20
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:26
 * @route '/dashboard/hotel-amenities'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -450,7 +555,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:20
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:26
 * @route '/dashboard/hotel-amenities'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -460,7 +565,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:20
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:26
 * @route '/dashboard/hotel-amenities'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -470,7 +575,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:20
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:26
 * @route '/dashboard/hotel-amenities'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -487,7 +592,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:31
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:34
 * @route '/dashboard/hotel-amenities/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -502,7 +607,7 @@ create.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:31
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:34
 * @route '/dashboard/hotel-amenities/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -511,7 +616,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:31
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:34
 * @route '/dashboard/hotel-amenities/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -521,7 +626,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:31
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:34
 * @route '/dashboard/hotel-amenities/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -531,7 +636,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:31
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:34
 * @route '/dashboard/hotel-amenities/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -541,7 +646,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:31
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:34
 * @route '/dashboard/hotel-amenities/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -551,7 +656,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:31
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:34
 * @route '/dashboard/hotel-amenities/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -568,7 +673,7 @@ create.form = createForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::store
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:40
 * @route '/dashboard/hotel-amenities'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -583,7 +688,7 @@ store.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::store
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:40
 * @route '/dashboard/hotel-amenities'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -592,7 +697,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::store
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:40
 * @route '/dashboard/hotel-amenities'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -602,7 +707,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::store
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:40
 * @route '/dashboard/hotel-amenities'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -612,7 +717,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::store
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:40
 * @route '/dashboard/hotel-amenities'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -723,7 +828,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:49
 * @route '/dashboard/hotel-amenities/{amenity}/edit'
 */
 export const edit = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -738,7 +843,7 @@ edit.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:49
 * @route '/dashboard/hotel-amenities/{amenity}/edit'
 */
 edit.url = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -771,7 +876,7 @@ edit.url = (args: { amenity: string | { uuid: string } } | [amenity: string | { 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:49
 * @route '/dashboard/hotel-amenities/{amenity}/edit'
 */
 edit.get = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -781,7 +886,7 @@ edit.get = (args: { amenity: string | { uuid: string } } | [amenity: string | { 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:49
 * @route '/dashboard/hotel-amenities/{amenity}/edit'
 */
 edit.head = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -791,7 +896,7 @@ edit.head = (args: { amenity: string | { uuid: string } } | [amenity: string | {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:49
 * @route '/dashboard/hotel-amenities/{amenity}/edit'
 */
 const editForm = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -801,7 +906,7 @@ const editForm = (args: { amenity: string | { uuid: string } } | [amenity: strin
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:49
 * @route '/dashboard/hotel-amenities/{amenity}/edit'
 */
 editForm.get = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -811,7 +916,7 @@ editForm.get = (args: { amenity: string | { uuid: string } } | [amenity: string 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:55
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:49
 * @route '/dashboard/hotel-amenities/{amenity}/edit'
 */
 editForm.head = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -828,7 +933,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:62
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:61
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 export const update = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -843,7 +948,7 @@ update.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:62
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:61
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 update.url = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -876,7 +981,7 @@ update.url = (args: { amenity: string | { uuid: string } } | [amenity: string | 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:62
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:61
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 update.put = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -886,7 +991,7 @@ update.put = (args: { amenity: string | { uuid: string } } | [amenity: string | 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:62
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:61
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 update.patch = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -896,7 +1001,7 @@ update.patch = (args: { amenity: string | { uuid: string } } | [amenity: string 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:62
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:61
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 const updateForm = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -911,7 +1016,7 @@ const updateForm = (args: { amenity: string | { uuid: string } } | [amenity: str
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:62
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:61
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 updateForm.put = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -926,7 +1031,7 @@ updateForm.put = (args: { amenity: string | { uuid: string } } | [amenity: strin
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:62
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:61
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 updateForm.patch = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -943,7 +1048,7 @@ update.form = updateForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::destroy
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:80
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:70
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 export const destroy = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -958,7 +1063,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::destroy
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:80
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:70
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 destroy.url = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -991,7 +1096,7 @@ destroy.url = (args: { amenity: string | { uuid: string } } | [amenity: string |
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::destroy
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:80
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:70
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 destroy.delete = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1001,7 +1106,7 @@ destroy.delete = (args: { amenity: string | { uuid: string } } | [amenity: strin
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::destroy
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:80
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:70
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 const destroyForm = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1016,7 +1121,7 @@ const destroyForm = (args: { amenity: string | { uuid: string } } | [amenity: st
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\AmenityController::destroy
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:80
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/AmenityController.php:70
 * @route '/dashboard/hotel-amenities/{amenity}'
 */
 destroyForm.delete = (args: { amenity: string | { uuid: string } } | [amenity: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1031,6 +1136,6 @@ destroyForm.delete = (args: { amenity: string | { uuid: string } } | [amenity: s
 
 destroy.form = destroyForm
 
-const AmenityController = { trash, restore, forceDelete, bulkDelete, toggleActive, index, create, store, show, edit, update, destroy }
+const AmenityController = { trash, restore, forceDelete, bulkDelete, toggleActive, confirmDelete, index, create, store, show, edit, update, destroy }
 
 export default AmenityController
