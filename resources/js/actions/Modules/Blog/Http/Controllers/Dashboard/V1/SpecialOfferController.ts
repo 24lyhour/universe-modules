@@ -222,7 +222,7 @@ store.form = storeForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:52
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-export const show = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -237,7 +237,7 @@ show.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:52
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-show.url = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+show.url = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { specialOffer: args }
     }
@@ -270,7 +270,7 @@ show.url = (args: { specialOffer: string | number | { uuid: string | number } } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:52
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-show.get = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -280,7 +280,7 @@ show.get = (args: { specialOffer: string | number | { uuid: string | number } } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:52
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-show.head = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -290,7 +290,7 @@ show.head = (args: { specialOffer: string | number | { uuid: string | number } }
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:52
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-const showForm = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -300,7 +300,7 @@ const showForm = (args: { specialOffer: string | number | { uuid: string | numbe
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:52
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-showForm.get = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -310,7 +310,7 @@ showForm.get = (args: { specialOffer: string | number | { uuid: string | number 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:52
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-showForm.head = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -327,7 +327,7 @@ show.form = showForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:59
 * @route '/dashboard/special-offers/{specialOffer}/edit'
 */
-export const edit = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -342,7 +342,7 @@ edit.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:59
 * @route '/dashboard/special-offers/{specialOffer}/edit'
 */
-edit.url = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+edit.url = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { specialOffer: args }
     }
@@ -375,7 +375,7 @@ edit.url = (args: { specialOffer: string | number | { uuid: string | number } } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:59
 * @route '/dashboard/special-offers/{specialOffer}/edit'
 */
-edit.get = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -385,7 +385,7 @@ edit.get = (args: { specialOffer: string | number | { uuid: string | number } } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:59
 * @route '/dashboard/special-offers/{specialOffer}/edit'
 */
-edit.head = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -395,7 +395,7 @@ edit.head = (args: { specialOffer: string | number | { uuid: string | number } }
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:59
 * @route '/dashboard/special-offers/{specialOffer}/edit'
 */
-const editForm = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -405,7 +405,7 @@ const editForm = (args: { specialOffer: string | number | { uuid: string | numbe
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:59
 * @route '/dashboard/special-offers/{specialOffer}/edit'
 */
-editForm.get = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -415,7 +415,7 @@ editForm.get = (args: { specialOffer: string | number | { uuid: string | number 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:59
 * @route '/dashboard/special-offers/{specialOffer}/edit'
 */
-editForm.head = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -432,7 +432,7 @@ edit.form = editForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:66
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-export const update = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -447,7 +447,7 @@ update.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:66
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-update.url = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { specialOffer: args }
     }
@@ -480,7 +480,7 @@ update.url = (args: { specialOffer: string | number | { uuid: string | number } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:66
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-update.put = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -490,7 +490,7 @@ update.put = (args: { specialOffer: string | number | { uuid: string | number } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:66
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-update.patch = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -500,7 +500,7 @@ update.patch = (args: { specialOffer: string | number | { uuid: string | number 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:66
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-const updateForm = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -515,7 +515,7 @@ const updateForm = (args: { specialOffer: string | number | { uuid: string | num
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:66
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-updateForm.put = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -530,7 +530,7 @@ updateForm.put = (args: { specialOffer: string | number | { uuid: string | numbe
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:66
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-updateForm.patch = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -547,7 +547,7 @@ update.form = updateForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:74
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-export const destroy = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -562,7 +562,7 @@ destroy.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:74
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-destroy.url = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { specialOffer: args }
     }
@@ -595,7 +595,7 @@ destroy.url = (args: { specialOffer: string | number | { uuid: string | number }
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:74
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-destroy.delete = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -605,7 +605,7 @@ destroy.delete = (args: { specialOffer: string | number | { uuid: string | numbe
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:74
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-const destroyForm = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -620,7 +620,7 @@ const destroyForm = (args: { specialOffer: string | number | { uuid: string | nu
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:74
 * @route '/dashboard/special-offers/{specialOffer}'
 */
-destroyForm.delete = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -637,7 +637,7 @@ destroy.form = destroyForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:82
 * @route '/dashboard/special-offers/{specialOffer}/toggle-active'
 */
-export const toggleActive = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleActive = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -652,7 +652,7 @@ toggleActive.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:82
 * @route '/dashboard/special-offers/{specialOffer}/toggle-active'
 */
-toggleActive.url = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+toggleActive.url = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { specialOffer: args }
     }
@@ -685,7 +685,7 @@ toggleActive.url = (args: { specialOffer: string | number | { uuid: string | num
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:82
 * @route '/dashboard/special-offers/{specialOffer}/toggle-active'
 */
-toggleActive.put = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleActive.put = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -695,7 +695,7 @@ toggleActive.put = (args: { specialOffer: string | number | { uuid: string | num
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:82
 * @route '/dashboard/special-offers/{specialOffer}/toggle-active'
 */
-const toggleActiveForm = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleActiveForm = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -710,7 +710,7 @@ const toggleActiveForm = (args: { specialOffer: string | number | { uuid: string
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SpecialOfferController.php:82
 * @route '/dashboard/special-offers/{specialOffer}/toggle-active'
 */
-toggleActiveForm.put = (args: { specialOffer: string | number | { uuid: string | number } } | [specialOffer: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleActiveForm.put = (args: { specialOffer: string | { uuid: string } } | [specialOffer: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',

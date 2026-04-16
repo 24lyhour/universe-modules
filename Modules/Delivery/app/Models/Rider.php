@@ -36,7 +36,7 @@ class Rider extends Model
         'commission_rate',
         'documents',
         'is_active',
-        'telegram_chat_id',
+        'telegram_chat_id', 
         'notes',
     ];
 
