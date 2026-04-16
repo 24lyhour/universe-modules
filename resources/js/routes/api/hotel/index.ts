@@ -1,7 +1,92 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
+import booking from './booking'
+import reviews from './reviews'
+import provinces from './provinces'
+import amenities from './amenities'
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelBookingController::search
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelBookingController.php:72
+* @route '/api/v1/hotels/search'
+*/
+export const search = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: search.url(options),
+    method: 'get',
+})
+
+search.definition = {
+    methods: ["get","head"],
+    url: '/api/v1/hotels/search',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelBookingController::search
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelBookingController.php:72
+* @route '/api/v1/hotels/search'
+*/
+search.url = (options?: RouteQueryOptions) => {
+    return search.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelBookingController::search
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelBookingController.php:72
+* @route '/api/v1/hotels/search'
+*/
+search.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: search.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelBookingController::search
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelBookingController.php:72
+* @route '/api/v1/hotels/search'
+*/
+search.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: search.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelBookingController::search
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelBookingController.php:72
+* @route '/api/v1/hotels/search'
+*/
+const searchForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: search.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelBookingController::search
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelBookingController.php:72
+* @route '/api/v1/hotels/search'
+*/
+searchForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: search.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelBookingController::search
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelBookingController.php:72
+* @route '/api/v1/hotels/search'
+*/
+searchForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: search.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+search.form = searchForm
+
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:21
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:26
 * @route '/api/v1/hotels'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +101,7 @@ index.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:21
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:26
 * @route '/api/v1/hotels'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +110,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:21
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:26
 * @route '/api/v1/hotels'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +120,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:21
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:26
 * @route '/api/v1/hotels'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +130,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:21
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:26
 * @route '/api/v1/hotels'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +140,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:21
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:26
 * @route '/api/v1/hotels'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +150,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:21
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:26
 * @route '/api/v1/hotels'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +167,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::featured
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:105
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:150
 * @route '/api/v1/hotels/featured'
 */
 export const featured = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +182,7 @@ featured.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::featured
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:105
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:150
 * @route '/api/v1/hotels/featured'
 */
 featured.url = (options?: RouteQueryOptions) => {
@@ -106,7 +191,7 @@ featured.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::featured
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:105
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:150
 * @route '/api/v1/hotels/featured'
 */
 featured.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +201,7 @@ featured.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::featured
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:105
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:150
 * @route '/api/v1/hotels/featured'
 */
 featured.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +211,7 @@ featured.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::featured
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:105
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:150
 * @route '/api/v1/hotels/featured'
 */
 const featuredForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +221,7 @@ const featuredForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::featured
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:105
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:150
 * @route '/api/v1/hotels/featured'
 */
 featuredForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +231,7 @@ featuredForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::featured
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:105
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:150
 * @route '/api/v1/hotels/featured'
 */
 featuredForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -162,332 +247,8 @@ featuredForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 featured.form = featuredForm
 
 /**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:119
-* @route '/api/v1/hotels/cities'
-*/
-export const cities = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: cities.url(options),
-    method: 'get',
-})
-
-cities.definition = {
-    methods: ["get","head"],
-    url: '/api/v1/hotels/cities',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:119
-* @route '/api/v1/hotels/cities'
-*/
-cities.url = (options?: RouteQueryOptions) => {
-    return cities.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:119
-* @route '/api/v1/hotels/cities'
-*/
-cities.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: cities.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:119
-* @route '/api/v1/hotels/cities'
-*/
-cities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: cities.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:119
-* @route '/api/v1/hotels/cities'
-*/
-const citiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: cities.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:119
-* @route '/api/v1/hotels/cities'
-*/
-citiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: cities.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:119
-* @route '/api/v1/hotels/cities'
-*/
-citiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: cities.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-cities.form = citiesForm
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::provinces
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
-* @route '/api/v1/hotels/provinces'
-*/
-export const provinces = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: provinces.url(options),
-    method: 'get',
-})
-
-provinces.definition = {
-    methods: ["get","head"],
-    url: '/api/v1/hotels/provinces',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::provinces
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
-* @route '/api/v1/hotels/provinces'
-*/
-provinces.url = (options?: RouteQueryOptions) => {
-    return provinces.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::provinces
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
-* @route '/api/v1/hotels/provinces'
-*/
-provinces.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: provinces.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::provinces
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
-* @route '/api/v1/hotels/provinces'
-*/
-provinces.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: provinces.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::provinces
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
-* @route '/api/v1/hotels/provinces'
-*/
-const provincesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: provinces.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::provinces
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
-* @route '/api/v1/hotels/provinces'
-*/
-provincesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: provinces.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::provinces
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
-* @route '/api/v1/hotels/provinces'
-*/
-provincesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: provinces.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-provinces.form = provincesForm
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:52
-* @route '/api/v1/hotels/categories'
-*/
-export const categories = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: categories.url(options),
-    method: 'get',
-})
-
-categories.definition = {
-    methods: ["get","head"],
-    url: '/api/v1/hotels/categories',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:52
-* @route '/api/v1/hotels/categories'
-*/
-categories.url = (options?: RouteQueryOptions) => {
-    return categories.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:52
-* @route '/api/v1/hotels/categories'
-*/
-categories.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: categories.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:52
-* @route '/api/v1/hotels/categories'
-*/
-categories.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: categories.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:52
-* @route '/api/v1/hotels/categories'
-*/
-const categoriesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: categories.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:52
-* @route '/api/v1/hotels/categories'
-*/
-categoriesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: categories.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:52
-* @route '/api/v1/hotels/categories'
-*/
-categoriesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: categories.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-categories.form = categoriesForm
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::amenities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:71
-* @route '/api/v1/hotels/amenities'
-*/
-export const amenities = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: amenities.url(options),
-    method: 'get',
-})
-
-amenities.definition = {
-    methods: ["get","head"],
-    url: '/api/v1/hotels/amenities',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::amenities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:71
-* @route '/api/v1/hotels/amenities'
-*/
-amenities.url = (options?: RouteQueryOptions) => {
-    return amenities.definition.url + queryParams(options)
-}
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::amenities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:71
-* @route '/api/v1/hotels/amenities'
-*/
-amenities.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: amenities.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::amenities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:71
-* @route '/api/v1/hotels/amenities'
-*/
-amenities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: amenities.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::amenities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:71
-* @route '/api/v1/hotels/amenities'
-*/
-const amenitiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: amenities.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::amenities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:71
-* @route '/api/v1/hotels/amenities'
-*/
-amenitiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: amenities.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::amenities
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:71
-* @route '/api/v1/hotels/amenities'
-*/
-amenitiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: amenities.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-amenities.form = amenitiesForm
-
-/**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::show
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:32
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
 export const show = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -502,7 +263,7 @@ show.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::show
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:32
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
 show.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -535,7 +296,7 @@ show.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::show
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:32
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
 show.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -545,7 +306,7 @@ show.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::show
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:32
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
 show.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -555,7 +316,7 @@ show.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::show
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:32
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
 const showForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -565,7 +326,7 @@ const showForm = (args: { hotel: string | { uuid: string } } | [hotel: string | 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::show
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:32
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
 showForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -575,7 +336,7 @@ showForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::show
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:32
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
 showForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -592,7 +353,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::rooms
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:41
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
 export const rooms = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -607,7 +368,7 @@ rooms.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::rooms
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:41
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
 rooms.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -640,7 +401,7 @@ rooms.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::rooms
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:41
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
 rooms.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -650,7 +411,7 @@ rooms.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::rooms
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:41
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
 rooms.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -660,7 +421,7 @@ rooms.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uu
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::rooms
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:41
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
 const roomsForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -670,7 +431,7 @@ const roomsForm = (args: { hotel: string | { uuid: string } } | [hotel: string |
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::rooms
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:41
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
 roomsForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -680,7 +441,7 @@ roomsForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::rooms
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:41
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
 roomsForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -695,15 +456,180 @@ roomsForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | 
 
 rooms.form = roomsForm
 
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
+* @route '/api/v1/hotels/categories'
+*/
+export const categories = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: categories.url(options),
+    method: 'get',
+})
+
+categories.definition = {
+    methods: ["get","head"],
+    url: '/api/v1/hotels/categories',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
+* @route '/api/v1/hotels/categories'
+*/
+categories.url = (options?: RouteQueryOptions) => {
+    return categories.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
+* @route '/api/v1/hotels/categories'
+*/
+categories.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: categories.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
+* @route '/api/v1/hotels/categories'
+*/
+categories.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: categories.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
+* @route '/api/v1/hotels/categories'
+*/
+const categoriesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: categories.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
+* @route '/api/v1/hotels/categories'
+*/
+categoriesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: categories.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::categories
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:82
+* @route '/api/v1/hotels/categories'
+*/
+categoriesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: categories.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+categories.form = categoriesForm
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:167
+* @route '/api/v1/hotels/cities'
+*/
+export const cities = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: cities.url(options),
+    method: 'get',
+})
+
+cities.definition = {
+    methods: ["get","head"],
+    url: '/api/v1/hotels/cities',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:167
+* @route '/api/v1/hotels/cities'
+*/
+cities.url = (options?: RouteQueryOptions) => {
+    return cities.definition.url + queryParams(options)
+}
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:167
+* @route '/api/v1/hotels/cities'
+*/
+cities.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: cities.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:167
+* @route '/api/v1/hotels/cities'
+*/
+cities.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: cities.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:167
+* @route '/api/v1/hotels/cities'
+*/
+const citiesForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: cities.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:167
+* @route '/api/v1/hotels/cities'
+*/
+citiesForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: cities.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelApiController::cities
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:167
+* @route '/api/v1/hotels/cities'
+*/
+citiesForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: cities.url({
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+cities.form = citiesForm
+
 const hotel = {
+    booking: Object.assign(booking, booking),
+    search: Object.assign(search, search),
     index: Object.assign(index, index),
     featured: Object.assign(featured, featured),
-    cities: Object.assign(cities, cities),
-    provinces: Object.assign(provinces, provinces),
-    categories: Object.assign(categories, categories),
-    amenities: Object.assign(amenities, amenities),
     show: Object.assign(show, show),
     rooms: Object.assign(rooms, rooms),
+    reviews: Object.assign(reviews, reviews),
+    provinces: Object.assign(provinces, provinces),
+    amenities: Object.assign(amenities, amenities),
+    categories: Object.assign(categories, categories),
+    cities: Object.assign(cities, cities),
 }
 
 export default hotel

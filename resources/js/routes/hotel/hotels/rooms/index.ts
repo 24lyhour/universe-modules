@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:100
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:148
 * @route '/dashboard/hotels/{hotel}/rooms/trash'
 */
 export const trash = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ trash.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:100
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:148
 * @route '/dashboard/hotels/{hotel}/rooms/trash'
 */
 trash.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -49,7 +49,7 @@ trash.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:100
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:148
 * @route '/dashboard/hotels/{hotel}/rooms/trash'
 */
 trash.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -59,7 +59,7 @@ trash.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:100
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:148
 * @route '/dashboard/hotels/{hotel}/rooms/trash'
 */
 trash.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -69,7 +69,7 @@ trash.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uu
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:100
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:148
 * @route '/dashboard/hotels/{hotel}/rooms/trash'
 */
 const trashForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ const trashForm = (args: { hotel: string | { uuid: string } } | [hotel: string |
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:100
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:148
 * @route '/dashboard/hotels/{hotel}/rooms/trash'
 */
 trashForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -89,7 +89,7 @@ trashForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::trash
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:100
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:148
 * @route '/dashboard/hotels/{hotel}/rooms/trash'
 */
 trashForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -106,7 +106,7 @@ trash.form = trashForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::restore
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:110
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:158
 * @route '/dashboard/hotels/{hotel}/rooms/{uuid}/restore'
 */
 export const restore = (args: { hotel: string | { uuid: string }, uuid: string | number } | [hotel: string | { uuid: string }, uuid: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -121,7 +121,7 @@ restore.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::restore
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:110
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:158
 * @route '/dashboard/hotels/{hotel}/rooms/{uuid}/restore'
 */
 restore.url = (args: { hotel: string | { uuid: string }, uuid: string | number } | [hotel: string | { uuid: string }, uuid: string | number ], options?: RouteQueryOptions) => {
@@ -149,7 +149,7 @@ restore.url = (args: { hotel: string | { uuid: string }, uuid: string | number }
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::restore
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:110
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:158
 * @route '/dashboard/hotels/{hotel}/rooms/{uuid}/restore'
 */
 restore.put = (args: { hotel: string | { uuid: string }, uuid: string | number } | [hotel: string | { uuid: string }, uuid: string | number ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -159,7 +159,7 @@ restore.put = (args: { hotel: string | { uuid: string }, uuid: string | number }
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::restore
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:110
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:158
 * @route '/dashboard/hotels/{hotel}/rooms/{uuid}/restore'
 */
 const restoreForm = (args: { hotel: string | { uuid: string }, uuid: string | number } | [hotel: string | { uuid: string }, uuid: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -174,7 +174,7 @@ const restoreForm = (args: { hotel: string | { uuid: string }, uuid: string | nu
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::restore
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:110
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:158
 * @route '/dashboard/hotels/{hotel}/rooms/{uuid}/restore'
 */
 restoreForm.put = (args: { hotel: string | { uuid: string }, uuid: string | number } | [hotel: string | { uuid: string }, uuid: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -191,7 +191,7 @@ restore.form = restoreForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::forceDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:117
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:165
 * @route '/dashboard/hotels/{hotel}/rooms/{uuid}/force-delete'
 */
 export const forceDelete = (args: { hotel: string | { uuid: string }, uuid: string | number } | [hotel: string | { uuid: string }, uuid: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -206,7 +206,7 @@ forceDelete.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::forceDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:117
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:165
 * @route '/dashboard/hotels/{hotel}/rooms/{uuid}/force-delete'
 */
 forceDelete.url = (args: { hotel: string | { uuid: string }, uuid: string | number } | [hotel: string | { uuid: string }, uuid: string | number ], options?: RouteQueryOptions) => {
@@ -234,7 +234,7 @@ forceDelete.url = (args: { hotel: string | { uuid: string }, uuid: string | numb
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::forceDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:117
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:165
 * @route '/dashboard/hotels/{hotel}/rooms/{uuid}/force-delete'
 */
 forceDelete.delete = (args: { hotel: string | { uuid: string }, uuid: string | number } | [hotel: string | { uuid: string }, uuid: string | number ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -244,7 +244,7 @@ forceDelete.delete = (args: { hotel: string | { uuid: string }, uuid: string | n
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::forceDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:117
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:165
 * @route '/dashboard/hotels/{hotel}/rooms/{uuid}/force-delete'
 */
 const forceDeleteForm = (args: { hotel: string | { uuid: string }, uuid: string | number } | [hotel: string | { uuid: string }, uuid: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -259,7 +259,7 @@ const forceDeleteForm = (args: { hotel: string | { uuid: string }, uuid: string 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::forceDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:117
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:165
 * @route '/dashboard/hotels/{hotel}/rooms/{uuid}/force-delete'
 */
 forceDeleteForm.delete = (args: { hotel: string | { uuid: string }, uuid: string | number } | [hotel: string | { uuid: string }, uuid: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -276,7 +276,7 @@ forceDelete.form = forceDeleteForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::bulkDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:124
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:172
 * @route '/dashboard/hotels/{hotel}/rooms/bulk-delete'
 */
 export const bulkDelete = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -291,7 +291,7 @@ bulkDelete.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::bulkDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:124
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:172
 * @route '/dashboard/hotels/{hotel}/rooms/bulk-delete'
 */
 bulkDelete.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -324,7 +324,7 @@ bulkDelete.url = (args: { hotel: string | { uuid: string } } | [hotel: string | 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::bulkDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:124
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:172
 * @route '/dashboard/hotels/{hotel}/rooms/bulk-delete'
 */
 bulkDelete.delete = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -334,7 +334,7 @@ bulkDelete.delete = (args: { hotel: string | { uuid: string } } | [hotel: string
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::bulkDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:124
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:172
 * @route '/dashboard/hotels/{hotel}/rooms/bulk-delete'
 */
 const bulkDeleteForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -349,7 +349,7 @@ const bulkDeleteForm = (args: { hotel: string | { uuid: string } } | [hotel: str
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::bulkDelete
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:124
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:172
 * @route '/dashboard/hotels/{hotel}/rooms/bulk-delete'
 */
 bulkDeleteForm.delete = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -366,7 +366,7 @@ bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::toggleAvailability
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:91
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:139
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/toggle-availability'
 */
 export const toggleAvailability = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -381,7 +381,7 @@ toggleAvailability.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::toggleAvailability
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:91
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:139
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/toggle-availability'
 */
 toggleAvailability.url = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions) => {
@@ -411,7 +411,7 @@ toggleAvailability.url = (args: { hotel: string | { uuid: string }, room: string
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::toggleAvailability
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:91
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:139
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/toggle-availability'
 */
 toggleAvailability.patch = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -421,7 +421,7 @@ toggleAvailability.patch = (args: { hotel: string | { uuid: string }, room: stri
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::toggleAvailability
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:91
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:139
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/toggle-availability'
 */
 const toggleAvailabilityForm = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -436,7 +436,7 @@ const toggleAvailabilityForm = (args: { hotel: string | { uuid: string }, room: 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::toggleAvailability
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:91
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:139
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/toggle-availability'
 */
 toggleAvailabilityForm.patch = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -453,7 +453,7 @@ toggleAvailability.form = toggleAvailabilityForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:24
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:71
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 export const index = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -468,7 +468,7 @@ index.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:24
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:71
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 index.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -501,7 +501,7 @@ index.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:24
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:71
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 index.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -511,7 +511,7 @@ index.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:24
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:71
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 index.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -521,7 +521,7 @@ index.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uu
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:24
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:71
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 const indexForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -531,7 +531,7 @@ const indexForm = (args: { hotel: string | { uuid: string } } | [hotel: string |
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:24
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:71
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 indexForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -541,7 +541,7 @@ indexForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::index
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:24
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:71
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 indexForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -558,7 +558,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:85
 * @route '/dashboard/hotels/{hotel}/rooms/create'
 */
 export const create = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -573,7 +573,7 @@ create.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:85
 * @route '/dashboard/hotels/{hotel}/rooms/create'
 */
 create.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -606,7 +606,7 @@ create.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uu
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:85
 * @route '/dashboard/hotels/{hotel}/rooms/create'
 */
 create.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -616,7 +616,7 @@ create.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uu
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:85
 * @route '/dashboard/hotels/{hotel}/rooms/create'
 */
 create.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -626,7 +626,7 @@ create.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { u
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:85
 * @route '/dashboard/hotels/{hotel}/rooms/create'
 */
 const createForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -636,7 +636,7 @@ const createForm = (args: { hotel: string | { uuid: string } } | [hotel: string 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:85
 * @route '/dashboard/hotels/{hotel}/rooms/create'
 */
 createForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -646,7 +646,7 @@ createForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::create
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:37
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:85
 * @route '/dashboard/hotels/{hotel}/rooms/create'
 */
 createForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -663,7 +663,7 @@ create.form = createForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::store
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:45
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:93
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 export const store = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -678,7 +678,7 @@ store.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::store
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:45
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:93
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 store.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
@@ -711,7 +711,7 @@ store.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::store
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:45
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:93
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 store.post = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -721,7 +721,7 @@ store.post = (args: { hotel: string | { uuid: string } } | [hotel: string | { uu
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::store
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:45
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:93
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 const storeForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -731,7 +731,7 @@ const storeForm = (args: { hotel: string | { uuid: string } } | [hotel: string |
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::store
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:45
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:93
 * @route '/dashboard/hotels/{hotel}/rooms'
 */
 storeForm.post = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -743,7 +743,7 @@ store.form = storeForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::show
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:102
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 export const show = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -758,7 +758,7 @@ show.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::show
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:102
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 show.url = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions) => {
@@ -788,7 +788,7 @@ show.url = (args: { hotel: string | { uuid: string }, room: string | { uuid: str
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::show
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:102
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 show.get = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -798,7 +798,7 @@ show.get = (args: { hotel: string | { uuid: string }, room: string | { uuid: str
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::show
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:102
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 show.head = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -808,7 +808,7 @@ show.head = (args: { hotel: string | { uuid: string }, room: string | { uuid: st
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::show
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:102
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 const showForm = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -818,7 +818,7 @@ const showForm = (args: { hotel: string | { uuid: string }, room: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::show
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:102
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 showForm.get = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -828,7 +828,7 @@ showForm.get = (args: { hotel: string | { uuid: string }, room: string | { uuid:
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::show
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:102
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 showForm.head = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -845,7 +845,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:64
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:112
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/edit'
 */
 export const edit = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -860,7 +860,7 @@ edit.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:64
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:112
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/edit'
 */
 edit.url = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions) => {
@@ -890,7 +890,7 @@ edit.url = (args: { hotel: string | { uuid: string }, room: string | { uuid: str
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:64
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:112
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/edit'
 */
 edit.get = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -900,7 +900,7 @@ edit.get = (args: { hotel: string | { uuid: string }, room: string | { uuid: str
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:64
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:112
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/edit'
 */
 edit.head = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -910,7 +910,7 @@ edit.head = (args: { hotel: string | { uuid: string }, room: string | { uuid: st
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:64
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:112
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/edit'
 */
 const editForm = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -920,7 +920,7 @@ const editForm = (args: { hotel: string | { uuid: string }, room: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:64
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:112
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/edit'
 */
 editForm.get = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -930,7 +930,7 @@ editForm.get = (args: { hotel: string | { uuid: string }, room: string | { uuid:
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::edit
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:64
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:112
 * @route '/dashboard/hotels/{hotel}/rooms/{room}/edit'
 */
 editForm.head = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -947,7 +947,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:73
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:121
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 export const update = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -962,7 +962,7 @@ update.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:73
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:121
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 update.url = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions) => {
@@ -992,7 +992,7 @@ update.url = (args: { hotel: string | { uuid: string }, room: string | { uuid: s
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:73
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:121
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 update.put = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -1002,7 +1002,7 @@ update.put = (args: { hotel: string | { uuid: string }, room: string | { uuid: s
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:73
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:121
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 update.patch = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -1012,7 +1012,7 @@ update.patch = (args: { hotel: string | { uuid: string }, room: string | { uuid:
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:73
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:121
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 const updateForm = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1027,7 +1027,7 @@ const updateForm = (args: { hotel: string | { uuid: string }, room: string | { u
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:73
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:121
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 updateForm.put = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1042,7 +1042,7 @@ updateForm.put = (args: { hotel: string | { uuid: string }, room: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::update
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:73
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:121
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 updateForm.patch = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1059,7 +1059,7 @@ update.form = updateForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::destroy
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:82
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:130
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 export const destroy = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1074,7 +1074,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::destroy
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:82
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:130
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 destroy.url = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions) => {
@@ -1104,7 +1104,7 @@ destroy.url = (args: { hotel: string | { uuid: string }, room: string | { uuid: 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::destroy
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:82
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:130
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 destroy.delete = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1114,7 +1114,7 @@ destroy.delete = (args: { hotel: string | { uuid: string }, room: string | { uui
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::destroy
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:82
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:130
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 const destroyForm = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1129,7 +1129,7 @@ const destroyForm = (args: { hotel: string | { uuid: string }, room: string | { 
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Dashboard\V1\RoomController::destroy
-* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:82
+* @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomController.php:130
 * @route '/dashboard/hotels/{hotel}/rooms/{room}'
 */
 destroyForm.delete = (args: { hotel: string | { uuid: string }, room: string | { uuid: string } } | [hotel: string | { uuid: string }, room: string | { uuid: string } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
