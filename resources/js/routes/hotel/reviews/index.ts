@@ -166,7 +166,7 @@ trash.form = trashForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:27
 * @route '/dashboard/hotel-reviews/{review}'
 */
-export const show = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -181,7 +181,7 @@ show.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:27
 * @route '/dashboard/hotel-reviews/{review}'
 */
-show.url = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { review: args }
     }
@@ -214,7 +214,7 @@ show.url = (args: { review: string | { uuid: string } } | [review: string | { uu
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:27
 * @route '/dashboard/hotel-reviews/{review}'
 */
-show.get = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -224,7 +224,7 @@ show.get = (args: { review: string | { uuid: string } } | [review: string | { uu
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:27
 * @route '/dashboard/hotel-reviews/{review}'
 */
-show.head = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -234,7 +234,7 @@ show.head = (args: { review: string | { uuid: string } } | [review: string | { u
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:27
 * @route '/dashboard/hotel-reviews/{review}'
 */
-const showForm = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -244,7 +244,7 @@ const showForm = (args: { review: string | { uuid: string } } | [review: string 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:27
 * @route '/dashboard/hotel-reviews/{review}'
 */
-showForm.get = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -254,7 +254,7 @@ showForm.get = (args: { review: string | { uuid: string } } | [review: string | 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:27
 * @route '/dashboard/hotel-reviews/{review}'
 */
-showForm.head = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -271,7 +271,7 @@ show.form = showForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:58
 * @route '/dashboard/hotel-reviews/{review}/delete'
 */
-export const confirmDelete = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const confirmDelete = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -286,7 +286,7 @@ confirmDelete.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:58
 * @route '/dashboard/hotel-reviews/{review}/delete'
 */
-confirmDelete.url = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+confirmDelete.url = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { review: args }
     }
@@ -319,7 +319,7 @@ confirmDelete.url = (args: { review: string | { uuid: string } } | [review: stri
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:58
 * @route '/dashboard/hotel-reviews/{review}/delete'
 */
-confirmDelete.get = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+confirmDelete.get = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -329,7 +329,7 @@ confirmDelete.get = (args: { review: string | { uuid: string } } | [review: stri
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:58
 * @route '/dashboard/hotel-reviews/{review}/delete'
 */
-confirmDelete.head = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+confirmDelete.head = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmDelete.url(args, options),
     method: 'head',
 })
@@ -339,7 +339,7 @@ confirmDelete.head = (args: { review: string | { uuid: string } } | [review: str
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:58
 * @route '/dashboard/hotel-reviews/{review}/delete'
 */
-const confirmDeleteForm = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const confirmDeleteForm = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -349,7 +349,7 @@ const confirmDeleteForm = (args: { review: string | { uuid: string } } | [review
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:58
 * @route '/dashboard/hotel-reviews/{review}/delete'
 */
-confirmDeleteForm.get = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.get = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -359,7 +359,7 @@ confirmDeleteForm.get = (args: { review: string | { uuid: string } } | [review: 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:58
 * @route '/dashboard/hotel-reviews/{review}/delete'
 */
-confirmDeleteForm.head = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.head = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -460,7 +460,7 @@ updateStatus.form = updateStatusForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:36
 * @route '/dashboard/hotel-reviews/{review}/reply'
 */
-export const reply = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const reply = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: reply.url(args, options),
     method: 'patch',
 })
@@ -475,7 +475,7 @@ reply.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:36
 * @route '/dashboard/hotel-reviews/{review}/reply'
 */
-reply.url = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+reply.url = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { review: args }
     }
@@ -508,7 +508,7 @@ reply.url = (args: { review: string | { uuid: string } } | [review: string | { u
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:36
 * @route '/dashboard/hotel-reviews/{review}/reply'
 */
-reply.patch = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+reply.patch = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: reply.url(args, options),
     method: 'patch',
 })
@@ -518,7 +518,7 @@ reply.patch = (args: { review: string | { uuid: string } } | [review: string | {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:36
 * @route '/dashboard/hotel-reviews/{review}/reply'
 */
-const replyForm = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const replyForm = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: reply.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -533,7 +533,7 @@ const replyForm = (args: { review: string | { uuid: string } } | [review: string
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:36
 * @route '/dashboard/hotel-reviews/{review}/reply'
 */
-replyForm.patch = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+replyForm.patch = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: reply.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -550,7 +550,7 @@ reply.form = replyForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:67
 * @route '/dashboard/hotel-reviews/{review}'
 */
-export const destroy = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -565,7 +565,7 @@ destroy.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:67
 * @route '/dashboard/hotel-reviews/{review}'
 */
-destroy.url = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { review: args }
     }
@@ -598,7 +598,7 @@ destroy.url = (args: { review: string | { uuid: string } } | [review: string | {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:67
 * @route '/dashboard/hotel-reviews/{review}'
 */
-destroy.delete = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -608,7 +608,7 @@ destroy.delete = (args: { review: string | { uuid: string } } | [review: string 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:67
 * @route '/dashboard/hotel-reviews/{review}'
 */
-const destroyForm = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -623,7 +623,7 @@ const destroyForm = (args: { review: string | { uuid: string } } | [review: stri
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelReviewController.php:67
 * @route '/dashboard/hotel-reviews/{review}'
 */
-destroyForm.delete = (args: { review: string | { uuid: string } } | [review: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { review: string | number | { uuid: string | number } } | [review: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

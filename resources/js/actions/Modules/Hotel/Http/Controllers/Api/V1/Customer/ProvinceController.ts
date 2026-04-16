@@ -2,7 +2,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::index
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:15
-* @route '/api/v1/provinces'
+* @route '/api/v1/hotels/provinces'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -11,13 +11,13 @@ export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 index.definition = {
     methods: ["get","head"],
-    url: '/api/v1/provinces',
+    url: '/api/v1/hotels/provinces',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::index
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:15
-* @route '/api/v1/provinces'
+* @route '/api/v1/hotels/provinces'
 */
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
@@ -26,7 +26,7 @@ index.url = (options?: RouteQueryOptions) => {
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::index
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:15
-* @route '/api/v1/provinces'
+* @route '/api/v1/hotels/provinces'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
@@ -36,7 +36,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::index
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:15
-* @route '/api/v1/provinces'
+* @route '/api/v1/hotels/provinces'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
@@ -46,7 +46,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::index
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:15
-* @route '/api/v1/provinces'
+* @route '/api/v1/hotels/provinces'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -56,7 +56,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::index
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:15
-* @route '/api/v1/provinces'
+* @route '/api/v1/hotels/provinces'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(options),
@@ -66,7 +66,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::index
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:15
-* @route '/api/v1/provinces'
+* @route '/api/v1/hotels/provinces'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url({
@@ -83,24 +83,24 @@ index.form = indexForm
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::show
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:30
-* @route '/api/v1/provinces/{province}'
+* @route '/api/v1/hotels/provinces/{province}'
 */
-export const show = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
 
 show.definition = {
     methods: ["get","head"],
-    url: '/api/v1/provinces/{province}',
+    url: '/api/v1/hotels/provinces/{province}',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::show
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:30
-* @route '/api/v1/provinces/{province}'
+* @route '/api/v1/hotels/provinces/{province}'
 */
-show.url = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { province: args }
     }
@@ -131,9 +131,9 @@ show.url = (args: { province: string | { uuid: string } } | [province: string | 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::show
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:30
-* @route '/api/v1/provinces/{province}'
+* @route '/api/v1/hotels/provinces/{province}'
 */
-show.get = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -141,9 +141,9 @@ show.get = (args: { province: string | { uuid: string } } | [province: string | 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::show
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:30
-* @route '/api/v1/provinces/{province}'
+* @route '/api/v1/hotels/provinces/{province}'
 */
-show.head = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -151,9 +151,9 @@ show.head = (args: { province: string | { uuid: string } } | [province: string |
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::show
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:30
-* @route '/api/v1/provinces/{province}'
+* @route '/api/v1/hotels/provinces/{province}'
 */
-const showForm = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -161,9 +161,9 @@ const showForm = (args: { province: string | { uuid: string } } | [province: str
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::show
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:30
-* @route '/api/v1/provinces/{province}'
+* @route '/api/v1/hotels/provinces/{province}'
 */
-showForm.get = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -171,9 +171,9 @@ showForm.get = (args: { province: string | { uuid: string } } | [province: strin
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\ProvinceController::show
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/ProvinceController.php:30
-* @route '/api/v1/provinces/{province}'
+* @route '/api/v1/hotels/provinces/{province}'
 */
-showForm.head = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',

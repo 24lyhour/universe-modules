@@ -1003,7 +1003,7 @@ store.form = storeForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:316
 * @route '/dashboard/categories/{category}'
 */
-export const show = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -1018,7 +1018,7 @@ show.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:316
 * @route '/dashboard/categories/{category}'
 */
-show.url = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { category: args }
     }
@@ -1051,7 +1051,7 @@ show.url = (args: { category: number | { id: number } } | [category: number | { 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:316
 * @route '/dashboard/categories/{category}'
 */
-show.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -1061,7 +1061,7 @@ show.get = (args: { category: number | { id: number } } | [category: number | { 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:316
 * @route '/dashboard/categories/{category}'
 */
-show.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -1071,7 +1071,7 @@ show.head = (args: { category: number | { id: number } } | [category: number | {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:316
 * @route '/dashboard/categories/{category}'
 */
-const showForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -1081,7 +1081,7 @@ const showForm = (args: { category: number | { id: number } } | [category: numbe
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:316
 * @route '/dashboard/categories/{category}'
 */
-showForm.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -1091,7 +1091,7 @@ showForm.get = (args: { category: number | { id: number } } | [category: number 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:316
 * @route '/dashboard/categories/{category}'
 */
-showForm.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -1108,7 +1108,7 @@ show.form = showForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
 * @route '/dashboard/categories/{category}/edit'
 */
-export const edit = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -1123,7 +1123,7 @@ edit.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
 * @route '/dashboard/categories/{category}/edit'
 */
-edit.url = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { category: args }
     }
@@ -1156,7 +1156,7 @@ edit.url = (args: { category: number | { id: number } } | [category: number | { 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
 * @route '/dashboard/categories/{category}/edit'
 */
-edit.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -1166,7 +1166,7 @@ edit.get = (args: { category: number | { id: number } } | [category: number | { 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
 * @route '/dashboard/categories/{category}/edit'
 */
-edit.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -1176,7 +1176,7 @@ edit.head = (args: { category: number | { id: number } } | [category: number | {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
 * @route '/dashboard/categories/{category}/edit'
 */
-const editForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -1186,7 +1186,7 @@ const editForm = (args: { category: number | { id: number } } | [category: numbe
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
 * @route '/dashboard/categories/{category}/edit'
 */
-editForm.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -1196,7 +1196,7 @@ editForm.get = (args: { category: number | { id: number } } | [category: number 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:326
 * @route '/dashboard/categories/{category}/edit'
 */
-editForm.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -1213,7 +1213,7 @@ edit.form = editForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:337
 * @route '/dashboard/categories/{category}'
 */
-export const update = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -1228,7 +1228,7 @@ update.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:337
 * @route '/dashboard/categories/{category}'
 */
-update.url = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { category: args }
     }
@@ -1261,7 +1261,7 @@ update.url = (args: { category: number | { id: number } } | [category: number | 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:337
 * @route '/dashboard/categories/{category}'
 */
-update.put = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -1271,7 +1271,7 @@ update.put = (args: { category: number | { id: number } } | [category: number | 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:337
 * @route '/dashboard/categories/{category}'
 */
-update.patch = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -1281,7 +1281,7 @@ update.patch = (args: { category: number | { id: number } } | [category: number 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:337
 * @route '/dashboard/categories/{category}'
 */
-const updateForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1296,7 +1296,7 @@ const updateForm = (args: { category: number | { id: number } } | [category: num
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:337
 * @route '/dashboard/categories/{category}'
 */
-updateForm.put = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1311,7 +1311,7 @@ updateForm.put = (args: { category: number | { id: number } } | [category: numbe
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:337
 * @route '/dashboard/categories/{category}'
 */
-updateForm.patch = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -1328,7 +1328,7 @@ update.form = updateForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:360
 * @route '/dashboard/categories/{category}'
 */
-export const destroy = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -1343,7 +1343,7 @@ destroy.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:360
 * @route '/dashboard/categories/{category}'
 */
-destroy.url = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { category: args }
     }
@@ -1376,7 +1376,7 @@ destroy.url = (args: { category: number | { id: number } } | [category: number |
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:360
 * @route '/dashboard/categories/{category}'
 */
-destroy.delete = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -1386,7 +1386,7 @@ destroy.delete = (args: { category: number | { id: number } } | [category: numbe
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:360
 * @route '/dashboard/categories/{category}'
 */
-const destroyForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1401,7 +1401,7 @@ const destroyForm = (args: { category: number | { id: number } } | [category: nu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:360
 * @route '/dashboard/categories/{category}'
 */
-destroyForm.delete = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1418,7 +1418,7 @@ destroy.form = destroyForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:350
 * @route '/dashboard/categories/{category}/delete'
 */
-export const confirmDelete = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const confirmDelete = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1433,7 +1433,7 @@ confirmDelete.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:350
 * @route '/dashboard/categories/{category}/delete'
 */
-confirmDelete.url = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+confirmDelete.url = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { category: args }
     }
@@ -1466,7 +1466,7 @@ confirmDelete.url = (args: { category: number | { id: number } } | [category: nu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:350
 * @route '/dashboard/categories/{category}/delete'
 */
-confirmDelete.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+confirmDelete.get = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1476,7 +1476,7 @@ confirmDelete.get = (args: { category: number | { id: number } } | [category: nu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:350
 * @route '/dashboard/categories/{category}/delete'
 */
-confirmDelete.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+confirmDelete.head = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmDelete.url(args, options),
     method: 'head',
 })
@@ -1486,7 +1486,7 @@ confirmDelete.head = (args: { category: number | { id: number } } | [category: n
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:350
 * @route '/dashboard/categories/{category}/delete'
 */
-const confirmDeleteForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const confirmDeleteForm = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1496,7 +1496,7 @@ const confirmDeleteForm = (args: { category: number | { id: number } } | [catego
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:350
 * @route '/dashboard/categories/{category}/delete'
 */
-confirmDeleteForm.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.get = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1506,7 +1506,7 @@ confirmDeleteForm.get = (args: { category: number | { id: number } } | [category
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryController.php:350
 * @route '/dashboard/categories/{category}/delete'
 */
-confirmDeleteForm.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.head = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',

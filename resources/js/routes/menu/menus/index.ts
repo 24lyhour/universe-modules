@@ -731,7 +731,7 @@ store.form = storeForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
-export const show = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -746,7 +746,7 @@ show.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
-show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -779,7 +779,7 @@ show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
-show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -789,7 +789,7 @@ show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
-show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -799,7 +799,7 @@ show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
-const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -809,7 +809,7 @@ const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
-showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -819,7 +819,7 @@ showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:306
 * @route '/dashboard/menus/{menu}'
 */
-showForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -836,7 +836,7 @@ show.form = showForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
-export const edit = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -851,7 +851,7 @@ edit.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
-edit.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -884,7 +884,7 @@ edit.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
-edit.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -894,7 +894,7 @@ edit.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
-edit.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -904,7 +904,7 @@ edit.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
-const editForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -914,7 +914,7 @@ const editForm = (args: { menu: string | { uuid: string } } | [menu: string | { 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
-editForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -924,7 +924,7 @@ editForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:316
 * @route '/dashboard/menus/{menu}/edit'
 */
-editForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -941,7 +941,7 @@ edit.form = editForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
-export const update = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -956,7 +956,7 @@ update.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
-update.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -989,7 +989,7 @@ update.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
-update.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -999,7 +999,7 @@ update.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
-update.patch = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -1009,7 +1009,7 @@ update.patch = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
-const updateForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1024,7 +1024,7 @@ const updateForm = (args: { menu: string | { uuid: string } } | [menu: string | 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
-updateForm.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1039,7 +1039,7 @@ updateForm.put = (args: { menu: string | { uuid: string } } | [menu: string | { 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:340
 * @route '/dashboard/menus/{menu}'
 */
-updateForm.patch = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -1056,7 +1056,7 @@ update.form = updateForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:364
 * @route '/dashboard/menus/{menu}'
 */
-export const destroy = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -1071,7 +1071,7 @@ destroy.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:364
 * @route '/dashboard/menus/{menu}'
 */
-destroy.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -1104,7 +1104,7 @@ destroy.url = (args: { menu: string | { uuid: string } } | [menu: string | { uui
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:364
 * @route '/dashboard/menus/{menu}'
 */
-destroy.delete = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -1114,7 +1114,7 @@ destroy.delete = (args: { menu: string | { uuid: string } } | [menu: string | { 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:364
 * @route '/dashboard/menus/{menu}'
 */
-const destroyForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1129,7 +1129,7 @@ const destroyForm = (args: { menu: string | { uuid: string } } | [menu: string |
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:364
 * @route '/dashboard/menus/{menu}'
 */
-destroyForm.delete = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1146,7 +1146,7 @@ destroy.form = destroyForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
-export const confirmDelete = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const confirmDelete = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1161,7 +1161,7 @@ confirmDelete.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
-confirmDelete.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+confirmDelete.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -1194,7 +1194,7 @@ confirmDelete.url = (args: { menu: string | { uuid: string } } | [menu: string |
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
-confirmDelete.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+confirmDelete.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1204,7 +1204,7 @@ confirmDelete.get = (args: { menu: string | { uuid: string } } | [menu: string |
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
-confirmDelete.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+confirmDelete.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmDelete.url(args, options),
     method: 'head',
 })
@@ -1214,7 +1214,7 @@ confirmDelete.head = (args: { menu: string | { uuid: string } } | [menu: string 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
-const confirmDeleteForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const confirmDeleteForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1224,7 +1224,7 @@ const confirmDeleteForm = (args: { menu: string | { uuid: string } } | [menu: st
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
-confirmDeleteForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -1234,7 +1234,7 @@ confirmDeleteForm.get = (args: { menu: string | { uuid: string } } | [menu: stri
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:352
 * @route '/dashboard/menus/{menu}/delete'
 */
-confirmDeleteForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -1251,7 +1251,7 @@ confirmDelete.form = confirmDeleteForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-export const toggleStatus = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleStatus = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -1266,7 +1266,7 @@ toggleStatus.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-toggleStatus.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+toggleStatus.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -1299,7 +1299,7 @@ toggleStatus.url = (args: { menu: string | { uuid: string } } | [menu: string | 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-toggleStatus.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleStatus.put = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -1309,7 +1309,7 @@ toggleStatus.put = (args: { menu: string | { uuid: string } } | [menu: string | 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-const toggleStatusForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleStatusForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1324,7 +1324,7 @@ const toggleStatusForm = (args: { menu: string | { uuid: string } } | [menu: str
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuStatusController.php:20
 * @route '/dashboard/menus/{menu}/toggle-status'
 */
-toggleStatusForm.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleStatusForm.put = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1341,7 +1341,7 @@ toggleStatus.form = toggleStatusForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-export const schedule = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const schedule = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: schedule.url(args, options),
     method: 'get',
 })
@@ -1356,7 +1356,7 @@ schedule.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-schedule.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+schedule.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -1389,7 +1389,7 @@ schedule.url = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-schedule.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+schedule.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: schedule.url(args, options),
     method: 'get',
 })
@@ -1399,7 +1399,7 @@ schedule.get = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-schedule.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+schedule.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: schedule.url(args, options),
     method: 'head',
 })
@@ -1409,7 +1409,7 @@ schedule.head = (args: { menu: string | { uuid: string } } | [menu: string | { u
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-const scheduleForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const scheduleForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: schedule.url(args, options),
     method: 'get',
 })
@@ -1419,7 +1419,7 @@ const scheduleForm = (args: { menu: string | { uuid: string } } | [menu: string 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-scheduleForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+scheduleForm.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: schedule.url(args, options),
     method: 'get',
 })
@@ -1429,7 +1429,7 @@ scheduleForm.get = (args: { menu: string | { uuid: string } } | [menu: string | 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:19
 * @route '/dashboard/menus/{menu}/schedule'
 */
-scheduleForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+scheduleForm.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: schedule.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -1446,7 +1446,7 @@ schedule.form = scheduleForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
 * @route '/dashboard/menus/{menu}/schedule'
 */
-export const updateSchedule = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const updateSchedule = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updateSchedule.url(args, options),
     method: 'put',
 })
@@ -1461,7 +1461,7 @@ updateSchedule.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
 * @route '/dashboard/menus/{menu}/schedule'
 */
-updateSchedule.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+updateSchedule.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -1494,7 +1494,7 @@ updateSchedule.url = (args: { menu: string | { uuid: string } } | [menu: string 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
 * @route '/dashboard/menus/{menu}/schedule'
 */
-updateSchedule.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+updateSchedule.put = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updateSchedule.url(args, options),
     method: 'put',
 })
@@ -1504,7 +1504,7 @@ updateSchedule.put = (args: { menu: string | { uuid: string } } | [menu: string 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
 * @route '/dashboard/menus/{menu}/schedule'
 */
-const updateScheduleForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateScheduleForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateSchedule.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1519,7 +1519,7 @@ const updateScheduleForm = (args: { menu: string | { uuid: string } } | [menu: s
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuScheduleController.php:29
 * @route '/dashboard/menus/{menu}/schedule'
 */
-updateScheduleForm.put = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateScheduleForm.put = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateSchedule.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
