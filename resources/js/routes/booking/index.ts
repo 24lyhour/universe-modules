@@ -1,7 +1,8 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
+import bookings from './bookings'
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::index
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:13
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:28
 * @route '/bookings'
 */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +17,7 @@ index.definition = {
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::index
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:13
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:28
 * @route '/bookings'
 */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +26,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::index
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:13
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:28
 * @route '/bookings'
 */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +36,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::index
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:13
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:28
 * @route '/bookings'
 */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +46,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::index
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:13
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:28
 * @route '/bookings'
 */
 const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +56,7 @@ const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::index
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:13
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:28
 * @route '/bookings'
 */
 indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +66,7 @@ indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::index
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:13
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:28
 * @route '/bookings'
 */
 indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +83,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::create
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:21
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:36
 * @route '/bookings/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +98,7 @@ create.definition = {
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::create
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:21
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:36
 * @route '/bookings/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -106,7 +107,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::create
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:21
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:36
 * @route '/bookings/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +117,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::create
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:21
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:36
 * @route '/bookings/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +127,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::create
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:21
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:36
 * @route '/bookings/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +137,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::create
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:21
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:36
 * @route '/bookings/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +147,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::create
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:21
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:36
 * @route '/bookings/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -163,7 +164,7 @@ create.form = createForm
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::store
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:29
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:55
 * @route '/bookings'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -178,7 +179,7 @@ store.definition = {
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::store
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:29
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:55
 * @route '/bookings'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -187,7 +188,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::store
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:29
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:55
 * @route '/bookings'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -197,7 +198,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::store
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:29
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:55
 * @route '/bookings'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -207,7 +208,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::store
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:29
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:55
 * @route '/bookings'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -219,10 +220,10 @@ store.form = storeForm
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::show
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:34
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/bookings/{booking}'
 */
-export const show = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -234,12 +235,16 @@ show.definition = {
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::show
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:34
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/bookings/{booking}'
 */
-show.url = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions) => {
+show.url = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { booking: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'uuid' in args) {
+        args = { booking: args.uuid }
     }
 
     if (Array.isArray(args)) {
@@ -251,7 +256,9 @@ show.url = (args: { booking: string | number } | [booking: string | number ] | s
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        booking: args.booking,
+        booking: typeof args.booking === 'object'
+        ? args.booking.uuid
+        : args.booking,
     }
 
     return show.definition.url
@@ -261,50 +268,50 @@ show.url = (args: { booking: string | number } | [booking: string | number ] | s
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::show
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:34
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/bookings/{booking}'
 */
-show.get = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::show
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:34
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/bookings/{booking}'
 */
-show.head = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::show
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:34
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/bookings/{booking}'
 */
-const showForm = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::show
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:34
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/bookings/{booking}'
 */
-showForm.get = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::show
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:34
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/bookings/{booking}'
 */
-showForm.head = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -318,7 +325,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::edit
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:42
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}/edit'
 */
 export const edit = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -333,7 +340,7 @@ edit.definition = {
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::edit
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:42
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}/edit'
 */
 edit.url = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -360,7 +367,7 @@ edit.url = (args: { booking: string | number } | [booking: string | number ] | s
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::edit
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:42
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}/edit'
 */
 edit.get = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -370,7 +377,7 @@ edit.get = (args: { booking: string | number } | [booking: string | number ] | s
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::edit
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:42
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}/edit'
 */
 edit.head = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -380,7 +387,7 @@ edit.head = (args: { booking: string | number } | [booking: string | number ] | 
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::edit
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:42
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}/edit'
 */
 const editForm = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -390,7 +397,7 @@ const editForm = (args: { booking: string | number } | [booking: string | number
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::edit
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:42
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}/edit'
 */
 editForm.get = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -400,7 +407,7 @@ editForm.get = (args: { booking: string | number } | [booking: string | number ]
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::edit
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:42
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}/edit'
 */
 editForm.head = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -417,7 +424,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::update
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}'
 */
 export const update = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -432,7 +439,7 @@ update.definition = {
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::update
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}'
 */
 update.url = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -459,7 +466,7 @@ update.url = (args: { booking: string | number } | [booking: string | number ] |
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::update
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}'
 */
 update.put = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -469,7 +476,7 @@ update.put = (args: { booking: string | number } | [booking: string | number ] |
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::update
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}'
 */
 update.patch = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -479,7 +486,7 @@ update.patch = (args: { booking: string | number } | [booking: string | number ]
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::update
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}'
 */
 const updateForm = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -494,7 +501,7 @@ const updateForm = (args: { booking: string | number } | [booking: string | numb
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::update
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}'
 */
 updateForm.put = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -509,7 +516,7 @@ updateForm.put = (args: { booking: string | number } | [booking: string | number
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::update
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:0
 * @route '/bookings/{booking}'
 */
 updateForm.patch = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -526,10 +533,10 @@ update.form = updateForm
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::destroy
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:55
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:84
 * @route '/bookings/{booking}'
 */
-export const destroy = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -541,12 +548,16 @@ destroy.definition = {
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::destroy
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:55
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:84
 * @route '/bookings/{booking}'
 */
-destroy.url = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions) => {
+destroy.url = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { booking: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'uuid' in args) {
+        args = { booking: args.uuid }
     }
 
     if (Array.isArray(args)) {
@@ -558,7 +569,9 @@ destroy.url = (args: { booking: string | number } | [booking: string | number ] 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        booking: args.booking,
+        booking: typeof args.booking === 'object'
+        ? args.booking.uuid
+        : args.booking,
     }
 
     return destroy.definition.url
@@ -568,20 +581,20 @@ destroy.url = (args: { booking: string | number } | [booking: string | number ] 
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::destroy
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:55
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:84
 * @route '/bookings/{booking}'
 */
-destroy.delete = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::destroy
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:55
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:84
 * @route '/bookings/{booking}'
 */
-const destroyForm = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -593,10 +606,10 @@ const destroyForm = (args: { booking: string | number } | [booking: string | num
 
 /**
 * @see \Modules\Booking\Http\Controllers\Dashboard\V1\BookingController::destroy
-* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:55
+* @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:84
 * @route '/bookings/{booking}'
 */
-destroyForm.delete = (args: { booking: string | number } | [booking: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -616,6 +629,7 @@ const booking = {
     edit: Object.assign(edit, edit),
     update: Object.assign(update, update),
     destroy: Object.assign(destroy, destroy),
+    bookings: Object.assign(bookings, bookings),
 }
 
 export default booking

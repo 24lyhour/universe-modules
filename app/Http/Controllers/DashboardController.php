@@ -147,6 +147,9 @@ class DashboardController extends Controller
             'hotelWidget' => in_array('hotel', $activeModules)
                 ? $this->getHotelWidgetData()
                 : null,
+            'bookingWidget' => in_array('booking', $activeModules)
+                ? app(\Modules\Booking\Actions\Dashboard\V1\BookingAction\GetTodayBookingsAction::class)->execute()
+                : null,
             'dateRange' => $dateRange,
             'tab' => $tab,
             'activeWidgets' => $activeModules,
