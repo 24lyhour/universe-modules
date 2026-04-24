@@ -37,7 +37,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'company' => ['companies'],
 
             // Hotel Module
-            'hotel' => ['hotels', 'hotel_categories', 'hotel_amenities', 'hotel_rooms'],
+            'hotel' => ['hotels', 'hotel_categories', 'hotel_amenities', 'hotel_rooms', 'hotel_reviews', 'hotel_provinces', 'hotel_room_policies'],
 
             // Customer Module
             'customer' => ['customers', 'customer_otps'],
@@ -67,7 +67,7 @@ class RolesAndPermissionsSeeder extends Seeder
             ],
 
             // Booking Module
-            'booking' => ['bookings'],
+            'booking' => ['bookings', 'booking_addons', 'booking_room_rates'],
 
             // Order Module
             'order' => [
