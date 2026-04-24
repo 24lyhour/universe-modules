@@ -16,5 +16,6 @@
     "Wallets": true,
     "Media": true,
     "Employee": true,
-    "Delivery": true
+    "Delivery": true,
+    "Landing": true
 }
