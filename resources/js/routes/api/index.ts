@@ -8,6 +8,7 @@ import delivery from './delivery'
 import employee from './employee'
 import hotel from './hotel'
 import api from './api'
+import landing from './landing'
 import media from './media'
 import menu from './menu'
 import category from './category'
@@ -33,6 +34,7 @@ const apiNamespace = {
     employee: Object.assign(employee, employee),
     hotel: Object.assign(hotel, hotel),
     api: Object.assign(api, api),
+    landing: Object.assign(landing, landing),
     media: Object.assign(media, media),
     menu: Object.assign(menu, menu),
     category: Object.assign(category, category),

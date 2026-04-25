@@ -6,6 +6,7 @@ import Delivery from './Delivery'
 import Employee from './Employee'
 import School from './School'
 import Hotel from './Hotel'
+import Landing from './Landing'
 import Media from './Media'
 import Menu from './Menu'
 import Movice from './Movice'
@@ -26,6 +27,7 @@ const Modules = {
     Employee: Object.assign(Employee, Employee),
     School: Object.assign(School, School),
     Hotel: Object.assign(Hotel, Hotel),
+    Landing: Object.assign(Landing, Landing),
     Media: Object.assign(Media, Media),
     Menu: Object.assign(Menu, Menu),
     Movice: Object.assign(Movice, Movice),
