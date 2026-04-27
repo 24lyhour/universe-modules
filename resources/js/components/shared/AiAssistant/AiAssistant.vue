@@ -60,14 +60,25 @@ watch(messages, saveHistory, { deep: true });
 onMounted(() => {
     loadHistory();
     window.addEventListener('keydown', handleKeydown);
+    window.addEventListener('keydown', handleControlKeydown);
 });
 onUnmounted(() => {
     window.removeEventListener('keydown', handleKeydown);
+    window.removeEventListener('keydown', handleControlKeydown);
 });
 
 // Esc to close
 const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === 'Escape' && open.value) open.value = false;
+};
+
+// Toggle the assistant with Cmd+K (Mac) / Ctrl+K (Windows/Linux).
+// Standard shortcut used by ChatGPT, Linear, Notion, etc.
+const handleControlKeydown = (e: KeyboardEvent) => {
+    if (e.key.toLowerCase() === 'k' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        open.value = !open.value;
+    }
 };
 
 const scrollToBottom = async () => {
@@ -168,7 +179,7 @@ const handleEnter = (e: KeyboardEvent) => {
                 </span>
                 <div class="leading-tight">
                     <p class="text-sm font-semibold">{{ title }}</p>
-                    <p class="text-[11px] text-muted-foreground">Press Esc to close</p>
+                    <p class="text-[11px] text-muted-foreground">⌘K to toggle · Esc to close</p>
                 </div>
             </div>
             <div class="flex items-center gap-1">
