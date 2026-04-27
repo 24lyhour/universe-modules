@@ -2,7 +2,7 @@
 import { ref, computed, nextTick, watch, onMounted, onUnmounted } from 'vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Sparkles, X, Send, Loader2, Trash2 } from 'lucide-vue-next';
+import { Sparkles, X, Send, Loader2, Trash2, Maximize2, Minimize2 } from 'lucide-vue-next';
 
 interface Props {
     /**
@@ -28,10 +28,17 @@ interface Message {
 const STORAGE_KEY = 'ai-assistant.history';
 
 const open = ref(false);
+const maximized = ref(false);
 const draft = ref('');
 const sending = ref(false);
 const messages = ref<Message[]>([]);
 const scrollEl = ref<HTMLElement | null>(null);
+
+const panelClasses = computed(() =>
+    maximized.value
+        ? 'h-[calc(100vh-3rem)] w-[min(960px,calc(100vw-3rem))]'
+        : 'h-[680px] max-h-[calc(100vh-3rem)] w-[460px] max-w-[calc(100vw-3rem)]',
+);
 
 // ─── Persist history across pages so the conversation isn't lost on navigation
 const loadHistory = () => {
@@ -149,7 +156,7 @@ const handleEnter = (e: KeyboardEvent) => {
     <!-- Chat panel -->
     <div
         v-else
-        class="fixed bottom-6 right-6 z-40 flex h-[560px] max-h-[calc(100vh-3rem)] w-[380px] max-w-[calc(100vw-3rem)] flex-col overflow-hidden rounded-2xl border bg-background shadow-2xl print:hidden"
+        :class="['fixed bottom-6 right-6 z-40 flex flex-col overflow-hidden rounded-2xl border bg-background shadow-2xl print:hidden transition-all', panelClasses]"
         role="dialog"
         :aria-label="title"
     >
@@ -174,6 +181,16 @@ const handleEnter = (e: KeyboardEvent) => {
                     @click="clearHistory"
                 >
                     <Trash2 class="h-4 w-4" />
+                </Button>
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    class="h-8 w-8"
+                    :title="maximized ? 'Shrink' : 'Expand'"
+                    @click="maximized = !maximized"
+                >
+                    <Minimize2 v-if="maximized" class="h-4 w-4" />
+                    <Maximize2 v-else class="h-4 w-4" />
                 </Button>
                 <Button
                     variant="ghost"
