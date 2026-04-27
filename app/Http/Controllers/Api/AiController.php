@@ -44,32 +44,4 @@ class AiController extends Controller
             'content' => $result['content'],
         ]);
     }
-
-    /**
-     * Conversational chat for the floating AI Assistant.
-     */
-    public function chat(Request $request): JsonResponse
-    {
-        $validated = $request->validate([
-            'message' => ['required', 'string', 'max:4000'],
-            'history' => ['nullable', 'array', 'max:20'],
-            'history.*.role' => ['required_with:history', 'string', 'in:user,assistant'],
-            'history.*.content' => ['required_with:history', 'string', 'max:8000'],
-        ]);
-
-        $result = $this->aiService->chat(
-            message: $validated['message'],
-            history: $validated['history'] ?? [],
-        );
-
-        if (!$result['success']) {
-            return response()->json([
-                'reply' => $result['error'] ?? 'AI is unavailable right now.',
-            ], 422);
-        }
-
-        return response()->json([
-            'reply' => $result['reply'],
-        ]);
-    }
 }

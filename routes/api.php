@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AiAssistantController;
 use App\Http\Controllers\Api\AiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,6 +47,11 @@ Route::post('/ai/editor', [AiController::class, 'editor'])
     ->middleware(['web', 'auth'])
     ->name('api.ai.editor');
 
-Route::post('/ai/chat', [AiController::class, 'chat'])
+/*
+|--------------------------------------------------------------------------
+| AI Assistant Endpoint (floating chat widget)
+|--------------------------------------------------------------------------
+*/
+Route::post('/ai/chat', [AiAssistantController::class, 'chat'])
     ->middleware(['web', 'auth'])
-    ->name('api.ai.chat');
+    ->name('api.ai.assistant.chat');
