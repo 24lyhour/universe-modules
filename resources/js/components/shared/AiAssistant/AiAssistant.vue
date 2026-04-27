@@ -57,28 +57,59 @@ const saveHistory = () => {
 
 watch(messages, saveHistory, { deep: true });
 
+/**
+ * Load history and add event listeners
+ */
 onMounted(() => {
     loadHistory();
     window.addEventListener('keydown', handleKeydown);
     window.addEventListener('keydown', handleControlKeydown);
+    window.addEventListener('keydown', handleFullscreenKeydown);
 });
 onUnmounted(() => {
     window.removeEventListener('keydown', handleKeydown);
     window.removeEventListener('keydown', handleControlKeydown);
+    window.removeEventListener('keydown', handleFullscreenKeydown);
 });
 
-// Esc to close
+/**
+ * Handle keydown event Esc
+ * 
+ * @param e 
+ */
 const handleKeydown = (e: KeyboardEvent) => {
     if (e.key === 'Escape' && open.value) open.value = false;
 };
 
-// Toggle the assistant with Cmd+K (Mac) / Ctrl+K (Windows/Linux).
-// Standard shortcut used by ChatGPT, Linear, Notion, etc.
+/**
+ * Handle keydown event Cmd+K (Mac) / Ctrl+K (Windows/Linux)
+ * to the open the ai asssistend
+ * 
+ * @param e 
+ */
 const handleControlKeydown = (e: KeyboardEvent) => {
     if (e.key.toLowerCase() === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         open.value = !open.value;
     }
+};
+
+/**
+ * Toggle maximized (fullscreen-ish) mode when the user presses F
+ * while the assistant is open. Skips when focus is in a text field
+ * so typing the letter F still works normally.
+ */
+const handleFullscreenKeydown = (e: KeyboardEvent) => {
+    if (!open.value) return;
+    if (e.key.toLowerCase() !== 'f') return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+    const target = e.target as HTMLElement | null;
+    const tag = target?.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || target?.isContentEditable) return;
+
+    e.preventDefault();
+    maximized.value = !maximized.value;
 };
 
 const scrollToBottom = async () => {
