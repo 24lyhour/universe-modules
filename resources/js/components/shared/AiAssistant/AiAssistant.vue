@@ -16,7 +16,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
     endpoint: '',
-    title: 'AI Assistant',
+    title: 'Universe AI Assistant',
     placeholder: 'Ask me anything…',
 });
 
