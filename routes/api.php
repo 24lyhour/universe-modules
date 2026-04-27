@@ -45,3 +45,7 @@ Route::get('/user', function (Request $request) {
 Route::post('/ai/editor', [AiController::class, 'editor'])
     ->middleware(['web', 'auth'])
     ->name('api.ai.editor');
+
+Route::post('/ai/chat', [AiController::class, 'chat'])
+    ->middleware(['web', 'auth'])
+    ->name('api.ai.chat');

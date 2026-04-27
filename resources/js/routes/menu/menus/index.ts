@@ -1,5 +1,6 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 import importMethod7367d2 from './import'
+import muteBe5827 from './mute'
 import categories from './categories'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::trash
@@ -1532,6 +1533,201 @@ updateScheduleForm.put = (args: { menu: string | { uuid: string } } | [menu: str
 updateSchedule.form = updateScheduleForm
 
 /**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::mute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
+* @route '/dashboard/menus/{menu}/mute'
+*/
+export const mute = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: mute.url(args, options),
+    method: 'get',
+})
+
+mute.definition = {
+    methods: ["get","head"],
+    url: '/dashboard/menus/{menu}/mute',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::mute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
+* @route '/dashboard/menus/{menu}/mute'
+*/
+mute.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { menu: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'uuid' in args) {
+        args = { menu: args.uuid }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            menu: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        menu: typeof args.menu === 'object'
+        ? args.menu.uuid
+        : args.menu,
+    }
+
+    return mute.definition.url
+            .replace('{menu}', parsedArgs.menu.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::mute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
+* @route '/dashboard/menus/{menu}/mute'
+*/
+mute.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: mute.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::mute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
+* @route '/dashboard/menus/{menu}/mute'
+*/
+mute.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: mute.url(args, options),
+    method: 'head',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::mute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
+* @route '/dashboard/menus/{menu}/mute'
+*/
+const muteForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: mute.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::mute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
+* @route '/dashboard/menus/{menu}/mute'
+*/
+muteForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: mute.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::mute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
+* @route '/dashboard/menus/{menu}/mute'
+*/
+muteForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    action: mute.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'get',
+})
+
+mute.form = muteForm
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::unmute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:54
+* @route '/dashboard/menus/{menu}/mute'
+*/
+export const unmute = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: unmute.url(args, options),
+    method: 'delete',
+})
+
+unmute.definition = {
+    methods: ["delete"],
+    url: '/dashboard/menus/{menu}/mute',
+} satisfies RouteDefinition<["delete"]>
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::unmute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:54
+* @route '/dashboard/menus/{menu}/mute'
+*/
+unmute.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { menu: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'uuid' in args) {
+        args = { menu: args.uuid }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            menu: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        menu: typeof args.menu === 'object'
+        ? args.menu.uuid
+        : args.menu,
+    }
+
+    return unmute.definition.url
+            .replace('{menu}', parsedArgs.menu.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::unmute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:54
+* @route '/dashboard/menus/{menu}/mute'
+*/
+unmute.delete = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+    url: unmute.url(args, options),
+    method: 'delete',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::unmute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:54
+* @route '/dashboard/menus/{menu}/mute'
+*/
+const unmuteForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: unmute.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+/**
+* @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuMuteController::unmute
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:54
+* @route '/dashboard/menus/{menu}/mute'
+*/
+unmuteForm.delete = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    action: unmute.url(args, {
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'DELETE',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
+    method: 'post',
+})
+
+unmute.form = unmuteForm
+
+/**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::restore
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:206
 * @route '/dashboard/menus/{uuid}/restore'
@@ -1718,6 +1914,8 @@ const menus = {
     toggleStatus: Object.assign(toggleStatus, toggleStatus),
     schedule: Object.assign(schedule, schedule),
     updateSchedule: Object.assign(updateSchedule, updateSchedule),
+    mute: Object.assign(mute, muteBe5827),
+    unmute: Object.assign(unmute, unmute),
     categories: Object.assign(categories, categories),
     restore: Object.assign(restore, restore),
     forceDelete: Object.assign(forceDelete, forceDelete),

@@ -3,6 +3,7 @@ import AppContent from '@/components/AppContent.vue';
 import AppShell from '@/components/AppShell.vue';
 import AppSidebar from '@/components/AppSidebar.vue';
 import AppSidebarHeader from '@/components/AppSidebarHeader.vue';
+import { AiAssistant } from '@/components/shared';
 import { ToastContainer, toast } from '@/components/ui/toast';
 import { Modal } from 'momentum-modal';
 import type { BreadcrumbItemType } from '@/types';
@@ -68,4 +69,6 @@ withDefaults(defineProps<Props>(), {
     </AppShell>
     <!-- Custom Toast Container for flash messages -->
     <ToastContainer position="top-center" />
+    <!-- Floating AI Assistant — bottom-right on every page -->
+    <AiAssistant endpoint="/api/ai/chat" />
 </template>

@@ -43,3 +43,6 @@ export { DeliveryRouteMap } from './DeliveryRouteMap';
 // Geofence Map
 export { GeofenceMap } from './GeofenceMap';
 export type { GeofenceType, GeofenceData, LatLng } from './GeofenceMap';
+
+// AI Assistant (floating widget — auto-mounted in AppSidebarLayout)
+export { AiAssistant } from './AiAssistant';

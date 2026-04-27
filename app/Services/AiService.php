@@ -136,6 +136,124 @@ class AiService
     }
 
     /**
+     * Conversational chat with optional rolling history.
+     *
+     * @param  string  $message  The new user message.
+     * @param  array<int, array{role:string,content:string}>  $history  Recent prior turns.
+     * @return array{success:bool, reply?:string, error?:string}
+     */
+    public function chat(string $message, array $history = [], ?string $systemPrompt = null): array
+    {
+        if (empty($this->apiKey)) {
+            return [
+                'success' => false,
+                'error' => 'AI service is not configured. Please add your API key in the environment settings.',
+            ];
+        }
+
+        $system = $systemPrompt ?? 'You are a concise, friendly assistant embedded inside the Universe POS dashboard. Help staff with bookings, menus, products, and other admin tasks. When users ask "how to" do something, give short step-by-step instructions. Use plain text — no markdown unless asked.';
+
+        try {
+            $reply = $this->callChatAi($system, $message, $history);
+
+            return [
+                'success' => true,
+                'reply' => $reply,
+            ];
+        } catch (\Exception $e) {
+            Log::error('AI chat error: ' . $e->getMessage());
+            return [
+                'success' => false,
+                'error' => 'Failed to reach the AI service. Please try again.',
+            ];
+        }
+    }
+
+    /**
+     * Multi-turn chat dispatcher — picks the right provider transport.
+     */
+    protected function callChatAi(string $systemPrompt, string $message, array $history): string
+    {
+        if ($this->provider === 'anthropic') {
+            return $this->callAnthropicChat($systemPrompt, $message, $history);
+        }
+
+        if (str_starts_with($this->model, 'gemini')) {
+            // Gemini doesn't have a clean role-based history shape here, so collapse
+            // the history into the prompt — fine for a small conversational widget.
+            $collapsed = collect($history)
+                ->map(fn ($m) => strtoupper($m['role']) . ': ' . $m['content'])
+                ->implode("\n");
+            $userPrompt = trim($collapsed . "\n\nUSER: {$message}");
+            return $this->callGemini($systemPrompt, $userPrompt);
+        }
+
+        // OpenAI-compatible (OpenAI, xAI Grok, Groq, Together, etc.)
+        return $this->callOpenAiChat($systemPrompt, $message, $history);
+    }
+
+    /**
+     * OpenAI-compatible /chat/completions with a real history array.
+     */
+    protected function callOpenAiChat(string $systemPrompt, string $message, array $history): string
+    {
+        $messages = [['role' => 'system', 'content' => $systemPrompt]];
+        foreach ($history as $turn) {
+            if (!isset($turn['role'], $turn['content'])) continue;
+            if (!in_array($turn['role'], ['user', 'assistant'], true)) continue;
+            $messages[] = ['role' => $turn['role'], 'content' => (string) $turn['content']];
+        }
+        $messages[] = ['role' => 'user', 'content' => $message];
+
+        $response = Http::withHeaders([
+            'Authorization' => "Bearer {$this->apiKey}",
+            'Content-Type' => 'application/json',
+        ])->timeout(60)->post("{$this->baseUrl}/chat/completions", [
+            'model' => $this->model,
+            'messages' => $messages,
+            'temperature' => 0.7,
+            'max_tokens' => 800,
+        ]);
+
+        if (!$response->successful()) {
+            throw new \Exception('AI provider error: ' . $response->body());
+        }
+
+        return $response->json('choices.0.message.content') ?? '';
+    }
+
+    /**
+     * Anthropic /v1/messages with a real history array.
+     */
+    protected function callAnthropicChat(string $systemPrompt, string $message, array $history): string
+    {
+        $messages = [];
+        foreach ($history as $turn) {
+            if (!isset($turn['role'], $turn['content'])) continue;
+            if (!in_array($turn['role'], ['user', 'assistant'], true)) continue;
+            $messages[] = ['role' => $turn['role'], 'content' => (string) $turn['content']];
+        }
+        $messages[] = ['role' => 'user', 'content' => $message];
+
+        $response = Http::withHeaders([
+            'x-api-key' => $this->apiKey,
+            'Content-Type' => 'application/json',
+            'anthropic-version' => '2023-06-01',
+        ])->timeout(60)->post('https://api.anthropic.com/v1/messages', [
+            'model' => $this->model ?: 'claude-3-haiku-20240307',
+            'max_tokens' => 800,
+            'system' => $systemPrompt,
+            'messages' => $messages,
+        ]);
+
+        if (!$response->successful()) {
+            throw new \Exception('Anthropic API error: ' . $response->body());
+        }
+
+        return $response->json('content.0.text') ?? '';
+    }
+
+    /**
      * Call the AI API
      */
     protected function callAi(string $systemPrompt, string $userPrompt): string
