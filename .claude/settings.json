@@ -4,6 +4,9 @@
       "Bash(pgrep:*)",
       "Bash(git mv:*)",
       "Read(//Users/kouchlyhour/Documents/portfolio_projects/backends_portfolios/hrSystem/**)"
+    ],
+    "additionalDirectories": [
+      "/Users/kouchlyhour/Documents/portfolio_projects/app-flutter/cylicon_app/lib/app/modules/outlets/outlet_menu/views"
     ]
   }
 }
