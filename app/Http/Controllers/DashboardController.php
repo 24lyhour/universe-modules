@@ -60,6 +60,9 @@ class DashboardController extends Controller
             'employee' => 'dashboard.employee',
             'school' => 'dashboard.school',
             'hotel' => 'dashboard.hotel',
+            'booking' => 'dashboard.booking',
+            'payment' => 'dashboard.payment',
+            'report' => 'dashboard.report',
         ];
 
         // Get modules that have AT LEAST ONE active widget AND user has permission

@@ -209,6 +209,65 @@ class AutoPermission
         'order.outlet-reviews.export' => 'outlet_reviews.export',
         'order.outlet-reviews.bulk-delete' => 'outlet_reviews.bulk_delete',
 
+        // ==========================================
+        // MENU MODULE — non-CRUD routes
+        // ==========================================
+        'menu.menus.schedule' => 'menus.schedule',
+        'menu.menus.update-schedule' => 'menus.schedule',
+        'menu.menus.mute' => 'menus.mute',
+        'menu.menus.mute.apply' => 'menus.mute',
+        'menu.menus.unmute' => 'menus.unmute',
+        'menu.menus.toggle-status' => 'menus.toggle_status',
+        'menu.menu-types.toggle-status' => 'menu_types.toggle_status',
+        'menu.categories.toggle-status' => 'categories.toggle_status',
+        'menu.categories.reorder' => 'categories.reorder',
+        'menu.categories.sync' => 'categories.sync_products',
+
+        // ==========================================
+        // BOOKING MODULE — state-machine transitions
+        // ==========================================
+        'booking.bookings.index' => 'bookings.view_any',
+        'booking.bookings.create' => 'bookings.create',
+        'booking.bookings.store' => 'bookings.create',
+        'booking.bookings.show' => 'bookings.view',
+        'booking.bookings.update' => 'bookings.update',
+        'booking.bookings.destroy' => 'bookings.delete',
+        'booking.bookings.calendar' => 'bookings.view_calendar',
+        'booking.bookings.update-status' => 'bookings.update_status',
+        'booking.bookings.bulk-delete' => 'bookings.delete',
+
+        // ==========================================
+        // HOTEL MODULE — toggle / mute
+        // ==========================================
+        'hotel.hotels.toggle-status' => 'hotels.toggle_status',
+        'hotel.rooms.toggle-status' => 'hotel_rooms.toggle_status',
+        'hotel.rooms.mute' => 'hotel_rooms.mute',
+        'hotel.rooms.unmute' => 'hotel_rooms.unmute',
+        'hotel.reviews.approve' => 'hotel_reviews.approve',
+        'hotel.reviews.reject' => 'hotel_reviews.reject',
+        'hotel.reviews.reply' => 'hotel_reviews.reply',
+
+        // ==========================================
+        // PRODUCT MODULE — toggle / mute / bulk
+        // ==========================================
+        'product.products.toggle-status' => 'products.toggle_status',
+        'product.products.mute' => 'products.mute',
+        'product.products.unmute' => 'products.unmute',
+        'product.products.bulk-delete' => 'products.bulk_delete',
+
+        // ==========================================
+        // OUTLET MODULE — toggle / schedule
+        // ==========================================
+        'outlet.outlets.toggle-status' => 'outlets.toggle_status',
+        'outlet.outlets.manage-schedule' => 'outlets.manage_schedule',
+
+        // ==========================================
+        // PAYMENT MODULE — non-CRUD
+        // ==========================================
+        'payment.payments.refund' => 'payments.refund',
+        'payment.payments.export' => 'payments.export',
+        'payment.payments.reconcile' => 'payments.reconcile',
+
         // Shipping Zones
         'order.shipping-zones.index' => 'shipping_zones.view_any',
         'order.shipping-zones.create' => 'shipping_zones.create',

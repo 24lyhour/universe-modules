@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::preview
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:107
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:117
 * @route '/dashboard/menus/import/preview'
 */
 export const preview = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ preview.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::preview
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:107
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:117
 * @route '/dashboard/menus/import/preview'
 */
 preview.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ preview.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::preview
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:107
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:117
 * @route '/dashboard/menus/import/preview'
 */
 preview.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ preview.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::preview
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:107
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:117
 * @route '/dashboard/menus/import/preview'
 */
 const previewForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ const previewForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> =
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::preview
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:107
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:117
 * @route '/dashboard/menus/import/preview'
 */
 previewForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -57,7 +57,7 @@ preview.form = previewForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::process
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:130
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:140
 * @route '/dashboard/menus/import/process'
 */
 export const process = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -72,7 +72,7 @@ process.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::process
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:130
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:140
 * @route '/dashboard/menus/import/process'
 */
 process.url = (options?: RouteQueryOptions) => {
@@ -81,7 +81,7 @@ process.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::process
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:130
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:140
 * @route '/dashboard/menus/import/process'
 */
 process.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -91,7 +91,7 @@ process.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::process
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:130
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:140
 * @route '/dashboard/menus/import/process'
 */
 const processForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -101,7 +101,7 @@ const processForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> =
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::process
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:130
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:140
 * @route '/dashboard/menus/import/process'
 */
 processForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -113,7 +113,7 @@ process.form = processForm
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::template
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:166
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:176
 * @route '/dashboard/menus/import/template'
 */
 export const template = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -128,7 +128,7 @@ template.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::template
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:166
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:176
 * @route '/dashboard/menus/import/template'
 */
 template.url = (options?: RouteQueryOptions) => {
@@ -137,7 +137,7 @@ template.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::template
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:166
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:176
 * @route '/dashboard/menus/import/template'
 */
 template.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -147,7 +147,7 @@ template.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::template
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:166
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:176
 * @route '/dashboard/menus/import/template'
 */
 template.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -157,7 +157,7 @@ template.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::template
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:166
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:176
 * @route '/dashboard/menus/import/template'
 */
 const templateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -167,7 +167,7 @@ const templateForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::template
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:166
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:176
 * @route '/dashboard/menus/import/template'
 */
 templateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -177,7 +177,7 @@ templateForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::template
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:166
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:176
 * @route '/dashboard/menus/import/template'
 */
 templateForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

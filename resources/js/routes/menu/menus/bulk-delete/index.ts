@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../wayfinder'
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirm
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:376
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:386
 * @route '/dashboard/menus/bulk-delete'
 */
 export const confirm = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ confirm.definition = {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirm
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:376
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:386
 * @route '/dashboard/menus/bulk-delete'
 */
 confirm.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ confirm.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirm
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:376
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:386
 * @route '/dashboard/menus/bulk-delete'
 */
 confirm.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ confirm.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirm
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:376
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:386
 * @route '/dashboard/menus/bulk-delete'
 */
 confirm.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ confirm.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirm
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:376
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:386
 * @route '/dashboard/menus/bulk-delete'
 */
 const confirmForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const confirmForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =>
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirm
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:376
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:386
 * @route '/dashboard/menus/bulk-delete'
 */
 confirmForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ confirmForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Menu\Http\Controllers\Dashboard\V1\MenuController::confirm
-* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:376
+* @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuController.php:386
 * @route '/dashboard/menus/bulk-delete'
 */
 confirmForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

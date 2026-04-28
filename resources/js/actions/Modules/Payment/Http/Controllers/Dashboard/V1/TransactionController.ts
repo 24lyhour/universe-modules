@@ -166,7 +166,7 @@ index.form = indexForm
 * @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:45
 * @route '/dashboard/payment-transactions/{transaction}'
 */
-export const show = (args: { transaction: string | { uuid: string } } | [transaction: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { transaction: string | number | { uuid: string | number } } | [transaction: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -181,7 +181,7 @@ show.definition = {
 * @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:45
 * @route '/dashboard/payment-transactions/{transaction}'
 */
-show.url = (args: { transaction: string | { uuid: string } } | [transaction: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { transaction: string | number | { uuid: string | number } } | [transaction: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { transaction: args }
     }
@@ -214,7 +214,7 @@ show.url = (args: { transaction: string | { uuid: string } } | [transaction: str
 * @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:45
 * @route '/dashboard/payment-transactions/{transaction}'
 */
-show.get = (args: { transaction: string | { uuid: string } } | [transaction: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { transaction: string | number | { uuid: string | number } } | [transaction: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -224,7 +224,7 @@ show.get = (args: { transaction: string | { uuid: string } } | [transaction: str
 * @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:45
 * @route '/dashboard/payment-transactions/{transaction}'
 */
-show.head = (args: { transaction: string | { uuid: string } } | [transaction: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { transaction: string | number | { uuid: string | number } } | [transaction: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -234,7 +234,7 @@ show.head = (args: { transaction: string | { uuid: string } } | [transaction: st
 * @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:45
 * @route '/dashboard/payment-transactions/{transaction}'
 */
-const showForm = (args: { transaction: string | { uuid: string } } | [transaction: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { transaction: string | number | { uuid: string | number } } | [transaction: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -244,7 +244,7 @@ const showForm = (args: { transaction: string | { uuid: string } } | [transactio
 * @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:45
 * @route '/dashboard/payment-transactions/{transaction}'
 */
-showForm.get = (args: { transaction: string | { uuid: string } } | [transaction: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { transaction: string | number | { uuid: string | number } } | [transaction: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -254,7 +254,7 @@ showForm.get = (args: { transaction: string | { uuid: string } } | [transaction:
 * @see Modules/Payment/app/Http/Controllers/Dashboard/V1/TransactionController.php:45
 * @route '/dashboard/payment-transactions/{transaction}'
 */
-showForm.head = (args: { transaction: string | { uuid: string } } | [transaction: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { transaction: string | number | { uuid: string | number } } | [transaction: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
