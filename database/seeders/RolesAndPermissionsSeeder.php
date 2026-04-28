@@ -55,15 +55,18 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     protected function collectPermissions(): array
     {
-        $sources = array_merge(
-            CorePermissionEnum::values(),
-            ...array_map(
-                static fn (string $enum): array => $enum::values(),
-                $this->permissionEnums(),
-            ),
-            $this->buildLegacyPermissions(),
+        $moduleEnumValues = array_map(
+            static fn (string $enum): array => $enum::values(),
+            $this->permissionEnums(),
         );
 
+        // PHP forbids positional args after argument unpacking, so put the
+        // spread last and pre-assemble the fixed sources before it.
+        $sources = array_merge(
+            CorePermissionEnum::values(),
+            $this->buildLegacyPermissions(),
+            ...$moduleEnumValues,
+        );
         return array_values(array_unique($sources));
     }
 
