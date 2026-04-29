@@ -3,7 +3,12 @@
     "allow": [
       "Bash(pgrep:*)",
       "Bash(git mv:*)",
-      "Read(//Users/kouchlyhour/Documents/portfolio_projects/backends_portfolios/hrSystem/**)"
+      "Read(//Users/kouchlyhour/Documents/portfolio_projects/backends_portfolios/hrSystem/**)",
+      "Read(//Users/kouchlyhour/Documents/portfolio_projects/app-flutter/manager-merchant/lib/app/core/services/**)",
+      "Read(//Users/kouchlyhour/Documents/portfolio_projects/app-flutter/manager-merchant/lib/app/routes/**)",
+      "Read(//Users/kouchlyhour/Documents/portfolio_projects/app-flutter/manager-merchant/lib/app/middleware/**)",
+      "Read(//Users/kouchlyhour/Documents/portfolio_projects/app-flutter/manager-merchant/lib/app/modules/auth/**)",
+      "Read(//Users/kouchlyhour/Documents/portfolio_projects/app-flutter/manager-merchant/lib/app/core/config/**)"
     ],
     "additionalDirectories": [
       "/Users/kouchlyhour/Documents/portfolio_projects/app-flutter/cylicon_app/lib/app/modules/outlets/outlet_menu/views"
