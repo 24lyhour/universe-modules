@@ -1,4 +1,5 @@
 import ai from './ai'
+import tenant from './tenant'
 import blog from './blog'
 import booking from './booking'
 import company from './company'
@@ -25,6 +26,7 @@ import wallets from './wallets'
 
 const apiNamespace = {
     ai: Object.assign(ai, ai),
+    tenant: Object.assign(tenant, tenant),
     blog: Object.assign(blog, blog),
     booking: Object.assign(booking, booking),
     company: Object.assign(company, company),
