@@ -33,6 +33,7 @@ const draft = ref('');
 const sending = ref(false);
 const messages = ref<Message[]>([]);
 const scrollEl = ref<HTMLElement | null>(null);
+const inputEl = ref<InstanceType<typeof Input> | null>(null);
 
 const panelClasses = computed(() =>
     maximized.value
@@ -119,7 +120,12 @@ const scrollToBottom = async () => {
     }
 };
 
-watch(open, (val) => { if (val) scrollToBottom(); });
+watch(open, (val) => { 
+    if (val) {
+        scrollToBottom();
+        nextTick(() => inputEl.value?.$el.focus());
+    }
+});
 
 const canSend = computed(() => draft.value.trim().length > 0 && !sending.value);
 
@@ -289,6 +295,7 @@ const handleEnter = (e: KeyboardEvent) => {
         <div class="border-t bg-background p-3">
             <div class="flex items-end gap-2">
                 <Input
+                    ref="inputEl"
                     v-model="draft"
                     :placeholder="placeholder"
                     class="h-10"
