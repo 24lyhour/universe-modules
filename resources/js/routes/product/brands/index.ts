@@ -619,7 +619,7 @@ store.form = storeForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:73
 * @route '/dashboard/brands/{brand}'
 */
-export const show = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -634,7 +634,7 @@ show.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:73
 * @route '/dashboard/brands/{brand}'
 */
-show.url = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { brand: args }
     }
@@ -667,7 +667,7 @@ show.url = (args: { brand: number | { id: number } } | [brand: number | { id: nu
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:73
 * @route '/dashboard/brands/{brand}'
 */
-show.get = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -677,7 +677,7 @@ show.get = (args: { brand: number | { id: number } } | [brand: number | { id: nu
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:73
 * @route '/dashboard/brands/{brand}'
 */
-show.head = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -687,7 +687,7 @@ show.head = (args: { brand: number | { id: number } } | [brand: number | { id: n
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:73
 * @route '/dashboard/brands/{brand}'
 */
-const showForm = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -697,7 +697,7 @@ const showForm = (args: { brand: number | { id: number } } | [brand: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:73
 * @route '/dashboard/brands/{brand}'
 */
-showForm.get = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -707,7 +707,7 @@ showForm.get = (args: { brand: number | { id: number } } | [brand: number | { id
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:73
 * @route '/dashboard/brands/{brand}'
 */
-showForm.head = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -724,7 +724,7 @@ show.form = showForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
 * @route '/dashboard/brands/{brand}/edit'
 */
-export const edit = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -739,7 +739,7 @@ edit.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
 * @route '/dashboard/brands/{brand}/edit'
 */
-edit.url = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { brand: args }
     }
@@ -772,7 +772,7 @@ edit.url = (args: { brand: number | { id: number } } | [brand: number | { id: nu
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
 * @route '/dashboard/brands/{brand}/edit'
 */
-edit.get = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -782,7 +782,7 @@ edit.get = (args: { brand: number | { id: number } } | [brand: number | { id: nu
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
 * @route '/dashboard/brands/{brand}/edit'
 */
-edit.head = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -792,7 +792,7 @@ edit.head = (args: { brand: number | { id: number } } | [brand: number | { id: n
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
 * @route '/dashboard/brands/{brand}/edit'
 */
-const editForm = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -802,7 +802,7 @@ const editForm = (args: { brand: number | { id: number } } | [brand: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
 * @route '/dashboard/brands/{brand}/edit'
 */
-editForm.get = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -812,7 +812,7 @@ editForm.get = (args: { brand: number | { id: number } } | [brand: number | { id
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:85
 * @route '/dashboard/brands/{brand}/edit'
 */
-editForm.head = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -829,7 +829,7 @@ edit.form = editForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:99
 * @route '/dashboard/brands/{brand}'
 */
-export const update = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -844,7 +844,7 @@ update.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:99
 * @route '/dashboard/brands/{brand}'
 */
-update.url = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { brand: args }
     }
@@ -877,7 +877,7 @@ update.url = (args: { brand: number | { id: number } } | [brand: number | { id: 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:99
 * @route '/dashboard/brands/{brand}'
 */
-update.put = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -887,7 +887,7 @@ update.put = (args: { brand: number | { id: number } } | [brand: number | { id: 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:99
 * @route '/dashboard/brands/{brand}'
 */
-update.patch = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -897,7 +897,7 @@ update.patch = (args: { brand: number | { id: number } } | [brand: number | { id
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:99
 * @route '/dashboard/brands/{brand}'
 */
-const updateForm = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -912,7 +912,7 @@ const updateForm = (args: { brand: number | { id: number } } | [brand: number | 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:99
 * @route '/dashboard/brands/{brand}'
 */
-updateForm.put = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -927,7 +927,7 @@ updateForm.put = (args: { brand: number | { id: number } } | [brand: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:99
 * @route '/dashboard/brands/{brand}'
 */
-updateForm.patch = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -944,7 +944,7 @@ update.form = updateForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:110
 * @route '/dashboard/brands/{brand}'
 */
-export const destroy = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -959,7 +959,7 @@ destroy.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:110
 * @route '/dashboard/brands/{brand}'
 */
-destroy.url = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { brand: args }
     }
@@ -992,7 +992,7 @@ destroy.url = (args: { brand: number | { id: number } } | [brand: number | { id:
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:110
 * @route '/dashboard/brands/{brand}'
 */
-destroy.delete = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -1002,7 +1002,7 @@ destroy.delete = (args: { brand: number | { id: number } } | [brand: number | { 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:110
 * @route '/dashboard/brands/{brand}'
 */
-const destroyForm = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1017,7 +1017,7 @@ const destroyForm = (args: { brand: number | { id: number } } | [brand: number |
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:110
 * @route '/dashboard/brands/{brand}'
 */
-destroyForm.delete = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1034,7 +1034,7 @@ destroy.form = destroyForm
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:159
 * @route '/dashboard/brands/{brand}/toggle-status'
 */
-export const toggleStatus = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleStatus = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -1049,7 +1049,7 @@ toggleStatus.definition = {
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:159
 * @route '/dashboard/brands/{brand}/toggle-status'
 */
-toggleStatus.url = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+toggleStatus.url = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { brand: args }
     }
@@ -1082,7 +1082,7 @@ toggleStatus.url = (args: { brand: number | { id: number } } | [brand: number | 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:159
 * @route '/dashboard/brands/{brand}/toggle-status'
 */
-toggleStatus.put = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleStatus.put = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -1092,7 +1092,7 @@ toggleStatus.put = (args: { brand: number | { id: number } } | [brand: number | 
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:159
 * @route '/dashboard/brands/{brand}/toggle-status'
 */
-const toggleStatusForm = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleStatusForm = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -1107,7 +1107,7 @@ const toggleStatusForm = (args: { brand: number | { id: number } } | [brand: num
 * @see Modules/Product/app/Http/Controllers/Dashboard/V1/BrandController.php:159
 * @route '/dashboard/brands/{brand}/toggle-status'
 */
-toggleStatusForm.put = (args: { brand: number | { id: number } } | [brand: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleStatusForm.put = (args: { brand: string | number | { id: string | number } } | [brand: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',

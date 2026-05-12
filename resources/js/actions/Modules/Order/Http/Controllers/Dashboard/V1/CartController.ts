@@ -222,7 +222,7 @@ store.form = storeForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:80
 * @route '/dashboard/carts/{cart}'
 */
-export const show = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -237,7 +237,7 @@ show.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:80
 * @route '/dashboard/carts/{cart}'
 */
-show.url = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { cart: args }
     }
@@ -270,7 +270,7 @@ show.url = (args: { cart: number | { id: number } } | [cart: number | { id: numb
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:80
 * @route '/dashboard/carts/{cart}'
 */
-show.get = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -280,7 +280,7 @@ show.get = (args: { cart: number | { id: number } } | [cart: number | { id: numb
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:80
 * @route '/dashboard/carts/{cart}'
 */
-show.head = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -290,7 +290,7 @@ show.head = (args: { cart: number | { id: number } } | [cart: number | { id: num
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:80
 * @route '/dashboard/carts/{cart}'
 */
-const showForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -300,7 +300,7 @@ const showForm = (args: { cart: number | { id: number } } | [cart: number | { id
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:80
 * @route '/dashboard/carts/{cart}'
 */
-showForm.get = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -310,7 +310,7 @@ showForm.get = (args: { cart: number | { id: number } } | [cart: number | { id: 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:80
 * @route '/dashboard/carts/{cart}'
 */
-showForm.head = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -327,7 +327,7 @@ show.form = showForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
 * @route '/dashboard/carts/{cart}/edit'
 */
-export const edit = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -342,7 +342,7 @@ edit.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
 * @route '/dashboard/carts/{cart}/edit'
 */
-edit.url = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { cart: args }
     }
@@ -375,7 +375,7 @@ edit.url = (args: { cart: number | { id: number } } | [cart: number | { id: numb
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
 * @route '/dashboard/carts/{cart}/edit'
 */
-edit.get = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -385,7 +385,7 @@ edit.get = (args: { cart: number | { id: number } } | [cart: number | { id: numb
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
 * @route '/dashboard/carts/{cart}/edit'
 */
-edit.head = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -395,7 +395,7 @@ edit.head = (args: { cart: number | { id: number } } | [cart: number | { id: num
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
 * @route '/dashboard/carts/{cart}/edit'
 */
-const editForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -405,7 +405,7 @@ const editForm = (args: { cart: number | { id: number } } | [cart: number | { id
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
 * @route '/dashboard/carts/{cart}/edit'
 */
-editForm.get = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -415,7 +415,7 @@ editForm.get = (args: { cart: number | { id: number } } | [cart: number | { id: 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:92
 * @route '/dashboard/carts/{cart}/edit'
 */
-editForm.head = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -432,7 +432,7 @@ edit.form = editForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:109
 * @route '/dashboard/carts/{cart}'
 */
-export const update = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -447,7 +447,7 @@ update.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:109
 * @route '/dashboard/carts/{cart}'
 */
-update.url = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { cart: args }
     }
@@ -480,7 +480,7 @@ update.url = (args: { cart: number | { id: number } } | [cart: number | { id: nu
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:109
 * @route '/dashboard/carts/{cart}'
 */
-update.put = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -490,7 +490,7 @@ update.put = (args: { cart: number | { id: number } } | [cart: number | { id: nu
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:109
 * @route '/dashboard/carts/{cart}'
 */
-update.patch = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -500,7 +500,7 @@ update.patch = (args: { cart: number | { id: number } } | [cart: number | { id: 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:109
 * @route '/dashboard/carts/{cart}'
 */
-const updateForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -515,7 +515,7 @@ const updateForm = (args: { cart: number | { id: number } } | [cart: number | { 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:109
 * @route '/dashboard/carts/{cart}'
 */
-updateForm.put = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -530,7 +530,7 @@ updateForm.put = (args: { cart: number | { id: number } } | [cart: number | { id
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:109
 * @route '/dashboard/carts/{cart}'
 */
-updateForm.patch = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -547,7 +547,7 @@ update.form = updateForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:120
 * @route '/dashboard/carts/{cart}'
 */
-export const destroy = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -562,7 +562,7 @@ destroy.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:120
 * @route '/dashboard/carts/{cart}'
 */
-destroy.url = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { cart: args }
     }
@@ -595,7 +595,7 @@ destroy.url = (args: { cart: number | { id: number } } | [cart: number | { id: n
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:120
 * @route '/dashboard/carts/{cart}'
 */
-destroy.delete = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -605,7 +605,7 @@ destroy.delete = (args: { cart: number | { id: number } } | [cart: number | { id
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:120
 * @route '/dashboard/carts/{cart}'
 */
-const destroyForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -620,7 +620,7 @@ const destroyForm = (args: { cart: number | { id: number } } | [cart: number | {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:120
 * @route '/dashboard/carts/{cart}'
 */
-destroyForm.delete = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -637,7 +637,7 @@ destroy.form = destroyForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:142
 * @route '/dashboard/carts/{cart}/toggle-status'
 */
-export const toggleStatus = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleStatus = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -652,7 +652,7 @@ toggleStatus.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:142
 * @route '/dashboard/carts/{cart}/toggle-status'
 */
-toggleStatus.url = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+toggleStatus.url = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { cart: args }
     }
@@ -685,7 +685,7 @@ toggleStatus.url = (args: { cart: number | { id: number } } | [cart: number | { 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:142
 * @route '/dashboard/carts/{cart}/toggle-status'
 */
-toggleStatus.put = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleStatus.put = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -695,7 +695,7 @@ toggleStatus.put = (args: { cart: number | { id: number } } | [cart: number | { 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:142
 * @route '/dashboard/carts/{cart}/toggle-status'
 */
-const toggleStatusForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleStatusForm = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -710,7 +710,7 @@ const toggleStatusForm = (args: { cart: number | { id: number } } | [cart: numbe
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:142
 * @route '/dashboard/carts/{cart}/toggle-status'
 */
-toggleStatusForm.put = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleStatusForm.put = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -727,7 +727,7 @@ toggleStatus.form = toggleStatusForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:131
 * @route '/dashboard/carts/{cart}/convert-to-order'
 */
-export const convertToOrder = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const convertToOrder = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: convertToOrder.url(args, options),
     method: 'post',
 })
@@ -742,7 +742,7 @@ convertToOrder.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:131
 * @route '/dashboard/carts/{cart}/convert-to-order'
 */
-convertToOrder.url = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+convertToOrder.url = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { cart: args }
     }
@@ -775,7 +775,7 @@ convertToOrder.url = (args: { cart: number | { id: number } } | [cart: number | 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:131
 * @route '/dashboard/carts/{cart}/convert-to-order'
 */
-convertToOrder.post = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+convertToOrder.post = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: convertToOrder.url(args, options),
     method: 'post',
 })
@@ -785,7 +785,7 @@ convertToOrder.post = (args: { cart: number | { id: number } } | [cart: number |
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:131
 * @route '/dashboard/carts/{cart}/convert-to-order'
 */
-const convertToOrderForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const convertToOrderForm = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: convertToOrder.url(args, options),
     method: 'post',
 })
@@ -795,7 +795,7 @@ const convertToOrderForm = (args: { cart: number | { id: number } } | [cart: num
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:131
 * @route '/dashboard/carts/{cart}/convert-to-order'
 */
-convertToOrderForm.post = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+convertToOrderForm.post = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: convertToOrder.url(args, options),
     method: 'post',
 })
@@ -807,7 +807,7 @@ convertToOrder.form = convertToOrderForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:152
 * @route '/dashboard/carts/{cart}/clear-items'
 */
-export const clearItems = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const clearItems = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: clearItems.url(args, options),
     method: 'delete',
 })
@@ -822,7 +822,7 @@ clearItems.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:152
 * @route '/dashboard/carts/{cart}/clear-items'
 */
-clearItems.url = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+clearItems.url = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { cart: args }
     }
@@ -855,7 +855,7 @@ clearItems.url = (args: { cart: number | { id: number } } | [cart: number | { id
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:152
 * @route '/dashboard/carts/{cart}/clear-items'
 */
-clearItems.delete = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+clearItems.delete = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: clearItems.url(args, options),
     method: 'delete',
 })
@@ -865,7 +865,7 @@ clearItems.delete = (args: { cart: number | { id: number } } | [cart: number | {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:152
 * @route '/dashboard/carts/{cart}/clear-items'
 */
-const clearItemsForm = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const clearItemsForm = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: clearItems.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -880,7 +880,7 @@ const clearItemsForm = (args: { cart: number | { id: number } } | [cart: number 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/CartController.php:152
 * @route '/dashboard/carts/{cart}/clear-items'
 */
-clearItemsForm.delete = (args: { cart: number | { id: number } } | [cart: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+clearItemsForm.delete = (args: { cart: string | number | { id: string | number } } | [cart: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: clearItems.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

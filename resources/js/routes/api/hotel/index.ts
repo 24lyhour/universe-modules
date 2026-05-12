@@ -251,7 +251,7 @@ featured.form = featuredForm
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
-export const show = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -266,7 +266,7 @@ show.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
-show.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { hotel: args }
     }
@@ -299,7 +299,7 @@ show.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
-show.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -309,7 +309,7 @@ show.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
-show.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -319,7 +319,7 @@ show.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
-const showForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -329,7 +329,7 @@ const showForm = (args: { hotel: string | { uuid: string } } | [hotel: string | 
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
-showForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -339,7 +339,7 @@ showForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { 
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:50
 * @route '/api/v1/hotels/{hotel}'
 */
-showForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -356,7 +356,7 @@ show.form = showForm
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
-export const rooms = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const rooms = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: rooms.url(args, options),
     method: 'get',
 })
@@ -371,7 +371,7 @@ rooms.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
-rooms.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+rooms.url = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { hotel: args }
     }
@@ -404,7 +404,7 @@ rooms.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
-rooms.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+rooms.get = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: rooms.url(args, options),
     method: 'get',
 })
@@ -414,7 +414,7 @@ rooms.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
-rooms.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+rooms.head = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: rooms.url(args, options),
     method: 'head',
 })
@@ -424,7 +424,7 @@ rooms.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uu
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
-const roomsForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const roomsForm = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: rooms.url(args, options),
     method: 'get',
 })
@@ -434,7 +434,7 @@ const roomsForm = (args: { hotel: string | { uuid: string } } | [hotel: string |
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
-roomsForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+roomsForm.get = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: rooms.url(args, options),
     method: 'get',
 })
@@ -444,7 +444,7 @@ roomsForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | {
 * @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelApiController.php:68
 * @route '/api/v1/hotels/{hotel}/rooms'
 */
-roomsForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+roomsForm.head = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: rooms.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',

@@ -222,7 +222,7 @@ store.form = storeForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:78
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-export const show = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -237,7 +237,7 @@ show.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:78
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-show.url = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { shippingZone: args }
     }
@@ -270,7 +270,7 @@ show.url = (args: { shippingZone: string | { uuid: string } } | [shippingZone: s
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:78
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-show.get = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -280,7 +280,7 @@ show.get = (args: { shippingZone: string | { uuid: string } } | [shippingZone: s
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:78
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-show.head = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -290,7 +290,7 @@ show.head = (args: { shippingZone: string | { uuid: string } } | [shippingZone: 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:78
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-const showForm = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -300,7 +300,7 @@ const showForm = (args: { shippingZone: string | { uuid: string } } | [shippingZ
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:78
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-showForm.get = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -310,7 +310,7 @@ showForm.get = (args: { shippingZone: string | { uuid: string } } | [shippingZon
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:78
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-showForm.head = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -327,7 +327,7 @@ show.form = showForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
 * @route '/dashboard/shipping-zones/{shippingZone}/edit'
 */
-export const edit = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -342,7 +342,7 @@ edit.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
 * @route '/dashboard/shipping-zones/{shippingZone}/edit'
 */
-edit.url = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { shippingZone: args }
     }
@@ -375,7 +375,7 @@ edit.url = (args: { shippingZone: string | { uuid: string } } | [shippingZone: s
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
 * @route '/dashboard/shipping-zones/{shippingZone}/edit'
 */
-edit.get = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -385,7 +385,7 @@ edit.get = (args: { shippingZone: string | { uuid: string } } | [shippingZone: s
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
 * @route '/dashboard/shipping-zones/{shippingZone}/edit'
 */
-edit.head = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -395,7 +395,7 @@ edit.head = (args: { shippingZone: string | { uuid: string } } | [shippingZone: 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
 * @route '/dashboard/shipping-zones/{shippingZone}/edit'
 */
-const editForm = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -405,7 +405,7 @@ const editForm = (args: { shippingZone: string | { uuid: string } } | [shippingZ
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
 * @route '/dashboard/shipping-zones/{shippingZone}/edit'
 */
-editForm.get = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -415,7 +415,7 @@ editForm.get = (args: { shippingZone: string | { uuid: string } } | [shippingZon
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:90
 * @route '/dashboard/shipping-zones/{shippingZone}/edit'
 */
-editForm.head = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -432,7 +432,7 @@ edit.form = editForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:106
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-export const update = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -447,7 +447,7 @@ update.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:106
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-update.url = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update.url = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { shippingZone: args }
     }
@@ -480,7 +480,7 @@ update.url = (args: { shippingZone: string | { uuid: string } } | [shippingZone:
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:106
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-update.put = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -490,7 +490,7 @@ update.put = (args: { shippingZone: string | { uuid: string } } | [shippingZone:
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:106
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-update.patch = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -500,7 +500,7 @@ update.patch = (args: { shippingZone: string | { uuid: string } } | [shippingZon
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:106
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-const updateForm = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -515,7 +515,7 @@ const updateForm = (args: { shippingZone: string | { uuid: string } } | [shippin
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:106
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-updateForm.put = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -530,7 +530,7 @@ updateForm.put = (args: { shippingZone: string | { uuid: string } } | [shippingZ
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:106
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-updateForm.patch = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -547,7 +547,7 @@ update.form = updateForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:117
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-export const destroy = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -562,7 +562,7 @@ destroy.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:117
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-destroy.url = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { shippingZone: args }
     }
@@ -595,7 +595,7 @@ destroy.url = (args: { shippingZone: string | { uuid: string } } | [shippingZone
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:117
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-destroy.delete = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -605,7 +605,7 @@ destroy.delete = (args: { shippingZone: string | { uuid: string } } | [shippingZ
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:117
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-const destroyForm = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -620,7 +620,7 @@ const destroyForm = (args: { shippingZone: string | { uuid: string } } | [shippi
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:117
 * @route '/dashboard/shipping-zones/{shippingZone}'
 */
-destroyForm.delete = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -637,7 +637,7 @@ destroy.form = destroyForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:128
 * @route '/dashboard/shipping-zones/{shippingZone}/toggle-active'
 */
-export const toggleActive = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleActive = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -652,7 +652,7 @@ toggleActive.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:128
 * @route '/dashboard/shipping-zones/{shippingZone}/toggle-active'
 */
-toggleActive.url = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+toggleActive.url = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { shippingZone: args }
     }
@@ -685,7 +685,7 @@ toggleActive.url = (args: { shippingZone: string | { uuid: string } } | [shippin
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:128
 * @route '/dashboard/shipping-zones/{shippingZone}/toggle-active'
 */
-toggleActive.put = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleActive.put = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -695,7 +695,7 @@ toggleActive.put = (args: { shippingZone: string | { uuid: string } } | [shippin
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:128
 * @route '/dashboard/shipping-zones/{shippingZone}/toggle-active'
 */
-const toggleActiveForm = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleActiveForm = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -710,7 +710,7 @@ const toggleActiveForm = (args: { shippingZone: string | { uuid: string } } | [s
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ShippingZoneController.php:128
 * @route '/dashboard/shipping-zones/{shippingZone}/toggle-active'
 */
-toggleActiveForm.put = (args: { shippingZone: string | { uuid: string } } | [shippingZone: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleActiveForm.put = (args: { shippingZone: string | number | { uuid: string | number } } | [shippingZone: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',

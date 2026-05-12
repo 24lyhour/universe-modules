@@ -222,7 +222,7 @@ store.form = storeForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:67
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-export const show = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -237,7 +237,7 @@ show.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:67
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-show.url = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outletReview: args }
     }
@@ -270,7 +270,7 @@ show.url = (args: { outletReview: number | { id: number } } | [outletReview: num
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:67
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-show.get = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -280,7 +280,7 @@ show.get = (args: { outletReview: number | { id: number } } | [outletReview: num
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:67
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-show.head = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -290,7 +290,7 @@ show.head = (args: { outletReview: number | { id: number } } | [outletReview: nu
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:67
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-const showForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -300,7 +300,7 @@ const showForm = (args: { outletReview: number | { id: number } } | [outletRevie
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:67
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-showForm.get = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -310,7 +310,7 @@ showForm.get = (args: { outletReview: number | { id: number } } | [outletReview:
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:67
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-showForm.head = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -327,7 +327,7 @@ show.form = showForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
 * @route '/dashboard/outlet-reviews/{outletReview}/edit'
 */
-export const edit = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -342,7 +342,7 @@ edit.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
 * @route '/dashboard/outlet-reviews/{outletReview}/edit'
 */
-edit.url = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outletReview: args }
     }
@@ -375,7 +375,7 @@ edit.url = (args: { outletReview: number | { id: number } } | [outletReview: num
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
 * @route '/dashboard/outlet-reviews/{outletReview}/edit'
 */
-edit.get = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -385,7 +385,7 @@ edit.get = (args: { outletReview: number | { id: number } } | [outletReview: num
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
 * @route '/dashboard/outlet-reviews/{outletReview}/edit'
 */
-edit.head = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -395,7 +395,7 @@ edit.head = (args: { outletReview: number | { id: number } } | [outletReview: nu
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
 * @route '/dashboard/outlet-reviews/{outletReview}/edit'
 */
-const editForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -405,7 +405,7 @@ const editForm = (args: { outletReview: number | { id: number } } | [outletRevie
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
 * @route '/dashboard/outlet-reviews/{outletReview}/edit'
 */
-editForm.get = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -415,7 +415,7 @@ editForm.get = (args: { outletReview: number | { id: number } } | [outletReview:
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:95
 * @route '/dashboard/outlet-reviews/{outletReview}/edit'
 */
-editForm.head = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -432,7 +432,7 @@ edit.form = editForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:105
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-export const update = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -447,7 +447,7 @@ update.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:105
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-update.url = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outletReview: args }
     }
@@ -480,7 +480,7 @@ update.url = (args: { outletReview: number | { id: number } } | [outletReview: n
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:105
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-update.put = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -490,7 +490,7 @@ update.put = (args: { outletReview: number | { id: number } } | [outletReview: n
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:105
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-update.patch = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -500,7 +500,7 @@ update.patch = (args: { outletReview: number | { id: number } } | [outletReview:
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:105
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-const updateForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -515,7 +515,7 @@ const updateForm = (args: { outletReview: number | { id: number } } | [outletRev
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:105
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-updateForm.put = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -530,7 +530,7 @@ updateForm.put = (args: { outletReview: number | { id: number } } | [outletRevie
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:105
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-updateForm.patch = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -547,7 +547,7 @@ update.form = updateForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:113
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-export const destroy = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -562,7 +562,7 @@ destroy.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:113
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-destroy.url = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outletReview: args }
     }
@@ -595,7 +595,7 @@ destroy.url = (args: { outletReview: number | { id: number } } | [outletReview: 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:113
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-destroy.delete = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -605,7 +605,7 @@ destroy.delete = (args: { outletReview: number | { id: number } } | [outletRevie
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:113
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-const destroyForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -620,7 +620,7 @@ const destroyForm = (args: { outletReview: number | { id: number } } | [outletRe
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:113
 * @route '/dashboard/outlet-reviews/{outletReview}'
 */
-destroyForm.delete = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -637,7 +637,7 @@ destroy.form = destroyForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:121
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-export const replyModal = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const replyModal = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: replyModal.url(args, options),
     method: 'get',
 })
@@ -652,7 +652,7 @@ replyModal.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:121
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-replyModal.url = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+replyModal.url = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outletReview: args }
     }
@@ -685,7 +685,7 @@ replyModal.url = (args: { outletReview: number | { id: number } } | [outletRevie
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:121
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-replyModal.get = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+replyModal.get = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: replyModal.url(args, options),
     method: 'get',
 })
@@ -695,7 +695,7 @@ replyModal.get = (args: { outletReview: number | { id: number } } | [outletRevie
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:121
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-replyModal.head = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+replyModal.head = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: replyModal.url(args, options),
     method: 'head',
 })
@@ -705,7 +705,7 @@ replyModal.head = (args: { outletReview: number | { id: number } } | [outletRevi
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:121
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-const replyModalForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const replyModalForm = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: replyModal.url(args, options),
     method: 'get',
 })
@@ -715,7 +715,7 @@ const replyModalForm = (args: { outletReview: number | { id: number } } | [outle
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:121
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-replyModalForm.get = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+replyModalForm.get = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: replyModal.url(args, options),
     method: 'get',
 })
@@ -725,7 +725,7 @@ replyModalForm.get = (args: { outletReview: number | { id: number } } | [outletR
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:121
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-replyModalForm.head = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+replyModalForm.head = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: replyModal.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -742,7 +742,7 @@ replyModal.form = replyModalForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:131
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-export const reply = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const reply = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reply.url(args, options),
     method: 'post',
 })
@@ -757,7 +757,7 @@ reply.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:131
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-reply.url = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+reply.url = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outletReview: args }
     }
@@ -790,7 +790,7 @@ reply.url = (args: { outletReview: number | { id: number } } | [outletReview: nu
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:131
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-reply.post = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+reply.post = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reply.url(args, options),
     method: 'post',
 })
@@ -800,7 +800,7 @@ reply.post = (args: { outletReview: number | { id: number } } | [outletReview: n
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:131
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-const replyForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const replyForm = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: reply.url(args, options),
     method: 'post',
 })
@@ -810,7 +810,7 @@ const replyForm = (args: { outletReview: number | { id: number } } | [outletRevi
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:131
 * @route '/dashboard/outlet-reviews/{outletReview}/reply'
 */
-replyForm.post = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+replyForm.post = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: reply.url(args, options),
     method: 'post',
 })
@@ -822,7 +822,7 @@ reply.form = replyForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:138
 * @route '/dashboard/outlet-reviews/{outletReview}/toggle-active'
 */
-export const toggleActive = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleActive = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -837,7 +837,7 @@ toggleActive.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:138
 * @route '/dashboard/outlet-reviews/{outletReview}/toggle-active'
 */
-toggleActive.url = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+toggleActive.url = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outletReview: args }
     }
@@ -870,7 +870,7 @@ toggleActive.url = (args: { outletReview: number | { id: number } } | [outletRev
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:138
 * @route '/dashboard/outlet-reviews/{outletReview}/toggle-active'
 */
-toggleActive.put = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleActive.put = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -880,7 +880,7 @@ toggleActive.put = (args: { outletReview: number | { id: number } } | [outletRev
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:138
 * @route '/dashboard/outlet-reviews/{outletReview}/toggle-active'
 */
-const toggleActiveForm = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleActiveForm = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -895,7 +895,7 @@ const toggleActiveForm = (args: { outletReview: number | { id: number } } | [out
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/OutletReviewController.php:138
 * @route '/dashboard/outlet-reviews/{outletReview}/toggle-active'
 */
-toggleActiveForm.put = (args: { outletReview: number | { id: number } } | [outletReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleActiveForm.put = (args: { outletReview: string | number | { id: string | number } } | [outletReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',

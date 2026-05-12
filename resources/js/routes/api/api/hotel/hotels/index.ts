@@ -141,7 +141,7 @@ store.form = storeForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:53
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-export const show = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -156,7 +156,7 @@ show.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:53
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-show.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { hotel: args }
     }
@@ -189,7 +189,7 @@ show.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:53
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-show.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -199,7 +199,7 @@ show.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:53
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-show.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -209,7 +209,7 @@ show.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uui
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:53
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-const showForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -219,7 +219,7 @@ const showForm = (args: { hotel: string | { uuid: string } } | [hotel: string | 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:53
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-showForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -229,7 +229,7 @@ showForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:53
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-showForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -246,7 +246,7 @@ show.form = showForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:70
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-export const update = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -261,7 +261,7 @@ update.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:70
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-update.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update.url = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { hotel: args }
     }
@@ -294,7 +294,7 @@ update.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uu
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:70
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-update.put = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -304,7 +304,7 @@ update.put = (args: { hotel: string | { uuid: string } } | [hotel: string | { uu
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:70
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-update.patch = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -314,7 +314,7 @@ update.patch = (args: { hotel: string | { uuid: string } } | [hotel: string | { 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:70
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-const updateForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -329,7 +329,7 @@ const updateForm = (args: { hotel: string | { uuid: string } } | [hotel: string 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:70
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-updateForm.put = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -344,7 +344,7 @@ updateForm.put = (args: { hotel: string | { uuid: string } } | [hotel: string | 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:70
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-updateForm.patch = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -361,7 +361,7 @@ update.form = updateForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:117
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-export const destroy = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -376,7 +376,7 @@ destroy.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:117
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-destroy.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { hotel: args }
     }
@@ -409,7 +409,7 @@ destroy.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { u
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:117
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-destroy.delete = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -419,7 +419,7 @@ destroy.delete = (args: { hotel: string | { uuid: string } } | [hotel: string | 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:117
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-const destroyForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -434,7 +434,7 @@ const destroyForm = (args: { hotel: string | { uuid: string } } | [hotel: string
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/HotelController.php:117
 * @route '/api/v1/dashboard/hotels/{hotel}'
 */
-destroyForm.delete = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

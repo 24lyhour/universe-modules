@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::exportMethod
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:198
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:199
 * @route '/dashboard/outlet-types/export'
 */
 export const exportMethod = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ exportMethod.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::exportMethod
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:198
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:199
 * @route '/dashboard/outlet-types/export'
 */
 exportMethod.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ exportMethod.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::exportMethod
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:198
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:199
 * @route '/dashboard/outlet-types/export'
 */
 exportMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ exportMethod.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::exportMethod
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:198
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:199
 * @route '/dashboard/outlet-types/export'
 */
 exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ exportMethod.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::exportMethod
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:198
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:199
 * @route '/dashboard/outlet-types/export'
 */
 const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const exportMethodForm = (options?: RouteQueryOptions): RouteFormDefinition<'get
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::exportMethod
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:198
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:199
 * @route '/dashboard/outlet-types/export'
 */
 exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ exportMethodForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::exportMethod
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:198
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:199
 * @route '/dashboard/outlet-types/export'
 */
 exportMethodForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -82,7 +82,7 @@ exportMethod.form = exportMethodForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::trash
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:209
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:210
 * @route '/dashboard/outlet-types/trash'
 */
 export const trash = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -97,7 +97,7 @@ trash.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::trash
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:209
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:210
 * @route '/dashboard/outlet-types/trash'
 */
 trash.url = (options?: RouteQueryOptions) => {
@@ -106,7 +106,7 @@ trash.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::trash
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:209
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:210
 * @route '/dashboard/outlet-types/trash'
 */
 trash.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -116,7 +116,7 @@ trash.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::trash
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:209
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:210
 * @route '/dashboard/outlet-types/trash'
 */
 trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -126,7 +126,7 @@ trash.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::trash
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:209
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:210
 * @route '/dashboard/outlet-types/trash'
 */
 const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -136,7 +136,7 @@ const trashForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::trash
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:209
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:210
 * @route '/dashboard/outlet-types/trash'
 */
 trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -146,7 +146,7 @@ trashForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::trash
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:209
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:210
 * @route '/dashboard/outlet-types/trash'
 */
 trashForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -163,7 +163,7 @@ trash.form = trashForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::bulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:283
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:284
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 export const bulkDelete = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -178,7 +178,7 @@ bulkDelete.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::bulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:283
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:284
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 bulkDelete.url = (options?: RouteQueryOptions) => {
@@ -187,7 +187,7 @@ bulkDelete.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::bulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:283
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:284
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 bulkDelete.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -197,7 +197,7 @@ bulkDelete.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::bulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:283
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:284
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 bulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -207,7 +207,7 @@ bulkDelete.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::bulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:283
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:284
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -217,7 +217,7 @@ const bulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::bulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:283
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:284
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 bulkDeleteForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -227,7 +227,7 @@ bulkDeleteForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> =
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::bulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:283
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:284
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 bulkDeleteForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -244,7 +244,7 @@ bulkDelete.form = bulkDeleteForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::processBulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:299
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:300
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 export const processBulkDelete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -259,7 +259,7 @@ processBulkDelete.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::processBulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:299
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:300
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 processBulkDelete.url = (options?: RouteQueryOptions) => {
@@ -268,7 +268,7 @@ processBulkDelete.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::processBulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:299
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:300
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 processBulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -278,7 +278,7 @@ processBulkDelete.delete = (options?: RouteQueryOptions): RouteDefinition<'delet
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::processBulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:299
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:300
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 const processBulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -293,7 +293,7 @@ const processBulkDeleteForm = (options?: RouteQueryOptions): RouteFormDefinition
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::processBulkDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:299
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:300
 * @route '/dashboard/outlet-types/bulk-delete'
 */
 processBulkDeleteForm.delete = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -391,7 +391,7 @@ index.form = indexForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::create
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:66
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:67
 * @route '/dashboard/outlet-types/create'
 */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -406,7 +406,7 @@ create.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::create
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:66
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:67
 * @route '/dashboard/outlet-types/create'
 */
 create.url = (options?: RouteQueryOptions) => {
@@ -415,7 +415,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::create
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:66
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:67
 * @route '/dashboard/outlet-types/create'
 */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -425,7 +425,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::create
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:66
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:67
 * @route '/dashboard/outlet-types/create'
 */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -435,7 +435,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::create
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:66
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:67
 * @route '/dashboard/outlet-types/create'
 */
 const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -445,7 +445,7 @@ const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::create
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:66
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:67
 * @route '/dashboard/outlet-types/create'
 */
 createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -455,7 +455,7 @@ createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::create
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:66
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:67
 * @route '/dashboard/outlet-types/create'
 */
 createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -472,7 +472,7 @@ create.form = createForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::store
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:75
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:76
 * @route '/dashboard/outlet-types'
 */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -487,7 +487,7 @@ store.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::store
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:75
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:76
 * @route '/dashboard/outlet-types'
 */
 store.url = (options?: RouteQueryOptions) => {
@@ -496,7 +496,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::store
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:75
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:76
 * @route '/dashboard/outlet-types'
 */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -506,7 +506,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::store
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:75
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:76
 * @route '/dashboard/outlet-types'
 */
 const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -516,7 +516,7 @@ const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::store
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:75
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:76
 * @route '/dashboard/outlet-types'
 */
 storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -528,7 +528,7 @@ store.form = storeForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::show
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:97
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:98
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 export const show = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -543,7 +543,7 @@ show.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::show
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:97
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:98
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 show.url = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -570,7 +570,7 @@ show.url = (args: { outlet_type: string | number } | [outlet_type: string | numb
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::show
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:97
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:98
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 show.get = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -580,7 +580,7 @@ show.get = (args: { outlet_type: string | number } | [outlet_type: string | numb
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::show
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:97
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:98
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 show.head = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -590,7 +590,7 @@ show.head = (args: { outlet_type: string | number } | [outlet_type: string | num
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::show
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:97
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:98
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 const showForm = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -600,7 +600,7 @@ const showForm = (args: { outlet_type: string | number } | [outlet_type: string 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::show
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:97
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:98
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 showForm.get = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -610,7 +610,7 @@ showForm.get = (args: { outlet_type: string | number } | [outlet_type: string | 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::show
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:97
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:98
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 showForm.head = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -627,7 +627,7 @@ show.form = showForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::edit
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:114
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:115
 * @route '/dashboard/outlet-types/{outlet_type}/edit'
 */
 export const edit = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -642,7 +642,7 @@ edit.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::edit
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:114
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:115
 * @route '/dashboard/outlet-types/{outlet_type}/edit'
 */
 edit.url = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -669,7 +669,7 @@ edit.url = (args: { outlet_type: string | number } | [outlet_type: string | numb
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::edit
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:114
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:115
 * @route '/dashboard/outlet-types/{outlet_type}/edit'
 */
 edit.get = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -679,7 +679,7 @@ edit.get = (args: { outlet_type: string | number } | [outlet_type: string | numb
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::edit
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:114
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:115
 * @route '/dashboard/outlet-types/{outlet_type}/edit'
 */
 edit.head = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -689,7 +689,7 @@ edit.head = (args: { outlet_type: string | number } | [outlet_type: string | num
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::edit
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:114
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:115
 * @route '/dashboard/outlet-types/{outlet_type}/edit'
 */
 const editForm = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -699,7 +699,7 @@ const editForm = (args: { outlet_type: string | number } | [outlet_type: string 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::edit
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:114
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:115
 * @route '/dashboard/outlet-types/{outlet_type}/edit'
 */
 editForm.get = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -709,7 +709,7 @@ editForm.get = (args: { outlet_type: string | number } | [outlet_type: string | 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::edit
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:114
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:115
 * @route '/dashboard/outlet-types/{outlet_type}/edit'
 */
 editForm.head = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -726,7 +726,7 @@ edit.form = editForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::update
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:131
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:132
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 export const update = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -741,7 +741,7 @@ update.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::update
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:131
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:132
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 update.url = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -768,7 +768,7 @@ update.url = (args: { outlet_type: string | number } | [outlet_type: string | nu
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::update
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:131
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:132
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 update.put = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -778,7 +778,7 @@ update.put = (args: { outlet_type: string | number } | [outlet_type: string | nu
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::update
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:131
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:132
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 update.patch = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
@@ -788,7 +788,7 @@ update.patch = (args: { outlet_type: string | number } | [outlet_type: string | 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::update
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:131
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:132
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 const updateForm = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -803,7 +803,7 @@ const updateForm = (args: { outlet_type: string | number } | [outlet_type: strin
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::update
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:131
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:132
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 updateForm.put = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -818,7 +818,7 @@ updateForm.put = (args: { outlet_type: string | number } | [outlet_type: string 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::update
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:131
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:132
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 updateForm.patch = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -835,7 +835,7 @@ update.form = updateForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::destroy
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:170
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:171
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 export const destroy = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -850,7 +850,7 @@ destroy.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::destroy
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:170
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:171
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 destroy.url = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -877,7 +877,7 @@ destroy.url = (args: { outlet_type: string | number } | [outlet_type: string | n
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::destroy
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:170
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:171
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 destroy.delete = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -887,7 +887,7 @@ destroy.delete = (args: { outlet_type: string | number } | [outlet_type: string 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::destroy
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:170
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:171
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 const destroyForm = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -902,7 +902,7 @@ const destroyForm = (args: { outlet_type: string | number } | [outlet_type: stri
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::destroy
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:170
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:171
 * @route '/dashboard/outlet-types/{outlet_type}'
 */
 destroyForm.delete = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -919,7 +919,7 @@ destroy.form = destroyForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::confirmDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:153
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:154
 * @route '/dashboard/outlet-types/{outlet_type}/delete'
 */
 export const confirmDelete = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -934,7 +934,7 @@ confirmDelete.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::confirmDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:153
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:154
 * @route '/dashboard/outlet-types/{outlet_type}/delete'
 */
 confirmDelete.url = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -961,7 +961,7 @@ confirmDelete.url = (args: { outlet_type: string | number } | [outlet_type: stri
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::confirmDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:153
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:154
 * @route '/dashboard/outlet-types/{outlet_type}/delete'
 */
 confirmDelete.get = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -971,7 +971,7 @@ confirmDelete.get = (args: { outlet_type: string | number } | [outlet_type: stri
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::confirmDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:153
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:154
 * @route '/dashboard/outlet-types/{outlet_type}/delete'
 */
 confirmDelete.head = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -981,7 +981,7 @@ confirmDelete.head = (args: { outlet_type: string | number } | [outlet_type: str
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::confirmDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:153
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:154
 * @route '/dashboard/outlet-types/{outlet_type}/delete'
 */
 const confirmDeleteForm = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -991,7 +991,7 @@ const confirmDeleteForm = (args: { outlet_type: string | number } | [outlet_type
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::confirmDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:153
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:154
 * @route '/dashboard/outlet-types/{outlet_type}/delete'
 */
 confirmDeleteForm.get = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1001,7 +1001,7 @@ confirmDeleteForm.get = (args: { outlet_type: string | number } | [outlet_type: 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::confirmDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:153
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:154
 * @route '/dashboard/outlet-types/{outlet_type}/delete'
 */
 confirmDeleteForm.head = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1018,7 +1018,7 @@ confirmDelete.form = confirmDeleteForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::toggleStatus
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:182
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:183
 * @route '/dashboard/outlet-types/{outlet_type}/toggle-status'
 */
 export const toggleStatus = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -1033,7 +1033,7 @@ toggleStatus.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::toggleStatus
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:182
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:183
 * @route '/dashboard/outlet-types/{outlet_type}/toggle-status'
 */
 toggleStatus.url = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -1060,7 +1060,7 @@ toggleStatus.url = (args: { outlet_type: string | number } | [outlet_type: strin
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::toggleStatus
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:182
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:183
 * @route '/dashboard/outlet-types/{outlet_type}/toggle-status'
 */
 toggleStatus.put = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -1070,7 +1070,7 @@ toggleStatus.put = (args: { outlet_type: string | number } | [outlet_type: strin
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::toggleStatus
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:182
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:183
 * @route '/dashboard/outlet-types/{outlet_type}/toggle-status'
 */
 const toggleStatusForm = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1085,7 +1085,7 @@ const toggleStatusForm = (args: { outlet_type: string | number } | [outlet_type:
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::toggleStatus
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:182
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:183
 * @route '/dashboard/outlet-types/{outlet_type}/toggle-status'
 */
 toggleStatusForm.put = (args: { outlet_type: string | number } | [outlet_type: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1102,7 +1102,7 @@ toggleStatus.form = toggleStatusForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::restore
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:255
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:256
 * @route '/dashboard/outlet-types/{id}/restore'
 */
 export const restore = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -1117,7 +1117,7 @@ restore.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::restore
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:255
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:256
 * @route '/dashboard/outlet-types/{id}/restore'
 */
 restore.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -1144,7 +1144,7 @@ restore.url = (args: { id: string | number } | [id: string | number ] | string |
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::restore
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:255
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:256
 * @route '/dashboard/outlet-types/{id}/restore'
 */
 restore.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -1154,7 +1154,7 @@ restore.post = (args: { id: string | number } | [id: string | number ] | string 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::restore
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:255
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:256
 * @route '/dashboard/outlet-types/{id}/restore'
 */
 const restoreForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1164,7 +1164,7 @@ const restoreForm = (args: { id: string | number } | [id: string | number ] | st
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::restore
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:255
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:256
 * @route '/dashboard/outlet-types/{id}/restore'
 */
 restoreForm.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1176,7 +1176,7 @@ restore.form = restoreForm
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::forceDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:269
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:270
 * @route '/dashboard/outlet-types/{id}/force-delete'
 */
 export const forceDelete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1191,7 +1191,7 @@ forceDelete.definition = {
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::forceDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:269
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:270
 * @route '/dashboard/outlet-types/{id}/force-delete'
 */
 forceDelete.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -1218,7 +1218,7 @@ forceDelete.url = (args: { id: string | number } | [id: string | number ] | stri
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::forceDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:269
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:270
 * @route '/dashboard/outlet-types/{id}/force-delete'
 */
 forceDelete.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -1228,7 +1228,7 @@ forceDelete.delete = (args: { id: string | number } | [id: string | number ] | s
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::forceDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:269
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:270
 * @route '/dashboard/outlet-types/{id}/force-delete'
 */
 const forceDeleteForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -1243,7 +1243,7 @@ const forceDeleteForm = (args: { id: string | number } | [id: string | number ] 
 
 /**
 * @see \Modules\Outlet\Http\Controllers\Dashboard\V1\TypeOutletDashboardController::forceDelete
-* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:269
+* @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/TypeOutletDashboardController.php:270
 * @route '/dashboard/outlet-types/{id}/force-delete'
 */
 forceDeleteForm.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

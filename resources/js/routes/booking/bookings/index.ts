@@ -319,7 +319,7 @@ bulkDelete.form = bulkDeleteForm
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:68
 * @route '/dashboard/bookings/{booking}/status'
 */
-export const updateStatus = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const updateStatus = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updateStatus.url(args, options),
     method: 'patch',
 })
@@ -334,7 +334,7 @@ updateStatus.definition = {
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:68
 * @route '/dashboard/bookings/{booking}/status'
 */
-updateStatus.url = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+updateStatus.url = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { booking: args }
     }
@@ -367,7 +367,7 @@ updateStatus.url = (args: { booking: string | { uuid: string } } | [booking: str
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:68
 * @route '/dashboard/bookings/{booking}/status'
 */
-updateStatus.patch = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+updateStatus.patch = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: updateStatus.url(args, options),
     method: 'patch',
 })
@@ -377,7 +377,7 @@ updateStatus.patch = (args: { booking: string | { uuid: string } } | [booking: s
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:68
 * @route '/dashboard/bookings/{booking}/status'
 */
-const updateStatusForm = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateStatusForm = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -392,7 +392,7 @@ const updateStatusForm = (args: { booking: string | { uuid: string } } | [bookin
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:68
 * @route '/dashboard/bookings/{booking}/status'
 */
-updateStatusForm.patch = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateStatusForm.patch = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -708,7 +708,7 @@ store.form = storeForm
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/dashboard/bookings/{booking}'
 */
-export const show = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -723,7 +723,7 @@ show.definition = {
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/dashboard/bookings/{booking}'
 */
-show.url = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { booking: args }
     }
@@ -756,7 +756,7 @@ show.url = (args: { booking: string | { uuid: string } } | [booking: string | { 
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/dashboard/bookings/{booking}'
 */
-show.get = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -766,7 +766,7 @@ show.get = (args: { booking: string | { uuid: string } } | [booking: string | { 
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/dashboard/bookings/{booking}'
 */
-show.head = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -776,7 +776,7 @@ show.head = (args: { booking: string | { uuid: string } } | [booking: string | {
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/dashboard/bookings/{booking}'
 */
-const showForm = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -786,7 +786,7 @@ const showForm = (args: { booking: string | { uuid: string } } | [booking: strin
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/dashboard/bookings/{booking}'
 */
-showForm.get = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -796,7 +796,7 @@ showForm.get = (args: { booking: string | { uuid: string } } | [booking: string 
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:50
 * @route '/dashboard/bookings/{booking}'
 */
-showForm.head = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -813,7 +813,7 @@ show.form = showForm
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:84
 * @route '/dashboard/bookings/{booking}'
 */
-export const destroy = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -828,7 +828,7 @@ destroy.definition = {
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:84
 * @route '/dashboard/bookings/{booking}'
 */
-destroy.url = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { booking: args }
     }
@@ -861,7 +861,7 @@ destroy.url = (args: { booking: string | { uuid: string } } | [booking: string |
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:84
 * @route '/dashboard/bookings/{booking}'
 */
-destroy.delete = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -871,7 +871,7 @@ destroy.delete = (args: { booking: string | { uuid: string } } | [booking: strin
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:84
 * @route '/dashboard/bookings/{booking}'
 */
-const destroyForm = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -886,7 +886,7 @@ const destroyForm = (args: { booking: string | { uuid: string } } | [booking: st
 * @see Modules/Booking/app/Http/Controllers/Dashboard/V1/BookingController.php:84
 * @route '/dashboard/bookings/{booking}'
 */
-destroyForm.delete = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

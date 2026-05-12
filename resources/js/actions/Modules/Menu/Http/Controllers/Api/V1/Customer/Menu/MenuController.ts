@@ -85,7 +85,7 @@ index.form = indexForm
 * @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
-export const show = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -100,7 +100,7 @@ show.definition = {
 * @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
-show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -133,7 +133,7 @@ show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
-show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -143,7 +143,7 @@ show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
-show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -153,7 +153,7 @@ show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
 * @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
-const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -163,7 +163,7 @@ const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { 
 * @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
-showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -173,7 +173,7 @@ showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 * @see Modules/Menu/app/Http/Controllers/Api/V1/Customer/Menu/MenuController.php:55
 * @route '/api/v1/menus/{menu}'
 */
-showForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',

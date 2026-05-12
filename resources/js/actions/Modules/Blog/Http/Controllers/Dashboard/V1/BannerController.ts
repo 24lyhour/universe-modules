@@ -222,7 +222,7 @@ store.form = storeForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:52
 * @route '/dashboard/banners/{banner}'
 */
-export const show = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -237,7 +237,7 @@ show.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:52
 * @route '/dashboard/banners/{banner}'
 */
-show.url = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { banner: args }
     }
@@ -270,7 +270,7 @@ show.url = (args: { banner: string | { uuid: string } } | [banner: string | { uu
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:52
 * @route '/dashboard/banners/{banner}'
 */
-show.get = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -280,7 +280,7 @@ show.get = (args: { banner: string | { uuid: string } } | [banner: string | { uu
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:52
 * @route '/dashboard/banners/{banner}'
 */
-show.head = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -290,7 +290,7 @@ show.head = (args: { banner: string | { uuid: string } } | [banner: string | { u
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:52
 * @route '/dashboard/banners/{banner}'
 */
-const showForm = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -300,7 +300,7 @@ const showForm = (args: { banner: string | { uuid: string } } | [banner: string 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:52
 * @route '/dashboard/banners/{banner}'
 */
-showForm.get = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -310,7 +310,7 @@ showForm.get = (args: { banner: string | { uuid: string } } | [banner: string | 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:52
 * @route '/dashboard/banners/{banner}'
 */
-showForm.head = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -327,7 +327,7 @@ show.form = showForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
 * @route '/dashboard/banners/{banner}/edit'
 */
-export const edit = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -342,7 +342,7 @@ edit.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
 * @route '/dashboard/banners/{banner}/edit'
 */
-edit.url = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { banner: args }
     }
@@ -375,7 +375,7 @@ edit.url = (args: { banner: string | { uuid: string } } | [banner: string | { uu
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
 * @route '/dashboard/banners/{banner}/edit'
 */
-edit.get = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -385,7 +385,7 @@ edit.get = (args: { banner: string | { uuid: string } } | [banner: string | { uu
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
 * @route '/dashboard/banners/{banner}/edit'
 */
-edit.head = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -395,7 +395,7 @@ edit.head = (args: { banner: string | { uuid: string } } | [banner: string | { u
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
 * @route '/dashboard/banners/{banner}/edit'
 */
-const editForm = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -405,7 +405,7 @@ const editForm = (args: { banner: string | { uuid: string } } | [banner: string 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
 * @route '/dashboard/banners/{banner}/edit'
 */
-editForm.get = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -415,7 +415,7 @@ editForm.get = (args: { banner: string | { uuid: string } } | [banner: string | 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:59
 * @route '/dashboard/banners/{banner}/edit'
 */
-editForm.head = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -432,7 +432,7 @@ edit.form = editForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:66
 * @route '/dashboard/banners/{banner}'
 */
-export const update = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -447,7 +447,7 @@ update.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:66
 * @route '/dashboard/banners/{banner}'
 */
-update.url = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update.url = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { banner: args }
     }
@@ -480,7 +480,7 @@ update.url = (args: { banner: string | { uuid: string } } | [banner: string | { 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:66
 * @route '/dashboard/banners/{banner}'
 */
-update.put = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -490,7 +490,7 @@ update.put = (args: { banner: string | { uuid: string } } | [banner: string | { 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:66
 * @route '/dashboard/banners/{banner}'
 */
-update.patch = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -500,7 +500,7 @@ update.patch = (args: { banner: string | { uuid: string } } | [banner: string | 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:66
 * @route '/dashboard/banners/{banner}'
 */
-const updateForm = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -515,7 +515,7 @@ const updateForm = (args: { banner: string | { uuid: string } } | [banner: strin
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:66
 * @route '/dashboard/banners/{banner}'
 */
-updateForm.put = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -530,7 +530,7 @@ updateForm.put = (args: { banner: string | { uuid: string } } | [banner: string 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:66
 * @route '/dashboard/banners/{banner}'
 */
-updateForm.patch = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -547,7 +547,7 @@ update.form = updateForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:74
 * @route '/dashboard/banners/{banner}'
 */
-export const destroy = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -562,7 +562,7 @@ destroy.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:74
 * @route '/dashboard/banners/{banner}'
 */
-destroy.url = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { banner: args }
     }
@@ -595,7 +595,7 @@ destroy.url = (args: { banner: string | { uuid: string } } | [banner: string | {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:74
 * @route '/dashboard/banners/{banner}'
 */
-destroy.delete = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -605,7 +605,7 @@ destroy.delete = (args: { banner: string | { uuid: string } } | [banner: string 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:74
 * @route '/dashboard/banners/{banner}'
 */
-const destroyForm = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -620,7 +620,7 @@ const destroyForm = (args: { banner: string | { uuid: string } } | [banner: stri
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:74
 * @route '/dashboard/banners/{banner}'
 */
-destroyForm.delete = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -637,7 +637,7 @@ destroy.form = destroyForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:82
 * @route '/dashboard/banners/{banner}/toggle-active'
 */
-export const toggleActive = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleActive = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -652,7 +652,7 @@ toggleActive.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:82
 * @route '/dashboard/banners/{banner}/toggle-active'
 */
-toggleActive.url = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+toggleActive.url = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { banner: args }
     }
@@ -685,7 +685,7 @@ toggleActive.url = (args: { banner: string | { uuid: string } } | [banner: strin
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:82
 * @route '/dashboard/banners/{banner}/toggle-active'
 */
-toggleActive.put = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleActive.put = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -695,7 +695,7 @@ toggleActive.put = (args: { banner: string | { uuid: string } } | [banner: strin
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:82
 * @route '/dashboard/banners/{banner}/toggle-active'
 */
-const toggleActiveForm = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleActiveForm = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -710,7 +710,7 @@ const toggleActiveForm = (args: { banner: string | { uuid: string } } | [banner:
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/BannerController.php:82
 * @route '/dashboard/banners/{banner}/toggle-active'
 */
-toggleActiveForm.put = (args: { banner: string | { uuid: string } } | [banner: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleActiveForm.put = (args: { banner: string | number | { uuid: string | number } } | [banner: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
