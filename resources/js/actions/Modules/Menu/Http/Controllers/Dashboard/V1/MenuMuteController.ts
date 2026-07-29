@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
 * @route '/dashboard/menus/{menu}/mute'
 */
-export const show = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ show.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
 * @route '/dashboard/menus/{menu}/mute'
 */
-show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -52,7 +52,7 @@ show.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
 * @route '/dashboard/menus/{menu}/mute'
 */
-show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -62,7 +62,7 @@ show.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
 * @route '/dashboard/menus/{menu}/mute'
 */
-show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -72,7 +72,7 @@ show.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
 * @route '/dashboard/menus/{menu}/mute'
 */
-const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -82,7 +82,7 @@ const showForm = (args: { menu: string | { uuid: string } } | [menu: string | { 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
 * @route '/dashboard/menus/{menu}/mute'
 */
-showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -92,7 +92,7 @@ showForm.get = (args: { menu: string | { uuid: string } } | [menu: string | { uu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:19
 * @route '/dashboard/menus/{menu}/mute'
 */
-showForm.head = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -109,7 +109,7 @@ show.form = showForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:34
 * @route '/dashboard/menus/{menu}/mute'
 */
-export const mute = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const mute = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: mute.url(args, options),
     method: 'post',
 })
@@ -124,7 +124,7 @@ mute.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:34
 * @route '/dashboard/menus/{menu}/mute'
 */
-mute.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+mute.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -157,7 +157,7 @@ mute.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:34
 * @route '/dashboard/menus/{menu}/mute'
 */
-mute.post = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+mute.post = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: mute.url(args, options),
     method: 'post',
 })
@@ -167,7 +167,7 @@ mute.post = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:34
 * @route '/dashboard/menus/{menu}/mute'
 */
-const muteForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const muteForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: mute.url(args, options),
     method: 'post',
 })
@@ -177,7 +177,7 @@ const muteForm = (args: { menu: string | { uuid: string } } | [menu: string | { 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:34
 * @route '/dashboard/menus/{menu}/mute'
 */
-muteForm.post = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+muteForm.post = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: mute.url(args, options),
     method: 'post',
 })
@@ -189,7 +189,7 @@ mute.form = muteForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:54
 * @route '/dashboard/menus/{menu}/mute'
 */
-export const unmute = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const unmute = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: unmute.url(args, options),
     method: 'delete',
 })
@@ -204,7 +204,7 @@ unmute.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:54
 * @route '/dashboard/menus/{menu}/mute'
 */
-unmute.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+unmute.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -237,7 +237,7 @@ unmute.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:54
 * @route '/dashboard/menus/{menu}/mute'
 */
-unmute.delete = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+unmute.delete = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: unmute.url(args, options),
     method: 'delete',
 })
@@ -247,7 +247,7 @@ unmute.delete = (args: { menu: string | { uuid: string } } | [menu: string | { u
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:54
 * @route '/dashboard/menus/{menu}/mute'
 */
-const unmuteForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const unmuteForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: unmute.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -262,7 +262,7 @@ const unmuteForm = (args: { menu: string | { uuid: string } } | [menu: string | 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:54
 * @route '/dashboard/menus/{menu}/mute'
 */
-unmuteForm.delete = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+unmuteForm.delete = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: unmute.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

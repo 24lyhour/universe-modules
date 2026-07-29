@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
 * @route '/dashboard/categories/{category}/products/manage'
 */
-export const manageProducts = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const manageProducts = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: manageProducts.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ manageProducts.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
 * @route '/dashboard/categories/{category}/products/manage'
 */
-manageProducts.url = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+manageProducts.url = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { category: args }
     }
@@ -52,7 +52,7 @@ manageProducts.url = (args: { category: number | { id: number } } | [category: n
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
 * @route '/dashboard/categories/{category}/products/manage'
 */
-manageProducts.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+manageProducts.get = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: manageProducts.url(args, options),
     method: 'get',
 })
@@ -62,7 +62,7 @@ manageProducts.get = (args: { category: number | { id: number } } | [category: n
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
 * @route '/dashboard/categories/{category}/products/manage'
 */
-manageProducts.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+manageProducts.head = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: manageProducts.url(args, options),
     method: 'head',
 })
@@ -72,7 +72,7 @@ manageProducts.head = (args: { category: number | { id: number } } | [category: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
 * @route '/dashboard/categories/{category}/products/manage'
 */
-const manageProductsForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const manageProductsForm = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: manageProducts.url(args, options),
     method: 'get',
 })
@@ -82,7 +82,7 @@ const manageProductsForm = (args: { category: number | { id: number } } | [categ
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
 * @route '/dashboard/categories/{category}/products/manage'
 */
-manageProductsForm.get = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+manageProductsForm.get = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: manageProducts.url(args, options),
     method: 'get',
 })
@@ -92,7 +92,7 @@ manageProductsForm.get = (args: { category: number | { id: number } } | [categor
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:25
 * @route '/dashboard/categories/{category}/products/manage'
 */
-manageProductsForm.head = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+manageProductsForm.head = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: manageProducts.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -109,7 +109,7 @@ manageProducts.form = manageProductsForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:51
 * @route '/dashboard/categories/{category}/products/sync'
 */
-export const syncProducts = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const syncProducts = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: syncProducts.url(args, options),
     method: 'post',
 })
@@ -124,7 +124,7 @@ syncProducts.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:51
 * @route '/dashboard/categories/{category}/products/sync'
 */
-syncProducts.url = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+syncProducts.url = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { category: args }
     }
@@ -157,7 +157,7 @@ syncProducts.url = (args: { category: number | { id: number } } | [category: num
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:51
 * @route '/dashboard/categories/{category}/products/sync'
 */
-syncProducts.post = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+syncProducts.post = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: syncProducts.url(args, options),
     method: 'post',
 })
@@ -167,7 +167,7 @@ syncProducts.post = (args: { category: number | { id: number } } | [category: nu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:51
 * @route '/dashboard/categories/{category}/products/sync'
 */
-const syncProductsForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const syncProductsForm = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: syncProducts.url(args, options),
     method: 'post',
 })
@@ -177,7 +177,7 @@ const syncProductsForm = (args: { category: number | { id: number } } | [categor
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:51
 * @route '/dashboard/categories/{category}/products/sync'
 */
-syncProductsForm.post = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+syncProductsForm.post = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: syncProducts.url(args, options),
     method: 'post',
 })
@@ -189,7 +189,7 @@ syncProducts.form = syncProductsForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:89
 * @route '/dashboard/categories/{category}/products/reorder'
 */
-export const reorderProducts = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const reorderProducts = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reorderProducts.url(args, options),
     method: 'post',
 })
@@ -204,7 +204,7 @@ reorderProducts.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:89
 * @route '/dashboard/categories/{category}/products/reorder'
 */
-reorderProducts.url = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+reorderProducts.url = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { category: args }
     }
@@ -237,7 +237,7 @@ reorderProducts.url = (args: { category: number | { id: number } } | [category: 
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:89
 * @route '/dashboard/categories/{category}/products/reorder'
 */
-reorderProducts.post = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+reorderProducts.post = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reorderProducts.url(args, options),
     method: 'post',
 })
@@ -247,7 +247,7 @@ reorderProducts.post = (args: { category: number | { id: number } } | [category:
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:89
 * @route '/dashboard/categories/{category}/products/reorder'
 */
-const reorderProductsForm = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const reorderProductsForm = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: reorderProducts.url(args, options),
     method: 'post',
 })
@@ -257,7 +257,7 @@ const reorderProductsForm = (args: { category: number | { id: number } } | [cate
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:89
 * @route '/dashboard/categories/{category}/products/reorder'
 */
-reorderProductsForm.post = (args: { category: number | { id: number } } | [category: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+reorderProductsForm.post = (args: { category: string | number | { id: string | number } } | [category: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: reorderProducts.url(args, options),
     method: 'post',
 })
@@ -269,7 +269,7 @@ reorderProducts.form = reorderProductsForm
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:73
 * @route '/dashboard/categories/{category}/products/{product}/toggle-availability'
 */
-export const toggleAvailability = (args: { category: number | { id: number }, product: number | { id: number } } | [category: number | { id: number }, product: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleAvailability = (args: { category: string | number | { id: string | number }, product: string | number | { id: string | number } } | [category: string | number | { id: string | number }, product: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleAvailability.url(args, options),
     method: 'put',
 })
@@ -284,7 +284,7 @@ toggleAvailability.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:73
 * @route '/dashboard/categories/{category}/products/{product}/toggle-availability'
 */
-toggleAvailability.url = (args: { category: number | { id: number }, product: number | { id: number } } | [category: number | { id: number }, product: number | { id: number } ], options?: RouteQueryOptions) => {
+toggleAvailability.url = (args: { category: string | number | { id: string | number }, product: string | number | { id: string | number } } | [category: string | number | { id: string | number }, product: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
             category: args[0],
@@ -314,7 +314,7 @@ toggleAvailability.url = (args: { category: number | { id: number }, product: nu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:73
 * @route '/dashboard/categories/{category}/products/{product}/toggle-availability'
 */
-toggleAvailability.put = (args: { category: number | { id: number }, product: number | { id: number } } | [category: number | { id: number }, product: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleAvailability.put = (args: { category: string | number | { id: string | number }, product: string | number | { id: string | number } } | [category: string | number | { id: string | number }, product: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleAvailability.url(args, options),
     method: 'put',
 })
@@ -324,7 +324,7 @@ toggleAvailability.put = (args: { category: number | { id: number }, product: nu
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:73
 * @route '/dashboard/categories/{category}/products/{product}/toggle-availability'
 */
-const toggleAvailabilityForm = (args: { category: number | { id: number }, product: number | { id: number } } | [category: number | { id: number }, product: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleAvailabilityForm = (args: { category: string | number | { id: string | number }, product: string | number | { id: string | number } } | [category: string | number | { id: string | number }, product: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleAvailability.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -339,7 +339,7 @@ const toggleAvailabilityForm = (args: { category: number | { id: number }, produ
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/CategoryProductController.php:73
 * @route '/dashboard/categories/{category}/products/{product}/toggle-availability'
 */
-toggleAvailabilityForm.put = (args: { category: number | { id: number }, product: number | { id: number } } | [category: number | { id: number }, product: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleAvailabilityForm.put = (args: { category: string | number | { id: string | number }, product: string | number | { id: string | number } } | [category: string | number | { id: string | number }, product: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleAvailability.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',

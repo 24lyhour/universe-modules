@@ -222,7 +222,7 @@ index.form = indexForm
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:132
 * @route '/dashboard/locations/{location}'
 */
-export const show = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -237,7 +237,7 @@ show.definition = {
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:132
 * @route '/dashboard/locations/{location}'
 */
-show.url = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { location: args }
     }
@@ -270,7 +270,7 @@ show.url = (args: { location: string | { uuid: string } } | [location: string | 
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:132
 * @route '/dashboard/locations/{location}'
 */
-show.get = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -280,7 +280,7 @@ show.get = (args: { location: string | { uuid: string } } | [location: string | 
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:132
 * @route '/dashboard/locations/{location}'
 */
-show.head = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -290,7 +290,7 @@ show.head = (args: { location: string | { uuid: string } } | [location: string |
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:132
 * @route '/dashboard/locations/{location}'
 */
-const showForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -300,7 +300,7 @@ const showForm = (args: { location: string | { uuid: string } } | [location: str
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:132
 * @route '/dashboard/locations/{location}'
 */
-showForm.get = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -310,7 +310,7 @@ showForm.get = (args: { location: string | { uuid: string } } | [location: strin
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:132
 * @route '/dashboard/locations/{location}'
 */
-showForm.head = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -327,7 +327,7 @@ show.form = showForm
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
 * @route '/dashboard/locations/{location}/edit'
 */
-export const edit = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -342,7 +342,7 @@ edit.definition = {
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
 * @route '/dashboard/locations/{location}/edit'
 */
-edit.url = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { location: args }
     }
@@ -375,7 +375,7 @@ edit.url = (args: { location: string | { uuid: string } } | [location: string | 
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
 * @route '/dashboard/locations/{location}/edit'
 */
-edit.get = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -385,7 +385,7 @@ edit.get = (args: { location: string | { uuid: string } } | [location: string | 
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
 * @route '/dashboard/locations/{location}/edit'
 */
-edit.head = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -395,7 +395,7 @@ edit.head = (args: { location: string | { uuid: string } } | [location: string |
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
 * @route '/dashboard/locations/{location}/edit'
 */
-const editForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -405,7 +405,7 @@ const editForm = (args: { location: string | { uuid: string } } | [location: str
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
 * @route '/dashboard/locations/{location}/edit'
 */
-editForm.get = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -415,7 +415,7 @@ editForm.get = (args: { location: string | { uuid: string } } | [location: strin
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:143
 * @route '/dashboard/locations/{location}/edit'
 */
-editForm.head = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -432,7 +432,7 @@ edit.form = editForm
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:170
 * @route '/dashboard/locations/{location}'
 */
-export const update = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -447,7 +447,7 @@ update.definition = {
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:170
 * @route '/dashboard/locations/{location}'
 */
-update.url = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update.url = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { location: args }
     }
@@ -480,7 +480,7 @@ update.url = (args: { location: string | { uuid: string } } | [location: string 
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:170
 * @route '/dashboard/locations/{location}'
 */
-update.put = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -490,7 +490,7 @@ update.put = (args: { location: string | { uuid: string } } | [location: string 
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:170
 * @route '/dashboard/locations/{location}'
 */
-const updateForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -505,7 +505,7 @@ const updateForm = (args: { location: string | { uuid: string } } | [location: s
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:170
 * @route '/dashboard/locations/{location}'
 */
-updateForm.put = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -522,7 +522,7 @@ update.form = updateForm
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:210
 * @route '/dashboard/locations/{location}/schedule'
 */
-export const updateSchedule = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const updateSchedule = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updateSchedule.url(args, options),
     method: 'put',
 })
@@ -537,7 +537,7 @@ updateSchedule.definition = {
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:210
 * @route '/dashboard/locations/{location}/schedule'
 */
-updateSchedule.url = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+updateSchedule.url = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { location: args }
     }
@@ -570,7 +570,7 @@ updateSchedule.url = (args: { location: string | { uuid: string } } | [location:
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:210
 * @route '/dashboard/locations/{location}/schedule'
 */
-updateSchedule.put = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+updateSchedule.put = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: updateSchedule.url(args, options),
     method: 'put',
 })
@@ -580,7 +580,7 @@ updateSchedule.put = (args: { location: string | { uuid: string } } | [location:
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:210
 * @route '/dashboard/locations/{location}/schedule'
 */
-const updateScheduleForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateScheduleForm = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateSchedule.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -595,7 +595,7 @@ const updateScheduleForm = (args: { location: string | { uuid: string } } | [loc
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:210
 * @route '/dashboard/locations/{location}/schedule'
 */
-updateScheduleForm.put = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateScheduleForm.put = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: updateSchedule.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -612,7 +612,7 @@ updateSchedule.form = updateScheduleForm
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:249
 * @route '/dashboard/locations/{location}/toggle-status'
 */
-export const toggleStatus = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleStatus = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -627,7 +627,7 @@ toggleStatus.definition = {
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:249
 * @route '/dashboard/locations/{location}/toggle-status'
 */
-toggleStatus.url = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+toggleStatus.url = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { location: args }
     }
@@ -660,7 +660,7 @@ toggleStatus.url = (args: { location: string | { uuid: string } } | [location: s
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:249
 * @route '/dashboard/locations/{location}/toggle-status'
 */
-toggleStatus.put = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleStatus.put = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleStatus.url(args, options),
     method: 'put',
 })
@@ -670,7 +670,7 @@ toggleStatus.put = (args: { location: string | { uuid: string } } | [location: s
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:249
 * @route '/dashboard/locations/{location}/toggle-status'
 */
-const toggleStatusForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleStatusForm = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -685,7 +685,7 @@ const toggleStatusForm = (args: { location: string | { uuid: string } } | [locat
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:249
 * @route '/dashboard/locations/{location}/toggle-status'
 */
-toggleStatusForm.put = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleStatusForm.put = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleStatus.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -702,7 +702,7 @@ toggleStatus.form = toggleStatusForm
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:269
 * @route '/dashboard/locations/{location}'
 */
-export const destroy = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -717,7 +717,7 @@ destroy.definition = {
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:269
 * @route '/dashboard/locations/{location}'
 */
-destroy.url = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { location: args }
     }
@@ -750,7 +750,7 @@ destroy.url = (args: { location: string | { uuid: string } } | [location: string
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:269
 * @route '/dashboard/locations/{location}'
 */
-destroy.delete = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -760,7 +760,7 @@ destroy.delete = (args: { location: string | { uuid: string } } | [location: str
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:269
 * @route '/dashboard/locations/{location}'
 */
-const destroyForm = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -775,7 +775,7 @@ const destroyForm = (args: { location: string | { uuid: string } } | [location: 
 * @see Modules/Employee/app/Http/Controllers/Dashboard/V1/LocationController.php:269
 * @route '/dashboard/locations/{location}'
 */
-destroyForm.delete = (args: { location: string | { uuid: string } } | [location: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { location: string | number | { uuid: string | number } } | [location: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

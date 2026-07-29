@@ -197,7 +197,7 @@ store.form = storeForm
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:42
 * @route '/api/v1/bookings/{booking}'
 */
-export const show = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -212,7 +212,7 @@ show.definition = {
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:42
 * @route '/api/v1/bookings/{booking}'
 */
-show.url = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { booking: args }
     }
@@ -245,7 +245,7 @@ show.url = (args: { booking: string | { uuid: string } } | [booking: string | { 
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:42
 * @route '/api/v1/bookings/{booking}'
 */
-show.get = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -255,7 +255,7 @@ show.get = (args: { booking: string | { uuid: string } } | [booking: string | { 
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:42
 * @route '/api/v1/bookings/{booking}'
 */
-show.head = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -265,7 +265,7 @@ show.head = (args: { booking: string | { uuid: string } } | [booking: string | {
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:42
 * @route '/api/v1/bookings/{booking}'
 */
-const showForm = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -275,7 +275,7 @@ const showForm = (args: { booking: string | { uuid: string } } | [booking: strin
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:42
 * @route '/api/v1/bookings/{booking}'
 */
-showForm.get = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -285,7 +285,7 @@ showForm.get = (args: { booking: string | { uuid: string } } | [booking: string 
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:42
 * @route '/api/v1/bookings/{booking}'
 */
-showForm.head = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -302,7 +302,7 @@ show.form = showForm
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:72
 * @route '/api/v1/bookings/{booking}/cancel'
 */
-export const cancel = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const cancel = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: cancel.url(args, options),
     method: 'post',
 })
@@ -317,7 +317,7 @@ cancel.definition = {
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:72
 * @route '/api/v1/bookings/{booking}/cancel'
 */
-cancel.url = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+cancel.url = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { booking: args }
     }
@@ -350,7 +350,7 @@ cancel.url = (args: { booking: string | { uuid: string } } | [booking: string | 
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:72
 * @route '/api/v1/bookings/{booking}/cancel'
 */
-cancel.post = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+cancel.post = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: cancel.url(args, options),
     method: 'post',
 })
@@ -360,7 +360,7 @@ cancel.post = (args: { booking: string | { uuid: string } } | [booking: string |
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:72
 * @route '/api/v1/bookings/{booking}/cancel'
 */
-const cancelForm = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const cancelForm = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: cancel.url(args, options),
     method: 'post',
 })
@@ -370,7 +370,7 @@ const cancelForm = (args: { booking: string | { uuid: string } } | [booking: str
 * @see Modules/Booking/app/Http/Controllers/Api/V1/Customer/BookingController.php:72
 * @route '/api/v1/bookings/{booking}/cancel'
 */
-cancelForm.post = (args: { booking: string | { uuid: string } } | [booking: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+cancelForm.post = (args: { booking: string | number | { uuid: string | number } } | [booking: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: cancel.url(args, options),
     method: 'post',
 })

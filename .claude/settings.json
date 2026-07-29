@@ -11,7 +11,12 @@
       "Read(//Users/kouchlyhour/Documents/portfolio_projects/app-flutter/manager-merchant/lib/app/core/config/**)"
     ],
     "additionalDirectories": [
-      "/Users/kouchlyhour/Documents/portfolio_projects/app-flutter/cylicon_app/lib/app/modules/outlets/outlet_menu/views"
+      "/Users/kouchlyhour/Documents/portfolio_projects/app-flutter/cylicon_app/lib/app/modules/outlets/outlet_menu/views",
+      "/Users/kouchlyhour/Documents/Dev/portfolio_projects/app-flutter/cylicon_app/lib/app/modules/booking/hotel_booking/data/models",
+      "/Users/kouchlyhour/Documents/Dev/portfolio_projects/app-flutter/cylicon_app/lib/app/modules/booking/hotel_detail/controllers",
+      "/Users/kouchlyhour/Documents/Dev/portfolio_projects/app-flutter/cylicon_app/lib/app/modules/booking/hotel_detail/hotel_room_detial/controllers",
+      "/Users/kouchlyhour/Documents/Dev/portfolio_projects/app-flutter/cylicon_app/lib/app/modules/booking/hotel_detail/hotel_room_detial/views",
+      "/Users/kouchlyhour/Documents/Dev/portfolio_projects/app-flutter/cylicon_app/lib/app/modules/booking/hotel_booking/data/providers"
     ]
   }
 }
