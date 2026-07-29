@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletStatusController.php:20
 * @route '/dashboard/outlets/{outlet}/toggle-status'
 */
-const OutletStatusController = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const OutletStatusController = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: OutletStatusController.url(args, options),
     method: 'put',
 })
@@ -19,7 +19,7 @@ OutletStatusController.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletStatusController.php:20
 * @route '/dashboard/outlets/{outlet}/toggle-status'
 */
-OutletStatusController.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+OutletStatusController.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -52,7 +52,7 @@ OutletStatusController.url = (args: { outlet: string | number | { uuid: string |
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletStatusController.php:20
 * @route '/dashboard/outlets/{outlet}/toggle-status'
 */
-OutletStatusController.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+OutletStatusController.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: OutletStatusController.url(args, options),
     method: 'put',
 })
@@ -62,7 +62,7 @@ OutletStatusController.put = (args: { outlet: string | number | { uuid: string |
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletStatusController.php:20
 * @route '/dashboard/outlets/{outlet}/toggle-status'
 */
-const OutletStatusControllerForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const OutletStatusControllerForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: OutletStatusController.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -77,7 +77,7 @@ const OutletStatusControllerForm = (args: { outlet: string | number | { uuid: st
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletStatusController.php:20
 * @route '/dashboard/outlets/{outlet}/toggle-status'
 */
-OutletStatusControllerForm.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+OutletStatusControllerForm.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: OutletStatusController.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',

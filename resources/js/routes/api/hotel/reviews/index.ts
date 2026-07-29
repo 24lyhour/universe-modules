@@ -1,10 +1,10 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:16
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:17
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-export const index = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const index = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(args, options),
     method: 'get',
 })
@@ -16,10 +16,10 @@ index.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:16
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:17
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-index.url = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+index.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { hotel: args }
     }
@@ -49,50 +49,50 @@ index.url = (args: { hotel: string | number | { uuid: string | number } } | [hot
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:16
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:17
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-index.get = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+index.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:16
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:17
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-index.head = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+index.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(args, options),
     method: 'head',
 })
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:16
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:17
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-const indexForm = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const indexForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:16
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:17
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-indexForm.get = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+indexForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::index
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:16
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:17
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-indexForm.head = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+indexForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: index.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -106,10 +106,10 @@ index.form = indexForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::stats
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:30
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:31
 * @route '/api/v1/hotels/{hotel}/reviews/stats'
 */
-export const stats = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const stats = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: stats.url(args, options),
     method: 'get',
 })
@@ -121,10 +121,10 @@ stats.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::stats
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:30
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:31
 * @route '/api/v1/hotels/{hotel}/reviews/stats'
 */
-stats.url = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+stats.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { hotel: args }
     }
@@ -154,50 +154,50 @@ stats.url = (args: { hotel: string | number | { uuid: string | number } } | [hot
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::stats
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:30
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:31
 * @route '/api/v1/hotels/{hotel}/reviews/stats'
 */
-stats.get = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+stats.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: stats.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::stats
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:30
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:31
 * @route '/api/v1/hotels/{hotel}/reviews/stats'
 */
-stats.head = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+stats.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: stats.url(args, options),
     method: 'head',
 })
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::stats
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:30
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:31
 * @route '/api/v1/hotels/{hotel}/reviews/stats'
 */
-const statsForm = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const statsForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: stats.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::stats
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:30
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:31
 * @route '/api/v1/hotels/{hotel}/reviews/stats'
 */
-statsForm.get = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+statsForm.get = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: stats.url(args, options),
     method: 'get',
 })
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::stats
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:30
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:31
 * @route '/api/v1/hotels/{hotel}/reviews/stats'
 */
-statsForm.head = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+statsForm.head = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: stats.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -211,10 +211,10 @@ stats.form = statsForm
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::store
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:55
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-export const store = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const store = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(args, options),
     method: 'post',
 })
@@ -226,10 +226,10 @@ store.definition = {
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::store
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:55
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-store.url = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+store.url = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { hotel: args }
     }
@@ -259,30 +259,30 @@ store.url = (args: { hotel: string | number | { uuid: string | number } } | [hot
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::store
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:55
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-store.post = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+store.post = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(args, options),
     method: 'post',
 })
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::store
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:55
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-const storeForm = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const storeForm = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: store.url(args, options),
     method: 'post',
 })
 
 /**
 * @see \Modules\Hotel\Http\Controllers\Api\V1\Customer\HotelReviewController::store
-* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:54
+* @see Modules/Hotel/app/Http/Controllers/Api/V1/Customer/HotelReviewController.php:55
 * @route '/api/v1/hotels/{hotel}/reviews'
 */
-storeForm.post = (args: { hotel: string | number | { uuid: string | number } } | [hotel: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+storeForm.post = (args: { hotel: string | { uuid: string } } | [hotel: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: store.url(args, options),
     method: 'post',
 })

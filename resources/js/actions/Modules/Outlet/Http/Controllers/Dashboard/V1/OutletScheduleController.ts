@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-export const show = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ show.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-show.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+show.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -52,7 +52,7 @@ show.url = (args: { outlet: string | number | { uuid: string | number } } | [out
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-show.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -62,7 +62,7 @@ show.get = (args: { outlet: string | number | { uuid: string | number } } | [out
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-show.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -72,7 +72,7 @@ show.head = (args: { outlet: string | number | { uuid: string | number } } | [ou
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-const showForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -82,7 +82,7 @@ const showForm = (args: { outlet: string | number | { uuid: string | number } } 
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-showForm.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -92,7 +92,7 @@ showForm.get = (args: { outlet: string | number | { uuid: string | number } } | 
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:19
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-showForm.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -109,7 +109,7 @@ show.form = showForm
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:29
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-export const update = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -124,7 +124,7 @@ update.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:29
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-update.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -157,7 +157,7 @@ update.url = (args: { outlet: string | number | { uuid: string | number } } | [o
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:29
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-update.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -167,7 +167,7 @@ update.put = (args: { outlet: string | number | { uuid: string | number } } | [o
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:29
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-const updateForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -182,7 +182,7 @@ const updateForm = (args: { outlet: string | number | { uuid: string | number } 
 * @see Modules/Outlet/app/Http/Controllers/Dashboard/V1/OutletScheduleController.php:29
 * @route '/dashboard/outlets/{outlet}/schedule'
 */
-updateForm.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',

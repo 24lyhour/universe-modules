@@ -222,7 +222,7 @@ store.form = storeForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:52
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-export const show = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -237,7 +237,7 @@ show.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:52
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-show.url = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+show.url = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { sliderShow: args }
     }
@@ -270,7 +270,7 @@ show.url = (args: { sliderShow: string | number | { uuid: string | number } } | 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:52
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-show.get = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -280,7 +280,7 @@ show.get = (args: { sliderShow: string | number | { uuid: string | number } } | 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:52
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-show.head = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -290,7 +290,7 @@ show.head = (args: { sliderShow: string | number | { uuid: string | number } } |
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:52
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-const showForm = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -300,7 +300,7 @@ const showForm = (args: { sliderShow: string | number | { uuid: string | number 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:52
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-showForm.get = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -310,7 +310,7 @@ showForm.get = (args: { sliderShow: string | number | { uuid: string | number } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:52
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-showForm.head = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -327,7 +327,7 @@ show.form = showForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:59
 * @route '/dashboard/slider-shows/{sliderShow}/edit'
 */
-export const edit = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -342,7 +342,7 @@ edit.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:59
 * @route '/dashboard/slider-shows/{sliderShow}/edit'
 */
-edit.url = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+edit.url = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { sliderShow: args }
     }
@@ -375,7 +375,7 @@ edit.url = (args: { sliderShow: string | number | { uuid: string | number } } | 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:59
 * @route '/dashboard/slider-shows/{sliderShow}/edit'
 */
-edit.get = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -385,7 +385,7 @@ edit.get = (args: { sliderShow: string | number | { uuid: string | number } } | 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:59
 * @route '/dashboard/slider-shows/{sliderShow}/edit'
 */
-edit.head = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -395,7 +395,7 @@ edit.head = (args: { sliderShow: string | number | { uuid: string | number } } |
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:59
 * @route '/dashboard/slider-shows/{sliderShow}/edit'
 */
-const editForm = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -405,7 +405,7 @@ const editForm = (args: { sliderShow: string | number | { uuid: string | number 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:59
 * @route '/dashboard/slider-shows/{sliderShow}/edit'
 */
-editForm.get = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -415,7 +415,7 @@ editForm.get = (args: { sliderShow: string | number | { uuid: string | number } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:59
 * @route '/dashboard/slider-shows/{sliderShow}/edit'
 */
-editForm.head = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -432,7 +432,7 @@ edit.form = editForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:66
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-export const update = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -447,7 +447,7 @@ update.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:66
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-update.url = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { sliderShow: args }
     }
@@ -480,7 +480,7 @@ update.url = (args: { sliderShow: string | number | { uuid: string | number } } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:66
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-update.put = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -490,7 +490,7 @@ update.put = (args: { sliderShow: string | number | { uuid: string | number } } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:66
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-update.patch = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -500,7 +500,7 @@ update.patch = (args: { sliderShow: string | number | { uuid: string | number } 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:66
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-const updateForm = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -515,7 +515,7 @@ const updateForm = (args: { sliderShow: string | number | { uuid: string | numbe
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:66
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-updateForm.put = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -530,7 +530,7 @@ updateForm.put = (args: { sliderShow: string | number | { uuid: string | number 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:66
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-updateForm.patch = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -547,7 +547,7 @@ update.form = updateForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:74
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-export const destroy = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -562,7 +562,7 @@ destroy.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:74
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-destroy.url = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { sliderShow: args }
     }
@@ -595,7 +595,7 @@ destroy.url = (args: { sliderShow: string | number | { uuid: string | number } }
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:74
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-destroy.delete = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -605,7 +605,7 @@ destroy.delete = (args: { sliderShow: string | number | { uuid: string | number 
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:74
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-const destroyForm = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -620,7 +620,7 @@ const destroyForm = (args: { sliderShow: string | number | { uuid: string | numb
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:74
 * @route '/dashboard/slider-shows/{sliderShow}'
 */
-destroyForm.delete = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -637,7 +637,7 @@ destroy.form = destroyForm
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:82
 * @route '/dashboard/slider-shows/{sliderShow}/toggle-active'
 */
-export const toggleActive = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleActive = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -652,7 +652,7 @@ toggleActive.definition = {
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:82
 * @route '/dashboard/slider-shows/{sliderShow}/toggle-active'
 */
-toggleActive.url = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
+toggleActive.url = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { sliderShow: args }
     }
@@ -685,7 +685,7 @@ toggleActive.url = (args: { sliderShow: string | number | { uuid: string | numbe
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:82
 * @route '/dashboard/slider-shows/{sliderShow}/toggle-active'
 */
-toggleActive.put = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleActive.put = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -695,7 +695,7 @@ toggleActive.put = (args: { sliderShow: string | number | { uuid: string | numbe
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:82
 * @route '/dashboard/slider-shows/{sliderShow}/toggle-active'
 */
-const toggleActiveForm = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleActiveForm = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -710,7 +710,7 @@ const toggleActiveForm = (args: { sliderShow: string | number | { uuid: string |
 * @see Modules/Blog/app/Http/Controllers/Dashboard/V1/SliderShowController.php:82
 * @route '/dashboard/slider-shows/{sliderShow}/toggle-active'
 */
-toggleActiveForm.put = (args: { sliderShow: string | number | { uuid: string | number } } | [sliderShow: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleActiveForm.put = (args: { sliderShow: string | { uuid: string } } | [sliderShow: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',

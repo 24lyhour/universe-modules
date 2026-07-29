@@ -186,11 +186,32 @@ class RolesAndPermissionsSeeder extends Seeder
                 'resources' => [
                     'hotels', 'hotel_categories', 'hotel_amenities',
                     'hotel_rooms', 'hotel_reviews', 'hotel_provinces', 'hotel_room_policies',
+                    'hotel_bookings',
+                    'hotel_booking_logs',
+                    'hotel_booking_payments',
+                    'hotel_invoices',
+                    'hotel_room_invoices',
+
                 ],
                 'extras' => [
                     'hotels' => ['toggle_status', 'export', 'import'],
                     'hotel_rooms' => ['toggle_status', 'mute', 'unmute'],
                     'hotel_reviews' => ['approve', 'reject', 'reply'],
+                ],
+            ],
+            'booking' => [
+                'resources' => [
+                    'bookings',
+                    'bookings_logs',
+                    'bookings_payments',
+                    'bookings_room_invoices',
+                    'bookings_invoices',
+                    'calendars',
+                ],
+                'extras' => [
+                    'bookings' => ['check_in', 'check_out', 'export', 'import'],
+                    'bookings_room_invoices' => ['toggle_status', 'export', 'import'],
+                    'bookings_invoices' => ['toggle_status', 'export', 'import'],
                 ],
             ],
 
