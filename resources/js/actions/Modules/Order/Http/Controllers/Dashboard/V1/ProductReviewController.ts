@@ -222,7 +222,7 @@ store.form = storeForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:66
 * @route '/dashboard/product-reviews/{productReview}'
 */
-export const show = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -237,7 +237,7 @@ show.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:66
 * @route '/dashboard/product-reviews/{productReview}'
 */
-show.url = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productReview: args }
     }
@@ -270,7 +270,7 @@ show.url = (args: { productReview: number | { id: number } } | [productReview: n
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:66
 * @route '/dashboard/product-reviews/{productReview}'
 */
-show.get = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -280,7 +280,7 @@ show.get = (args: { productReview: number | { id: number } } | [productReview: n
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:66
 * @route '/dashboard/product-reviews/{productReview}'
 */
-show.head = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -290,7 +290,7 @@ show.head = (args: { productReview: number | { id: number } } | [productReview: 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:66
 * @route '/dashboard/product-reviews/{productReview}'
 */
-const showForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -300,7 +300,7 @@ const showForm = (args: { productReview: number | { id: number } } | [productRev
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:66
 * @route '/dashboard/product-reviews/{productReview}'
 */
-showForm.get = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -310,7 +310,7 @@ showForm.get = (args: { productReview: number | { id: number } } | [productRevie
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:66
 * @route '/dashboard/product-reviews/{productReview}'
 */
-showForm.head = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -327,7 +327,7 @@ show.form = showForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
 * @route '/dashboard/product-reviews/{productReview}/edit'
 */
-export const edit = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -342,7 +342,7 @@ edit.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
 * @route '/dashboard/product-reviews/{productReview}/edit'
 */
-edit.url = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+edit.url = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productReview: args }
     }
@@ -375,7 +375,7 @@ edit.url = (args: { productReview: number | { id: number } } | [productReview: n
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
 * @route '/dashboard/product-reviews/{productReview}/edit'
 */
-edit.get = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -385,7 +385,7 @@ edit.get = (args: { productReview: number | { id: number } } | [productReview: n
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
 * @route '/dashboard/product-reviews/{productReview}/edit'
 */
-edit.head = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -395,7 +395,7 @@ edit.head = (args: { productReview: number | { id: number } } | [productReview: 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
 * @route '/dashboard/product-reviews/{productReview}/edit'
 */
-const editForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -405,7 +405,7 @@ const editForm = (args: { productReview: number | { id: number } } | [productRev
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
 * @route '/dashboard/product-reviews/{productReview}/edit'
 */
-editForm.get = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -415,7 +415,7 @@ editForm.get = (args: { productReview: number | { id: number } } | [productRevie
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:92
 * @route '/dashboard/product-reviews/{productReview}/edit'
 */
-editForm.head = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -432,7 +432,7 @@ edit.form = editForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:101
 * @route '/dashboard/product-reviews/{productReview}'
 */
-export const update = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -447,7 +447,7 @@ update.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:101
 * @route '/dashboard/product-reviews/{productReview}'
 */
-update.url = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+update.url = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productReview: args }
     }
@@ -480,7 +480,7 @@ update.url = (args: { productReview: number | { id: number } } | [productReview:
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:101
 * @route '/dashboard/product-reviews/{productReview}'
 */
-update.put = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -490,7 +490,7 @@ update.put = (args: { productReview: number | { id: number } } | [productReview:
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:101
 * @route '/dashboard/product-reviews/{productReview}'
 */
-update.patch = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -500,7 +500,7 @@ update.patch = (args: { productReview: number | { id: number } } | [productRevie
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:101
 * @route '/dashboard/product-reviews/{productReview}'
 */
-const updateForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -515,7 +515,7 @@ const updateForm = (args: { productReview: number | { id: number } } | [productR
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:101
 * @route '/dashboard/product-reviews/{productReview}'
 */
-updateForm.put = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -530,7 +530,7 @@ updateForm.put = (args: { productReview: number | { id: number } } | [productRev
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:101
 * @route '/dashboard/product-reviews/{productReview}'
 */
-updateForm.patch = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -547,7 +547,7 @@ update.form = updateForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:109
 * @route '/dashboard/product-reviews/{productReview}'
 */
-export const destroy = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -562,7 +562,7 @@ destroy.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:109
 * @route '/dashboard/product-reviews/{productReview}'
 */
-destroy.url = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productReview: args }
     }
@@ -595,7 +595,7 @@ destroy.url = (args: { productReview: number | { id: number } } | [productReview
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:109
 * @route '/dashboard/product-reviews/{productReview}'
 */
-destroy.delete = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -605,7 +605,7 @@ destroy.delete = (args: { productReview: number | { id: number } } | [productRev
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:109
 * @route '/dashboard/product-reviews/{productReview}'
 */
-const destroyForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -620,7 +620,7 @@ const destroyForm = (args: { productReview: number | { id: number } } | [product
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:109
 * @route '/dashboard/product-reviews/{productReview}'
 */
-destroyForm.delete = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -637,7 +637,7 @@ destroy.form = destroyForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:117
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-export const replyModal = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const replyModal = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: replyModal.url(args, options),
     method: 'get',
 })
@@ -652,7 +652,7 @@ replyModal.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:117
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-replyModal.url = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+replyModal.url = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productReview: args }
     }
@@ -685,7 +685,7 @@ replyModal.url = (args: { productReview: number | { id: number } } | [productRev
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:117
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-replyModal.get = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+replyModal.get = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: replyModal.url(args, options),
     method: 'get',
 })
@@ -695,7 +695,7 @@ replyModal.get = (args: { productReview: number | { id: number } } | [productRev
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:117
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-replyModal.head = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+replyModal.head = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: replyModal.url(args, options),
     method: 'head',
 })
@@ -705,7 +705,7 @@ replyModal.head = (args: { productReview: number | { id: number } } | [productRe
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:117
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-const replyModalForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const replyModalForm = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: replyModal.url(args, options),
     method: 'get',
 })
@@ -715,7 +715,7 @@ const replyModalForm = (args: { productReview: number | { id: number } } | [prod
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:117
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-replyModalForm.get = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+replyModalForm.get = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: replyModal.url(args, options),
     method: 'get',
 })
@@ -725,7 +725,7 @@ replyModalForm.get = (args: { productReview: number | { id: number } } | [produc
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:117
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-replyModalForm.head = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+replyModalForm.head = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: replyModal.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -742,7 +742,7 @@ replyModal.form = replyModalForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:126
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-export const reply = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const reply = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reply.url(args, options),
     method: 'post',
 })
@@ -757,7 +757,7 @@ reply.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:126
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-reply.url = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+reply.url = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productReview: args }
     }
@@ -790,7 +790,7 @@ reply.url = (args: { productReview: number | { id: number } } | [productReview: 
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:126
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-reply.post = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+reply.post = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reply.url(args, options),
     method: 'post',
 })
@@ -800,7 +800,7 @@ reply.post = (args: { productReview: number | { id: number } } | [productReview:
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:126
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-const replyForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const replyForm = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: reply.url(args, options),
     method: 'post',
 })
@@ -810,7 +810,7 @@ const replyForm = (args: { productReview: number | { id: number } } | [productRe
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:126
 * @route '/dashboard/product-reviews/{productReview}/reply'
 */
-replyForm.post = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+replyForm.post = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: reply.url(args, options),
     method: 'post',
 })
@@ -822,7 +822,7 @@ reply.form = replyForm
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:133
 * @route '/dashboard/product-reviews/{productReview}/toggle-active'
 */
-export const toggleActive = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const toggleActive = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -837,7 +837,7 @@ toggleActive.definition = {
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:133
 * @route '/dashboard/product-reviews/{productReview}/toggle-active'
 */
-toggleActive.url = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+toggleActive.url = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { productReview: args }
     }
@@ -870,7 +870,7 @@ toggleActive.url = (args: { productReview: number | { id: number } } | [productR
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:133
 * @route '/dashboard/product-reviews/{productReview}/toggle-active'
 */
-toggleActive.put = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+toggleActive.put = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: toggleActive.url(args, options),
     method: 'put',
 })
@@ -880,7 +880,7 @@ toggleActive.put = (args: { productReview: number | { id: number } } | [productR
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:133
 * @route '/dashboard/product-reviews/{productReview}/toggle-active'
 */
-const toggleActiveForm = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleActiveForm = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -895,7 +895,7 @@ const toggleActiveForm = (args: { productReview: number | { id: number } } | [pr
 * @see Modules/Order/app/Http/Controllers/Dashboard/V1/ProductReviewController.php:133
 * @route '/dashboard/product-reviews/{productReview}/toggle-active'
 */
-toggleActiveForm.put = (args: { productReview: number | { id: number } } | [productReview: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleActiveForm.put = (args: { productReview: string | number | { id: string | number } } | [productReview: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',

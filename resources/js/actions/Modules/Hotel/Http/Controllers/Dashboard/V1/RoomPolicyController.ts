@@ -319,7 +319,7 @@ bulkDelete.form = bulkDeleteForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:79
 * @route '/dashboard/hotel-room-policies/{policy}/toggle-active'
 */
-export const toggleActive = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const toggleActive = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: toggleActive.url(args, options),
     method: 'patch',
 })
@@ -334,7 +334,7 @@ toggleActive.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:79
 * @route '/dashboard/hotel-room-policies/{policy}/toggle-active'
 */
-toggleActive.url = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+toggleActive.url = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { policy: args }
     }
@@ -367,7 +367,7 @@ toggleActive.url = (args: { policy: string | { uuid: string } } | [policy: strin
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:79
 * @route '/dashboard/hotel-room-policies/{policy}/toggle-active'
 */
-toggleActive.patch = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+toggleActive.patch = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: toggleActive.url(args, options),
     method: 'patch',
 })
@@ -377,7 +377,7 @@ toggleActive.patch = (args: { policy: string | { uuid: string } } | [policy: str
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:79
 * @route '/dashboard/hotel-room-policies/{policy}/toggle-active'
 */
-const toggleActiveForm = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleActiveForm = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -392,7 +392,7 @@ const toggleActiveForm = (args: { policy: string | { uuid: string } } | [policy:
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:79
 * @route '/dashboard/hotel-room-policies/{policy}/toggle-active'
 */
-toggleActiveForm.patch = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleActiveForm.patch = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -409,7 +409,7 @@ toggleActive.form = toggleActiveForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:55
 * @route '/dashboard/hotel-room-policies/{policy}/delete'
 */
-export const confirmDelete = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const confirmDelete = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -424,7 +424,7 @@ confirmDelete.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:55
 * @route '/dashboard/hotel-room-policies/{policy}/delete'
 */
-confirmDelete.url = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+confirmDelete.url = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { policy: args }
     }
@@ -457,7 +457,7 @@ confirmDelete.url = (args: { policy: string | { uuid: string } } | [policy: stri
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:55
 * @route '/dashboard/hotel-room-policies/{policy}/delete'
 */
-confirmDelete.get = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+confirmDelete.get = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -467,7 +467,7 @@ confirmDelete.get = (args: { policy: string | { uuid: string } } | [policy: stri
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:55
 * @route '/dashboard/hotel-room-policies/{policy}/delete'
 */
-confirmDelete.head = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+confirmDelete.head = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmDelete.url(args, options),
     method: 'head',
 })
@@ -477,7 +477,7 @@ confirmDelete.head = (args: { policy: string | { uuid: string } } | [policy: str
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:55
 * @route '/dashboard/hotel-room-policies/{policy}/delete'
 */
-const confirmDeleteForm = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const confirmDeleteForm = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -487,7 +487,7 @@ const confirmDeleteForm = (args: { policy: string | { uuid: string } } | [policy
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:55
 * @route '/dashboard/hotel-room-policies/{policy}/delete'
 */
-confirmDeleteForm.get = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.get = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -497,7 +497,7 @@ confirmDeleteForm.get = (args: { policy: string | { uuid: string } } | [policy: 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:55
 * @route '/dashboard/hotel-room-policies/{policy}/delete'
 */
-confirmDeleteForm.head = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.head = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -732,7 +732,7 @@ store.form = storeForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:49
 * @route '/dashboard/hotel-room-policies/{policy}/edit'
 */
-export const edit = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -747,7 +747,7 @@ edit.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:49
 * @route '/dashboard/hotel-room-policies/{policy}/edit'
 */
-edit.url = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { policy: args }
     }
@@ -780,7 +780,7 @@ edit.url = (args: { policy: string | { uuid: string } } | [policy: string | { uu
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:49
 * @route '/dashboard/hotel-room-policies/{policy}/edit'
 */
-edit.get = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -790,7 +790,7 @@ edit.get = (args: { policy: string | { uuid: string } } | [policy: string | { uu
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:49
 * @route '/dashboard/hotel-room-policies/{policy}/edit'
 */
-edit.head = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -800,7 +800,7 @@ edit.head = (args: { policy: string | { uuid: string } } | [policy: string | { u
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:49
 * @route '/dashboard/hotel-room-policies/{policy}/edit'
 */
-const editForm = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -810,7 +810,7 @@ const editForm = (args: { policy: string | { uuid: string } } | [policy: string 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:49
 * @route '/dashboard/hotel-room-policies/{policy}/edit'
 */
-editForm.get = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -820,7 +820,7 @@ editForm.get = (args: { policy: string | { uuid: string } } | [policy: string | 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:49
 * @route '/dashboard/hotel-room-policies/{policy}/edit'
 */
-editForm.head = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -837,7 +837,7 @@ edit.form = editForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:61
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-export const update = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -852,7 +852,7 @@ update.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:61
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-update.url = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update.url = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { policy: args }
     }
@@ -885,7 +885,7 @@ update.url = (args: { policy: string | { uuid: string } } | [policy: string | { 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:61
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-update.put = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -895,7 +895,7 @@ update.put = (args: { policy: string | { uuid: string } } | [policy: string | { 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:61
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-update.patch = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -905,7 +905,7 @@ update.patch = (args: { policy: string | { uuid: string } } | [policy: string | 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:61
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-const updateForm = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -920,7 +920,7 @@ const updateForm = (args: { policy: string | { uuid: string } } | [policy: strin
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:61
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-updateForm.put = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -935,7 +935,7 @@ updateForm.put = (args: { policy: string | { uuid: string } } | [policy: string 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:61
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-updateForm.patch = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -952,7 +952,7 @@ update.form = updateForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:70
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-export const destroy = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -967,7 +967,7 @@ destroy.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:70
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-destroy.url = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { policy: args }
     }
@@ -1000,7 +1000,7 @@ destroy.url = (args: { policy: string | { uuid: string } } | [policy: string | {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:70
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-destroy.delete = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -1010,7 +1010,7 @@ destroy.delete = (args: { policy: string | { uuid: string } } | [policy: string 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:70
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-const destroyForm = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1025,7 +1025,7 @@ const destroyForm = (args: { policy: string | { uuid: string } } | [policy: stri
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/RoomPolicyController.php:70
 * @route '/dashboard/hotel-room-policies/{policy}'
 */
-destroyForm.delete = (args: { policy: string | { uuid: string } } | [policy: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { policy: string | number | { uuid: string | number } } | [policy: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

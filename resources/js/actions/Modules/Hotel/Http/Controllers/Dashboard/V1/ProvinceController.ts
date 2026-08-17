@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:83
 * @route '/dashboard/hotel-provinces/{province}/toggle-active'
 */
-export const toggleActive = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const toggleActive = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: toggleActive.url(args, options),
     method: 'patch',
 })
@@ -19,7 +19,7 @@ toggleActive.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:83
 * @route '/dashboard/hotel-provinces/{province}/toggle-active'
 */
-toggleActive.url = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+toggleActive.url = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { province: args }
     }
@@ -52,7 +52,7 @@ toggleActive.url = (args: { province: string | { uuid: string } } | [province: s
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:83
 * @route '/dashboard/hotel-provinces/{province}/toggle-active'
 */
-toggleActive.patch = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+toggleActive.patch = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: toggleActive.url(args, options),
     method: 'patch',
 })
@@ -62,7 +62,7 @@ toggleActive.patch = (args: { province: string | { uuid: string } } | [province:
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:83
 * @route '/dashboard/hotel-provinces/{province}/toggle-active'
 */
-const toggleActiveForm = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const toggleActiveForm = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -77,7 +77,7 @@ const toggleActiveForm = (args: { province: string | { uuid: string } } | [provi
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:83
 * @route '/dashboard/hotel-provinces/{province}/toggle-active'
 */
-toggleActiveForm.patch = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+toggleActiveForm.patch = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: toggleActive.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -94,7 +94,7 @@ toggleActive.form = toggleActiveForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:59
 * @route '/dashboard/hotel-provinces/{province}/delete'
 */
-export const confirmDelete = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const confirmDelete = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -109,7 +109,7 @@ confirmDelete.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:59
 * @route '/dashboard/hotel-provinces/{province}/delete'
 */
-confirmDelete.url = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+confirmDelete.url = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { province: args }
     }
@@ -142,7 +142,7 @@ confirmDelete.url = (args: { province: string | { uuid: string } } | [province: 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:59
 * @route '/dashboard/hotel-provinces/{province}/delete'
 */
-confirmDelete.get = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+confirmDelete.get = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -152,7 +152,7 @@ confirmDelete.get = (args: { province: string | { uuid: string } } | [province: 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:59
 * @route '/dashboard/hotel-provinces/{province}/delete'
 */
-confirmDelete.head = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+confirmDelete.head = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmDelete.url(args, options),
     method: 'head',
 })
@@ -162,7 +162,7 @@ confirmDelete.head = (args: { province: string | { uuid: string } } | [province:
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:59
 * @route '/dashboard/hotel-provinces/{province}/delete'
 */
-const confirmDeleteForm = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const confirmDeleteForm = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -172,7 +172,7 @@ const confirmDeleteForm = (args: { province: string | { uuid: string } } | [prov
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:59
 * @route '/dashboard/hotel-provinces/{province}/delete'
 */
-confirmDeleteForm.get = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.get = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, options),
     method: 'get',
 })
@@ -182,7 +182,7 @@ confirmDeleteForm.get = (args: { province: string | { uuid: string } } | [provin
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:59
 * @route '/dashboard/hotel-provinces/{province}/delete'
 */
-confirmDeleteForm.head = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+confirmDeleteForm.head = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmDelete.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -417,7 +417,7 @@ store.form = storeForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:52
 * @route '/dashboard/hotel-provinces/{province}'
 */
-export const show = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -432,7 +432,7 @@ show.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:52
 * @route '/dashboard/hotel-provinces/{province}'
 */
-show.url = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { province: args }
     }
@@ -465,7 +465,7 @@ show.url = (args: { province: string | { uuid: string } } | [province: string | 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:52
 * @route '/dashboard/hotel-provinces/{province}'
 */
-show.get = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -475,7 +475,7 @@ show.get = (args: { province: string | { uuid: string } } | [province: string | 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:52
 * @route '/dashboard/hotel-provinces/{province}'
 */
-show.head = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -485,7 +485,7 @@ show.head = (args: { province: string | { uuid: string } } | [province: string |
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:52
 * @route '/dashboard/hotel-provinces/{province}'
 */
-const showForm = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -495,7 +495,7 @@ const showForm = (args: { province: string | { uuid: string } } | [province: str
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:52
 * @route '/dashboard/hotel-provinces/{province}'
 */
-showForm.get = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -505,7 +505,7 @@ showForm.get = (args: { province: string | { uuid: string } } | [province: strin
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:52
 * @route '/dashboard/hotel-provinces/{province}'
 */
-showForm.head = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -522,7 +522,7 @@ show.form = showForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:46
 * @route '/dashboard/hotel-provinces/{province}/edit'
 */
-export const edit = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -537,7 +537,7 @@ edit.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:46
 * @route '/dashboard/hotel-provinces/{province}/edit'
 */
-edit.url = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+edit.url = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { province: args }
     }
@@ -570,7 +570,7 @@ edit.url = (args: { province: string | { uuid: string } } | [province: string | 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:46
 * @route '/dashboard/hotel-provinces/{province}/edit'
 */
-edit.get = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -580,7 +580,7 @@ edit.get = (args: { province: string | { uuid: string } } | [province: string | 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:46
 * @route '/dashboard/hotel-provinces/{province}/edit'
 */
-edit.head = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -590,7 +590,7 @@ edit.head = (args: { province: string | { uuid: string } } | [province: string |
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:46
 * @route '/dashboard/hotel-provinces/{province}/edit'
 */
-const editForm = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const editForm = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -600,7 +600,7 @@ const editForm = (args: { province: string | { uuid: string } } | [province: str
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:46
 * @route '/dashboard/hotel-provinces/{province}/edit'
 */
-editForm.get = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.get = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, options),
     method: 'get',
 })
@@ -610,7 +610,7 @@ editForm.get = (args: { province: string | { uuid: string } } | [province: strin
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:46
 * @route '/dashboard/hotel-provinces/{province}/edit'
 */
-editForm.head = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+editForm.head = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -627,7 +627,7 @@ edit.form = editForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:65
 * @route '/dashboard/hotel-provinces/{province}'
 */
-export const update = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -642,7 +642,7 @@ update.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:65
 * @route '/dashboard/hotel-provinces/{province}'
 */
-update.url = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update.url = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { province: args }
     }
@@ -675,7 +675,7 @@ update.url = (args: { province: string | { uuid: string } } | [province: string 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:65
 * @route '/dashboard/hotel-provinces/{province}'
 */
-update.put = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -685,7 +685,7 @@ update.put = (args: { province: string | { uuid: string } } | [province: string 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:65
 * @route '/dashboard/hotel-provinces/{province}'
 */
-update.patch = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update.patch = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
@@ -695,7 +695,7 @@ update.patch = (args: { province: string | { uuid: string } } | [province: strin
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:65
 * @route '/dashboard/hotel-provinces/{province}'
 */
-const updateForm = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const updateForm = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -710,7 +710,7 @@ const updateForm = (args: { province: string | { uuid: string } } | [province: s
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:65
 * @route '/dashboard/hotel-provinces/{province}'
 */
-updateForm.put = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.put = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -725,7 +725,7 @@ updateForm.put = (args: { province: string | { uuid: string } } | [province: str
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:65
 * @route '/dashboard/hotel-provinces/{province}'
 */
-updateForm.patch = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+updateForm.patch = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -742,7 +742,7 @@ update.form = updateForm
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:74
 * @route '/dashboard/hotel-provinces/{province}'
 */
-export const destroy = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -757,7 +757,7 @@ destroy.definition = {
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:74
 * @route '/dashboard/hotel-provinces/{province}'
 */
-destroy.url = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy.url = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { province: args }
     }
@@ -790,7 +790,7 @@ destroy.url = (args: { province: string | { uuid: string } } | [province: string
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:74
 * @route '/dashboard/hotel-provinces/{province}'
 */
-destroy.delete = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -800,7 +800,7 @@ destroy.delete = (args: { province: string | { uuid: string } } | [province: str
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:74
 * @route '/dashboard/hotel-provinces/{province}'
 */
-const destroyForm = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -815,7 +815,7 @@ const destroyForm = (args: { province: string | { uuid: string } } | [province: 
 * @see Modules/Hotel/app/Http/Controllers/Dashboard/V1/ProvinceController.php:74
 * @route '/dashboard/hotel-provinces/{province}'
 */
-destroyForm.delete = (args: { province: string | { uuid: string } } | [province: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { province: string | number | { uuid: string | number } } | [province: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',

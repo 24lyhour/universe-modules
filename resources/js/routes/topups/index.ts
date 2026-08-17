@@ -222,7 +222,7 @@ store.form = storeForm
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:88
 * @route '/dashboard/topups/{topup}'
 */
-export const show = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -237,7 +237,7 @@ show.definition = {
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:88
 * @route '/dashboard/topups/{topup}'
 */
-show.url = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+show.url = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { topup: args }
     }
@@ -270,7 +270,7 @@ show.url = (args: { topup: number | { id: number } } | [topup: number | { id: nu
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:88
 * @route '/dashboard/topups/{topup}'
 */
-show.get = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -280,7 +280,7 @@ show.get = (args: { topup: number | { id: number } } | [topup: number | { id: nu
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:88
 * @route '/dashboard/topups/{topup}'
 */
-show.head = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -290,7 +290,7 @@ show.head = (args: { topup: number | { id: number } } | [topup: number | { id: n
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:88
 * @route '/dashboard/topups/{topup}'
 */
-const showForm = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -300,7 +300,7 @@ const showForm = (args: { topup: number | { id: number } } | [topup: number | { 
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:88
 * @route '/dashboard/topups/{topup}'
 */
-showForm.get = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -310,7 +310,7 @@ showForm.get = (args: { topup: number | { id: number } } | [topup: number | { id
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:88
 * @route '/dashboard/topups/{topup}'
 */
-showForm.head = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -327,7 +327,7 @@ show.form = showForm
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:118
 * @route '/dashboard/topups/{topup}/delete'
 */
-export const deleteMethod = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const deleteMethod = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: deleteMethod.url(args, options),
     method: 'get',
 })
@@ -342,7 +342,7 @@ deleteMethod.definition = {
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:118
 * @route '/dashboard/topups/{topup}/delete'
 */
-deleteMethod.url = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+deleteMethod.url = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { topup: args }
     }
@@ -375,7 +375,7 @@ deleteMethod.url = (args: { topup: number | { id: number } } | [topup: number | 
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:118
 * @route '/dashboard/topups/{topup}/delete'
 */
-deleteMethod.get = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+deleteMethod.get = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: deleteMethod.url(args, options),
     method: 'get',
 })
@@ -385,7 +385,7 @@ deleteMethod.get = (args: { topup: number | { id: number } } | [topup: number | 
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:118
 * @route '/dashboard/topups/{topup}/delete'
 */
-deleteMethod.head = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+deleteMethod.head = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: deleteMethod.url(args, options),
     method: 'head',
 })
@@ -395,7 +395,7 @@ deleteMethod.head = (args: { topup: number | { id: number } } | [topup: number |
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:118
 * @route '/dashboard/topups/{topup}/delete'
 */
-const deleteMethodForm = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const deleteMethodForm = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: deleteMethod.url(args, options),
     method: 'get',
 })
@@ -405,7 +405,7 @@ const deleteMethodForm = (args: { topup: number | { id: number } } | [topup: num
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:118
 * @route '/dashboard/topups/{topup}/delete'
 */
-deleteMethodForm.get = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+deleteMethodForm.get = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: deleteMethod.url(args, options),
     method: 'get',
 })
@@ -415,7 +415,7 @@ deleteMethodForm.get = (args: { topup: number | { id: number } } | [topup: numbe
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:118
 * @route '/dashboard/topups/{topup}/delete'
 */
-deleteMethodForm.head = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+deleteMethodForm.head = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: deleteMethod.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -432,7 +432,7 @@ deleteMethod.form = deleteMethodForm
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:131
 * @route '/dashboard/topups/{topup}'
 */
-export const destroy = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -447,7 +447,7 @@ destroy.definition = {
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:131
 * @route '/dashboard/topups/{topup}'
 */
-destroy.url = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { topup: args }
     }
@@ -480,7 +480,7 @@ destroy.url = (args: { topup: number | { id: number } } | [topup: number | { id:
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:131
 * @route '/dashboard/topups/{topup}'
 */
-destroy.delete = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -490,7 +490,7 @@ destroy.delete = (args: { topup: number | { id: number } } | [topup: number | { 
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:131
 * @route '/dashboard/topups/{topup}'
 */
-const destroyForm = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroyForm = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -505,7 +505,7 @@ const destroyForm = (args: { topup: number | { id: number } } | [topup: number |
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:131
 * @route '/dashboard/topups/{topup}'
 */
-destroyForm.delete = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroyForm.delete = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -522,7 +522,7 @@ destroy.form = destroyForm
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:147
 * @route '/dashboard/topups/{topup}/complete'
 */
-export const complete = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const complete = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: complete.url(args, options),
     method: 'patch',
 })
@@ -537,7 +537,7 @@ complete.definition = {
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:147
 * @route '/dashboard/topups/{topup}/complete'
 */
-complete.url = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+complete.url = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { topup: args }
     }
@@ -570,7 +570,7 @@ complete.url = (args: { topup: number | { id: number } } | [topup: number | { id
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:147
 * @route '/dashboard/topups/{topup}/complete'
 */
-complete.patch = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+complete.patch = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: complete.url(args, options),
     method: 'patch',
 })
@@ -580,7 +580,7 @@ complete.patch = (args: { topup: number | { id: number } } | [topup: number | { 
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:147
 * @route '/dashboard/topups/{topup}/complete'
 */
-const completeForm = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const completeForm = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: complete.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -595,7 +595,7 @@ const completeForm = (args: { topup: number | { id: number } } | [topup: number 
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:147
 * @route '/dashboard/topups/{topup}/complete'
 */
-completeForm.patch = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+completeForm.patch = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: complete.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -612,7 +612,7 @@ complete.form = completeForm
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:163
 * @route '/dashboard/topups/{topup}/cancel'
 */
-export const cancel = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const cancel = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: cancel.url(args, options),
     method: 'patch',
 })
@@ -627,7 +627,7 @@ cancel.definition = {
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:163
 * @route '/dashboard/topups/{topup}/cancel'
 */
-cancel.url = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+cancel.url = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { topup: args }
     }
@@ -660,7 +660,7 @@ cancel.url = (args: { topup: number | { id: number } } | [topup: number | { id: 
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:163
 * @route '/dashboard/topups/{topup}/cancel'
 */
-cancel.patch = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+cancel.patch = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: cancel.url(args, options),
     method: 'patch',
 })
@@ -670,7 +670,7 @@ cancel.patch = (args: { topup: number | { id: number } } | [topup: number | { id
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:163
 * @route '/dashboard/topups/{topup}/cancel'
 */
-const cancelForm = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const cancelForm = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: cancel.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -685,7 +685,7 @@ const cancelForm = (args: { topup: number | { id: number } } | [topup: number | 
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:163
 * @route '/dashboard/topups/{topup}/cancel'
 */
-cancelForm.patch = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+cancelForm.patch = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: cancel.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -702,7 +702,7 @@ cancel.form = cancelForm
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:175
 * @route '/dashboard/topups/{topup}/fail'
 */
-export const fail = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+export const fail = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: fail.url(args, options),
     method: 'patch',
 })
@@ -717,7 +717,7 @@ fail.definition = {
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:175
 * @route '/dashboard/topups/{topup}/fail'
 */
-fail.url = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+fail.url = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { topup: args }
     }
@@ -750,7 +750,7 @@ fail.url = (args: { topup: number | { id: number } } | [topup: number | { id: nu
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:175
 * @route '/dashboard/topups/{topup}/fail'
 */
-fail.patch = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+fail.patch = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: fail.url(args, options),
     method: 'patch',
 })
@@ -760,7 +760,7 @@ fail.patch = (args: { topup: number | { id: number } } | [topup: number | { id: 
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:175
 * @route '/dashboard/topups/{topup}/fail'
 */
-const failForm = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const failForm = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: fail.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -775,7 +775,7 @@ const failForm = (args: { topup: number | { id: number } } | [topup: number | { 
 * @see Modules/Wallets/app/Http/Controllers/Dashboard/V1/TopUpController.php:175
 * @route '/dashboard/topups/{topup}/fail'
 */
-failForm.patch = (args: { topup: number | { id: number } } | [topup: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+failForm.patch = (args: { topup: string | number | { id: string | number } } | [topup: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: fail.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',

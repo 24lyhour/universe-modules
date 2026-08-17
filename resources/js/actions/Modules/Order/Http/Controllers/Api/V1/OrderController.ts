@@ -85,7 +85,7 @@ index.form = indexForm
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:52
 * @route '/api/v1/customer/orders/{order}'
 */
-export const show = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -100,7 +100,7 @@ show.definition = {
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:52
 * @route '/api/v1/customer/orders/{order}'
 */
-show.url = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show.url = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { order: args }
     }
@@ -133,7 +133,7 @@ show.url = (args: { order: string | { uuid: string } } | [order: string | { uuid
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:52
 * @route '/api/v1/customer/orders/{order}'
 */
-show.get = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -143,7 +143,7 @@ show.get = (args: { order: string | { uuid: string } } | [order: string | { uuid
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:52
 * @route '/api/v1/customer/orders/{order}'
 */
-show.head = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -153,7 +153,7 @@ show.head = (args: { order: string | { uuid: string } } | [order: string | { uui
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:52
 * @route '/api/v1/customer/orders/{order}'
 */
-const showForm = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const showForm = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -163,7 +163,7 @@ const showForm = (args: { order: string | { uuid: string } } | [order: string | 
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:52
 * @route '/api/v1/customer/orders/{order}'
 */
-showForm.get = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.get = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, options),
     method: 'get',
 })
@@ -173,7 +173,7 @@ showForm.get = (args: { order: string | { uuid: string } } | [order: string | { 
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:52
 * @route '/api/v1/customer/orders/{order}'
 */
-showForm.head = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+showForm.head = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -302,7 +302,7 @@ checkDelivery.form = checkDeliveryForm
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:299
 * @route '/api/v1/customer/orders/{order}/cancel'
 */
-export const cancel = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const cancel = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: cancel.url(args, options),
     method: 'post',
 })
@@ -317,7 +317,7 @@ cancel.definition = {
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:299
 * @route '/api/v1/customer/orders/{order}/cancel'
 */
-cancel.url = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+cancel.url = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { order: args }
     }
@@ -350,7 +350,7 @@ cancel.url = (args: { order: string | { uuid: string } } | [order: string | { uu
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:299
 * @route '/api/v1/customer/orders/{order}/cancel'
 */
-cancel.post = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+cancel.post = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: cancel.url(args, options),
     method: 'post',
 })
@@ -360,7 +360,7 @@ cancel.post = (args: { order: string | { uuid: string } } | [order: string | { u
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:299
 * @route '/api/v1/customer/orders/{order}/cancel'
 */
-const cancelForm = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const cancelForm = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: cancel.url(args, options),
     method: 'post',
 })
@@ -370,7 +370,7 @@ const cancelForm = (args: { order: string | { uuid: string } } | [order: string 
 * @see Modules/Order/app/Http/Controllers/Api/V1/OrderController.php:299
 * @route '/api/v1/customer/orders/{order}/cancel'
 */
-cancelForm.post = (args: { order: string | { uuid: string } } | [order: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+cancelForm.post = (args: { order: string | number | { uuid: string | number } } | [order: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: cancel.url(args, options),
     method: 'post',
 })

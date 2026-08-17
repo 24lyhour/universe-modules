@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:34
 * @route '/dashboard/menus/{menu}/mute'
 */
-export const apply = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const apply = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: apply.url(args, options),
     method: 'post',
 })
@@ -19,7 +19,7 @@ apply.definition = {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:34
 * @route '/dashboard/menus/{menu}/mute'
 */
-apply.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+apply.url = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { menu: args }
     }
@@ -52,7 +52,7 @@ apply.url = (args: { menu: string | { uuid: string } } | [menu: string | { uuid:
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:34
 * @route '/dashboard/menus/{menu}/mute'
 */
-apply.post = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+apply.post = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: apply.url(args, options),
     method: 'post',
 })
@@ -62,7 +62,7 @@ apply.post = (args: { menu: string | { uuid: string } } | [menu: string | { uuid
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:34
 * @route '/dashboard/menus/{menu}/mute'
 */
-const applyForm = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const applyForm = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: apply.url(args, options),
     method: 'post',
 })
@@ -72,7 +72,7 @@ const applyForm = (args: { menu: string | { uuid: string } } | [menu: string | {
 * @see Modules/Menu/app/Http/Controllers/Dashboard/V1/MenuMuteController.php:34
 * @route '/dashboard/menus/{menu}/mute'
 */
-applyForm.post = (args: { menu: string | { uuid: string } } | [menu: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+applyForm.post = (args: { menu: string | number | { uuid: string | number } } | [menu: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: apply.url(args, options),
     method: 'post',
 })

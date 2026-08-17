@@ -367,7 +367,7 @@ export const store = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-const show178358a3c51ddd1b044cd422e96b73fd = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+const show178358a3c51ddd1b044cd422e96b73fd = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show178358a3c51ddd1b044cd422e96b73fd.url(args, options),
     method: 'get',
 })
@@ -382,7 +382,7 @@ show178358a3c51ddd1b044cd422e96b73fd.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-show178358a3c51ddd1b044cd422e96b73fd.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show178358a3c51ddd1b044cd422e96b73fd.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -415,7 +415,7 @@ show178358a3c51ddd1b044cd422e96b73fd.url = (args: { outlet: string | { uuid: str
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-show178358a3c51ddd1b044cd422e96b73fd.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show178358a3c51ddd1b044cd422e96b73fd.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show178358a3c51ddd1b044cd422e96b73fd.url(args, options),
     method: 'get',
 })
@@ -425,7 +425,7 @@ show178358a3c51ddd1b044cd422e96b73fd.get = (args: { outlet: string | { uuid: str
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-show178358a3c51ddd1b044cd422e96b73fd.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show178358a3c51ddd1b044cd422e96b73fd.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show178358a3c51ddd1b044cd422e96b73fd.url(args, options),
     method: 'head',
 })
@@ -435,7 +435,7 @@ show178358a3c51ddd1b044cd422e96b73fd.head = (args: { outlet: string | { uuid: st
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-const show178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const show178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show178358a3c51ddd1b044cd422e96b73fd.url(args, options),
     method: 'get',
 })
@@ -445,7 +445,7 @@ const show178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | { uui
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-show178358a3c51ddd1b044cd422e96b73fdForm.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+show178358a3c51ddd1b044cd422e96b73fdForm.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show178358a3c51ddd1b044cd422e96b73fd.url(args, options),
     method: 'get',
 })
@@ -455,7 +455,7 @@ show178358a3c51ddd1b044cd422e96b73fdForm.get = (args: { outlet: string | { uuid:
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-show178358a3c51ddd1b044cd422e96b73fdForm.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+show178358a3c51ddd1b044cd422e96b73fdForm.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show178358a3c51ddd1b044cd422e96b73fd.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -471,7 +471,7 @@ show178358a3c51ddd1b044cd422e96b73fd.form = show178358a3c51ddd1b044cd422e96b73fd
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/outlets/{outlet}'
 */
-const show6bce8bd6bc44d74526728ef09747dba2 = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+const show6bce8bd6bc44d74526728ef09747dba2 = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'get',
 })
@@ -486,7 +486,7 @@ show6bce8bd6bc44d74526728ef09747dba2.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/outlets/{outlet}'
 */
-show6bce8bd6bc44d74526728ef09747dba2.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+show6bce8bd6bc44d74526728ef09747dba2.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -519,7 +519,7 @@ show6bce8bd6bc44d74526728ef09747dba2.url = (args: { outlet: string | { uuid: str
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/outlets/{outlet}'
 */
-show6bce8bd6bc44d74526728ef09747dba2.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show6bce8bd6bc44d74526728ef09747dba2.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'get',
 })
@@ -529,7 +529,7 @@ show6bce8bd6bc44d74526728ef09747dba2.get = (args: { outlet: string | { uuid: str
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/outlets/{outlet}'
 */
-show6bce8bd6bc44d74526728ef09747dba2.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show6bce8bd6bc44d74526728ef09747dba2.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'head',
 })
@@ -539,7 +539,7 @@ show6bce8bd6bc44d74526728ef09747dba2.head = (args: { outlet: string | { uuid: st
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/outlets/{outlet}'
 */
-const show6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+const show6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'get',
 })
@@ -549,7 +549,7 @@ const show6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | { uui
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/outlets/{outlet}'
 */
-show6bce8bd6bc44d74526728ef09747dba2Form.get = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+show6bce8bd6bc44d74526728ef09747dba2Form.get = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'get',
 })
@@ -559,7 +559,7 @@ show6bce8bd6bc44d74526728ef09747dba2Form.get = (args: { outlet: string | { uuid:
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:44
 * @route '/api/v1/outlets/{outlet}'
 */
-show6bce8bd6bc44d74526728ef09747dba2Form.head = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+show6bce8bd6bc44d74526728ef09747dba2Form.head = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: show6bce8bd6bc44d74526728ef09747dba2.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'HEAD',
@@ -581,7 +581,7 @@ export const show = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-const update178358a3c51ddd1b044cd422e96b73fd = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const update178358a3c51ddd1b044cd422e96b73fd = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update178358a3c51ddd1b044cd422e96b73fd.url(args, options),
     method: 'put',
 })
@@ -596,7 +596,7 @@ update178358a3c51ddd1b044cd422e96b73fd.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-update178358a3c51ddd1b044cd422e96b73fd.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update178358a3c51ddd1b044cd422e96b73fd.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -629,7 +629,7 @@ update178358a3c51ddd1b044cd422e96b73fd.url = (args: { outlet: string | { uuid: s
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-update178358a3c51ddd1b044cd422e96b73fd.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update178358a3c51ddd1b044cd422e96b73fd.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update178358a3c51ddd1b044cd422e96b73fd.url(args, options),
     method: 'put',
 })
@@ -639,7 +639,7 @@ update178358a3c51ddd1b044cd422e96b73fd.put = (args: { outlet: string | { uuid: s
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-update178358a3c51ddd1b044cd422e96b73fd.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update178358a3c51ddd1b044cd422e96b73fd.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update178358a3c51ddd1b044cd422e96b73fd.url(args, options),
     method: 'patch',
 })
@@ -649,7 +649,7 @@ update178358a3c51ddd1b044cd422e96b73fd.patch = (args: { outlet: string | { uuid:
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-const update178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const update178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update178358a3c51ddd1b044cd422e96b73fd.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -664,7 +664,7 @@ const update178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | { u
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-update178358a3c51ddd1b044cd422e96b73fdForm.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+update178358a3c51ddd1b044cd422e96b73fdForm.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update178358a3c51ddd1b044cd422e96b73fd.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -679,7 +679,7 @@ update178358a3c51ddd1b044cd422e96b73fdForm.put = (args: { outlet: string | { uui
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-update178358a3c51ddd1b044cd422e96b73fdForm.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+update178358a3c51ddd1b044cd422e96b73fdForm.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update178358a3c51ddd1b044cd422e96b73fd.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -695,7 +695,7 @@ update178358a3c51ddd1b044cd422e96b73fd.form = update178358a3c51ddd1b044cd422e96b
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/outlets/{outlet}'
 */
-const update6bce8bd6bc44d74526728ef09747dba2 = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+const update6bce8bd6bc44d74526728ef09747dba2 = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'put',
 })
@@ -710,7 +710,7 @@ update6bce8bd6bc44d74526728ef09747dba2.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/outlets/{outlet}'
 */
-update6bce8bd6bc44d74526728ef09747dba2.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+update6bce8bd6bc44d74526728ef09747dba2.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -743,7 +743,7 @@ update6bce8bd6bc44d74526728ef09747dba2.url = (args: { outlet: string | { uuid: s
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/outlets/{outlet}'
 */
-update6bce8bd6bc44d74526728ef09747dba2.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update6bce8bd6bc44d74526728ef09747dba2.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'put',
 })
@@ -753,7 +753,7 @@ update6bce8bd6bc44d74526728ef09747dba2.put = (args: { outlet: string | { uuid: s
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/outlets/{outlet}'
 */
-update6bce8bd6bc44d74526728ef09747dba2.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+update6bce8bd6bc44d74526728ef09747dba2.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'patch',
 })
@@ -763,7 +763,7 @@ update6bce8bd6bc44d74526728ef09747dba2.patch = (args: { outlet: string | { uuid:
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/outlets/{outlet}'
 */
-const update6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const update6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update6bce8bd6bc44d74526728ef09747dba2.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -778,7 +778,7 @@ const update6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | { u
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/outlets/{outlet}'
 */
-update6bce8bd6bc44d74526728ef09747dba2Form.put = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+update6bce8bd6bc44d74526728ef09747dba2Form.put = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update6bce8bd6bc44d74526728ef09747dba2.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PUT',
@@ -793,7 +793,7 @@ update6bce8bd6bc44d74526728ef09747dba2Form.put = (args: { outlet: string | { uui
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:51
 * @route '/api/v1/outlets/{outlet}'
 */
-update6bce8bd6bc44d74526728ef09747dba2Form.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+update6bce8bd6bc44d74526728ef09747dba2Form.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update6bce8bd6bc44d74526728ef09747dba2.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -815,7 +815,7 @@ export const update = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-const destroy178358a3c51ddd1b044cd422e96b73fd = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+const destroy178358a3c51ddd1b044cd422e96b73fd = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy178358a3c51ddd1b044cd422e96b73fd.url(args, options),
     method: 'delete',
 })
@@ -830,7 +830,7 @@ destroy178358a3c51ddd1b044cd422e96b73fd.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-destroy178358a3c51ddd1b044cd422e96b73fd.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy178358a3c51ddd1b044cd422e96b73fd.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -863,7 +863,7 @@ destroy178358a3c51ddd1b044cd422e96b73fd.url = (args: { outlet: string | { uuid: 
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-destroy178358a3c51ddd1b044cd422e96b73fd.delete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy178358a3c51ddd1b044cd422e96b73fd.delete = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy178358a3c51ddd1b044cd422e96b73fd.url(args, options),
     method: 'delete',
 })
@@ -873,7 +873,7 @@ destroy178358a3c51ddd1b044cd422e96b73fd.delete = (args: { outlet: string | { uui
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-const destroy178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroy178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy178358a3c51ddd1b044cd422e96b73fd.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -888,7 +888,7 @@ const destroy178358a3c51ddd1b044cd422e96b73fdForm = (args: { outlet: string | { 
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/admin/outlets/{outlet}'
 */
-destroy178358a3c51ddd1b044cd422e96b73fdForm.delete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroy178358a3c51ddd1b044cd422e96b73fdForm.delete = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy178358a3c51ddd1b044cd422e96b73fd.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -904,7 +904,7 @@ destroy178358a3c51ddd1b044cd422e96b73fd.form = destroy178358a3c51ddd1b044cd422e9
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/outlets/{outlet}'
 */
-const destroy6bce8bd6bc44d74526728ef09747dba2 = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+const destroy6bce8bd6bc44d74526728ef09747dba2 = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'delete',
 })
@@ -919,7 +919,7 @@ destroy6bce8bd6bc44d74526728ef09747dba2.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/outlets/{outlet}'
 */
-destroy6bce8bd6bc44d74526728ef09747dba2.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+destroy6bce8bd6bc44d74526728ef09747dba2.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -952,7 +952,7 @@ destroy6bce8bd6bc44d74526728ef09747dba2.url = (args: { outlet: string | { uuid: 
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/outlets/{outlet}'
 */
-destroy6bce8bd6bc44d74526728ef09747dba2.delete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy6bce8bd6bc44d74526728ef09747dba2.delete = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy6bce8bd6bc44d74526728ef09747dba2.url(args, options),
     method: 'delete',
 })
@@ -962,7 +962,7 @@ destroy6bce8bd6bc44d74526728ef09747dba2.delete = (args: { outlet: string | { uui
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/outlets/{outlet}'
 */
-const destroy6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const destroy6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy6bce8bd6bc44d74526728ef09747dba2.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -977,7 +977,7 @@ const destroy6bce8bd6bc44d74526728ef09747dba2Form = (args: { outlet: string | { 
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:61
 * @route '/api/v1/outlets/{outlet}'
 */
-destroy6bce8bd6bc44d74526728ef09747dba2Form.delete = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+destroy6bce8bd6bc44d74526728ef09747dba2Form.delete = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: destroy6bce8bd6bc44d74526728ef09747dba2.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'DELETE',
@@ -1165,7 +1165,7 @@ export const stats = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/admin/outlets/{outlet}/activate'
 */
-const activate4af3a865935451874c65a44927dd34a8 = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+const activate4af3a865935451874c65a44927dd34a8 = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activate4af3a865935451874c65a44927dd34a8.url(args, options),
     method: 'patch',
 })
@@ -1180,7 +1180,7 @@ activate4af3a865935451874c65a44927dd34a8.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/admin/outlets/{outlet}/activate'
 */
-activate4af3a865935451874c65a44927dd34a8.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+activate4af3a865935451874c65a44927dd34a8.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -1213,7 +1213,7 @@ activate4af3a865935451874c65a44927dd34a8.url = (args: { outlet: string | { uuid:
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/admin/outlets/{outlet}/activate'
 */
-activate4af3a865935451874c65a44927dd34a8.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+activate4af3a865935451874c65a44927dd34a8.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activate4af3a865935451874c65a44927dd34a8.url(args, options),
     method: 'patch',
 })
@@ -1223,7 +1223,7 @@ activate4af3a865935451874c65a44927dd34a8.patch = (args: { outlet: string | { uui
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/admin/outlets/{outlet}/activate'
 */
-const activate4af3a865935451874c65a44927dd34a8Form = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const activate4af3a865935451874c65a44927dd34a8Form = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: activate4af3a865935451874c65a44927dd34a8.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -1238,7 +1238,7 @@ const activate4af3a865935451874c65a44927dd34a8Form = (args: { outlet: string | {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/admin/outlets/{outlet}/activate'
 */
-activate4af3a865935451874c65a44927dd34a8Form.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+activate4af3a865935451874c65a44927dd34a8Form.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: activate4af3a865935451874c65a44927dd34a8.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -1254,7 +1254,7 @@ activate4af3a865935451874c65a44927dd34a8.form = activate4af3a865935451874c65a449
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/outlets/{outlet}/activate'
 */
-const activatece8a40e38344b532601a14c6eb1ca7f3 = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+const activatece8a40e38344b532601a14c6eb1ca7f3 = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activatece8a40e38344b532601a14c6eb1ca7f3.url(args, options),
     method: 'patch',
 })
@@ -1269,7 +1269,7 @@ activatece8a40e38344b532601a14c6eb1ca7f3.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/outlets/{outlet}/activate'
 */
-activatece8a40e38344b532601a14c6eb1ca7f3.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+activatece8a40e38344b532601a14c6eb1ca7f3.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -1302,7 +1302,7 @@ activatece8a40e38344b532601a14c6eb1ca7f3.url = (args: { outlet: string | { uuid:
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/outlets/{outlet}/activate'
 */
-activatece8a40e38344b532601a14c6eb1ca7f3.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+activatece8a40e38344b532601a14c6eb1ca7f3.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: activatece8a40e38344b532601a14c6eb1ca7f3.url(args, options),
     method: 'patch',
 })
@@ -1312,7 +1312,7 @@ activatece8a40e38344b532601a14c6eb1ca7f3.patch = (args: { outlet: string | { uui
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/outlets/{outlet}/activate'
 */
-const activatece8a40e38344b532601a14c6eb1ca7f3Form = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const activatece8a40e38344b532601a14c6eb1ca7f3Form = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: activatece8a40e38344b532601a14c6eb1ca7f3.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -1327,7 +1327,7 @@ const activatece8a40e38344b532601a14c6eb1ca7f3Form = (args: { outlet: string | {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:73
 * @route '/api/v1/outlets/{outlet}/activate'
 */
-activatece8a40e38344b532601a14c6eb1ca7f3Form.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+activatece8a40e38344b532601a14c6eb1ca7f3Form.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: activatece8a40e38344b532601a14c6eb1ca7f3.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -1349,7 +1349,7 @@ export const activate = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/admin/outlets/{outlet}/deactivate'
 */
-const deactivate1b948d3c0754b00071b05bdf5ffdf35a = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+const deactivate1b948d3c0754b00071b05bdf5ffdf35a = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate1b948d3c0754b00071b05bdf5ffdf35a.url(args, options),
     method: 'patch',
 })
@@ -1364,7 +1364,7 @@ deactivate1b948d3c0754b00071b05bdf5ffdf35a.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/admin/outlets/{outlet}/deactivate'
 */
-deactivate1b948d3c0754b00071b05bdf5ffdf35a.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+deactivate1b948d3c0754b00071b05bdf5ffdf35a.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -1397,7 +1397,7 @@ deactivate1b948d3c0754b00071b05bdf5ffdf35a.url = (args: { outlet: string | { uui
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/admin/outlets/{outlet}/deactivate'
 */
-deactivate1b948d3c0754b00071b05bdf5ffdf35a.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+deactivate1b948d3c0754b00071b05bdf5ffdf35a.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate1b948d3c0754b00071b05bdf5ffdf35a.url(args, options),
     method: 'patch',
 })
@@ -1407,7 +1407,7 @@ deactivate1b948d3c0754b00071b05bdf5ffdf35a.patch = (args: { outlet: string | { u
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/admin/outlets/{outlet}/deactivate'
 */
-const deactivate1b948d3c0754b00071b05bdf5ffdf35aForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const deactivate1b948d3c0754b00071b05bdf5ffdf35aForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deactivate1b948d3c0754b00071b05bdf5ffdf35a.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -1422,7 +1422,7 @@ const deactivate1b948d3c0754b00071b05bdf5ffdf35aForm = (args: { outlet: string |
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/admin/outlets/{outlet}/deactivate'
 */
-deactivate1b948d3c0754b00071b05bdf5ffdf35aForm.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+deactivate1b948d3c0754b00071b05bdf5ffdf35aForm.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deactivate1b948d3c0754b00071b05bdf5ffdf35a.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -1438,7 +1438,7 @@ deactivate1b948d3c0754b00071b05bdf5ffdf35a.form = deactivate1b948d3c0754b00071b0
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/outlets/{outlet}/deactivate'
 */
-const deactivate256ada6cebab7832b45e75f745b4e7cf = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+const deactivate256ada6cebab7832b45e75f745b4e7cf = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate256ada6cebab7832b45e75f745b4e7cf.url(args, options),
     method: 'patch',
 })
@@ -1453,7 +1453,7 @@ deactivate256ada6cebab7832b45e75f745b4e7cf.definition = {
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/outlets/{outlet}/deactivate'
 */
-deactivate256ada6cebab7832b45e75f745b4e7cf.url = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions) => {
+deactivate256ada6cebab7832b45e75f745b4e7cf.url = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { outlet: args }
     }
@@ -1486,7 +1486,7 @@ deactivate256ada6cebab7832b45e75f745b4e7cf.url = (args: { outlet: string | { uui
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/outlets/{outlet}/deactivate'
 */
-deactivate256ada6cebab7832b45e75f745b4e7cf.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
+deactivate256ada6cebab7832b45e75f745b4e7cf.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: deactivate256ada6cebab7832b45e75f745b4e7cf.url(args, options),
     method: 'patch',
 })
@@ -1496,7 +1496,7 @@ deactivate256ada6cebab7832b45e75f745b4e7cf.patch = (args: { outlet: string | { u
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/outlets/{outlet}/deactivate'
 */
-const deactivate256ada6cebab7832b45e75f745b4e7cfForm = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+const deactivate256ada6cebab7832b45e75f745b4e7cfForm = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deactivate256ada6cebab7832b45e75f745b4e7cf.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
@@ -1511,7 +1511,7 @@ const deactivate256ada6cebab7832b45e75f745b4e7cfForm = (args: { outlet: string |
 * @see Modules/Outlet/app/Http/Controllers/Api/V1/Customer/Outlet/OutletApiController.php:83
 * @route '/api/v1/outlets/{outlet}/deactivate'
 */
-deactivate256ada6cebab7832b45e75f745b4e7cfForm.patch = (args: { outlet: string | { uuid: string } } | [outlet: string | { uuid: string } ] | string | { uuid: string }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+deactivate256ada6cebab7832b45e75f745b4e7cfForm.patch = (args: { outlet: string | number | { uuid: string | number } } | [outlet: string | number | { uuid: string | number } ] | string | number | { uuid: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: deactivate256ada6cebab7832b45e75f745b4e7cf.url(args, {
         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
             _method: 'PATCH',
